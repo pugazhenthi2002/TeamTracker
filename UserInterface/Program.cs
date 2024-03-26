@@ -16,7 +16,7 @@ namespace UserInterface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserInterface.Form1());
+            Application.Run(new Project_Manager_Main_Page.ProjectManagerMainForm());
         }
     }
 }
