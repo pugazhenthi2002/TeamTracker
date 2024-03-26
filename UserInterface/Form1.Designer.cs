@@ -1,4 +1,4 @@
-﻿namespace TeamTracker
+﻿namespace UserInterface
 {
     partial class Form1
     {
