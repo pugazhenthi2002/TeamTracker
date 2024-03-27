@@ -1,4 +1,4 @@
-﻿namespace UserInterface.Project_Manager_Main_Page
+﻿namespace TeamTracker
 {
     partial class ProjectManagerMainForm
     {
@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectManagerMainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.headerPanel = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,14 +60,17 @@
             this.headerPanel.TabIndex = 1;
             this.headerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnHeaderPanelPaint);
             // 
-            // panel3
+            // profilePicAndName1
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(254, 57);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(558, 423);
-            this.panel3.TabIndex = 2;
+            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
+            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.profilePicAndName1.EmployeeProfile = null;
+            this.profilePicAndName1.Location = new System.Drawing.Point(247, 0);
+            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.profilePicAndName1.Name = "profilePicAndName1";
+            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.profilePicAndName1.Size = new System.Drawing.Size(257, 54);
+            this.profilePicAndName1.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -80,17 +83,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // profilePicAndName1
+            // panel3
             // 
-            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
-            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.profilePicAndName1.EmployeeProfile = null;
-            this.profilePicAndName1.Location = new System.Drawing.Point(247, 0);
-            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.profilePicAndName1.Name = "profilePicAndName1";
-            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.profilePicAndName1.Size = new System.Drawing.Size(257, 54);
-            this.profilePicAndName1.TabIndex = 1;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(254, 57);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(558, 423);
+            this.panel3.TabIndex = 2;
             // 
             // ProjectManagerMainForm
             // 

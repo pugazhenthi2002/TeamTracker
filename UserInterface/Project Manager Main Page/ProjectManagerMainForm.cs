@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserInterface.Project_Manager_Main_Page
+namespace TeamTracker
 {
     public partial class ProjectManagerMainForm : Form
     {
+        static public NotificationManager notify;
+
         public ProjectManagerMainForm()
         {
             InitializeComponent();
