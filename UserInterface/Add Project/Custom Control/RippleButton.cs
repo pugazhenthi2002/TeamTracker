@@ -43,7 +43,7 @@ namespace TeamTracker
         {
             for (int Iter = 0; Iter < clicks.Count; Iter++)
             {
-                clicks[Iter].Size += 5;
+                clicks[Iter].Size += 20;
             }
 
             this.Invalidate();

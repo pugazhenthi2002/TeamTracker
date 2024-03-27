@@ -38,8 +38,10 @@
             this.ucNotificationBase2 = new TeamTracker.UcNotificationBase();
             this.ucNotificationBase3 = new TeamTracker.UcNotificationBase();
             this.ucNotificationBase4 = new TeamTracker.UcNotificationBase();
+            this.ucDeploy1 = new UserInterface.Home_Page.Project_Manager.Deploy.UcDeploy();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,6 +92,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel3.Controls.Add(this.ucDeploy1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(254, 57);
             this.panel3.Name = "panel3";
@@ -132,6 +135,14 @@
             this.ucNotificationBase4.Size = new System.Drawing.Size(568, 386);
             this.ucNotificationBase4.TabIndex = 0;
             // 
+            // ucDeploy1
+            // 
+            this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucDeploy1.Location = new System.Drawing.Point(49, 80);
+            this.ucDeploy1.Name = "ucDeploy1";
+            this.ucDeploy1.Size = new System.Drawing.Size(380, 166);
+            this.ucDeploy1.TabIndex = 0;
+            // 
             // ProjectManagerMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +157,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.headerPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -161,5 +173,6 @@
         private UcNotificationBase ucNotificationBase2;
         private UcNotificationBase ucNotificationBase3;
         private UcNotificationBase ucNotificationBase4;
+        private UserInterface.Home_Page.Project_Manager.Deploy.UcDeploy ucDeploy1;
     }
 }

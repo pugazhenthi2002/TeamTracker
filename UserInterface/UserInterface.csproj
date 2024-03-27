@@ -134,11 +134,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.Designer.cs">
+      <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.Designer.cs">
       <DependentUpon>UcDeploy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\UcZipFileView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\UcZipFileView.Designer.cs">
+      <DependentUpon>UcZipFileView.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.cs">
       <SubType>UserControl</SubType>
@@ -247,8 +259,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.resx">
+      <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcDeploy.resx">
       <DependentUpon>UcDeploy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcZipFileView.resx">
+      <DependentUpon>UcZipFileView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
@@ -319,6 +337,11 @@
   <ItemGroup>
     <None Include="Images\Search File.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Zip red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zip Black.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
