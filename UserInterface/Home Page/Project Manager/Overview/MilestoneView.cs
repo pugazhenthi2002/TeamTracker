@@ -22,7 +22,7 @@ namespace TeamTracker
         private List<SingleMilestone> singleMilestoneCollection { get; set; }
         private int startCount, endCount;
 
-        public bool ChangeMilestoneUI(bool flag)
+        public int ChangeMilestoneUI(bool flag)
         {
             if (flag)
             {
@@ -49,7 +49,17 @@ namespace TeamTracker
             pathAndDateCollection[size-1].MilestoneColor = singleMilestoneCollection[size-2].MilestoneColor;
 
             if (startCount == 0)
-                return true;
+            {
+                return -1;
+            }
+            else if (endCount == MilestoneCollection.Count - 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private Color SetColor(MilestoneStatus status)
