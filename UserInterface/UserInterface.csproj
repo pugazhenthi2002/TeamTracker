@@ -134,6 +134,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\Notification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project Manager Main Page\ProfilePicAndName.cs">
       <SubType>UserControl</SubType>
@@ -187,6 +193,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Notification\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Project Manager Main Page\ProfilePicAndName.resx">
       <DependentUpon>ProfilePicAndName.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,8 +243,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Home Page\Project Manager\Deploy\" />
-    <Folder Include="Home Page\Project Manager\Notification\" />
     <Folder Include="Home Page\Project Manager\Overview\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close Red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
