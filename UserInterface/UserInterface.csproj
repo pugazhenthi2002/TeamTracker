@@ -134,11 +134,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Notification\Notification.cs">
+    <Compile Include="Home Page\Project Manager\Overview\MilestoneView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Notification\Notification.Designer.cs">
-      <DependentUpon>Notification.cs</DependentUpon>
+    <Compile Include="Home Page\Project Manager\Overview\MilestoneView.Designer.cs">
+      <DependentUpon>MilestoneView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\Overview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\Overview.Designer.cs">
+      <DependentUpon>Overview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\OverviewContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\OverviewContent.Designer.cs">
+      <DependentUpon>OverviewContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification Manager\CloseButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Notification Manager\FullContentViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification Manager\FullContentViewForm.designer.cs">
+      <DependentUpon>FullContentViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification Manager\NotificationManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Notification Manager\NotificationTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification Manager\NotificationTemplate.designer.cs">
+      <DependentUpon>NotificationTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project Manager Main Page\ProfilePicAndName.cs">
@@ -193,8 +223,23 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Notification\Notification.resx">
-      <DependentUpon>Notification.cs</DependentUpon>
+    <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneView.resx">
+      <DependentUpon>MilestoneView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Overview\Overview.resx">
+      <DependentUpon>Overview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewContent.resx">
+      <DependentUpon>OverviewContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification Manager\CloseButton.resx">
+      <DependentUpon>CloseButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification Manager\FullContentViewForm.resx">
+      <DependentUpon>FullContentViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification Manager\NotificationTemplate.resx">
+      <DependentUpon>NotificationTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Manager Main Page\ProfilePicAndName.resx">
       <DependentUpon>ProfilePicAndName.cs</DependentUpon>
@@ -243,19 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Home Page\Project Manager\Deploy\" />
-    <Folder Include="Home Page\Project Manager\Overview\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\close Hover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Close Black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Close Red.png" />
+    <Folder Include="Home Page\Project Manager\Notification\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
