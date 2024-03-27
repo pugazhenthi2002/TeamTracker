@@ -28,23 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.addProject1 = new TeamTracker.AddProject();
+            this.milestoneView1 = new TeamTracker.MilestoneView();
             this.SuspendLayout();
             // 
-            // addProject1
+            // milestoneView1
             // 
-            this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addProject1.Location = new System.Drawing.Point(0, 0);
-            this.addProject1.Name = "addProject1";
-            this.addProject1.Size = new System.Drawing.Size(800, 450);
-            this.addProject1.TabIndex = 0;
+            this.milestoneView1.Location = new System.Drawing.Point(12, 77);
+            this.milestoneView1.Name = "milestoneView1";
+            this.milestoneView1.Size = new System.Drawing.Size(1351, 196);
+            this.milestoneView1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.addProject1);
+            this.ClientSize = new System.Drawing.Size(1385, 450);
+            this.Controls.Add(this.milestoneView1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -53,7 +52,7 @@
 
         #endregion
 
-        private TeamTracker.AddProject addProject1;
+        private TeamTracker.MilestoneView milestoneView1;
     }
 }
 
