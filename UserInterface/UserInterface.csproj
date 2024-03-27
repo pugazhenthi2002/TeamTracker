@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -164,6 +165,12 @@
     <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.Designer.cs">
       <DependentUpon>UcNotificationBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\MilestoneLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\MilestoneLabel.Designer.cs">
+      <DependentUpon>MilestoneLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +194,12 @@
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\StartPathAndDate.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.Designer.cs">
+      <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification Manager\CloseButton.cs">
       <SubType>UserControl</SubType>
@@ -274,6 +287,9 @@
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotificationBase.resx">
       <DependentUpon>UcNotificationBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneLabel.resx">
+      <DependentUpon>MilestoneLabel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneView.resx">
       <DependentUpon>MilestoneView.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewContent.resx">
       <DependentUpon>OverviewContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.resx">
+      <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notification Manager\CloseButton.resx">
       <DependentUpon>CloseButton.cs</DependentUpon>

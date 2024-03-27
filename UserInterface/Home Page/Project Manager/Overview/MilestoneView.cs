@@ -17,7 +17,17 @@ namespace TeamTracker
             InitializeComponent();
         }
 
-        public List<Milestone> MilestoneCollection { get; set; }
+        public List<Milestone> MilestoneCollection
+        {
+            get { return milestoneCollection;}
+            set
+            {
+                milestoneCollection = value;
+                startCount = -1;
+                endCount = 2;
+            }
+        }
+        private List<Milestone> milestoneCollection { get; set; }
         private List<StartPathAndDate> pathAndDateCollection { get; set; }
         private List<SingleMilestone> singleMilestoneCollection { get; set; }
         private int startCount, endCount;

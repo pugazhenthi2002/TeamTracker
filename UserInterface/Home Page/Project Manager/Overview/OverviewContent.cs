@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace UserInterface.Home_Page.Project_Manager.Overview
 {
@@ -17,25 +19,57 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             InitializeComponent();
         }
 
+        public ProjectVersion Version
+        {
+            get
+            {
+                return version;
+            }
+            set
+            {
+                version = value;
+                InitializeOverview();
+            }
+        }
+
+        private ProjectVersion version;
         private bool backEnable = false, frontEnable = true;
-        private int result;
+        private int flag;
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
             if (backEnable)
-                result = milestoneView1.ChangeMilestoneUI(false);
+                flag = milestoneView1.ChangeMilestoneUI(false);
 
-            if (result < 0) backEnable = false;
+            if (flag < 0) backEnable = false;
             else { frontEnable = backEnable = true; }
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
         {
             if (frontEnable)
-                result = milestoneView1.ChangeMilestoneUI(true);
+                flag = milestoneView1.ChangeMilestoneUI(true);
 
-            if (result > 0) frontEnable = false;
+            if (flag > 0) frontEnable = false;
             else { frontEnable = backEnable = true; }
+        }
+
+        private void InitializeOverview()
+        {
+            List<int> result = TaskManager.FetchTaskCount(version.VersionID);
+
+            taskCountLabel.Text = result[0].ToString();
+            completedTaskLabel.Text = result[1].ToString();
+            dueTaskLabel.Text = result[2].ToString();
+            incompleteTaskLabel.Text = result[3].ToString();
+
+            milestoneView1.MilestoneCollection = MilestoneManager.FetchMilestones(version.VersionID);
+
+            flag = milestoneView1.ChangeMilestoneUI(true);
+
+            if (flag > 0) frontEnable = false;
+            else { frontEnable = backEnable = true; }
+
         }
     }
 }
