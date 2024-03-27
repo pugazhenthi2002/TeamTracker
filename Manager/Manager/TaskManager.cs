@@ -109,16 +109,24 @@ namespace TeamTracker
             }
         }
 
-        public static int FetchTaskCount(int versionID)
+        public static List<int> FetchTaskCount(int versionID)
         {
-            int result = 0;
+            List<int> result;
+            int total = 0, completed = 0, due = 0, incomplete = 0;
             foreach (var Iter in TaskCollection)
             {
                 if (Iter.VersionID == versionID)
                 {
-                    result++;
+                    total++;
+                    if (Iter.StatusOfTask == TaskStatus.Done) completed++;
+                    if (Iter.EndDate < DateTime.Now && !(Iter.StatusOfTask == TaskStatus.Done)) due++;
+                    if (Iter.StatusOfTask != TaskStatus.Done) incomplete++;
                 }
             }
+            result = new List<int>()
+            {
+                total, completed, due, incomplete
+            };
 
             return result;
         }
