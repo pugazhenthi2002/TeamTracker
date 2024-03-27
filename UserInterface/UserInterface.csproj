@@ -152,6 +152,12 @@
     <Compile Include="Home Page\Project Manager\Overview\OverviewContent.Designer.cs">
       <DependentUpon>OverviewContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\SingleMilestone.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\StartPathAndDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Notification Manager\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
