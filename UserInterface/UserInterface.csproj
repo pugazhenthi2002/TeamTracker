@@ -232,5 +232,10 @@
   <ItemGroup>
     <None Include="Images\Search File.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Home Page\Project Manager\Deploy\" />
+    <Folder Include="Home Page\Project Manager\Notification\" />
+    <Folder Include="Home Page\Project Manager\Overview\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
