@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.headerPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,7 +49,6 @@
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.headerPanel.Controls.Add(this.profilePicAndName1);
             this.headerPanel.Controls.Add(this.pictureBox1);
             this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerPanel.Location = new System.Drawing.Point(254, 0);
@@ -68,18 +66,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(558, 423);
             this.panel3.TabIndex = 2;
-            // 
-            // profilePicAndName1
-            // 
-            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
-            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.profilePicAndName1.EmployeeProfile = null;
-            this.profilePicAndName1.Location = new System.Drawing.Point(247, 0);
-            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.profilePicAndName1.Name = "profilePicAndName1";
-            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.profilePicAndName1.Size = new System.Drawing.Size(257, 54);
-            this.profilePicAndName1.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -116,6 +102,5 @@
         private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private TeamTracker.ProfilePicAndName profilePicAndName1;
     }
 }
