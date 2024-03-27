@@ -134,6 +134,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.Designer.cs">
+      <DependentUpon>UcDeploy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\UcNotification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\UcNotification.Designer.cs">
+      <DependentUpon>UcNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.Designer.cs">
+      <DependentUpon>UcNotificationBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +241,15 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcDeploy.resx">
+      <DependentUpon>UcDeploy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
+      <DependentUpon>UcNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotificationBase.resx">
+      <DependentUpon>UcNotificationBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneView.resx">
       <DependentUpon>MilestoneView.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,9 +313,6 @@
   <ItemGroup>
     <None Include="Images\Search File.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Home Page\Project Manager\Deploy\" />
-    <Folder Include="Home Page\Project Manager\Notification\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,6 +34,10 @@
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
+            this.ucNotificationBase2 = new TeamTracker.UcNotificationBase();
+            this.ucNotificationBase3 = new TeamTracker.UcNotificationBase();
+            this.ucNotificationBase4 = new TeamTracker.UcNotificationBase();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -92,6 +96,42 @@
             this.panel3.Size = new System.Drawing.Size(558, 423);
             this.panel3.TabIndex = 2;
             // 
+            // ucNotificationBase1
+            // 
+            this.ucNotificationBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotificationBase1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotificationBase1.Name = "ucNotificationBase1";
+            this.ucNotificationBase1.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase1.NotifyList")));
+            this.ucNotificationBase1.Size = new System.Drawing.Size(391, 272);
+            this.ucNotificationBase1.TabIndex = 0;
+            // 
+            // ucNotificationBase2
+            // 
+            this.ucNotificationBase2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotificationBase2.Location = new System.Drawing.Point(0, 0);
+            this.ucNotificationBase2.Name = "ucNotificationBase2";
+            this.ucNotificationBase2.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase2.NotifyList")));
+            this.ucNotificationBase2.Size = new System.Drawing.Size(391, 272);
+            this.ucNotificationBase2.TabIndex = 0;
+            // 
+            // ucNotificationBase3
+            // 
+            this.ucNotificationBase3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotificationBase3.Location = new System.Drawing.Point(0, 0);
+            this.ucNotificationBase3.Name = "ucNotificationBase3";
+            this.ucNotificationBase3.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase3.NotifyList")));
+            this.ucNotificationBase3.Size = new System.Drawing.Size(568, 386);
+            this.ucNotificationBase3.TabIndex = 0;
+            // 
+            // ucNotificationBase4
+            // 
+            this.ucNotificationBase4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotificationBase4.Location = new System.Drawing.Point(0, 0);
+            this.ucNotificationBase4.Name = "ucNotificationBase4";
+            this.ucNotificationBase4.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase4.NotifyList")));
+            this.ucNotificationBase4.Size = new System.Drawing.Size(568, 386);
+            this.ucNotificationBase4.TabIndex = 0;
+            // 
             // ProjectManagerMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,5 +157,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private TeamTracker.ProfilePicAndName profilePicAndName1;
+        private UcNotificationBase ucNotificationBase1;
+        private UcNotificationBase ucNotificationBase2;
+        private UcNotificationBase ucNotificationBase3;
+        private UcNotificationBase ucNotificationBase4;
     }
 }
