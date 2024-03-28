@@ -34,7 +34,7 @@
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ucDeploy1 = new UserInterface.Home_Page.Project_Manager.Deploy.UcDeploy();
+            this.ucDeploy1 = new UcDeploy();
             this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
             this.ucNotificationBase2 = new TeamTracker.UcNotificationBase();
             this.ucNotificationBase3 = new TeamTracker.UcNotificationBase();
@@ -173,6 +173,6 @@
         private UcNotificationBase ucNotificationBase2;
         private UcNotificationBase ucNotificationBase3;
         private UcNotificationBase ucNotificationBase4;
-        private UserInterface.Home_Page.Project_Manager.Deploy.UcDeploy ucDeploy1;
+        private UcDeploy ucDeploy1;
     }
 }

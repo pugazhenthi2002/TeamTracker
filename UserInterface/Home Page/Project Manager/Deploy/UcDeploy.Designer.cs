@@ -1,4 +1,4 @@
-﻿namespace UserInterface.Home_Page.Project_Manager.Deploy
+﻿namespace TeamTracker
 {
     partial class UcDeploy
     {
@@ -33,7 +33,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelProjectName = new System.Windows.Forms.Label();
-            this.profilePicAndNameSquare1 = new UserInterface.Home_Page.Project_Manager.Deploy.ProfilePicAndNameSquare();
+            this.profilePicAndNameSquare1 = new ProfilePicAndNameSquare();
             this.BtnDeploy = new TeamTracker.RippleButton();
             this.downloadBtn1 = new TeamTracker.DownloadBtn();
             this.tableLayoutPanel1.SuspendLayout();
@@ -102,6 +102,7 @@
             this.labelVersion.TabIndex = 1;
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelVersion.Click += new System.EventHandler(this.OnClickProjectNameAndVersion);
             // 
             // labelProjectName
             // 
@@ -114,6 +115,7 @@
             this.labelProjectName.TabIndex = 0;
             this.labelProjectName.Text = "Project Name";
             this.labelProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelProjectName.Click += new System.EventHandler(this.OnClickProjectNameAndVersion);
             // 
             // profilePicAndNameSquare1
             // 

@@ -145,23 +145,11 @@
     <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.Designer.cs">
       <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\ProjectVersionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\ProjectVersionForm.Designer.cs">
-      <DependentUpon>ProjectVersionForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.Designer.cs">
       <DependentUpon>UcDeploy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\UCProjectNameAndVersion.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\UCProjectNameAndVersion.Designer.cs">
-      <DependentUpon>UCProjectNameAndVersion.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.cs">
       <SubType>UserControl</SubType>
@@ -306,14 +294,8 @@
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.resx">
       <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\ProjectVersionForm.resx">
-      <DependentUpon>ProjectVersionForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcDeploy.resx">
       <DependentUpon>UcDeploy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\UCProjectNameAndVersion.resx">
-      <DependentUpon>UCProjectNameAndVersion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
