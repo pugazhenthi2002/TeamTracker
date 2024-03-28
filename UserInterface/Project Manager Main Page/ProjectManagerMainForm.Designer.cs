@@ -99,42 +99,6 @@
             this.panel3.Size = new System.Drawing.Size(1207, 779);
             this.panel3.TabIndex = 2;
             // 
-            // ucNotificationBase1
-            // 
-            this.ucNotificationBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotificationBase1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotificationBase1.Name = "ucNotificationBase1";
-            this.ucNotificationBase1.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase1.NotifyList")));
-            this.ucNotificationBase1.Size = new System.Drawing.Size(391, 272);
-            this.ucNotificationBase1.TabIndex = 0;
-            // 
-            // ucNotificationBase2
-            // 
-            this.ucNotificationBase2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotificationBase2.Location = new System.Drawing.Point(0, 0);
-            this.ucNotificationBase2.Name = "ucNotificationBase2";
-            this.ucNotificationBase2.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase2.NotifyList")));
-            this.ucNotificationBase2.Size = new System.Drawing.Size(391, 272);
-            this.ucNotificationBase2.TabIndex = 0;
-            // 
-            // ucNotificationBase3
-            // 
-            this.ucNotificationBase3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotificationBase3.Location = new System.Drawing.Point(0, 0);
-            this.ucNotificationBase3.Name = "ucNotificationBase3";
-            this.ucNotificationBase3.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase3.NotifyList")));
-            this.ucNotificationBase3.Size = new System.Drawing.Size(568, 386);
-            this.ucNotificationBase3.TabIndex = 0;
-            // 
-            // ucNotificationBase4
-            // 
-            this.ucNotificationBase4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotificationBase4.Location = new System.Drawing.Point(0, 0);
-            this.ucNotificationBase4.Name = "ucNotificationBase4";
-            this.ucNotificationBase4.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("ucNotificationBase4.NotifyList")));
-            this.ucNotificationBase4.Size = new System.Drawing.Size(568, 386);
-            this.ucNotificationBase4.TabIndex = 0;
-            // 
             // projectManagerHome1
             // 
             this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;

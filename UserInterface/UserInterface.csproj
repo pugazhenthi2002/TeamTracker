@@ -385,16 +385,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data Structure\Data Structure.csproj">
-      <Project>{015ae303-5687-43df-a04b-1096ff57f937}</Project>
-      <Name>Data Structure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Manager\Manager.csproj">
-      <Project>{852f176d-8e38-4852-b2f9-7bed686da285}</Project>
-      <Name>Manager</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Images\No Result.png" />
   </ItemGroup>
   <ItemGroup>
@@ -405,6 +395,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Zip Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data Structure\Data Structure.csproj">
+      <Project>{015ae303-5687-43df-a04b-1096ff57f937}</Project>
+      <Name>Data Structure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manager\Manager.csproj">
+      <Project>{852f176d-8e38-4852-b2f9-7bed686da285}</Project>
+      <Name>Manager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
