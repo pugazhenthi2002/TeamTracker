@@ -44,7 +44,7 @@
             // startPathAndDate5
             // 
             this.startPathAndDate5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate5.Location = new System.Drawing.Point(1192, 0);
+            this.startPathAndDate5.Location = new System.Drawing.Point(1200, 0);
             this.startPathAndDate5.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate5.MilestoneColor = System.Drawing.Color.Orange;
             this.startPathAndDate5.MilestoneDate = new System.DateTime(((long)(0)));
@@ -56,7 +56,7 @@
             // startPathAndDate4
             // 
             this.startPathAndDate4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate4.Location = new System.Drawing.Point(894, 0);
+            this.startPathAndDate4.Location = new System.Drawing.Point(900, 0);
             this.startPathAndDate4.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate4.MilestoneColor = System.Drawing.Color.Orange;
             this.startPathAndDate4.MilestoneDate = new System.DateTime(((long)(0)));
@@ -68,7 +68,7 @@
             // startPathAndDate3
             // 
             this.startPathAndDate3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate3.Location = new System.Drawing.Point(596, 0);
+            this.startPathAndDate3.Location = new System.Drawing.Point(600, 0);
             this.startPathAndDate3.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate3.MilestoneColor = System.Drawing.Color.Orange;
             this.startPathAndDate3.MilestoneDate = new System.DateTime(((long)(0)));
@@ -80,7 +80,7 @@
             // startPathAndDate2
             // 
             this.startPathAndDate2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate2.Location = new System.Drawing.Point(298, 0);
+            this.startPathAndDate2.Location = new System.Drawing.Point(300, 0);
             this.startPathAndDate2.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate2.MilestoneColor = System.Drawing.Color.Blue;
             this.startPathAndDate2.MilestoneDate = new System.DateTime(((long)(0)));
@@ -104,7 +104,7 @@
             // singleMilestone4
             // 
             this.singleMilestone4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone4.Location = new System.Drawing.Point(1043, 0);
+            this.singleMilestone4.Location = new System.Drawing.Point(1050, 0);
             this.singleMilestone4.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone4.MilestoneColor = System.Drawing.Color.Orange;
             this.singleMilestone4.MilestoneContent = "End";
@@ -115,7 +115,7 @@
             // singleMilestone3
             // 
             this.singleMilestone3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone3.Location = new System.Drawing.Point(745, 0);
+            this.singleMilestone3.Location = new System.Drawing.Point(750, 0);
             this.singleMilestone3.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone3.MilestoneColor = System.Drawing.Color.Orange;
             this.singleMilestone3.MilestoneContent = "UserInterface";
@@ -126,7 +126,7 @@
             // singleMilestone2
             // 
             this.singleMilestone2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone2.Location = new System.Drawing.Point(447, 0);
+            this.singleMilestone2.Location = new System.Drawing.Point(450, 0);
             this.singleMilestone2.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone2.MilestoneColor = System.Drawing.Color.Blue;
             this.singleMilestone2.MilestoneContent = "Backend";
@@ -137,7 +137,7 @@
             // singleMilestone1
             // 
             this.singleMilestone1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone1.Location = new System.Drawing.Point(149, 0);
+            this.singleMilestone1.Location = new System.Drawing.Point(150, 0);
             this.singleMilestone1.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone1.MilestoneColor = System.Drawing.Color.Green;
             this.singleMilestone1.MilestoneContent = "Start";
@@ -148,15 +148,15 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 9;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Controls.Add(this.singleMilestone1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.singleMilestone2, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.singleMilestone3, 5, 0);
@@ -171,7 +171,6 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1350, 150);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -182,6 +181,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "MilestoneView";
             this.Size = new System.Drawing.Size(1350, 150);
+            this.Resize += new System.EventHandler(this.OnMilestoneViewResize);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

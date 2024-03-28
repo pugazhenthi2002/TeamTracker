@@ -72,6 +72,11 @@ namespace TeamTracker
             }
         }
 
+        private void OnMilestoneViewResize(object sender, EventArgs e)
+        {
+
+        }
+
         private Color SetColor(MilestoneStatus status)
         {
             if (status == MilestoneStatus.Upcoming)
