@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UserInterface</RootNamespace>
     <AssemblyName>UserInterface</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -199,6 +199,12 @@
     <Compile Include="Home Page\Project Manager\Overview\OverviewContent.Designer.cs">
       <DependentUpon>OverviewContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\OverviewDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home Page\Project Manager\Overview\OverviewDropDownForm.Designer.cs">
+      <DependentUpon>OverviewDropDownForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\SingleMilestone.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -216,6 +222,12 @@
     </Compile>
     <Compile Include="LoginPage\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage\TextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginPage\TextBox.designer.cs">
+      <DependentUpon>TextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification Manager\CloseButton.cs">
       <SubType>UserControl</SubType>
@@ -321,11 +333,17 @@
     <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewContent.resx">
       <DependentUpon>OverviewContent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewDropDownForm.resx">
+      <DependentUpon>OverviewDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.resx">
       <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPage\TextBox.resx">
+      <DependentUpon>TextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notification Manager\CloseButton.resx">
       <DependentUpon>CloseButton.cs</DependentUpon>

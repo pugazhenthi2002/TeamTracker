@@ -87,7 +87,8 @@ namespace TeamTracker
 
         private bool flag = false;
         private int startX, startY, prevX, prevY, sX, sY;
-        private int notificationWidth, notificationHeight;
+        private int notificationWidth;
+        private readonly int notificationHeight;
         private int remainingHeight;
         private int screenWidth, screenHeight;
         private int notificationScreenTime = 5;

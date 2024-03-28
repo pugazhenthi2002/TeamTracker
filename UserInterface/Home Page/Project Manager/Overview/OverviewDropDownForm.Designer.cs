@@ -1,6 +1,6 @@
-﻿namespace UserInterface
+﻿namespace TeamTracker
 {
-    partial class Form1
+    partial class OverviewDropDownForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.overview1 = new UserInterface.Home_Page.Project_Manager.Overview.Overview();
             this.SuspendLayout();
             // 
-            // overview1
-            // 
-            this.overview1.BorderColor = System.Drawing.Color.DarkMagenta;
-            this.overview1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overview1.Location = new System.Drawing.Point(0, 0);
-            this.overview1.Name = "overview1";
-            this.overview1.Size = new System.Drawing.Size(1385, 514);
-            this.overview1.TabIndex = 0;
-            // 
-            // Form1
+            // OverviewDropDownForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.overview1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(200, 50);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "OverviewDropDownForm";
+            this.Text = "OverviewDropDownForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Home_Page.Project_Manager.Overview.Overview overview1;
     }
 }
-

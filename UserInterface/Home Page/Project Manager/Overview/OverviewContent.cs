@@ -9,14 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class OverviewContent : UserControl
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
+
         public OverviewContent()
         {
             InitializeComponent();
+            InitializeRoundedEdge();
         }
 
         public ProjectVersion Version
@@ -28,6 +41,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             set
             {
                 version = value;
+                if(value!=null)
                 InitializeOverview();
             }
         }
@@ -70,6 +84,22 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (flag > 0) frontEnable = false;
             else { frontEnable = backEnable = true; }
 
+        }
+        
+
+        private void InitializeRoundedEdge()
+        {
+            panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
+            panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
+            panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
+            panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
+            panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
     }
 }

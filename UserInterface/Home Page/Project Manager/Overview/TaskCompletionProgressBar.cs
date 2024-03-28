@@ -20,13 +20,14 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             {
                 if(TotalTask!=0)
                 {
-                    CompletedTask = value;
+                    completedTask = value;
                     percentage = value * 100 / TotalTask;
                     angle = percentage * 360 / 100;
                     panel2.Invalidate();
                 }
                 else
                 {
+                    completedTask = 0;
                     percentage = 0;
                     angle = 0;
                     panel2.Invalidate();
@@ -38,13 +39,14 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         public TaskCompletionProgressBar()
         {
+            DoubleBuffered = true;
             InitializeComponent();
         }
 
         private void OnProgressBarPaint(object sender, PaintEventArgs e)
         {
             int width = panel2.Width, height = panel2.Height;
-
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Rectangle outer = new Rectangle(0, 0, width, height);
             Rectangle inner = new Rectangle(width/5, height/5, width * 3 / 5, height * 3 / 5);
             Brush valueBrush = new SolidBrush(Color.Green);
@@ -59,8 +61,10 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             Font headerFont = new Font(new FontFamily("Ebrima"), 12, FontStyle.Bold);
 
             e.Graphics.FillEllipse(outerBrush, outer);
-            e.Graphics.FillPie(innerBrush, outer, 270, angle);
-            e.Graphics.FillEllipse(valueBrush, inner);
+            e.Graphics.FillPie(valueBrush, outer, 270, angle);
+            e.Graphics.FillEllipse(innerBrush, inner);
+
+
             e.Graphics.DrawString(percentage.ToString(), headerFont, textBrush, inner, SFormat);
 
             valueBrush.Dispose();   outerBrush.Dispose(); innerBrush.Dispose();

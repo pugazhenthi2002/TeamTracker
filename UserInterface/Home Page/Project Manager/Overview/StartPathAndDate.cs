@@ -52,11 +52,6 @@ namespace TeamTracker
             }
         }
 
-        public StartPathAndDate()
-        {
-            Width = Height;
-        }
-
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -93,12 +88,6 @@ namespace TeamTracker
 
             e.Graphics.FillPath(brush, path);
             e.Graphics.DrawString(milestoneDate.ToShortDateString(), headerFont, textBrush, rec, SFormat);
-        }
-
-        protected override void OnResize(EventArgs eventargs)
-        {
-            base.OnResize(eventargs);
-            Width = Height;
         }
 
         private PathStyle style;
