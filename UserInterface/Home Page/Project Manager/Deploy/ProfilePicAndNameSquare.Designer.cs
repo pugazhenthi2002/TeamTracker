@@ -1,4 +1,4 @@
-﻿namespace UserInterface.Home_Page.Project_Manager.Deploy
+﻿namespace TeamTracker
 {
     partial class ProfilePicAndNameSquare
     {

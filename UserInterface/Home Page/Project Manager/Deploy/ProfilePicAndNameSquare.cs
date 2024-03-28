@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserInterface.Home_Page.Project_Manager.Deploy
+namespace TeamTracker
 {
     public partial class ProfilePicAndNameSquare : UserControl
     {

@@ -25,5 +25,7 @@ namespace TeamTracker
             e.Graphics.DrawLine(border, new Point(0, headerPanel.Height - 2), new Point(headerPanel.Width, headerPanel.Height - 2));
             border.Dispose();
         }
+
+        
     }
 }

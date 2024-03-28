@@ -136,6 +136,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Project Manager\Deploy\DownloadBtn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -296,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Project Manager\Deploy\DownloadBtn.resx">
+      <DependentUpon>DownloadBtn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.resx">
       <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
