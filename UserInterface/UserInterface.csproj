@@ -148,12 +148,6 @@
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.Designer.cs">
       <DependentUpon>UcDeploy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\UcZipFileView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\UcZipFileView.Designer.cs">
-      <DependentUpon>UcZipFileView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -284,9 +278,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcDeploy.resx">
       <DependentUpon>UcDeploy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcZipFileView.resx">
-      <DependentUpon>UcZipFileView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
