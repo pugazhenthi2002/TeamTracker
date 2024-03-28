@@ -35,6 +35,7 @@
             this.labelProjectName = new System.Windows.Forms.Label();
             this.profilePicAndNameSquare1 = new UserInterface.Home_Page.Project_Manager.Deploy.ProfilePicAndNameSquare();
             this.BtnDeploy = new TeamTracker.RippleButton();
+            this.downloadBtn1 = new TeamTracker.DownloadBtn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -46,6 +47,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BtnDeploy, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.downloadBtn1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -137,6 +139,14 @@
             this.BtnDeploy.Text = "Deploy";
             this.BtnDeploy.UseVisualStyleBackColor = false;
             // 
+            // downloadBtn1
+            // 
+            this.downloadBtn1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.downloadBtn1.Location = new System.Drawing.Point(60, 86);
+            this.downloadBtn1.Name = "downloadBtn1";
+            this.downloadBtn1.Size = new System.Drawing.Size(259, 43);
+            this.downloadBtn1.TabIndex = 2;
+            // 
             // UcDeploy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,5 +171,6 @@
         private System.Windows.Forms.Label labelProjectName;
         private ProfilePicAndNameSquare profilePicAndNameSquare1;
         private TeamTracker.RippleButton BtnDeploy;
+        private TeamTracker.DownloadBtn downloadBtn1;
     }
 }
