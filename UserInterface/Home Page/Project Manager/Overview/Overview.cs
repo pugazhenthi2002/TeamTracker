@@ -14,6 +14,19 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class Overview : UserControl
     {
+        public Dictionary<string, ProjectVersion> OverviewCollection
+        {
+            set
+            {
+                if (value != null)
+                {
+                    collection = value;
+                    label1.Text = value.Last().Key;
+                    overviewContent1.Version = value.Last().Value;
+                }
+            }
+        }
+
         public Color BorderColor
         {
             get { return borderColor; }
@@ -24,6 +37,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
         }
 
+        private Dictionary<string, ProjectVersion> collection = new Dictionary<string, ProjectVersion>();
         private Color borderColor = Color.Blue;
 
         public Overview()
@@ -45,17 +59,19 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnOverviewClick(object sender, EventArgs e)
         {
-            Dictionary <string, ProjectVersion> collection = new Dictionary<string, ProjectVersion>();
-            collection.Add("Pedestrian Detection", new ProjectVersion() { VersionName = "v 1.0" });
-            collection.Add("Chat Application", new ProjectVersion() { VersionName = "v 2.0" });
-            collection.Add("Expense Tracker", new ProjectVersion() { VersionName = "v 1.3" });
             OverviewDropDownForm form = new OverviewDropDownForm();
             form.BackColor = Color.FromArgb(221, 230, 237);
             form.currentVersionCollection = collection;
             form.StartPosition = FormStartPosition.Manual;
             form.Location = Cursor.Position;
+            form.OverviewSelected += OnVersionSelected;
             form.Show();
+        }
 
+        private void OnVersionSelected(string name, ProjectVersion version)
+        {
+            overviewContent1.Version = version;
+            label1.Text = name;
         }
     }
 }

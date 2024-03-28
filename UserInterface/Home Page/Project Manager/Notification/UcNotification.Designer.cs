@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(347, 134);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(583, 134);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -74,7 +74,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 33);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(583, 33);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // labelDateTime
@@ -83,23 +83,23 @@
             this.labelDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelDateTime.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDateTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelDateTime.Location = new System.Drawing.Point(208, 0);
+            this.labelDateTime.Location = new System.Drawing.Point(349, 0);
             this.labelDateTime.Margin = new System.Windows.Forms.Padding(0);
             this.labelDateTime.Name = "labelDateTime";
-            this.labelDateTime.Size = new System.Drawing.Size(104, 33);
+            this.labelDateTime.Size = new System.Drawing.Size(174, 33);
             this.labelDateTime.TabIndex = 2;
             this.labelDateTime.Text = "hh:mm:ss";
-            this.labelDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBoxClose
             // 
             this.pictureBoxClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close_Black;
-            this.pictureBoxClose.Location = new System.Drawing.Point(317, 5);
+            this.pictureBoxClose.Location = new System.Drawing.Point(528, 5);
             this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBoxClose.Name = "pictureBoxClose";
-            this.pictureBoxClose.Size = new System.Drawing.Size(25, 23);
+            this.pictureBoxClose.Size = new System.Drawing.Size(50, 23);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxClose.TabIndex = 0;
             this.pictureBoxClose.TabStop = false;
@@ -116,7 +116,7 @@
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Margin = new System.Windows.Forms.Padding(0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(208, 33);
+            this.labelHeader.Size = new System.Drawing.Size(349, 33);
             this.labelHeader.TabIndex = 1;
             this.labelHeader.Text = "Header";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -131,7 +131,7 @@
             this.panelContent.Location = new System.Drawing.Point(0, 33);
             this.panelContent.Margin = new System.Windows.Forms.Padding(0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(347, 101);
+            this.panelContent.Size = new System.Drawing.Size(583, 101);
             this.panelContent.TabIndex = 1;
             // 
             // labelContent
@@ -154,7 +154,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "UcNotification";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Size = new System.Drawing.Size(357, 144);
+            this.Size = new System.Drawing.Size(593, 144);
             this.Resize += new System.EventHandler(this.OnResizeUserControl);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
