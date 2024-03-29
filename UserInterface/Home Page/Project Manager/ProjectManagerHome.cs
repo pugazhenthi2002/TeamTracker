@@ -17,7 +17,7 @@ namespace UserInterface.Home_Page.Project_Manager
         public ProjectManagerHome()
         {
             InitializeComponent();
-            InitializeOverview();
+            //InitializeOverview();
         }
         private void InitializeOverview()
         {
