@@ -21,14 +21,9 @@ namespace TeamTracker
 
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
         {
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            e.Graphics.DrawLine(border, new Point(0, headerPanel.Height - 2), new Point(headerPanel.Width, headerPanel.Height - 2));
-            border.Dispose();
-        }
-
-        private void OnMouseEnter(object sender, EventArgs e)
-        {
-            ;
+            //Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            //e.Graphics.DrawLine(border, new Point(0, headerPanel.Height - 2), new Point(headerPanel.Width, headerPanel.Height - 2));
+            //border.Dispose();
         }
     }
 }

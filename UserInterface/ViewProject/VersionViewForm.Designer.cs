@@ -1,6 +1,6 @@
-﻿namespace UserInterface
+﻿namespace UserInterface.ViewProject
 {
-    partial class Form1
+    partial class VersionViewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.timelineView1 = new UserInterface.ViewProject.TimelineView.TimelineView();
             this.SuspendLayout();
             // 
-            // timelineView1
-            // 
-            this.timelineView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timelineView1.Location = new System.Drawing.Point(0, 0);
-            this.timelineView1.Name = "timelineView1";
-            this.timelineView1.Size = new System.Drawing.Size(1385, 514);
-            this.timelineView1.TabIndex = 0;
-            // 
-            // Form1
+            // VersionViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.timelineView1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ClientSize = new System.Drawing.Size(137, 54);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "VersionViewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "VersionViewForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ViewProject.TimelineView.TimelineView timelineView1;
     }
 }
-

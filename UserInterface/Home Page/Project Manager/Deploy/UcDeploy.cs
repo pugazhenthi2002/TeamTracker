@@ -25,7 +25,7 @@ namespace TeamTracker
             collection.Add("Expense Tracker", new ProjectVersion() { VersionName = "v 1.3" });
             OverviewDropDownForm form = new OverviewDropDownForm();
             form.BackColor = Color.FromArgb(221, 230, 237);
-            form.currentVersionCollection = collection;
+            form.CurrentVersionCollection = collection;
             form.StartPosition = FormStartPosition.Manual;
             form.Location = Cursor.Position;
             form.Show();

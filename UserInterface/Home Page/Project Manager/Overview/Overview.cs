@@ -61,7 +61,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             OverviewDropDownForm form = new OverviewDropDownForm();
             form.BackColor = Color.FromArgb(221, 230, 237);
-            form.currentVersionCollection = collection;
+            form.CurrentVersionCollection = collection;
             form.StartPosition = FormStartPosition.Manual;
             form.Location = Cursor.Position;
             form.OverviewSelected += OnVersionSelected;

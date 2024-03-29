@@ -273,6 +273,30 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewProject\TimelineView\Controls\TimelinePaginate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\Controls\TimelinePaginate.Designer.cs">
+      <DependentUpon>TimelinePaginate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\Controls\VerticalLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\Controls\VerticalLabel.Designer.cs">
+      <DependentUpon>VerticalLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\TimelineView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\TimelineView.Designer.cs">
+      <DependentUpon>TimelineView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\VersionViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewProject\VersionViewForm.Designer.cs">
+      <DependentUpon>VersionViewForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +415,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewProject\TimelineView\Controls\TimelinePaginate.resx">
+      <DependentUpon>TimelinePaginate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\TimelineView\Controls\VerticalLabel.resx">
+      <DependentUpon>VerticalLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\TimelineView\TimelineView.resx">
+      <DependentUpon>TimelineView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\VersionViewForm.resx">
+      <DependentUpon>VersionViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -425,6 +461,18 @@
       <Project>{852f176d-8e38-4852-b2f9-7bed686da285}</Project>
       <Name>Manager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Back Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Next Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Next.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,135 +28,139 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectManagerMainForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.headerPanel = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pageButton1 = new UserInterface.Project_Manager_Main_Page.PageButton();
-            this.panel1.SuspendLayout();
-            this.headerPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 836);
+            this.panel1.Size = new System.Drawing.Size(250, 497);
             this.panel1.TabIndex = 0;
             // 
-            // headerPanel
+            // panel2
             // 
-            this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.headerPanel.Controls.Add(this.profilePicAndName1);
-            this.headerPanel.Controls.Add(this.pictureBox1);
-            this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerPanel.Location = new System.Drawing.Point(254, 0);
-            this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.headerPanel.Size = new System.Drawing.Size(1207, 75);
-            this.headerPanel.TabIndex = 1;
-            this.headerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnHeaderPanelPaint);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(254, 75);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1207, 761);
-            this.panel3.TabIndex = 2;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pageButton1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 836);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label1.Location = new System.Drawing.Point(42, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 43);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Team Tracker";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel2.Controls.Add(this.profilePicAndName1);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(250, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(763, 51);
+            this.panel2.TabIndex = 1;
             // 
             // profilePicAndName1
             // 
             this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
             this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Right;
             this.profilePicAndName1.EmployeeProfile = null;
-            this.profilePicAndName1.Location = new System.Drawing.Point(874, 0);
-            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.profilePicAndName1.Location = new System.Drawing.Point(489, 0);
+            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2);
             this.profilePicAndName1.Name = "profilePicAndName1";
-            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.profilePicAndName1.Size = new System.Drawing.Size(279, 72);
+            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3);
+            this.profilePicAndName1.Size = new System.Drawing.Size(218, 51);
             this.profilePicAndName1.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1153, 0);
+            this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close;
+            this.pictureBox1.Location = new System.Drawing.Point(707, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 72);
+            this.pictureBox1.Size = new System.Drawing.Size(56, 51);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pageButton1
+            // panel3
             // 
-            this.pageButton1.ButtonImage = null;
-            this.pageButton1.ButtonName = "label1";
-            this.pageButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pageButton1.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.pageButton1.IsClicked = false;
-            this.pageButton1.Location = new System.Drawing.Point(3, 78);
-            this.pageButton1.Name = "pageButton1";
-            this.pageButton1.Size = new System.Drawing.Size(248, 69);
-            this.pageButton1.TabIndex = 1;
-            this.pageButton1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.panel3.Controls.Add(this.tabControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(250, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(763, 446);
+            this.panel3.TabIndex = 2;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(763, 446);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.projectManagerHome1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(755, 420);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(755, 420);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(192, 74);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // projectManagerHome1
+            // 
+            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
+            this.projectManagerHome1.Name = "projectManagerHome1";
+            this.projectManagerHome1.Size = new System.Drawing.Size(749, 414);
+            this.projectManagerHome1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1461, 836);
+            this.ClientSize = new System.Drawing.Size(1013, 497);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.headerPanel);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProjectManagerMainForm";
-            this.Text = "ProjectManagerMainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
-            this.headerPanel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -164,12 +168,14 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel headerPanel;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private TeamTracker.ProfilePicAndName profilePicAndName1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private UserInterface.Project_Manager_Main_Page.PageButton pageButton1;
+        private System.Windows.Forms.Panel panel3;
+        private ProfilePicAndName profilePicAndName1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private UserInterface.Home_Page.Project_Manager.ProjectManagerHome projectManagerHome1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }

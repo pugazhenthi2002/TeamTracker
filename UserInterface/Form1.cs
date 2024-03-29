@@ -16,6 +16,10 @@ namespace UserInterface
         public Form1()
         {
             InitializeComponent();
+            DataHandler.ConnectDatabase();
+            DataHandler.StoreProjectDetails();
+            DataHandler.StoreProjectVersionDetails();
+            timelineView1.ProjectCollection = VersionManager.ProjectCollection;
         }
         
 

@@ -31,8 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.ucDeploy1 = new TeamTracker.UcDeploy();
             this.panel3.SuspendLayout();
@@ -69,6 +69,18 @@
             this.panel3.TabIndex = 2;
             this.panel3.Tag = "";
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Deploy";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
@@ -77,17 +89,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(20, 329);
             this.panel4.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Deploy";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
             // 
