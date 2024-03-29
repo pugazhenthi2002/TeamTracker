@@ -273,6 +273,30 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewPage\BoardView\ProjectBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\ProjectBoard.designer.cs">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcProjectBoardBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcProjectBoardBase.Designer.cs">
+      <DependentUpon>UcProjectBoardBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcProjectStatusHead.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcProjectStatusHead.Designer.cs">
+      <DependentUpon>UcProjectStatusHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcStatusBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcStatusBase.Designer.cs">
+      <DependentUpon>UcStatusBase.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +415,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcProjectBoardBase.resx">
+      <DependentUpon>UcProjectBoardBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcProjectStatusHead.resx">
+      <DependentUpon>UcProjectStatusHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcStatusBase.resx">
+      <DependentUpon>UcStatusBase.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

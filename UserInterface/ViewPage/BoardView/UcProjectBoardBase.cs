@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserInterface.ViewPage.BoardView
+namespace TeamTracker
 {
     public partial class UcProjectBoardBase : UserControl
     {
