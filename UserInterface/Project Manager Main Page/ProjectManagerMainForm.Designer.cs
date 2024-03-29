@@ -38,10 +38,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
+            this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -136,6 +138,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel3.Controls.Add(this.ucTaskBoardBase1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(254, 75);
             this.panel3.Name = "panel3";
@@ -149,6 +152,14 @@
             this.ucNotificationBase1.Name = "ucNotificationBase1";
             this.ucNotificationBase1.Size = new System.Drawing.Size(568, 386);
             this.ucNotificationBase1.TabIndex = 0;
+            // 
+            // ucTaskBoardBase1
+            // 
+            this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.ucTaskBoardBase1.Location = new System.Drawing.Point(6, 2);
+            this.ucTaskBoardBase1.Name = "ucTaskBoardBase1";
+            this.ucTaskBoardBase1.Size = new System.Drawing.Size(1046, 466);
+            this.ucTaskBoardBase1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 
@@ -166,6 +177,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.headerPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -181,5 +193,6 @@
         private System.Windows.Forms.Label label1;
         private UserInterface.Project_Manager_Main_Page.PageButton pageButton1;
         private UcNotificationBase ucNotificationBase1;
+        private UcTaskBoardBase ucTaskBoardBase1;
     }
 }

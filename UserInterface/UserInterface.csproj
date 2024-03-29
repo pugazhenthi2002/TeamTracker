@@ -273,29 +273,41 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewPage\BoardView\UcDueDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcDueDate.Designer.cs">
+      <DependentUpon>UcDueDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UCTaskBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UCTaskBoard.designer.cs">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPage\BoardView\ProjectBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ViewPage\BoardView\ProjectBoard.designer.cs">
       <DependentUpon>ProjectBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\BoardView\UcProjectBoardBase.cs">
+    <Compile Include="ViewPage\BoardView\UcTaskBoardBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewPage\BoardView\UcProjectBoardBase.Designer.cs">
-      <DependentUpon>UcProjectBoardBase.cs</DependentUpon>
+    <Compile Include="ViewPage\BoardView\UcTaskBoardBase.Designer.cs">
+      <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\BoardView\UcProjectStatusHead.cs">
+    <Compile Include="ViewPage\BoardView\UCTaskStatusBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewPage\BoardView\UcProjectStatusHead.Designer.cs">
-      <DependentUpon>UcProjectStatusHead.cs</DependentUpon>
+    <Compile Include="ViewPage\BoardView\UCTaskStatusBase.Designer.cs">
+      <DependentUpon>UCTaskStatusBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\BoardView\UcStatusBase.cs">
+    <Compile Include="ViewPage\BoardView\UcTaskStatusHead.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewPage\BoardView\UcStatusBase.Designer.cs">
-      <DependentUpon>UcStatusBase.cs</DependentUpon>
+    <Compile Include="ViewPage\BoardView\UcTaskStatusHead.Designer.cs">
+      <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
@@ -415,17 +427,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewPage\BoardView\UcDueDate.resx">
+      <DependentUpon>UcDueDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UCTaskBoard.resx">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
       <DependentUpon>ProjectBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\UcProjectBoardBase.resx">
-      <DependentUpon>UcProjectBoardBase.cs</DependentUpon>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskBoardBase.resx">
+      <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\UcProjectStatusHead.resx">
-      <DependentUpon>UcProjectStatusHead.cs</DependentUpon>
+    <EmbeddedResource Include="ViewPage\BoardView\UCTaskStatusBase.resx">
+      <DependentUpon>UCTaskStatusBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\UcStatusBase.resx">
-      <DependentUpon>UcStatusBase.cs</DependentUpon>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskStatusHead.resx">
+      <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -461,6 +479,27 @@
       <Project>{852f176d-8e38-4852-b2f9-7bed686da285}</Project>
       <Name>Manager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag-done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag-NotStarted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag-OnProcess.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag-stuck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag-UnderReview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info-black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info-hover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

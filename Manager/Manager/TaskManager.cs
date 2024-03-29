@@ -83,6 +83,24 @@ namespace TeamTracker
             return result;
         }
 
+        //fetches list of task by versionId and Status
+        public static List<Task> FetchTasks(int versionID,TaskStatus Tstatus)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.VersionID == versionID && Iter.StatusOfTask == Tstatus)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
+        }
+
+
         //Checks Whether Selected Date is Between Currently Working Version Project's Date Or Not || Is From Today
         public static bool CheckTaskDate(DateTime start, DateTime end)
         {
