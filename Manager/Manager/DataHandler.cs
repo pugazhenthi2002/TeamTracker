@@ -325,14 +325,14 @@ namespace TeamTracker
             return result;
         }
 
-        public static List<Notify> FetchNotification()
+        public static List<Notification> FetchNotification()
         {
-            List<Notify> result = new List<Notify>();
+            List<Notification> result = new List<Notification>();
             var notifyCollection = manager.FetchData("notification", $"AssignedTo={EmployeeManager.CurrentEmployee.EmployeeID}").Value;
 
             for (int ctr = 0; ctr < notifyCollection["NotifyID"].Count; ctr++)
             {
-                result.Add(new Notify()
+                result.Add(new Notification()
                 {
                     NotificationId = Convert.ToInt32(notifyCollection["NotifyID"][ctr]),
                     NotificationHeader = Convert.ToString(notifyCollection["Header"][ctr]),

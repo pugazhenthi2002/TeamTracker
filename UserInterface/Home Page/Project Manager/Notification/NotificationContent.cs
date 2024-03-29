@@ -17,12 +17,8 @@ namespace TeamTracker
             InitializeComponent();
         }
 
-        public List<Notify> NotifyList
+        public List<Notification> NotifyList
         {
-            get
-            {
-                return notifyList;
-            }
             set
             {
                 if (value != null)
@@ -38,7 +34,7 @@ namespace TeamTracker
         private int MaxUserControls = 4;//alter this value for required usercontrols
         private int flag = 0;
         private int ind = 0;
-        private List<Notify> notifyList = new List<Notify>();
+        private List<Notification> notifyList = new List<Notification>();
         private List<UcNotification> UcNotiList = new List<UcNotification>();
 
         public Color BorderColor
@@ -124,7 +120,7 @@ namespace TeamTracker
 
         }
 
-        private void OnClickCloseNotification(object sender, Notify e)
+        private void OnClickCloseNotification(object sender, Notification e)
         {
             //DataHandler.DeleteNotification(e.NotificationId);
             notifyList.Remove(e);
