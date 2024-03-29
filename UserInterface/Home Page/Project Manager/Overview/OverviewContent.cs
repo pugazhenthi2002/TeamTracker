@@ -43,6 +43,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 version = value;
                 if(value!=null)
                 InitializeOverview();
+                backEnable = false;
             }
         }
 
@@ -56,7 +57,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 flag = milestoneView1.ChangeMilestoneUI(false);
 
             if (flag < 0) backEnable = false;
-            else { frontEnable = backEnable = true; }
+            else { backEnable = true; }
+            frontEnable = true;
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
@@ -65,7 +67,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 flag = milestoneView1.ChangeMilestoneUI(true);
 
             if (flag > 0) frontEnable = false;
-            else { frontEnable = backEnable = true; }
+            else { frontEnable = true; }
+            backEnable = true;
         }
 
         private void InitializeOverview()
@@ -84,6 +87,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (flag > 0) frontEnable = false;
             else { frontEnable = backEnable = true; }
 
+            taskCompletionProgressBar1.TotalTask = result[0];
+            taskCompletionProgressBar1.CompletedTask = result[1];
         }
         
 

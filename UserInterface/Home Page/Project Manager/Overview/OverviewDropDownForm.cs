@@ -34,7 +34,8 @@ namespace TeamTracker
             }
         }
 
-        public event EventHandler<ProjectVersion> OverviewSelected;
+        public delegate void OverviewHandler(string name, ProjectVersion version);
+        public event OverviewHandler OverviewSelected;
 
         private const int CSDropShadow = 0x00020000;
         public Dictionary<string, ProjectVersion> currentVersionCollection;
@@ -97,7 +98,7 @@ namespace TeamTracker
             {
                 if(Iter.Key == name)
                 {
-                    OverviewSelected?.Invoke(this, Iter.Value);
+                    OverviewSelected?.Invoke(name, Iter.Value);
                     this.Close();
                 }
             }

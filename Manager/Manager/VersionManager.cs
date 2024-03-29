@@ -84,6 +84,23 @@ namespace TeamTracker
             version.StatusOfVersion = ProjectStatus.Completed;
         }
 
+        public static Dictionary<string, ProjectVersion> FetchOnProcessProjectVersion()
+        {
+            Dictionary<string, ProjectVersion> result = new Dictionary<string, ProjectVersion>();
+
+            string name = "";
+            foreach (var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.OnProcess && GetManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    if (!result.ContainsKey(name = GetProjectName(Iter.ProjectID)))
+                        result.Add(name, Iter);
+                }
+            }
+
+            return result;
+        }
+
         //Checks and Sets Project Version's Deadline on everyTick
         public static void CheckVersionDeadline()
         {

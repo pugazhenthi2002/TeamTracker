@@ -164,6 +164,17 @@ namespace TeamTracker
             });
         }
 
+        public static void AddNotification(string header, string content, DateTime date, int assignedTo)
+        {
+            var x = manager.InsertData("notification", new ParameterData[]
+            {
+                new ParameterData("Header", header),
+                new ParameterData("Content", content),
+                new ParameterData("AssignedTo", assignedTo),
+                new ParameterData("NotifyDate", date),
+            });
+        }
+
         public static void UpdateVersionAttachments(int versionID, List<VersionAttachment> versionAttachments)
         {
             var x = manager.DeleteData("versionattachment", $"VersionID='{versionID}'");
@@ -193,6 +204,11 @@ namespace TeamTracker
                     new ParameterData("TaskAttachmentLocation", Iter.TaskAttachmentLocation)
                 });
             }
+        }
+
+        public static void DeleteNotification(int notifyID)
+        {
+            manager.DeleteData("notification", $"NotifyID={notifyID}");
         }
 
         public static List<SourceCode> FetchLastCommitedSourceCodeByTaskID(int taskID)
@@ -303,6 +319,26 @@ namespace TeamTracker
                     TaskID = Convert.ToInt32(attachments["TaskID"][ctr]),
                     CommitName = Convert.ToString(attachments["CommitName"][ctr]),
                     SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][ctr])
+                });
+            }
+
+            return result;
+        }
+
+        public static List<Notify> FetchNotification()
+        {
+            List<Notify> result = new List<Notify>();
+            var notifyCollection = manager.FetchData("notification", $"AssignedTo={EmployeeManager.CurrentEmployee.EmployeeID}").Value;
+
+            for (int ctr = 0; ctr < notifyCollection["NotifyID"].Count; ctr++)
+            {
+                result.Add(new Notify()
+                {
+                    NotificationId = Convert.ToInt32(notifyCollection["NotifyID"][ctr]),
+                    NotificationHeader = Convert.ToString(notifyCollection["Header"][ctr]),
+                    NotificationContent = Convert.ToString(notifyCollection["Content"][ctr]),
+                    AssignedTo = Convert.ToInt32(notifyCollection["AssignedTo"][ctr]),
+                    NotificationDateTime = Convert.ToDateTime(notifyCollection["NotifyDate"][ctr])
                 });
             }
 
@@ -424,11 +460,33 @@ namespace TeamTracker
                     AssignedTo = Convert.ToInt32(result["AssignedTo"][ctr]),
                     StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : TaskStatus.Done)),
                     TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
-                    VersionID = Convert.ToInt32(result["VersionID"])
+                    VersionID = Convert.ToInt32(result["VersionID"][ctr])
                 });
             }
 
             TaskManager.TaskCollection = TaskCollection;
+        }
+
+        public static void StoreMilestones()
+        {
+            var result = manager.FetchData("milestone", "").Value;
+            List<Milestone> MilestoneCollection = new List<Milestone>();
+            string status;
+            for (int ctr = 0; ctr < result["MilestoneID"].Count; ctr++)
+            {
+                status = result["Status"][ctr].ToString();
+                MilestoneCollection.Add(new Milestone()
+                {
+                    MileStoneID = Convert.ToInt32(result["MilestoneID"][ctr]),
+                    MileStoneName = Convert.ToString(result["MilestoneName"][ctr]),
+                    StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
+                    EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
+                    VersionID = Convert.ToInt32(result["VersionID"][ctr]),
+                    Status = (status == "Completed") ? MilestoneStatus.Completed : ((status == "OnProcess") ? MilestoneStatus.OnProcess : ((status == "Upcoming") ? MilestoneStatus.Upcoming : MilestoneStatus.Delay))
+                });
+            }
+
+            MilestoneManager.MilestoneCollection = MilestoneCollection;
         }
 
         private static DatabaseManager manager;

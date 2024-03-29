@@ -12,6 +12,7 @@ namespace TeamTracker
         public int NotificationId { get; set; }
         public string NotificationHeader { get; set; }
         public string NotificationContent { get; set; }
+        public int AssignedTo { get; set; }
         public DateTime NotificationDateTime { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace TeamTracker
         public MilestoneView()
         {
             InitializeComponent();
+            pathAndDateCollection = new List<StartPathAndDate>() { startPathAndDate1, startPathAndDate2, startPathAndDate3, startPathAndDate4, startPathAndDate5 };
+            singleMilestoneCollection = new List<SingleMilestone>() { singleMilestone1, singleMilestone2, singleMilestone3, singleMilestone4 };
         }
 
         public List<Milestone> MilestoneCollection
