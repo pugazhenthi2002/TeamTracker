@@ -16,5 +16,18 @@ namespace TeamTracker
         {
             InitializeComponent();
         }
+
+        public ProjectStatus Status
+        {
+            get { return status; }
+            set
+            {
+                status = value;
+                
+            }
+        }
+
+        private ProjectStatus status;
+
     }
 }
