@@ -26,6 +26,9 @@ namespace TeamTracker
             border.Dispose();
         }
 
-        
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            ;
+        }
     }
 }

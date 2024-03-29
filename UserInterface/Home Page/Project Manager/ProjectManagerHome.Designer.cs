@@ -88,7 +88,7 @@
             this.notificationContent1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.notificationContent1.Location = new System.Drawing.Point(0, 0);
             this.notificationContent1.Name = "notificationContent1";
-            this.notificationContent1.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("notificationContent1.NotifyList")));
+            //this.notificationContent1.NotifyList = ((System.Collections.Generic.List<TeamTracker.Notify>)(resources.GetObject("notificationContent1.NotifyList")));
             this.notificationContent1.Size = new System.Drawing.Size(809, 422);
             this.notificationContent1.TabIndex = 0;
             // 
