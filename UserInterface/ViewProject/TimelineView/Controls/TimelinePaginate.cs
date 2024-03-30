@@ -53,7 +53,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
             while(x < width)
             {
-                e.Graphics.DrawLine(border, x, 0, x, y);
+                e.Graphics.DrawLine(border, x - 4, 0, x - 4, y);
                 x += stepWidth;
             }
             border.Dispose();
@@ -130,18 +130,22 @@ namespace UserInterface.ViewProject.TimelineView.Controls
                 controlWidth = GetTimelineWidth(Iter.StartDate, Iter.EndDate, width);
                 if (prevStartDate <= Iter.StartDate && Iter.StartDate <= prevEndDate)
                 {
+                    prevEndDate = prevEndDate < Iter.EndDate ? Iter.EndDate : prevEndDate;
                     y = y + height;
                 }
                 else if(prevStartDate <= Iter.EndDate && Iter.EndDate <= prevEndDate)
                 {
+                    prevStartDate = Iter.StartDate < prevStartDate ? Iter.EndDate : prevStartDate;
                     y = y + height;
                 }
                 else if(Iter.StartDate <= prevStartDate && prevEndDate <= Iter.EndDate)
                 {
+                    prevStartDate = Iter.StartDate; prevEndDate = Iter.EndDate;
                     y = y + height;
                 }
                 else
                 {
+                    prevStartDate = Iter.StartDate; prevEndDate = Iter.EndDate;
                     y = 0;
                 }
                 taskTimeline = new TaskTimelineTemplate()
