@@ -19,6 +19,7 @@ namespace UserInterface.ViewProject
         private const int CSDropShadow = 0x00020000;
 
         public List<ProjectVersion> VersionCollection;
+        public List<Label> labelControlCollection;
 
         public VersionViewForm()
         {
@@ -97,9 +98,15 @@ namespace UserInterface.ViewProject
             }
 
             Label label;
+            labelControlCollection = new List<Label>();
 
             foreach (var Iter in VersionCollection)
             {
+                foreach (var ctr in labelControlCollection)
+                {
+                    ctr.BringToFront();
+                }
+
                 label = new Label()
                 {
                     AutoSize = false,
@@ -115,7 +122,12 @@ namespace UserInterface.ViewProject
                 label.MouseEnter += OnLabelMouseEnter;
                 label.MouseLeave += OnLabelMouseLeave;
                 label.Click += OnVersionClick;
+                labelControlCollection.Add(label);
                 Controls.Add(label);
+            }
+            foreach (var ctr in labelControlCollection)
+            {
+                ctr.BringToFront();
             }
         }
 

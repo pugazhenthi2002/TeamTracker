@@ -35,6 +35,7 @@ namespace UserInterface.ViewProject.TimelineView
         private int startIdx, endIdx = 0, selectedIdx = 0;
         private VerticalLabel prevControl;
         private Projects currentProject;
+        private ProjectVersion currentVersion;
         private List<VerticalLabel> projectViewControlCollection;
         private List<Projects> projectCollection;
         private int projectViewCount = 0;
@@ -64,7 +65,9 @@ namespace UserInterface.ViewProject.TimelineView
                 if (ctr == 0)
                 {
                     currentProject = projectCollection[ctr];
-                    versionNames.Text = VersionManager.FetchProjectLatestVersion(projectCollection[ctr].ProjectID).VersionName;
+                    currentVersion = VersionManager.FetchProjectLatestVersion(projectCollection[ctr].ProjectID);
+                    timelinePaginate1.Version = currentVersion;
+                    versionNames.Text = currentVersion.VersionName;
                     prevControl = control;
                     control.TextColor = Color.Red;
                 }
@@ -100,7 +103,7 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnVersionSelected(object sender, ProjectVersion e)
         {
-            ;
+            timelinePaginate1.Version = currentVersion = e;
         }
 
         private void projectUpClick(object sender, EventArgs e)
@@ -116,7 +119,9 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnProjectSelected(object sender, Projects e)
         {
-            versionNames.Text = VersionManager.FetchProjectLatestVersion((sender as VerticalLabel).Project.ProjectID).VersionName;
+            currentVersion = VersionManager.FetchProjectLatestVersion(e.ProjectID);
+            timelinePaginate1.Version = currentVersion;
+            versionNames.Text = currentVersion.VersionName;
             currentProject = (sender as VerticalLabel).Project;
             selectedIdx = projectViewControlCollection.IndexOf((sender as VerticalLabel));
             ProjectPaginate();

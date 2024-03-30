@@ -57,19 +57,21 @@ namespace TeamTracker
 
         private void OnTeamUpClick(object sender, EventArgs e)
         {
-            message = message.Result && EmployeeManager.LogInEmployee(username.Text, password.Text);
+            message = message.Result && EmployeeManager.LogInEmployee(username.TextBoxtext, password.TextBoxtext);
             if(message.Message!="" && message!=true) { errorMessageLabel.Text = message; }
 
             if (message == true)
             {
                 EmployeeManager.StoreEmployeeManagingCollection();
+                VersionManager.StoreProjectCollection();
+                VersionManager.StoreVersionCollection();
                 SelectPageBasedOnRole();
             }
         }
 
         private void SelectPageBasedOnRole()
         {
-
+            
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using DatabaseLibrary;
 using GoLibrary;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,12 +12,16 @@ namespace TeamTracker
 {
     public static class DataHandler
     {
+        static MySqlConnection mysqlConn;
         public static BooleanMsg ConnectDatabase()
         {
-            manager = new MySqlHandler("localhost", "pugazh", "", "projectmanagement");
-            BooleanMsg result = manager.Connect();
+            //manager = new MySqlHandler("localhost", "pugazh", "", "projectmanagement");
 
-            return result.Result;
+            mysqlConn = new MySqlConnection("server=localhost;uid=root;port=3308;pwd=Irpt@1110;database=projectmanagement;");
+            mysqlConn.Open();
+            //BooleanMsg result = manager.Connect();
+
+            return true;
         }
 
         public static Projects AddProject(Projects project)
@@ -350,24 +356,48 @@ namespace TeamTracker
 
         public static List<Employee> StoreEmployeeDetails()
         {
-            var result = manager.FetchData("employee", "").Value;
+            //var result = manager.FetchData("employee", "").Value;
+            //List<Employee> employeeResult = new List<Employee>();
+
+            //if (result == null) return null;
+
+            //for(int ctr=0; ctr < result["EmpID"].Count; ctr++)
+            //{
+            //    employeeResult.Add(new Employee()
+            //    {
+            //        EmployeeID = Convert.ToInt32(result["EmpID"][ctr]),
+            //        EmployeeFirstName = result["EmpFirstName"][ctr].ToString(),
+            //        EmployeeLastName = result["EmpLastName"][ctr].ToString(),
+            //        EmpRoleName = result["EmpDesignation"][ctr].ToString(),
+            //        EmpEmail = result["EmpEmail"][ctr].ToString(),
+            //        EmpDOB = Convert.ToDateTime(result["EmpDOB"][ctr]),
+            //        EmpProfileLocation = result["EmpProfileLocation"][ctr].ToString(),
+            //        EmpPassword = result["EmpPassword"][ctr].ToString()
+            //    });
+            //}
+
             List<Employee> employeeResult = new List<Employee>();
+            string queryString = "SELECT * FROM Employee";
 
-            if (result == null) return null;
-
-            for(int ctr=0; ctr < result["EmpID"].Count; ctr++)
+            using (MySqlCommand command = new MySqlCommand(queryString, mysqlConn))
             {
-                employeeResult.Add(new Employee()
+                using (MySqlDataReader result = command.ExecuteReader())
                 {
-                    EmployeeID = Convert.ToInt32(result["EmpID"][ctr]),
-                    EmployeeFirstName = result["EmpFirstName"][ctr].ToString(),
-                    EmployeeLastName = result["EmpLastName"][ctr].ToString(),
-                    EmpRoleName = result["EmpDesignation"][ctr].ToString(),
-                    EmpEmail = result["EmpEmail"][ctr].ToString(),
-                    EmpDOB = Convert.ToDateTime(result["EmpDOB"][ctr]),
-                    EmpProfileLocation = result["EmpProfileLocation"][ctr].ToString(),
-                    EmpPassword = result["EmpPassword"][ctr].ToString()
-                });
+                    while (result.Read())
+                    {
+                        employeeResult.Add(new Employee()
+                        {
+                            EmployeeID = Convert.ToInt32(result[0]),
+                            EmployeeFirstName = result[1].ToString(),
+                            EmployeeLastName = result[2].ToString(),
+                            EmpRoleName = result[3].ToString(),
+                            EmpEmail = result[4].ToString(),
+                            EmpDOB = Convert.ToDateTime(result[5]),
+                            EmpProfileLocation = result[6].ToString(),
+                            EmpPassword = result[7].ToString()
+                        });
+                    }
+                }
             }
 
             return employeeResult;
@@ -375,79 +405,154 @@ namespace TeamTracker
 
         public static List<ManagingEmployee> StoreEmployeeManagingDetails()
         {
-            var result = manager.FetchData("projectmanaging", "").Value;
-            List<ManagingEmployee> employeeResult = new List<ManagingEmployee>();
+            //var result = manager.FetchData("projectmanaging", "").Value;
+            List<ManagingEmployee> employeeManagingResult = new List<ManagingEmployee>();
 
-            if (result == null) return null;
+            //if (result == null) return null;
 
-            for (int ctr = 0; ctr < result["ProjectManagingID"].Count; ctr++)
+            //for (int ctr = 0; ctr < result["ProjectManagingID"].Count; ctr++)
+            //{
+            //    employeeManagingResult.Add(new ManagingEmployee()
+            //    {
+            //        ManagingEmployeeID = Convert.ToInt32(result["ProjectManagingID"][ctr]),
+            //        ManagerID = Convert.ToInt32(result["ManagerID"][ctr]),
+            //        TeamLeadID = Convert.ToInt32(result["TeamLeadID"][ctr]),
+            //        TeamMemberID = Convert.ToInt32(result["TeamMemberID"][ctr]),
+            //    });
+            //}
+
+            string queryString = "SELECT * FROM projectmanaging";
+
+            using (MySqlCommand command = new MySqlCommand(queryString, mysqlConn))
             {
-                employeeResult.Add(new ManagingEmployee()
+                using (MySqlDataReader result = command.ExecuteReader())
                 {
-                    ManagingEmployeeID = Convert.ToInt32(result["ProjectManagingID"][ctr]),
-                    ManagerID = Convert.ToInt32(result["ManagerID"][ctr]),
-                    TeamLeadID = Convert.ToInt32(result["TeamLeadID"][ctr]),
-                    TeamMemberID = Convert.ToInt32(result["TeamMemberID"][ctr]),
-                });
+                    while (result.Read())
+                    {
+                        employeeManagingResult.Add(new ManagingEmployee()
+                        {
+                            ManagingEmployeeID = Convert.ToInt32(result[0]),
+                            ManagerID = Convert.ToInt32(result[1]),
+                            TeamLeadID = Convert.ToInt32(result[2]),
+                            TeamMemberID = Convert.ToInt32(result[3]),
+                        });
+                    }
+                }
             }
 
-            return employeeResult;
+            return employeeManagingResult;
         }
 
-        public static void StoreProjectDetails()
+        public static List<Projects> StoreProjectDetails()
         {
-            var result = manager.FetchData("project", "").Value;
-            List<Projects> employeeResult = new List<Projects>();
-            for (int ctr = 0; ctr < result["ProjectID"].Count; ctr++)
+            //var result = manager.FetchData("project", "").Value;
+            List<Projects> projectResult = new List<Projects>();
+            //for (int ctr = 0; ctr < result["ProjectID"].Count; ctr++)
+            //{
+            //    projectResult.Add(new Projects()
+            //    {
+            //        ProjectID = Convert.ToInt32(result["ProjectID"][ctr]),
+            //        ProjectName = Convert.ToString(result["ProjectName"][ctr]),
+            //        ManagerID = Convert.ToInt32(result["ManagerID"][ctr]),
+            //        TeamLeadID = Convert.ToInt32(result["TeamLeadID"][ctr]),
+            //    });
+            //}
+
+            string queryString = "SELECT * FROM Project";
+
+            using (MySqlCommand command = new MySqlCommand(queryString, mysqlConn))
             {
-                employeeResult.Add(new Projects()
+                using (MySqlDataReader result = command.ExecuteReader())
                 {
-                    ProjectID = Convert.ToInt32(result["ProjectID"][ctr]),
-                    ProjectName = Convert.ToString(result["ProjectName"][ctr]),
-                    ManagerID = Convert.ToInt32(result["ManagerID"][ctr]),
-                    TeamLeadID = Convert.ToInt32(result["TeamLeadID"][ctr]),
-                });
+                    while (result.Read())
+                    {
+                        projectResult.Add(new Projects()
+                        {
+                            ProjectID = Convert.ToInt32(result[0]),
+                            ProjectName = Convert.ToString(result[1]),
+                            ManagerID = Convert.ToInt32(result[2]),
+                            TeamLeadID = Convert.ToInt32(result[3]),
+                        });
+                    }
+                }
             }
 
-            VersionManager.ProjectCollection = employeeResult;
+            return projectResult;
         }
 
-        public static void StoreProjectVersionDetails()
+        public static List<ProjectVersion> StoreProjectVersionDetails()
         {
             ProjectStatus status;
             string sts;
-            var result = manager.FetchData("ProjectVersion", "").Value;
-            List<ProjectVersion> employeeResult = new List<ProjectVersion>();
-            for (int ctr = 0; ctr < result["VersionID"].Count; ctr++)
-            {
-                sts = Convert.ToString(result["StatusOfProject"][ctr]);
-                if(sts == "OnProcess")
-                {
-                    status = ProjectStatus.OnProcess;
-                }
-                else if(sts == "Upcoming")
-                {
-                    status = ProjectStatus.UpComing;
-                }
-                else
-                {
-                    status = ProjectStatus.Completed;
-                }
+            //var result = manager.FetchData("ProjectVersion", "").Value;
+            List<ProjectVersion> versionResult = new List<ProjectVersion>();
+            //for (int ctr = 0; ctr < result["VersionID"].Count; ctr++)
+            //{
+            //    sts = Convert.ToString(result["StatusOfProject"][ctr]);
+            //    if(sts == "OnProcess")
+            //    {
+            //        status = ProjectStatus.OnProcess;
+            //    }
+            //    else if(sts == "Upcoming")
+            //    {
+            //        status = ProjectStatus.UpComing;
+            //    }
+            //    else
+            //    {
+            //        status = ProjectStatus.Completed;
+            //    }
 
-                employeeResult.Add(new ProjectVersion()
+            //    versionResult.Add(new ProjectVersion()
+            //    {
+            //        VersionID = Convert.ToInt32(result["VersionID"][ctr]),
+            //        VersionName = Convert.ToString(result["VersionName"][ctr]),
+            //        VersionDescription = Convert.ToString(result["VersionDesc"][ctr]),
+            //        ClientEmail = Convert.ToString(result["ClientEmail"][ctr]),
+            //        StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
+            //        EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
+            //        StatusOfVersion = status,
+            //        ProjectID = Convert.ToInt32(result["ProjectID"][ctr])
+            //    });
+            //}
+
+            string queryString = "SELECT * FROM projectversion";
+
+            using (MySqlCommand command = new MySqlCommand(queryString, mysqlConn))
+            {
+                using (MySqlDataReader result = command.ExecuteReader())
                 {
-                    VersionID = Convert.ToInt32(result["VersionID"][ctr]),
-                    VersionName = Convert.ToString(result["VersionName"][ctr]),
-                    VersionDescription = Convert.ToString(result["VersionDesc"][ctr]),
-                    ClientEmail = Convert.ToString(result["ClientEmail"][ctr]),
-                    StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
-                    EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
-                    StatusOfVersion = status,
-                    ProjectID = Convert.ToInt32(result["ProjectID"][ctr])
-                });
+                    while (result.Read())
+                    {
+                        sts = Convert.ToString(result[6]);
+                        if (sts == "OnProcess")
+                        {
+                            status = ProjectStatus.OnProcess;
+                        }
+                        else if (sts == "Upcoming")
+                        {
+                            status = ProjectStatus.UpComing;
+                        }
+                        else
+                        {
+                            status = ProjectStatus.Completed;
+                        }
+
+                        versionResult.Add(new ProjectVersion()
+                        {
+                            VersionID = Convert.ToInt32(result[0]),
+                            VersionName = Convert.ToString(result[1]),
+                            VersionDescription = Convert.ToString(result[2]),
+                            ClientEmail = Convert.ToString(result[3]),
+                            StartDate = Convert.ToDateTime(result[4]),
+                            EndDate = Convert.ToDateTime(result[5]),
+                            StatusOfVersion = status,
+                            ProjectID = Convert.ToInt32(result[7])
+                        });
+                    }
+                }
             }
 
-            VersionManager.VersionCollection = employeeResult;
+            return versionResult;
         }
 
         public static void StoreTaskDetails()

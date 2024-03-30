@@ -38,15 +38,15 @@ namespace TeamTracker
                 if (Iter.EmpEmail == username && Iter.EmpPassword == password)
                 {
                     CurrentEmployee = Iter;
-                    StoreDatum();
-                    if(Iter.EmpRoleName == "Team Leader")
-                    {
-                        VersionManager.SetCurrentWorkingVersion(Iter.EmployeeID);
-                    }
-                    else
-                    {
-                        VersionManager.SetCurrentWorkingVersion(GetTeamLeadIDFromMemberID(Iter.EmployeeID));
-                    }
+                    ////StoreDatum();
+                    //if(Iter.EmpRoleName == "Team Leader")
+                    //{
+                    //    VersionManager.SetCurrentWorkingVersion(Iter.EmployeeID);
+                    //}
+                    //else
+                    //{
+                    //    VersionManager.SetCurrentWorkingVersion(GetTeamLeadIDFromMemberID(Iter.EmployeeID));
+                    //}
                     return true;
                 }
             }

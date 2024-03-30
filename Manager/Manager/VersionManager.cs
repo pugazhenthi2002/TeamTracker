@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,22 @@ namespace TeamTracker
     {
 
         public static ProjectVersion CurrentVersion { get; set; }
+
+        public static BooleanMsg StoreProjectCollection()
+        {
+            ProjectCollection = DataHandler.StoreProjectDetails();
+
+            if (ProjectCollection == null) return "Couldn't Able to connect Employee Table";
+            else return true;
+        }
+
+        public static BooleanMsg StoreVersionCollection()
+        {
+            VersionCollection = DataHandler.StoreProjectVersionDetails();
+
+            if (VersionCollection == null) return "Couldn't Able to connect Employee Table";
+            else return true;
+        }
 
         public static void AddProject(string projectName, string versionDesc, int teamLeadID, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {

@@ -17,8 +17,8 @@ namespace UserInterface
         {
             InitializeComponent();
             DataHandler.ConnectDatabase();
-            DataHandler.StoreProjectDetails();
-            DataHandler.StoreProjectVersionDetails();
+            VersionManager.StoreProjectCollection();
+            VersionManager.StoreVersionCollection();
             timelineView1.ProjectCollection = VersionManager.ProjectCollection;
         }
         

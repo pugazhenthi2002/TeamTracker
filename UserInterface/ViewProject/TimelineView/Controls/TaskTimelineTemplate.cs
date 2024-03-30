@@ -12,6 +12,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
 {
     public partial class TaskTimelineTemplate : UserControl
     {
+        public event EventHandler<Task> TaskSelect;
         public Task TimelineTask
         {
             get
@@ -39,6 +40,11 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(-1,-1,Width, Height));
             pen.Dispose();
+        }
+
+        private void OnClicked(object sender, EventArgs e)
+        {
+            TaskSelect?.Invoke(this, timelineTask);
         }
     }
 }
