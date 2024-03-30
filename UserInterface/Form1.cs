@@ -19,6 +19,7 @@ namespace UserInterface
             DataHandler.ConnectDatabase();
             VersionManager.StoreProjectCollection();
             VersionManager.StoreVersionCollection();
+            TaskManager.StoreTaskCollection();
             timelineView1.ProjectCollection = VersionManager.ProjectCollection;
         }
         

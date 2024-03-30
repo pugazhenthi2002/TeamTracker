@@ -452,6 +452,7 @@
             this.timelineControlPanel.BackColor = System.Drawing.Color.Transparent;
             this.timelineControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelineControlPanel.Location = new System.Drawing.Point(30, 46);
+            this.timelineControlPanel.Margin = new System.Windows.Forms.Padding(0);
             this.timelineControlPanel.Name = "timelineControlPanel";
             this.timelineControlPanel.Size = new System.Drawing.Size(885, 296);
             this.timelineControlPanel.TabIndex = 3;

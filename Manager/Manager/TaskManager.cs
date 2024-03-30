@@ -8,6 +8,10 @@ namespace TeamTracker
 {
     public static class TaskManager
     {
+        public static void StoreTaskCollection()
+        {
+            TaskCollection =  DataHandler.StoreTaskDetails();
+        }
         //Submit Task
         public static void SubmitTask(Task task, List<SourceCode> sourceCodeCollection)
         {

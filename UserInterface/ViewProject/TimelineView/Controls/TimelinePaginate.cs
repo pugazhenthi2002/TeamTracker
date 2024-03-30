@@ -33,8 +33,8 @@ namespace UserInterface.ViewProject.TimelineView.Controls
                 isNextEnable = true;
                 endViewDate = startViewDate.AddDays(20);
                 taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
-                viewTaskCollection = SetViewTaskCollection();
                 InitializeTimeline();
+                SetViewTaskCollection();
             }
         }
 
@@ -44,7 +44,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         private TimeSpan dateDifference;
         private DateTime startViewDate, endViewDate, iterDate;
         private ProjectVersion version;
-
+        private TaskTimelineTemplate taskTimeline;
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
             int width, x, y, stepWidth;
@@ -119,6 +119,71 @@ namespace UserInterface.ViewProject.TimelineView.Controls
                     viewTaskCollection.Add(Iter);
                 }
             }
+            viewTaskCollection.Sort((v1, v2)=>v1.StartDate.CompareTo(v2.StartDate));
+
+            DateTime prevStartDate = DateTime.MinValue, prevEndDate = DateTime.MinValue;
+            int height = 50, width = label1.Width, x = 0, y = 0, controlWidth = 0;
+
+            foreach(var Iter in viewTaskCollection)
+            {
+                x = GetTimelinePosition(Iter.StartDate, width);
+                controlWidth = GetTimelineWidth(Iter.StartDate, Iter.EndDate, width);
+                if (prevStartDate <= Iter.StartDate && Iter.StartDate <= prevEndDate)
+                {
+                    y = y + height;
+                }
+                else if(prevStartDate <= Iter.EndDate && Iter.EndDate <= prevEndDate)
+                {
+                    y = y + height;
+                }
+                else if(Iter.StartDate <= prevStartDate && prevEndDate <= Iter.EndDate)
+                {
+                    y = y + height;
+                }
+                else
+                {
+                    y = 0;
+                }
+                taskTimeline = new TaskTimelineTemplate()
+                {
+                    Location = new Point(x, y),
+                    Height = height,
+                    Width = controlWidth,
+                    TimelineTask = Iter
+                };
+                timelineControlPanel.Controls.Add(taskTimeline);
+            }
+        }
+
+        private int GetTimelinePosition(DateTime date, int width)
+        {
+            dateDifference = date - startViewDate;
+            if(dateDifference.Days <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return dateDifference.Days * width;
+            }
+
+        }
+
+        private int GetTimelineWidth(DateTime startdate, DateTime endDate, int width)
+        {
+            dateDifference = startdate - startViewDate;
+            if (dateDifference.Days <= 0)
+            {
+                startdate = startViewDate;
+            }
+
+            dateDifference = endViewDate - endDate;
+            if (dateDifference.Days <= 0)
+            {
+                endDate = endViewDate;
+            }
+
+            return (endDate - startdate).Days * width;
         }
     }
 }

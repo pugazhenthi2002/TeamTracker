@@ -555,31 +555,58 @@ namespace TeamTracker
             return versionResult;
         }
 
-        public static void StoreTaskDetails()
+        public static List<Task> StoreTaskDetails()
         {
-            var result = manager.FetchData("task", "").Value;
+            //var result = manager.FetchData("task", "").Value;
             List<Task> TaskCollection = new List<Task>();
             string status, priority;
-            for(int ctr=0; ctr < result["TaskID"].Count; ctr++)
+            //for(int ctr=0; ctr < result["TaskID"].Count; ctr++)
+            //{
+            //    status = result["StatusOfTask"][ctr].ToString();
+            //    priority = result["PriorityOfTask"][ctr].ToString();
+            //    TaskCollection.Add(new Task()
+            //    {
+            //        TaskID = Convert.ToInt32(result["TaskID"][ctr]),
+            //        TaskName = Convert.ToString(result["TaskName"][ctr]),
+            //        TaskDesc = Convert.ToString(result["TaskDesc"][ctr]),
+            //        StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
+            //        EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
+            //        AssignedBy = Convert.ToInt32(result["AssignedBy"][ctr]),
+            //        AssignedTo = Convert.ToInt32(result["AssignedTo"][ctr]),
+            //        StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : TaskStatus.Done)),
+            //        TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
+            //        VersionID = Convert.ToInt32(result["VersionID"][ctr])
+            //    });
+            //}
+
+            string queryString = "SELECT * FROM Task";
+
+            using (MySqlCommand command = new MySqlCommand(queryString, mysqlConn))
             {
-                status = result["StatusOfTask"][ctr].ToString();
-                priority = result["PriorityOfTask"][ctr].ToString();
-                TaskCollection.Add(new Task()
+                using (MySqlDataReader result = command.ExecuteReader())
                 {
-                    TaskID = Convert.ToInt32(result["TaskID"][ctr]),
-                    TaskName = Convert.ToString(result["TaskName"][ctr]),
-                    TaskDesc = Convert.ToString(result["TaskDesc"][ctr]),
-                    StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
-                    EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
-                    AssignedBy = Convert.ToInt32(result["AssignedBy"][ctr]),
-                    AssignedTo = Convert.ToInt32(result["AssignedTo"][ctr]),
-                    StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : TaskStatus.Done)),
-                    TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
-                    VersionID = Convert.ToInt32(result["VersionID"][ctr])
-                });
+                    while (result.Read())
+                    {
+                        status = result[6].ToString();
+                        priority = result[7].ToString();
+                        TaskCollection.Add(new Task()
+                        {
+                            TaskID = Convert.ToInt32(result[0]),
+                            TaskName = Convert.ToString(result[1]),
+                            TaskDesc = Convert.ToString(result[2]),
+                            StartDate = Convert.ToDateTime(result[3]),
+                            EndDate = Convert.ToDateTime(result[4]),
+                            VersionID = Convert.ToInt32(result[5]),
+                            StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : TaskStatus.Done)),
+                            TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
+                            AssignedBy = Convert.ToInt32(result[8]),
+                            AssignedTo = Convert.ToInt32(result[9]),
+                        });
+                    }
+                }
             }
 
-            TaskManager.TaskCollection = TaskCollection;
+            return TaskCollection;
         }
 
         public static void StoreMilestones()
