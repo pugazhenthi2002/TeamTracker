@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +9,33 @@ namespace TeamTracker
 {
     public static class EmployeeManager
     {
+        public static bool connectionFlag = false;
         public static Employee CurrentEmployee { get; private set; }
 
-        static EmployeeManager()
+        public static BooleanMsg StoreEmployeeToCollection()
         {
-            CurrentEmployee = new Employee()
-            {
-                EmpRoleName = "Team Leader",
-                EmployeeFirstName = "Pugazhenthi",
-                EmpProfileLocation = "\\\\SPARE-2709DFQ\\Project Management Tool\\Profiles\\pugazhenthiir2002.jpg"
-            };
+            EmployeeCollection = DataHandler.StoreEmployeeDetails();
+
+            if (EmployeeCollection == null) return "Couldn't Able to connect Employee Table";
+            else return connectionFlag = true;
         }
 
-        public static bool LogInEmployee(string username, string password)
+        public static BooleanMsg StoreEmployeeManagingCollection()
         {
+            ManagingEmployeeCollection = DataHandler.StoreEmployeeManagingDetails();
+
+            if (EmployeeCollection == null) return "Couldn't Able to connect Employee Table";
+            else return connectionFlag = true;
+        }
+
+        public static BooleanMsg LogInEmployee(string username, string password)
+        {
+            if (!connectionFlag) return false;
+            bool isUsernameAvailable = false;
             foreach(var Iter in EmployeeCollection)
             {
-                if(Iter.EmpEmail == username && Iter.EmpPassword == password)
+                if (Iter.EmpEmail == username) isUsernameAvailable = true;
+                if (Iter.EmpEmail == username && Iter.EmpPassword == password)
                 {
                     CurrentEmployee = Iter;
                     StoreDatum();
@@ -40,7 +51,8 @@ namespace TeamTracker
                 }
             }
 
-            return false;
+            if(isUsernameAvailable) { return "Unable to Find Username"; }
+            return "Username and Password Mismatch";
         }
 
         //Shows Team Members for Logged in TeamMembers

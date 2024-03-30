@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,16 @@ namespace TeamTracker
 {
     public partial class LoginForm : Form
     {
+        BooleanMsg message;
         public LoginForm()
         {
             InitializeComponent();
-            DataHandler.ConnectDatabase();
-            DataHandler.StoreEmployeeDetails();
+            message = DataHandler.ConnectDatabase();
+
+            if (!message.Result) { errorMessageLabel.Text = "* Unable to Connect Database"; }
+
+            message = message.Result && EmployeeManager.StoreEmployeeToCollection();
+            if (message.Message != "" && !message.Result) { errorMessageLabel.Text = message; }
         }
 
         private const int CSDropShadow = 0x00020000;
@@ -51,7 +57,19 @@ namespace TeamTracker
 
         private void OnTeamUpClick(object sender, EventArgs e)
         {
-            EmployeeManager.LogInEmployee(username.Text, password.Text);
+            message = message.Result && EmployeeManager.LogInEmployee(username.Text, password.Text);
+            if(message.Message!="" && message!=true) { errorMessageLabel.Text = message; }
+
+            if (message == true)
+            {
+                EmployeeManager.StoreEmployeeManagingCollection();
+                SelectPageBasedOnRole();
+            }
+        }
+
+        private void SelectPageBasedOnRole()
+        {
+
         }
     }
 }

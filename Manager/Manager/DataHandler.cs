@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using GoLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,12 @@ namespace TeamTracker
 {
     public static class DataHandler
     {
-        public static void ConnectDatabase()
+        public static BooleanMsg ConnectDatabase()
         {
-            manager = new MySqlHandler("localhost", "root", "Lucid123", "projectmanagement");
-            manager.Connect();
+            manager = new MySqlHandler("localhost", "pugazh", "", "projectmanagement");
+            BooleanMsg result = manager.Connect();
+
+            return result.Result;
         }
 
         public static Projects AddProject(Projects project)
@@ -345,10 +348,13 @@ namespace TeamTracker
             return result;
         }
 
-        public static void StoreEmployeeDetails()
+        public static List<Employee> StoreEmployeeDetails()
         {
             var result = manager.FetchData("employee", "").Value;
             List<Employee> employeeResult = new List<Employee>();
+
+            if (result == null) return null;
+
             for(int ctr=0; ctr < result["EmpID"].Count; ctr++)
             {
                 employeeResult.Add(new Employee()
@@ -363,13 +369,17 @@ namespace TeamTracker
                     EmpPassword = result["EmpPassword"][ctr].ToString()
                 });
             }
-            EmployeeManager.EmployeeCollection = employeeResult;
+
+            return employeeResult;
         }
 
-        public static void StoreEmployeeManagingDetails()
+        public static List<ManagingEmployee> StoreEmployeeManagingDetails()
         {
             var result = manager.FetchData("projectmanaging", "").Value;
             List<ManagingEmployee> employeeResult = new List<ManagingEmployee>();
+
+            if (result == null) return null;
+
             for (int ctr = 0; ctr < result["ProjectManagingID"].Count; ctr++)
             {
                 employeeResult.Add(new ManagingEmployee()
@@ -381,7 +391,7 @@ namespace TeamTracker
                 });
             }
 
-            EmployeeManager.ManagingEmployeeCollection = employeeResult;
+            return employeeResult;
         }
 
         public static void StoreProjectDetails()

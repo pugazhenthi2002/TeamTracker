@@ -38,6 +38,10 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoLibrary, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Data Structure\Database DLL\GoLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -273,6 +277,12 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.Designer.cs">
+      <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\TimelineView\Controls\TimelinePaginate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -415,6 +425,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.resx">
+      <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\TimelineView\Controls\TimelinePaginate.resx">
       <DependentUpon>TimelinePaginate.cs</DependentUpon>
     </EmbeddedResource>
