@@ -19,7 +19,10 @@ namespace TeamTracker
             InitializeRoundedEdge();
 
         }
-        
+
+        public EventHandler ClickBack;
+        public EventHandler ClickNext;
+
 
         public TaskStatus Status
         {
@@ -122,6 +125,14 @@ namespace TeamTracker
             labelStatus.Text = StatusLabelText;
         }
 
-        
+        private void OnClickBack(object sender, EventArgs e)
+        {
+            ClickBack?.Invoke(sender,e);
+        }
+
+        private void OnClickNext(object sender, EventArgs e)
+        {
+            ClickNext?.Invoke(sender, e);
+        }
     }
 }

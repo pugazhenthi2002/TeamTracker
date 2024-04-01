@@ -370,6 +370,20 @@ namespace TeamTracker
             return -1;
         }
 
+        //fetches project Name using versionId
+        public static string FetchProjectName(int versionId)
+        {
+            foreach (var Iter in VersionCollection)
+            {
+                if (Iter.VersionID == versionId)
+                {
+                    return GetProjectName(versionId);
+                }
+            }
+
+            return "";
+        }
+
         private static bool IsProjectAvailableForVersionUpgrade(int projectID)
         {
             foreach(var Iter in VersionCollection)

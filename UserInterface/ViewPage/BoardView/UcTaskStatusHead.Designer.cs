@@ -34,8 +34,8 @@
             this.tableLayoutPanelUpDown = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxUp = new System.Windows.Forms.PictureBox();
             this.pictureBoxDown = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.labelTaskCount = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanelUpDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUp)).BeginInit();
@@ -97,6 +97,7 @@
             this.pictureBoxUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxUp.TabIndex = 0;
             this.pictureBoxUp.TabStop = false;
+            this.pictureBoxUp.Click += new System.EventHandler(this.OnClickBack);
             this.pictureBoxUp.MouseEnter += new System.EventHandler(this.OnMouseEnterArrow);
             this.pictureBoxUp.MouseLeave += new System.EventHandler(this.OnMouseLeaveArrow);
             // 
@@ -111,16 +112,9 @@
             this.pictureBoxDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxDown.TabIndex = 0;
             this.pictureBoxDown.TabStop = false;
+            this.pictureBoxDown.Click += new System.EventHandler(this.OnClickNext);
             this.pictureBoxDown.MouseEnter += new System.EventHandler(this.OnMouseEnterArrow);
             this.pictureBoxDown.MouseLeave += new System.EventHandler(this.OnMouseLeaveArrow);
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 6);
-            this.panel1.TabIndex = 4;
             // 
             // labelTaskCount
             // 
@@ -136,13 +130,21 @@
             this.labelTaskCount.Text = "4";
             this.labelTaskCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // UcProjectStatusHead
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(405, 6);
+            this.panel1.TabIndex = 4;
+            // 
+            // UcTaskStatusHead
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Name = "UcProjectStatusHead";
+            this.Name = "UcTaskStatusHead";
             this.Size = new System.Drawing.Size(405, 55);
             this.Load += new System.EventHandler(this.OnLoad);
             this.tableLayoutPanel1.ResumeLayout(false);

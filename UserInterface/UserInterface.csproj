@@ -501,5 +501,8 @@
   <ItemGroup>
     <None Include="Resources\info-hover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Task\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

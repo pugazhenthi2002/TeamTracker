@@ -52,7 +52,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(672, 50);
+            this.panel1.Size = new System.Drawing.Size(874, 50);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(672, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 50);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // initializeButton
@@ -81,7 +81,7 @@
             this.initializeButton.Location = new System.Drawing.Point(0, 0);
             this.initializeButton.Margin = new System.Windows.Forms.Padding(0);
             this.initializeButton.Name = "initializeButton";
-            this.initializeButton.Size = new System.Drawing.Size(336, 50);
+            this.initializeButton.Size = new System.Drawing.Size(437, 50);
             this.initializeButton.TabIndex = 0;
             this.initializeButton.Text = "Initialize";
             this.initializeButton.UseVisualStyleBackColor = false;
@@ -95,10 +95,10 @@
             this.versionUpgradeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.versionUpgradeButton.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionUpgradeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.versionUpgradeButton.Location = new System.Drawing.Point(336, 0);
+            this.versionUpgradeButton.Location = new System.Drawing.Point(437, 0);
             this.versionUpgradeButton.Margin = new System.Windows.Forms.Padding(0);
             this.versionUpgradeButton.Name = "versionUpgradeButton";
-            this.versionUpgradeButton.Size = new System.Drawing.Size(336, 50);
+            this.versionUpgradeButton.Size = new System.Drawing.Size(437, 50);
             this.versionUpgradeButton.TabIndex = 1;
             this.versionUpgradeButton.Text = "Version Upgrade";
             this.versionUpgradeButton.UseVisualStyleBackColor = false;
@@ -110,7 +110,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(672, 432);
+            this.panel2.Size = new System.Drawing.Size(874, 610);
             this.panel2.TabIndex = 1;
             // 
             // tabControl1
@@ -121,7 +121,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(672, 432);
+            this.tabControl1.Size = new System.Drawing.Size(874, 610);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -130,7 +130,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(664, 406);
+            this.tabPage1.Size = new System.Drawing.Size(866, 584);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.projectInitializationPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectInitializationPage1.Location = new System.Drawing.Point(3, 3);
             this.projectInitializationPage1.Name = "projectInitializationPage1";
-            this.projectInitializationPage1.Size = new System.Drawing.Size(658, 400);
+            this.projectInitializationPage1.Size = new System.Drawing.Size(860, 578);
             this.projectInitializationPage1.TabIndex = 0;
             // 
             // tabPage2
@@ -170,7 +170,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "AddProject";
-            this.Size = new System.Drawing.Size(672, 482);
+            this.Size = new System.Drawing.Size(874, 660);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

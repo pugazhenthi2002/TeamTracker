@@ -17,24 +17,25 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
-            FlagChange();
             
-
         }
 
-
-        public Priority TaskPriority
+        public Task TaskData
         {
-            get { return Tpriority; }
+            get { return TaskBoardData; }
             set
             {
-                Tpriority = value;
-                FlagChange();
+                if (value != null)
+                {
+                    TaskBoardData = value;
+                    FlagChange();
+                    InitializeBoardData();
+                }
+
             }
         }
 
-        private Priority Tpriority;
-
+        private Task TaskBoardData;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -50,13 +51,15 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
 
         }
         private void OnLoad(object sender, EventArgs e)
         {
             InitializeRoundedEdge();
-            toolTip1.SetToolTip(pictureBoxFlag, Tpriority + "");
+            toolTip1.SetToolTip(pictureBoxFlag, TaskBoardData.TaskPriority + "");
             toolTip1.SetToolTip(pictureBoxInfo, "Info");
+            toolTip1.SetToolTip(profilePictureBoxAssignedBy, "Assigned By");
         }
 
         private void OnMouseEnterInfo(object sender, EventArgs e)
@@ -67,13 +70,12 @@ namespace TeamTracker
         private void OnMouseLeaveInfo(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
-
         }
 
         private void FlagChange()
         {
             Image fImage = UserInterface.Properties.Resources.flag_UnderReview;
-            switch (Tpriority)
+            switch (TaskBoardData.TaskPriority)
             {
                 case Priority.Easy:
                     fImage = UserInterface.Properties.Resources.flag_UnderReview;
@@ -87,12 +89,29 @@ namespace TeamTracker
                 case Priority.Critical:
                     fImage = UserInterface.Properties.Resources.flag_OnProcess;
                     break;
-
             }
-
             pictureBoxFlag.Image = fImage;
-
           
+        }
+
+        private void InitializeBoardData()
+        {
+            labelProjectName.Text = VersionManager.FetchProjectName(TaskData.VersionID);
+            labelVersion.Text = VersionManager.CurrentVersion.VersionName;
+            LabelTask.Text = TaskData.TaskName;
+            ucDueDate1.DueDate = TaskData.EndDate;
+            profilePictureBoxAssignedBy.ImageLocation = (EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy)).EmpProfileLocation;
+            
+        }
+
+        private void OnClickInfo(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnResize(object sender, EventArgs e)
+        {
+            InitializeRoundedEdge();
         }
     }
 }

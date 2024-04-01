@@ -37,8 +37,8 @@
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
+            this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -53,7 +53,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 836);
+            this.panel1.Size = new System.Drawing.Size(254, 892);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -71,7 +71,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 836);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 892);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -142,16 +142,8 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(254, 75);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1207, 761);
+            this.panel3.Size = new System.Drawing.Size(1207, 817);
             this.panel3.TabIndex = 2;
-            // 
-            // ucNotificationBase1
-            // 
-            this.ucNotificationBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotificationBase1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotificationBase1.Name = "ucNotificationBase1";
-            this.ucNotificationBase1.Size = new System.Drawing.Size(568, 386);
-            this.ucNotificationBase1.TabIndex = 0;
             // 
             // ucTaskBoardBase1
             // 
@@ -161,11 +153,19 @@
             this.ucTaskBoardBase1.Size = new System.Drawing.Size(1046, 466);
             this.ucTaskBoardBase1.TabIndex = 0;
             // 
+            // ucNotificationBase1
+            // 
+            this.ucNotificationBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotificationBase1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotificationBase1.Name = "ucNotificationBase1";
+            this.ucNotificationBase1.Size = new System.Drawing.Size(568, 386);
+            this.ucNotificationBase1.TabIndex = 0;
+            // 
             // ProjectManagerMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1461, 836);
+            this.ClientSize = new System.Drawing.Size(1461, 892);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.panel1);
