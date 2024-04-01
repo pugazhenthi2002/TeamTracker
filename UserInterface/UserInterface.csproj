@@ -273,6 +273,18 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\CreateTask\PriorityDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\PriorityDropDownForm.Designer.cs">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\CreateTask\UcCreateTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
+      <DependentUpon>UcCreateTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPage\BoardView\UcDueDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -427,6 +439,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
+      <DependentUpon>UcCreateTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcDueDate.resx">
       <DependentUpon>UcDueDate.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,7 +520,7 @@
     <None Include="Resources\info-hover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Task\" />
+    <None Include="Resources\flag-empty.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

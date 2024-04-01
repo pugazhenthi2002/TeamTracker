@@ -30,10 +30,10 @@
         {
             this.labelDate = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDue = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelDue = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(154, 10);
             this.panel1.TabIndex = 1;
+            // 
+            // labelDue
+            // 
+            this.labelDue.BackColor = System.Drawing.SystemColors.Control;
+            this.labelDue.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelDue.Font = new System.Drawing.Font("Ebrima", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.labelDue.Location = new System.Drawing.Point(0, 0);
+            this.labelDue.Margin = new System.Windows.Forms.Padding(0);
+            this.labelDue.Name = "labelDue";
+            this.labelDue.Size = new System.Drawing.Size(28, 10);
+            this.labelDue.TabIndex = 0;
+            this.labelDue.Text = "Due";
+            this.labelDue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -89,20 +103,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(10, 24);
             this.panel4.TabIndex = 4;
-            // 
-            // labelDue
-            // 
-            this.labelDue.BackColor = System.Drawing.SystemColors.Control;
-            this.labelDue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelDue.Font = new System.Drawing.Font("Ebrima", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelDue.Location = new System.Drawing.Point(0, 0);
-            this.labelDue.Margin = new System.Windows.Forms.Padding(0);
-            this.labelDue.Name = "labelDue";
-            this.labelDue.Size = new System.Drawing.Size(28, 10);
-            this.labelDue.TabIndex = 0;
-            this.labelDue.Text = "Due";
-            this.labelDue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UcDueDate
             // 

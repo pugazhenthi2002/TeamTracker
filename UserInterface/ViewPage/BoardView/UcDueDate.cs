@@ -49,10 +49,20 @@ namespace UserInterface.ViewPage.BoardView
                 SetDate();
             }
         }
+
+        public string LabelText
+        {
+            get { return labelText; }
+            set
+            {
+                labelText = value;
+                SetDueText();
+            }
+        }
         private Color borderColor = Color.Blue;
         private DateTime date;
         private Color DueColor = Color.Blue;
-
+        private string labelText = "Due";
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -72,6 +82,10 @@ namespace UserInterface.ViewPage.BoardView
         private void SetDueLabelColor()
         {
             labelDue.BackColor = DueColor;
+        }
+        private void SetDueText()
+        {
+            labelDue.Text = labelText;
         }
     }
 }
