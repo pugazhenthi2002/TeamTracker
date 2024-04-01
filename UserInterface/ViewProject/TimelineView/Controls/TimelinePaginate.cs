@@ -45,15 +45,16 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         private DateTime startViewDate, endViewDate, iterDate;
         private ProjectVersion version;
         private TaskTimelineTemplate taskTimeline;
+
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
             int width, x, y, stepWidth;
-            width = tableLayoutPanel1.Width; x = 0; stepWidth = label1.Width; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
+            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
             border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
             while(x < width)
             {
-                e.Graphics.DrawLine(border, x - 4, 0, x - 4, y);
+                e.Graphics.DrawLine(border, x - 1, 0, x - 1, y);
                 x += stepWidth;
             }
             border.Dispose();
@@ -66,6 +67,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
                 startViewDate = iterDate = startViewDate.AddDays(1);
                 endViewDate = endViewDate.AddDays(1);
                 InitializeTimeline();
+                SetViewTaskCollection();
             }
         }
 
@@ -76,6 +78,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
                 startViewDate = iterDate = startViewDate.AddDays(-1);
                 endViewDate = endViewDate.AddDays(-1);
                 InitializeTimeline();
+                SetViewTaskCollection();
             }
         }
 
@@ -109,8 +112,46 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             monthCollections = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void SetViewTaskCollection()
         {
+            if(timelineControlPanel.Controls != null)
+                timelineControlPanel.Controls.Clear();
+
             viewTaskCollection = new List<Task>();
             foreach(var Iter in taskCollection)
             {
@@ -122,7 +163,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             viewTaskCollection.Sort((v1, v2)=>v1.StartDate.CompareTo(v2.StartDate));
 
             DateTime prevStartDate = DateTime.MinValue, prevEndDate = DateTime.MinValue;
-            int height = 50, width = label1.Width, x = 0, y = 0, controlWidth = 0;
+            int height = 50, width = tableLayoutPanel1.Width / 20 , x = 0, y = 0, controlWidth = 0;
 
             foreach(var Iter in viewTaskCollection)
             {
@@ -168,7 +209,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             }
             else
             {
-                return dateDifference.Days * width;
+                return dateDifference.Days * width ;
             }
 
         }

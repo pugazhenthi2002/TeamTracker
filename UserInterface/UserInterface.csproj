@@ -277,6 +277,24 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewProject\BoardView\BoardViewContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\BoardView\BoardViewContent.Designer.cs">
+      <DependentUpon>BoardViewContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\BoardView\Custom Controls\BoardViewTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\BoardView\Custom Controls\BoardViewTemplate.Designer.cs">
+      <DependentUpon>BoardViewTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.Designer.cs">
+      <DependentUpon>StatusViewTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -425,6 +443,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewProject\BoardView\BoardViewContent.resx">
+      <DependentUpon>BoardViewContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\BoardView\Custom Controls\BoardViewTemplate.resx">
+      <DependentUpon>BoardViewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.resx">
+      <DependentUpon>StatusViewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.resx">
       <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -486,6 +513,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Paginate Down Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Paginate Up Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Home Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Home Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Add Project Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Add Project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\View Project Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\View Project.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

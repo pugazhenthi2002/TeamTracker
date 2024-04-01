@@ -52,7 +52,7 @@ namespace TeamTracker
         {
             base.OnResize(e);
             letsTeamUpButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, letsTeamUpButton.Width, letsTeamUpButton.Height, 10, 10));
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
         }
 
         private void OnTeamUpClick(object sender, EventArgs e)
@@ -72,6 +72,25 @@ namespace TeamTracker
         private void SelectPageBasedOnRole()
         {
             
+        }
+
+        private void OnCloseEnter(object sender, EventArgs e)
+        {
+            if(closePictureBox.Image!=null) closePictureBox.Image.Dispose();
+
+            closePictureBox.Image = UserInterface.Properties.Resources.Close_Red;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if (closePictureBox.Image != null) closePictureBox.Image.Dispose();
+
+            closePictureBox.Image = UserInterface.Properties.Resources.Close_Black;
+        }
+
+        private void OnCloseClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

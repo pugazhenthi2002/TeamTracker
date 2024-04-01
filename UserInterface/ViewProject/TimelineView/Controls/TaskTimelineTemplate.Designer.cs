@@ -37,9 +37,8 @@
             this.taskLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.taskLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.taskLabel.Location = new System.Drawing.Point(0, 0);
-            this.taskLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taskLabel.Name = "taskLabel";
-            this.taskLabel.Size = new System.Drawing.Size(203, 31);
+            this.taskLabel.Size = new System.Drawing.Size(304, 48);
             this.taskLabel.TabIndex = 0;
             this.taskLabel.Text = "Task Name";
             this.taskLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -47,13 +46,12 @@
             // 
             // TaskTimelineTemplate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.Yellow;
             this.Controls.Add(this.taskLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TaskTimelineTemplate";
-            this.Size = new System.Drawing.Size(203, 31);
+            this.Size = new System.Drawing.Size(304, 48);
             this.ResumeLayout(false);
 
         }

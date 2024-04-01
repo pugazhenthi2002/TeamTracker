@@ -59,7 +59,7 @@ namespace UserInterface.ViewProject.TimelineView
                 control = new VerticalLabel()
                 {
                     Dock = DockStyle.Top,
-                    Height = 150,
+                    Height = 115,
                     Project = projectCollection[ctr]
                 };
                 if (ctr == 0)
@@ -104,6 +104,7 @@ namespace UserInterface.ViewProject.TimelineView
         private void OnVersionSelected(object sender, ProjectVersion e)
         {
             timelinePaginate1.Version = currentVersion = e;
+            versionNames.Text = currentVersion.VersionName;
         }
 
         private void projectUpClick(object sender, EventArgs e)
