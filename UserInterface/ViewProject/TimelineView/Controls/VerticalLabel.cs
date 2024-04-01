@@ -66,7 +66,6 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         }
 
         private bool isClicked = true;
-        private int rotateAngle = 0;
         private string text;
         private Font textFont = new Font(new FontFamily("Ebrima"), 12);
         private Color textColor = Color.FromArgb(39, 55, 77);

@@ -16,7 +16,7 @@ namespace TeamTracker
         {
             EmployeeCollection = DataHandler.StoreEmployeeDetails();
 
-            if (EmployeeCollection == null) return "Couldn't Able to connect Employee Table";
+            if (EmployeeCollection == null) return "* Couldn't Able to connect Employee Table";
             else return connectionFlag = true;
         }
 
@@ -30,29 +30,45 @@ namespace TeamTracker
 
         public static BooleanMsg LogInEmployee(string username, string password)
         {
+            BooleanMsg message;
             if (!connectionFlag) return false;
+
             bool isUsernameAvailable = false;
             foreach(var Iter in EmployeeCollection)
             {
-                if (Iter.EmpEmail == username) isUsernameAvailable = true;
+                if (Iter.EmpEmail == username)
+                    isUsernameAvailable = true;
                 if (Iter.EmpEmail == username && Iter.EmpPassword == password)
                 {
                     CurrentEmployee = Iter;
-                    ////StoreDatum();
-                    //if(Iter.EmpRoleName == "Team Leader")
-                    //{
-                    //    VersionManager.SetCurrentWorkingVersion(Iter.EmployeeID);
-                    //}
-                    //else
-                    //{
-                    //    VersionManager.SetCurrentWorkingVersion(GetTeamLeadIDFromMemberID(Iter.EmployeeID));
-                    //}
+                    if (!(message = StoreDatum()).Result) { return message; }
+                    if (Iter.EmpRoleName == "Team Leader")
+                    {
+                        VersionManager.SetCurrentWorkingVersion(Iter.EmployeeID);
+                    }
+                    else if(Iter.EmpRoleName == "Team Member")
+                    {
+                        VersionManager.SetCurrentWorkingVersion(GetTeamLeadIDFromMemberID(Iter.EmployeeID));
+                    }
                     return true;
                 }
             }
 
-            if(isUsernameAvailable) { return "Unable to Find Username"; }
+            if(!isUsernameAvailable) { return "Unable to Find Username"; }
             return "Username and Password Mismatch";
+        }
+
+        public static Dictionary<string, int> FetchTaskCountByMilestoneForEmployee(int milestoneID)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            int teamLeadID = MilestoneManager.FetchTeamLeader(milestoneID);
+            List<Employee> teamMembers = FetchTeamMembersForTeamLeaders(teamLeadID);
+
+            foreach (var Iter in teamMembers)
+            {
+                result.Add(Iter.EmployeeFirstName, TaskManager.FetchTaskCount(Iter, milestoneID));
+            }
+            return result;
         }
 
         //Shows Team Members for Logged in TeamMembers
@@ -63,6 +79,22 @@ namespace TeamTracker
             foreach(var Iter in ManagingEmployeeCollection)
             {
                 if(Iter.TeamLeadID == CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchEmployeeFromID(Iter.TeamMemberID));
+                }
+            }
+
+            return result;
+        }
+
+        //Shows Team Members for Logged in TeamMembers
+        public static List<Employee> FetchTeamMembersForTeamLeaders(int id)
+        {
+            List<Employee> result = new List<Employee>();
+
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.TeamLeadID == id)
                 {
                     result.Add(FetchEmployeeFromID(Iter.TeamMemberID));
                 }
@@ -157,12 +189,16 @@ namespace TeamTracker
             return -1;
         }
 
-        private static void StoreDatum()
+        private static BooleanMsg StoreDatum()
         {
-            DataHandler.StoreEmployeeManagingDetails();
-            DataHandler.StoreProjectDetails();
-            DataHandler.StoreProjectVersionDetails();
-            //DataHandler.StoreTaskDetails();
+            BooleanMsg message;
+            if (!(message = StoreEmployeeManagingCollection()).Result) return message;
+            if (!(message = VersionManager.StoreProjectCollection()).Result) return message;
+            if (!(message = VersionManager.StoreVersionCollection()).Result) return message;
+            if (!(message = TaskManager.StoreTaskCollection()).Result) return message;
+            if (!(message = MilestoneManager.StoreMilestoneCollection()).Result) return message;
+
+            return true;
         }
 
         public static List<Employee> EmployeeCollection;

@@ -20,10 +20,10 @@ namespace TeamTracker
             InitializeComponent();
             message = DataHandler.ConnectDatabase();
 
-            if (!message.Result) { errorMessageLabel.Text = "* Unable to Connect Database"; }
+            if (!message.Result) { errorMessageLabel.Text = "* Unable to Connect Database"; return; }
 
-            message = message.Result && EmployeeManager.StoreEmployeeToCollection();
-            if (message.Message != "" && !message.Result) { errorMessageLabel.Text = message; }
+            message = EmployeeManager.StoreEmployeeToCollection();
+            if (!message.Result) { errorMessageLabel.Text = message; }
         }
 
         private const int CSDropShadow = 0x00020000;
@@ -57,21 +57,33 @@ namespace TeamTracker
 
         private void OnTeamUpClick(object sender, EventArgs e)
         {
-            message = message.Result && EmployeeManager.LogInEmployee(username.TextBoxtext, password.TextBoxtext);
-            if(message.Message!="" && message!=true) { errorMessageLabel.Text = message; }
+            errorMessageLabel.Text = "";
+            message = EmployeeManager.LogInEmployee(username.TextBoxtext, password.TextBoxtext);
+
+            if (!message.Result) { errorMessageLabel.Text = message; }
 
             if (message == true)
             {
-                EmployeeManager.StoreEmployeeManagingCollection();
-                VersionManager.StoreProjectCollection();
-                VersionManager.StoreVersionCollection();
                 SelectPageBasedOnRole();
             }
         }
 
         private void SelectPageBasedOnRole()
         {
-            
+            if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
+            {
+                ProjectManagerMainForm managerForm = new ProjectManagerMainForm();
+                managerForm.ManagerClose += OnManagerFormClosed;
+                managerForm.Show();
+            }
+            else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
+            {
+
+            }
+            else
+            {
+                
+            }
         }
 
         private void OnCloseEnter(object sender, EventArgs e)
@@ -90,6 +102,12 @@ namespace TeamTracker
 
         private void OnCloseClick(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void OnManagerFormClosed(object sender, EventArgs e)
+        {
+            (sender as ProjectManagerMainForm).Close();
             this.Close();
         }
     }

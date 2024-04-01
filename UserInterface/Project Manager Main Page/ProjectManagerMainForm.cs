@@ -13,25 +13,35 @@ namespace TeamTracker
     public partial class ProjectManagerMainForm : Form
     {
         static public NotificationManager notify;
+        public event EventHandler ManagerClose;
 
         public ProjectManagerMainForm()
         {
             InitializeComponent();
+            notify = new NotificationManager();
+            notify.BorderRadius = 20;
+            notify.NotificationScreenTime = 10;
+            notify.NotificationAlignment = FromNotificationAlignment.RightDown;
+            profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            projectManagerHome1.InitializeHome();
         }
 
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
         {
-            //Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            //e.Graphics.DrawLine(border, new Point(0, headerPanel.Height - 2), new Point(headerPanel.Width, headerPanel.Height - 2));
-            //border.Dispose();
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0, headerPanel.Height - 2), new Point(headerPanel.Width, headerPanel.Height - 2));
+            border.Dispose();
         }
 
         private void OnNavMouseEnter(object sender, EventArgs e)
         {
-            if (sender is PictureBox)
+            if (sender is PictureBox picBox)
             {
-                PictureBox picBox = (PictureBox)sender;
-
                 if (picBox.Image != null) { picBox.Image.Dispose(); }
 
                 if (picBox.Name == "homePictureBox")
@@ -57,7 +67,7 @@ namespace TeamTracker
 
                 if (label.Name == "homeLabel")
                 {
-                    if(homePictureBox.Image != null) { homePictureBox.Image.Dispose(); }
+                    if (homePictureBox.Image != null) { homePictureBox.Image.Dispose(); }
                     homePictureBox.Image = UserInterface.Properties.Resources.Home_Hover;
                 }
                 else if (label.Name == "addProjectLabel")
@@ -75,10 +85,8 @@ namespace TeamTracker
 
         private void OnNavMouseLeave(object sender, EventArgs e)
         {
-            if (sender is PictureBox)
+            if (sender is PictureBox picBox)
             {
-                PictureBox picBox = (PictureBox)sender;
-
                 if (picBox.Image != null) { picBox.Image.Dispose(); }
 
                 if (picBox.Name == "homePictureBox")
@@ -134,22 +142,23 @@ namespace TeamTracker
 
         private void OnCloseClick(object sender, EventArgs e)
         {
-            this.Close();
+            ManagerClose?.Invoke(this, e);
         }
 
         private void OnHomeClicked(object sender, EventArgs e)
         {
-
+            tabControl1.SelectedIndex = 0;
+            projectManagerHome1.InitializeHome();
         }
 
         private void OnAddProjectClicked(object sender, EventArgs e)
         {
-
+            tabControl1.SelectedIndex = 1;
         }
 
         private void OnViewProjectClicked(object sender, EventArgs e)
         {
-
+            tabControl1.SelectedIndex = 2;
         }
     }
 }

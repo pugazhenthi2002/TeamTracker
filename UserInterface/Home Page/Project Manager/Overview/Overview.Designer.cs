@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.overviewContent1 = new UserInterface.Home_Page.Project_Manager.Overview.OverviewContent();
+            this.overviewMilestoneContent1 = new UserInterface.Home_Page.Project_Manager.Overview.OverviewMilestoneContent();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -44,19 +44,17 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 401);
+            this.panel1.Size = new System.Drawing.Size(20, 488);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1640, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(1339, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(30, 401);
+            this.panel2.Size = new System.Drawing.Size(20, 488);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -64,10 +62,9 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(30, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(20, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1610, 31);
+            this.panel3.Size = new System.Drawing.Size(1319, 20);
             this.panel3.TabIndex = 2;
             // 
             // label1
@@ -76,9 +73,8 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 31);
+            this.label1.Size = new System.Drawing.Size(155, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Project";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,44 +84,43 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(30, 370);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(20, 468);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1610, 31);
+            this.panel4.Size = new System.Drawing.Size(1319, 20);
             this.panel4.TabIndex = 3;
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.overviewContent1);
+            this.panel5.BackgroundImage = global::UserInterface.Properties.Resources.No_Result;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel5.Controls.Add(this.overviewMilestoneContent1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(30, 31);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel5.Location = new System.Drawing.Point(20, 20);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1610, 339);
+            this.panel5.Size = new System.Drawing.Size(1319, 448);
             this.panel5.TabIndex = 4;
             // 
-            // overviewContent1
+            // overviewMilestoneContent1
             // 
-            this.overviewContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewContent1.Location = new System.Drawing.Point(0, 0);
-            this.overviewContent1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.overviewContent1.Name = "overviewContent1";
-            this.overviewContent1.Size = new System.Drawing.Size(1610, 339);
-            this.overviewContent1.TabIndex = 0;
-            this.overviewContent1.Version = null;
+            this.overviewMilestoneContent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewMilestoneContent1.Location = new System.Drawing.Point(0, 0);
+            this.overviewMilestoneContent1.Margin = new System.Windows.Forms.Padding(0);
+            this.overviewMilestoneContent1.Name = "overviewMilestoneContent1";
+            this.overviewMilestoneContent1.Size = new System.Drawing.Size(1319, 448);
+            this.overviewMilestoneContent1.TabIndex = 1;
+            this.overviewMilestoneContent1.Version = null;
             // 
             // Overview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Overview";
-            this.Size = new System.Drawing.Size(1670, 401);
+            this.Size = new System.Drawing.Size(1359, 488);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -140,6 +135,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private OverviewContent overviewContent1;
+        private OverviewMilestoneContent overviewMilestoneContent1;
     }
 }

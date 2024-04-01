@@ -37,8 +37,6 @@ namespace TeamTracker
         private bool backEnable = false, nextEnable = true;
         private int currentIndex = 0, endIndex, notifyCount;
         private int MaxUserControls = 4;//alter this value for required usercontrols
-        private int flag = 0;
-        private int ind = 0;
         private List<Notification> notifyList = new List<Notification>();
         private List<UcNotification> UcNotiList = new List<UcNotification>();
 
@@ -73,7 +71,6 @@ namespace TeamTracker
                 UcNotification tempNotification = new UcNotification();
                 tempNotification.NotficationData = notifyList[i];
                 tempNotification.Size = new Size(panelBase.Width, panelBase.Height / 4);
-
                 tempNotification.Dock = DockStyle.Top;
                 tempNotification.CloseClick += OnClickCloseNotification;
                 panelBase.Controls.Add(tempNotification);

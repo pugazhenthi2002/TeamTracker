@@ -80,6 +80,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Deploy";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.OnVersionLabelClicked);
             // 
             // panel4
             // 
@@ -92,6 +93,8 @@
             // 
             // panel5
             // 
+            this.panel5.BackgroundImage = global::UserInterface.Properties.Resources.No_Result;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel5.Controls.Add(this.ucDeploy1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(20, 20);
@@ -107,6 +110,7 @@
             this.ucDeploy1.Name = "ucDeploy1";
             this.ucDeploy1.Size = new System.Drawing.Size(485, 289);
             this.ucDeploy1.TabIndex = 0;
+            this.ucDeploy1.Deployment += new System.EventHandler<TeamTracker.ProjectVersion>(this.OnDeployment);
             // 
             // DeployContent
             // 

@@ -31,6 +31,7 @@ namespace TeamTracker
         public int AssignedBy { get; set; }
         public int AssignedTo { get; set; }
         public int VersionID { get; set; }
+        public int MilestoneID { get; set; }
         public TaskStatus StatusOfTask { get; set; }
         public Priority TaskPriority { get; set; }
         public DateTime StartDate { get; set; }

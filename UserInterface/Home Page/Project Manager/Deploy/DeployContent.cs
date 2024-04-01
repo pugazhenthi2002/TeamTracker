@@ -7,11 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.Home_Page.Project_Manager.Deploy
 {
     public partial class DeployContent : UserControl
     {
+        public Dictionary<string, ProjectVersion> DeployVersions
+        {
+            set
+            {
+                deployVersions = value;
+                if (value != null && value.Count>0)
+                {
+                    label1.Text = value.First().Key;
+                    ucDeploy1.Version = value.First().Value;
+                }
+                else
+                {
+                    label1.Text = "Deploy";
+                    ucDeploy1.Visible = false;
+                }
+            }
+        }
+
         public DeployContent()
         {
             InitializeComponent();
@@ -27,6 +46,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             }
         }
 
+        private Dictionary<string, ProjectVersion> deployVersions;
         private Color borderColor = Color.Blue;
 
         protected override void OnPaint(PaintEventArgs e)
@@ -39,6 +59,31 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             Point pt4 = new Point(9, Height - 11);
             Pen border = new Pen(borderColor, 3);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
+        }
+
+        private void OnVersionLabelClicked(object sender, EventArgs e)
+        {
+            if(deployVersions != null && deployVersions.Count > 1)
+            {
+                OverviewDropDownForm form = new OverviewDropDownForm()
+                {
+                    Location = Cursor.Position,
+                    CurrentVersionCollection = deployVersions
+                };
+                form.OverviewSelected += Form_OverviewSelected;
+                form.Show();
+            }
+        }
+
+        private void Form_OverviewSelected(string name, ProjectVersion version)
+        {
+            label1.Text = name;
+            ucDeploy1.Version = version;
+        }
+
+        private void OnDeployment(object sender, ProjectVersion e)
+        {
+            //deployVersions.Remove(e);
         }
     }
 }

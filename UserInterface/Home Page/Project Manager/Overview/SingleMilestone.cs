@@ -5,22 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.Home_Page.Project_Manager.Overview;
 
 namespace TeamTracker
 {
     public class SingleMilestone: Panel
     {
-        public string MilestoneContent
+        public Milestone MilestoneContent
         {
             get
             {
-                return content;
+                return milestone;
             }
 
             set
             {
-                content = value;
-                this.Invalidate();
+                if (value != null)
+                {
+                    milestone = value;
+                    name = value.MileStoneName;
+                    this.Invalidate();
+                }
             }
         }
 
@@ -57,7 +62,7 @@ namespace TeamTracker
 
             e.Graphics.DrawEllipse(border, new Rectangle(0, 0, Width - 1, Width - 1));
             e.Graphics.FillEllipse(brush, rec);
-            e.Graphics.DrawString(content, headerFont, textBrush, rec, SFormat);
+            e.Graphics.DrawString(name, headerFont, textBrush, rec, SFormat);
             border.Dispose();
         }
 
@@ -67,7 +72,24 @@ namespace TeamTracker
             Width = Height;
         }
 
-        private string content;
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            form = new MilestoneDetailsForm();
+            form.Location = this.PointToScreen(new Point((Width - form.Width) / 2, -form.Height));
+            form.TaskCounts = EmployeeManager.FetchTaskCountByMilestoneForEmployee(milestone.MileStoneID);
+            form.Show();
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            form.Close();
+        }
+
+        private string name;
+        private MilestoneDetailsForm form;
+        private Milestone milestone;
         private Color milestoneColor;
     }
 }

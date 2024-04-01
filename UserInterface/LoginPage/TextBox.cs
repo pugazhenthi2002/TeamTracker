@@ -154,14 +154,6 @@ namespace TeamTracker
             }
 
         }
-        public Font Font
-        {
-            get => textBox1.Font;
-            set
-            {
-                textBox1.Font = value;
-            }
-        }
 
 
         public TextBoxU()

@@ -21,7 +21,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
 
         private List<Task> taskCollection;
         private List<Task> viewTaskCollection;
-        private List<TaskTimelineTemplate> timeLineCollection;
+
         public ProjectVersion Version
         {
             set

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,13 @@ namespace TeamTracker
 {
     public static class TaskManager
     {
-        public static void StoreTaskCollection()
+        public static BooleanMsg StoreTaskCollection()
         {
             TaskCollection =  DataHandler.StoreTaskDetails();
+            if (TaskCollection == null) return "Couldn't able to Connect Task Collection";
+            else return true;
         }
+
         //Submit Task
         public static void SubmitTask(Task task, List<SourceCode> sourceCodeCollection)
         {
@@ -131,6 +135,20 @@ namespace TeamTracker
             {
                 total, completed, due, incomplete
             };
+
+            return result;
+        }
+
+        public static int FetchTaskCount(Employee emp, int milestoneID)
+        {
+            int result = 0;
+            foreach(var Iter in TaskCollection)
+            {
+                if(Iter.AssignedTo == emp.EmployeeID && Iter.MilestoneID == milestoneID)
+                {
+                    result++;
+                }
+            }
 
             return result;
         }

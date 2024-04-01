@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,10 @@ namespace UserInterface
             //TaskManager.StoreTaskCollection();
             //timelineView1.ProjectCollection = VersionManager.ProjectCollection;
         }
-        
 
+        private void rippleButton1_Click(object sender, EventArgs e)
+        {
+            ;
+        }
     }
 }
