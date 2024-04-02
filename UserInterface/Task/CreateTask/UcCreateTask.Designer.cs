@@ -40,13 +40,14 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSetPriority = new System.Windows.Forms.Label();
             this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBoxDesc = new TeamTracker.TextBoxU();
-            this.textBoxTaskName = new TeamTracker.TextBoxU();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonDiscard = new System.Windows.Forms.Button();
             this.pictureBoxAttachment = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.textBoxDesc = new TeamTracker.TextBoxU();
+            this.textBoxTaskName = new TeamTracker.TextBoxU();
+            this.buttonSetMilestone = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -84,6 +85,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.buttonSetMilestone, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 3, 0);
@@ -92,6 +94,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(545, 49);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
@@ -216,54 +219,6 @@
             this.pictureBoxFlag.MouseEnter += new System.EventHandler(this.OnMouseEnterSetPriority);
             this.pictureBoxFlag.MouseLeave += new System.EventHandler(this.OnMouseLeaveSetPriority);
             // 
-            // textBoxDesc
-            // 
-            this.textBoxDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.textBoxDesc.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxDesc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDesc.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBoxDesc.Location = new System.Drawing.Point(10, 102);
-            this.textBoxDesc.Margin = new System.Windows.Forms.Padding(10);
-            this.textBoxDesc.Multiline = true;
-            this.textBoxDesc.Name = "textBoxDesc";
-            this.textBoxDesc.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
-            this.textBoxDesc.PasswordChar = '\0';
-            this.textBoxDesc.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBoxDesc.PlaceholderLabelAtTopColor = System.Drawing.Color.Black;
-            this.textBoxDesc.PlaceholderText = "Description";
-            this.textBoxDesc.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxDesc.Size = new System.Drawing.Size(531, 164);
-            this.textBoxDesc.TabIndex = 1;
-            this.textBoxDesc.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.textBoxDesc.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDesc.TextBoxtext = "";
-            this.textBoxDesc.TextForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxDesc.UseSystemPasswordChar = false;
-            // 
-            // textBoxTaskName
-            // 
-            this.textBoxTaskName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.textBoxTaskName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxTaskName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxTaskName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBoxTaskName.Location = new System.Drawing.Point(10, 10);
-            this.textBoxTaskName.Margin = new System.Windows.Forms.Padding(10);
-            this.textBoxTaskName.Multiline = true;
-            this.textBoxTaskName.Name = "textBoxTaskName";
-            this.textBoxTaskName.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
-            this.textBoxTaskName.PasswordChar = '\0';
-            this.textBoxTaskName.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBoxTaskName.PlaceholderLabelAtTopColor = System.Drawing.Color.Black;
-            this.textBoxTaskName.PlaceholderText = "Task Name";
-            this.textBoxTaskName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxTaskName.Size = new System.Drawing.Size(531, 72);
-            this.textBoxTaskName.TabIndex = 0;
-            this.textBoxTaskName.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.textBoxTaskName.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxTaskName.TextBoxtext = "";
-            this.textBoxTaskName.TextForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxTaskName.UseSystemPasswordChar = false;
-            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 4;
@@ -327,6 +282,75 @@
             this.pictureBoxAttachment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxAttachment.TabIndex = 3;
             this.pictureBoxAttachment.TabStop = false;
+            this.pictureBoxAttachment.Click += new System.EventHandler(this.OnClickAddAttachment);
+            this.pictureBoxAttachment.MouseEnter += new System.EventHandler(this.OnMouseEnterAttachment);
+            this.pictureBoxAttachment.MouseLeave += new System.EventHandler(this.OnMouseLeaveAttachment);
+            // 
+            // textBoxDesc
+            // 
+            this.textBoxDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.textBoxDesc.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxDesc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDesc.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBoxDesc.Location = new System.Drawing.Point(10, 102);
+            this.textBoxDesc.Margin = new System.Windows.Forms.Padding(10);
+            this.textBoxDesc.Multiline = true;
+            this.textBoxDesc.Name = "textBoxDesc";
+            this.textBoxDesc.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
+            this.textBoxDesc.PasswordChar = '\0';
+            this.textBoxDesc.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBoxDesc.PlaceholderLabelAtTopColor = System.Drawing.Color.Black;
+            this.textBoxDesc.PlaceholderText = "Description";
+            this.textBoxDesc.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxDesc.Size = new System.Drawing.Size(531, 164);
+            this.textBoxDesc.TabIndex = 1;
+            this.textBoxDesc.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.textBoxDesc.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDesc.TextBoxtext = "";
+            this.textBoxDesc.TextForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxDesc.UseSystemPasswordChar = false;
+            // 
+            // textBoxTaskName
+            // 
+            this.textBoxTaskName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.textBoxTaskName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxTaskName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxTaskName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBoxTaskName.Location = new System.Drawing.Point(10, 10);
+            this.textBoxTaskName.Margin = new System.Windows.Forms.Padding(10);
+            this.textBoxTaskName.Multiline = true;
+            this.textBoxTaskName.Name = "textBoxTaskName";
+            this.textBoxTaskName.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
+            this.textBoxTaskName.PasswordChar = '\0';
+            this.textBoxTaskName.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBoxTaskName.PlaceholderLabelAtTopColor = System.Drawing.Color.Black;
+            this.textBoxTaskName.PlaceholderText = "Task Name";
+            this.textBoxTaskName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxTaskName.Size = new System.Drawing.Size(531, 72);
+            this.textBoxTaskName.TabIndex = 0;
+            this.textBoxTaskName.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.textBoxTaskName.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxTaskName.TextBoxtext = "";
+            this.textBoxTaskName.TextForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxTaskName.UseSystemPasswordChar = false;
+            // 
+            // buttonSetMilestone
+            // 
+            this.buttonSetMilestone.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSetMilestone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSetMilestone.FlatAppearance.BorderSize = 0;
+            this.buttonSetMilestone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.buttonSetMilestone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSetMilestone.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSetMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonSetMilestone.Location = new System.Drawing.Point(5, 5);
+            this.buttonSetMilestone.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonSetMilestone.Name = "buttonSetMilestone";
+            this.buttonSetMilestone.Size = new System.Drawing.Size(126, 39);
+            this.buttonSetMilestone.TabIndex = 6;
+            this.buttonSetMilestone.Text = "Set Milestone";
+            this.buttonSetMilestone.UseVisualStyleBackColor = false;
+            this.buttonSetMilestone.Click += new System.EventHandler(this.OnClickSetMilestone);
             // 
             // UcCreateTask
             // 
@@ -369,5 +393,6 @@
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonDiscard;
         private System.Windows.Forms.PictureBox pictureBoxAttachment;
+        private System.Windows.Forms.Button buttonSetMilestone;
     }
 }

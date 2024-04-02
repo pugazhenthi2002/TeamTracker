@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(172, 190);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(172, 184);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // BtnEasy
@@ -63,9 +63,9 @@
             this.BtnEasy.FlatAppearance.BorderSize = 0;
             this.BtnEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEasy.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEasy.Location = new System.Drawing.Point(3, 144);
+            this.BtnEasy.Location = new System.Drawing.Point(3, 141);
             this.BtnEasy.Name = "BtnEasy";
-            this.BtnEasy.Size = new System.Drawing.Size(166, 43);
+            this.BtnEasy.Size = new System.Drawing.Size(166, 40);
             this.BtnEasy.TabIndex = 6;
             this.BtnEasy.Text = "Easy";
             this.BtnEasy.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             this.BtnMedium.FlatAppearance.BorderSize = 0;
             this.BtnMedium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnMedium.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMedium.Location = new System.Drawing.Point(3, 97);
+            this.BtnMedium.Location = new System.Drawing.Point(3, 95);
             this.BtnMedium.Name = "BtnMedium";
-            this.BtnMedium.Size = new System.Drawing.Size(166, 41);
+            this.BtnMedium.Size = new System.Drawing.Size(166, 40);
             this.BtnMedium.TabIndex = 5;
             this.BtnMedium.Text = "Medium";
             this.BtnMedium.UseVisualStyleBackColor = true;
@@ -91,9 +91,9 @@
             this.BtnHard.FlatAppearance.BorderSize = 0;
             this.BtnHard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnHard.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHard.Location = new System.Drawing.Point(3, 50);
+            this.BtnHard.Location = new System.Drawing.Point(3, 49);
             this.BtnHard.Name = "BtnHard";
-            this.BtnHard.Size = new System.Drawing.Size(166, 41);
+            this.BtnHard.Size = new System.Drawing.Size(166, 40);
             this.BtnHard.TabIndex = 4;
             this.BtnHard.Text = "Hard";
             this.BtnHard.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             this.BtnCritical.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCritical.Location = new System.Drawing.Point(3, 3);
             this.BtnCritical.Name = "BtnCritical";
-            this.BtnCritical.Size = new System.Drawing.Size(166, 41);
+            this.BtnCritical.Size = new System.Drawing.Size(166, 40);
             this.BtnCritical.TabIndex = 3;
             this.BtnCritical.Text = "Critical";
             this.BtnCritical.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(172, 190);
+            this.ClientSize = new System.Drawing.Size(172, 184);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;

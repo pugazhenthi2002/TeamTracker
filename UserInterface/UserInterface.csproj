@@ -191,10 +191,6 @@
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.Designer.cs">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.cs" />
-    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.Designer.cs">
-      <DependentUpon>UcNotificationBase.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -316,6 +312,12 @@
     </Compile>
     <Compile Include="Task\CreateTask\CreateTaskForm.Designer.cs">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\CreateTask\MilestoneDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\MilestoneDropDownForm.Designer.cs">
+      <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Task\CreateTask\PriorityDropDownForm.cs">
       <SubType>Form</SubType>
@@ -480,9 +482,6 @@
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotificationBase.resx">
-      <DependentUpon>UcNotificationBase.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.resx">
       <DependentUpon>MilestoneAndDateTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -551,6 +550,9 @@
     </Compile>
     <EmbeddedResource Include="Task\CreateTask\CreateTaskForm.resx">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\MilestoneDropDownForm.resx">
+      <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
       <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
