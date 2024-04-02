@@ -37,9 +37,9 @@
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ucCreateTask1 = new UserInterface.Task.CreateTask.UcCreateTask();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
             this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
+            this.ucCreateTask1 = new TeamTracker.UcCreateTask();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -147,13 +147,6 @@
             this.panel3.Size = new System.Drawing.Size(1207, 817);
             this.panel3.TabIndex = 2;
             // 
-            // ucCreateTask1
-            // 
-            this.ucCreateTask1.Location = new System.Drawing.Point(21, 6);
-            this.ucCreateTask1.Name = "ucCreateTask1";
-            this.ucCreateTask1.Size = new System.Drawing.Size(553, 356);
-            this.ucCreateTask1.TabIndex = 1;
-            // 
             // ucTaskBoardBase1
             // 
             this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
@@ -169,6 +162,13 @@
             this.ucNotificationBase1.Name = "ucNotificationBase1";
             this.ucNotificationBase1.Size = new System.Drawing.Size(568, 386);
             this.ucNotificationBase1.TabIndex = 0;
+            // 
+            // ucCreateTask1
+            // 
+            this.ucCreateTask1.Location = new System.Drawing.Point(150, 48);
+            this.ucCreateTask1.Name = "ucCreateTask1";
+            this.ucCreateTask1.Size = new System.Drawing.Size(553, 356);
+            this.ucCreateTask1.TabIndex = 1;
             // 
             // ProjectManagerMainForm
             // 
@@ -203,6 +203,6 @@
         private UserInterface.Project_Manager_Main_Page.PageButton pageButton1;
         private UcNotificationBase ucNotificationBase1;
         private UcTaskBoardBase ucTaskBoardBase1;
-        private UserInterface.Task.CreateTask.UcCreateTask ucCreateTask1;
+        private UcCreateTask ucCreateTask1;
     }
 }

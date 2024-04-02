@@ -1,4 +1,4 @@
-﻿namespace UserInterface.Task.CreateTask
+﻿namespace TeamTracker
 {
     partial class PriorityDropDownForm
     {
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnEasy = new System.Windows.Forms.Button();
             this.BtnMedium = new System.Windows.Forms.Button();
             this.BtnHard = new System.Windows.Forms.Button();
             this.BtnCritical = new System.Windows.Forms.Button();
-            this.BtnEasy = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,8 +54,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(257, 202);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(172, 190);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // BtnEasy
+            // 
+            this.BtnEasy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnEasy.FlatAppearance.BorderSize = 0;
+            this.BtnEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEasy.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEasy.Location = new System.Drawing.Point(3, 144);
+            this.BtnEasy.Name = "BtnEasy";
+            this.BtnEasy.Size = new System.Drawing.Size(166, 43);
+            this.BtnEasy.TabIndex = 6;
+            this.BtnEasy.Text = "Easy";
+            this.BtnEasy.UseVisualStyleBackColor = true;
+            this.BtnEasy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
             // 
             // BtnMedium
             // 
@@ -63,12 +77,13 @@
             this.BtnMedium.FlatAppearance.BorderSize = 0;
             this.BtnMedium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnMedium.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMedium.Location = new System.Drawing.Point(3, 103);
+            this.BtnMedium.Location = new System.Drawing.Point(3, 97);
             this.BtnMedium.Name = "BtnMedium";
-            this.BtnMedium.Size = new System.Drawing.Size(251, 44);
+            this.BtnMedium.Size = new System.Drawing.Size(166, 41);
             this.BtnMedium.TabIndex = 5;
             this.BtnMedium.Text = "Medium";
             this.BtnMedium.UseVisualStyleBackColor = true;
+            this.BtnMedium.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
             // 
             // BtnHard
             // 
@@ -76,12 +91,13 @@
             this.BtnHard.FlatAppearance.BorderSize = 0;
             this.BtnHard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnHard.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHard.Location = new System.Drawing.Point(3, 53);
+            this.BtnHard.Location = new System.Drawing.Point(3, 50);
             this.BtnHard.Name = "BtnHard";
-            this.BtnHard.Size = new System.Drawing.Size(251, 44);
+            this.BtnHard.Size = new System.Drawing.Size(166, 41);
             this.BtnHard.TabIndex = 4;
             this.BtnHard.Text = "Hard";
             this.BtnHard.UseVisualStyleBackColor = true;
+            this.BtnHard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
             // 
             // BtnCritical
             // 
@@ -91,31 +107,20 @@
             this.BtnCritical.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCritical.Location = new System.Drawing.Point(3, 3);
             this.BtnCritical.Name = "BtnCritical";
-            this.BtnCritical.Size = new System.Drawing.Size(251, 44);
+            this.BtnCritical.Size = new System.Drawing.Size(166, 41);
             this.BtnCritical.TabIndex = 3;
             this.BtnCritical.Text = "Critical";
             this.BtnCritical.UseVisualStyleBackColor = true;
-            // 
-            // BtnEasy
-            // 
-            this.BtnEasy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnEasy.FlatAppearance.BorderSize = 0;
-            this.BtnEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEasy.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEasy.Location = new System.Drawing.Point(3, 153);
-            this.BtnEasy.Name = "BtnEasy";
-            this.BtnEasy.Size = new System.Drawing.Size(251, 46);
-            this.BtnEasy.TabIndex = 6;
-            this.BtnEasy.Text = "Easy";
-            this.BtnEasy.UseVisualStyleBackColor = true;
+            this.BtnCritical.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
             // 
             // PriorityDropDownForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 202);
+            this.ClientSize = new System.Drawing.Size(172, 190);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimizeBox = false;
             this.Name = "PriorityDropDownForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "PriorityDropDownForm";

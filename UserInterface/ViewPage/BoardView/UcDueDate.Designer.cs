@@ -40,7 +40,7 @@
             // labelDate
             // 
             this.labelDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDate.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDate.Location = new System.Drawing.Point(10, 10);
             this.labelDate.Margin = new System.Windows.Forms.Padding(0);
             this.labelDate.Name = "labelDate";
@@ -69,7 +69,7 @@
             this.labelDue.Location = new System.Drawing.Point(0, 0);
             this.labelDue.Margin = new System.Windows.Forms.Padding(0);
             this.labelDue.Name = "labelDue";
-            this.labelDue.Size = new System.Drawing.Size(28, 10);
+            this.labelDue.Size = new System.Drawing.Size(32, 10);
             this.labelDue.TabIndex = 0;
             this.labelDue.Text = "Due";
             this.labelDue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -59,10 +59,25 @@ namespace UserInterface.ViewPage.BoardView
                 SetDueText();
             }
         }
+
+        public string CenterLabelText
+        {
+            get { return centerLabelText; }
+            set
+            {
+                centerLabelText = value;
+                SetCenterText();
+            }
+        }
+
+        
+
+        private string centerLabelText;
         private Color borderColor = Color.Blue;
         private DateTime date;
         private Color DueColor = Color.Blue;
         private string labelText = "Due";
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -77,7 +92,10 @@ namespace UserInterface.ViewPage.BoardView
 
         private void SetDate()
         {
-            labelDate.Text = date.ToString("dd/MM/yyyy");
+            if (date != DateTime.MinValue)
+            {
+                labelDate.Text = date.ToString("dd/MM/yyyy");
+            }
         }
         private void SetDueLabelColor()
         {
@@ -86,6 +104,14 @@ namespace UserInterface.ViewPage.BoardView
         private void SetDueText()
         {
             labelDue.Text = labelText;
+        }
+        private void SetCenterText()
+        {
+            if (centerLabelText != "")
+            {
+                labelDate.Text = centerLabelText;
+            }
+
         }
     }
 }
