@@ -22,6 +22,7 @@ namespace TeamTracker
         }
 
         PriorityDropDownForm PriortyDropForm;
+        MilestoneDropDownForm MilestoneDropForm;
         string FilePath;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -69,20 +70,18 @@ namespace TeamTracker
         {
             if (Application.OpenForms.OfType<PriorityDropDownForm>().Any())
             {
-                CloseForm();
-                return;
+                //CloseForm();
+                //return;
             }
-            else if (Application.OpenForms.OfType<PriorityDropDownForm>().Any())
-            {
-                CloseForm();
-            }
+
+            CloseForm();
 
 
             Point formPoint = pictureBoxFlag.PointToScreen(new Point(pictureBoxFlag.Location.X, pictureBoxFlag.Location.Y));
 
             PriortyDropForm = new PriorityDropDownForm();
             PriortyDropForm.Show();
-            PriortyDropForm.Location = new Point(formPoint.X - pictureBoxFlag.Margin.Left, formPoint.Y + pictureBoxFlag.Height);
+            PriortyDropForm.Location = new Point(formPoint.X - pictureBoxFlag.Margin.Left, formPoint.Y + pictureBoxFlag.Height +5);
             PriortyDropForm.Size = new Size(labelSetPriority.Width +pictureBoxFlag.Width , PriortyDropForm.Height);
 
             PriortyDropForm.PriorityBtnClicked += OnClickPriorityBtn;
@@ -120,10 +119,15 @@ namespace TeamTracker
         private void CloseForm()
         {
             var f1 = (Application.OpenForms.OfType<PriorityDropDownForm>().FirstOrDefault());
+            var f2 = (Application.OpenForms.OfType<MilestoneDropDownForm>().FirstOrDefault());
 
             if (f1 != null)
             {
                 f1.Dispose();
+            }
+            if(f2!=null)
+            {
+                f2.Dispose();
             }
            
 
@@ -154,6 +158,36 @@ namespace TeamTracker
                 FilePath = openFileDialog.FileName;
 
             }
+        }
+
+        private void OnClickSetMilestone(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<MilestoneDropDownForm>().Any())
+            {
+                //CloseForm();
+               // return;
+            }
+
+            CloseForm();
+
+            Point formPoint = buttonSetMilestone.PointToScreen(new Point(buttonSetMilestone.Location.X, buttonSetMilestone.Location.Y));
+
+            MilestoneDropForm = new MilestoneDropDownForm();
+            MilestoneDropForm.Show();
+            MilestoneDropForm.Location = new Point(formPoint.X -3, formPoint.Y + buttonSetMilestone.Height);
+            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width , MilestoneDropForm.Height);
+
+            MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn ;
+        }
+
+        private void OnClickMilestoneBtn(object sender, EventArgs e)
+        {
+            Button clickedBtn = (sender as Button);
+            switch (clickedBtn.Text)
+            {
+                
+            }
+            MilestoneDropForm.Dispose();
         }
     }
 }
