@@ -177,7 +177,7 @@ namespace TeamTracker
             return result;
         }
 
-        private static Employee FetchEmployeeFromID(int empID)
+        public static Employee FetchEmployeeFromID(int empID)
         {
             foreach(var Iter in EmployeeCollection)
             {

@@ -1,13 +1,13 @@
-﻿namespace UserInterface.ViewPage.BoardView
+﻿namespace UserInterface.Task.CreateTask
 {
-    partial class UcStatusBase
+    partial class CreateTaskForm
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,22 +20,25 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.SuspendLayout();
             // 
-            // UcStatusBase
+            // CreateTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "UcStatusBase";
-            this.Size = new System.Drawing.Size(360, 599);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "CreateTaskForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CreateTaskForm";
             this.ResumeLayout(false);
 
         }

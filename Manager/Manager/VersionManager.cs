@@ -192,6 +192,35 @@ namespace TeamTracker
             return result;
         }
 
+        //Fetches All the latest Versions of a project
+        public static List<ProjectVersion> FetchAllLastestVersionOfProject()
+        {
+            List<ProjectVersion> result = new List<ProjectVersion>();
+            foreach(var Iter in ProjectCollection)
+            {
+                result.Add(FetchProjectLatestVersion(Iter.ProjectID));
+            }
+
+            return result;
+        }
+
+        //Fetches All the Versions of a project using projet ID int Ascending order
+        public static List<ProjectVersion> FetchAllVersionFromProject(int projectID)
+        {
+            List<ProjectVersion> result = new List<ProjectVersion>();
+
+            foreach (var Iter in VersionCollection)
+            {
+                if (Iter.ProjectID == projectID)
+                {
+                    result.Add(Iter);
+                }
+            }
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
+        }
+
         //Fetches All Project That are only on Completed Status
         public static List<Projects> FetchAllProjectsOnCompletedStatus()
         {
@@ -392,6 +421,20 @@ namespace TeamTracker
             }
 
             return -1;
+        }
+
+        //fetches project Name using versionId
+        public static string FetchProjectName(int versionId)
+        {
+            foreach (var Iter in VersionCollection)
+            {
+                if (Iter.VersionID == versionId)
+                {
+                    return GetProjectName(versionId);
+                }
+            }
+
+            return "";
         }
 
         private static bool IsProjectAvailableForVersionUpgrade(int projectID)

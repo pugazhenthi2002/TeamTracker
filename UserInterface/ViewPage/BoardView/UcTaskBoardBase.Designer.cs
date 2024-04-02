@@ -1,6 +1,6 @@
-﻿namespace UserInterface.ViewPage.BoardView
+﻿namespace TeamTracker
 {
-    partial class UcProjectBoardBase
+    partial class UcTaskBoardBase
     {
         /// <summary> 
         /// Required designer variable.
@@ -45,16 +45,17 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(955, 484);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1089, 478);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // UcProjectBoardBase
+            // UcTaskBoardBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "UcProjectBoardBase";
-            this.Size = new System.Drawing.Size(955, 484);
+            this.Name = "UcTaskBoardBase";
+            this.Size = new System.Drawing.Size(1089, 478);
             this.ResumeLayout(false);
 
         }

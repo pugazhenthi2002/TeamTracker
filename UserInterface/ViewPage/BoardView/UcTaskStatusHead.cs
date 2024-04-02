@@ -11,27 +11,30 @@ using System.Runtime.InteropServices;
 
 namespace TeamTracker
 {
-    public partial class UcProjectStatusHead : UserControl
+    public partial class UcTaskStatusHead : UserControl
     {
-        public UcProjectStatusHead()
+        public UcTaskStatusHead()
         {
             InitializeComponent();
             InitializeRoundedEdge();
 
         }
-        
 
-        public ProjectStatus Status
+        public EventHandler ClickBack;
+        public EventHandler ClickNext;
+
+
+        public TaskStatus Status
         {
-            get { return status; }
+            get { return Tstatus; }
             set
             {
-                status = value;
+                Tstatus = value;
                 ColorChange();
             }
         }
 
-        private ProjectStatus status;
+        private TaskStatus Tstatus;
         private Color TopPanelColor;
         private string StatusLabelText;
 
@@ -56,6 +59,7 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
+            labelTaskCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelTaskCount.Width, labelTaskCount.Height, labelTaskCount.Width, labelTaskCount.Height));
 
         }
         private void OnLoad(object sender, EventArgs e)
@@ -92,27 +96,27 @@ namespace TeamTracker
 
         private void ColorChange()
         {
-            switch (status)
+            switch (Tstatus)
             {
-                case ProjectStatus.Completed:
+                case TaskStatus.Done:
                     TopPanelColor = Color.Green;
-                    StatusLabelText = ProjectStatus.Completed + "";
+                    StatusLabelText = TaskStatus.Done + "";
                     break;
-                case ProjectStatus.Deployment:
+                case TaskStatus.UnderReview:
                     TopPanelColor = Color.Blue;
-                    StatusLabelText = ProjectStatus.Deployment + "";
+                    StatusLabelText = TaskStatus.UnderReview + "";
                     break;
-                case ProjectStatus.OnProcess:
+                case TaskStatus.OnProcess:
                     TopPanelColor = Color.Yellow;
-                    StatusLabelText = ProjectStatus.OnProcess + "";
+                    StatusLabelText = TaskStatus.OnProcess + "";
                     break;
-                case ProjectStatus.OnStage:
-                    TopPanelColor = Color.Magenta;
-                    StatusLabelText = ProjectStatus.OnStage + "";
+                case TaskStatus.Stuck:
+                    TopPanelColor = Color.Red;
+                    StatusLabelText = TaskStatus.Stuck + "";
                     break;
-                case ProjectStatus.UpComing:
+                case TaskStatus.NotYetStarted:
                     TopPanelColor = Color.Gray;
-                    StatusLabelText = ProjectStatus.UpComing + "";
+                    StatusLabelText = TaskStatus.NotYetStarted + "";
                     break;
 
             }
@@ -121,6 +125,14 @@ namespace TeamTracker
             labelStatus.Text = StatusLabelText;
         }
 
-        
+        private void OnClickBack(object sender, EventArgs e)
+        {
+            ClickBack?.Invoke(sender,e);
+        }
+
+        private void OnClickNext(object sender, EventArgs e)
+        {
+            ClickNext?.Invoke(sender, e);
+        }
     }
 }
