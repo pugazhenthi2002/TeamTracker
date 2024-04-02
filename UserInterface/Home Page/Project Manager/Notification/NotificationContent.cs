@@ -21,7 +21,7 @@ namespace TeamTracker
         {
             set
             {
-                if (value != null)
+                if (value != null && value.Count > 0)
                 {
                     notifyList = value;
                     notifyList.Reverse();

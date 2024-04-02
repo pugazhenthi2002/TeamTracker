@@ -1,4 +1,4 @@
-﻿namespace UserInterface.ViewProject.TimelineView.Controls
+﻿namespace TeamTracker
 {
     partial class TaskTimelineTemplate
     {

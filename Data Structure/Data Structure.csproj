@@ -51,7 +51,6 @@
     <Compile Include="Data Structure\ManagingEmployee.cs" />
     <Compile Include="Data Structure\Milestone.cs" />
     <Compile Include="Data Structure\Notification.cs" />
-    <Compile Include="Data Structure\Notify.cs" />
     <Compile Include="Data Structure\Projects.cs" />
     <Compile Include="Data Structure\ProjectVersion.cs" />
     <Compile Include="Data Structure\SourceCode.cs" />

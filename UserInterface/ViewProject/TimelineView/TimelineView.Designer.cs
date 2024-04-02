@@ -1,4 +1,6 @@
-﻿namespace UserInterface.ViewProject.TimelineView
+﻿using TeamTracker;
+
+namespace UserInterface.ViewProject.TimelineView
 {
     partial class TimelineView
     {
@@ -34,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.versionNames = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.timelinePaginate1 = new UserInterface.ViewProject.TimelineView.Controls.TimelinePaginate();
+            this.timelinePaginate1 = new TimelinePaginate();
             this.projectDownBox = new System.Windows.Forms.PictureBox();
             this.projectUpBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -174,7 +176,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label versionNames;
         private System.Windows.Forms.Panel panel3;
-        private Controls.TimelinePaginate timelinePaginate1;
+        private TimelinePaginate timelinePaginate1;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -191,9 +191,7 @@
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.Designer.cs">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.cs" />
     <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.Designer.cs">
       <DependentUpon>UcNotificationBase.cs</DependentUpon>
     </Compile>
@@ -313,6 +311,60 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\CreateTask\CreateTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\CreateTaskForm.Designer.cs">
+      <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\CreateTask\PriorityDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\PriorityDropDownForm.Designer.cs">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\CreateTask\UcCreateTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
+      <DependentUpon>UcCreateTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\ProjectBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\ProjectBoard.designer.cs">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcDueDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcDueDate.Designer.cs">
+      <DependentUpon>UcDueDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UCTaskBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UCTaskBoard.designer.cs">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskBoardBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskBoardBase.Designer.cs">
+      <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UCTaskStatusBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UCTaskStatusBase.Designer.cs">
+      <DependentUpon>UCTaskStatusBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskStatusHead.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskStatusHead.Designer.cs">
+      <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\BoardView\BoardViewContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -497,6 +549,33 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Task\CreateTask\CreateTaskForm.resx">
+      <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
+      <DependentUpon>UcCreateTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
+      <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcDueDate.resx">
+      <DependentUpon>UcDueDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UCTaskBoard.resx">
+      <DependentUpon>UCTaskBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskBoardBase.resx">
+      <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UCTaskStatusBase.resx">
+      <DependentUpon>UCTaskStatusBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskStatusHead.resx">
+      <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\BoardViewContent.resx">
       <DependentUpon>BoardViewContent.cs</DependentUpon>
     </EmbeddedResource>
@@ -539,12 +618,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Search File.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Zip red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Zip Black.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data Structure\Data Structure.csproj">
@@ -597,6 +670,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Attachment-black.png" />
+    <Content Include="Resources\Attachment-gray.png" />
+    <Content Include="Resources\Close Black.png" />
+    <Content Include="Resources\close Hover.png" />
+    <Content Include="Resources\Close Red.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\flag-done.png" />
+    <Content Include="Resources\flag-empty.png" />
+    <Content Include="Resources\flag-NotStarted.png" />
+    <Content Include="Resources\flag-OnProcess.png" />
+    <Content Include="Resources\flag-stuck.png" />
+    <Content Include="Resources\flag-UnderReview.png" />
+    <Content Include="Resources\info-black.png" />
+    <Content Include="Resources\info-hover.png" />
+    <Content Include="Resources\sort-down-hover.png" />
+    <Content Include="Resources\sort-down.png" />
+    <Content Include="Resources\sort-up-hover.png" />
+    <Content Include="Resources\sort-up.png" />
+    <Content Include="Resources\Zip Black.png" />
+    <Content Include="Resources\Zip red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

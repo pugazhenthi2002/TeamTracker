@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using TeamTracker;
 using GoLibrary;
 
-namespace UserInterface.ViewProject.TimelineView.Controls
+namespace TeamTracker
 {
     public partial class TimelinePaginate : UserControl
     {

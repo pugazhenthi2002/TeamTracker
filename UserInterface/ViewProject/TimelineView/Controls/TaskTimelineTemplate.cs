@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TeamTracker;
 
-namespace UserInterface.ViewProject.TimelineView.Controls
+namespace TeamTracker
 {
     public partial class TaskTimelineTemplate : UserControl
     {

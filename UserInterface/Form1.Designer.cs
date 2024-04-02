@@ -28,28 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rippleButton1 = new TeamTracker.RippleButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // rippleButton1
+            // pictureBox1
             // 
-            this.rippleButton1.Location = new System.Drawing.Point(763, 122);
-            this.rippleButton1.Name = "rippleButton1";
-            this.rippleButton1.Size = new System.Drawing.Size(118, 66);
-            this.rippleButton1.TabIndex = 0;
-            this.rippleButton1.Text = "rippleButton1";
-            this.rippleButton1.UseVisualStyleBackColor = true;
-            this.rippleButton1.Click += new System.EventHandler(this.rippleButton1_Click);
+            this.pictureBox1.Image = global::UserInterface.Properties.Resources.info_hover;
+            this.pictureBox1.Location = new System.Drawing.Point(521, 95);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(187, 134);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.rippleButton1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -57,6 +58,7 @@
         #endregion
 
         private TeamTracker.RippleButton rippleButton1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
