@@ -39,7 +39,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
             this.ucNotificationBase1 = new TeamTracker.UcNotificationBase();
-            this.ucCreateTask1 = new TeamTracker.UcCreateTask();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -139,7 +138,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.panel3.Controls.Add(this.ucCreateTask1);
             this.panel3.Controls.Add(this.ucTaskBoardBase1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(254, 75);
@@ -162,13 +160,6 @@
             this.ucNotificationBase1.Name = "ucNotificationBase1";
             this.ucNotificationBase1.Size = new System.Drawing.Size(568, 386);
             this.ucNotificationBase1.TabIndex = 0;
-            // 
-            // ucCreateTask1
-            // 
-            this.ucCreateTask1.Location = new System.Drawing.Point(150, 48);
-            this.ucCreateTask1.Name = "ucCreateTask1";
-            this.ucCreateTask1.Size = new System.Drawing.Size(553, 356);
-            this.ucCreateTask1.TabIndex = 1;
             // 
             // ProjectManagerMainForm
             // 
@@ -203,6 +194,5 @@
         private UserInterface.Project_Manager_Main_Page.PageButton pageButton1;
         private UcNotificationBase ucNotificationBase1;
         private UcTaskBoardBase ucTaskBoardBase1;
-        private UcCreateTask ucCreateTask1;
     }
 }

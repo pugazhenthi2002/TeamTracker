@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -39,12 +40,13 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSetPriority = new System.Windows.Forms.Label();
             this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.textBoxDesc = new TeamTracker.TextBoxU();
             this.textBoxTaskName = new TeamTracker.TextBoxU();
-            this.ucDueDate1 = new UserInterface.ViewPage.BoardView.UcDueDate();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonDiscard = new System.Windows.Forms.Button();
             this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonDiscard = new System.Windows.Forms.Button();
+            this.pictureBoxAttachment = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -52,6 +54,7 @@
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlag)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttachment)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -70,7 +73,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(553, 351);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 369);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -83,13 +87,12 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ucDueDate1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 265);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 279);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(547, 46);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(545, 49);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel4
@@ -106,7 +109,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(136, 46);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(136, 49);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // label1
@@ -117,14 +120,14 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 15);
+            this.label1.Size = new System.Drawing.Size(130, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "To";
             // 
             // dateTimePickerTo
             // 
             this.dateTimePickerTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(3, 18);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(3, 19);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(130, 20);
             this.dateTimePickerTo.TabIndex = 1;
@@ -143,13 +146,13 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(136, 46);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(136, 49);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // dateTimePickerFrom
             // 
             this.dateTimePickerFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(3, 18);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(3, 19);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(130, 20);
             this.dateTimePickerFrom.TabIndex = 0;
@@ -162,7 +165,7 @@
             this.labelFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.labelFrom.Location = new System.Drawing.Point(3, 0);
             this.labelFrom.Name = "labelFrom";
-            this.labelFrom.Size = new System.Drawing.Size(130, 15);
+            this.labelFrom.Size = new System.Drawing.Size(130, 16);
             this.labelFrom.TabIndex = 2;
             this.labelFrom.Text = "From";
             // 
@@ -178,7 +181,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(139, 46);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(137, 46);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // labelSetPriority
@@ -189,7 +192,7 @@
             this.labelSetPriority.Location = new System.Drawing.Point(41, 0);
             this.labelSetPriority.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.labelSetPriority.Name = "labelSetPriority";
-            this.labelSetPriority.Size = new System.Drawing.Size(88, 46);
+            this.labelSetPriority.Size = new System.Drawing.Size(86, 46);
             this.labelSetPriority.TabIndex = 3;
             this.labelSetPriority.Text = "Set Priority";
             this.labelSetPriority.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -219,7 +222,7 @@
             this.textBoxDesc.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxDesc.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBoxDesc.Location = new System.Drawing.Point(10, 97);
+            this.textBoxDesc.Location = new System.Drawing.Point(10, 102);
             this.textBoxDesc.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxDesc.Multiline = true;
             this.textBoxDesc.Name = "textBoxDesc";
@@ -229,7 +232,7 @@
             this.textBoxDesc.PlaceholderLabelAtTopColor = System.Drawing.Color.Black;
             this.textBoxDesc.PlaceholderText = "Description";
             this.textBoxDesc.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxDesc.Size = new System.Drawing.Size(533, 155);
+            this.textBoxDesc.Size = new System.Drawing.Size(531, 164);
             this.textBoxDesc.TabIndex = 1;
             this.textBoxDesc.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.textBoxDesc.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
@@ -253,7 +256,7 @@
             this.textBoxTaskName.PlaceholderLabelAtTopColor = System.Drawing.Color.Black;
             this.textBoxTaskName.PlaceholderText = "Task Name";
             this.textBoxTaskName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxTaskName.Size = new System.Drawing.Size(533, 67);
+            this.textBoxTaskName.Size = new System.Drawing.Size(531, 72);
             this.textBoxTaskName.TabIndex = 0;
             this.textBoxTaskName.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.textBoxTaskName.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
@@ -261,51 +264,24 @@
             this.textBoxTaskName.TextForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxTaskName.UseSystemPasswordChar = false;
             // 
-            // ucDueDate1
-            // 
-            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.CenterLabelText = "TO DO";
-            this.ucDueDate1.DueDate = new System.DateTime(((long)(0)));
-            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucDueDate1.LabelText = "status";
-            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
-            this.ucDueDate1.Name = "ucDueDate1";
-            this.ucDueDate1.Size = new System.Drawing.Size(130, 40);
-            this.ucDueDate1.TabIndex = 6;
-            // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Controls.Add(this.buttonCreate, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.buttonDiscard, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonCreate, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonDiscard, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.pictureBoxAttachment, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 314);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 331);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(553, 37);
-            this.tableLayoutPanel6.TabIndex = 3;
-            // 
-            // buttonDiscard
-            // 
-            this.buttonDiscard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonDiscard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonDiscard.FlatAppearance.BorderSize = 0;
-            this.buttonDiscard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkRed;
-            this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDiscard.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDiscard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.buttonDiscard.Location = new System.Drawing.Point(281, 5);
-            this.buttonDiscard.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonDiscard.Name = "buttonDiscard";
-            this.buttonDiscard.Size = new System.Drawing.Size(128, 27);
-            this.buttonDiscard.TabIndex = 0;
-            this.buttonDiscard.Text = "Discard";
-            this.buttonDiscard.UseVisualStyleBackColor = false;
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(551, 38);
+            this.tableLayoutPanel6.TabIndex = 5;
             // 
             // buttonCreate
             // 
@@ -316,13 +292,41 @@
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreate.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.buttonCreate.Location = new System.Drawing.Point(419, 5);
+            this.buttonCreate.Location = new System.Drawing.Point(417, 5);
             this.buttonCreate.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(129, 27);
+            this.buttonCreate.Size = new System.Drawing.Size(129, 28);
             this.buttonCreate.TabIndex = 2;
             this.buttonCreate.Text = "Create";
             this.buttonCreate.UseVisualStyleBackColor = false;
+            // 
+            // buttonDiscard
+            // 
+            this.buttonDiscard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonDiscard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDiscard.FlatAppearance.BorderSize = 0;
+            this.buttonDiscard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkRed;
+            this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiscard.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.buttonDiscard.Location = new System.Drawing.Point(280, 5);
+            this.buttonDiscard.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(127, 28);
+            this.buttonDiscard.TabIndex = 0;
+            this.buttonDiscard.Text = "Discard";
+            this.buttonDiscard.UseVisualStyleBackColor = false;
+            // 
+            // pictureBoxAttachment
+            // 
+            this.pictureBoxAttachment.Image = global::UserInterface.Properties.Resources.Attachment_black;
+            this.pictureBoxAttachment.Location = new System.Drawing.Point(235, 3);
+            this.pictureBoxAttachment.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
+            this.pictureBoxAttachment.Name = "pictureBoxAttachment";
+            this.pictureBoxAttachment.Size = new System.Drawing.Size(37, 32);
+            this.pictureBoxAttachment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxAttachment.TabIndex = 3;
+            this.pictureBoxAttachment.TabStop = false;
             // 
             // UcCreateTask
             // 
@@ -330,7 +334,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "UcCreateTask";
-            this.Size = new System.Drawing.Size(553, 351);
+            this.Size = new System.Drawing.Size(551, 369);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -340,6 +344,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlag)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttachment)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,9 +364,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox pictureBoxFlag;
         private System.Windows.Forms.Label labelSetPriority;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate1;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonDiscard;
+        private System.Windows.Forms.PictureBox pictureBoxAttachment;
     }
 }

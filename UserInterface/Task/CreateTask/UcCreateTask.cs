@@ -17,10 +17,12 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            toolTip1.SetToolTip(pictureBoxAttachment, "Click to Add attachment");
 
         }
 
         PriorityDropDownForm PriortyDropForm;
+        string FilePath;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -42,8 +44,8 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            textBoxTaskName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxTaskName.Width, textBoxTaskName.Height, 20, 20));
-            textBoxDesc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxDesc.Width, textBoxDesc.Height, 20, 20));
+            textBoxTaskName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxTaskName.Width, textBoxTaskName.Height, 10, 10));
+            textBoxDesc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxDesc.Width, textBoxDesc.Height, 10, 10));
             buttonCreate.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonCreate.Width, buttonCreate.Height, 10, 10));
             buttonDiscard.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDiscard.Width, buttonDiscard.Height, 10, 10));
             
@@ -125,6 +127,33 @@ namespace TeamTracker
             }
            
 
+        }
+
+        private void OnMouseEnterAttachment(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Attachment_gray;
+
+        }
+
+        private void OnMouseLeaveAttachment(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Attachment_black;
+        }
+
+        private void OnClickAddAttachment(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Title = "Open File";
+            openFileDialog.InitialDirectory = @"C:\";
+
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FilePath = openFileDialog.FileName;
+
+            }
         }
     }
 }
