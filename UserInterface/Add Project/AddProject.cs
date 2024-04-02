@@ -21,12 +21,14 @@ namespace TeamTracker
         {
             initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(221, 230, 237);
             versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(39, 55, 77);
+            tabControl1.SelectedIndex = 0;
         }
 
         private void OnVersionUpgradeClick(object sender, EventArgs e)
         {
             initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(39, 55, 77);
             versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(221, 230, 237);
+            tabControl1.SelectedIndex = 1;
         }
     }
 }

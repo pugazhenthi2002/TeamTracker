@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using UserInterface.Add_Project.Custom_Control;
+using GoLibrary;
 
 namespace TeamTracker
 {
     public partial class VersionUpgrade : UserControl
     {
+        private Projects project;
+
         public VersionUpgrade()
         {
             InitializeComponent();
@@ -51,7 +55,67 @@ namespace TeamTracker
 
         private void OnChooseProject(object sender, EventArgs e)
         {
+            ChooseProjectForm form = new ChooseProjectForm();
+            form.AvailableProjects = VersionManager.ProjectCollection;
+            form.ProjectSelect += OnProjectSelected;
+            form.ShowDialog();
+        }
 
+        private void OnProjectSelected(object sender, Projects e)
+        {
+            project = e;
+            InitializeVersionPage();
+        }
+
+        private void InitializeVersionPage()
+        {
+            teamLeaderPicAndNameVertical1.TeamLeader = EmployeeManager.FetchEmployeeFromEmpID(project.TeamLeadID);
+            latestUpgradedVersion1.LatestVersion = VersionManager.FetchProjectLatestVersion(project.ProjectID);
+        }
+
+        private void upgradeButton_Click(object sender, EventArgs e)
+        {
+            BooleanMsg message = isEligibleForVersionUpgrade();
+            if (message)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
+            }
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", message.Message);
+            }
+            
+        }
+
+        private BooleanMsg isEligibleForVersionUpgrade()
+        {
+            if (project == null) return "No Project Selected for Version Upgrade";
+
+            if (!VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTime.Value, endDateTime.Value))
+            {
+                startDateTime.Value = endDateTime.Value = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
+                return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
+            }
+
+            if (startDateTime.Value.Date == endDateTime.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
+
+            if (versionNameTextBox.Text == "" || versionNameTextBox.Text == "Enter Version") return "Version Name Not Mentioned";
+
+            if (VersionManager.IsVersionNameAlreadyExist(versionNameTextBox.Text, project.ProjectID)) return "Version Name Already Exists\nTry Another Version";
+
+            if(descTextBox.Text == "" || descTextBox.Text == "Enter Version Description")   return "Version Description Not Mentioned";
+
+            return true;
+        }
+
+        private void OnDateValueChanged(object sender, EventArgs e)
+        {
+            if(project != null && !VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTime.Value, endDateTime.Value))
+            {
+                startDateTime.Value = endDateTime.Value = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date\nAvailable Date: " + startDateTime.Value.ToShortDateString());
+            }
+            
         }
     }
 }

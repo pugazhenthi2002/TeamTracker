@@ -47,23 +47,16 @@ namespace TeamTracker
 
         private FileType typeOfFile;
         private string fileName;
-        private int changeX = 5;
-        private int changeY = 5;
-        private bool clicked = false;
         private Panel panel1;
         private PictureBox pictureBox1;
         private Panel panel2;
         private PictureBox pictureBox2;
         private Panel panel3;
         private Label label1;
-        private bool downloaded = false;
 
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
-            clicked = true;
-            changeX = 5;
-            changeY = 5;
         }
 
         private void InitializeComponent()

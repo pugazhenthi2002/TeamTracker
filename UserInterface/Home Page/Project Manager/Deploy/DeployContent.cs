@@ -81,9 +81,19 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             ucDeploy1.Version = version;
         }
 
-        private void OnDeployment(object sender, ProjectVersion e)
+        private void OnDeployment(string name, ProjectVersion e)
         {
-            //deployVersions.Remove(e);
+            deployVersions.Remove(name);
+            if (deployVersions.Count > 0)
+            {
+                label1.Text = deployVersions.First().Key;
+                ucDeploy1.Version = deployVersions.First().Value;
+            }
+            else
+            {
+                label1.Text = "Deploy";
+                ucDeploy1.Visible = false;
+            }
         }
     }
 }

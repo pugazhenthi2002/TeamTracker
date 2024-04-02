@@ -45,7 +45,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(36, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -96,7 +96,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox2);

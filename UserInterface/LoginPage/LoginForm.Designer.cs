@@ -53,7 +53,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(950, 500);
             this.panel1.TabIndex = 0;
@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -98,7 +98,7 @@
             this.tableLayoutPanel2.Controls.Add(this.letsTeamUpButton, 0, 7);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 8;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
@@ -118,7 +118,7 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(1, 116);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.label1.Margin = new System.Windows.Forms.Padding(1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(473, 70);
             this.label1.TabIndex = 0;
@@ -143,7 +143,7 @@
             this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.password.Location = new System.Drawing.Point(54, 305);
-            this.password.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.password.Margin = new System.Windows.Forms.Padding(1);
             this.password.Multiline = false;
             this.password.Name = "password";
             this.password.Padding = new System.Windows.Forms.Padding(18, 15, 8, 6);
@@ -165,7 +165,7 @@
             this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.username.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.username.Location = new System.Drawing.Point(54, 224);
-            this.username.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.username.Margin = new System.Windows.Forms.Padding(1);
             this.username.Multiline = true;
             this.username.Name = "username";
             this.username.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
@@ -205,7 +205,7 @@
             this.letsTeamUpButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.letsTeamUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.letsTeamUpButton.Location = new System.Drawing.Point(147, 440);
-            this.letsTeamUpButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.letsTeamUpButton.Margin = new System.Windows.Forms.Padding(2);
             this.letsTeamUpButton.Name = "letsTeamUpButton";
             this.letsTeamUpButton.Size = new System.Drawing.Size(181, 40);
             this.letsTeamUpButton.TabIndex = 7;
@@ -234,9 +234,9 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(250, 125);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

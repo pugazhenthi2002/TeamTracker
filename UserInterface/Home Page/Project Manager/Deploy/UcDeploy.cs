@@ -13,7 +13,8 @@ namespace TeamTracker
 {
     public partial class UcDeploy : UserControl
     {
-        public event EventHandler<ProjectVersion> Deployment;
+        public delegate void DeployHandler(string name, ProjectVersion project);
+        public event DeployHandler Deployment;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -98,7 +99,7 @@ namespace TeamTracker
         private void OnDeployClick(object sender, EventArgs e)
         {
             VersionManager.VersionCompletion(version);
-            Deployment?.Invoke(this, version);
+            Deployment?.Invoke(proj.ProjectName, version);
         }
     }
 }

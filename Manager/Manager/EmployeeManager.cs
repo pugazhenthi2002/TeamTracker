@@ -58,6 +58,19 @@ namespace TeamTracker
             return "Username and Password Mismatch";
         }
 
+        public static Employee FetchEmployeeFromEmpID(int empID)
+        {
+            foreach(var Iter in EmployeeCollection)
+            {
+                if(Iter.EmployeeID == empID)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+
         public static Dictionary<string, int> FetchTaskCountByMilestoneForEmployee(int milestoneID)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();

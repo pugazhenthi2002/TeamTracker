@@ -63,5 +63,11 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (count == 0) chart1.Visible = false;
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            chart1.Dispose();
+            panel1.BackgroundImage.Dispose();
+        }
     }
 }

@@ -74,6 +74,12 @@
     <Compile Include="Add Project\Custom Control\ChooseProject.designer.cs">
       <DependentUpon>ChooseProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Add Project\Custom Control\ChooseProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add Project\Custom Control\ChooseProjectForm.Designer.cs">
+      <DependentUpon>ChooseProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Add Project\Custom Control\FileAttachment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,18 @@
     </Compile>
     <Compile Include="Add Project\Custom Control\SelectedTeamLeader.designer.cs">
       <DependentUpon>SelectedTeamLeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add Project\Custom Control\SelectProjectTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Add Project\Custom Control\SelectProjectTemplate.Designer.cs">
+      <DependentUpon>SelectProjectTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add Project\Custom Control\SingleProjectSelectTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Add Project\Custom Control\SingleProjectSelectTemplate.Designer.cs">
+      <DependentUpon>SingleProjectSelectTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Add Project\Custom Control\TeamLeaderPicAndName.cs">
       <SubType>UserControl</SubType>
@@ -352,6 +370,9 @@
     <EmbeddedResource Include="Add Project\Custom Control\ChooseProject.resx">
       <DependentUpon>ChooseProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Add Project\Custom Control\ChooseProjectForm.resx">
+      <DependentUpon>ChooseProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\FileAttachment.resx">
       <DependentUpon>FileAttachment.cs</DependentUpon>
     </EmbeddedResource>
@@ -366,6 +387,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\SelectedTeamLeader.resx">
       <DependentUpon>SelectedTeamLeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add Project\Custom Control\SelectProjectTemplate.resx">
+      <DependentUpon>SelectProjectTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add Project\Custom Control\SingleProjectSelectTemplate.resx">
+      <DependentUpon>SingleProjectSelectTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\TeamLeaderPicAndName.resx">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>

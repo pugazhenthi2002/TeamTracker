@@ -110,7 +110,7 @@
             this.ucDeploy1.Name = "ucDeploy1";
             this.ucDeploy1.Size = new System.Drawing.Size(485, 289);
             this.ucDeploy1.TabIndex = 0;
-            this.ucDeploy1.Deployment += new System.EventHandler<TeamTracker.ProjectVersion>(this.OnDeployment);
+            this.ucDeploy1.Deployment += new TeamTracker.UcDeploy.DeployHandler(this.OnDeployment);
             // 
             // DeployContent
             // 
