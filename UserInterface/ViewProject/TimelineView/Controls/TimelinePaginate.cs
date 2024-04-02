@@ -22,6 +22,16 @@ namespace TeamTracker
         private List<Task> taskCollection;
         private List<Task> viewTaskCollection;
 
+        public List<Milestone> milestoneCollection;
+
+        public List<Color> Colors
+        {
+            set
+            {
+                colorCollections = value;
+            }
+        }
+
         public ProjectVersion Version
         {
             set
@@ -33,6 +43,7 @@ namespace TeamTracker
                 isNextEnable = true;
                 endViewDate = startViewDate.AddDays(20);
                 taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
+                milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
                 InitializeTimeline();
                 SetViewTaskCollection();
             }
@@ -41,6 +52,8 @@ namespace TeamTracker
         private bool isBackEnable, isNextEnable;
         private List<string> monthCollections;
         private List<Label> labelCollections;
+        private List<Color> colorCollections;
+        private List<Color> viewColorCollections;
         private TimeSpan dateDifference;
         private DateTime startViewDate, endViewDate, iterDate;
         private ProjectVersion version;
@@ -112,47 +125,14 @@ namespace TeamTracker
             monthCollections = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SetViewTaskCollection()
         {
             if(timelineControlPanel.Controls != null)
                 timelineControlPanel.Controls.Clear();
 
             viewTaskCollection = new List<Task>();
+            viewColorCollections = new List<Color>();
+
             foreach(var Iter in taskCollection)
             {
                 if((startViewDate <= Iter.EndDate && Iter.EndDate <= endViewDate) || (startViewDate <= Iter.StartDate && Iter.StartDate <= endViewDate) || (Iter.StartDate <= startViewDate && endViewDate <= Iter.EndDate))
@@ -160,11 +140,18 @@ namespace TeamTracker
                     viewTaskCollection.Add(Iter);
                 }
             }
+
+            foreach(var Iter in viewTaskCollection)
+            {
+                viewColorCollections.Add(FetchColorFromMilestoneID(Iter.MilestoneID));
+            }
+
             viewTaskCollection.Sort((v1, v2)=>v1.StartDate.CompareTo(v2.StartDate));
 
             DateTime prevStartDate = DateTime.MinValue, prevEndDate = DateTime.MinValue;
             int height = 50, width = tableLayoutPanel1.Width / 20 , x = 0, y = 0, controlWidth = 0;
 
+            int ctr = 0;
             foreach(var Iter in viewTaskCollection)
             {
                 x = GetTimelinePosition(Iter.StartDate, width);
@@ -194,9 +181,11 @@ namespace TeamTracker
                     Location = new Point(x, y),
                     Height = height,
                     Width = controlWidth,
-                    TimelineTask = Iter
+                    TimelineTask = Iter,
+                    BackColor = viewColorCollections[ctr]
                 };
                 timelineControlPanel.Controls.Add(taskTimeline);
+                ctr++;
             }
         }
 
@@ -229,6 +218,21 @@ namespace TeamTracker
             }
 
             return (endDate - startdate).Days * width;
+        }
+
+        private Color FetchColorFromMilestoneID(int milestonID)
+        {
+            int ctr = 0;
+            foreach(var Iter in milestoneCollection)
+            {
+                if(Iter.MileStoneID == milestonID)
+                {
+                    return colorCollections[ctr];
+                }
+                ctr++;
+            }
+
+            return Color.White;
         }
     }
 }

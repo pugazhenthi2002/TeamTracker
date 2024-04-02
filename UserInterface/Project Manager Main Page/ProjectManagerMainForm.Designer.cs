@@ -51,6 +51,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.addProject1 = new TeamTracker.AddProject();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.viewProjectTemplate1 = new UserInterface.ViewProject.ViewProjectTemplate();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -66,6 +67,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -296,10 +298,10 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.projectManagerHome1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(937, 585);
+            this.tabPage1.Size = new System.Drawing.Size(937, 556);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -310,7 +312,7 @@
             this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
             this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
+            this.projectManagerHome1.Size = new System.Drawing.Size(931, 550);
             this.projectManagerHome1.TabIndex = 0;
             // 
             // tabPage2
@@ -334,12 +336,22 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.viewProjectTemplate1);
             this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(937, 585);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // viewProjectTemplate1
+            // 
+            this.viewProjectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.viewProjectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewProjectTemplate1.Location = new System.Drawing.Point(0, 0);
+            this.viewProjectTemplate1.Name = "viewProjectTemplate1";
+            this.viewProjectTemplate1.Size = new System.Drawing.Size(937, 585);
+            this.viewProjectTemplate1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 
@@ -366,6 +378,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -394,5 +407,6 @@
         private System.Windows.Forms.PictureBox homePictureBox;
         private UserInterface.Home_Page.Project_Manager.ProjectManagerHome projectManagerHome1;
         private AddProject addProject1;
+        private UserInterface.ViewProject.ViewProjectTemplate viewProjectTemplate1;
     }
 }

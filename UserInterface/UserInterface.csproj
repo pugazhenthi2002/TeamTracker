@@ -191,10 +191,6 @@
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.Designer.cs">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.cs" />
-    <Compile Include="Home Page\Project Manager\Notification\UcNotificationBase.Designer.cs">
-      <DependentUpon>UcNotificationBase.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -389,6 +385,12 @@
     <Compile Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.Designer.cs">
       <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewProject\TimelineView\Controls\TimelineMilestoneLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\TimelineView\Controls\TimelineMilestoneLabel.Designer.cs">
+      <DependentUpon>TimelineMilestoneLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\TimelineView\Controls\TimelinePaginate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -412,6 +414,12 @@
     </Compile>
     <Compile Include="ViewProject\VersionViewForm.Designer.cs">
       <DependentUpon>VersionViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\ViewProjectTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\ViewProjectTemplate.Designer.cs">
+      <DependentUpon>ViewProjectTemplate.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
@@ -479,9 +487,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotificationBase.resx">
-      <DependentUpon>UcNotificationBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.resx">
       <DependentUpon>MilestoneAndDateTemplate.cs</DependentUpon>
@@ -588,6 +593,9 @@
     <EmbeddedResource Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.resx">
       <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\TimelineView\Controls\TimelineMilestoneLabel.resx">
+      <DependentUpon>TimelineMilestoneLabel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\TimelineView\Controls\TimelinePaginate.resx">
       <DependentUpon>TimelinePaginate.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +607,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\VersionViewForm.resx">
       <DependentUpon>VersionViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\ViewProjectTemplate.resx">
+      <DependentUpon>ViewProjectTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -672,6 +683,9 @@
     <None Include="Images\Zip.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\Filter.png" />
+    <None Include="Images\Board.png" />
+    <None Include="Images\Timeline.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <Content Include="Resources\Close Black.png" />

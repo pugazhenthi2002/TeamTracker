@@ -143,6 +143,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Board {
+            get {
+                object obj = ResourceManager.GetObject("Board", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close {
             get {
                 object obj = ResourceManager.GetObject("Close", resourceCulture);
@@ -176,6 +186,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Close_Red {
             get {
                 object obj = ResourceManager.GetObject("Close Red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Filter {
+            get {
+                object obj = ResourceManager.GetObject("Filter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -406,6 +426,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap sort_up_hover {
             get {
                 object obj = ResourceManager.GetObject("sort-up-hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Timeline {
+            get {
+                object obj = ResourceManager.GetObject("Timeline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
