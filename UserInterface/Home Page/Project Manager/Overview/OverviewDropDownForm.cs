@@ -38,7 +38,7 @@ namespace TeamTracker
         public event OverviewHandler OverviewSelected;
 
         private const int CSDropShadow = 0x00020000;
-        public Dictionary<string, ProjectVersion> currentVersionCollection;
+        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
 
         public OverviewDropDownForm()
         {
@@ -47,18 +47,18 @@ namespace TeamTracker
 
         private void InitializeDropDownForm()
         {
-            if(currentVersionCollection.Count >= 4)
+            if(CurrentVersionCollection.Count >= 4)
             {
                 Height = 200;
             }
             else
             {
-                Height = currentVersionCollection.Count * 50;
+                Height = CurrentVersionCollection.Count * 50;
             }
 
             Label label;
 
-            foreach(var Iter in currentVersionCollection)
+            foreach(var Iter in CurrentVersionCollection)
             {
                 label = new Label()
                 {
@@ -94,7 +94,7 @@ namespace TeamTracker
         private void OnOverviewClick(object sender, EventArgs e)
         {
             string name = (sender as Label).Name;
-            foreach(var Iter in currentVersionCollection)
+            foreach(var Iter in CurrentVersionCollection)
             {
                 if(Iter.Key == name)
                 {

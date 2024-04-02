@@ -19,9 +19,9 @@ namespace TeamTracker
             InitializeRoundedEdge();
         }
 
-        public EventHandler<Notify> CloseClick;
+        public EventHandler<Notification> CloseClick;
 
-        public Notify NotficationData
+        public Notification NotficationData
         {
             get
             {
@@ -37,7 +37,7 @@ namespace TeamTracker
             }
         }
 
-        private Notify notify;
+        private Notification notify;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn

@@ -56,7 +56,6 @@ namespace TeamTracker
         public NotificationManager()
         {
             notificationWidth = 400;
-            notificationHeight = 175;
 
             screenWidth = Screen.PrimaryScreen.Bounds.Width;
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -88,7 +87,6 @@ namespace TeamTracker
         private bool flag = false;
         private int startX, startY, prevX, prevY, sX, sY;
         private int notificationWidth;
-        private readonly int notificationHeight;
         private int remainingHeight;
         private int screenWidth, screenHeight;
         private int notificationScreenTime = 5;

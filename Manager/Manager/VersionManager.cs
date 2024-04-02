@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,34 @@ namespace TeamTracker
     {
 
         public static ProjectVersion CurrentVersion { get; set; }
+
+        public static BooleanMsg StoreProjectCollection()
+        {
+            ProjectCollection = DataHandler.StoreProjectDetails();
+
+            if (ProjectCollection == null) return "Couldn't Able to connect Employee Table";
+            else return true;
+        }
+
+        public static BooleanMsg StoreVersionCollection()
+        {
+            VersionCollection = DataHandler.StoreProjectVersionDetails();
+
+            if (VersionCollection == null) return "Couldn't Able to connect Employee Table";
+            else return true;
+        }
+
+        public static Projects FetchProjectFromID(int id)
+        {
+            foreach(var Iter in ProjectCollection)
+            {
+                if(Iter.ProjectID == id)
+                {
+                    return Iter;
+                }
+            }
+            return null;
+        }
 
         public static void AddProject(string projectName, string versionDesc, int teamLeadID, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {
@@ -61,7 +90,7 @@ namespace TeamTracker
             VersionCollection.Add(newVersion);
         }
 
-        public static void UpdateVersion(int versionID, string versionName, string versionDesc, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
+        public static void UpdateVersion(int versionID, string versionName, string versionDesc, ProjectStatus status, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {
             foreach(var Iter in VersionCollection)
             {
@@ -71,12 +100,19 @@ namespace TeamTracker
                     Iter.VersionDescription = versionDesc;
                     Iter.StartDate = startDate;
                     Iter.EndDate = endDate;
+                    Iter.StatusOfVersion = ProjectStatus.Completed;
                     Iter.ClientEmail = clientEmail;
                     DataHandler.UpdateVersion(Iter);
-                    DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    if (versionAttachments != null)
+                        DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
                     return;
                 }
             }
+        }
+
+        public static void VersionCompletion(ProjectVersion version)
+        {
+            UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, version.EndDate, version.ClientEmail, null);
         }
 
         public static void ChangeToCompleteVersionStatus(ProjectVersion version)
@@ -92,6 +128,23 @@ namespace TeamTracker
             foreach (var Iter in VersionCollection)
             {
                 if(Iter.StatusOfVersion == ProjectStatus.OnProcess && GetManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    if (!result.ContainsKey(name = GetProjectName(Iter.ProjectID)))
+                        result.Add(name, Iter);
+                }
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, ProjectVersion> FetchDeploymentsProjectVersion()
+        {
+            Dictionary<string, ProjectVersion> result = new Dictionary<string, ProjectVersion>();
+
+            string name = "";
+            foreach (var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.Deployment && GetManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
                 {
                     if (!result.ContainsKey(name = GetProjectName(Iter.ProjectID)))
                         result.Add(name, Iter);

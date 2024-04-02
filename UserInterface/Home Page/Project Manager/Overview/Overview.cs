@@ -20,9 +20,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             {
                 if (value != null)
                 {
-                    collection = value;
-                    label1.Text = value.Last().Key;
-                    overviewContent1.Version = value.Last().Value;
+                    if (value.Count == 0) overviewMilestoneContent1.Visible = false;
+                    else
+                    {
+                        collection = value;
+                        label1.Text = value.Last().Key;
+                        overviewMilestoneContent1.Version = value.Last().Value;
+                    }
                 }
             }
         }
@@ -61,7 +65,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             OverviewDropDownForm form = new OverviewDropDownForm();
             form.BackColor = Color.FromArgb(221, 230, 237);
-            form.currentVersionCollection = collection;
+            form.CurrentVersionCollection = collection;
             form.StartPosition = FormStartPosition.Manual;
             form.Location = Cursor.Position;
             form.OverviewSelected += OnVersionSelected;
@@ -70,7 +74,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnVersionSelected(string name, ProjectVersion version)
         {
-            overviewContent1.Version = version;
+            overviewMilestoneContent1.Version = version;
             label1.Text = name;
         }
     }

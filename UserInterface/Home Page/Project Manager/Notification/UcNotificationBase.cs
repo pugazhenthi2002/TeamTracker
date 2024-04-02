@@ -17,7 +17,7 @@ namespace TeamTracker
             InitializeComponent();
         }
 
-        public List<Notify> NotifyList
+        public List<Notification> NotifyList
         {
             get
             {
@@ -34,7 +34,7 @@ namespace TeamTracker
 
         }
 
-        private List<Notify> notifyList = new List<Notify>();
+        private List<Notification> notifyList = new List<Notification>();
         private List<UcNotification> UcNotiList = new List<UcNotification>();
 
 
@@ -102,7 +102,7 @@ namespace TeamTracker
 
         }
 
-        private void OnClickCloseNotification(object sender, Notify e)
+        private void OnClickCloseNotification(object sender, Notification e)
         {
             notifyList.Remove(e);
             if (currentIndex > 0)

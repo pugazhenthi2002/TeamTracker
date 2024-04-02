@@ -11,7 +11,6 @@ namespace TeamTracker
 {
     class CloseButton : UserControl
     {
-        private readonly System.ComponentModel.IContainer components;
         private Brush b = new SolidBrush(Color.FromArgb(52, 104, 192));
 
         protected override void OnPaint(PaintEventArgs e)

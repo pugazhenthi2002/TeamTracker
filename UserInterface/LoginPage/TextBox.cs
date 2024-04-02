@@ -20,7 +20,16 @@ namespace TeamTracker
         private Timer timer=new Timer();
         private bool isCenterPlaceHolder;
         private int borderRadius = 7;
-       
+        
+        public Color TextBoxColor
+        {
+            get { return textBox1.BackColor; }
+            set
+            {
+                textBox1.BackColor = value;
+            }
+        }
+
         public Color PlaceholderLabelAtTopColor
         {
             get
@@ -43,6 +52,7 @@ namespace TeamTracker
             {
                 placeholderLabelAtCenterColor = value;
                 label1.ForeColor = value;
+                //textBox1.BackColor = value;
                 Invalidate();
             }
 
@@ -131,7 +141,7 @@ namespace TeamTracker
                 label1.Text = value;
             }
         }
-        public Color ForeColor
+        public Color TextForeColor
         {
             get
             {
@@ -143,14 +153,6 @@ namespace TeamTracker
                 textBox1.ForeColor = value;
             }
 
-        }
-        public Font Font
-        {
-            get => textBox1.Font;
-            set
-            {
-                textBox1.Font = value;
-            }
         }
 
 

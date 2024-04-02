@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,31 +9,44 @@ namespace TeamTracker
 {
     public static class EmployeeManager
     {
+        public static bool connectionFlag = false;
         public static Employee CurrentEmployee { get; private set; }
 
-        static EmployeeManager()
+        public static BooleanMsg StoreEmployeeToCollection()
         {
-            CurrentEmployee = new Employee()
-            {
-                EmpRoleName = "Team Leader",
-                EmployeeFirstName = "Pugazhenthi",
-                EmpProfileLocation = "\\\\SPARE-2709DFQ\\Project Management Tool\\Profiles\\pugazhenthiir2002.jpg"
-            };
+            EmployeeCollection = DataHandler.StoreEmployeeDetails();
+
+            if (EmployeeCollection == null) return "* Couldn't Able to connect Employee Table";
+            else return connectionFlag = true;
         }
 
-        public static bool LogInEmployee(string username, string password)
+        public static BooleanMsg StoreEmployeeManagingCollection()
         {
+            ManagingEmployeeCollection = DataHandler.StoreEmployeeManagingDetails();
+
+            if (EmployeeCollection == null) return "Couldn't Able to connect Employee Table";
+            else return connectionFlag = true;
+        }
+
+        public static BooleanMsg LogInEmployee(string username, string password)
+        {
+            BooleanMsg message;
+            if (!connectionFlag) return false;
+
+            bool isUsernameAvailable = false;
             foreach(var Iter in EmployeeCollection)
             {
-                if(Iter.EmpEmail == username && Iter.EmpPassword == password)
+                if (Iter.EmpEmail == username)
+                    isUsernameAvailable = true;
+                if (Iter.EmpEmail == username && Iter.EmpPassword == password)
                 {
                     CurrentEmployee = Iter;
-                    StoreDatum();
-                    if(Iter.EmpRoleName == "Team Leader")
+                    if (!(message = StoreDatum()).Result) { return message; }
+                    if (Iter.EmpRoleName == "Team Leader")
                     {
                         VersionManager.SetCurrentWorkingVersion(Iter.EmployeeID);
                     }
-                    else
+                    else if(Iter.EmpRoleName == "Team Member")
                     {
                         VersionManager.SetCurrentWorkingVersion(GetTeamLeadIDFromMemberID(Iter.EmployeeID));
                     }
@@ -40,7 +54,34 @@ namespace TeamTracker
                 }
             }
 
-            return false;
+            if(!isUsernameAvailable) { return "Unable to Find Username"; }
+            return "Username and Password Mismatch";
+        }
+
+        public static Employee FetchEmployeeFromEmpID(int empID)
+        {
+            foreach(var Iter in EmployeeCollection)
+            {
+                if(Iter.EmployeeID == empID)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+
+        public static Dictionary<string, int> FetchTaskCountByMilestoneForEmployee(int milestoneID)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            int teamLeadID = MilestoneManager.FetchTeamLeader(milestoneID);
+            List<Employee> teamMembers = FetchTeamMembersForTeamLeaders(teamLeadID);
+
+            foreach (var Iter in teamMembers)
+            {
+                result.Add(Iter.EmployeeFirstName, TaskManager.FetchTaskCount(Iter, milestoneID));
+            }
+            return result;
         }
 
         //Shows Team Members for Logged in TeamMembers
@@ -51,6 +92,22 @@ namespace TeamTracker
             foreach(var Iter in ManagingEmployeeCollection)
             {
                 if(Iter.TeamLeadID == CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchEmployeeFromID(Iter.TeamMemberID));
+                }
+            }
+
+            return result;
+        }
+
+        //Shows Team Members for Logged in TeamMembers
+        public static List<Employee> FetchTeamMembersForTeamLeaders(int id)
+        {
+            List<Employee> result = new List<Employee>();
+
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.TeamLeadID == id)
                 {
                     result.Add(FetchEmployeeFromID(Iter.TeamMemberID));
                 }
@@ -145,12 +202,16 @@ namespace TeamTracker
             return -1;
         }
 
-        private static void StoreDatum()
+        private static BooleanMsg StoreDatum()
         {
-            DataHandler.StoreEmployeeManagingDetails();
-            DataHandler.StoreProjectDetails();
-            DataHandler.StoreProjectVersionDetails();
-            //DataHandler.StoreTaskDetails();
+            BooleanMsg message;
+            if (!(message = StoreEmployeeManagingCollection()).Result) return message;
+            if (!(message = VersionManager.StoreProjectCollection()).Result) return message;
+            if (!(message = VersionManager.StoreVersionCollection()).Result) return message;
+            if (!(message = TaskManager.StoreTaskCollection()).Result) return message;
+            if (!(message = MilestoneManager.StoreMilestoneCollection()).Result) return message;
+
+            return true;
         }
 
         public static List<Employee> EmployeeCollection;

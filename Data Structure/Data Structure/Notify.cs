@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamTracker
 {
-    [Serializable]
+    //[Serializable]
     public class Notify
     {
         public int NotificationId { get; set; }

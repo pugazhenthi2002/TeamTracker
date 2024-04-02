@@ -1,7 +1,10 @@
 ﻿using DatabaseLibrary;
+using GoLibrary;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,10 +12,12 @@ namespace TeamTracker
 {
     public static class DataHandler
     {
-        public static void ConnectDatabase()
+        public static BooleanMsg ConnectDatabase()
         {
             manager = new MySqlHandler("localhost", "root", "Lucid123", "projectmanagement");
-            manager.Connect();
+            BooleanMsg result = manager.Connect();
+
+            return result.Result;
         }
 
         public static Projects AddProject(Projects project)
@@ -94,6 +99,7 @@ namespace TeamTracker
                 new ParameterData("StartDate", task.StartDate),
                 new ParameterData("EndDate", task.EndDate),
                 new ParameterData("VersionID", task.VersionID),
+                new ParameterData("MilestoneID", task.MilestoneID),
                 new ParameterData("StatusOfTask", task.StatusOfTask),
                 new ParameterData("PriorityOfTask", task.TaskPriority.ToString()),
                 new ParameterData("AssignedBy", task.AssignedBy),
@@ -271,6 +277,8 @@ namespace TeamTracker
             VersionSourceCode sourceCode = new VersionSourceCode()
             {
                 VersionID = Convert.ToInt32(result["VersionID"][0]),
+                DisplayName = Convert.ToString(result["DisplayName"][0]),
+                SourceCodeName = Convert.ToString(result["SourceCodeName"][0]),
                 VersionLocation = Convert.ToString(result["SourceCodeLocation"][0])
             };
 
@@ -325,14 +333,14 @@ namespace TeamTracker
             return result;
         }
 
-        public static List<Notify> FetchNotification()
+        public static List<Notification> FetchNotification()
         {
-            List<Notify> result = new List<Notify>();
+            List<Notification> result = new List<Notification>();
             var notifyCollection = manager.FetchData("notification", $"AssignedTo={EmployeeManager.CurrentEmployee.EmployeeID}").Value;
 
             for (int ctr = 0; ctr < notifyCollection["NotifyID"].Count; ctr++)
             {
-                result.Add(new Notify()
+                result.Add(new Notification()
                 {
                     NotificationId = Convert.ToInt32(notifyCollection["NotifyID"][ctr]),
                     NotificationHeader = Convert.ToString(notifyCollection["Header"][ctr]),
@@ -345,11 +353,14 @@ namespace TeamTracker
             return result;
         }
 
-        public static void StoreEmployeeDetails()
+        public static List<Employee> StoreEmployeeDetails()
         {
             var result = manager.FetchData("employee", "").Value;
             List<Employee> employeeResult = new List<Employee>();
-            for(int ctr=0; ctr < result["EmpID"].Count; ctr++)
+
+            if (result == null) return null;
+
+            for (int ctr = 0; ctr < result["EmpID"].Count; ctr++)
             {
                 employeeResult.Add(new Employee()
                 {
@@ -363,16 +374,20 @@ namespace TeamTracker
                     EmpPassword = result["EmpPassword"][ctr].ToString()
                 });
             }
-            EmployeeManager.EmployeeCollection = employeeResult;
+
+            return employeeResult;
         }
 
-        public static void StoreEmployeeManagingDetails()
+        public static List<ManagingEmployee> StoreEmployeeManagingDetails()
         {
             var result = manager.FetchData("projectmanaging", "").Value;
-            List<ManagingEmployee> employeeResult = new List<ManagingEmployee>();
+            List<ManagingEmployee> employeeManagingResult = new List<ManagingEmployee>();
+
+            if (result == null) return null;
+
             for (int ctr = 0; ctr < result["ProjectManagingID"].Count; ctr++)
             {
-                employeeResult.Add(new ManagingEmployee()
+                employeeManagingResult.Add(new ManagingEmployee()
                 {
                     ManagingEmployeeID = Convert.ToInt32(result["ProjectManagingID"][ctr]),
                     ManagerID = Convert.ToInt32(result["ManagerID"][ctr]),
@@ -381,16 +396,18 @@ namespace TeamTracker
                 });
             }
 
-            EmployeeManager.ManagingEmployeeCollection = employeeResult;
+            return employeeManagingResult;
         }
 
-        public static void StoreProjectDetails()
+        public static List<Projects> StoreProjectDetails()
         {
             var result = manager.FetchData("project", "").Value;
-            List<Projects> employeeResult = new List<Projects>();
+            List<Projects> projectResult = new List<Projects>();
+
+            if (result == null) return null;
             for (int ctr = 0; ctr < result["ProjectID"].Count; ctr++)
             {
-                employeeResult.Add(new Projects()
+                projectResult.Add(new Projects()
                 {
                     ProjectID = Convert.ToInt32(result["ProjectID"][ctr]),
                     ProjectName = Convert.ToString(result["ProjectName"][ctr]),
@@ -398,33 +415,43 @@ namespace TeamTracker
                     TeamLeadID = Convert.ToInt32(result["TeamLeadID"][ctr]),
                 });
             }
-
-            VersionManager.ProjectCollection = employeeResult;
+            return projectResult;
         }
 
-        public static void StoreProjectVersionDetails()
+        public static List<ProjectVersion> StoreProjectVersionDetails()
         {
             ProjectStatus status;
             string sts;
             var result = manager.FetchData("ProjectVersion", "").Value;
-            List<ProjectVersion> employeeResult = new List<ProjectVersion>();
+
+            if (result == null) return null;
+
+            List<ProjectVersion> versionResult = new List<ProjectVersion>();
             for (int ctr = 0; ctr < result["VersionID"].Count; ctr++)
             {
                 sts = Convert.ToString(result["StatusOfProject"][ctr]);
-                if(sts == "OnProcess")
+                if (sts == "OnProcess")
                 {
                     status = ProjectStatus.OnProcess;
                 }
-                else if(sts == "Upcoming")
+                else if (sts == "Upcoming")
                 {
                     status = ProjectStatus.UpComing;
+                }
+                else if(sts == "Deployment")
+                {
+                    status = ProjectStatus.Deployment;
+                }
+                else if(sts == "OnStage")
+                {
+                    status = ProjectStatus.OnStage;
                 }
                 else
                 {
                     status = ProjectStatus.Completed;
                 }
 
-                employeeResult.Add(new ProjectVersion()
+                versionResult.Add(new ProjectVersion()
                 {
                     VersionID = Convert.ToInt32(result["VersionID"][ctr]),
                     VersionName = Convert.ToString(result["VersionName"][ctr]),
@@ -437,15 +464,17 @@ namespace TeamTracker
                 });
             }
 
-            VersionManager.VersionCollection = employeeResult;
+            return versionResult;
         }
 
-        public static void StoreTaskDetails()
+        public static List<Task> StoreTaskDetails()
         {
             var result = manager.FetchData("task", "").Value;
+            if (result == null) return null;
+
             List<Task> TaskCollection = new List<Task>();
             string status, priority;
-            for(int ctr=0; ctr < result["TaskID"].Count; ctr++)
+            for (int ctr = 0; ctr < result["TaskID"].Count; ctr++)
             {
                 status = result["StatusOfTask"][ctr].ToString();
                 priority = result["PriorityOfTask"][ctr].ToString();
@@ -460,16 +489,20 @@ namespace TeamTracker
                     AssignedTo = Convert.ToInt32(result["AssignedTo"][ctr]),
                     StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : TaskStatus.Done)),
                     TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
-                    VersionID = Convert.ToInt32(result["VersionID"][ctr])
+                    VersionID = Convert.ToInt32(result["VersionID"][ctr]),
+                    MilestoneID = Convert.ToInt32(result["MilestoneID"][ctr])
                 });
             }
 
-            TaskManager.TaskCollection = TaskCollection;
+            return TaskCollection;
         }
 
-        public static void StoreMilestones()
+        public static List<Milestone> StoreMilestones()
         {
             var result = manager.FetchData("milestone", "").Value;
+
+            if (result == null) return null;
+
             List<Milestone> MilestoneCollection = new List<Milestone>();
             string status;
             for (int ctr = 0; ctr < result["MilestoneID"].Count; ctr++)
@@ -486,7 +519,7 @@ namespace TeamTracker
                 });
             }
 
-            MilestoneManager.MilestoneCollection = MilestoneCollection;
+            return MilestoneCollection;
         }
 
         private static DatabaseManager manager;

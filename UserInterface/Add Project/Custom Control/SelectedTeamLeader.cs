@@ -40,17 +40,10 @@ namespace TeamTracker
             InitializeComponent();
         }
 
-        private void OnResize(object sender, EventArgs e)
-        {
-            int value = (Width - profilePictureBox1.Width) / 2;
-            panel4.Padding = new Padding(value, 30, value, 0);
-        }
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             int value = (Width - profilePictureBox1.Width) / 2;
-            panel4.Padding = new Padding(value, 0, value, 0);
         }
 
         private void OnChangeTLClick(object sender, EventArgs e)
@@ -59,5 +52,10 @@ namespace TeamTracker
         }
 
         private Employee employee;
+
+        private void OnResize(object sender, EventArgs e)
+        {
+            profilePictureBox1.Height = tableLayoutPanel1.Height / 2;
+        }
     }
 }

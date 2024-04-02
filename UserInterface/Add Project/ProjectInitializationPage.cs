@@ -156,7 +156,12 @@ namespace TeamTracker
         {
             if (EligibleForCreatingProject())
             {
-                VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, FetchAttachmentFiles());
+                List<VersionAttachment> versions = FetchAttachmentFiles();
+                if (versions.Count > 0)
+                {
+                    ProjectManagerMainForm.notify.AddNotification("Warning", "Are You Sure you want to Add Project without Attachments?");
+                }
+                VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, versions);
                 ReInitializeComponents();
             }
         }
@@ -165,26 +170,37 @@ namespace TeamTracker
         {
             if (clientTextBox.Text == "" || !clientTextBox.Text.Contains("@gmail.com") || clientTextBox.Text == "Client Email")
             {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Proper EmailID");
                 return false;
             }
 
-            if (projectTitleTextBox.Text == "" || VersionManager.IsProjectNameAlreadyExist(projectTitleTextBox.Text) || projectTitleTextBox.Text == "Project Name")
+            if (projectTitleTextBox.Text == "" ||  projectTitleTextBox.Text == "Project Name")
             {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Project Name Properly");
                 return false;
             }
 
             if (projectDescTextBox.Text == "" || projectDescTextBox.Text == "Enter your Desc...")
             {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Proper Description");
+                return false;
+            }
+
+            if (VersionManager.IsProjectNameAlreadyExist(projectTitleTextBox.Text))
+            {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Project Name Already Exists\nYou can switch to Version Upgrade Page");
                 return false;
             }
 
             if (teamLeader == null)
             {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "No Team Leaders Appointed");
                 return false;
             }
 
             if (!VersionManager.CheckDate(startDateTimePicker.Value, endDateTimePicker.Value))
             {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Valid Project Date");
                 return false;
             }
 
@@ -200,7 +216,9 @@ namespace TeamTracker
                 attachments.Add(Iter.Value);
             }
 
+            if(attachments.Count > 0)
             return attachments;
+            else { return null; }
         }
 
         public void ReInitializeComponents()

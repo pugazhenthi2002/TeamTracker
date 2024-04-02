@@ -34,14 +34,10 @@
             this.changeTLClick = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +61,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.profilePictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 45);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -73,8 +69,10 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 244);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Resize += new System.EventHandler(this.OnResize);
             // 
             // panel2
             // 
@@ -125,36 +123,14 @@
             this.label2.Text = "Profile Name";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 118);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.profilePictureBox1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(229, 118);
-            this.panel4.TabIndex = 4;
-            this.panel4.Resize += new System.EventHandler(this.OnResize);
-            // 
             // profilePictureBox1
             // 
-            this.profilePictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profilePictureBox1.Location = new System.Drawing.Point(0, 20);
+            this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.profilePictureBox1.Location = new System.Drawing.Point(58, 3);
             this.profilePictureBox1.Name = "profilePictureBox1";
-            this.profilePictureBox1.Size = new System.Drawing.Size(98, 98);
-            this.profilePictureBox1.TabIndex = 0;
+            this.profilePictureBox1.Size = new System.Drawing.Size(116, 116);
+            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePictureBox1.TabIndex = 6;
             this.profilePictureBox1.TabStop = false;
             // 
             // SelectedTeamLeader
@@ -170,8 +146,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -185,8 +159,6 @@
         private System.Windows.Forms.Label changeTLClick;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel4;
         private ProfilePictureBox profilePictureBox1;
     }
 }

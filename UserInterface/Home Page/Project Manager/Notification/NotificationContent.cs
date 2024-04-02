@@ -17,28 +17,27 @@ namespace TeamTracker
             InitializeComponent();
         }
 
-        public List<Notify> NotifyList
+        public List<Notification> NotifyList
         {
-            get
-            {
-                return notifyList;
-            }
             set
             {
                 if (value != null)
                 {
                     notifyList = value;
-                    InitializeNotifications(0);
+                    notifyList.Reverse();
+                    currentIndex = 0;
+                    notifyCount = value.Count;
+                    MaxUserControls = (notifyCount >= 4) ? 4 : notifyCount;
+                    endIndex = MaxUserControls - 1;
+                    InitializeNotifications();
                 }
             }
-
         }
 
-        private int currentIndex = 0;
+        private bool backEnable = false, nextEnable = true;
+        private int currentIndex = 0, endIndex, notifyCount;
         private int MaxUserControls = 4;//alter this value for required usercontrols
-        private int flag = 0;
-        private int ind = 0;
-        private List<Notify> notifyList = new List<Notify>();
+        private List<Notification> notifyList = new List<Notification>();
         private List<UcNotification> UcNotiList = new List<UcNotification>();
 
         public Color BorderColor
@@ -65,87 +64,84 @@ namespace TeamTracker
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
-        private int InitializeNotifications(int nav)
+        private void InitializeNotifications()
         {
-            if (nav > 0)
+            for (int i = 0; i < MaxUserControls; i++)
             {
-                currentIndex++;
+                UcNotification tempNotification = new UcNotification();
+                tempNotification.NotficationData = notifyList[i];
+                tempNotification.Size = new Size(panelBase.Width, panelBase.Height / 4);
+                tempNotification.Dock = DockStyle.Top;
+                tempNotification.CloseClick += OnClickCloseNotification;
+                panelBase.Controls.Add(tempNotification);
+                tempNotification.SendToBack();
+                UcNotiList.Add(tempNotification);
             }
-            else if (nav < 0)
-            {
-                currentIndex--;
-            }
-
-            //initial usercontrols
-            if (flag == 0)
-            {
-                for (int i = currentIndex; i < Math.Min(currentIndex + MaxUserControls, notifyList.Count); i++)
-                {
-                    flag = 1;
-                    UcNotification tempNotification = new UcNotification();
-                    tempNotification.NotficationData = notifyList[i];
-                    tempNotification.Size = new Size(panelBase.Width, panelBase.Height / 4);
-
-                    tempNotification.Dock = DockStyle.Top;
-                    tempNotification.CloseClick += OnClickCloseNotification;
-
-                    panelBase.Controls.Add(tempNotification);
-                    UcNotiList.Add(tempNotification);
-                }
-            }
-            //updating the usercontrols
-            else
-            {
-                if (notifyList.Count < MaxUserControls)
-                {
-                    panelBase.Controls.Remove(UcNotiList[UcNotiList.Count - 1]);
-                    UcNotiList.RemoveAt(UcNotiList.Count - 1);
-                }
-
-                for (int i = currentIndex; i < Math.Min(currentIndex + MaxUserControls, notifyList.Count); i++)
-                {
-                    UcNotiList[ind++].NotficationData = notifyList[i];
-                }
-                ind = 0;
-            }
-
-
-
-            if (currentIndex <= 0)//if it reaches the first page
-            {
-                return 1;
-            }
-            else if (currentIndex + MaxUserControls >= notifyList.Count)//if it reaches the last page
-            {
-                return -1;
-            }
-
-            return 0;
-
         }
 
-        private void OnClickCloseNotification(object sender, Notify e)
+        private void NotificationPagination()
         {
+            for(int ctr=currentIndex, idx = 0; ctr<=endIndex; ctr++, idx++)
+            {
+                UcNotiList[idx].NotficationData = notifyList[ctr];
+            }
+
+
+            nextEnable = (endIndex == notifyList.Count - 1) ? false : true;
+            backEnable = (currentIndex == 0) ? false : true;
+
+            if (backBtn.Image != null)
+            {
+                backBtn.Image.Dispose();
+            }
+
+            if (nextBtn.Image != null)
+            {
+                nextBtn.Image.Dispose();
+            }
+
+            backBtn.Image = (backEnable)?UserInterface.Properties.Resources.Back: UserInterface.Properties.Resources.Back_Hover;
+            nextBtn.Image = (nextEnable)?UserInterface.Properties.Resources.Next: UserInterface.Properties.Resources.Next_Hover;
+        }
+
+        private void OnClickCloseNotification(object sender, Notification e)
+        {
+            if (endIndex == notifyList.Count - 1)
+            {
+                if (currentIndex > 0) { currentIndex--; endIndex--; }
+                else if (currentIndex == 0) { endIndex--; }
+            }
+
             //DataHandler.DeleteNotification(e.NotificationId);
+            if (endIndex - currentIndex < UcNotiList.Count - 1)
+            {
+                UcNotification tempUCNotify = UcNotiList[UcNotiList.Count - 1];
+                UcNotiList.Remove(tempUCNotify);
+                panelBase.Controls.Remove(tempUCNotify);
+            }
             notifyList.Remove(e);
-            if (currentIndex > 0)
-            {
-                InitializeNotifications(-1);
-            }
-            else
-            {
-                InitializeNotifications(0);
-            }
+
+            NotificationPagination();
         }
 
         private void OnBackClick(object sender, EventArgs e)
         {
-
+            if (backEnable)
+            {
+                currentIndex--;
+                endIndex--;
+                NotificationPagination();
+            }
         }
 
         private void OnNextClick(object sender, EventArgs e)
         {
-
+            if (nextEnable)
+            {
+                currentIndex++;
+                endIndex++;
+                NotificationPagination();
+            }
         }
     }
 }

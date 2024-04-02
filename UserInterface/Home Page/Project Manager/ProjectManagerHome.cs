@@ -17,19 +17,13 @@ namespace UserInterface.Home_Page.Project_Manager
         public ProjectManagerHome()
         {
             InitializeComponent();
-            InitializeOverview();
         }
-        private void InitializeOverview()
+
+        public void InitializeHome()
         {
-            DataHandler.ConnectDatabase();
-            DataHandler.StoreEmployeeDetails();
-            DataHandler.StoreProjectDetails();
-            DataHandler.StoreProjectVersionDetails();
-            DataHandler.StoreTaskDetails();
-            DataHandler.StoreMilestones();
-            EmployeeManager.LogInEmployee("paulrobin98@gmail.com", "Lucid123");
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
             notificationContent1.NotifyList = DataHandler.FetchNotification();
+            deployContent1.DeployVersions = VersionManager.FetchDeploymentsProjectVersion();
         }
     }
 }

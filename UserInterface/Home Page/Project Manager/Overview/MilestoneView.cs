@@ -53,7 +53,7 @@ namespace TeamTracker
 
             for(int ctr=0, iter = startCount; ctr<4 && iter<=endCount; ctr++, iter++)
             {
-                singleMilestoneCollection[ctr].MilestoneContent = MilestoneCollection[iter].MileStoneName;
+                singleMilestoneCollection[ctr].MilestoneContent = MilestoneCollection[iter];
                 pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = SetColor(MilestoneCollection[iter].Status);
                 pathAndDateCollection[ctr + 1].MilestoneDate = MilestoneCollection[iter].EndDate;
             }

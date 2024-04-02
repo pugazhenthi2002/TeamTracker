@@ -30,31 +30,31 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.fileAttachment1 = new TeamTracker.FileAttachment();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.endDateTime = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.startDateTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.versionNameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chooseProjectLabel = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.teamLeaderPicAndNameVertical1 = new TeamTracker.TeamLeaderPicAndNameVertical();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.latestUpgradedVersion1 = new TeamTracker.LatestUpgradedVersion();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.descTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.teamLeaderPicAndNameVertical1 = new TeamTracker.TeamLeaderPicAndNameVertical();
-            this.latestUpgradedVersion1 = new TeamTracker.LatestUpgradedVersion();
-            this.fileAttachment1 = new TeamTracker.FileAttachment();
             this.upgradeButton = new TeamTracker.RippleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -103,6 +103,14 @@
             this.panel7.Size = new System.Drawing.Size(1334, 293);
             this.panel7.TabIndex = 2;
             // 
+            // fileAttachment1
+            // 
+            this.fileAttachment1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fileAttachment1.Location = new System.Drawing.Point(0, 0);
+            this.fileAttachment1.Name = "fileAttachment1";
+            this.fileAttachment1.Size = new System.Drawing.Size(1334, 293);
+            this.fileAttachment1.TabIndex = 0;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
@@ -139,32 +147,34 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.panel3.Controls.Add(this.dateTimePicker2);
+            this.panel3.Controls.Add(this.endDateTime);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(5, 88);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(35, 0, 35, 0);
             this.panel3.Size = new System.Drawing.Size(388, 74);
             this.panel3.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // endDateTime
             // 
-            this.dateTimePicker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker2.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(0, 35);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(388, 33);
-            this.dateTimePicker2.TabIndex = 2;
+            this.endDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.endDateTime.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDateTime.Location = new System.Drawing.Point(35, 35);
+            this.endDateTime.Name = "endDateTime";
+            this.endDateTime.Size = new System.Drawing.Size(318, 33);
+            this.endDateTime.TabIndex = 2;
+            this.endDateTime.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
             // 
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Location = new System.Drawing.Point(35, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(388, 35);
+            this.label4.Size = new System.Drawing.Size(318, 35);
             this.label4.TabIndex = 1;
             this.label4.Text = "End Date";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,32 +182,34 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.panel4.Controls.Add(this.dateTimePicker1);
+            this.panel4.Controls.Add(this.startDateTime);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(5, 5);
             this.panel4.Margin = new System.Windows.Forms.Padding(5);
             this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(35, 0, 35, 0);
             this.panel4.Size = new System.Drawing.Size(388, 73);
             this.panel4.TabIndex = 0;
             // 
-            // dateTimePicker1
+            // startDateTime
             // 
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(0, 35);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(388, 33);
-            this.dateTimePicker1.TabIndex = 1;
+            this.startDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.startDateTime.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDateTime.Location = new System.Drawing.Point(35, 35);
+            this.startDateTime.Name = "startDateTime";
+            this.startDateTime.Size = new System.Drawing.Size(318, 33);
+            this.startDateTime.TabIndex = 1;
+            this.startDateTime.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
             // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Location = new System.Drawing.Point(35, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(388, 35);
+            this.label2.Size = new System.Drawing.Size(318, 35);
             this.label2.TabIndex = 0;
             this.label2.Text = "Start Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -232,7 +244,7 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.textBox1);
+            this.panel9.Controls.Add(this.versionNameTextBox);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 35);
             this.panel9.Name = "panel9";
@@ -240,19 +252,19 @@
             this.panel9.Size = new System.Drawing.Size(388, 39);
             this.panel9.TabIndex = 2;
             // 
-            // textBox1
+            // versionNameTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBox1.Location = new System.Drawing.Point(5, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(378, 29);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Enter Version";
+            this.versionNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.versionNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.versionNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.versionNameTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.versionNameTextBox.Location = new System.Drawing.Point(5, 5);
+            this.versionNameTextBox.Multiline = true;
+            this.versionNameTextBox.Name = "versionNameTextBox";
+            this.versionNameTextBox.Size = new System.Drawing.Size(378, 29);
+            this.versionNameTextBox.TabIndex = 3;
+            this.versionNameTextBox.Text = "Enter Version";
             // 
             // label3
             // 
@@ -301,6 +313,14 @@
             this.panel5.Size = new System.Drawing.Size(520, 153);
             this.panel5.TabIndex = 3;
             // 
+            // teamLeaderPicAndNameVertical1
+            // 
+            this.teamLeaderPicAndNameVertical1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teamLeaderPicAndNameVertical1.Location = new System.Drawing.Point(0, 0);
+            this.teamLeaderPicAndNameVertical1.Name = "teamLeaderPicAndNameVertical1";
+            this.teamLeaderPicAndNameVertical1.Size = new System.Drawing.Size(520, 153);
+            this.teamLeaderPicAndNameVertical1.TabIndex = 0;
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -326,6 +346,14 @@
             this.panel8.Size = new System.Drawing.Size(668, 346);
             this.panel8.TabIndex = 1;
             // 
+            // latestUpgradedVersion1
+            // 
+            this.latestUpgradedVersion1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.latestUpgradedVersion1.Location = new System.Drawing.Point(0, 0);
+            this.latestUpgradedVersion1.Name = "latestUpgradedVersion1";
+            this.latestUpgradedVersion1.Size = new System.Drawing.Size(668, 346);
+            this.latestUpgradedVersion1.TabIndex = 0;
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
@@ -339,7 +367,7 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.textBox2);
+            this.panel10.Controls.Add(this.descTextBox);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 35);
             this.panel10.Name = "panel10";
@@ -347,19 +375,19 @@
             this.panel10.Size = new System.Drawing.Size(668, 311);
             this.panel10.TabIndex = 3;
             // 
-            // textBox2
+            // descTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBox2.Location = new System.Drawing.Point(5, 5);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(658, 301);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "Enter Version Description";
+            this.descTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.descTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.descTextBox.Location = new System.Drawing.Point(5, 5);
+            this.descTextBox.Multiline = true;
+            this.descTextBox.Name = "descTextBox";
+            this.descTextBox.Size = new System.Drawing.Size(658, 301);
+            this.descTextBox.TabIndex = 3;
+            this.descTextBox.Text = "Enter Version Description";
             // 
             // label5
             // 
@@ -372,30 +400,6 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Version Description";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // teamLeaderPicAndNameVertical1
-            // 
-            this.teamLeaderPicAndNameVertical1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.teamLeaderPicAndNameVertical1.Location = new System.Drawing.Point(0, 0);
-            this.teamLeaderPicAndNameVertical1.Name = "teamLeaderPicAndNameVertical1";
-            this.teamLeaderPicAndNameVertical1.Size = new System.Drawing.Size(520, 153);
-            this.teamLeaderPicAndNameVertical1.TabIndex = 0;
-            // 
-            // latestUpgradedVersion1
-            // 
-            this.latestUpgradedVersion1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.latestUpgradedVersion1.Location = new System.Drawing.Point(0, 0);
-            this.latestUpgradedVersion1.Name = "latestUpgradedVersion1";
-            this.latestUpgradedVersion1.Size = new System.Drawing.Size(668, 346);
-            this.latestUpgradedVersion1.TabIndex = 0;
-            // 
-            // fileAttachment1
-            // 
-            this.fileAttachment1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileAttachment1.Location = new System.Drawing.Point(0, 0);
-            this.fileAttachment1.Name = "fileAttachment1";
-            this.fileAttachment1.Size = new System.Drawing.Size(1334, 293);
-            this.fileAttachment1.TabIndex = 0;
             // 
             // upgradeButton
             // 
@@ -411,6 +415,7 @@
             this.upgradeButton.TabIndex = 4;
             this.upgradeButton.Text = "Upgrade";
             this.upgradeButton.UseVisualStyleBackColor = false;
+            this.upgradeButton.Click += new System.EventHandler(this.upgradeButton_Click);
             // 
             // VersionUpgrade
             // 
@@ -452,9 +457,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker endDateTime;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker startDateTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label chooseProjectLabel;
@@ -464,9 +469,9 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox versionNameTextBox;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox descTextBox;
         private FileAttachment fileAttachment1;
         private TeamLeaderPicAndNameVertical teamLeaderPicAndNameVertical1;
         private LatestUpgradedVersion latestUpgradedVersion1;
