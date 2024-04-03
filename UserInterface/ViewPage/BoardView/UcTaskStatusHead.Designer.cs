@@ -45,8 +45,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.Controls.Add(this.labelStatus, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanelUpDown, 2, 0);
@@ -66,7 +66,7 @@
             this.labelStatus.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.Location = new System.Drawing.Point(3, 0);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(176, 49);
+            this.labelStatus.Size = new System.Drawing.Size(237, 49);
             this.labelStatus.TabIndex = 0;
             this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -122,7 +122,7 @@
             this.labelTaskCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTaskCount.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTaskCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelTaskCount.Location = new System.Drawing.Point(191, 9);
+            this.labelTaskCount.Location = new System.Drawing.Point(252, 9);
             this.labelTaskCount.Margin = new System.Windows.Forms.Padding(9);
             this.labelTaskCount.Name = "labelTaskCount";
             this.labelTaskCount.Size = new System.Drawing.Size(33, 31);
@@ -161,8 +161,8 @@
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelUpDown;
-        private System.Windows.Forms.PictureBox pictureBoxUp;
-        private System.Windows.Forms.PictureBox pictureBoxDown;
+        public System.Windows.Forms.PictureBox pictureBoxUp;
+        public System.Windows.Forms.PictureBox pictureBoxDown;
         private System.Windows.Forms.Label labelTaskCount;
     }
 }

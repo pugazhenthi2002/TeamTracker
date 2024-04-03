@@ -42,5 +42,22 @@ namespace UserInterface
                 ;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DataHandler.ConnectDatabase();
+            VersionManager.StoreProjectCollection();
+            VersionManager.StoreVersionCollection();
+            TaskManager.StoreTaskCollection();
+            EmployeeManager.StoreEmployeeToCollection();
+            EmployeeManager.StoreEmployeeManagingCollection();
+            EmployeeManager.LogInEmployee("emmastonev@gmail.com", "Lucid123");
+            ucTaskBoardBase1.CurrentProjVersion = VersionManager.CurrentVersion;
+        }
     }
 }

@@ -19,6 +19,10 @@ namespace TeamTracker
             InitializeRoundedEdge();
             
         }
+        
+        public MouseEventHandler MouseDownTaskBoard;
+        public MouseEventHandler MouseMoveTaskBoard;
+        public MouseEventHandler MouseUpTaskBoard;
 
         public Task TaskData
         {
@@ -57,7 +61,7 @@ namespace TeamTracker
         private void OnLoad(object sender, EventArgs e)
         {
             InitializeRoundedEdge();
-            toolTip1.SetToolTip(pictureBoxFlag, TaskBoardData.TaskPriority + "");
+            if(TaskBoardData!=null) toolTip1.SetToolTip(pictureBoxFlag, TaskBoardData.TaskPriority + "");
             toolTip1.SetToolTip(pictureBoxInfo, "Info");
             toolTip1.SetToolTip(profilePictureBoxAssignedBy, "Assigned By");
         }
@@ -101,6 +105,7 @@ namespace TeamTracker
             LabelTask.Text = TaskData.TaskName;
             ucDueDate1.DueDate = TaskData.EndDate;
             profilePictureBoxAssignedBy.ImageLocation = (EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy)).EmpProfileLocation;
+            //profilePictureBoxAssignedBy.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy).EmpProfileLocation);
             
         }
 
@@ -112,6 +117,49 @@ namespace TeamTracker
         private void OnResize(object sender, EventArgs e)
         {
             InitializeRoundedEdge();
+        }
+
+        private void OnClickTaskBoard(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnMouseEnterTaskBoard(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void OnMouseLeaveTaskBoard(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+        private bool isDragging = false;
+
+        private void OnMouseDownTaskBoard(object sender, MouseEventArgs e)
+        {
+            Point pt = (sender as Control).PointToScreen(e.Location);
+            pt = this.PointToClient(pt);
+            MouseDownTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+            isDragging = true;
+        }
+
+        private void OnMouseUpTaskBoard(object sender, MouseEventArgs e)
+        {
+            Point pt = (sender as Control).PointToScreen(e.Location);
+            pt = this.PointToClient(pt);
+            MouseUpTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+            isDragging = false;
+        }
+
+        private void OnMouseMoveTaskBoard(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point pt = (sender as Control).PointToScreen(e.Location);
+                pt = this.PointToClient(pt);
+                MouseMoveTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+            }
         }
     }
 }
