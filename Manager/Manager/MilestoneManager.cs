@@ -9,12 +9,30 @@ namespace TeamTracker
 {
     public static class MilestoneManager
     {
+        public static Milestone CurrentMilestone { get; set; }
+
         public static BooleanMsg StoreMilestoneCollection()
         {
             MilestoneCollection = DataHandler.StoreMilestones();
 
             if (MilestoneCollection == null) { return "Couldn't able to Connect Milestone"; }
-            else return true;
+            else
+            {
+                if(VersionManager.CurrentVersion != null)
+                {
+                    int id = VersionManager.CurrentVersion.VersionID;
+
+                    foreach(var Iter in MilestoneCollection)
+                    {
+                        if(Iter.VersionID == id && Iter.Status == MilestoneStatus.OnProcess)
+                        {
+                            CurrentMilestone = Iter;
+                            break;
+                        }
+                    }
+                }
+                return true;
+            }
         }
 
         public static int FetchTeamLeader(int milestoneID)

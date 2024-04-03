@@ -42,10 +42,11 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(855, 35);
@@ -109,13 +110,19 @@
             this.browseLabel.Text = "Browse";
             this.browseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.browseLabel.Click += new System.EventHandler(this.OnBrowseClick);
+            this.browseLabel.MouseEnter += new System.EventHandler(this.OnBrowseMouseEnter);
+            this.browseLabel.MouseLeave += new System.EventHandler(this.OnBrowseMouseLeave);
             // 
             // attachmentDisplayPanel
             // 
+            this.attachmentDisplayPanel.AutoScroll = true;
+            this.attachmentDisplayPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.attachmentDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attachmentDisplayPanel.Location = new System.Drawing.Point(408, 3);
+            this.attachmentDisplayPanel.Location = new System.Drawing.Point(405, 0);
+            this.attachmentDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
             this.attachmentDisplayPanel.Name = "attachmentDisplayPanel";
-            this.attachmentDisplayPanel.Size = new System.Drawing.Size(444, 354);
+            this.attachmentDisplayPanel.Padding = new System.Windows.Forms.Padding(30, 10, 30, 10);
+            this.attachmentDisplayPanel.Size = new System.Drawing.Size(450, 360);
             this.attachmentDisplayPanel.TabIndex = 1;
             // 
             // openFileDialog

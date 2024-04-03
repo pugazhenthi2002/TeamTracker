@@ -28,6 +28,7 @@ namespace UserInterface.Add_Project.Custom_Control
                     endIdx = viewCount - 1;
                     isDownEnable = totalCount > 3;
                     InitializeTemplates();
+                    ReorderProjects();
                 }
             }
         }
@@ -41,6 +42,7 @@ namespace UserInterface.Add_Project.Custom_Control
         {
             if (prevControl != null)
             {
+                prevControl.IsClicked = false;
                 prevControl.BackColor = Color.FromArgb(82, 109, 130);
             }
             prevControl = null;
@@ -57,6 +59,7 @@ namespace UserInterface.Add_Project.Custom_Control
         {
             if (prevControl != null)
             {
+                prevControl.IsClicked = false;
                 prevControl.BackColor = Color.FromArgb(82, 109, 130);
             }
             prevControl = null;
@@ -121,10 +124,21 @@ namespace UserInterface.Add_Project.Custom_Control
         {
             if (prevControl != null)
             {
+                prevControl.IsClicked = false;
                 prevControl.BackColor = Color.FromArgb(82, 109, 130);
             }
             prevControl = control;
             prevControl.BackColor = Color.FromArgb(221, 230, 237);
+        }
+
+        private void OnPaginateMouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = Color.FromArgb(102, 129, 150);
+        }
+
+        private void OnPaginateMouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = Color.FromArgb(82, 109, 130);
         }
 
         private void ReorderProjects()
@@ -160,6 +174,7 @@ namespace UserInterface.Add_Project.Custom_Control
         );
 
         private const int CSDropShadow = 0x00020000;
+
         protected override CreateParams CreateParams
         {
             get

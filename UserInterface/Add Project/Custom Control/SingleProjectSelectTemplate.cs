@@ -28,17 +28,28 @@ namespace UserInterface.Add_Project.Custom_Control
             }
         }
 
+        public bool IsClicked
+        {
+            get { return isClicked; }
+            set
+            {
+                isClicked = value;
+            }
+        }
+
+        private bool isClicked = false;
         private Projects project;
 
         public SingleProjectSelectTemplate()
         {
+            DoubleBuffered = true;
             InitializeComponent();
         }
 
         private void InitializeTemplate()
         {
             projectLabel.Text = project.ProjectName;
-            versionLabel.Text = VersionManager.FetchProjectLatestVersion(project.ProjectID).VersionName;
+            versionLabel.Text = "Latest Version:" + VersionManager.FetchProjectLatestVersion(project.ProjectID).VersionName;
             Employee emp = EmployeeManager.FetchEmployeeFromEmpID(project.TeamLeadID);
             teamLeadLabel.Text = emp.EmployeeFirstName;
 
@@ -51,7 +62,24 @@ namespace UserInterface.Add_Project.Custom_Control
 
         private void OnClicked(object sender, EventArgs e)
         {
+            isClicked = true;
             ProjectClick?.Invoke(this, project);
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            if (!isClicked)
+            {
+                this.BackColor = Color.FromArgb(102, 129, 150);
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if (!isClicked)
+            {
+                this.BackColor = Color.FromArgb(82, 109, 130);
+            }
         }
     }
 }

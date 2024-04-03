@@ -443,6 +443,46 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Version_Milestone_Status_Down {
+            get {
+                object obj = ResourceManager.GetObject("Version Milestone Status Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Version_Milestone_Status_Down_Down {
+            get {
+                object obj = ResourceManager.GetObject("Version Milestone Status Down Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Version_Milestone_Status_Equal {
+            get {
+                object obj = ResourceManager.GetObject("Version Milestone Status Equal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Version_Milestone_Status_Up {
+            get {
+                object obj = ResourceManager.GetObject("Version Milestone Status Up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap View_Project {
             get {
                 object obj = ResourceManager.GetObject("View Project", resourceCulture);

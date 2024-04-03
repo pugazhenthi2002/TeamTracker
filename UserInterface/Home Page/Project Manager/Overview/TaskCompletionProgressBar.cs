@@ -45,14 +45,15 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnProgressBarPaint(object sender, PaintEventArgs e)
         {
+            int padding = panel2.Height / 10;
             int width = panel2.Width, height = panel2.Height;
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Rectangle outer = new Rectangle(0, 0, width, height);
-            Rectangle inner = new Rectangle(width/5, height/5, width * 3 / 5, height * 3 / 5);
-            Brush valueBrush = new SolidBrush(Color.Green);
-            Brush outerBrush = new SolidBrush(Color.Gray);
-            Brush innerBrush = new SolidBrush(Color.White);
-            Brush textBrush = new SolidBrush(Color.Black);
+            Rectangle outer = new Rectangle(padding, padding, height - padding * 2, height - padding * 2);
+            Rectangle inner = new Rectangle(height/5, height/5, (height * 3 / 5), (height * 3 / 5));
+            Brush valueBrush = new SolidBrush(Color.LightGreen);
+            Brush outerBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
+            Brush innerBrush = new SolidBrush(Color.FromArgb(39, 55, 77));
+            Brush textBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
             StringFormat SFormat = new StringFormat
             {
                 Alignment = StringAlignment.Center,

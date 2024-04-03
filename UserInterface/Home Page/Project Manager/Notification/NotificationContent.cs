@@ -72,6 +72,7 @@ namespace TeamTracker
                 tempNotification.NotficationData = notifyList[i];
                 tempNotification.Size = new Size(panelBase.Width, panelBase.Height / 4);
                 tempNotification.Dock = DockStyle.Top;
+                tempNotification.Height = 100;
                 tempNotification.CloseClick += OnClickCloseNotification;
                 panelBase.Controls.Add(tempNotification);
                 tempNotification.SendToBack();

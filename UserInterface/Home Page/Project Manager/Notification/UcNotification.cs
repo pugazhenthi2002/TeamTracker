@@ -16,7 +16,7 @@ namespace TeamTracker
         public UcNotification()
         {
             InitializeComponent();
-            InitializeRoundedEdge();
+            //InitializeRoundedEdge();
         }
 
         public EventHandler<Notification> CloseClick;
@@ -67,7 +67,7 @@ namespace TeamTracker
 
         private void OnResizeUserControl(object sender, EventArgs e)
         {
-            InitializeRoundedEdge();
+            //InitializeRoundedEdge();
         }
 
         private void OnClickClose(object sender, EventArgs e)

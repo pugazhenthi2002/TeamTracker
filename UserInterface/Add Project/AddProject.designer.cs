@@ -131,29 +131,29 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.tabPage1.Controls.Add(this.projectInitializationPage1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Location = new System.Drawing.Point(4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(50);
-            this.tabPage1.Size = new System.Drawing.Size(664, 404);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(100, 50, 100, 50);
+            this.tabPage1.Size = new System.Drawing.Size(664, 423);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
             // projectInitializationPage1
             // 
             this.projectInitializationPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectInitializationPage1.Location = new System.Drawing.Point(50, 50);
+            this.projectInitializationPage1.Location = new System.Drawing.Point(100, 50);
             this.projectInitializationPage1.Name = "projectInitializationPage1";
-            this.projectInitializationPage1.Size = new System.Drawing.Size(564, 304);
+            this.projectInitializationPage1.Size = new System.Drawing.Size(464, 323);
             this.projectInitializationPage1.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.tabPage2.Controls.Add(this.versionUpgrade1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(50);
-            this.tabPage2.Size = new System.Drawing.Size(664, 423);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(100, 50, 100, 50);
+            this.tabPage2.Size = new System.Drawing.Size(664, 404);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -161,9 +161,9 @@
             // 
             this.versionUpgrade1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.versionUpgrade1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.versionUpgrade1.Location = new System.Drawing.Point(50, 50);
+            this.versionUpgrade1.Location = new System.Drawing.Point(100, 50);
             this.versionUpgrade1.Name = "versionUpgrade1";
-            this.versionUpgrade1.Size = new System.Drawing.Size(564, 323);
+            this.versionUpgrade1.Size = new System.Drawing.Size(464, 304);
             this.versionUpgrade1.TabIndex = 0;
             // 
             // AddProject

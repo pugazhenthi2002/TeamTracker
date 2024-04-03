@@ -695,6 +695,10 @@
     <None Include="Images\Filter.png" />
     <None Include="Images\Board.png" />
     <None Include="Images\Timeline.png" />
+    <None Include="Images\Version Milestone Status Down Down.png" />
+    <None Include="Images\Version Milestone Status Down.png" />
+    <None Include="Images\Version Milestone Status Equal.png" />
+    <None Include="Images\Version Milestone Status Up.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <Content Include="Resources\Close Black.png" />

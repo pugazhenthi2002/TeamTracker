@@ -35,18 +35,31 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             base.OnResize(e);
             InitializeBorder();
         }
+
         public ProjectVersion BoardVersion
         {
             get { return boardVersion; }
             set
             {
+                milestoneStatusPicBox.Visible = false;
+                if(value.StatusOfVersion == ProjectStatus.OnProcess || value.StatusOfVersion == ProjectStatus.OnStage || value.StatusOfVersion == ProjectStatus.Deployment)
+                {
+                    milestoneStatusPicBox.Visible = true;
+                    SetMilestoneStatus();
+                }
+
                 boardVersion = value;
                 versionNameLabel.Text = value.VersionName;
                 versionDateLabel.Text = value.StartDate.ToShortDateString() + " - " + value.EndDate.ToShortDateString();
+                int id = VersionManager.FetchTeamLeadIDFromProjectID(value.ProjectID);
+                profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(id).EmpProfileLocation);
+                milestoneCountLabel.Text = MilestoneManager.FetchMilestones(value.VersionID).Count.ToString();
+                taskCountLabel.Text = TaskManager.FetchTaskCount(value.VersionID).Count.ToString();
             }
         }
 
         private ProjectVersion boardVersion;
+
         public BoardViewTemplate()
         {
             InitializeComponent();
@@ -81,9 +94,36 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             brush1.Dispose();
         }
 
-        private void OnMilestoneStatusPaint(object sender, PaintEventArgs e)
+        private void SetMilestoneStatus()
         {
+            Milestone milestone = MilestoneManager.CurrentMilestone;
 
+            if(milestone != null)
+            {
+                if (milestoneStatusPicBox.Image != null)
+                    milestoneStatusPicBox.Image.Dispose();
+
+                if(milestone.StartDate > DateTime.Today)
+                {
+                    milestoneStatusPicBox.BackColor = Color.Green;
+                    milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Up;
+                }
+                else if(milestone.EndDate < DateTime.Today)
+                {
+                    milestoneStatusPicBox.BackColor = Color.Red;
+                    milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Down;
+                }
+                else
+                {
+                    milestoneStatusPicBox.BackColor = Color.Blue;
+                    milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Equal;
+                }
+            }
+        }
+
+        private void OnBoardClick(object sender, EventArgs e)
+        {
+            ;
         }
     }
 }

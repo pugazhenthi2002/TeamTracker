@@ -142,7 +142,6 @@ namespace UserInterface.ViewProject.TimelineView
         private void OnProjectSelected(object sender, Projects e)
         {
             currentVersion = VersionManager.FetchProjectLatestVersion(e.ProjectID);
-            timelinePaginate1.Version = currentVersion;
             versionNames.Text = currentVersion.VersionName;
             currentProject = (sender as VerticalLabel).Project;
 

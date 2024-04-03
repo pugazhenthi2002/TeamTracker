@@ -21,6 +21,38 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeBorder();
+            versionNameTextBox.LostFocus += AddVersionNamePlaceHolders;
+            versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
+            descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
+            descTextBox.LostFocus += AddVersionDescPlaceHolders;
+        }
+
+        private void AddVersionNamePlaceHolders(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(versionNameTextBox.Text))
+                versionNameTextBox.Text = "Enter Version";
+        }
+
+        private void RemoveVersionNamePlaceHolders(object sender, EventArgs e)
+        {
+            if (versionNameTextBox.Text == "Enter Version")
+            {
+                versionNameTextBox.Text = "";
+            }
+        }
+
+        private void RemoveVersionDescPlaceHolders(object sender, EventArgs e)
+        {
+            if (descTextBox.Text == "Enter Version Description")
+            {
+                descTextBox.Text = "";
+            }
+        }
+
+        private void AddVersionDescPlaceHolders(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(descTextBox.Text))
+                descTextBox.Text = "Enter Version Description";
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -38,8 +70,8 @@ namespace TeamTracker
         {
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
-            panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
-            panel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel4.Width, panel4.Height, 20, 20));
+            endDatePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, endDatePanel.Width, endDatePanel.Height, 20, 20));
+            startDatePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, startDatePanel.Width, startDatePanel.Height, 20, 20));
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
@@ -64,6 +96,7 @@ namespace TeamTracker
         private void OnProjectSelected(object sender, Projects e)
         {
             project = e;
+            chooseProjectLabel.Text = e.ProjectName;
             InitializeVersionPage();
         }
 
@@ -93,8 +126,8 @@ namespace TeamTracker
 
             if (!VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTime.Value, endDateTime.Value))
             {
-                startDateTime.Value = endDateTime.Value = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
-                return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
+                DateTime availableDate = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
+                return "Project Cannot be Started on Mentioned Date\nTeam Leader Available After "+ availableDate.ToString();
             }
 
             if (startDateTime.Value.Date == endDateTime.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
@@ -112,10 +145,67 @@ namespace TeamTracker
         {
             if(project != null && !VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTime.Value, endDateTime.Value))
             {
-                startDateTime.Value = endDateTime.Value = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
-                ProjectManagerMainForm.notify.AddNotification("Invalid Input", "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date\nAvailable Date: " + startDateTime.Value.ToShortDateString());
+                DateTime availableDate = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date\nAvailable Date: " + availableDate.ToShortDateString());
             }
-            
+        }
+
+        private void OnChooseProjectLabelEnter(object sender, EventArgs e)
+        {
+            chooseProjectLabel.BackColor = Color.FromArgb(157, 178, 191);
+            chooseProjectLabel.ForeColor = Color.Black;
+        }
+
+        private void OnChooseProjectLabelLeave(object sender, EventArgs e)
+        {
+            chooseProjectLabel.BackColor = Color.FromArgb(201, 210, 217);
+            chooseProjectLabel.ForeColor = Color.FromArgb(39, 55, 77);
+        }
+
+        private void DateMouseEnter(object sender, EventArgs e)
+        {
+            string name = (sender as Control).Name;
+            if (name == "startDateTime" || name == "startDateLabel" || name == "startDatePanel")
+            {
+                startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(157, 178, 191);
+                startDateLabel.ForeColor = Color.Black;
+            }
+            else
+            {
+                endDatePanel.BackColor = endDateLabel.BackColor = Color.FromArgb(157, 178, 191);
+                endDateLabel.ForeColor = Color.Black;
+            }
+        }
+
+        private void DateMouseLeave(object sender, EventArgs e)
+        {
+            string name = (sender as Control).Name;
+            if (name == "startDateTime" || name == "startDateLabel" || name == "startDatePanel")
+            {
+                startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(201, 210, 217);
+                startDateLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            }
+            else
+            {
+                endDatePanel.BackColor = endDateLabel.BackColor = Color.FromArgb(201, 210, 217);
+                endDateLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            }
+        }
+
+        private void ClearClick(object sender, EventArgs e)
+        {
+            InitializeVersionUpgrade();
+        }
+
+        private void InitializeVersionUpgrade()
+        {
+            chooseProjectLabel.Text = "Choose Project";
+            versionNameTextBox.Text = "Enter Version";
+            descTextBox.Text = "Enter Version Description";
+            startDateTime.Value = endDateTime.Value = DateTime.Today;
+            latestUpgradedVersion1.LatestVersion = null;
+            fileAttachment1.AttachmentCollection = null;
+            teamLeaderPicAndNameVertical1.TeamLeader = null;
         }
     }
 }

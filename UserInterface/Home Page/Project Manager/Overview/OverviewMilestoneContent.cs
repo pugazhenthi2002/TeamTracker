@@ -24,6 +24,10 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             int topBottom = (milestonePanel.Height - 150)/2;
             milestonePanel.Padding = new Padding(0, topBottom, 0, topBottom);
+            tableLayoutPanel3.Invalidate();
+            tableLayoutPanel4.Invalidate();
+            tableLayoutPanel5.Invalidate();
+            tableLayoutPanel6.Invalidate();
             InitializeRoundedEdge();
         }
 
@@ -50,6 +54,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 if (value != null)
                     InitializeOverview();
                 backEnable = false;
+                frontEnable = true;
+
+                if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
+                if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+
+                backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+                nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
             }
         }
 
@@ -65,6 +76,9 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (flag < 0) backEnable = false;
             else { backEnable = true; }
             frontEnable = true;
+
+            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
+            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
 
             backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
             nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
@@ -103,6 +117,23 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             taskCompletionProgressBar1.CompletedTask = result[1];
         }
 
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = Color.FromArgb(82, 109, 130);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
+        }
+
+        private void OnTablePanelPaint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(pen, new Point(15, panel1.Height), new Point((sender as TableLayoutPanel).Width - 15, panel1.Height));
+            pen.Dispose();
+        }
 
         private void InitializeRoundedEdge()
         {
@@ -111,6 +142,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
+            backNavigatePicBox.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, backNavigatePicBox.Width, backNavigatePicBox.Height, 10, 10));
+            nextNavPicBox.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, nextNavPicBox.Width, nextNavPicBox.Height, 10, 10));
         }
     }
 }

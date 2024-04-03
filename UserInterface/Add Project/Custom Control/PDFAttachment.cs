@@ -36,5 +36,21 @@ namespace TeamTracker
         {
             AttachmentRemove?.Invoke(this, e);
         }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            if (closePicBox.Image != null)
+                closePicBox.Image.Dispose();
+
+            closePicBox.Image = UserInterface.Properties.Resources.Close;
+        }
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            if (closePicBox.Image != null)
+                closePicBox.Image.Dispose();
+
+            closePicBox.Image = UserInterface.Properties.Resources.close_Hover;
+        }
     }
 }

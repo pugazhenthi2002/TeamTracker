@@ -29,7 +29,19 @@ namespace TeamTracker
             AttachmentCollection = new Dictionary<string, VersionAttachment>();
         }
 
-        public Dictionary<string, VersionAttachment> AttachmentCollection;
+        public Dictionary<string, VersionAttachment> attachmentCollection;
+        public Dictionary<string, VersionAttachment> AttachmentCollection
+        {
+            get { return attachmentCollection; }
+            set
+            {
+                if(value == null)
+                {
+                    attachmentCollection = null;
+                    attachmentDisplayPanel.Controls.Clear();
+                }
+            }
+        }
 
         private void OnResize(object sender, EventArgs e)
         {
@@ -39,6 +51,8 @@ namespace TeamTracker
 
         private void OnBrowseClick(object sender, EventArgs e)
         {
+            if (attachmentCollection == null) attachmentCollection = new Dictionary<string, VersionAttachment>();
+
             openFileDialog = new OpenFileDialog
             {
                 Title = "Open PDF File",
@@ -68,6 +82,7 @@ namespace TeamTracker
             pdfAttachment = new PDFAttachment
             {
                 Dock = DockStyle.Top,
+                Height = 50,
                 FileName = safeFile
             };
             pdfAttachment.BringToFront();
@@ -82,5 +97,15 @@ namespace TeamTracker
         }
 
         private PDFAttachment pdfAttachment;
+
+        private void OnBrowseMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Label).BackColor = Color.Blue;
+        }
+
+        private void OnBrowseMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Label).BackColor = Color.RoyalBlue;
+        }
     }
 }

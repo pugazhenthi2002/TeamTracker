@@ -48,7 +48,7 @@ namespace UserInterface.Add_Project.Custom_Control
                 singleProjectSelectTemplate2.Visible = true;
                 singleProjectSelectTemplate2.Project = project2;
             }
-            else singleProjectSelectTemplate2.Visible = true;
+            else singleProjectSelectTemplate2.Visible = false;
 
             singleProjectSelectTemplate1.Region = singleProjectSelectTemplate2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, singleProjectSelectTemplate1.Width, singleProjectSelectTemplate1.Height, 20, 20));
         }

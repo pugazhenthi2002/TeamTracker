@@ -17,16 +17,30 @@ namespace UserInterface
         public Form1()
         {
             InitializeComponent();
-            //DataHandler.ConnectDatabase();
-            //VersionManager.StoreProjectCollection();
-            //VersionManager.StoreVersionCollection();
-            //TaskManager.StoreTaskCollection();
-            //timelineView1.ProjectCollection = VersionManager.ProjectCollection;
+            button1.Focus();
         }
 
         private void rippleButton1_Click(object sender, EventArgs e)
         {
             ;
+        }
+        bool isDragging = false;
+        private void button1_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDragging = true;
+        }
+
+        private void button1_MouseUp(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void button1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                ;
+            }
         }
     }
 }

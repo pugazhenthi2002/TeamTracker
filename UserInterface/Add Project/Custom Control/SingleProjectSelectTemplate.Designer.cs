@@ -41,6 +41,7 @@
             // 
             // versionLabel
             // 
+            this.versionLabel.BackColor = System.Drawing.Color.Transparent;
             this.versionLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.versionLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionLabel.Location = new System.Drawing.Point(0, 59);
@@ -50,9 +51,12 @@
             this.versionLabel.Text = "Latest Version: ";
             this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.versionLabel.Click += new System.EventHandler(this.OnClicked);
+            this.versionLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.versionLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // projectLabel
             // 
+            this.projectLabel.BackColor = System.Drawing.Color.Transparent;
             this.projectLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.projectLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectLabel.Location = new System.Drawing.Point(0, 0);
@@ -62,6 +66,8 @@
             this.projectLabel.Text = "Project Name";
             this.projectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.projectLabel.Click += new System.EventHandler(this.OnClicked);
+            this.projectLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.projectLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // panel1
             // 
@@ -74,6 +80,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -88,10 +95,13 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(170, 33);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Click += new System.EventHandler(this.OnClicked);
+            this.tableLayoutPanel1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // teamLeadLabel
             // 
             this.teamLeadLabel.AutoSize = true;
+            this.teamLeadLabel.BackColor = System.Drawing.Color.Transparent;
             this.teamLeadLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.teamLeadLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teamLeadLabel.Location = new System.Drawing.Point(0, 0);
@@ -102,6 +112,8 @@
             this.teamLeadLabel.Text = "Project Lead Name";
             this.teamLeadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.teamLeadLabel.Click += new System.EventHandler(this.OnClicked);
+            this.teamLeadLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.teamLeadLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // profilePictureBox1
             // 

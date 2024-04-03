@@ -140,6 +140,8 @@
             this.downPicBox.TabIndex = 1;
             this.downPicBox.TabStop = false;
             this.downPicBox.Click += new System.EventHandler(this.OnPaginateDownClick);
+            this.downPicBox.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
+            this.downPicBox.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
             // 
             // upPicBox
             // 
@@ -153,6 +155,8 @@
             this.upPicBox.TabIndex = 0;
             this.upPicBox.TabStop = false;
             this.upPicBox.Click += new System.EventHandler(this.OnPaginateUpClick);
+            this.upPicBox.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
+            this.upPicBox.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
             // 
             // label1
             // 
