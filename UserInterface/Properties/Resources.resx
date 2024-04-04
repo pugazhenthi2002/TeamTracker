@@ -118,11 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Paginate Up Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Paginate Up Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag-UnderReview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag-UnderReview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Attachment-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Attachment-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Next Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Next Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,8 +127,14 @@
   <data name="Home Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Home Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Attachment-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Attachment-gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CloudHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flag-empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag-empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Version Milestone Status Down Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Version Milestone Status Down Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -144,6 +147,9 @@
   </data>
   <data name="Next1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloudHover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Version Milestone Status Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Version Milestone Status Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,8 +175,8 @@
   <data name="Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add Project Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Add Project Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloudBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,11 +184,11 @@
   <data name="sort-up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Home Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Home Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="View Project Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\View Project Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Upload Cloud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Upload Cloud.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,23 +196,20 @@
   <data name="flag-done" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag-done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="info-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info-hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sort-down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flag-stuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag-stuck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Paginate Up Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Paginate Up Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Next Hover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Next Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Close Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Version Milestone Status Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Version Milestone Status Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Timeline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Timeline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,23 +217,23 @@
   <data name="No Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\No Result.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Close Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flag-UnderReview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag-UnderReview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloudBlack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Version Milestone Status Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Version Milestone Status Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="View Project Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\View Project Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Add Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Attachment-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Attachment-gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add Project Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Add Project Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Board" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Board.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,17 +241,20 @@
   <data name="Zip Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zip Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="View Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\View Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-upload-to-cloud-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-upload-to-cloud-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="View Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\View Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flag-stuck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag-stuck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flag-empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag-empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Home Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Home Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Search File" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Search File.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,11 +262,11 @@
   <data name="sort-down-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-down-hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="close Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Attachment-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Attachment-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flag-OnProcess" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag-OnProcess.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,10 +277,7 @@
   <data name="Version Milestone Status Equal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Version Milestone Status Equal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CloudBlack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CloudHover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cloud uploaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\cloud uploaded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

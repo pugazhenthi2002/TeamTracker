@@ -53,9 +53,13 @@ namespace TeamTracker
         }
 
         private ProjectVersion currentProjectVersion;
+        private SourceCodeSubmitionForm SubmitionForm;
+        private bool toAdd = false;
+        private UCTaskBoard BoardToAdd;
 
         private Point TaskBoardStartPoint;
         private Point TaskBoardMouseUpPoint;
+        private int startColumn;
 
         private Point OffsetPoint;
         private bool IsDragging = false;
@@ -88,9 +92,6 @@ namespace TeamTracker
             ucTaskStatusBaseDone.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.Done);
 
 
-            
-
-
         }
 
         
@@ -105,6 +106,7 @@ namespace TeamTracker
 
 
                 TaskBoardStartPoint = sender.PointToScreen(Point.Empty);
+                startColumn = (tableLayoutPanel1.PointToClient(Control.MousePosition)).X / (tableLayoutPanel1.Width / tableLayoutPanel1.ColumnCount);
                 IsDragging = true;
 
                 DragForm = new Form();
@@ -158,27 +160,68 @@ namespace TeamTracker
             int columnWidth = tableLayoutPanel1.Width / tableLayoutPanel1.ColumnCount;
             int columnNumber = TaskBoardMouseUpPoint.X / columnWidth;
 
-            switch(columnNumber)
+            BoardToAdd = sender;
+
+            AddBoardOnColumn(columnNumber);
+
+            
+            
+        }
+
+        private void AddBoardOnColumn(int columnNumber)
+        {
+            switch (columnNumber)
             {
                 case 0:
-                    ucTaskStatusBaseNotYetStarted.AddTask(sender);
+                    ucTaskStatusBaseNotYetStarted.AddTask(BoardToAdd);
+                    DragForm.Dispose();
                     break;
                 case 1:
-                    ucTaskStatusBaseOnProcess.AddTask(sender);
+                    ucTaskStatusBaseOnProcess.AddTask(BoardToAdd);
+                    DragForm.Dispose();
                     break;
                 case 2:
-                    ucTaskStatusBaseStuck.AddTask(sender);
+                    ucTaskStatusBaseStuck.AddTask(BoardToAdd);
+                    DragForm.Dispose();
                     break;
                 case 3:
-                    ucTaskStatusBaseUnderReview.AddTask(sender);
+
+                    SubmitionForm = new SourceCodeSubmitionForm();
+                    SubmitionForm.DoneClick += OnClickDoneSubmitionForm;
+                    SubmitionForm.CloseClick += OnClickCloseSubmitionForm;
+                    SubmitionForm.Show();
+
                     break;
                 case 4:
-                    ucTaskStatusBaseDone.AddTask(sender);
+                    ucTaskStatusBaseDone.AddTask(BoardToAdd);
+                    DragForm.Dispose();
                     break;
             }
+        }
 
+        private void AddBoard(UCTaskBoard sender)
+        {
+            if (toAdd)
+            {
+                ucTaskStatusBaseUnderReview.AddTask(sender);
+                DragForm.Dispose();
+            }
+            else
+            {
+                AddBoardOnColumn(startColumn);
+            }
+        }
 
-            DragForm.Dispose();
+        private void OnClickDoneSubmitionForm(object sender, EventArgs e)
+        {
+            toAdd = true;
+            AddBoard(BoardToAdd);
+
+        }
+        private void OnClickCloseSubmitionForm(object sender, EventArgs e)
+        {
+            toAdd = false;
+            AddBoard(BoardToAdd);
         }
 
         private UCTaskStatusBase FindParentUserControl(Control control)

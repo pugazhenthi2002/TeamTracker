@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelClickUpload = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelUpload = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonUpload = new System.Windows.Forms.Button();
+            this.buttonDone = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.labelClickUpload = new System.Windows.Forms.Label();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxUpload = new System.Windows.Forms.PictureBox();
+            this.labelWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -62,6 +63,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(423, 258);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // labelClickUpload
+            // 
+            this.labelClickUpload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelClickUpload.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClickUpload.ForeColor = System.Drawing.Color.Black;
+            this.labelClickUpload.Location = new System.Drawing.Point(80, 167);
+            this.labelClickUpload.Margin = new System.Windows.Forms.Padding(80, 0, 80, 30);
+            this.labelClickUpload.Name = "labelClickUpload";
+            this.labelClickUpload.Size = new System.Drawing.Size(263, 21);
+            this.labelClickUpload.TabIndex = 4;
+            this.labelClickUpload.Text = "Click to Upload";
+            this.labelClickUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelClickUpload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClickUpload);
+            this.labelClickUpload.MouseEnter += new System.EventHandler(this.OnMouseEnterUpload);
+            this.labelClickUpload.MouseLeave += new System.EventHandler(this.OnMouseLeaveUpload);
             // 
             // tableLayoutPanel2
             // 
@@ -98,8 +115,9 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Controls.Add(this.buttonUpload, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.buttonDone, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonClear, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelWarning, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 218);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -109,22 +127,23 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(423, 40);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // buttonUpload
+            // buttonDone
             // 
-            this.buttonUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonUpload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonUpload.FlatAppearance.BorderSize = 0;
-            this.buttonUpload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.buttonUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpload.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.buttonUpload.Location = new System.Drawing.Point(321, 5);
-            this.buttonUpload.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonUpload.Name = "buttonUpload";
-            this.buttonUpload.Size = new System.Drawing.Size(97, 30);
-            this.buttonUpload.TabIndex = 3;
-            this.buttonUpload.Text = "Upload";
-            this.buttonUpload.UseVisualStyleBackColor = false;
+            this.buttonDone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonDone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDone.FlatAppearance.BorderSize = 0;
+            this.buttonDone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.buttonDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDone.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.buttonDone.Location = new System.Drawing.Point(321, 5);
+            this.buttonDone.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonDone.Name = "buttonDone";
+            this.buttonDone.Size = new System.Drawing.Size(97, 30);
+            this.buttonDone.TabIndex = 3;
+            this.buttonDone.Text = "Done";
+            this.buttonDone.UseVisualStyleBackColor = false;
+            this.buttonDone.Click += new System.EventHandler(this.OnClickDone);
             // 
             // buttonClear
             // 
@@ -142,34 +161,20 @@
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
-            // 
-            // labelClickUpload
-            // 
-            this.labelClickUpload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelClickUpload.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelClickUpload.ForeColor = System.Drawing.Color.Black;
-            this.labelClickUpload.Location = new System.Drawing.Point(3, 167);
-            this.labelClickUpload.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
-            this.labelClickUpload.Name = "labelClickUpload";
-            this.labelClickUpload.Size = new System.Drawing.Size(417, 31);
-            this.labelClickUpload.TabIndex = 4;
-            this.labelClickUpload.Text = "Click to Upload";
-            this.labelClickUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelClickUpload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClickUpload);
-            this.labelClickUpload.MouseEnter += new System.EventHandler(this.OnMouseEnterUpload);
-            this.labelClickUpload.MouseLeave += new System.EventHandler(this.OnMouseLeaveUpload);
+            this.buttonClear.Click += new System.EventHandler(this.OnClickClear);
             // 
             // pictureBoxClose
             // 
             this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close;
-            this.pictureBoxClose.Location = new System.Drawing.Point(337, 0);
-            this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxClose.Location = new System.Drawing.Point(367, 0);
+            this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.pictureBoxClose.Name = "pictureBoxClose";
-            this.pictureBoxClose.Size = new System.Drawing.Size(86, 38);
+            this.pictureBoxClose.Size = new System.Drawing.Size(56, 38);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxClose.TabIndex = 1;
             this.pictureBoxClose.TabStop = false;
+            this.pictureBoxClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickClose);
             this.pictureBoxClose.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.pictureBoxClose.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
@@ -177,9 +182,10 @@
             // 
             this.pictureBoxUpload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxUpload.Image = global::UserInterface.Properties.Resources.CloudBlack1;
-            this.pictureBoxUpload.Location = new System.Drawing.Point(3, 41);
+            this.pictureBoxUpload.Location = new System.Drawing.Point(80, 58);
+            this.pictureBoxUpload.Margin = new System.Windows.Forms.Padding(80, 20, 80, 0);
             this.pictureBoxUpload.Name = "pictureBoxUpload";
-            this.pictureBoxUpload.Size = new System.Drawing.Size(417, 123);
+            this.pictureBoxUpload.Size = new System.Drawing.Size(263, 109);
             this.pictureBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxUpload.TabIndex = 3;
             this.pictureBoxUpload.TabStop = false;
@@ -187,11 +193,23 @@
             this.pictureBoxUpload.MouseEnter += new System.EventHandler(this.OnMouseEnterUpload);
             this.pictureBoxUpload.MouseLeave += new System.EventHandler(this.OnMouseLeaveUpload);
             // 
+            // labelWarning
+            // 
+            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelWarning.Location = new System.Drawing.Point(3, 0);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(205, 40);
+            this.labelWarning.TabIndex = 5;
+            this.labelWarning.Text = "File Not Selected !!!";
+            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // SourceCodeSubmitionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
             this.ClientSize = new System.Drawing.Size(423, 258);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -214,9 +232,10 @@
         private System.Windows.Forms.Label labelUpload;
         private System.Windows.Forms.PictureBox pictureBoxClose;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button buttonUpload;
+        private System.Windows.Forms.Button buttonDone;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.PictureBox pictureBoxUpload;
         private System.Windows.Forms.Label labelClickUpload;
+        private System.Windows.Forms.Label labelWarning;
     }
 }

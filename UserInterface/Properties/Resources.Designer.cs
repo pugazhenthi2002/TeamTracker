@@ -193,6 +193,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cloud_uploaded {
+            get {
+                object obj = ResourceManager.GetObject("cloud uploaded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CloudBlack {
             get {
                 object obj = ResourceManager.GetObject("CloudBlack", resourceCulture);
