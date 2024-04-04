@@ -397,6 +397,12 @@
     <Compile Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.Designer.cs">
       <DependentUpon>StatusViewTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewProject\EmployeeProfilePicAndName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewProject\EmployeeProfilePicAndName.Designer.cs">
+      <DependentUpon>EmployeeProfilePicAndName.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -617,6 +623,9 @@
     <EmbeddedResource Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.resx">
       <DependentUpon>StatusViewTemplate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\EmployeeProfilePicAndName.resx">
+      <DependentUpon>EmployeeProfilePicAndName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.resx">
       <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -719,6 +728,12 @@
     <None Include="Images\Version Milestone Status Up.png" />
     <None Include="Images\CloudBlack.png" />
     <None Include="Images\CloudHover.png" />
+    <None Include="Images\Board Click.png" />
+    <None Include="Images\Board Normal.png" />
+    <None Include="Images\Filter Click.png" />
+    <None Include="Images\Filter Normal.png" />
+    <None Include="Images\Timeline Click.png" />
+    <None Include="Images\Timeline Normal.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <Content Include="Resources\Close Black.png" />

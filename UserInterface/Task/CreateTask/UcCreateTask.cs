@@ -218,7 +218,7 @@ namespace TeamTracker
 
         }
 
-        private void OnClickTeamMember(object sender, EventArgs e)
+        private void OnClickTeamMember(object sender, Employee e)
         {
             Button clickedBtn = (sender as Button);
             switch (clickedBtn.Text)

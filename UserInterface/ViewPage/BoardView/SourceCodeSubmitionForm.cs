@@ -30,7 +30,7 @@ namespace TeamTracker
         private void OnMouseEnterUpload(object sender, EventArgs e)
         {
             pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudHover;
-            labelClickUpload.Font = new Font()
+            //labelClickUpload.Font = new Font()
         }
 
         private void OnMouseLeaveUpload(object sender, EventArgs e)

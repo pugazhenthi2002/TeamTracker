@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
             this.ucCreateTask1 = new TeamTracker.UcCreateTask();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,16 +43,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(100, 514);
             this.panel1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 53);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // ucTaskBoardBase1
             // 
@@ -70,6 +60,16 @@
             this.ucCreateTask1.Name = "ucCreateTask1";
             this.ucCreateTask1.Size = new System.Drawing.Size(551, 369);
             this.ucCreateTask1.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(79, 53);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 
@@ -91,9 +91,9 @@
 
         private TeamTracker.RippleButton rippleButton1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
         private TeamTracker.UcTaskBoardBase ucTaskBoardBase1;
         private TeamTracker.UcCreateTask ucCreateTask1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

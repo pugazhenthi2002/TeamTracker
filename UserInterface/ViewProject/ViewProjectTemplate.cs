@@ -25,8 +25,8 @@ namespace UserInterface.ViewProject
 
         private void OnBoardClicked(object sender, EventArgs e)
         {
-            if(boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
             if(timelinePicBox.Image != null) { timelinePicBox.Image.Dispose(); }
+            if(boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
 
             boardPanel.BackColor = Color.FromArgb(39, 55, 77);
             timelinePanel.BackColor = Color.FromArgb(221, 230, 237);
@@ -43,7 +43,7 @@ namespace UserInterface.ViewProject
         private void OnTimelineClicked(object sender, EventArgs e)
         {
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
-            if (timelinePicBox.Image != null) { timelinePicBox.Image.Dispose(); }
+            if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
 
             timelinePanel.BackColor = Color.FromArgb(39, 55, 77);
             boardPanel.BackColor = Color.FromArgb(221, 230, 237);
@@ -59,18 +59,31 @@ namespace UserInterface.ViewProject
 
         private void OnFilterClicked(object sender, EventArgs e)
         {
+            TeamMembersListForm form = new TeamMembersListForm();
+            form.Location = filterPanel.PointToScreen(new Point(0, filterPanel.Height + 1));
+            form.Width = filterPanel.Width;
+            form.TeamMemberClick += OnTeamMemberSelected;
             if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
-
+                form.TeamList = EmployeeManager.FetchTeamLeadersFromManagerID();
+                form.ShowDialog();
             }
             else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Leader")
             {
-
+                form.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
+                form.ShowDialog();
             }
-            else
-            {
+            
+        }
 
-            }
+        private void OnTeamMemberSelected(object sender, Employee e)
+        {
+            if (filteredUser.Image != null)
+                filteredUser.Image.Dispose();
+
+            filteredUser.Image = Image.FromFile(e.EmpProfileLocation);
+            boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions();
+            timelineView1.ProjectCollection = VersionManager.CurrentEmployeeInvolvedProjects();
         }
     }
 }
