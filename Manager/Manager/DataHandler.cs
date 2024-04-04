@@ -91,7 +91,7 @@ namespace TeamTracker
 
         public static void UpdateTask(Task task)
         {
-            manager.UpdateData("task", $"TaskID='{task.TaskID}'", new ParameterData[]
+            var x = manager.UpdateData("task", $"TaskID='{task.TaskID}'", new ParameterData[]
             {
                 new ParameterData("TaskName", task.TaskName),
                 new ParameterData("TaskDesc", task.TaskDesc),
@@ -99,7 +99,7 @@ namespace TeamTracker
                 new ParameterData("EndDate", task.EndDate),
                 new ParameterData("VersionID", task.VersionID),
                 new ParameterData("MilestoneID", task.MilestoneID),
-                new ParameterData("StatusOfTask", task.StatusOfTask),
+                new ParameterData("StatusOfTask", task.StatusOfTask.ToString()),
                 new ParameterData("PriorityOfTask", task.TaskPriority.ToString()),
                 new ParameterData("AssignedBy", task.AssignedBy),
                 new ParameterData("AssignedTo", task.AssignedTo)

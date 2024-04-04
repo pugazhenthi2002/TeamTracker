@@ -86,6 +86,7 @@ namespace TeamTracker
 
         private void InitializeBoard()
         {
+            ucTaskStatusHead1.labelTaskCount.Text = taskList.Count+"";
             if (flag == 0)
             {
 
@@ -128,6 +129,8 @@ namespace TeamTracker
 
         private void ReOrderBoard()
         {
+            ucTaskStatusHead1.labelTaskCount.Text = taskList.Count + "";
+
             ind = 0;
             for (int i = StartIndex; i < Math.Min(StartIndex + MaxUserControls, taskList.Count); i++)
             {
@@ -272,6 +275,12 @@ namespace TeamTracker
         {
 
             var x = StartIndex;
+            Task tData = taskBoard.TaskData;
+            //taskBoard.TaskData.StatusOfTask = this.Status;
+
+
+            //TaskManager.UpdateTask(tData.TaskID, tData.TaskName, tData.TaskDesc, tData.StartDate, tData.EndDate, tData.TaskPriority, tData.AssignedTo, null);
+
             taskList.Add(taskBoard.TaskData);
             if(taskList.Count <= MaxUserControls)
             {
@@ -281,6 +290,8 @@ namespace TeamTracker
             if(taskList.Count>1)
                 taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
             
+
+
             ReOrderBoard();
         }
     }

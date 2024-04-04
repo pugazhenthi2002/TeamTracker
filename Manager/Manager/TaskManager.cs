@@ -77,7 +77,8 @@ namespace TeamTracker
                     DataHandler.UpdateTask(Iter);
                 }
             }
-            DataHandler.UpdateTaskAttachment(taskID, taskAttachments);
+
+            if(taskAttachments!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachments);
         }
 
         //Change Status of Task

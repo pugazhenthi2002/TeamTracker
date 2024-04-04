@@ -445,7 +445,7 @@ namespace TeamTracker
             {
                 if (Iter.VersionID == versionId)
                 {
-                    return GetProjectName(versionId);
+                    return GetProjectName(Iter.ProjectID);
                 }
             }
 

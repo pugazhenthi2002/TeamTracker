@@ -23,7 +23,6 @@ namespace TeamTracker
         public EventHandler ClickBack;
         public EventHandler ClickNext;
 
-
         public TaskStatus Status
         {
             get { return Tstatus; }
@@ -118,7 +117,6 @@ namespace TeamTracker
                     TopPanelColor = Color.Gray;
                     StatusLabelText = TaskStatus.NotYetStarted + "";
                     break;
-
             }
 
             panel1.BackColor = TopPanelColor;

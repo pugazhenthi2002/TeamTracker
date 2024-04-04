@@ -163,6 +163,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelUpDown;
         public System.Windows.Forms.PictureBox pictureBoxUp;
         public System.Windows.Forms.PictureBox pictureBoxDown;
-        private System.Windows.Forms.Label labelTaskCount;
+        public System.Windows.Forms.Label labelTaskCount;
     }
 }

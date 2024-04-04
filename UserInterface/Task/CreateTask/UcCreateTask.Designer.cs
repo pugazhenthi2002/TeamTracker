@@ -31,11 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSetMilestone = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.BtnAssignTo = new System.Windows.Forms.Button();
             this.labelFrom = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSetPriority = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.textBoxDesc = new TeamTracker.TextBoxU();
             this.textBoxTaskName = new TeamTracker.TextBoxU();
-            this.buttonSetMilestone = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -94,9 +94,27 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(545, 49);
             this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // buttonSetMilestone
+            // 
+            this.buttonSetMilestone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.buttonSetMilestone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSetMilestone.FlatAppearance.BorderSize = 0;
+            this.buttonSetMilestone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.buttonSetMilestone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSetMilestone.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSetMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonSetMilestone.Location = new System.Drawing.Point(7, 7);
+            this.buttonSetMilestone.Margin = new System.Windows.Forms.Padding(7);
+            this.buttonSetMilestone.Name = "buttonSetMilestone";
+            this.buttonSetMilestone.Size = new System.Drawing.Size(122, 35);
+            this.buttonSetMilestone.TabIndex = 6;
+            this.buttonSetMilestone.Text = "Set Milestone";
+            this.buttonSetMilestone.UseVisualStyleBackColor = false;
+            this.buttonSetMilestone.Click += new System.EventHandler(this.OnClickSetMilestone);
             // 
             // tableLayoutPanel4
             // 
@@ -121,11 +139,12 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 16);
+            this.label1.Size = new System.Drawing.Size(130, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "To";
+            this.label1.Text = "Set Due";
             // 
             // dateTimePickerTo
             // 
@@ -139,26 +158,35 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePickerFrom, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.BtnAssignTo, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelFrom, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(136, 0);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(136, 49);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // dateTimePickerFrom
+            // BtnAssignTo
             // 
-            this.dateTimePickerFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(3, 19);
-            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(130, 20);
-            this.dateTimePickerFrom.TabIndex = 0;
+            this.BtnAssignTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.BtnAssignTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnAssignTo.FlatAppearance.BorderSize = 0;
+            this.BtnAssignTo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.BtnAssignTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAssignTo.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAssignTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnAssignTo.Location = new System.Drawing.Point(3, 19);
+            this.BtnAssignTo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 7);
+            this.BtnAssignTo.Name = "BtnAssignTo";
+            this.BtnAssignTo.Size = new System.Drawing.Size(130, 23);
+            this.BtnAssignTo.TabIndex = 7;
+            this.BtnAssignTo.Text = "Not Assigned ▼";
+            this.BtnAssignTo.UseVisualStyleBackColor = false;
+            this.BtnAssignTo.Click += new System.EventHandler(this.OnClickAssignBtn);
             // 
             // labelFrom
             // 
@@ -166,11 +194,12 @@
             this.labelFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelFrom.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelFrom.Location = new System.Drawing.Point(3, 0);
+            this.labelFrom.Location = new System.Drawing.Point(3, 3);
+            this.labelFrom.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.labelFrom.Name = "labelFrom";
             this.labelFrom.Size = new System.Drawing.Size(130, 16);
             this.labelFrom.TabIndex = 2;
-            this.labelFrom.Text = "From";
+            this.labelFrom.Text = "Assign to";
             // 
             // tableLayoutPanel5
             // 
@@ -189,16 +218,17 @@
             // 
             // labelSetPriority
             // 
+            this.labelSetPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.labelSetPriority.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelSetPriority.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSetPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelSetPriority.Location = new System.Drawing.Point(41, 0);
-            this.labelSetPriority.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.labelSetPriority.Location = new System.Drawing.Point(46, 5);
+            this.labelSetPriority.Margin = new System.Windows.Forms.Padding(5);
             this.labelSetPriority.Name = "labelSetPriority";
-            this.labelSetPriority.Size = new System.Drawing.Size(86, 46);
+            this.labelSetPriority.Size = new System.Drawing.Size(86, 36);
             this.labelSetPriority.TabIndex = 3;
             this.labelSetPriority.Text = "Set Priority";
-            this.labelSetPriority.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelSetPriority.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelSetPriority.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickSetPriority);
             this.labelSetPriority.MouseEnter += new System.EventHandler(this.OnMouseEnterSetPriority);
             this.labelSetPriority.MouseLeave += new System.EventHandler(this.OnMouseLeaveSetPriority);
@@ -208,16 +238,14 @@
             this.pictureBoxFlag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxFlag.Image = global::UserInterface.Properties.Resources.flag_empty;
             this.pictureBoxFlag.InitialImage = null;
-            this.pictureBoxFlag.Location = new System.Drawing.Point(10, 0);
-            this.pictureBoxFlag.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.pictureBoxFlag.Location = new System.Drawing.Point(18, 0);
+            this.pictureBoxFlag.Margin = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.pictureBoxFlag.Name = "pictureBoxFlag";
-            this.pictureBoxFlag.Size = new System.Drawing.Size(31, 46);
+            this.pictureBoxFlag.Size = new System.Drawing.Size(23, 46);
             this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxFlag.TabIndex = 0;
             this.pictureBoxFlag.TabStop = false;
             this.pictureBoxFlag.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickSetPriority);
-            this.pictureBoxFlag.MouseEnter += new System.EventHandler(this.OnMouseEnterSetPriority);
-            this.pictureBoxFlag.MouseLeave += new System.EventHandler(this.OnMouseLeaveSetPriority);
             // 
             // tableLayoutPanel6
             // 
@@ -334,24 +362,6 @@
             this.textBoxTaskName.TextForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxTaskName.UseSystemPasswordChar = false;
             // 
-            // buttonSetMilestone
-            // 
-            this.buttonSetMilestone.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSetMilestone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSetMilestone.FlatAppearance.BorderSize = 0;
-            this.buttonSetMilestone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.buttonSetMilestone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSetMilestone.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSetMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonSetMilestone.Location = new System.Drawing.Point(5, 5);
-            this.buttonSetMilestone.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonSetMilestone.Name = "buttonSetMilestone";
-            this.buttonSetMilestone.Size = new System.Drawing.Size(126, 39);
-            this.buttonSetMilestone.TabIndex = 6;
-            this.buttonSetMilestone.Text = "Set Milestone";
-            this.buttonSetMilestone.UseVisualStyleBackColor = false;
-            this.buttonSetMilestone.Click += new System.EventHandler(this.OnClickSetMilestone);
-            // 
             // UcCreateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,7 +393,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
         private System.Windows.Forms.Label labelFrom;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox pictureBoxFlag;
@@ -394,5 +403,6 @@
         private System.Windows.Forms.Button buttonDiscard;
         private System.Windows.Forms.PictureBox pictureBoxAttachment;
         private System.Windows.Forms.Button buttonSetMilestone;
+        private System.Windows.Forms.Button BtnAssignTo;
     }
 }
