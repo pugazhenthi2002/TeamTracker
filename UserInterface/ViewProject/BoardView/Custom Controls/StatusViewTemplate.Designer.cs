@@ -28,25 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusViewTemplate));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.downPicBox = new System.Windows.Forms.PictureBox();
+            this.upPicBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.boardBasePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.statusLabel);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -56,17 +55,17 @@
             this.panel1.Size = new System.Drawing.Size(241, 46);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // statusLabel
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Status Of Project";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusLabel.Font = new System.Drawing.Font("Ebrima", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Location = new System.Drawing.Point(0, 18);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(214, 28);
+            this.statusLabel.TabIndex = 1;
+            this.statusLabel.Text = "Status Of Project";
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
@@ -82,8 +81,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.downPicBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.upPicBox, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -94,37 +93,37 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(27, 28);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // pictureBox2
+            // downPicBox
             // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 14);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(27, 14);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.OnPaginateDown);
+            this.downPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.downPicBox.Image = global::UserInterface.Properties.Resources.sort_down;
+            this.downPicBox.Location = new System.Drawing.Point(0, 14);
+            this.downPicBox.Margin = new System.Windows.Forms.Padding(0);
+            this.downPicBox.Name = "downPicBox";
+            this.downPicBox.Size = new System.Drawing.Size(27, 14);
+            this.downPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.downPicBox.TabIndex = 1;
+            this.downPicBox.TabStop = false;
+            this.downPicBox.Click += new System.EventHandler(this.OnPaginateDown);
             // 
-            // pictureBox1
+            // upPicBox
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 14);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.OnPaginateUp);
+            this.upPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upPicBox.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.upPicBox.Location = new System.Drawing.Point(0, 0);
+            this.upPicBox.Margin = new System.Windows.Forms.Padding(0);
+            this.upPicBox.Name = "upPicBox";
+            this.upPicBox.Size = new System.Drawing.Size(27, 14);
+            this.upPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.upPicBox.TabIndex = 0;
+            this.upPicBox.TabStop = false;
+            this.upPicBox.Click += new System.EventHandler(this.OnPaginateUp);
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(241, 18);
             this.panel2.TabIndex = 0;
@@ -150,8 +149,8 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -159,12 +158,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox downPicBox;
+        private System.Windows.Forms.PictureBox upPicBox;
         private System.Windows.Forms.Panel boardBasePanel;
     }
 }

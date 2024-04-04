@@ -108,7 +108,7 @@ namespace UserInterface.ViewProject.TimelineView
         {
             VersionViewForm form = new VersionViewForm();
             form.Location = Cursor.Position;
-            form.VersionCollection = VersionManager.FetchAllVersionFromProjectID(currentProject.ProjectID);
+            form.VersionCollection = VersionManager.FetchInvolvedVersion(currentProject);
             form.VersionSelected += OnVersionSelected;
             form.Show();
         }

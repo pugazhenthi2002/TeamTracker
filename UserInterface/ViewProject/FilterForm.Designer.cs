@@ -1,6 +1,6 @@
-﻿namespace TeamTracker
+﻿namespace UserInterface.ViewProject
 {
-    partial class TeamMembersListForm
+    partial class FilterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // TeamMembersListForm
+            // FilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(171, 208);
+            this.ClientSize = new System.Drawing.Size(259, 194);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "TeamMembersListForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "TeamMembersListForm";
+            this.Name = "FilterForm";
+            this.Text = "FilterForm";
             this.ResumeLayout(false);
 
         }

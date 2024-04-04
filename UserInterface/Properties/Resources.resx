@@ -277,7 +277,22 @@
   <data name="Version Milestone Status Equal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Version Milestone Status Equal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cloud uploaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\cloud uploaded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Board Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Board Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Board Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Board Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Filter Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Filter Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Timeline Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Timeline Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Timeline Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Timeline Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

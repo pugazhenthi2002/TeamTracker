@@ -337,6 +337,7 @@ namespace TeamTracker
             List<Notification> result = new List<Notification>();
             var notifyCollection = manager.FetchData("notification", $"AssignedTo={EmployeeManager.CurrentEmployee.EmployeeID}").Value;
 
+            if (notifyCollection == null || notifyCollection.Count == 0) return null;
             for (int ctr = 0; ctr < notifyCollection["NotifyID"].Count; ctr++)
             {
                 result.Add(new Notification()

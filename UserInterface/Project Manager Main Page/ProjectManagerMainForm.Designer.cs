@@ -298,10 +298,10 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.projectManagerHome1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(937, 556);
+            this.tabPage1.Size = new System.Drawing.Size(937, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -312,16 +312,16 @@
             this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
             this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(931, 550);
+            this.projectManagerHome1.Size = new System.Drawing.Size(931, 560);
             this.projectManagerHome1.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.addProject1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(937, 585);
+            this.tabPage2.Size = new System.Drawing.Size(937, 566);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -331,7 +331,7 @@
             this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addProject1.Location = new System.Drawing.Point(3, 3);
             this.addProject1.Name = "addProject1";
-            this.addProject1.Size = new System.Drawing.Size(931, 579);
+            this.addProject1.Size = new System.Drawing.Size(931, 560);
             this.addProject1.TabIndex = 0;
             // 
             // tabPage3

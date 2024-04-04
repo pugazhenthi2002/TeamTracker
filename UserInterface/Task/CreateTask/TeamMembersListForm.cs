@@ -8,23 +8,24 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.ViewProject;
 
 namespace TeamTracker
 {
     public partial class TeamMembersListForm : Form
     {
+        public event EventHandler<Employee> EmployeeSelect;
+
         public TeamMembersListForm()
         {
             InitializeComponent();
             InitializeRoundedEdge();
         }
 
-
-        public EventHandler TeamMemberClick;
+        public EventHandler<Employee> TeamMemberClick;
         private List<Employee> teamList = new List<Employee>();
         public List<Employee> TeamList
         {
-
             set
             {
                 teamList = value;
@@ -32,6 +33,16 @@ namespace TeamTracker
             }
         }
 
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -59,31 +70,33 @@ namespace TeamTracker
         {
             if (teamList.Count <= 4)
             {
-                this.Size = new Size(this.Width, 40 * (teamList.Count()));
+                this.Size = new Size(this.Width, 50 * (teamList.Count()));
             }
             else
             {
-                this.Size = new Size(this.Width, 40 * 4);
+                this.Size = new Size(this.Width, 50 * 4);
             }
 
-
-            foreach(Employee emp in teamList)
+            EmployeeProfilePicAndName control;
+            foreach (Employee emp in teamList)
             {
-                Button member = new Button();
-                member.FlatStyle = FlatStyle.Flat;
-                member.FlatAppearance.BorderSize = 0;
-                member.ForeColor = Color.FromArgb(201, 210, 217);
-                member.Text = emp.EmployeeFirstName ;
-                member.Size = new Size(this.Width, 40);
-                member.Dock = DockStyle.Top;
-                member.Click += OnClickMemberBtn;
-
+                control = new EmployeeProfilePicAndName()
+                {
+                    Profile = emp,
+                    Dock = DockStyle.Top,
+                    Height = 50,
+                    NormalColor = Color.FromArgb(201, 210, 217),
+                    HoverColor = Color.FromArgb(191, 200, 207)
+                };
+                control.EmployeeSelect += OnEmployeeSelect;
+                Controls.Add(control);
             }
         }
 
-        private void OnClickMemberBtn(object sender, EventArgs e)
+        private void OnEmployeeSelect(object sender, Employee e)
         {
-            TeamMemberClick?.Invoke(sender, e);
+            TeamMemberClick?.Invoke(this, e);
+            this.Close();
         }
     }
 }

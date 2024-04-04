@@ -35,26 +35,27 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             base.OnResize(e);
             InitializeBorder();
         }
-
+        private Milestone milestone;
+        private string toolTipMessage;
         public ProjectVersion BoardVersion
         {
             get { return boardVersion; }
             set
             {
                 milestoneStatusPicBox.Visible = false;
-                if(value.StatusOfVersion == ProjectStatus.OnProcess || value.StatusOfVersion == ProjectStatus.OnStage || value.StatusOfVersion == ProjectStatus.Deployment)
+                boardVersion = value;
+                if (value.StatusOfVersion == ProjectStatus.OnProcess || value.StatusOfVersion == ProjectStatus.OnStage || value.StatusOfVersion == ProjectStatus.Deployment)
                 {
                     milestoneStatusPicBox.Visible = true;
                     SetMilestoneStatus();
                 }
 
-                boardVersion = value;
-                versionNameLabel.Text = value.VersionName;
+                versionNameLabel.Text = VersionManager.FetchProjectName(value.VersionID)+"\n"+value.VersionName;
                 versionDateLabel.Text = value.StartDate.ToShortDateString() + " - " + value.EndDate.ToShortDateString();
                 int id = VersionManager.FetchTeamLeadIDFromProjectID(value.ProjectID);
                 profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(id).EmpProfileLocation);
                 milestoneCountLabel.Text = MilestoneManager.FetchMilestones(value.VersionID).Count.ToString();
-                taskCountLabel.Text = TaskManager.FetchTaskCount(value.VersionID).Count.ToString();
+                taskCountLabel.Text = TaskManager.FetchTaskCount(value.VersionID)[0].ToString();
             }
         }
 
@@ -76,7 +77,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             Font font = new Font(new FontFamily("Ebrima"), 10, FontStyle.Bold);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush1, new Rectangle(0, 0, width - 1, height - 1));
-            e.Graphics.DrawString("5", font, brush2, new Rectangle(-1, -1, width, height), sFormat);
+            e.Graphics.DrawString(milestoneCountLabel.Text, font, brush2, new Rectangle(-1, -1, width, height), sFormat);
             brush1.Dispose();
         }
 
@@ -90,13 +91,13 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             Font font = new Font(new FontFamily("Ebrima"), 10, FontStyle.Bold);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush1, new Rectangle(0, 0, width, height));
-            e.Graphics.DrawString("5", font, brush2, new Rectangle(0, 0, width, height), sFormat);
+            e.Graphics.DrawString(taskCountLabel.Text, font, brush2, new Rectangle(0, 0, width, height), sFormat);
             brush1.Dispose();
         }
 
         private void SetMilestoneStatus()
         {
-            Milestone milestone = MilestoneManager.CurrentMilestone;
+            milestone = MilestoneManager.FetchCurrentVersion(boardVersion);
 
             if(milestone != null)
             {
@@ -105,16 +106,19 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
                 if(milestone.StartDate > DateTime.Today)
                 {
+                    toolTipMessage = "Beyond the Milestone Deadline";
                     milestoneStatusPicBox.BackColor = Color.Green;
                     milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Up;
                 }
                 else if(milestone.EndDate < DateTime.Today)
                 {
+                    toolTipMessage = "Behind the Milestone Deadline";
                     milestoneStatusPicBox.BackColor = Color.Red;
                     milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Down;
                 }
                 else
                 {
+                    toolTipMessage = "Steady State";
                     milestoneStatusPicBox.BackColor = Color.Blue;
                     milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Equal;
                 }
@@ -122,6 +126,26 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         }
 
         private void OnBoardClick(object sender, EventArgs e)
+        {
+            ;
+        }
+
+        private void OnUserControlPaint(object sender, PaintEventArgs e)
+        {
+            //OnUserControlPaint
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            BackColor = Color.FromArgb(181, 190, 197);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            BackColor = Color.FromArgb(201, 210, 217);
+        }
+
+        private void OnMilestoneStatusHover(object sender, EventArgs e)
         {
             ;
         }

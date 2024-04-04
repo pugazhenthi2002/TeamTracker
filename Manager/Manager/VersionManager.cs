@@ -28,6 +28,21 @@ namespace TeamTracker
             else return true;
         }
 
+        public static List<ProjectVersion> CurrentEmployeeInvolvedVersions()
+        {
+            List<ProjectVersion> result = new List<ProjectVersion>();
+
+            foreach(var Iter in VersionCollection)
+            {
+                if (IsEmployeeInvolvedInVersions(Iter))
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
         public static Projects FetchProjectFromID(int id)
         {
             foreach(var Iter in ProjectCollection)
@@ -113,6 +128,47 @@ namespace TeamTracker
         public static void VersionCompletion(ProjectVersion version)
         {
             UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, version.EndDate, version.ClientEmail, null);
+        }
+
+        public static List<Projects> CurrentEmployeeInvolvedProjects()
+        {
+            List<Projects> result = new List<Projects>();
+            HashSet<int> projectIDs = new HashSet<int>();
+            Employee emp = EmployeeManager.CurrentEmployee;
+
+            if (emp.EmpRoleName == "Project Manager")
+            {
+                foreach(var Iter in ProjectCollection)
+                {
+                    if(Iter.ManagerID == emp.EmployeeID)
+                    {
+                        result.Add(Iter);
+                    }
+
+                }
+            }
+            else if(emp.EmpRoleName == "Team Leader")
+            {
+                foreach (var Iter in ProjectCollection)
+                {
+                    if (Iter.TeamLeadID == emp.EmployeeID)
+                    {
+                        result.Add(Iter);
+                    }
+                }
+            }
+            else
+            {
+                foreach(var Iter in ProjectCollection)
+                {
+                    if (IsEmployeeInvolvedInProject(Iter))
+                    {
+                        result.Add(Iter);
+                    }
+                }
+            }
+
+            return result;
         }
 
         public static void ChangeToCompleteVersionStatus(ProjectVersion version)
@@ -437,6 +493,22 @@ namespace TeamTracker
             return "";
         }
 
+        public static List<ProjectVersion> FetchInvolvedVersion(Projects project)
+        {
+            Employee emp = EmployeeManager.CurrentEmployee;
+
+            if(emp.EmpRoleName == "Project Manager" || emp.EmpRoleName == "Team Leader")
+            {
+
+            }
+            else
+            {
+
+            }
+
+            return null;
+        }
+
         private static bool IsProjectAvailableForVersionUpgrade(int projectID)
         {
             foreach(var Iter in VersionCollection)
@@ -484,6 +556,42 @@ namespace TeamTracker
             }
 
             return "";
+        }
+
+        private static bool IsEmployeeInvolvedInVersions(ProjectVersion version)
+        {
+            Employee emp = EmployeeManager.CurrentEmployee;
+
+            if (emp.EmpRoleName == "Project Manager")
+            {
+                return FetchProjectFromID(version.ProjectID).ManagerID == emp.EmployeeID;
+            }
+            else if (emp.EmpRoleName == "Team Leader")
+            {
+                return FetchProjectFromID(version.ProjectID).TeamLeadID == emp.EmployeeID;
+            }
+            else
+            {
+                return TaskManager.IsEmployeeInvolvedInVersions(version.VersionID, emp.EmployeeID);
+            }
+        }
+
+        private static bool IsEmployeeInvolvedInProject(Projects project)
+        {
+            List<ProjectVersion> allVersion = FetchAllVersionFromProject(project.ProjectID);
+            Employee emp = EmployeeManager.CurrentEmployee;
+
+            foreach(var Iter in allVersion)
+            {
+                foreach(var Task in TaskManager.TaskCollection)
+                {
+                    if(Iter.VersionID == Task.VersionID && Task.AssignedTo == emp.EmployeeID)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public static List<Projects> ProjectCollection;
