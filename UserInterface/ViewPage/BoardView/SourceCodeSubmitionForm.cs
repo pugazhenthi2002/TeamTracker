@@ -26,5 +26,22 @@ namespace TeamTracker
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
         }
+
+        private void OnMouseEnterUpload(object sender, EventArgs e)
+        {
+            pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudHover;
+            labelClickUpload.Font = new Font()
+        }
+
+        private void OnMouseLeaveUpload(object sender, EventArgs e)
+        {
+            pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack;
+
+        }
+
+        private void OnMouseClickUpload(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

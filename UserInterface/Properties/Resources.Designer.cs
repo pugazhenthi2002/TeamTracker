@@ -203,9 +203,29 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CloudBlack1 {
+            get {
+                object obj = ResourceManager.GetObject("CloudBlack1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CloudHover {
             get {
                 object obj = ResourceManager.GetObject("CloudHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CloudHover1 {
+            get {
+                object obj = ResourceManager.GetObject("CloudHover1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

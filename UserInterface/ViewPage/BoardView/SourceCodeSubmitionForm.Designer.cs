@@ -34,9 +34,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonUpload = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.labelClickUpload = new System.Windows.Forms.Label();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxUpload = new System.Windows.Forms.PictureBox();
-            this.labelClickUpload = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -143,6 +143,22 @@
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
             // 
+            // labelClickUpload
+            // 
+            this.labelClickUpload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelClickUpload.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClickUpload.ForeColor = System.Drawing.Color.Black;
+            this.labelClickUpload.Location = new System.Drawing.Point(3, 167);
+            this.labelClickUpload.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
+            this.labelClickUpload.Name = "labelClickUpload";
+            this.labelClickUpload.Size = new System.Drawing.Size(417, 31);
+            this.labelClickUpload.TabIndex = 4;
+            this.labelClickUpload.Text = "Click to Upload";
+            this.labelClickUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelClickUpload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClickUpload);
+            this.labelClickUpload.MouseEnter += new System.EventHandler(this.OnMouseEnterUpload);
+            this.labelClickUpload.MouseLeave += new System.EventHandler(this.OnMouseLeaveUpload);
+            // 
             // pictureBoxClose
             // 
             this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -160,26 +176,16 @@
             // pictureBoxUpload
             // 
             this.pictureBoxUpload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxUpload.Image = global::UserInterface.Properties.Resources.CloudBlack;
+            this.pictureBoxUpload.Image = global::UserInterface.Properties.Resources.CloudBlack1;
             this.pictureBoxUpload.Location = new System.Drawing.Point(3, 41);
             this.pictureBoxUpload.Name = "pictureBoxUpload";
             this.pictureBoxUpload.Size = new System.Drawing.Size(417, 123);
             this.pictureBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxUpload.TabIndex = 3;
             this.pictureBoxUpload.TabStop = false;
-            // 
-            // labelClickUpload
-            // 
-            this.labelClickUpload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelClickUpload.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelClickUpload.ForeColor = System.Drawing.Color.Black;
-            this.labelClickUpload.Location = new System.Drawing.Point(3, 167);
-            this.labelClickUpload.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
-            this.labelClickUpload.Name = "labelClickUpload";
-            this.labelClickUpload.Size = new System.Drawing.Size(417, 31);
-            this.labelClickUpload.TabIndex = 4;
-            this.labelClickUpload.Text = "Click to Upload";
-            this.labelClickUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBoxUpload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClickUpload);
+            this.pictureBoxUpload.MouseEnter += new System.EventHandler(this.OnMouseEnterUpload);
+            this.pictureBoxUpload.MouseLeave += new System.EventHandler(this.OnMouseLeaveUpload);
             // 
             // SourceCodeSubmitionForm
             // 

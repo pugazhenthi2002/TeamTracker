@@ -717,6 +717,8 @@
     <None Include="Images\Version Milestone Status Down.png" />
     <None Include="Images\Version Milestone Status Equal.png" />
     <None Include="Images\Version Milestone Status Up.png" />
+    <None Include="Images\CloudBlack.png" />
+    <None Include="Images\CloudHover.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <Content Include="Resources\Close Black.png" />
