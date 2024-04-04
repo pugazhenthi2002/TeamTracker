@@ -193,6 +193,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CloudBlack {
+            get {
+                object obj = ResourceManager.GetObject("CloudBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CloudHover {
+            get {
+                object obj = ResourceManager.GetObject("CloudHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Filter {
             get {
                 object obj = ResourceManager.GetObject("Filter", resourceCulture);
@@ -276,6 +296,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Home_Normal {
             get {
                 object obj = ResourceManager.GetObject("Home Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_upload_to_cloud_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-upload-to-cloud-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +466,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Timeline {
             get {
                 object obj = ResourceManager.GetObject("Timeline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Upload_Cloud {
+            get {
+                object obj = ResourceManager.GetObject("Upload Cloud", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

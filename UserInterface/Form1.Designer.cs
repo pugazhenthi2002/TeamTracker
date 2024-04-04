@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
+            this.ucCreateTask1 = new TeamTracker.UcCreateTask();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,11 +64,19 @@
             this.ucTaskBoardBase1.Size = new System.Drawing.Size(1285, 514);
             this.ucTaskBoardBase1.TabIndex = 6;
             // 
+            // ucCreateTask1
+            // 
+            this.ucCreateTask1.Location = new System.Drawing.Point(266, 59);
+            this.ucCreateTask1.Name = "ucCreateTask1";
+            this.ucCreateTask1.Size = new System.Drawing.Size(551, 369);
+            this.ucCreateTask1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 514);
+            this.Controls.Add(this.ucCreateTask1);
             this.Controls.Add(this.ucTaskBoardBase1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -84,6 +93,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private TeamTracker.UcTaskBoardBase ucTaskBoardBase1;
+        private TeamTracker.UcCreateTask ucCreateTask1;
     }
 }
 

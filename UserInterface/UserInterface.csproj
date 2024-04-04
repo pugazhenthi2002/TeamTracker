@@ -325,6 +325,12 @@
     <Compile Include="Task\CreateTask\PriorityDropDownForm.Designer.cs">
       <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task\CreateTask\TeamMembersListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\TeamMembersListForm.Designer.cs">
+      <DependentUpon>TeamMembersListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Task\CreateTask\UcCreateTask.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -336,6 +342,12 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\ProjectBoard.designer.cs">
       <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\SourceCodeSubmitionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\SourceCodeSubmitionForm.Designer.cs">
+      <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\UcDueDate.cs">
       <SubType>UserControl</SubType>
@@ -569,11 +581,17 @@
     <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
       <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\TeamMembersListForm.resx">
+      <DependentUpon>TeamMembersListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
       <DependentUpon>ProjectBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\SourceCodeSubmitionForm.resx">
+      <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcDueDate.resx">
       <DependentUpon>UcDueDate.cs</DependentUpon>
@@ -705,18 +723,22 @@
     <Content Include="Resources\close Hover.png" />
     <Content Include="Resources\Close Red.png" />
     <Content Include="Resources\Close.png" />
+    <None Include="Resources\CloudBlack.png" />
+    <None Include="Resources\CloudHover.png" />
     <Content Include="Resources\flag-done.png" />
     <Content Include="Resources\flag-empty.png" />
     <Content Include="Resources\flag-NotStarted.png" />
     <Content Include="Resources\flag-OnProcess.png" />
     <Content Include="Resources\flag-stuck.png" />
     <Content Include="Resources\flag-UnderReview.png" />
+    <None Include="Resources\icons8-upload-to-cloud-100.png" />
     <Content Include="Resources\info-black.png" />
     <Content Include="Resources\info-hover.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
     <Content Include="Resources\sort-up.png" />
+    <None Include="Resources\Upload Cloud.gif" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>
