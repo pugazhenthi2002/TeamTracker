@@ -35,6 +35,19 @@ namespace TeamTracker
             }
         }
 
+        public static Milestone FetchCurrentVersion(ProjectVersion version)
+        {
+            foreach(var Iter in MilestoneCollection)
+            {
+                if(Iter.VersionID == version.VersionID && Iter.Status == MilestoneStatus.OnProcess)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+
         public static int FetchTeamLeader(int milestoneID)
         {
             foreach(var Iter in TaskManager.TaskCollection)

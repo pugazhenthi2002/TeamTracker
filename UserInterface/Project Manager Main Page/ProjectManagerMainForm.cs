@@ -158,6 +158,7 @@ namespace TeamTracker
 
         private void OnViewProjectClicked(object sender, EventArgs e)
         {
+            viewProjectTemplate1.InitializeViewProject();
             tabControl1.SelectedIndex = 2;
         }
     }

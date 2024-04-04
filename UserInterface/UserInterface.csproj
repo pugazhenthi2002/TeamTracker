@@ -257,6 +257,24 @@
     <Compile Include="Home Page\Project Manager\ProjectManagerHome.Designer.cs">
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Team Leader\MyDashboard\DashboardTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Leader\MyDashboard\DashboardTemplate.Designer.cs">
+      <DependentUpon>DashboardTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Leader\MyDashboard\MyDashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Leader\MyDashboard\MyDashBoard.Designer.cs">
+      <DependentUpon>MyDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Leader\TeamLeaderHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Leader\TeamLeaderHome.Designer.cs">
+      <DependentUpon>TeamLeaderHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -384,6 +402,12 @@
     </Compile>
     <Compile Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.Designer.cs">
       <DependentUpon>StatusViewTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProject\FilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewProject\FilterForm.Designer.cs">
+      <DependentUpon>FilterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.cs">
       <SubType>UserControl</SubType>
@@ -525,6 +549,15 @@
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Leader\MyDashboard\DashboardTemplate.resx">
+      <DependentUpon>DashboardTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Leader\MyDashboard\MyDashBoard.resx">
+      <DependentUpon>MyDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Leader\TeamLeaderHome.resx">
+      <DependentUpon>TeamLeaderHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -598,6 +631,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.resx">
       <DependentUpon>StatusViewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\FilterForm.resx">
+      <DependentUpon>FilterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\TimelineView\Controls\TaskTimelineTemplate.resx">
       <DependentUpon>TaskTimelineTemplate.cs</DependentUpon>
@@ -699,6 +735,12 @@
     <None Include="Images\Version Milestone Status Down.png" />
     <None Include="Images\Version Milestone Status Equal.png" />
     <None Include="Images\Version Milestone Status Up.png" />
+    <None Include="Images\Board Click.png" />
+    <None Include="Images\Board Normal.png" />
+    <None Include="Images\Filter Click.png" />
+    <None Include="Images\Filter Normal.png" />
+    <None Include="Images\Timeline Click.png" />
+    <None Include="Images\Timeline Normal.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <Content Include="Resources\Close Black.png" />
@@ -719,6 +761,9 @@
     <Content Include="Resources\sort-up.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Home Page\Team Leader\On Stage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

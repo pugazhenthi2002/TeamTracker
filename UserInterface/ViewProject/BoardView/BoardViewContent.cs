@@ -48,11 +48,22 @@ namespace UserInterface.ViewProject.BoardView
                 }
             }
 
+            completedVersion.Sort((c1, c2) => c2.EndDate.CompareTo(c1.EndDate));
+            deploymentVersion.Sort((d1, d2) => d2.EndDate.CompareTo(d1.EndDate));
+            onProcessVerison.Sort((o1, o2) => o2.EndDate.CompareTo(o1.EndDate));
+            onstageVersion.Sort((o1, o2) => o2.EndDate.CompareTo(o1.EndDate));
+            upcomingVersion.Sort((u1, u2) => u2.EndDate.CompareTo(u1.EndDate));
+
             completedTemplate.VersionCollection = completedVersion;
             deploymentTemplate.VersionCollection = deploymentVersion;
             onProcessTemplate.VersionCollection = onProcessVerison;
             onStageTemplate.VersionCollection = onstageVersion;
             upcomingTemplates.VersionCollection = upcomingVersion;
+        }
+
+        private void statusViewTemplate1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

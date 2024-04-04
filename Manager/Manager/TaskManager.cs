@@ -16,6 +16,18 @@ namespace TeamTracker
             else return true;
         }
 
+        public static bool IsEmployeeInvolvedInVersions(int versionID, int empID)
+        {
+            foreach(var Iter in TaskCollection)
+            {
+                if(Iter.VersionID == versionID && Iter.AssignedTo == empID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         //Submit Task
         public static void SubmitTask(Task task, List<SourceCode> sourceCodeCollection)
         {

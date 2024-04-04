@@ -28,6 +28,21 @@ namespace TeamTracker
             else return true;
         }
 
+        public static List<ProjectVersion> CurrentEmployeeInvolvedVersions()
+        {
+            List<ProjectVersion> result = new List<ProjectVersion>();
+
+            foreach(var Iter in VersionCollection)
+            {
+                if (IsEmployeeInvolvedInVersions(Iter))
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
         public static Projects FetchProjectFromID(int id)
         {
             foreach(var Iter in ProjectCollection)
@@ -484,6 +499,24 @@ namespace TeamTracker
             }
 
             return "";
+        }
+
+        private static bool IsEmployeeInvolvedInVersions(ProjectVersion version)
+        {
+            Employee emp = EmployeeManager.CurrentEmployee;
+
+            if (emp.EmpRoleName == "Project Manager")
+            {
+                return FetchProjectFromID(version.ProjectID).ManagerID == emp.EmployeeID;
+            }
+            else if (emp.EmpRoleName == "Team Leader")
+            {
+                return FetchProjectFromID(version.ProjectID).TeamLeadID == emp.EmployeeID;
+            }
+            else
+            {
+                return TaskManager.IsEmployeeInvolvedInVersions(version.VersionID, emp.EmployeeID);
+            }
         }
 
         public static List<Projects> ProjectCollection;

@@ -32,33 +32,35 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.timelinePanel = new System.Windows.Forms.TableLayoutPanel();
             this.timelineLabel = new System.Windows.Forms.Label();
-            this.ttimelinePicBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.boardPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.boardPicBox = new System.Windows.Forms.PictureBox();
             this.boardLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.boardViewContent1 = new UserInterface.ViewProject.BoardView.BoardViewContent();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.timelineView1 = new UserInterface.ViewProject.TimelineView.TimelineView();
             this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.timelinePicBox = new System.Windows.Forms.PictureBox();
+            this.boardPicBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             this.timelinePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ttimelinePicBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.boardPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.boardPicBox)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timelinePicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -108,17 +110,7 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Filter";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.Image = global::UserInterface.Properties.Resources.Filter;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(44, 39);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
+            this.label3.Click += new System.EventHandler(this.OnFilterClicked);
             // 
             // panel3
             // 
@@ -135,7 +127,7 @@
             this.timelinePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.timelinePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.timelinePanel.Controls.Add(this.timelineLabel, 1, 0);
-            this.timelinePanel.Controls.Add(this.ttimelinePicBox, 0, 0);
+            this.timelinePanel.Controls.Add(this.timelinePicBox, 0, 0);
             this.timelinePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelinePanel.Location = new System.Drawing.Point(0, 0);
             this.timelinePanel.Name = "timelinePanel";
@@ -157,18 +149,6 @@
             this.timelineLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.timelineLabel.Click += new System.EventHandler(this.OnTimelineClicked);
             // 
-            // ttimelinePicBox
-            // 
-            this.ttimelinePicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ttimelinePicBox.Image = global::UserInterface.Properties.Resources.Timeline;
-            this.ttimelinePicBox.Location = new System.Drawing.Point(3, 3);
-            this.ttimelinePicBox.Name = "ttimelinePicBox";
-            this.ttimelinePicBox.Size = new System.Drawing.Size(44, 39);
-            this.ttimelinePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.ttimelinePicBox.TabIndex = 1;
-            this.ttimelinePicBox.TabStop = false;
-            this.ttimelinePicBox.Click += new System.EventHandler(this.OnTimelineClicked);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.boardPanel);
@@ -180,7 +160,7 @@
             // 
             // boardPanel
             // 
-            this.boardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.boardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.boardPanel.ColumnCount = 2;
             this.boardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.boardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -193,18 +173,6 @@
             this.boardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.boardPanel.Size = new System.Drawing.Size(167, 45);
             this.boardPanel.TabIndex = 0;
-            // 
-            // boardPicBox
-            // 
-            this.boardPicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board;
-            this.boardPicBox.Location = new System.Drawing.Point(3, 3);
-            this.boardPicBox.Name = "boardPicBox";
-            this.boardPicBox.Size = new System.Drawing.Size(44, 39);
-            this.boardPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.boardPicBox.TabIndex = 0;
-            this.boardPicBox.TabStop = false;
-            this.boardPicBox.Click += new System.EventHandler(this.OnBoardClicked);
             // 
             // boardLabel
             // 
@@ -237,6 +205,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.tabPage1.Controls.Add(this.boardViewContent1);
             this.tabPage1.Location = new System.Drawing.Point(4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -244,13 +213,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
+            // boardViewContent1
+            // 
+            this.boardViewContent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boardViewContent1.Location = new System.Drawing.Point(3, 3);
+            this.boardViewContent1.Margin = new System.Windows.Forms.Padding(2);
+            this.boardViewContent1.Name = "boardViewContent1";
+            this.boardViewContent1.Size = new System.Drawing.Size(1234, 500);
+            this.boardViewContent1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.timelineView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1240, 487);
+            this.tabPage2.Size = new System.Drawing.Size(1240, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -261,7 +239,7 @@
             this.timelineView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelineView1.Location = new System.Drawing.Point(3, 3);
             this.timelineView1.Name = "timelineView1";
-            this.timelineView1.Size = new System.Drawing.Size(1234, 481);
+            this.timelineView1.Size = new System.Drawing.Size(1234, 500);
             this.timelineView1.TabIndex = 0;
             // 
             // profilePictureBox1
@@ -272,6 +250,42 @@
             this.profilePictureBox1.Size = new System.Drawing.Size(45, 45);
             this.profilePictureBox1.TabIndex = 3;
             this.profilePictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox3.Image = global::UserInterface.Properties.Resources.Filter_Normal;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(44, 39);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.OnFilterClicked);
+            // 
+            // timelinePicBox
+            // 
+            this.timelinePicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.timelinePicBox.Image = global::UserInterface.Properties.Resources.Timeline_Normal;
+            this.timelinePicBox.Location = new System.Drawing.Point(3, 3);
+            this.timelinePicBox.Name = "timelinePicBox";
+            this.timelinePicBox.Size = new System.Drawing.Size(44, 39);
+            this.timelinePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.timelinePicBox.TabIndex = 1;
+            this.timelinePicBox.TabStop = false;
+            this.timelinePicBox.Click += new System.EventHandler(this.OnTimelineClicked);
+            // 
+            // boardPicBox
+            // 
+            this.boardPicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board_Normal;
+            this.boardPicBox.Location = new System.Drawing.Point(3, 3);
+            this.boardPicBox.Name = "boardPicBox";
+            this.boardPicBox.Size = new System.Drawing.Size(44, 39);
+            this.boardPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.boardPicBox.TabIndex = 0;
+            this.boardPicBox.TabStop = false;
+            this.boardPicBox.Click += new System.EventHandler(this.OnBoardClicked);
             // 
             // ViewProjectTemplate
             // 
@@ -285,16 +299,17 @@
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.timelinePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ttimelinePicBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.boardPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.boardPicBox)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timelinePicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boardPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,7 +322,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel timelinePanel;
-        private System.Windows.Forms.PictureBox ttimelinePicBox;
+        private System.Windows.Forms.PictureBox timelinePicBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel boardPanel;
         private System.Windows.Forms.PictureBox boardPicBox;
@@ -319,5 +334,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private TimelineView.TimelineView timelineView1;
+        private BoardView.BoardViewContent boardViewContent1;
     }
 }

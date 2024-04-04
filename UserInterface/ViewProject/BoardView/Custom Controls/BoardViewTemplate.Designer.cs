@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoardViewTemplate));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.versionNameLabel = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.milestoneCountLabel = new System.Windows.Forms.Label();
             this.milestoneStatusPicBox = new System.Windows.Forms.PictureBox();
             this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
+            this.statusToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,9 +77,10 @@
             // 
             // versionNameLabel
             // 
+            this.versionNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.versionNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.versionNameLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.versionNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
             this.versionNameLabel.Location = new System.Drawing.Point(0, 0);
             this.versionNameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.versionNameLabel.Name = "versionNameLabel";
@@ -86,6 +89,8 @@
             this.versionNameLabel.Text = "Version Name";
             this.versionNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.versionNameLabel.Click += new System.EventHandler(this.OnBoardClick);
+            this.versionNameLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.versionNameLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // panel1
             // 
@@ -100,9 +105,10 @@
             // 
             // versionDateLabel
             // 
+            this.versionDateLabel.BackColor = System.Drawing.Color.Transparent;
             this.versionDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.versionDateLabel.Font = new System.Drawing.Font("Ebrima", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.versionDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
             this.versionDateLabel.Location = new System.Drawing.Point(25, 0);
             this.versionDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.versionDateLabel.Name = "versionDateLabel";
@@ -111,6 +117,8 @@
             this.versionDateLabel.Text = "Version Date";
             this.versionDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.versionDateLabel.Click += new System.EventHandler(this.OnBoardClick);
+            this.versionDateLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.versionDateLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // pictureBox1
             // 
@@ -123,9 +131,12 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -143,9 +154,12 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(289, 64);
             this.tableLayoutPanel2.TabIndex = 2;
+            this.tableLayoutPanel2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.tableLayoutPanel2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -159,13 +173,15 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(72, 64);
             this.tableLayoutPanel4.TabIndex = 1;
+            this.tableLayoutPanel4.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.tableLayoutPanel4.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // taskCountLabel
             // 
             this.taskCountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.taskCountLabel.BackColor = System.Drawing.Color.Transparent;
             this.taskCountLabel.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taskCountLabel.ForeColor = System.Drawing.Color.White;
+            this.taskCountLabel.ForeColor = System.Drawing.Color.Black;
             this.taskCountLabel.Location = new System.Drawing.Point(44, 22);
             this.taskCountLabel.Margin = new System.Windows.Forms.Padding(0);
             this.taskCountLabel.Name = "taskCountLabel";
@@ -174,6 +190,8 @@
             this.taskCountLabel.Text = "5";
             this.taskCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.taskCountLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTaskLabelPaint);
+            this.taskCountLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.taskCountLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // pictureBox5
             // 
@@ -186,9 +204,12 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.pictureBox5.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -202,6 +223,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(72, 64);
             this.tableLayoutPanel3.TabIndex = 0;
+            this.tableLayoutPanel3.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.tableLayoutPanel3.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // pictureBox4
             // 
@@ -214,13 +237,15 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.pictureBox4.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // milestoneCountLabel
             // 
             this.milestoneCountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.milestoneCountLabel.BackColor = System.Drawing.Color.Transparent;
             this.milestoneCountLabel.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.milestoneCountLabel.ForeColor = System.Drawing.Color.White;
+            this.milestoneCountLabel.ForeColor = System.Drawing.Color.Black;
             this.milestoneCountLabel.Location = new System.Drawing.Point(44, 22);
             this.milestoneCountLabel.Margin = new System.Windows.Forms.Padding(0);
             this.milestoneCountLabel.Name = "milestoneCountLabel";
@@ -229,6 +254,8 @@
             this.milestoneCountLabel.Text = "5";
             this.milestoneCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.milestoneCountLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnMilestoneLabelPaint);
+            this.milestoneCountLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.milestoneCountLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // milestoneStatusPicBox
             // 
@@ -242,6 +269,9 @@
             this.milestoneStatusPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.milestoneStatusPicBox.TabIndex = 3;
             this.milestoneStatusPicBox.TabStop = false;
+            this.milestoneStatusPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.milestoneStatusPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.milestoneStatusPicBox.MouseHover += new System.EventHandler(this.OnMilestoneStatusHover);
             // 
             // profilePictureBox1
             // 
@@ -250,18 +280,22 @@
             this.profilePictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.profilePictureBox1.Name = "profilePictureBox1";
             this.profilePictureBox1.Size = new System.Drawing.Size(31, 31);
+            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox1.TabIndex = 4;
             this.profilePictureBox1.TabStop = false;
+            this.profilePictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.profilePictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // BoardViewTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BoardViewTemplate";
             this.Size = new System.Drawing.Size(289, 157);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnUserControlPaint);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -292,5 +326,6 @@
         private System.Windows.Forms.Label milestoneCountLabel;
         private System.Windows.Forms.Label taskCountLabel;
         private TeamTracker.ProfilePictureBox profilePictureBox1;
+        private System.Windows.Forms.ToolTip statusToolTip;
     }
 }
