@@ -135,6 +135,20 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             pen.Dispose();
         }
 
+        private void OnLegendPaint(object sender, PaintEventArgs e)
+        {
+            Brush brush;
+
+            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(Color.FromArgb(3, 4, 94));
+            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(Color.FromArgb(0, 119, 182));
+            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(Color.FromArgb(0, 180, 216));
+            else brush = new SolidBrush(Color.FromArgb(144, 224, 239));
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width, (sender as Panel).Height));
+            brush.Dispose();
+        }
+
         private void InitializeRoundedEdge()
         {
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));

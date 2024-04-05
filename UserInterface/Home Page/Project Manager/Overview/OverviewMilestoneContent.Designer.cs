@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.taskCompletionProgressBar1 = new UserInterface.Home_Page.Project_Manager.Overview.TaskCompletionProgressBar();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.incompleteTaskLabel = new System.Windows.Forms.Label();
@@ -61,9 +62,16 @@
             this.nextNavPicBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.milestonePanel = new System.Windows.Forms.Panel();
-            this.taskCompletionProgressBar1 = new UserInterface.Home_Page.Project_Manager.Overview.TaskCompletionProgressBar();
             this.milestoneView1 = new TeamTracker.MilestoneView();
-            this.milestoneLabel1 = new UserInterface.Home_Page.Project_Manager.Overview.MilestoneLabel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.donePanel = new System.Windows.Forms.Panel();
+            this.delayPanel = new System.Windows.Forms.Panel();
+            this.currentPanel = new System.Windows.Forms.Panel();
+            this.notstartedPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -87,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.backNavigatePicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextNavPicBox)).BeginInit();
             this.milestonePanel.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -96,7 +105,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.milestonePanel, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.milestoneLabel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -217,6 +226,18 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(303, 81);
             this.panel8.TabIndex = 3;
+            // 
+            // taskCompletionProgressBar1
+            // 
+            this.taskCompletionProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.taskCompletionProgressBar1.CompletedTask = 0;
+            this.taskCompletionProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.taskCompletionProgressBar1.Location = new System.Drawing.Point(0, 0);
+            this.taskCompletionProgressBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.taskCompletionProgressBar1.Name = "taskCompletionProgressBar1";
+            this.taskCompletionProgressBar1.Size = new System.Drawing.Size(303, 81);
+            this.taskCompletionProgressBar1.TabIndex = 0;
+            this.taskCompletionProgressBar1.TotalTask = 0;
             // 
             // panel7
             // 
@@ -488,6 +509,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 50);
@@ -505,34 +527,132 @@
             this.milestonePanel.Size = new System.Drawing.Size(1603, 169);
             this.milestonePanel.TabIndex = 5;
             // 
-            // taskCompletionProgressBar1
-            // 
-            this.taskCompletionProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.taskCompletionProgressBar1.CompletedTask = 0;
-            this.taskCompletionProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.taskCompletionProgressBar1.Location = new System.Drawing.Point(0, 0);
-            this.taskCompletionProgressBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.taskCompletionProgressBar1.Name = "taskCompletionProgressBar1";
-            this.taskCompletionProgressBar1.Size = new System.Drawing.Size(303, 81);
-            this.taskCompletionProgressBar1.TabIndex = 0;
-            this.taskCompletionProgressBar1.TotalTask = 0;
-            // 
             // milestoneView1
             // 
-            this.milestoneView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.milestoneView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.milestoneView1.Location = new System.Drawing.Point(0, 0);
             this.milestoneView1.MilestoneCollection = null;
             this.milestoneView1.Name = "milestoneView1";
             this.milestoneView1.Size = new System.Drawing.Size(1603, 169);
             this.milestoneView1.TabIndex = 0;
             // 
-            // milestoneLabel1
+            // tableLayoutPanel7
             // 
-            this.milestoneLabel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.milestoneLabel1.Location = new System.Drawing.Point(3, 313);
-            this.milestoneLabel1.Name = "milestoneLabel1";
-            this.milestoneLabel1.Size = new System.Drawing.Size(741, 45);
-            this.milestoneLabel1.TabIndex = 6;
+            this.tableLayoutPanel7.ColumnCount = 8;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Controls.Add(this.label7, 7, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label6, 5, 0);
+            this.tableLayoutPanel7.Controls.Add(this.donePanel, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.delayPanel, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.currentPanel, 4, 0);
+            this.tableLayoutPanel7.Controls.Add(this.notstartedPanel, 6, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label5, 3, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 313);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(431, 26);
+            this.tableLayoutPanel7.TabIndex = 6;
+            // 
+            // donePanel
+            // 
+            this.donePanel.BackColor = System.Drawing.Color.Transparent;
+            this.donePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.donePanel.Location = new System.Drawing.Point(3, 3);
+            this.donePanel.Name = "donePanel";
+            this.donePanel.Size = new System.Drawing.Size(20, 20);
+            this.donePanel.TabIndex = 0;
+            this.donePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
+            // 
+            // delayPanel
+            // 
+            this.delayPanel.BackColor = System.Drawing.Color.Transparent;
+            this.delayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.delayPanel.Location = new System.Drawing.Point(79, 3);
+            this.delayPanel.Name = "delayPanel";
+            this.delayPanel.Size = new System.Drawing.Size(20, 20);
+            this.delayPanel.TabIndex = 1;
+            this.delayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
+            // 
+            // currentPanel
+            // 
+            this.currentPanel.BackColor = System.Drawing.Color.Transparent;
+            this.currentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentPanel.Location = new System.Drawing.Point(155, 3);
+            this.currentPanel.Name = "currentPanel";
+            this.currentPanel.Size = new System.Drawing.Size(20, 20);
+            this.currentPanel.TabIndex = 2;
+            this.currentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
+            // 
+            // notstartedPanel
+            // 
+            this.notstartedPanel.BackColor = System.Drawing.Color.Transparent;
+            this.notstartedPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notstartedPanel.Location = new System.Drawing.Point(261, 3);
+            this.notstartedPanel.Name = "notstartedPanel";
+            this.notstartedPanel.Size = new System.Drawing.Size(20, 20);
+            this.notstartedPanel.TabIndex = 2;
+            this.notstartedPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label4.Location = new System.Drawing.Point(30, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Done";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label5.Location = new System.Drawing.Point(105, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Delay";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label6.Location = new System.Drawing.Point(191, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 17);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Current";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label7.Location = new System.Drawing.Point(287, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 26);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Not Started";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OverviewMilestoneContent
             // 
@@ -566,6 +686,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.backNavigatePicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextNavPicBox)).EndInit();
             this.milestonePanel.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -594,7 +716,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel milestonePanel;
         private TeamTracker.MilestoneView milestoneView1;
-        private MilestoneLabel milestoneLabel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -607,5 +728,14 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label dueTaskTitleLabel;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel donePanel;
+        private System.Windows.Forms.Panel delayPanel;
+        private System.Windows.Forms.Panel currentPanel;
+        private System.Windows.Forms.Panel notstartedPanel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

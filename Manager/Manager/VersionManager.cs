@@ -28,13 +28,13 @@ namespace TeamTracker
             else return true;
         }
 
-        public static List<ProjectVersion> CurrentEmployeeInvolvedVersions()
+        public static List<ProjectVersion> CurrentEmployeeInvolvedVersions(Employee emp)
         {
             List<ProjectVersion> result = new List<ProjectVersion>();
 
             foreach(var Iter in VersionCollection)
             {
-                if (IsEmployeeInvolvedInVersions(Iter))
+                if (IsEmployeeInvolvedInVersions(Iter, emp))
                 {
                     result.Add(Iter);
                 }
@@ -130,11 +130,15 @@ namespace TeamTracker
             UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, version.EndDate, version.ClientEmail, null);
         }
 
-        public static List<Projects> CurrentEmployeeInvolvedProjects()
+        public static void SelectedEmployeeInvolvedVersions(Employee emp)
+        {
+
+        }
+
+        public static List<Projects> CurrentEmployeeInvolvedProjects(Employee emp)
         {
             List<Projects> result = new List<Projects>();
             HashSet<int> projectIDs = new HashSet<int>();
-            Employee emp = EmployeeManager.CurrentEmployee;
 
             if (emp.EmpRoleName == "Project Manager")
             {
@@ -147,7 +151,7 @@ namespace TeamTracker
 
                 }
             }
-            else if(emp.EmpRoleName == "Team Leader")
+            else if(emp.EmpRoleName == "Team Lead")
             {
                 foreach (var Iter in ProjectCollection)
                 {
@@ -161,7 +165,7 @@ namespace TeamTracker
             {
                 foreach(var Iter in ProjectCollection)
                 {
-                    if (IsEmployeeInvolvedInProject(Iter))
+                    if (IsEmployeeInvolvedInProject(Iter, emp))
                     {
                         result.Add(Iter);
                     }
@@ -493,20 +497,26 @@ namespace TeamTracker
             return "";
         }
 
-        public static List<ProjectVersion> FetchInvolvedVersion(Projects project)
+        public static List<ProjectVersion> FetchInvolvedVersion(Projects project, Employee emp)
         {
-            Employee emp = EmployeeManager.CurrentEmployee;
+            List<ProjectVersion> result = new List<ProjectVersion>();
 
-            if(emp.EmpRoleName == "Project Manager" || emp.EmpRoleName == "Team Leader")
+            if(emp.EmpRoleName == "Project Manager" || emp.EmpRoleName == "Team Lead")
             {
-
+                return FetchAllVersionFromProjectID(project.ProjectID);
             }
             else
             {
-
+                foreach(var Iter in VersionCollection)
+                {
+                    if (IsEmployeeInvolvedInVersions(Iter, emp))
+                    {
+                        result.Add(Iter);
+                    }
+                }
             }
 
-            return null;
+            return result;
         }
 
         private static bool IsProjectAvailableForVersionUpgrade(int projectID)
@@ -558,15 +568,13 @@ namespace TeamTracker
             return "";
         }
 
-        private static bool IsEmployeeInvolvedInVersions(ProjectVersion version)
+        private static bool IsEmployeeInvolvedInVersions(ProjectVersion version, Employee emp)
         {
-            Employee emp = EmployeeManager.CurrentEmployee;
-
             if (emp.EmpRoleName == "Project Manager")
             {
                 return FetchProjectFromID(version.ProjectID).ManagerID == emp.EmployeeID;
             }
-            else if (emp.EmpRoleName == "Team Leader")
+            else if (emp.EmpRoleName == "Team Lead")
             {
                 return FetchProjectFromID(version.ProjectID).TeamLeadID == emp.EmployeeID;
             }
@@ -576,10 +584,9 @@ namespace TeamTracker
             }
         }
 
-        private static bool IsEmployeeInvolvedInProject(Projects project)
+        private static bool IsEmployeeInvolvedInProject(Projects project, Employee emp)
         {
             List<ProjectVersion> allVersion = FetchAllVersionFromProject(project.ProjectID);
-            Employee emp = EmployeeManager.CurrentEmployee;
 
             foreach(var Iter in allVersion)
             {

@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace UserInterface.Home_Page.Project_Manager.Overview
 {
@@ -55,7 +56,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             int count = 0;
             foreach (var Iter in taskCounts)
             {
-                chart1.Series[0].Points.AddXY(Iter.Key, Iter.Value);
+                chart1.Series[0].Points.AddY(Iter.Value);
                 count = count + Iter.Value;
             }
             label1.Text = "Task Count: " + count;

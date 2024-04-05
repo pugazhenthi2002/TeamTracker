@@ -64,16 +64,16 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(768, 70);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(626, 41);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(629, 0);
+            this.label4.Location = new System.Drawing.Point(521, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 70);
+            this.label4.Size = new System.Drawing.Size(102, 41);
             this.label4.TabIndex = 6;
             this.label4.Text = "Delay";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,9 +82,9 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(437, 0);
+            this.label3.Location = new System.Drawing.Point(365, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 70);
+            this.label3.Size = new System.Drawing.Size(100, 41);
             this.label3.TabIndex = 5;
             this.label3.Text = "Not Started";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,9 +93,9 @@
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(245, 0);
+            this.label2.Location = new System.Drawing.Point(209, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 70);
+            this.label2.Size = new System.Drawing.Size(100, 41);
             this.label2.TabIndex = 4;
             this.label2.Text = "Current";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,10 +104,10 @@
             // 
             this.delayPanel.BackColor = System.Drawing.Color.Transparent;
             this.delayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.delayPanel.Location = new System.Drawing.Point(576, 0);
+            this.delayPanel.Location = new System.Drawing.Point(468, 0);
             this.delayPanel.Margin = new System.Windows.Forms.Padding(0);
             this.delayPanel.Name = "delayPanel";
-            this.delayPanel.Size = new System.Drawing.Size(50, 70);
+            this.delayPanel.Size = new System.Drawing.Size(50, 41);
             this.delayPanel.TabIndex = 2;
             this.delayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.delayPanel_Paint);
             // 
@@ -118,7 +118,7 @@
             this.donePanel.Location = new System.Drawing.Point(0, 0);
             this.donePanel.Margin = new System.Windows.Forms.Padding(0);
             this.donePanel.Name = "donePanel";
-            this.donePanel.Size = new System.Drawing.Size(50, 70);
+            this.donePanel.Size = new System.Drawing.Size(50, 41);
             this.donePanel.TabIndex = 0;
             this.donePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.donePanel_Paint);
             // 
@@ -126,10 +126,10 @@
             // 
             this.currentPanel.BackColor = System.Drawing.Color.Transparent;
             this.currentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentPanel.Location = new System.Drawing.Point(192, 0);
+            this.currentPanel.Location = new System.Drawing.Point(156, 0);
             this.currentPanel.Margin = new System.Windows.Forms.Padding(0);
             this.currentPanel.Name = "currentPanel";
-            this.currentPanel.Size = new System.Drawing.Size(50, 70);
+            this.currentPanel.Size = new System.Drawing.Size(50, 41);
             this.currentPanel.TabIndex = 1;
             this.currentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.currentPanel_Paint);
             // 
@@ -137,10 +137,10 @@
             // 
             this.notStartedPanel.BackColor = System.Drawing.Color.Transparent;
             this.notStartedPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notStartedPanel.Location = new System.Drawing.Point(384, 0);
+            this.notStartedPanel.Location = new System.Drawing.Point(312, 0);
             this.notStartedPanel.Margin = new System.Windows.Forms.Padding(0);
             this.notStartedPanel.Name = "notStartedPanel";
-            this.notStartedPanel.Size = new System.Drawing.Size(50, 70);
+            this.notStartedPanel.Size = new System.Drawing.Size(50, 41);
             this.notStartedPanel.TabIndex = 2;
             this.notStartedPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.notStartedPanel_Paint);
             // 
@@ -150,7 +150,7 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(53, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 70);
+            this.label1.Size = new System.Drawing.Size(100, 41);
             this.label1.TabIndex = 3;
             this.label1.Text = "Done";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,7 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MilestoneLabel";
-            this.Size = new System.Drawing.Size(768, 70);
+            this.Size = new System.Drawing.Size(626, 41);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

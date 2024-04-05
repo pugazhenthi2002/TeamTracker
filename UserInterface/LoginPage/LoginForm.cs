@@ -51,7 +51,6 @@ namespace TeamTracker
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            letsTeamUpButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, letsTeamUpButton.Width, letsTeamUpButton.Height, 10, 10));
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
         }
 
@@ -90,14 +89,14 @@ namespace TeamTracker
         {
             if(closePictureBox.Image!=null) closePictureBox.Image.Dispose();
 
-            closePictureBox.Image = UserInterface.Properties.Resources.Close_Red;
+            closePictureBox.Image = UserInterface.Properties.Resources.close_Hover;
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
             if (closePictureBox.Image != null) closePictureBox.Image.Dispose();
 
-            closePictureBox.Image = UserInterface.Properties.Resources.Close_Black;
+            closePictureBox.Image = UserInterface.Properties.Resources.Close;
         }
 
         private void OnCloseClick(object sender, EventArgs e)

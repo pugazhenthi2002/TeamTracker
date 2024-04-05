@@ -21,7 +21,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void donePanel_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, donePanel.Width - 1, donePanel.Height - 1);
-            Brush brush = new SolidBrush(Color.Green);
+            Brush brush = new SolidBrush(Color.FromArgb(3, 4, 94));
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush, rec);
             brush.Dispose();
@@ -30,7 +30,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void currentPanel_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, currentPanel.Width - 1, currentPanel.Height - 1);
-            Brush brush = new SolidBrush(Color.Blue);
+            Brush brush = new SolidBrush(Color.FromArgb(0, 180, 216));
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush, rec);
             brush.Dispose();
@@ -39,7 +39,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void notStartedPanel_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, notStartedPanel.Width - 1, notStartedPanel.Height - 1);
-            Brush brush = new SolidBrush(Color.Orange);
+            Brush brush = new SolidBrush(Color.FromArgb(72, 202, 228));
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush, rec);
             brush.Dispose();
@@ -48,7 +48,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void delayPanel_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, delayPanel.Width - 1, delayPanel.Height - 1);
-            Brush brush = new SolidBrush(Color.Red);
+            Brush brush = new SolidBrush(Color.FromArgb(0, 119, 182));
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush, rec);
             brush.Dispose();

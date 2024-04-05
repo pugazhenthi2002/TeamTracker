@@ -12,6 +12,10 @@ namespace TeamTracker
 {
     public partial class ProfilePicAndName : UserControl
     {
+        public event EventHandler SignOut;
+        public bool isOperable { get; set; }
+        public Color HoverColor { get; set; }
+        public Color NormalColor { get; set; }
         public Employee EmployeeProfile
         {
             get
@@ -36,5 +40,29 @@ namespace TeamTracker
         }
 
         private Employee employeeProfile;
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            if (isOperable)
+            {
+                BackColor = HoverColor;
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if (isOperable)
+            {
+                BackColor = NormalColor;
+            }
+        }
+
+        private void OnCLicked(object sender, EventArgs e)
+        {
+            if (isOperable)
+            {
+                SignOut.Invoke(this, e);
+            }
+        }
     }
 }

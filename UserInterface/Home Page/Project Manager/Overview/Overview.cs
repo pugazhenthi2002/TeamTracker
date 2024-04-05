@@ -64,9 +64,9 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnOverviewClick(object sender, EventArgs e)
         {
             OverviewDropDownForm form = new OverviewDropDownForm();
-            form.BackColor = Color.FromArgb(221, 230, 237);
-            form.Location = projectNameLabel.PointToScreen(new Point(0, projectNameLabel.Height));
-            form.Size = new Size(projectNameLabel.Width, 50);
+            form.BackColor = Color.FromArgb(231, 240, 250);
+            form.Location = panel7.PointToScreen(new Point(0, panel7.Height));
+            form.Size = new Size(panel7.Width, 50);
             form.CurrentVersionCollection = collection;
             form.OverviewSelected += OnVersionSelected;
             form.Show();
@@ -88,6 +88,26 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             projectNameLabel.BackColor = Color.FromArgb(157, 178, 191);
             projectNameLabel.ForeColor = Color.Black;
+        }
+
+        private void OnVersionSwitchPanelPaint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
+            pen.Dispose();
+        }
+
+        private void OnDropDownMouseLEave(object sender, EventArgs e)
+        {
+            dropDownPicBox.BackColor = Color.FromArgb(231, 240, 250);
+            panel7.Invalidate();
+        }
+
+        private void OnDropDownMouseEnter(object sender, EventArgs e)
+        {
+            dropDownPicBox.BackColor = Color.FromArgb(221, 230, 237);
+            panel7.Invalidate();
         }
     }
 }

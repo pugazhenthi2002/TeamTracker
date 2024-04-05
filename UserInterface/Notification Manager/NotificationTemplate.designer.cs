@@ -28,45 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.closeButton2 = new TeamTracker.CloseButton();
-            this.headerPanel = new System.Windows.Forms.Panel();
             this.timePanel = new System.Windows.Forms.Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.seeMorePanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.headerPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.closeButton2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(364, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(36, 175);
-            this.panel1.TabIndex = 1;
-            // 
-            // closeButton2
-            // 
-            this.closeButton2.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.closeButton2.Location = new System.Drawing.Point(0, 0);
-            this.closeButton2.Name = "closeButton2";
-            this.closeButton2.Size = new System.Drawing.Size(34, 34);
-            this.closeButton2.TabIndex = 2;
-            this.closeButton2.Click += new System.EventHandler(this.OnNotificationClosed);
-            // 
-            // headerPanel
-            // 
-            this.headerPanel.BackColor = System.Drawing.Color.Transparent;
-            this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerPanel.Location = new System.Drawing.Point(0, 0);
-            this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.headerPanel.Size = new System.Drawing.Size(364, 45);
-            this.headerPanel.TabIndex = 2;
-            this.headerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnHeaderPanelPaint);
             // 
             // timePanel
             // 
@@ -75,7 +45,7 @@
             this.timePanel.Location = new System.Drawing.Point(0, 151);
             this.timePanel.Name = "timePanel";
             this.timePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.timePanel.Size = new System.Drawing.Size(364, 24);
+            this.timePanel.Size = new System.Drawing.Size(400, 24);
             this.timePanel.TabIndex = 3;
             this.timePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTimePanelPaint);
             // 
@@ -83,10 +53,10 @@
             // 
             this.contentPanel.BackColor = System.Drawing.Color.Transparent;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(0, 45);
+            this.contentPanel.Location = new System.Drawing.Point(0, 34);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.contentPanel.Size = new System.Drawing.Size(364, 93);
+            this.contentPanel.Size = new System.Drawing.Size(400, 104);
             this.contentPanel.TabIndex = 4;
             this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnContentPanelPaint);
             // 
@@ -96,7 +66,7 @@
             this.seeMorePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.seeMorePanel.Location = new System.Drawing.Point(0, 138);
             this.seeMorePanel.Name = "seeMorePanel";
-            this.seeMorePanel.Size = new System.Drawing.Size(364, 13);
+            this.seeMorePanel.Size = new System.Drawing.Size(400, 13);
             this.seeMorePanel.TabIndex = 5;
             this.seeMorePanel.Click += new System.EventHandler(this.OnFullContentViewed);
             this.seeMorePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SeeMorePanel_Paint);
@@ -104,16 +74,48 @@
             this.seeMorePanel.MouseLeave += new System.EventHandler(this.OnSeeMorePanelLeave);
             this.seeMorePanel.MouseHover += new System.EventHandler(this.OnSeeMorePanelHover);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.panel1.Controls.Add(this.headerPanel);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(400, 34);
+            this.panel1.TabIndex = 6;
+            // 
+            // headerPanel
+            // 
+            this.headerPanel.BackColor = System.Drawing.Color.Transparent;
+            this.headerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.headerPanel.Location = new System.Drawing.Point(0, 0);
+            this.headerPanel.Name = "headerPanel";
+            this.headerPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.headerPanel.Size = new System.Drawing.Size(361, 34);
+            this.headerPanel.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Image = global::UserInterface.Properties.Resources.close_Hover;
+            this.pictureBox1.Location = new System.Drawing.Point(361, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // NotificationTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(400, 175);
             this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.seeMorePanel);
             this.Controls.Add(this.timePanel);
-            this.Controls.Add(this.headerPanel);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NotificationTemplate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -123,17 +125,17 @@
             this.Load += new System.EventHandler(this.NotificationTemplate_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NotificationTemplate_Paint);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.Panel contentPanel;
-        private CloseButton closeButton2;
         private System.Windows.Forms.Panel seeMorePanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel headerPanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

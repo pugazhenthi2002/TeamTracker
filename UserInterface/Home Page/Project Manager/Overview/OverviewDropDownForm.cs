@@ -24,6 +24,7 @@ namespace TeamTracker
            int nHeightEllipse // width of ellipse
        );
 
+        private const int CSDropShadow = 0x00020000;
         protected override CreateParams CreateParams
         {
             get
@@ -37,7 +38,7 @@ namespace TeamTracker
         public delegate void OverviewHandler(string name, ProjectVersion version);
         public event OverviewHandler OverviewSelected;
 
-        private const int CSDropShadow = 0x00020000;
+        
         public Dictionary<string, ProjectVersion> CurrentVersionCollection;
 
         public OverviewDropDownForm()
