@@ -19,8 +19,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             get { return month; }
             set
             {
-                month = value;
-                SetReport();
+                if (value != 0)
+                {
+                    month = value;
+                    SetReport();
+                }
             }
         }
         public int Year
@@ -28,8 +31,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             get { return year; }
             set
             {
-                year = value;
-                SetReport();
+                if (value != 0)
+                {
+                    year = value;
+                    SetReport();
+                }
             }
         }
         public int Priority
@@ -42,7 +48,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
-        private int month = DateTime.Today.Month, year = DateTime.Today.Year, priority = -1;
+        public bool isOpened = false;
+        private int month, year, priority;
 
         public ReportContent()
         {
@@ -68,48 +75,56 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         private void OnFiltered(int month, int year, int priority)
         {
-            Month = month;  Year = year; Priority = priority;
+            Month = month; Year = year; Priority = priority;
         }
 
         private void SetReport()
         {
-            totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
-            totalmilestoneCount.Text = MilestoneManager.FilterMilestoneCount(month, year).ToString();
-            Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCount(month, year);
-            Dictionary<string, Dictionary<DateTime, int>> result2 = TaskManager.FilterTaskCountByDate(month, year);
-
-            int total = 0;
-            foreach (var Iter in result1) total += Iter.Value;
-            teammatesTaskCount.Text = total.ToString();
-
-            donutChart.Series[0] = new Series();
-            donutChart.Series[0].ChartType = SeriesChartType.Doughnut;
-            foreach(var Iter in result1)
+            if (isOpened)
             {
-                donutChart.Series[0].Points.AddXY(Iter.Key,Iter.Value);
-            }
+                totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
+                totalmilestoneCount.Text = MilestoneManager.FilterMilestoneCount(month, year).ToString();
+                Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCount(month, year, priority);
+                Dictionary<string, Dictionary<DateTime, int>> result2 = TaskManager.FilterTaskCountByDate(month, year);
 
-            donutChart.Legends["Legend1"].ForeColor = Color.Black;
+                int total = 0;
+                foreach (var Iter in result1) total += Iter.Value;
+                teammatesTaskCount.Text = total.ToString();
 
-            barchart.Series.Clear();
-
-            int ctr = 0;
-            foreach(var Iter in result2)
-            {
-                Series series = new Series();
-                series.Name = Iter.Key;
-                series.ChartType = SeriesChartType.Line;
-                series.MarkerSize = 5;
-
-                foreach(var seriesIter in Iter.Value)
+                donutChart.Series[0] = new Series();
+                donutChart.Series[0].ChartType = SeriesChartType.Doughnut;
+                foreach (var Iter in result1)
                 {
-                    series.Points.AddXY(seriesIter.Key, seriesIter.Value);
+                    donutChart.Series[0].Points.AddXY(Iter.Key, Iter.Value);
                 }
-                barchart.Series.Add(series);
-            }
 
-            barchart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            barchart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+                donutChart.Legends["Legend1"].ForeColor = Color.Black;
+
+                barchart.Series.Clear();
+
+                int ctr = 0;
+                foreach (var Iter in result2)
+                {
+                    Series series = new Series();
+                    series.Name = Iter.Key;
+                    series.ChartType = SeriesChartType.Line;
+                    series.MarkerSize = 5;
+
+                    foreach (var seriesIter in Iter.Value)
+                    {
+                        series.Points.AddXY(seriesIter.Key, seriesIter.Value);
+                    }
+                    barchart.Series.Add(series);
+                }
+
+                barchart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+                barchart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
         }
     }
 }

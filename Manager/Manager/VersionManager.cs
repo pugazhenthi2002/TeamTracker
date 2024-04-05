@@ -135,6 +135,20 @@ namespace TeamTracker
 
         }
 
+        public static int FetchTeamLeadFromVersionID(int versionID)
+        {
+            int projectID = 0;
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.VersionID == versionID)
+                {
+                    projectID = Iter.ProjectID;
+                }
+            }
+
+            return FetchTeamLeadIDFromProjectID(projectID);
+        }
+
         public static List<Projects> CurrentEmployeeInvolvedProjects(Employee emp)
         {
             List<Projects> result = new List<Projects>();
