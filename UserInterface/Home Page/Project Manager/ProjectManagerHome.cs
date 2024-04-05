@@ -19,7 +19,7 @@ namespace UserInterface.Home_Page.Project_Manager
             InitializeComponent();
         }
 
-        public void InitializeHome()
+        public void InitializeProjectManagerHome()
         {
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
             notificationContent1.NotifyList = DataHandler.FetchNotification();

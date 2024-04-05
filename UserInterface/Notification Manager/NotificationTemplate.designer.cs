@@ -81,6 +81,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 34);
             this.panel1.TabIndex = 6;
@@ -94,6 +95,7 @@
             this.headerPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.headerPanel.Size = new System.Drawing.Size(361, 34);
             this.headerPanel.TabIndex = 3;
+            this.headerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnHeaderPanelPaint);
             // 
             // pictureBox1
             // 
@@ -110,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(224)))), ((int)(((byte)(239)))));
             this.ClientSize = new System.Drawing.Size(400, 175);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.panel1);
@@ -122,8 +124,7 @@
             this.Text = "NotificationTemplate";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmFadeClose_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NotificationTemplate_FormClosed);
-            this.Load += new System.EventHandler(this.NotificationTemplate_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NotificationTemplate_Paint);
+            this.Resize += new System.EventHandler(this.OnNotifyResize);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

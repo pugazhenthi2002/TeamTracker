@@ -38,7 +38,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             notify = new NotificationManager();
-            notify.BorderRadius = 20;
+            notify.BorderRadius = 30;
             notify.NotificationScreenTime = 10;
             notify.NotificationAlignment = FromNotificationAlignment.RightDown;
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
@@ -47,7 +47,7 @@ namespace TeamTracker
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            projectManagerHome1.InitializeHome();
+            projectManagerHome1.InitializeProjectManagerHome();
         }
 
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
@@ -166,8 +166,20 @@ namespace TeamTracker
 
         private void OnHomeClicked(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
-            projectManagerHome1.InitializeHome();
+            if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
+            {
+                projectManagerHome1.InitializeProjectManagerHome();
+                tabControl1.SelectedIndex = 0;
+            }
+            else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
+            {
+                tabControl1.SelectedIndex = 3;
+                reportContent1.Month = 3; reportContent1.Year = 2024; reportContent1.Priority = -1;
+            }
+            else
+            {
+                tabControl1.SelectedIndex = 3;
+            }
         }
 
         private void OnAddProjectClicked(object sender, EventArgs e)

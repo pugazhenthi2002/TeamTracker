@@ -81,10 +81,79 @@ namespace TeamTracker
             if(taskAttachments!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachments);
         }
 
-        //Change Status of Task
-        public static void ChangeTaskStatus(Task task, TaskStatus status)
+        public static Dictionary<string, int> FilterTeamMemberTaskCount(int month, int year)
         {
-            task.StatusOfTask = status;
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            int count = 0;
+
+            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
+
+            foreach(var Iter in employeeCollection)
+            {
+                foreach(var TaskIter in TaskCollection)
+                {
+                    if(TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.EndDate.Month == month && TaskIter.EndDate.Year == year)
+                    {
+                        count++;
+                    }
+                }
+                result.Add(Iter.EmployeeFirstName,count);
+                count = 0;
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, Dictionary<DateTime, int>> FilterTaskCountByDate(int month, int year)
+        {
+            Dictionary<string, Dictionary<DateTime, int>> finalResult = new Dictionary<string, Dictionary<DateTime, int>>();
+            Dictionary<DateTime, int> result = new Dictionary<DateTime, int>();
+
+            int count = 0;
+
+            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
+            employeeCollection.Add(EmployeeManager.CurrentEmployee);
+
+            foreach (var Iter in employeeCollection)
+            {
+                foreach (var TaskIter in TaskCollection)
+                {
+                    if (TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.EndDate.Month == month && TaskIter.EndDate.Year == year)
+                    {
+                        if (!result.ContainsKey(TaskIter.EndDate.Date))
+                        {
+                            result.Add(TaskIter.EndDate, 0);
+                        }
+                        result[TaskIter.EndDate]++;
+                    }
+                }
+                finalResult.Add(Iter.EmployeeFirstName, result);
+                result = new Dictionary<DateTime, int>();
+            }
+
+            return finalResult;
+        }
+
+        public static int FilterTaskCount(int month, int year, int priority)
+        {
+            int count = 0;
+
+            foreach(var Iter in TaskCollection)
+            {
+                if (Iter.EndDate.Month == month && Iter.EndDate.Year == year && Iter.AssignedTo == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    if(priority==-1)
+                    {
+                        count++;
+                    }
+                    else if((int)Iter.TaskPriority == priority)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            return count;
         }
 
         //Fetches Task Class by Selected Version ID For Project

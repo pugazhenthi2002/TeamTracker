@@ -76,6 +76,20 @@ namespace TeamTracker
             return result;
         }
 
+        public static int FilterMilestoneCount(int month, int year)
+        {
+            int count = 0;
+            foreach(var Iter in MilestoneCollection)
+            {
+                if(month == Iter.EndDate.Month && year == Iter.EndDate.Year)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
         public static List<Milestone> MilestoneCollection = new List<Milestone>();
     }
 }

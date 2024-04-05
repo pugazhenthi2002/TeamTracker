@@ -69,20 +69,9 @@ namespace TeamTracker
 
         private void SelectPageBasedOnRole()
         {
-            if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
-            {
-                ProjectManagerMainForm managerForm = new ProjectManagerMainForm();
-                managerForm.ManagerClose += OnManagerFormClosed;
-                managerForm.Show();
-            }
-            else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
-            {
-
-            }
-            else
-            {
-                
-            }
+            ProjectManagerMainForm managerForm = new ProjectManagerMainForm();
+            managerForm.ManagerClose += OnManagerFormClosed;
+            managerForm.Show();
         }
 
         private void OnCloseEnter(object sender, EventArgs e)

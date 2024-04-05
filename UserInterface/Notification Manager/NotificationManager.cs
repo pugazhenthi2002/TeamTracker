@@ -99,7 +99,6 @@ namespace TeamTracker
         {
             NotificationTemplate newNotification = new NotificationTemplate();
             newNotification.BorderRadius = BorderRadius;
-            newNotification.Padding = new Padding(BorderRadius / 10);
             newNotification.NotificationHeader = header;
             newNotification.ContentMessage = content;
             newNotification.NotificationTime = DateTime.Now;

@@ -52,6 +52,9 @@
             this.addProject1 = new TeamTracker.AddProject();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.viewProjectTemplate1 = new UserInterface.ViewProject.ViewProjectTemplate();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.reportContent1 = new UserInterface.Home_Page.Team_Lead.Report.ReportContent();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -68,6 +71,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -291,9 +295,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControl1.ItemSize = new System.Drawing.Size(20, 20);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -305,10 +311,10 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.projectManagerHome1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(937, 585);
+            this.tabPage1.Size = new System.Drawing.Size(937, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -319,16 +325,16 @@
             this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
             this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
+            this.projectManagerHome1.Size = new System.Drawing.Size(931, 560);
             this.projectManagerHome1.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.addProject1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(937, 585);
+            this.tabPage2.Size = new System.Drawing.Size(937, 566);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -338,15 +344,15 @@
             this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addProject1.Location = new System.Drawing.Point(3, 3);
             this.addProject1.Name = "addProject1";
-            this.addProject1.Size = new System.Drawing.Size(931, 579);
+            this.addProject1.Size = new System.Drawing.Size(931, 560);
             this.addProject1.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.viewProjectTemplate1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 5);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(937, 585);
+            this.tabPage3.Size = new System.Drawing.Size(937, 566);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -357,8 +363,35 @@
             this.viewProjectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewProjectTemplate1.Location = new System.Drawing.Point(0, 0);
             this.viewProjectTemplate1.Name = "viewProjectTemplate1";
-            this.viewProjectTemplate1.Size = new System.Drawing.Size(937, 585);
+            this.viewProjectTemplate1.Size = new System.Drawing.Size(937, 566);
             this.viewProjectTemplate1.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.reportContent1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(937, 566);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(937, 566);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // reportContent1
+            // 
+            this.reportContent1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.reportContent1.Location = new System.Drawing.Point(0, 0);
+            this.reportContent1.Name = "reportContent1";
+            this.reportContent1.Size = new System.Drawing.Size(937, 351);
+            this.reportContent1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 
@@ -386,6 +419,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -415,5 +449,8 @@
         private AddProject addProject1;
         private UserInterface.ViewProject.ViewProjectTemplate viewProjectTemplate1;
         private ProfilePicAndName profilePicAndName1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private UserInterface.Home_Page.Team_Lead.Report.ReportContent reportContent1;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }

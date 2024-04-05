@@ -12,6 +12,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class MonthForm : Form
     {
+        public event EventHandler<int> MonthSelect;
         public int Month
         {
             get
@@ -38,11 +39,15 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             if(prevLabel != null)
             {
+                prevLabel.ForeColor = Color.FromArgb(39, 55, 77);
                 prevLabel.BackColor = BackColor;
             }
+
             prevLabel = sender as Label;
             month = tableLayoutPanel1.GetPositionFromControl(prevLabel).Row;
             prevLabel.BackColor = Color.FromArgb(39, 55, 77);
+            prevLabel.ForeColor = Color.FromArgb(221, 230, 237);
+            MonthSelect?.Invoke(this, month);
         }
     }
 }

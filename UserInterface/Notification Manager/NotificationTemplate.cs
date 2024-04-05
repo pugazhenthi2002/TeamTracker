@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,6 +55,7 @@ namespace TeamTracker
             set
             {
                 borderRadius = value;
+                InitializeBorder();
             }
         }
         public DateTime NotificationTime
@@ -99,57 +101,6 @@ namespace TeamTracker
             return notificationSize;
         }
 
-        private void NotificationTemplate_Load(object sender, EventArgs e)
-        {
-            this.TransparencyKey = Color.FromArgb(1,1,1);
-            this.BackColor = Color.FromArgb(1,1,1);
-        }
-
-        private void NotificationTemplate_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            Brush b = new SolidBrush(Color.FromArgb(253, 240, 209));
-            linePen = new Pen(Color.Brown)
-            {
-                DashStyle = DashStyle.Dot
-            };
-            Rectangle rectangle = new Rectangle(1, 1, this.Width - 2, this.Height - 2);
-            FillRoundRectangle(e.Graphics, rectangle, b, BorderRadius);
-            e.Graphics.DrawLine(linePen, new Point(Width/5, contentPanel.Location.Y), new Point(Width * 4 / 5, contentPanel.Location.Y));
-            e.Graphics.DrawLine(linePen, new Point(Width/5, timePanel.Location.Y), new Point(Width * 4 / 5, timePanel.Location.Y));
-            b.Dispose();
-        }
-
-        private static GraphicsPath GetRoundRectangle(Rectangle rectangle, int r)
-        {
-            int l = 2 * r;
-            GraphicsPath gp = new GraphicsPath();
-            gp.AddLine(new Point(rectangle.X + r, rectangle.Y), new Point(rectangle.Right - r, rectangle.Y));
-            gp.AddArc(new Rectangle(rectangle.Right - l, rectangle.Y, l, l), 270F, 90F);
-
-            gp.AddLine(new Point(rectangle.Right, rectangle.Y + r), new Point(rectangle.Right, rectangle.Bottom - r));
-            gp.AddArc(new Rectangle(rectangle.Right - l, rectangle.Bottom - l, l, l), 0F, 90F);
-
-            gp.AddLine(new Point(rectangle.Right - r, rectangle.Bottom), new Point(rectangle.X + r, rectangle.Bottom));
-            gp.AddArc(new Rectangle(rectangle.X, rectangle.Bottom - l, l, l), 90F, 90F);
-
-            gp.AddLine(new Point(rectangle.X, rectangle.Bottom - r), new Point(rectangle.X, rectangle.Y + r));
-            gp.AddArc(new Rectangle(rectangle.X, rectangle.Y, l, l), 180F, 90F);
-
-            return gp;
-        }
-
-        private void FillRoundRectangle(Graphics g, Rectangle rectangle, Brush b, int r)
-        {
-            rectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
-            g.FillPath(b, GetRoundRectangle(rectangle, r));
-            Pen p = new Pen(Color.Black, 3)
-            {
-                DashStyle = DashStyle.Solid
-            };
-            g.DrawPath(p, GetRoundRectangle(rectangle, r));
-            p.Dispose();
-        }
 
         private void OnNotificationClosed(object sender, EventArgs e)
         {
@@ -192,9 +143,9 @@ namespace TeamTracker
                 LineAlignment = StringAlignment.Center
             };
 
-            headerFont = new Font(new FontFamily("Microsoft PhagsPa"), 22, FontStyle.Bold);
-            textBrush = new SolidBrush(Color.FromArgb(52, 104, 192));
-            stringRectangle = new Rectangle(Padding.Left, Padding.Top, headerPanel.Width, headerPanel.Height);
+            headerFont = new Font(new FontFamily("Microsoft PhagsPa"), 14, FontStyle.Bold);
+            textBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
+            stringRectangle = new Rectangle(0, 0, headerPanel.Width, headerPanel.Height);
 
             e.Graphics.DrawString(header, headerFont, textBrush, stringRectangle, SFormat);
         }
@@ -207,9 +158,9 @@ namespace TeamTracker
                 LineAlignment = StringAlignment.Center
             };
 
-            contentFont = new Font(new FontFamily("Microsoft PhagsPa"), 12, FontStyle.Italic);
+            contentFont = new Font(new FontFamily("Microsoft PhagsPa"), 10, FontStyle.Italic);
             textBrush = new SolidBrush(Color.FromArgb(52, 104, 192));
-            stringRectangle = new Rectangle(Padding.Left*3/2, 0, timePanel.Width, timePanel.Height);
+            stringRectangle = new Rectangle(0, 0, timePanel.Width, timePanel.Height);
 
             e.Graphics.DrawString(time, contentFont, textBrush, stringRectangle, SFormat);
         }
@@ -355,6 +306,17 @@ namespace TeamTracker
             fullContentForm.Show();
         }
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
         private int borderRadius;
         private string header = "Header";
         private string message = "Message";
@@ -366,6 +328,17 @@ namespace TeamTracker
         private Pen linePen;
         private Brush textBrush;
         private Rectangle stringRectangle;
+
+        private void OnNotifyResize(object sender, EventArgs e)
+        {
+            InitializeBorder();
+        }
+
+        private void InitializeBorder()
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, borderRadius, borderRadius));
+        }
+
         private StringFormat SFormat;
     }
 }
