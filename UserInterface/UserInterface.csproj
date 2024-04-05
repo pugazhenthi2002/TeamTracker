@@ -307,11 +307,20 @@
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\CreateTask\AnimatedLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Task\CreateTask\CreateTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Task\CreateTask\CreateTaskForm.Designer.cs">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\CreateTask\DownloadBtn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\DownloadBtn.Designer.cs">
+      <DependentUpon>DownloadBtn.cs</DependentUpon>
     </Compile>
     <Compile Include="Task\CreateTask\MilestoneDropDownForm.cs">
       <SubType>Form</SubType>
@@ -349,6 +358,12 @@
     <Compile Include="ViewPage\BoardView\SourceCodeSubmitionForm.Designer.cs">
       <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewPage\BoardView\TaskInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\TaskInfoForm.Designer.cs">
+      <DependentUpon>TaskInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPage\BoardView\UcDueDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -366,6 +381,12 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\UcTaskBoardBase.Designer.cs">
       <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskDescription.Designer.cs">
+      <DependentUpon>UcTaskDescription.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\UCTaskStatusBase.cs">
       <SubType>UserControl</SubType>
@@ -581,6 +602,9 @@
     <EmbeddedResource Include="Task\CreateTask\CreateTaskForm.resx">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\DownloadBtn.resx">
+      <DependentUpon>DownloadBtn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\MilestoneDropDownForm.resx">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +623,9 @@
     <EmbeddedResource Include="ViewPage\BoardView\SourceCodeSubmitionForm.resx">
       <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\TaskInfoForm.resx">
+      <DependentUpon>TaskInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcDueDate.resx">
       <DependentUpon>UcDueDate.cs</DependentUpon>
     </EmbeddedResource>
@@ -607,6 +634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcTaskBoardBase.resx">
       <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskDescription.resx">
+      <DependentUpon>UcTaskDescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UCTaskStatusBase.resx">
       <DependentUpon>UCTaskStatusBase.cs</DependentUpon>
