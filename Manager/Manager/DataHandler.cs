@@ -269,6 +269,33 @@ namespace TeamTracker
             return result;
         }
 
+        //fetches source code by taskId
+        public static List<SourceCode> FetchSourceCodeByTaskID(int taskID)
+        {
+            List<SourceCode> result = new List<SourceCode>();
+
+            var sourceCodeCollection = manager.FetchDistinctData("sourcecode", $"TaskID={taskID}", orderBy: "SubmittedDate Desc").Value;
+
+            if(sourceCodeCollection==null || sourceCodeCollection.Count==0)
+            {
+                return null;
+            }
+
+            for (int ctr = 0; ctr < sourceCodeCollection["SourceCodeID"].Count; ctr++)
+            {
+                result.Add(new SourceCode()
+                {
+                    SourceCodeID = Convert.ToInt32(sourceCodeCollection["SourceCodeID"][ctr]),
+                    CommitName = Convert.ToString(sourceCodeCollection["CommitName"][ctr]),
+                    SourceCodeLocation = Convert.ToString(sourceCodeCollection["SourceCodeLocation"][ctr]),
+                    SubmittedDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]),
+                    TaskID = Convert.ToInt32(sourceCodeCollection["TaskID"][ctr])
+                });
+            }
+
+            return result;
+        }
+
         public static VersionSourceCode FetchVersionSourceCodeByVersionID(int versionID)
         {
             var result = manager.FetchData("versionsourcecode", $"VersionID={versionID}").Value;
