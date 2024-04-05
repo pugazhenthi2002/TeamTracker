@@ -257,6 +257,12 @@
     <Compile Include="Home Page\Project Manager\ProjectManagerHome.Designer.cs">
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Team Lead\On Stage\On Stage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\On Stage\On Stage.Designer.cs">
+      <DependentUpon>On Stage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home Page\Team Lead\Report\FilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,18 @@
     </Compile>
     <Compile Include="Home Page\Team Lead\Report\ReportContent.Designer.cs">
       <DependentUpon>ReportContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\ReportTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\ReportTemplate.Designer.cs">
+      <DependentUpon>ReportTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\TeamLeadHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\TeamLeadHome.Designer.cs">
+      <DependentUpon>TeamLeadHome.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
@@ -441,6 +459,24 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\UcTaskStatusHead.Designer.cs">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\ListView\ListViewTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\ListView\ListViewTemplate.Designer.cs">
+      <DependentUpon>ListViewTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\ListView\SingleList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\ListView\SingleList.Designer.cs">
+      <DependentUpon>SingleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\ListView\StatusDropDown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPage\ListView\StatusDropDown.designer.cs">
+      <DependentUpon>StatusDropDown.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewProject\BoardView\BoardViewContent.cs">
       <SubType>UserControl</SubType>
@@ -606,6 +642,9 @@
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\On Stage\On Stage.resx">
+      <DependentUpon>On Stage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\Report\FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -617,6 +656,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\Report\ReportContent.resx">
       <DependentUpon>ReportContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\Report\ReportTemplate.resx">
+      <DependentUpon>ReportTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\TeamLeadHome.resx">
+      <DependentUpon>TeamLeadHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -706,6 +751,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcTaskStatusHead.resx">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\ListView\ListViewTemplate.resx">
+      <DependentUpon>ListViewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\ListView\SingleList.resx">
+      <DependentUpon>SingleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\ListView\StatusDropDown.resx">
+      <DependentUpon>StatusDropDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\BoardViewContent.resx">
       <DependentUpon>BoardViewContent.cs</DependentUpon>

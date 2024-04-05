@@ -81,7 +81,7 @@ namespace TeamTracker
             if(taskAttachments!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachments);
         }
 
-        public static Dictionary<string, int> FilterTeamMemberTaskCount(int month, int year)
+        public static Dictionary<string, int> FilterTeamMemberTaskCount(int month, int year, int priority)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
             int count = 0;
@@ -94,7 +94,14 @@ namespace TeamTracker
                 {
                     if(TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.EndDate.Month == month && TaskIter.EndDate.Year == year)
                     {
-                        count++;
+                        if (priority == -1)
+                        {
+                            count++;
+                        }
+                        else if (priority == (int)TaskIter.TaskPriority)
+                        {
+                            count++;
+                        }
                     }
                 }
                 result.Add(Iter.EmployeeFirstName,count);

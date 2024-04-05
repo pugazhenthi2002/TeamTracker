@@ -54,7 +54,7 @@
             this.viewProjectTemplate1 = new UserInterface.ViewProject.ViewProjectTemplate();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.reportContent1 = new UserInterface.Home_Page.Team_Lead.Report.ReportContent();
+            this.teamLeadHome1 = new UserInterface.Home_Page.Team_Lead.TeamLeadHome();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -368,7 +368,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.reportContent1);
+            this.tabPage4.Controls.Add(this.teamLeadHome1);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(937, 566);
@@ -385,13 +385,15 @@
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // reportContent1
+            // teamLeadHome1
             // 
-            this.reportContent1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.reportContent1.Location = new System.Drawing.Point(0, 0);
-            this.reportContent1.Name = "reportContent1";
-            this.reportContent1.Size = new System.Drawing.Size(937, 351);
-            this.reportContent1.TabIndex = 0;
+            this.teamLeadHome1.AutoScroll = true;
+            this.teamLeadHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.teamLeadHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teamLeadHome1.Location = new System.Drawing.Point(0, 0);
+            this.teamLeadHome1.Name = "teamLeadHome1";
+            this.teamLeadHome1.Size = new System.Drawing.Size(937, 566);
+            this.teamLeadHome1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 
@@ -450,7 +452,7 @@
         private UserInterface.ViewProject.ViewProjectTemplate viewProjectTemplate1;
         private ProfilePicAndName profilePicAndName1;
         private System.Windows.Forms.TabPage tabPage4;
-        private UserInterface.Home_Page.Team_Lead.Report.ReportContent reportContent1;
         private System.Windows.Forms.TabPage tabPage5;
+        private UserInterface.Home_Page.Team_Lead.TeamLeadHome teamLeadHome1;
     }
 }

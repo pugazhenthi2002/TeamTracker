@@ -81,7 +81,7 @@ namespace TeamTracker
             int count = 0;
             foreach(var Iter in MilestoneCollection)
             {
-                if(month == Iter.EndDate.Month && year == Iter.EndDate.Year)
+                if(month == Iter.EndDate.Month && year == Iter.EndDate.Year && EmployeeManager.CurrentEmployee.EmployeeID == VersionManager.FetchTeamLeadFromVersionID(Iter.VersionID))
                 {
                     count++;
                 }

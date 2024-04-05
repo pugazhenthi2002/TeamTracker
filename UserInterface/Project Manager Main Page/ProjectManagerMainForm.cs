@@ -47,7 +47,16 @@ namespace TeamTracker
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            projectManagerHome1.InitializeProjectManagerHome();
+            if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
+            {
+                projectManagerHome1.InitializeProjectManagerHome();
+                tabControl1.SelectedIndex = 0;
+            }
+            else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
+            {
+                teamLeadHome1.InitializeHomePage();
+                tabControl1.SelectedIndex = 3;
+            }
         }
 
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
@@ -174,7 +183,6 @@ namespace TeamTracker
             else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
                 tabControl1.SelectedIndex = 3;
-                reportContent1.Month = 3; reportContent1.Year = 2024; reportContent1.Priority = -1;
             }
             else
             {
@@ -206,5 +214,6 @@ namespace TeamTracker
         {
             this.Close();
         }
+
     }
 }

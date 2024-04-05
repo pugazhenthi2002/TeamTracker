@@ -26,6 +26,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                     prevPriority = priority = value;
                     prevLabel = tableLayoutPanel1.GetControlFromPosition(0, value) as Label;
                     prevLabel.BackColor = Color.FromArgb(39, 55, 77);
+                    prevLabel.ForeColor = Color.FromArgb(221, 230, 237);
                 }
             }
         }

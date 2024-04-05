@@ -21,9 +21,13 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
             set
             {
-                month = value;
-                prevLabel = tableLayoutPanel1.GetControlFromPosition(0, value) as Label;
-                prevLabel.BackColor = Color.FromArgb(39, 55, 77);
+                if (value > 0)
+                {
+                    month = value;
+                    prevLabel = tableLayoutPanel1.GetControlFromPosition(0, value - 1) as Label;
+                    prevLabel.BackColor = Color.FromArgb(39, 55, 77);
+                    prevLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                }
             }
         }
 
@@ -44,7 +48,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
 
             prevLabel = sender as Label;
-            month = tableLayoutPanel1.GetPositionFromControl(prevLabel).Row;
+            month = tableLayoutPanel1.GetPositionFromControl(prevLabel).Row + 1;
             prevLabel.BackColor = Color.FromArgb(39, 55, 77);
             prevLabel.ForeColor = Color.FromArgb(221, 230, 237);
             MonthSelect?.Invoke(this, month);
