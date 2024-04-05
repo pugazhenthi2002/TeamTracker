@@ -346,12 +346,6 @@
     <Compile Include="Task\CreateTask\CreateTaskForm.Designer.cs">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\CreateTask\DownloadBtn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Task\CreateTask\DownloadBtn.Designer.cs">
-      <DependentUpon>DownloadBtn.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task\CreateTask\MilestoneDropDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -375,6 +369,12 @@
     </Compile>
     <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\CircleDownloadBtn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\CircleDownloadBtn.Designer.cs">
+      <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\ProjectBoard.cs">
       <SubType>UserControl</SubType>
@@ -411,6 +411,18 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\UcTaskBoardBase.Designer.cs">
       <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskCommits.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskCommits.Designer.cs">
+      <DependentUpon>UcTaskCommits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskCommitsHead.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\BoardView\UcTaskCommitsHead.Designer.cs">
+      <DependentUpon>UcTaskCommitsHead.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\UcTaskDescription.cs">
       <SubType>UserControl</SubType>
@@ -647,9 +659,6 @@
     <EmbeddedResource Include="Task\CreateTask\CreateTaskForm.resx">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\CreateTask\DownloadBtn.resx">
-      <DependentUpon>DownloadBtn.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\MilestoneDropDownForm.resx">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -661,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
+      <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
       <DependentUpon>ProjectBoard.cs</DependentUpon>
@@ -679,6 +691,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcTaskBoardBase.resx">
       <DependentUpon>UcTaskBoardBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskCommits.resx">
+      <DependentUpon>UcTaskCommits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\BoardView\UcTaskCommitsHead.resx">
+      <DependentUpon>UcTaskCommitsHead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcTaskDescription.resx">
       <DependentUpon>UcTaskDescription.cs</DependentUpon>
@@ -809,6 +827,7 @@
     <None Include="Images\Filter Normal.png" />
     <None Include="Images\Timeline Click.png" />
     <None Include="Images\Timeline Normal.png" />
+    <None Include="Images\download Icon.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <Content Include="Resources\Close Black.png" />
@@ -817,6 +836,9 @@
     <Content Include="Resources\Close.png" />
     <None Include="Resources\CloudBlack.png" />
     <None Include="Resources\CloudHover.png" />
+    <None Include="Resources\download.gif" />
+    <None Include="Resources\cloud uploaded.png" />
+    <None Include="Resources\Download Static.gif" />
     <Content Include="Resources\flag-done.png" />
     <Content Include="Resources\flag-empty.png" />
     <Content Include="Resources\flag-NotStarted.png" />
@@ -826,6 +848,7 @@
     <None Include="Resources\icons8-upload-to-cloud-100.png" />
     <Content Include="Resources\info-black.png" />
     <Content Include="Resources\info-hover.png" />
+    <None Include="Resources\Line.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
