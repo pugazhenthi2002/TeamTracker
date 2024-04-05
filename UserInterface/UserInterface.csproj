@@ -460,6 +460,12 @@
     <Compile Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.Designer.cs">
       <DependentUpon>StatusViewTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewProject\BoardView\ProjectInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewProject\BoardView\ProjectInfoForm.Designer.cs">
+      <DependentUpon>ProjectInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\EmployeeProfilePicAndName.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -715,6 +721,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\Custom Controls\StatusViewTemplate.resx">
       <DependentUpon>StatusViewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProject\BoardView\ProjectInfoForm.resx">
+      <DependentUpon>ProjectInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\EmployeeProfilePicAndName.resx">
       <DependentUpon>EmployeeProfilePicAndName.cs</DependentUpon>
