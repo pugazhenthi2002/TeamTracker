@@ -257,6 +257,30 @@
     <Compile Include="Home Page\Project Manager\ProjectManagerHome.Designer.cs">
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Team Lead\Report\FilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\FilterForm.Designer.cs">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\MonthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\MonthForm.Designer.cs">
+      <DependentUpon>MonthForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\PriorityDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\PriorityDropDownForm.Designer.cs">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\ReportContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\Report\ReportContent.Designer.cs">
+      <DependentUpon>ReportContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +329,12 @@
     </Compile>
     <Compile Include="Project Manager Main Page\ProjectManagerMainForm.Designer.cs">
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Manager Main Page\SignOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project Manager Main Page\SignOutForm.Designer.cs">
+      <DependentUpon>SignOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task\CreateTask\AnimatedLabel.cs">
@@ -564,6 +594,18 @@
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\Report\FilterForm.resx">
+      <DependentUpon>FilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\Report\MonthForm.resx">
+      <DependentUpon>MonthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\Report\PriorityDropDownForm.resx">
+      <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\Report\ReportContent.resx">
+      <DependentUpon>ReportContent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -588,6 +630,9 @@
     <EmbeddedResource Include="Project Manager Main Page\ProjectManagerMainForm.resx">
       <DependentUpon>ProjectManagerMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Manager Main Page\SignOutForm.resx">
+      <DependentUpon>SignOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

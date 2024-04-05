@@ -83,19 +83,19 @@ namespace TeamTracker
         {
             if (status == MilestoneStatus.Upcoming)
             {
-                return Color.Orange;
+                return Color.FromArgb(72, 202, 228);
             }
             else if(status == MilestoneStatus.OnProcess)
             {
-                return Color.Blue;
+                return Color.FromArgb(0, 180, 216);
             }
             else if(status == MilestoneStatus.Delay)
             {
-                return Color.Red;
+                return Color.FromArgb(0, 119, 182);
             }
             else
             {
-                return Color.Green;
+                return Color.FromArgb(3, 4, 94);
             }
         }
     }

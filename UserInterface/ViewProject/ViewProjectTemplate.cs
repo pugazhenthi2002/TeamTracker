@@ -20,8 +20,12 @@ namespace UserInterface.ViewProject
 
         public void InitializeViewProject()
         {
+            SelectedEmployee = EmployeeManager.CurrentEmployee;
             tabControl1.SelectedIndex = 0;
         }
+
+        private Employee PrevSelectedEmployee;
+        private Employee SelectedEmployee;
 
         private void OnBoardClicked(object sender, EventArgs e)
         {
@@ -36,7 +40,7 @@ namespace UserInterface.ViewProject
             boardPicBox.Image = UserInterface.Properties.Resources.Board_Click;
             timelinePicBox.Image = UserInterface.Properties.Resources.Timeline_Normal;
 
-            boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions();
+            boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
             tabControl1.SelectedIndex = 0;
         }
 
@@ -53,7 +57,7 @@ namespace UserInterface.ViewProject
             boardPicBox.Image = UserInterface.Properties.Resources.Board_Normal;
             timelinePicBox.Image = UserInterface.Properties.Resources.Timeline_Click;
 
-            timelineView1.ProjectCollection = VersionManager.ProjectCollection;
+            timelineView1.ProjectCollection = VersionManager.CurrentEmployeeInvolvedProjects(SelectedEmployee);
             tabControl1.SelectedIndex = 1;
         }
 
@@ -81,9 +85,21 @@ namespace UserInterface.ViewProject
             if (filteredUser.Image != null)
                 filteredUser.Image.Dispose();
 
+            SelectedEmployee = e;
             filteredUser.Image = Image.FromFile(e.EmpProfileLocation);
-            boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions();
-            timelineView1.ProjectCollection = VersionManager.CurrentEmployeeInvolvedProjects();
+            filteredUser.Visible = true;
+
+            if (PrevSelectedEmployee != null)
+            {
+                if (PrevSelectedEmployee.EmployeeID == e.EmployeeID)
+                {
+                    SelectedEmployee = EmployeeManager.CurrentEmployee;
+                    filteredUser.Visible = false;
+                }
+            }
+            PrevSelectedEmployee = SelectedEmployee;
+            boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
+            timelineView1.ProjectCollection = VersionManager.CurrentEmployeeInvolvedProjects(SelectedEmployee);
         }
     }
 }

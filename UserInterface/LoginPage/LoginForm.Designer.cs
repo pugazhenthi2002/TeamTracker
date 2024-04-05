@@ -35,11 +35,11 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.errorMessageLabel = new System.Windows.Forms.Label();
-            this.password = new TeamTracker.TextBoxU();
-            this.username = new TeamTracker.TextBoxU();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.letsTeamUpButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.password = new TeamTracker.TextBoxU();
+            this.username = new TeamTracker.TextBoxU();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -101,7 +101,7 @@
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 8;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -117,10 +117,10 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label1.Location = new System.Drawing.Point(1, 116);
+            this.label1.Location = new System.Drawing.Point(1, 125);
             this.label1.Margin = new System.Windows.Forms.Padding(1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(473, 70);
+            this.label1.Size = new System.Drawing.Size(473, 68);
             this.label1.TabIndex = 0;
             this.label1.Text = "Team Tracker";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -130,19 +130,64 @@
             this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errorMessageLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMessageLabel.Location = new System.Drawing.Point(34, 381);
+            this.errorMessageLabel.Location = new System.Drawing.Point(34, 383);
             this.errorMessageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(406, 31);
             this.errorMessageLabel.TabIndex = 5;
             this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // closePictureBox
+            // 
+            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePictureBox.Image = global::UserInterface.Properties.Resources.Close;
+            this.closePictureBox.Location = new System.Drawing.Point(442, 0);
+            this.closePictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Size = new System.Drawing.Size(33, 30);
+            this.closePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.closePictureBox.TabIndex = 6;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Click += new System.EventHandler(this.OnCloseClick);
+            this.closePictureBox.MouseEnter += new System.EventHandler(this.OnCloseEnter);
+            this.closePictureBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            // 
+            // letsTeamUpButton
+            // 
+            this.letsTeamUpButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.letsTeamUpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.letsTeamUpButton.FlatAppearance.BorderSize = 0;
+            this.letsTeamUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letsTeamUpButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.letsTeamUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.letsTeamUpButton.Location = new System.Drawing.Point(147, 441);
+            this.letsTeamUpButton.Margin = new System.Windows.Forms.Padding(2);
+            this.letsTeamUpButton.Name = "letsTeamUpButton";
+            this.letsTeamUpButton.Size = new System.Drawing.Size(181, 40);
+            this.letsTeamUpButton.TabIndex = 7;
+            this.letsTeamUpButton.Text = "Let\'s Team Up";
+            this.letsTeamUpButton.UseVisualStyleBackColor = false;
+            this.letsTeamUpButton.Click += new System.EventHandler(this.OnTeamUpClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(475, 500);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // password
             // 
             this.password.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.password.Location = new System.Drawing.Point(54, 305);
+            this.password.Location = new System.Drawing.Point(54, 308);
             this.password.Margin = new System.Windows.Forms.Padding(1);
             this.password.Multiline = false;
             this.password.Name = "password";
@@ -164,7 +209,9 @@
             this.username.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.username.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.username.Location = new System.Drawing.Point(54, 224);
+            this.username.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.username.Location = new System.Drawing.Point(54, 229);
             this.username.Margin = new System.Windows.Forms.Padding(1);
             this.username.Multiline = true;
             this.username.Name = "username";
@@ -178,53 +225,8 @@
             this.username.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.username.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
             this.username.TextBoxtext = "";
-            this.username.TextForeColor = System.Drawing.SystemColors.WindowText;
+            this.username.TextForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.username.UseSystemPasswordChar = false;
-            // 
-            // closePictureBox
-            // 
-            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Image = global::UserInterface.Properties.Resources.Close_Black;
-            this.closePictureBox.Location = new System.Drawing.Point(442, 0);
-            this.closePictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.closePictureBox.Name = "closePictureBox";
-            this.closePictureBox.Size = new System.Drawing.Size(33, 19);
-            this.closePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.closePictureBox.TabIndex = 6;
-            this.closePictureBox.TabStop = false;
-            this.closePictureBox.Click += new System.EventHandler(this.OnCloseClick);
-            this.closePictureBox.MouseEnter += new System.EventHandler(this.OnCloseEnter);
-            this.closePictureBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
-            // 
-            // letsTeamUpButton
-            // 
-            this.letsTeamUpButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.letsTeamUpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.letsTeamUpButton.FlatAppearance.BorderSize = 0;
-            this.letsTeamUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letsTeamUpButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.letsTeamUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.letsTeamUpButton.Location = new System.Drawing.Point(147, 440);
-            this.letsTeamUpButton.Margin = new System.Windows.Forms.Padding(2);
-            this.letsTeamUpButton.Name = "letsTeamUpButton";
-            this.letsTeamUpButton.Size = new System.Drawing.Size(181, 40);
-            this.letsTeamUpButton.TabIndex = 7;
-            this.letsTeamUpButton.Text = "Let\'s Team Up";
-            this.letsTeamUpButton.UseVisualStyleBackColor = false;
-            this.letsTeamUpButton.Click += new System.EventHandler(this.OnTeamUpClick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(475, 500);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.filteredUser = new TeamTracker.ProfilePictureBox();
             this.filterPanel = new System.Windows.Forms.TableLayoutPanel();
             this.filterLabel = new System.Windows.Forms.Label();
             this.filterPicBox = new System.Windows.Forms.PictureBox();
@@ -41,11 +40,11 @@
             this.boardLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.boardViewContent1 = new UserInterface.ViewProject.BoardView.BoardViewContent();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.boardViewContent1 = new UserInterface.ViewProject.BoardView.BoardViewContent();
             this.timelineView1 = new UserInterface.ViewProject.TimelineView.TimelineView();
+            this.filteredUser = new TeamTracker.ProfilePictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filteredUser)).BeginInit();
             this.filterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filterPicBox)).BeginInit();
             this.timelinePanel.SuspendLayout();
@@ -55,6 +54,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filteredUser)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,16 +68,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1115, 48);
             this.panel1.TabIndex = 0;
-            // 
-            // filteredUser
-            // 
-            this.filteredUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filteredUser.Location = new System.Drawing.Point(642, 0);
-            this.filteredUser.Name = "filteredUser";
-            this.filteredUser.Size = new System.Drawing.Size(48, 48);
-            this.filteredUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.filteredUser.TabIndex = 3;
-            this.filteredUser.TabStop = false;
             // 
             // filterPanel
             // 
@@ -227,16 +217,6 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // boardViewContent1
-            // 
-            this.boardViewContent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.boardViewContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boardViewContent1.Location = new System.Drawing.Point(3, 3);
-            this.boardViewContent1.Margin = new System.Windows.Forms.Padding(2);
-            this.boardViewContent1.Name = "boardViewContent1";
-            this.boardViewContent1.Size = new System.Drawing.Size(1101, 358);
-            this.boardViewContent1.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.timelineView1);
@@ -248,6 +228,16 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // boardViewContent1
+            // 
+            this.boardViewContent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.boardViewContent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boardViewContent1.Location = new System.Drawing.Point(3, 3);
+            this.boardViewContent1.Margin = new System.Windows.Forms.Padding(2);
+            this.boardViewContent1.Name = "boardViewContent1";
+            this.boardViewContent1.Size = new System.Drawing.Size(1101, 358);
+            this.boardViewContent1.TabIndex = 0;
+            // 
             // timelineView1
             // 
             this.timelineView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -257,6 +247,16 @@
             this.timelineView1.Size = new System.Drawing.Size(1101, 358);
             this.timelineView1.TabIndex = 0;
             // 
+            // filteredUser
+            // 
+            this.filteredUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filteredUser.Location = new System.Drawing.Point(642, 0);
+            this.filteredUser.Name = "filteredUser";
+            this.filteredUser.Size = new System.Drawing.Size(48, 48);
+            this.filteredUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.filteredUser.TabIndex = 3;
+            this.filteredUser.TabStop = false;
+            // 
             // ViewProjectTemplate
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -265,7 +265,6 @@
             this.Name = "ViewProjectTemplate";
             this.Size = new System.Drawing.Size(1115, 421);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.filteredUser)).EndInit();
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filterPicBox)).EndInit();
@@ -278,6 +277,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.filteredUser)).EndInit();
             this.ResumeLayout(false);
 
         }

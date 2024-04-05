@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.Project_Manager_Main_Page;
 
 namespace TeamTracker
 {
@@ -14,6 +16,23 @@ namespace TeamTracker
     {
         static public NotificationManager notify;
         public event EventHandler ManagerClose;
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            profilePicAndName1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, profilePicAndName1.Width, profilePicAndName1.Height, profilePicAndName1.Height, profilePicAndName1.Height));
+        }
 
         public ProjectManagerMainForm()
         {
@@ -34,7 +53,7 @@ namespace TeamTracker
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
         {
             Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            e.Graphics.DrawLine(border, new Point(0, headerPanel.Height - 2), new Point(headerPanel.Width, headerPanel.Height - 2));
+            e.Graphics.DrawLine(border, new Point(0, headerPanel.Height), new Point(headerPanel.Width, headerPanel.Height));
             border.Dispose();
         }
 
@@ -160,6 +179,20 @@ namespace TeamTracker
         {
             viewProjectTemplate1.InitializeViewProject();
             tabControl1.SelectedIndex = 2;
+        }
+
+        private void OnSignOut(object sender, EventArgs e)
+        {
+            SignOutForm form = new SignOutForm();
+            form.Width = profilePicAndName1.Width;
+            form.Location = profilePicAndName1.PointToScreen(new Point(0, profilePicAndName1.Height + 1));
+            form.SignOut += OnFormSignOut;
+            form.Show();
+        }
+
+        private void OnFormSignOut(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
