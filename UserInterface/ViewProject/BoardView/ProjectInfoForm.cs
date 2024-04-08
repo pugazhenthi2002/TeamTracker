@@ -136,5 +136,15 @@ namespace TeamTracker
         {
 
         }
+
+        private void OnPaintMilestoneBasePanel(object sender, PaintEventArgs e)
+        {
+            Point pt1 = new Point(4, 4);
+            Point pt2 = new Point((sender as Panel).Width - 6, 4);
+            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
+            Point pt4 = new Point(4, (sender as Panel).Height - 6);
+            Pen border = new Pen(Color.Black, 2);
+            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
+        }
     }
 }
