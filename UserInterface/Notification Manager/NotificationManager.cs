@@ -27,6 +27,32 @@ namespace TeamTracker
 
     public class NotificationManager:Component
     {
+
+        private bool flag = false;
+        private int startX, startY, prevX, prevY, sX, sY;
+        private int notificationWidth;
+        private int remainingHeight;
+        private int screenWidth, screenHeight;
+        private int notificationScreenTime = 5;
+        private FromNotificationAlignment notificationAlignment;
+        private List<NotificationTemplate> NotificationOnScreenList = new List<NotificationTemplate>();
+        private Queue<NotificationTemplate> NotificationQueue = new Queue<NotificationTemplate>();
+        private Timer NotifyManagerTimer;
+
+        public NotificationManager()
+        {
+            notificationWidth = 400;
+
+            screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            remainingHeight = screenHeight;
+
+            NotifyManagerTimer = new Timer();
+            NotifyManagerTimer.Interval = 1000;
+            NotifyManagerTimer.Tick += OnNotifyScreenTimerChecker;
+            NotifyManagerTimer.Start();
+        }
+
         public FromNotificationAlignment NotificationAlignment
         {
             get
@@ -53,20 +79,6 @@ namespace TeamTracker
         }
         public int BorderRadius { get; set; }
 
-        public NotificationManager()
-        {
-            notificationWidth = 400;
-
-            screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            screenHeight = Screen.PrimaryScreen.Bounds.Height;
-            remainingHeight = screenHeight;
-
-            NotifyManagerTimer = new Timer();
-            NotifyManagerTimer.Interval = 1000;
-            NotifyManagerTimer.Tick += OnNotifyScreenTimerChecker;
-            NotifyManagerTimer.Start();
-        }
-
         private void OnNotifyScreenTimerChecker(object sender, EventArgs e)
         {
             if (!NotificationTemplate.isFullContentDisplayed)
@@ -84,16 +96,7 @@ namespace TeamTracker
             }
         }
 
-        private bool flag = false;
-        private int startX, startY, prevX, prevY, sX, sY;
-        private int notificationWidth;
-        private int remainingHeight;
-        private int screenWidth, screenHeight;
-        private int notificationScreenTime = 5;
-        private FromNotificationAlignment notificationAlignment;
-        private List<NotificationTemplate> NotificationOnScreenList = new List<NotificationTemplate>();
-        private Queue<NotificationTemplate> NotificationQueue = new Queue<NotificationTemplate>();
-        private Timer NotifyManagerTimer;
+        
 
         public void AddNotification(string header, string content)
         {

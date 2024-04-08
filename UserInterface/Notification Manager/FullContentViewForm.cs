@@ -14,6 +14,21 @@ namespace TeamTracker
 {
     public partial class FullContentViewForm : Form
     {
+
+        static private int cnt = 0, headCnt = 0;
+        private Font titleFont;
+        private Brush titleBrush;
+        private Rectangle rec;
+        private StringFormat SFormat;
+
+        public FullContentViewForm()
+        {
+            InitializeComponent();
+            DoubleBuffered = true;
+            titleFont = new Font(new FontFamily("Microsoft PhagsPa"), 20, FontStyle.Bold);
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, label1, new object[] { true });
+        }
+
         public string TitleName { get; set; }
         public string Content
         {
@@ -21,14 +36,6 @@ namespace TeamTracker
             { return content; }
             set
             { content = value; label1.Text = value; }
-        }
-       
-        public FullContentViewForm()
-        {
-            InitializeComponent();
-            DoubleBuffered = true;
-            titleFont = new Font(new FontFamily("Microsoft PhagsPa"), 20, FontStyle.Bold);
-            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, label1, new object[] { true });
         }
 
         private void FullContentTitleBarPanel_Paint(object sender, PaintEventArgs e)
@@ -108,11 +115,6 @@ namespace TeamTracker
             var x = label1.Size;
         }
 
-        private Font titleFont;
-        private Brush titleBrush;
-        private Rectangle rec;
-        private StringFormat SFormat;
-        static private int cnt = 0, headCnt=0;
 
         private void FullContentMessagePanel_Scroll(object sender, ScrollEventArgs e)
         {

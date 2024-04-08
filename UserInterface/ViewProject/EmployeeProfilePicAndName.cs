@@ -13,7 +13,16 @@ namespace UserInterface.ViewProject
 {
     public partial class EmployeeProfilePicAndName : UserControl
     {
+
+        private Employee profile;
+
+        public EmployeeProfilePicAndName()
+        {
+            InitializeComponent();
+        }
+
         public event EventHandler<Employee> EmployeeSelect;
+
         public Employee Profile
         {
             set
@@ -26,12 +35,7 @@ namespace UserInterface.ViewProject
         public Color NormalColor { get; set; }
         public Color HoverColor { get; set; }
 
-        private Employee profile;
-
-        public EmployeeProfilePicAndName()
-        {
-            InitializeComponent();
-        }
+        
 
         private void OnMouseEnter(object sender, EventArgs e)
         {

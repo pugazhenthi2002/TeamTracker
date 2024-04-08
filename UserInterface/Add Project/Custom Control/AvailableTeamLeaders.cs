@@ -12,6 +12,17 @@ namespace TeamTracker
 {
     public partial class AvailableTeamLeaders : UserControl
     {
+
+        public delegate void EmployeeHandler(Employee employee);
+        public event EmployeeHandler TeamLeaderClick;
+        private List<Employee> teamLeaders;
+
+        public AvailableTeamLeaders()
+        {
+            InitializeComponent();
+        }
+
+
         public List<Employee> TeamLeaders
         {
             get
@@ -22,19 +33,11 @@ namespace TeamTracker
             set
             {
                 teamLeaders = value;
-                if(value!=null && value.Count > 0)
+                if (value != null && value.Count > 0)
                 {
                     InitializeProfiles();
                 }
             }
-        }
-
-        public delegate void EmployeeHandler(Employee employee);
-        public event EmployeeHandler TeamLeaderClick;
-
-        public AvailableTeamLeaders()
-        {
-            InitializeComponent();
         }
 
         private void InitializeProfiles()
@@ -58,6 +61,5 @@ namespace TeamTracker
             TeamLeaderClick?.Invoke(teamLead);
         }
 
-        private List<Employee> teamLeaders;
     }
 }

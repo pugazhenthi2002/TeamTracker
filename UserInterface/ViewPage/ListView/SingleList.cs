@@ -12,6 +12,9 @@ namespace TeamTracker
 {
     public partial class SingleList : UserControl
     {
+        private Task task;
+
+
         public Task ListTask
         {
             set
@@ -21,7 +24,6 @@ namespace TeamTracker
             }
         }
 
-        private Task task;
         public SingleList()
         {
             InitializeComponent();

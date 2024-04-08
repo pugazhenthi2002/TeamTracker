@@ -19,6 +19,26 @@ namespace UserInterface.ViewPage.BoardView
             InitializeRoundedEdge();
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+            this.Size = new Size(Math.Min(this.Height, this.Width), Math.Min(this.Height, this.Width));
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+
+            base.OnPaint(e);
+
+            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Rectangle rec = new Rectangle(0, 0, this.Width - 2, this.Height - 2);
+
+
+            // Draw circle
+            g.DrawEllipse(new Pen(Color.FromArgb(150, 170, 190), 7), rec);
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -34,26 +54,7 @@ namespace UserInterface.ViewPage.BoardView
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, this.Width, this.Height));
 
-
         }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-            this.Size = new Size(Math.Min(this.Height, this.Width), Math.Min(this.Height, this.Width));
-        }
-        protected override void OnPaint(PaintEventArgs e)
-        {
-
-            base.OnPaint(e);
-
-            Graphics g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Rectangle rec = new Rectangle(0,0,this.Width-2,this.Height-2);
-
-
-            // Draw the circle
-            g.DrawEllipse(new Pen(Color.FromArgb(150, 170, 190),7), rec);
-        }
+        
     }
 }

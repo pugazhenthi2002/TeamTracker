@@ -13,6 +13,15 @@ namespace TeamTracker
 {
     public partial class LatestUpgradedVersion : UserControl
     {
+
+
+        public LatestUpgradedVersion()
+        {
+            InitializeComponent();
+            InitializeBorders();
+        }
+
+
         public ProjectVersion LatestVersion
         {
             set
@@ -34,9 +43,9 @@ namespace TeamTracker
             }
         }
 
-        public LatestUpgradedVersion()
+        protected override void OnResize(EventArgs e)
         {
-            InitializeComponent();
+            base.OnResize(e);
             InitializeBorders();
         }
 
@@ -51,12 +60,7 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeBorders();
-        }
-
+        
         private void InitializeBorders()
         {
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));

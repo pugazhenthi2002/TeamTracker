@@ -9,8 +9,13 @@ namespace TeamTracker
 {
     public static class EmployeeManager
     {
+
+        public static List<Employee> EmployeeCollection;
+        public static List<ManagingEmployee> ManagingEmployeeCollection;
         public static bool connectionFlag = false;
+
         public static Employee CurrentEmployee { get; private set; }
+        
 
         public static BooleanMsg StoreEmployeeToCollection()
         {
@@ -214,7 +219,6 @@ namespace TeamTracker
             return true;
         }
 
-        public static List<Employee> EmployeeCollection;
-        public static List<ManagingEmployee> ManagingEmployeeCollection;
+        
     }
 }

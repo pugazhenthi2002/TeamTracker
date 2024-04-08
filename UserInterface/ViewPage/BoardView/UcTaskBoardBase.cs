@@ -13,6 +13,19 @@ namespace TeamTracker
 {
     public partial class UcTaskBoardBase : UserControl
     {
+        private ProjectVersion currentProjectVersion;
+        private SourceCodeSubmitionForm SubmitionForm;
+        private bool toAdd = false;
+        private UCTaskBoard BoardToAdd;
+
+        private Point TaskBoardStartPoint;
+        private Point TaskBoardMouseUpPoint;
+        private int startColumn;
+
+        private Point OffsetPoint;
+        private bool IsDragging = false;
+        private Form DragForm;
+
         public UcTaskBoardBase()
         {
             InitializeComponent();
@@ -52,18 +65,6 @@ namespace TeamTracker
             }
         }
 
-        private ProjectVersion currentProjectVersion;
-        private SourceCodeSubmitionForm SubmitionForm;
-        private bool toAdd = false;
-        private UCTaskBoard BoardToAdd;
-
-        private Point TaskBoardStartPoint;
-        private Point TaskBoardMouseUpPoint;
-        private int startColumn;
-
-        private Point OffsetPoint;
-        private bool IsDragging = false;
-        Form DragForm;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -91,9 +92,7 @@ namespace TeamTracker
             ucTaskStatusBaseUnderReview.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.UnderReview);
             ucTaskStatusBaseDone.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.Done);
 
-
         }
-
         
 
         private void OnMouseDownTaskBoard(UCTaskBoard sender, MouseEventArgs e)
@@ -163,7 +162,6 @@ namespace TeamTracker
             BoardToAdd = sender;
 
             AddBoardOnColumn(columnNumber);
-
             
             
         }

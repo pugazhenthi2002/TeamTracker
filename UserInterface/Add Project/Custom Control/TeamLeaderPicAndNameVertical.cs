@@ -12,6 +12,11 @@ namespace TeamTracker
 {
     public partial class TeamLeaderPicAndNameVertical : UserControl
     {
+        public TeamLeaderPicAndNameVertical()
+        {
+            InitializeComponent();
+        }
+
         public Employee TeamLeader
         {
             set
@@ -30,9 +35,6 @@ namespace TeamTracker
             }
         }
 
-        public TeamLeaderPicAndNameVertical()
-        {
-            InitializeComponent();
-        }
+        
     }
 }

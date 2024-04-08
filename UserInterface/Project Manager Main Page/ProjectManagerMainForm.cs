@@ -15,25 +15,8 @@ namespace TeamTracker
     public partial class ProjectManagerMainForm : Form
     {
         static public NotificationManager notify;
-        public event EventHandler ManagerClose;
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            profilePicAndName1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, profilePicAndName1.Width, profilePicAndName1.Height, profilePicAndName1.Height, profilePicAndName1.Height));
-        }
-
+        
         public ProjectManagerMainForm()
         {
             InitializeComponent();
@@ -43,6 +26,8 @@ namespace TeamTracker
             notify.NotificationAlignment = FromNotificationAlignment.RightDown;
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
         }
+
+        public event EventHandler ManagerClose;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -59,6 +44,23 @@ namespace TeamTracker
             }
         }
 
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            profilePicAndName1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, profilePicAndName1.Width, profilePicAndName1.Height, profilePicAndName1.Height, profilePicAndName1.Height));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
         {
             Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);

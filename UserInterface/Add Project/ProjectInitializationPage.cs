@@ -13,10 +13,18 @@ namespace TeamTracker
 {
     public partial class ProjectInitializationPage : UserControl
     {
+        private Employee teamLeader;
+
         public ProjectInitializationPage()
         {
             InitializeComponent();
             InitializePlaceHolders();
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -39,12 +47,6 @@ namespace TeamTracker
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             CreateProject.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, CreateProject.Width, CreateProject.Height, 10, 10));
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
         }
 
         private void ProjectEntryTablePanel_Paint(object sender, PaintEventArgs e)
@@ -234,6 +236,5 @@ namespace TeamTracker
             selectedTeamLeader1.Visible = false;
         }
 
-        private Employee teamLeader;
     }
 }

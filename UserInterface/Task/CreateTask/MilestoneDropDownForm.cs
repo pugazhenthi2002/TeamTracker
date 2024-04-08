@@ -13,6 +13,10 @@ namespace TeamTracker
 {
     public partial class MilestoneDropDownForm : Form
     {
+
+        private List<Milestone> milestoneList = new List<Milestone>();
+
+
         public MilestoneDropDownForm()
         {
             InitializeComponent();
@@ -21,7 +25,7 @@ namespace TeamTracker
         }
 
         public EventHandler MilestoneClick;
-        private List<Milestone> milestoneList = new List<Milestone>();
+
         public List<Milestone> MilestoneList
         {
             
@@ -30,6 +34,13 @@ namespace TeamTracker
                 milestoneList = value;
                 InitializeMilestones();
             }
+        }
+
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -43,11 +54,6 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
 
         private void InitializeRoundedEdge()
         {

@@ -12,10 +12,19 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class FilterForm : Form
     {
-        public delegate void FilterHandler(int month, int year, int priority);
-        public event FilterHandler Filter;
+        
         private PriorityDropDownForm priorityForm;
         private MonthForm monthForm;
+        private int monthClickCount = 0, priorityClickCount = 0;
+
+        public FilterForm()
+        {
+            InitializeComponent();
+        }
+
+        
+        public delegate void FilterHandler(int month, int year, int priority);
+        public event FilterHandler Filter;
 
         public int Month
         {
@@ -30,13 +39,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         public int Priority
         {
             get; set;
-        }
-
-        private int monthClickCount = 0, priorityClickCount = 0;
-
-        public FilterForm()
-        {
-            InitializeComponent();
         }
 
         private void OnMonthDropDownClick(object sender, EventArgs e)

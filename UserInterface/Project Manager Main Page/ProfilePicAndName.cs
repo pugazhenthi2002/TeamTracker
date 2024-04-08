@@ -16,6 +16,14 @@ namespace TeamTracker
         public bool isOperable { get; set; }
         public Color HoverColor { get; set; }
         public Color NormalColor { get; set; }
+        private Employee employeeProfile;
+
+
+        public ProfilePicAndName()
+        {
+            InitializeComponent();
+        }
+
         public Employee EmployeeProfile
         {
             get
@@ -26,7 +34,7 @@ namespace TeamTracker
             set
             {
                 employeeProfile = value;
-                if(value!=null)
+                if (value != null)
                 {
                     profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
                     designationLabel.Text = value.EmpRoleName;
@@ -34,12 +42,6 @@ namespace TeamTracker
                 }
             }
         }
-        public ProfilePicAndName()
-        {
-            InitializeComponent();
-        }
-
-        private Employee employeeProfile;
 
         private void OnMouseEnter(object sender, EventArgs e)
         {

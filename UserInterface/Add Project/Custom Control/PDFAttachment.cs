@@ -12,6 +12,16 @@ namespace TeamTracker
 {
     public partial class PDFAttachment : UserControl
     {
+        
+
+        public event EventHandler AttachmentRemove;
+
+        public PDFAttachment()
+        {
+            InitializeComponent();
+        }
+
+
         public string FileName
         {
             get
@@ -25,12 +35,6 @@ namespace TeamTracker
             }
         }
 
-        public event EventHandler AttachmentRemove;
-
-        public PDFAttachment()
-        {
-            InitializeComponent();
-        }
 
         private void OnCloseCLick(object sender, EventArgs e)
         {

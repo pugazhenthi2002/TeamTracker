@@ -12,6 +12,12 @@ namespace TeamTracker
 {
     public partial class ProfilePicAndNameSquare : UserControl
     {
+
+        public ProfilePicAndNameSquare()
+        {
+            InitializeComponent();
+        }
+
         public Employee empProfile
         {
             set
@@ -23,10 +29,7 @@ namespace TeamTracker
                 }
             }
         }
-        public ProfilePicAndNameSquare()
-        {
-            InitializeComponent();
-        }
+        
 
         public void SetImage(Image image)
         {

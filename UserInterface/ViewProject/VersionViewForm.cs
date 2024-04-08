@@ -14,17 +14,21 @@ namespace UserInterface.ViewProject
 {
     public partial class VersionViewForm : Form
     {
-        public event EventHandler<ProjectVersion> VersionSelected;
 
-        private const int CSDropShadow = 0x00020000;
 
         public List<ProjectVersion> VersionCollection;
         public List<Label> labelControlCollection;
+
+        private const int CSDropShadow = 0x00020000;
+
 
         public VersionViewForm()
         {
             InitializeComponent();
         }
+
+        public event EventHandler<ProjectVersion> VersionSelected;
+
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -47,17 +51,7 @@ namespace UserInterface.ViewProject
             }
         }
 
-        private void OnLabelMouseLeave(object sender, EventArgs e)
-        {
-            (sender as Label).ForeColor = Color.FromArgb(39, 55, 77);
-            this.Invalidate();
-        }
-
-        private void OnLabelMouseEnter(object sender, EventArgs e)
-        {
-            (sender as Label).ForeColor = Color.FromArgb(82, 109, 130);
-            this.Invalidate();
-        }
+        
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -84,6 +78,18 @@ namespace UserInterface.ViewProject
             base.OnLoad(e);
             InitializeDropDownForm();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
+        }
+
+        private void OnLabelMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Label).ForeColor = Color.FromArgb(39, 55, 77);
+            this.Invalidate();
+        }
+
+        private void OnLabelMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Label).ForeColor = Color.FromArgb(82, 109, 130);
+            this.Invalidate();
         }
 
         private void InitializeDropDownForm()

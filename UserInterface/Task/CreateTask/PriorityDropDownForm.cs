@@ -23,6 +23,12 @@ namespace TeamTracker
         public EventHandler PriorityBtnClicked;
 
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -34,12 +40,7 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
-
+        
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));

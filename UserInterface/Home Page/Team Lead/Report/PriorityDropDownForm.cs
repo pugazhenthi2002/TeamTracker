@@ -12,6 +12,14 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class PriorityDropDownForm : Form
     {
+        private int priority, prevPriority;
+        private Label prevLabel;
+
+        public PriorityDropDownForm()
+        {
+            InitializeComponent();
+        }
+
         public event EventHandler<int> PrioritySelect;
         public int Priority
         {
@@ -31,13 +39,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
-        private int priority, prevPriority;
-        private Label prevLabel;
-
-        public PriorityDropDownForm()
-        {
-            InitializeComponent();
-        }
+        
 
         private void OnPriorityClick(object sender, EventArgs e)
         {

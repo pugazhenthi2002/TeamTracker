@@ -19,6 +19,15 @@ namespace TeamTracker
             InitializeBorder();
         }
 
+
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeBorder();
+        }
+
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -38,11 +47,7 @@ namespace TeamTracker
             panelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelAttachment.Width, panelAttachment.Height, 20, 20));
         }
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeBorder();
-        }
+        
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
         {

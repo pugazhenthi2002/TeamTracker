@@ -15,6 +15,19 @@ namespace UserInterface.Add_Project.Custom_Control
     public partial class ChooseProjectForm : Form
     {
         public event EventHandler<Projects> ProjectSelect;
+        private bool isUpEnable = false, isDownEnable = false;
+        private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
+        private List<Projects> availableProjects;
+        private List<Projects> duoProjects;
+        private SingleProjectSelectTemplate prevControl;
+        private List<SelectProjectTemplate> controlCollection = new List<SelectProjectTemplate>();
+        private const int CSDropShadow = 0x00020000;
+
+        public ChooseProjectForm()
+        {
+            InitializeComponent();
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
 
         public List<Projects> AvailableProjects
         {
@@ -33,10 +46,17 @@ namespace UserInterface.Add_Project.Custom_Control
             }
         }
 
-        private bool isUpEnable = false, isDownEnable = false;
-        private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
-        private List<Projects> availableProjects;
-        private List<Projects> duoProjects;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
 
         private void OnPaginateUpClick(object sender, EventArgs e)
         {
@@ -72,8 +92,7 @@ namespace UserInterface.Add_Project.Custom_Control
             }
         }
 
-        private SingleProjectSelectTemplate prevControl;
-        private List<SelectProjectTemplate> controlCollection = new List<SelectProjectTemplate>();
+        
 
         private void OnSelectClick(object sender, EventArgs e)
         {
@@ -91,11 +110,7 @@ namespace UserInterface.Add_Project.Custom_Control
             this.Close();
         }
 
-        public ChooseProjectForm()
-        {
-            InitializeComponent();
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-        }
+        
 
         private void InitializeTemplates()
         {
@@ -173,16 +188,7 @@ namespace UserInterface.Add_Project.Custom_Control
             int nHeightEllipse // width of ellipse
         );
 
-        private const int CSDropShadow = 0x00020000;
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
-            }
-        }
+        
     }
 }

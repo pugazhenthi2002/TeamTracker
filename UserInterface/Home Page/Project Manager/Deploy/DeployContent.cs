@@ -13,12 +13,22 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 {
     public partial class DeployContent : UserControl
     {
+
+        private Dictionary<string, ProjectVersion> deployVersions;
+        private Color borderColor = Color.Blue;
+
+        public DeployContent()
+        {
+            InitializeComponent();
+        }
+
+
         public Dictionary<string, ProjectVersion> DeployVersions
         {
             set
             {
                 deployVersions = value;
-                if (value != null && value.Count>0)
+                if (value != null && value.Count > 0)
                 {
                     label1.Text = value.First().Key;
                     ucDeploy1.Version = value.First().Value;
@@ -31,11 +41,6 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             }
         }
 
-        public DeployContent()
-        {
-            InitializeComponent();
-        }
-
         public Color BorderColor
         {
             get { return borderColor; }
@@ -46,8 +51,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             }
         }
 
-        private Dictionary<string, ProjectVersion> deployVersions;
-        private Color borderColor = Color.Blue;
+        
 
         protected override void OnPaint(PaintEventArgs e)
         {

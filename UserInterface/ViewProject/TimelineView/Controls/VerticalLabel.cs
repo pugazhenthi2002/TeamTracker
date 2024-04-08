@@ -13,11 +13,19 @@ namespace UserInterface.ViewProject.TimelineView.Controls
 {
     public partial class VerticalLabel : UserControl
     {
-        public event EventHandler<Projects> ProjectSelected;
+        private bool isClicked = true;
+        private string text;
+        private Font textFont = new Font(new FontFamily("Ebrima"), 12);
+        private Color textColor = Color.FromArgb(39, 55, 77);
+        private Projects project;
+
         public VerticalLabel()
         {
             InitializeComponent();
         }
+
+        public event EventHandler<Projects> ProjectSelected;
+
 
         public Projects Project
         {
@@ -65,11 +73,15 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             }
         }
 
-        private bool isClicked = true;
-        private string text;
-        private Font textFont = new Font(new FontFamily("Ebrima"), 12);
-        private Color textColor = Color.FromArgb(39, 55, 77);
-        private Projects project;
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Pen border = new Pen(textColor, 2);
+            e.Graphics.DrawLine(border, new Point(0, Height), new Point(Width, Height));
+            e.Graphics.DrawLine(border, new Point(0, 0), new Point(Width, 0));
+            e.Graphics.DrawLine(border, new Point(0, 0), new Point(0, Height));
+            border.Dispose();
+        }
 
         private void OnVerticalTextPaint(object sender, PaintEventArgs e)
         {
@@ -86,14 +98,6 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             ProjectSelected?.Invoke(this, project);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Pen border = new Pen(textColor, 2);
-            e.Graphics.DrawLine(border, new Point(0, Height), new Point(Width, Height));
-            e.Graphics.DrawLine(border, new Point(0, 0), new Point(Width, 0));
-            e.Graphics.DrawLine(border, new Point(0, 0), new Point(0, Height));
-            border.Dispose();
-        }
+        
     }
 }

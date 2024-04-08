@@ -13,6 +13,17 @@ namespace UserInterface.Add_Project.Custom_Control
 {
     public partial class SingleProjectSelectTemplate : UserControl
     {
+        
+
+        private bool isClicked = false;
+        private Projects project;
+
+        public SingleProjectSelectTemplate()
+        {
+            DoubleBuffered = true;
+            InitializeComponent();
+        }
+
         public event EventHandler<Projects> ProjectClick;
 
         public Projects Project
@@ -35,15 +46,6 @@ namespace UserInterface.Add_Project.Custom_Control
             {
                 isClicked = value;
             }
-        }
-
-        private bool isClicked = false;
-        private Projects project;
-
-        public SingleProjectSelectTemplate()
-        {
-            DoubleBuffered = true;
-            InitializeComponent();
         }
 
         private void InitializeTemplate()

@@ -20,7 +20,25 @@ namespace TeamTracker
         private Timer timer=new Timer();
         private bool isCenterPlaceHolder;
         private int borderRadius = 7;
-        
+        private Point placeholderlocation;
+
+
+        public TextBoxU()
+        {
+            InitializeComponent();
+            textBox1.MouseEnter += TextBox1MouseEnter;
+            this.Resize += TextBoxUResize;
+            textBox1.GotFocus += TextBoxUGotFocus;
+            textBox1.LostFocus += TextBoxULostFocus;
+            label1.Click += Label1Click;
+            TextBoxUResize(this, EventArgs.Empty);
+            isCenterPlaceHolder = true;
+            timer.Interval = 15;
+            timer.Tick += PlaceholderMove;
+            this.Paint += TextBoxUPaint;
+            Click += Label1Click;
+        }
+
         public Color TextBoxColor
         {
             get { return textBox1.BackColor; }
@@ -156,21 +174,6 @@ namespace TeamTracker
         }
 
 
-        public TextBoxU()
-        {
-            InitializeComponent();
-            textBox1.MouseEnter += TextBox1MouseEnter;
-            this.Resize += TextBoxUResize;
-            textBox1.GotFocus += TextBoxUGotFocus;
-            textBox1.LostFocus += TextBoxULostFocus;
-            label1.Click += Label1Click;
-            TextBoxUResize(this, EventArgs.Empty);
-            isCenterPlaceHolder = true;
-            timer.Interval = 15;
-            timer.Tick += PlaceholderMove;
-            this.Paint += TextBoxUPaint;
-            Click+= Label1Click;
-        }
        
         private GraphicsPath GetGraphicsPath(Rectangle rect)
         {
@@ -213,7 +216,6 @@ namespace TeamTracker
             
         }
 
-        Point placeholderlocation;
         private void PlaceholderMove(object sender, EventArgs e)
         {
             if (isCenterPlaceHolder == true&& (label1.Location.X>0&& label1.Location.Y>-3))

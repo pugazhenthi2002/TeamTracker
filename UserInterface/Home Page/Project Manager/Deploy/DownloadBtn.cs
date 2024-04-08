@@ -17,6 +17,23 @@ namespace TeamTracker
 
     public class DownloadBtn : UserControl
     {
+
+        private FileType typeOfFile;
+        private string fileName;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private Panel panel3;
+        private Label label1;
+
+        public DownloadBtn()
+        {
+            InitializeComponent();
+            this.Size = new Size(250, 50);
+            this.DoubleBuffered = true;
+        }
+
         public event EventHandler Download;
         public FileType TypeOfFile
         {
@@ -38,21 +55,6 @@ namespace TeamTracker
             }
         }
 
-        public DownloadBtn()
-        {
-            InitializeComponent();
-            this.Size = new Size(250, 50);
-            this.DoubleBuffered = true;
-        }
-
-        private FileType typeOfFile;
-        private string fileName;
-        private Panel panel1;
-        private PictureBox pictureBox1;
-        private Panel panel2;
-        private PictureBox pictureBox2;
-        private Panel panel3;
-        private Label label1;
 
         protected override void OnClick(EventArgs e)
         {

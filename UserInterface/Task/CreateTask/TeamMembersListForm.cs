@@ -14,7 +14,10 @@ namespace TeamTracker
 {
     public partial class TeamMembersListForm : Form
     {
-        public event EventHandler<Employee> EmployeeSelect;
+        public EventHandler<Employee> TeamMemberClick;
+        private List<Employee> teamList = new List<Employee>();
+        private const int CSDropShadow = 0x00020000;
+
 
         public TeamMembersListForm()
         {
@@ -22,8 +25,8 @@ namespace TeamTracker
             InitializeRoundedEdge();
         }
 
-        public EventHandler<Employee> TeamMemberClick;
-        private List<Employee> teamList = new List<Employee>();
+        public event EventHandler<Employee> EmployeeSelect;
+
         public List<Employee> TeamList
         {
             set
@@ -33,7 +36,6 @@ namespace TeamTracker
             }
         }
 
-        private const int CSDropShadow = 0x00020000;
         protected override CreateParams CreateParams
         {
             get
@@ -42,6 +44,12 @@ namespace TeamTracker
                 cp.ClassStyle |= CSDropShadow;
                 return cp;
             }
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -55,11 +63,7 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
+        
 
         private void InitializeRoundedEdge()
         {

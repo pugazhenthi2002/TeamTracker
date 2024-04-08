@@ -79,11 +79,7 @@ namespace TeamTracker
             upgradeButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, upgradeButton.Width, upgradeButton.Height, 10, 10));
         }
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeBorder();
-        }
+        
 
         private void OnChooseProject(object sender, EventArgs e)
         {
@@ -206,6 +202,12 @@ namespace TeamTracker
             latestUpgradedVersion1.LatestVersion = null;
             fileAttachment1.AttachmentCollection = null;
             teamLeaderPicAndNameVertical1.TeamLeader = null;
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeBorder();
         }
     }
 }

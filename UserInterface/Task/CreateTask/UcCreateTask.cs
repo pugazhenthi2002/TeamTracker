@@ -13,6 +13,11 @@ namespace TeamTracker
 {
     public partial class UcCreateTask : UserControl
     {
+        private PriorityDropDownForm PriortyDropForm;
+        private MilestoneDropDownForm MilestoneDropForm;
+        private TeamMembersListForm TeamMembersDropForm;
+        private string FilePath;
+
         public UcCreateTask()
         {
             InitializeComponent();
@@ -21,10 +26,11 @@ namespace TeamTracker
 
         }
 
-        PriorityDropDownForm PriortyDropForm;
-        MilestoneDropDownForm MilestoneDropForm;
-        TeamMembersListForm TeamMembersDropForm;
-        string FilePath;
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -37,11 +43,7 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
+        
 
         private void InitializeRoundedEdge()
         {

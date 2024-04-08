@@ -15,16 +15,9 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class OverviewContent : UserControl
     {
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-       (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // height of ellipse
-           int nHeightEllipse // width of ellipse
-       );
+        private ProjectVersion version;
+        private bool backEnable = false, frontEnable = true;
+        private int flag;
 
         public OverviewContent()
         {
@@ -47,9 +40,22 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
         }
 
-        private ProjectVersion version;
-        private bool backEnable = false, frontEnable = true;
-        private int flag;
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
@@ -101,10 +107,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
         }
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
+        
     }
 }

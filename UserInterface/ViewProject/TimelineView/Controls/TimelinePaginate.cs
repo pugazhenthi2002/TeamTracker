@@ -13,16 +13,27 @@ namespace TeamTracker
 {
     public partial class TimelinePaginate : UserControl
     {
+
+        public List<Milestone> milestoneCollection;
+        private List<Task> taskCollection;
+        private List<Task> viewTaskCollection;
+        private bool isBackEnable, isNextEnable;
+        private List<string> monthCollections;
+        private List<Label> labelCollections;
+        private List<Color> colorCollections;
+        private List<Color> viewColorCollections;
+        private TimeSpan dateDifference;
+        private DateTime startViewDate, endViewDate, iterDate;
+        private ProjectVersion version;
+        private TaskTimelineTemplate taskTimeline;
+
+
         public TimelinePaginate()
         {
             InitializeComponent();
             InitializeLabels();
         }
 
-        private List<Task> taskCollection;
-        private List<Task> viewTaskCollection;
-
-        public List<Milestone> milestoneCollection;
 
         public List<Color> Colors
         {
@@ -49,15 +60,7 @@ namespace TeamTracker
             }
         }
 
-        private bool isBackEnable, isNextEnable;
-        private List<string> monthCollections;
-        private List<Label> labelCollections;
-        private List<Color> colorCollections;
-        private List<Color> viewColorCollections;
-        private TimeSpan dateDifference;
-        private DateTime startViewDate, endViewDate, iterDate;
-        private ProjectVersion version;
-        private TaskTimelineTemplate taskTimeline;
+        
 
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {

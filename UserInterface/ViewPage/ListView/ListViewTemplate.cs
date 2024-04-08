@@ -11,6 +11,8 @@ namespace TeamTracker
 {
     public partial class ListViewTemplate : UserControl
     {
+        private List<Task> taskCollection;
+
         public List<Task> TaskCollection
         {
             set
@@ -20,7 +22,6 @@ namespace TeamTracker
             }
         }
 
-        private List<Task> taskCollection;
         public ListViewTemplate()
         {
             InitializeComponent();

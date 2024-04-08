@@ -13,6 +13,11 @@ namespace TeamTracker
 {
     public partial class SourceCodeSubmitionForm : Form
     {
+        public EventHandler CloseClick;
+        public EventHandler DoneClick;
+        private bool Uploaded = false;
+        private string selectedFileName = "";
+
         public SourceCodeSubmitionForm()
         {
             InitializeComponent();
@@ -22,10 +27,12 @@ namespace TeamTracker
 
         }
 
-        public EventHandler CloseClick;
-        public EventHandler DoneClick;
-        private bool Uploaded = false;
-        private string selectedFileName = "";
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -38,11 +45,6 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
 
         private void InitializeRoundedEdge()
         {
