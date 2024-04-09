@@ -13,6 +13,10 @@ namespace TeamTracker
 {
     public partial class UCTaskBoard : UserControl
     {
+        private Task TaskBoardData;
+        private bool isDragging = false;
+
+
         public UCTaskBoard()
         {
             InitializeComponent();
@@ -38,8 +42,6 @@ namespace TeamTracker
 
             }
         }
-
-        private Task TaskBoardData;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -134,7 +136,6 @@ namespace TeamTracker
             this.Cursor = Cursors.Default;
         }
 
-        private bool isDragging = false;
 
         private void OnMouseDownTaskBoard(object sender, MouseEventArgs e)
         {

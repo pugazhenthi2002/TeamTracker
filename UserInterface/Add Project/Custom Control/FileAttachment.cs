@@ -12,16 +12,10 @@ namespace TeamTracker
 {
     public partial class FileAttachment : UserControl
     {
-        public bool ClearAttachments
-        {
-            set
-            {
-                if(value == true)
-                {
-                    attachmentDisplayPanel.Controls.Clear();
-                }
-            }
-        }
+
+        public Dictionary<string, VersionAttachment> attachmentCollection;
+        private PDFAttachment pdfAttachment;
+
 
         public FileAttachment()
         {
@@ -29,7 +23,17 @@ namespace TeamTracker
             AttachmentCollection = new Dictionary<string, VersionAttachment>();
         }
 
-        public Dictionary<string, VersionAttachment> attachmentCollection;
+        public bool ClearAttachments
+        {
+            set
+            {
+                if (value == true)
+                {
+                    attachmentDisplayPanel.Controls.Clear();
+                }
+            }
+        }
+
         public Dictionary<string, VersionAttachment> AttachmentCollection
         {
             get { return attachmentCollection; }
@@ -96,7 +100,6 @@ namespace TeamTracker
             attachmentDisplayPanel.Controls.Remove(sender as PDFAttachment);
         }
 
-        private PDFAttachment pdfAttachment;
 
         private void OnBrowseMouseEnter(object sender, EventArgs e)
         {

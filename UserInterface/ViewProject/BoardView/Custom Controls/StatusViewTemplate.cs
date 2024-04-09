@@ -13,6 +13,21 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 {
     public partial class StatusViewTemplate : UserControl
     {
+        private Color borderColor;
+        private ProjectStatus status;
+        private bool isUpEnable = false, isDownEnable = true;
+        private int startIdx = 0, endIdx = 0, viewCount = 0;
+        private BoardViewTemplate control;
+        private List<ProjectVersion> versions;
+        private List<BoardViewTemplate> boardCollection;
+
+
+        public StatusViewTemplate()
+        {
+            InitializeComponent();
+        }
+
+
         public Color BorderColor
         {
             get { return borderColor; }
@@ -61,13 +76,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             }
         }
 
-        private Color borderColor;
-        private ProjectStatus status;
-        private bool isUpEnable = false, isDownEnable = true;
-        private int startIdx = 0, endIdx = 0, viewCount = 0;
-        private BoardViewTemplate control;
-        private List<ProjectVersion> versions;
-        private List<BoardViewTemplate> boardCollection;
+        
 
         private void OnPaginateUp(object sender, EventArgs e)
         {
@@ -89,10 +98,6 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             }
         }
 
-        public StatusViewTemplate()
-        {
-            InitializeComponent();
-        }
 
         private void InitializeVersions()
         {

@@ -12,6 +12,15 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class TaskCompletionProgressBar : UserControl
     {
+
+        private int completedTask, angle, percentage;
+
+        public TaskCompletionProgressBar()
+        {
+            DoubleBuffered = true;
+            InitializeComponent();
+        }
+
         public int TotalTask { get; set; }
         public int CompletedTask
         {
@@ -35,13 +44,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
 
         }
-        private int completedTask, angle, percentage;
-
-        public TaskCompletionProgressBar()
-        {
-            DoubleBuffered = true;
-            InitializeComponent();
-        }
+        
 
         private void OnProgressBarPaint(object sender, PaintEventArgs e)
         {

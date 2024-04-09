@@ -14,6 +14,15 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class Overview : UserControl
     {
+
+        private Dictionary<string, ProjectVersion> collection = new Dictionary<string, ProjectVersion>();
+        private Color borderColor = Color.Blue;
+
+        public Overview()
+        {
+            InitializeComponent();
+        }
+
         public Dictionary<string, ProjectVersion> OverviewCollection
         {
             set
@@ -41,13 +50,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
         }
 
-        private Dictionary<string, ProjectVersion> collection = new Dictionary<string, ProjectVersion>();
-        private Color borderColor = Color.Blue;
-
-        public Overview()
-        {
-            InitializeComponent();
-        }
+        
 
         protected override void OnPaint(PaintEventArgs e)
         {

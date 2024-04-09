@@ -14,7 +14,9 @@ namespace TeamTracker
 {
     public partial class LoginForm : Form
     {
-        BooleanMsg message;
+        private BooleanMsg message;
+        private const int CSDropShadow = 0x00020000;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -26,7 +28,13 @@ namespace TeamTracker
             if (!message.Result) { errorMessageLabel.Text = message; }
         }
 
-        private const int CSDropShadow = 0x00020000;
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -48,11 +56,6 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
-        }
 
         private void OnTeamUpClick(object sender, EventArgs e)
         {

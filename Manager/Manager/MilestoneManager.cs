@@ -9,7 +9,11 @@ namespace TeamTracker
 {
     public static class MilestoneManager
     {
+
+        public static List<Milestone> MilestoneCollection = new List<Milestone>();
         public static Milestone CurrentMilestone { get; set; }
+
+
 
         public static BooleanMsg StoreMilestoneCollection()
         {
@@ -90,6 +94,5 @@ namespace TeamTracker
             return count;
         }
 
-        public static List<Milestone> MilestoneCollection = new List<Milestone>();
     }
 }

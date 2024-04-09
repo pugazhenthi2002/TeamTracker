@@ -12,7 +12,16 @@ namespace TeamTracker
 {
     public partial class TaskTimelineTemplate : UserControl
     {
+
+        private Task timelineTask;
+
+        public TaskTimelineTemplate()
+        {
+            InitializeComponent();
+        }
+
         public event EventHandler<Task> TaskSelect;
+
         public Task TimelineTask
         {
             get
@@ -25,12 +34,6 @@ namespace TeamTracker
                 timelineTask = value;
                 taskLabel.Text = value.TaskName;
             }
-        }
-
-        private Task timelineTask;
-        public TaskTimelineTemplate()
-        {
-            InitializeComponent();
         }
 
         protected override void OnPaint(PaintEventArgs e)

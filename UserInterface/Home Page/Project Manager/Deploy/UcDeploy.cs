@@ -13,28 +13,24 @@ namespace TeamTracker
 {
     public partial class UcDeploy : UserControl
     {
+
+        private ProjectVersion version;
+        private Projects proj;
+        private VersionSourceCode versionSourceCode;
+
+
+        public UcDeploy()
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+        }
+
+        
+
         public delegate void DeployHandler(string name, ProjectVersion project);
         public event DeployHandler Deployment;
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
 
-        private void InitializeRoundedEdge()
-        {
-            profilePicAndNameSquare1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, profilePicAndNameSquare1.Width, profilePicAndNameSquare1.Height, 20, 20));
-            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
-
-        }
-
-        private ProjectVersion version;
         public ProjectVersion Version
         {
             set
@@ -55,19 +51,32 @@ namespace TeamTracker
             }
         }
 
-        private Projects proj;
-        private VersionSourceCode versionSourceCode;
-        public UcDeploy()
-        {
-            InitializeComponent();
-            InitializeRoundedEdge();
-        }
+        
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             InitializeRoundedEdge();
         }
+
+
+        private void InitializeRoundedEdge()
+        {
+            profilePicAndNameSquare1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, profilePicAndNameSquare1.Width, profilePicAndNameSquare1.Height, 20, 20));
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
+
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
         private void OnDownloaded(object sender, EventArgs e)
         {

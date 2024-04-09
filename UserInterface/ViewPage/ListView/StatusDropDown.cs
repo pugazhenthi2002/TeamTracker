@@ -13,6 +13,9 @@ namespace TeamTracker
 {
     public partial class StatusDropDown : Form
     {
+        private Point endLocation;
+
+
         public StatusDropDown()
         {
             InitializeComponent();
@@ -83,7 +86,6 @@ namespace TeamTracker
             }
         }
 
-        private Point endLocation;
 
         private void OnStatusMouseEnter(object sender, EventArgs e)
         {

@@ -12,7 +12,18 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class MonthForm : Form
     {
+
+
+        private int month;
+        private Label prevLabel;
+
+        public MonthForm()
+        {
+            InitializeComponent();
+        }
+
         public event EventHandler<int> MonthSelect;
+
         public int Month
         {
             get
@@ -31,13 +42,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
-        private int month;
-        private Label prevLabel;
-
-        public MonthForm()
-        {
-            InitializeComponent();
-        }
 
         private void OnMonthClick(object sender, EventArgs e)
         {

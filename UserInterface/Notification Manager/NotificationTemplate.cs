@@ -14,8 +14,30 @@ namespace TeamTracker
 {
     public partial class NotificationTemplate : Form
     {
-        public bool isContentOutOfHeight = false;
         static public bool isFullContentDisplayed = false;
+        public bool isContentOutOfHeight = false;
+        public int TickCount = 0;
+        private int borderRadius;
+        private string header = "Header";
+        private string message = "Message";
+        private string contentMessage = "Message";
+        private string time = "Time";
+        private List<string> words = new List<string>();
+        private Timer fadeOutTimer = new Timer();
+        private Font headerFont, contentFont;
+        private Pen linePen;
+        private Brush textBrush;
+        private Rectangle stringRectangle;
+        private StringFormat SFormat;
+
+
+
+        public NotificationTemplate()
+        {
+            DoubleBuffered = true;
+            InitializeComponent();
+        }
+        public event EventHandler NotificationClosed;
 
         public string NotificationHeader
         {
@@ -65,16 +87,7 @@ namespace TeamTracker
                 time = value.ToString();
             }
         }
-        public int TickCount = 0;
-
-        public event EventHandler NotificationClosed;
-
-
-        public NotificationTemplate()
-        {
-            DoubleBuffered = true;
-            InitializeComponent();
-        }
+        
 
         public Size SetNotificationSize()
         {
@@ -317,17 +330,7 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        private int borderRadius;
-        private string header = "Header";
-        private string message = "Message";
-        private string contentMessage = "Message";
-        private string time = "Time";
-        private List<string> words = new List<string>();
-        private Timer fadeOutTimer = new Timer();
-        private Font headerFont, contentFont;
-        private Pen linePen;
-        private Brush textBrush;
-        private Rectangle stringRectangle;
+        
 
         private void OnNotifyResize(object sender, EventArgs e)
         {
@@ -339,6 +342,6 @@ namespace TeamTracker
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, borderRadius, borderRadius));
         }
 
-        private StringFormat SFormat;
+        
     }
 }

@@ -13,6 +13,10 @@ namespace TeamTracker
 {
     public partial class UcTaskStatusHead : UserControl
     {
+        private TaskStatus Tstatus;
+        private Color TopPanelColor;
+        private string StatusLabelText;
+
         public UcTaskStatusHead()
         {
             InitializeComponent();
@@ -33,10 +37,12 @@ namespace TeamTracker
             }
         }
 
-        private TaskStatus Tstatus;
-        private Color TopPanelColor;
-        private string StatusLabelText;
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -48,12 +54,6 @@ namespace TeamTracker
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
 
         private void InitializeRoundedEdge()
         {

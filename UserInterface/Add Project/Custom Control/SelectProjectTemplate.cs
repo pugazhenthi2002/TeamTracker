@@ -15,6 +15,13 @@ namespace UserInterface.Add_Project.Custom_Control
     public partial class SelectProjectTemplate : UserControl
     {
 
+        private Projects project1, project2;
+
+        public SelectProjectTemplate()
+        {
+            InitializeComponent();
+        }
+
         public delegate void ProjectHandler(Projects project, SingleProjectSelectTemplate control);
         public event ProjectHandler ProjectSelect;
 
@@ -27,12 +34,6 @@ namespace UserInterface.Add_Project.Custom_Control
                 if (value.Count > 0)
                     InitializeTemplate();
             }
-        }
-
-        private Projects project1, project2;
-        public SelectProjectTemplate()
-        {
-            InitializeComponent();
         }
 
         private void OnProjectSelected(object sender, Projects project)

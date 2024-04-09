@@ -13,30 +13,17 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 {
     public partial class BoardViewTemplate : UserControl
     {
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
-        private void InitializeBorder()
-        {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeBorder();
-        }
+        private ProjectVersion boardVersion;
         private Milestone milestone;
         private string toolTipMessage;
+
+        public BoardViewTemplate()
+        {
+            InitializeComponent();
+            InitializeBorder();
+        }
+
+               
         public ProjectVersion BoardVersion
         {
             get { return boardVersion; }
@@ -59,12 +46,26 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             }
         }
 
-        private ProjectVersion boardVersion;
-
-        public BoardViewTemplate()
+        protected override void OnResize(EventArgs e)
         {
-            InitializeComponent();
+            base.OnResize(e);
             InitializeBorder();
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeBorder()
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
         }
 
         private void OnMilestoneLabelPaint(object sender, PaintEventArgs e)

@@ -14,6 +14,14 @@ namespace UserInterface.ViewProject.BoardView
     public partial class BoardViewContent : UserControl
     {
         private List<ProjectVersion> versionCollection;
+
+        
+
+        public BoardViewContent()
+        {
+            InitializeComponent();
+        }
+
         public List<ProjectVersion> VersionCollection
         {
             set
@@ -21,11 +29,6 @@ namespace UserInterface.ViewProject.BoardView
                 versionCollection = value;
                 SetStatusviseVersion();
             }
-        }
-
-        public BoardViewContent()
-        {
-            InitializeComponent();
         }
 
         private void SetStatusviseVersion()

@@ -10,6 +10,9 @@ namespace TeamTracker
     public static class VersionManager
     {
 
+        public static List<Projects> ProjectCollection;
+        public static List<ProjectVersion> VersionCollection;
+
         public static ProjectVersion CurrentVersion { get; set; }
 
         public static BooleanMsg StoreProjectCollection()
@@ -615,7 +618,6 @@ namespace TeamTracker
             return false;
         }
 
-        public static List<Projects> ProjectCollection;
-        public static List<ProjectVersion> VersionCollection;
+        
     }
 }

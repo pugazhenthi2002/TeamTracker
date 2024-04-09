@@ -13,6 +13,8 @@ namespace TeamTracker
 {
     public partial class UcNotification : UserControl
     {
+        private Notification notify;
+
         public UcNotification()
         {
             InitializeComponent();
@@ -37,7 +39,6 @@ namespace TeamTracker
             }
         }
 
-        private Notification notify;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn

@@ -14,6 +14,17 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class MilestoneDetailsForm : Form
     {
+
+        private const int CSDropShadow = 0x00020000;
+        private Dictionary<string, int> taskCounts;
+
+        public MilestoneDetailsForm()
+        {
+            InitializeComponent();
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+
         public Dictionary<string,int> TaskCounts
         {
             set
@@ -22,7 +33,14 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 InitializePieChart();
             }
         }
-        private const int CSDropShadow = 0x00020000;
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            chart1.Dispose();
+            panel1.BackgroundImage.Dispose();
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -44,13 +62,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
            int nHeightEllipse // width of ellipse
        );
 
-        private Dictionary<string, int> taskCounts;
-        public MilestoneDetailsForm()
-        {
-            InitializeComponent();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-        }
-
+        
         private void InitializePieChart()
         {
             int count = 0;
@@ -64,11 +76,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (count == 0) chart1.Visible = false;
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            chart1.Dispose();
-            panel1.BackgroundImage.Dispose();
-        }
+        
     }
 }

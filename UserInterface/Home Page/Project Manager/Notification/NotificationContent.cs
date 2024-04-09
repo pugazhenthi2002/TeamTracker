@@ -12,10 +12,20 @@ namespace TeamTracker
 {
     public partial class NotificationContent : UserControl
     {
+
+        private bool backEnable = false, nextEnable = true;
+        private int currentIndex = 0, endIndex, notifyCount;
+        private int MaxUserControls = 4;//alter this value for required usercontrols
+        private List<Notification> notifyList = new List<Notification>();
+        private List<UcNotification> UcNotiList = new List<UcNotification>();
+        private Color borderColor = Color.Blue;
+
+
         public NotificationContent()
         {
             InitializeComponent();
         }
+
 
         public List<Notification> NotifyList
         {
@@ -34,11 +44,6 @@ namespace TeamTracker
             }
         }
 
-        private bool backEnable = false, nextEnable = true;
-        private int currentIndex = 0, endIndex, notifyCount;
-        private int MaxUserControls = 4;//alter this value for required usercontrols
-        private List<Notification> notifyList = new List<Notification>();
-        private List<UcNotification> UcNotiList = new List<UcNotification>();
 
         public Color BorderColor
         {
@@ -50,7 +55,6 @@ namespace TeamTracker
             }
         }
 
-        private Color borderColor = Color.Blue;
 
         protected override void OnPaint(PaintEventArgs e)
         {

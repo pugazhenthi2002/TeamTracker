@@ -12,6 +12,26 @@ namespace TeamTracker
 {
     public partial class UCTaskStatusBase : UserControl
     {
+
+        public TaskBoardMouseEventHandler TaskBoardMouseDown;
+        public TaskBoardMouseEventHandler TaskBoardMouseUp;
+        public TaskBoardMouseEventHandler TaskBoardMouseMove;
+
+
+        public List<Task> taskList = new List<Task>();
+        private List<UCTaskBoard> TaskBoardList = new List<UCTaskBoard>();
+        private int StartIndex = 0;
+        private int flag = 0;
+        private int ind = 0;
+        private int MaxUserControls = 4;
+        private int VersionId;
+        private ProjectVersion currentProjectVersion;
+        private TaskStatus Tstatus = TaskStatus.Done;
+
+        private Point TaskBoardStartPoint;
+        private Point TaskBoardMouseUpPoint;
+        private bool IsDragging = false;
+
         public UCTaskStatusBase()
         {
             InitializeComponent();
@@ -21,7 +41,7 @@ namespace TeamTracker
             InitializeBoard();
         }
 
-        
+        public delegate void TaskBoardMouseEventHandler(UCTaskBoard sender, MouseEventArgs e);
 
 
         public TaskStatus Status
@@ -34,7 +54,6 @@ namespace TeamTracker
             }
         }
 
-        
 
         
         public List<Task> TaskList
@@ -62,27 +81,60 @@ namespace TeamTracker
 
 
 
-        public delegate void TaskBoardMouseEventHandler(UCTaskBoard sender, MouseEventArgs e);
-        
-
-        public TaskBoardMouseEventHandler TaskBoardMouseDown;
-        public TaskBoardMouseEventHandler TaskBoardMouseUp;
-        public TaskBoardMouseEventHandler TaskBoardMouseMove;
 
 
-        public List<Task> taskList = new List<Task>();
-        private List<UCTaskBoard> TaskBoardList = new List<UCTaskBoard>();
-        private int StartIndex = 0;
-        private int flag = 0;
-        private int ind = 0;
-        private int MaxUserControls = 4;
-        private int VersionId ;
-        private ProjectVersion currentProjectVersion;
-        private TaskStatus Tstatus = TaskStatus.Done;
+        public void RemoveTaskBoard(UCTaskBoard tBoard)
+        {
+            TaskBoardList.Remove(tBoard);
+            panelBase.SuspendLayout();
+            if (taskList.Count > MaxUserControls)
+            {
+                UCTaskBoard taskBoard = new UCTaskBoard();
+                taskBoard.Dock = DockStyle.Top;
 
-        private Point TaskBoardStartPoint;
-        private Point TaskBoardMouseUpPoint;
-        private bool IsDragging = false;
+                taskBoard.MouseDownTaskBoard += OnMouseDownTaskBoard;
+                taskBoard.MouseMoveTaskBoard += OnMouseMoveTaskBoard;
+                taskBoard.MouseUpTaskBoard += OnMouseUpTaskBoard;
+
+                TaskBoardList.Add(taskBoard);
+                panelBase.Controls.Add(taskBoard);
+
+                foreach (var Iter in TaskBoardList)
+                {
+                    Iter.BringToFront();
+                }
+            }
+
+            taskList.Remove(tBoard.TaskData);
+            if (taskList.Count > 1) taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
+            panelBase.ResumeLayout();
+
+            ReOrderBoard();
+        }
+
+        public void AddTask(UCTaskBoard taskBoard)
+        {
+
+            var x = StartIndex;
+            Task tData = taskBoard.TaskData;
+            //taskBoard.TaskData.StatusOfTask = this.Status;
+
+
+            //TaskManager.UpdateTask(tData.TaskID, tData.TaskName, tData.TaskDesc, tData.StartDate, tData.EndDate, tData.TaskPriority, tData.AssignedTo, null);
+
+            taskList.Add(taskBoard.TaskData);
+            if (taskList.Count <= MaxUserControls)
+            {
+                panelBase.Controls.Add(taskBoard);
+                TaskBoardList.Add(taskBoard);
+            }
+            if (taskList.Count > 1)
+                taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
+
+
+
+            ReOrderBoard();
+        }
 
         private void InitializeBoard()
         {
@@ -119,12 +171,6 @@ namespace TeamTracker
                 
             }
             
-
-          
-
-
-
-
         }
 
         private void ReOrderBoard()
@@ -242,58 +288,6 @@ namespace TeamTracker
             return FindParentUserControl(control.Parent);
         }
 
-        public void RemoveTaskBoard(UCTaskBoard tBoard)
-        {
-            TaskBoardList.Remove(tBoard);
-            panelBase.SuspendLayout();
-            if (taskList.Count > MaxUserControls)
-            {
-                UCTaskBoard taskBoard = new UCTaskBoard();
-                taskBoard.Dock = DockStyle.Top;
-
-                taskBoard.MouseDownTaskBoard += OnMouseDownTaskBoard;
-                taskBoard.MouseMoveTaskBoard += OnMouseMoveTaskBoard;
-                taskBoard.MouseUpTaskBoard += OnMouseUpTaskBoard;
-
-                TaskBoardList.Add(taskBoard);
-                panelBase.Controls.Add(taskBoard);
-
-                foreach (var Iter in TaskBoardList)
-                {
-                    Iter.BringToFront();
-                }
-            }
-            
-            taskList.Remove(tBoard.TaskData);
-            if (taskList.Count > 1) taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
-            panelBase.ResumeLayout();
-
-            ReOrderBoard();
-        }
-
-        public void AddTask(UCTaskBoard taskBoard)
-        {
-
-            var x = StartIndex;
-            Task tData = taskBoard.TaskData;
-            //taskBoard.TaskData.StatusOfTask = this.Status;
-
-
-            //TaskManager.UpdateTask(tData.TaskID, tData.TaskName, tData.TaskDesc, tData.StartDate, tData.EndDate, tData.TaskPriority, tData.AssignedTo, null);
-
-            taskList.Add(taskBoard.TaskData);
-            if(taskList.Count <= MaxUserControls)
-            {
-                panelBase.Controls.Add(taskBoard);
-                TaskBoardList.Add(taskBoard);
-            }
-            if(taskList.Count>1)
-                taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
-            
-
-
-            ReOrderBoard();
-        }
     }
 
 

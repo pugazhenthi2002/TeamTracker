@@ -12,6 +12,11 @@ namespace TeamTracker
 {
     public partial class UcTaskCommits : UserControl
     {
+
+        private string commitName;
+        private int sourceCodeId = 4;
+        private string sourceCodeLocation = "temp//temp2//temp3";
+
         public UcTaskCommits()
         {
             InitializeComponent();
@@ -48,9 +53,6 @@ namespace TeamTracker
             }
         }
 
-        private string commitName;
-        private int sourceCodeId = 4;
-        private string sourceCodeLocation = "temp//temp2//temp3";
 
 
         private void SetCommitName()

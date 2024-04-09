@@ -12,6 +12,12 @@ namespace TeamTracker
 {
     public partial class MilestoneView : UserControl
     {
+
+        private List<Milestone> milestoneCollection { get; set; }
+        private List<StartPathAndDate> pathAndDateCollection { get; set; }
+        private List<SingleMilestone> singleMilestoneCollection { get; set; }
+        private int startCount, endCount;
+
         public MilestoneView()
         {
             InitializeComponent();
@@ -29,10 +35,7 @@ namespace TeamTracker
                 endCount = 2;
             }
         }
-        private List<Milestone> milestoneCollection { get; set; }
-        private List<StartPathAndDate> pathAndDateCollection { get; set; }
-        private List<SingleMilestone> singleMilestoneCollection { get; set; }
-        private int startCount, endCount;
+        
 
         public int ChangeMilestoneUI(bool flag)
         {

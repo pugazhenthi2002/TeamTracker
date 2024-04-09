@@ -12,6 +12,15 @@ namespace UserInterface.Project_Manager_Main_Page
 {
     public partial class PageButton : UserControl
     {
+
+
+        private bool isClicked;
+
+        public PageButton()
+        {
+            InitializeComponent();
+        }
+
         public string ButtonName
         {
             get { return label1.Text; }
@@ -54,12 +63,6 @@ namespace UserInterface.Project_Manager_Main_Page
             }
         }
 
-        private bool isClicked;
-
-        public PageButton()
-        {
-            InitializeComponent();
-        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

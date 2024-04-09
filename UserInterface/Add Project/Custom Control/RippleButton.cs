@@ -39,6 +39,17 @@ namespace TeamTracker
             
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == 0x84)
+            {
+                var pos = this.PointToClient(new Point(m.LParam.ToInt32()));
+                if (pos.X >= this.ClientSize.Width - grab && pos.Y >= this.ClientSize.Height - grab)
+                    m.Result = new IntPtr(17);
+            }
+        }
+
         private void RippleTimer_Tick(object sender, EventArgs e)
         {
             for (int Iter = 0; Iter < clicks.Count; Iter++)
@@ -86,16 +97,7 @@ namespace TeamTracker
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            if (m.Msg == 0x84)
-            {  
-                var pos = this.PointToClient(new Point(m.LParam.ToInt32()));
-                if (pos.X >= this.ClientSize.Width - grab && pos.Y >= this.ClientSize.Height - grab)
-                    m.Result = new IntPtr(17); 
-            }
-        }
+        
     }
 
     class Ripple

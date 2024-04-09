@@ -14,6 +14,15 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class ReportContent : UserControl
     {
+
+        public bool isOpened = false;
+        private int month, year, priority;
+
+        public ReportContent()
+        {
+            InitializeComponent();
+        }
+
         public int Month
         {
             get { return month; }
@@ -48,12 +57,9 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
-        public bool isOpened = false;
-        private int month, year, priority;
-
-        public ReportContent()
+        protected override void OnLoad(EventArgs e)
         {
-            InitializeComponent();
+            base.OnLoad(e);
         }
 
         private void TablePanelPaint(object sender, PaintEventArgs e)
@@ -122,9 +128,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-        }
+        
     }
 }

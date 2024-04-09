@@ -48,17 +48,6 @@ namespace TeamTracker
             new SourceCode(){SourceCodeID = 5, TaskID = 4, CommitName = "commit 5", SourceCodeLocation = "c//path5", SubmittedDate = DateTime.MaxValue}
         };
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -70,6 +59,19 @@ namespace TeamTracker
             base.OnLoad(e);
             SetCommits();
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        
 
         private void SetCommits()
         {
@@ -111,7 +113,6 @@ namespace TeamTracker
             {
                 ctr.BringToFront();
             }
-
             
             
         }

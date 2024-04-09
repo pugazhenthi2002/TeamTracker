@@ -14,10 +14,38 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class OverviewMilestoneContent : UserControl
     {
+
+        private ProjectVersion version;
+        private bool backEnable = false, frontEnable = true;
+        private int flag;
+
         public OverviewMilestoneContent()
         {
             InitializeComponent();
             InitializeRoundedEdge();
+        }
+
+
+        public ProjectVersion Version
+        {
+            get
+            {
+                return version;
+            }
+            set
+            {
+                version = value;
+                if (value != null)
+                    InitializeOverview();
+                backEnable = false;
+                frontEnable = true;
+
+                if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
+                if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+
+                backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+                nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            }
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -42,31 +70,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
               int nHeightEllipse // width of ellipse
           );
 
-        public ProjectVersion Version
-        {
-            get
-            {
-                return version;
-            }
-            set
-            {
-                version = value;
-                if (value != null)
-                    InitializeOverview();
-                backEnable = false;
-                frontEnable = true;
+        
 
-                if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-                if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
-
-                backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-                nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
-            }
-        }
-
-        private ProjectVersion version;
-        private bool backEnable = false, frontEnable = true;
-        private int flag;
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {

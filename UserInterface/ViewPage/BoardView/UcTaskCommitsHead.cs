@@ -12,6 +12,9 @@ namespace TeamTracker
 {
     public partial class UcTaskCommitsHead : UserControl
     {
+        private DateTime commitDate;
+        private int commitCount = 4;
+
         public UcTaskCommitsHead()
         {
             InitializeComponent();
@@ -36,9 +39,6 @@ namespace TeamTracker
                 SetCommitDate();
             }
         }
-
-        private DateTime commitDate;
-        private int commitCount = 4;
 
         private void SetCommitCount()
         {

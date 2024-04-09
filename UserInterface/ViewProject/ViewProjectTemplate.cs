@@ -13,6 +13,9 @@ namespace UserInterface.ViewProject
 {
     public partial class ViewProjectTemplate : UserControl
     {
+        private Employee PrevSelectedEmployee;
+        private Employee SelectedEmployee;
+
         public ViewProjectTemplate()
         {
             InitializeComponent();
@@ -24,8 +27,7 @@ namespace UserInterface.ViewProject
             tabControl1.SelectedIndex = 0;
         }
 
-        private Employee PrevSelectedEmployee;
-        private Employee SelectedEmployee;
+        
 
         private void OnBoardClicked(object sender, EventArgs e)
         {

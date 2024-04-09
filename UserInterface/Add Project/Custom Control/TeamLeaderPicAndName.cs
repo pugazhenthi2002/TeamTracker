@@ -12,6 +12,17 @@ namespace TeamTracker
 {
     public partial class TeamLeaderPicAndName : UserControl
     {
+
+        private Employee employee;
+
+                public TeamLeaderPicAndName()
+        {
+            InitializeComponent();
+        }
+
+        public delegate void EmployeeHandler(Employee employee);
+        public event EmployeeHandler TeamLeaderClick;
+
         public Employee EmployeeProfile
         {
             get
@@ -29,15 +40,6 @@ namespace TeamTracker
                 }
             }
         }
-
-        public delegate void EmployeeHandler(Employee employee);
-        public event EmployeeHandler TeamLeaderClick;
-        public TeamLeaderPicAndName()
-        {
-            InitializeComponent();
-        }
-
-        private Employee employee;
 
         private void OnProfileClicked(object sender, EventArgs e)
         {

@@ -12,6 +12,8 @@ namespace TeamTracker
 {
     public partial class ReportTemplate : UserControl
     {
+        private Color borderColor = Color.Blue;
+
         public ReportTemplate()
         {
             InitializeComponent();
@@ -27,8 +29,6 @@ namespace TeamTracker
             }
         }
 
-        private Color borderColor = Color.Blue;
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -41,15 +41,16 @@ namespace TeamTracker
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
-        public void InitializeReport()
-        {
-            reportContent1.isOpened = true;
-            reportContent1.Month = DateTime.Today.Month; reportContent1.Year = DateTime.Today.Year; reportContent1.Priority = -1;
-        }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+        }
+
+        public void InitializeReport()
+        {
+            reportContent1.isOpened = true;
+            reportContent1.Month = DateTime.Today.Month; reportContent1.Year = DateTime.Today.Year; reportContent1.Priority = -1;
         }
     }
 }

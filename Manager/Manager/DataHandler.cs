@@ -11,6 +11,10 @@ namespace TeamTracker
 {
     public static class DataHandler
     {
+
+        private static DatabaseManager manager;
+
+
         public static BooleanMsg ConnectDatabase()
         {
             manager = new MySqlHandler("localhost", "root", "Lucid123", "projectmanagement");
@@ -578,6 +582,6 @@ namespace TeamTracker
             return MilestoneCollection;
         }
 
-        private static DatabaseManager manager;
+        
     }
 }

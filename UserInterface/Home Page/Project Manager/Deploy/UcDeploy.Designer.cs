@@ -148,9 +148,9 @@
             this.downloadBtn1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.downloadBtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.downloadBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.downloadBtn1.Location = new System.Drawing.Point(51, 162);
+            this.downloadBtn1.Location = new System.Drawing.Point(149, 162);
             this.downloadBtn1.Name = "downloadBtn1";
-            this.downloadBtn1.Size = new System.Drawing.Size(346, 50);
+            this.downloadBtn1.Size = new System.Drawing.Size(149, 50);
             this.downloadBtn1.TabIndex = 2;
             this.downloadBtn1.Download += new System.EventHandler(this.OnDownloaded);
             // 

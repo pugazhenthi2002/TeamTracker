@@ -13,6 +13,12 @@ namespace TeamTracker
     public partial class NoResultFound : UserControl
     {
 
+        public NoResultFound()
+        {
+            InitializeComponent();
+        }
+
+
         public string MessageText
         {
             get
@@ -24,11 +30,6 @@ namespace TeamTracker
             {
                 label1.Text = value;
             }
-        }
-
-        public NoResultFound()
-        {
-            InitializeComponent();
         }
     }
 }

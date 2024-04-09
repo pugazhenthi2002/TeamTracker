@@ -13,18 +13,19 @@ namespace TeamTracker
 {
     public partial class OverviewDropDownForm : Form
     {
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-       (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // height of ellipse
-           int nHeightEllipse // width of ellipse
-       );
-
         private const int CSDropShadow = 0x00020000;
+        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
+
+        public OverviewDropDownForm()
+        {
+            InitializeComponent();
+        }
+
+
+        public delegate void OverviewHandler(string name, ProjectVersion version);
+        public event OverviewHandler OverviewSelected;
+
+
         protected override CreateParams CreateParams
         {
             get
@@ -35,16 +36,43 @@ namespace TeamTracker
             }
         }
 
-        public delegate void OverviewHandler(string name, ProjectVersion version);
-        public event OverviewHandler OverviewSelected;
-
-        
-        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
-
-        public OverviewDropDownForm()
+        protected override void OnPaint(PaintEventArgs e)
         {
-            InitializeComponent();
+            base.OnPaint(e);
+            int drawHeight = 50;
+            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+
+            while (drawHeight < Height)
+            {
+                e.Graphics.DrawLine(pen, new Point(5, drawHeight), new Point(Width - 5, drawHeight));
+                drawHeight += 50;
+            }
+            pen.Dispose();
         }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            InitializeDropDownForm();
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
 
         private void InitializeDropDownForm()
         {
@@ -105,31 +133,6 @@ namespace TeamTracker
             }
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            int drawHeight = 50;
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
-
-            while (drawHeight < Height)
-            {
-                e.Graphics.DrawLine(pen, new Point(5, drawHeight), new Point(Width - 5, drawHeight));
-                drawHeight += 50;
-            }
-            pen.Dispose();
-        }
-
-        protected override void OnLostFocus(EventArgs e)
-        {
-            base.OnLostFocus(e);
-            this.Close();
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            InitializeDropDownForm();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
-        }
+        
     }
 }

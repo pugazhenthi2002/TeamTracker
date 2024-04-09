@@ -14,6 +14,22 @@ namespace UserInterface.ViewProject.TimelineView
 {
     public partial class TimelineView : UserControl
     {
+        private bool upEnable, downEnable;
+        private int startIdx, endIdx = 0, selectedIdx = 0;
+        private VerticalLabel prevControl;
+        private Projects currentProject;
+        private ProjectVersion currentVersion;
+        private List<VerticalLabel> projectViewControlCollection;
+        private List<Projects> projectCollection;
+        private List<Milestone> milestoneCollection;
+        private List<Color> colorCollection;
+        private int projectViewCount = 0;
+
+        public TimelineView()
+        {
+            InitializeComponent();
+        }
+
         public List<Projects> ProjectCollection
         {
             set
@@ -37,21 +53,7 @@ namespace UserInterface.ViewProject.TimelineView
             }
         }
 
-        private bool upEnable, downEnable;
-        private int startIdx, endIdx = 0, selectedIdx = 0;
-        private VerticalLabel prevControl;
-        private Projects currentProject;
-        private ProjectVersion currentVersion;
-        private List<VerticalLabel> projectViewControlCollection;
-        private List<Projects> projectCollection;
-        private List<Milestone> milestoneCollection;
-        private List<Color> colorCollection;
-        private int projectViewCount = 0;
-
-        public TimelineView()
-        {
-            InitializeComponent();
-        }
+        
 
         private void InitializeProjectsForTimeline()
         {

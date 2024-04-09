@@ -12,6 +12,13 @@ namespace UserInterface.ViewPage.BoardView
 {
     public partial class UcDueDate : UserControl
     {
+
+        private string centerLabelText;
+        private Color borderColor = Color.Blue;
+        private DateTime date;
+        private Color DueColor = Color.Blue;
+        private string labelText = "Due";
+
         public UcDueDate()
         {
             InitializeComponent();
@@ -70,13 +77,6 @@ namespace UserInterface.ViewPage.BoardView
             }
         }
 
-        
-
-        private string centerLabelText;
-        private Color borderColor = Color.Blue;
-        private DateTime date;
-        private Color DueColor = Color.Blue;
-        private string labelText = "Due";
 
         protected override void OnPaint(PaintEventArgs e)
         {

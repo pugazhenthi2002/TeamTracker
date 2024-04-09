@@ -17,6 +17,23 @@ namespace TeamTracker
 
     public class DownloadBtn : UserControl
     {
+
+        private FileType typeOfFile;
+        private string fileName;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private Panel panel3;
+        private Label label1;
+
+        public DownloadBtn()
+        {
+            InitializeComponent();
+            this.Size = new Size(250, 50);
+            this.DoubleBuffered = true;
+        }
+
         public event EventHandler Download;
         public FileType TypeOfFile
         {
@@ -38,21 +55,6 @@ namespace TeamTracker
             }
         }
 
-        public DownloadBtn()
-        {
-            InitializeComponent();
-            this.Size = new Size(250, 50);
-            this.DoubleBuffered = true;
-        }
-
-        private FileType typeOfFile;
-        private string fileName;
-        private Panel panel1;
-        private PictureBox pictureBox1;
-        private Panel panel2;
-        private PictureBox pictureBox2;
-        private Panel panel3;
-        private Label label1;
 
         protected override void OnClick(EventArgs e)
         {
@@ -98,7 +100,7 @@ namespace TeamTracker
             // 
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(274, 0);
+            this.panel2.Location = new System.Drawing.Point(124, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(43, 46);
             this.panel2.TabIndex = 1;
@@ -121,7 +123,7 @@ namespace TeamTracker
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(43, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(231, 46);
+            this.panel3.Size = new System.Drawing.Size(81, 46);
             this.panel3.TabIndex = 2;
             // 
             // label1
@@ -130,7 +132,7 @@ namespace TeamTracker
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 46);
+            this.label1.Size = new System.Drawing.Size(81, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,7 +143,7 @@ namespace TeamTracker
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "DownloadBtn";
-            this.Size = new System.Drawing.Size(317, 46);
+            this.Size = new System.Drawing.Size(167, 46);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
