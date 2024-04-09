@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TeamTracker
@@ -19,9 +18,10 @@ namespace TeamTracker
             InitializeRoundedEdge();
             this.Location = new Point(700, 300);
             labelWarning.Hide();
-
         }
 
+        public Task SourceCodeTask;
+        public SourceCode TaskSourceCode;
         public EventHandler CloseClick;
         public EventHandler DoneClick;
         private bool Uploaded = false;
@@ -88,17 +88,26 @@ namespace TeamTracker
             labelWarning.Hide();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.Title = "Open File";
-            openFileDialog1.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Commit Name";
+            openFileDialog1.Filter = "ZIP files (*.zip)|*.zip";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                selectedFileName = openFileDialog1.FileName;
-                Uploaded = true;
-                pictureBoxUpload.Image = UserInterface.Properties.Resources.cloud_uploaded;
-                string[] str = selectedFileName.Split('\\');
+                if (DataHandler.CommitNameAlreadyExists(SourceCodeTask.TaskID, openFileDialog1.Title))
+                {
+                    ProjectManagerMainForm.notify.AddNotification("Submission Failed", "Source Code Commit Name Already Exists\nTry Some Other Name");
+                    return;
+                }
 
-                labelClickUpload.Text = str[str.Length-1];
+                string selectedFilePath = openFileDialog1.FileName;
+                string safeFile = openFileDialog1.SafeFileName;
+                TaskSourceCode = new SourceCode()
+                {
+                    TaskID = SourceCodeTask.TaskID,
+                    SubmittedDate = DateTime.Now,
+                    SourceCodeLocation = safeFile,
+                    CommitName = openFileDialog1.Title
+                };
             }
         }
 
@@ -126,5 +135,6 @@ namespace TeamTracker
             DoneClick?.Invoke(sender, e);
             this.Close();
         }
+
     }
 }

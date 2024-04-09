@@ -106,5 +106,11 @@ namespace TeamTracker
 
             (sender as Label).BackColor = Color.FromArgb(R, G, B);
         }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
+        }
     }
 }

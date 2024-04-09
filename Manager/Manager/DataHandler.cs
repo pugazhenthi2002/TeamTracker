@@ -75,6 +75,28 @@ namespace TeamTracker
             return task;
         }
 
+        public static void SubmitSourceCode(SourceCode sourceCode)
+        {
+            var x = manager.InsertData("sourcecode", new ParameterData[]
+            {
+                new ParameterData("TaskID", sourceCode.TaskID),
+                new ParameterData("CommitName", sourceCode.CommitName),
+                new ParameterData("SubmittedDate", sourceCode.SubmittedDate),
+                new ParameterData("SourceCodeLocation", sourceCode.SourceCodeLocation),
+            });
+        }
+
+        public static BooleanMsg DeleteSourceCode(int taskID)
+        {
+            var result = manager.FetchData("sourcecode", $"TaskID='{taskID}'", orderBy: "SubmittedDate", limitCount:1).Value;
+
+            if (result == null || result.Count > 0) return null;
+
+            var x = manager.DeleteData("sourcecode", $"SourceCodeID='{result["SourceCode"][0]}'");
+
+            return true;
+        }
+
         public static void UpdateVersion(ProjectVersion version)
         {
             manager.UpdateData("projectversion", $"VersionID='{version.VersionID}'", new ParameterData[]
@@ -131,6 +153,13 @@ namespace TeamTracker
                 ;
             }
             
+        }
+
+        public static BooleanMsg CommitNameAlreadyExists(int taskID, string commitName)
+        {
+            var result = manager.FetchData("sourcecode", $"TaskID='{taskID}' && CommitName='{commitName}'").Value;
+            if (result == null) return true;
+            return result.Count > 0;
         }
 
         public static void AddTaskAttachment(List<TaskAttachment> taskAttachment)

@@ -64,7 +64,7 @@ namespace TeamTracker
         }
 
         //Update a Task
-        public static void UpdateTask(int taskID, string taskName, string taskDescription, DateTime startDate, DateTime endDate, Priority priority, int assignedTo, List<TaskAttachment> taskAttachments)
+        public static void UpdateTask(int taskID, string taskName, string taskDescription, DateTime startDate, DateTime endDate, TaskStatus status, Priority priority, int assignedTo, List<TaskAttachment> taskAttachments)
         {
 
             foreach(var Iter in TaskCollection)
@@ -74,6 +74,7 @@ namespace TeamTracker
                     Iter.TaskName = taskName;   Iter.TaskDesc = taskDescription;
                     Iter.StartDate = startDate; Iter.EndDate = endDate;
                     Iter.TaskPriority = priority;   Iter.AssignedTo = assignedTo;
+                    Iter.StatusOfTask = status;
                     DataHandler.UpdateTask(Iter);
                 }
             }

@@ -460,6 +460,9 @@
     <Compile Include="ViewPage\BoardView\UcTaskStatusHead.Designer.cs">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewPage\ListView\CustomDonutChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ViewPage\ListView\ListViewTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -471,6 +474,12 @@
     </Compile>
     <Compile Include="ViewPage\ListView\SingleList.Designer.cs">
       <DependentUpon>SingleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\ListView\StatusChangeWarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPage\ListView\StatusChangeWarningForm.Designer.cs">
+      <DependentUpon>StatusChangeWarningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\ListView\StatusDropDown.cs">
       <SubType>Form</SubType>
@@ -763,6 +772,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\ListView\SingleList.resx">
       <DependentUpon>SingleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\ListView\StatusChangeWarningForm.resx">
+      <DependentUpon>StatusChangeWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\ListView\StatusDropDown.resx">
       <DependentUpon>StatusDropDown.cs</DependentUpon>

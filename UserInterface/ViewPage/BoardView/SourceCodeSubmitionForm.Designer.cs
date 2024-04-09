@@ -32,16 +32,16 @@
             this.labelClickUpload = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelUpload = new System.Windows.Forms.Label();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDone = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
-            this.pictureBoxUpload = new System.Windows.Forms.PictureBox();
             this.labelWarning = new System.Windows.Forms.Label();
+            this.pictureBoxUpload = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpload)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,6 +109,21 @@
             this.labelUpload.Text = "Upload File";
             this.labelUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBoxClose
+            // 
+            this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close;
+            this.pictureBoxClose.Location = new System.Drawing.Point(367, 0);
+            this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(56, 38);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxClose.TabIndex = 1;
+            this.pictureBoxClose.TabStop = false;
+            this.pictureBoxClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickClose);
+            this.pictureBoxClose.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.pictureBoxClose.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -163,20 +178,17 @@
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.OnClickClear);
             // 
-            // pictureBoxClose
+            // labelWarning
             // 
-            this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close;
-            this.pictureBoxClose.Location = new System.Drawing.Point(367, 0);
-            this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.pictureBoxClose.Name = "pictureBoxClose";
-            this.pictureBoxClose.Size = new System.Drawing.Size(56, 38);
-            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxClose.TabIndex = 1;
-            this.pictureBoxClose.TabStop = false;
-            this.pictureBoxClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickClose);
-            this.pictureBoxClose.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.pictureBoxClose.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelWarning.Location = new System.Drawing.Point(3, 0);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(205, 40);
+            this.labelWarning.TabIndex = 5;
+            this.labelWarning.Text = "File Not Selected !!!";
+            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxUpload
             // 
@@ -193,18 +205,6 @@
             this.pictureBoxUpload.MouseEnter += new System.EventHandler(this.OnMouseEnterUpload);
             this.pictureBoxUpload.MouseLeave += new System.EventHandler(this.OnMouseLeaveUpload);
             // 
-            // labelWarning
-            // 
-            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWarning.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelWarning.Location = new System.Drawing.Point(3, 0);
-            this.labelWarning.Name = "labelWarning";
-            this.labelWarning.Size = new System.Drawing.Size(205, 40);
-            this.labelWarning.TabIndex = 5;
-            this.labelWarning.Text = "File Not Selected !!!";
-            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // SourceCodeSubmitionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,12 +214,12 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SourceCodeSubmitionForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SourceCodeSubmitionForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpload)).EndInit();
             this.ResumeLayout(false);
 

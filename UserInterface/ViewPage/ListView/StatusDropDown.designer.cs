@@ -116,7 +116,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 45);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Done";
+            this.label1.Text = "Under Review";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.MouseEnter += new System.EventHandler(this.OnStatusMouseEnter);

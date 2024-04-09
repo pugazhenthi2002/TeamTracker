@@ -30,11 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.projectNameLabel = new System.Windows.Forms.Label();
             this.projectDateLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.singleListControlPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.taskTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,12 +42,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.paginateUp = new System.Windows.Forms.PictureBox();
+            this.paginateDown = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.taskTableLayoutPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paginateUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paginateDown)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,8 +71,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.projectNameLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.projectDateLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -74,19 +81,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1628, 70);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // projectNameLabel
-            // 
-            this.projectNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectNameLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.projectNameLabel.Location = new System.Drawing.Point(10, 0);
-            this.projectNameLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
-            this.projectNameLabel.Name = "projectNameLabel";
-            this.projectNameLabel.Size = new System.Drawing.Size(1615, 45);
-            this.projectNameLabel.TabIndex = 0;
-            this.projectNameLabel.Text = "Project Name";
-            this.projectNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // projectDateLabel
             // 
@@ -116,7 +110,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.singleListControlPanel);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -125,13 +119,13 @@
             this.panel2.Size = new System.Drawing.Size(1628, 397);
             this.panel2.TabIndex = 6;
             // 
-            // panel3
+            // singleListControlPanel
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1261, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(367, 397);
-            this.panel3.TabIndex = 0;
+            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
+            this.singleListControlPanel.Name = "singleListControlPanel";
+            this.singleListControlPanel.Size = new System.Drawing.Size(1261, 347);
+            this.singleListControlPanel.TabIndex = 6;
             // 
             // panel4
             // 
@@ -247,13 +241,64 @@
             this.label3.Text = "Task Name";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1261, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(367, 397);
+            this.panel3.TabIndex = 0;
+            // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.tableLayoutPanel3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 50);
+            this.panel5.Location = new System.Drawing.Point(10, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1261, 347);
-            this.panel5.TabIndex = 6;
+            this.panel5.Size = new System.Drawing.Size(1615, 45);
+            this.panel5.TabIndex = 2;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.paginateUp, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.paginateDown, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1580, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(35, 45);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // paginateUp
+            // 
+            this.paginateUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paginateUp.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.paginateUp.Location = new System.Drawing.Point(0, 0);
+            this.paginateUp.Margin = new System.Windows.Forms.Padding(0);
+            this.paginateUp.Name = "paginateUp";
+            this.paginateUp.Size = new System.Drawing.Size(35, 22);
+            this.paginateUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.paginateUp.TabIndex = 0;
+            this.paginateUp.TabStop = false;
+            this.paginateUp.Click += new System.EventHandler(this.OnPaginateUp);
+            // 
+            // paginateDown
+            // 
+            this.paginateDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paginateDown.Image = global::UserInterface.Properties.Resources.sort_down;
+            this.paginateDown.Location = new System.Drawing.Point(0, 22);
+            this.paginateDown.Margin = new System.Windows.Forms.Padding(0);
+            this.paginateDown.Name = "paginateDown";
+            this.paginateDown.Size = new System.Drawing.Size(35, 23);
+            this.paginateDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.paginateDown.TabIndex = 1;
+            this.paginateDown.TabStop = false;
+            this.paginateDown.Click += new System.EventHandler(this.OnPaginateDown);
             // 
             // ListViewTemplate
             // 
@@ -270,6 +315,10 @@
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.taskTableLayoutPanel.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.paginateUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paginateDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -278,11 +327,10 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label projectNameLabel;
         private System.Windows.Forms.Label projectDateLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel singleListControlPanel;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel taskTableLayoutPanel;
         private System.Windows.Forms.Label label9;
@@ -292,5 +340,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.PictureBox paginateUp;
+        private System.Windows.Forms.PictureBox paginateDown;
     }
 }

@@ -110,6 +110,7 @@ namespace TeamTracker
             this.statusLabel.TabIndex = 3;
             this.statusLabel.Text = "animatedLabel1";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.statusLabel.Click += new System.EventHandler(this.OnStatusClicked);
             // 
             // priorityLabel
             // 
