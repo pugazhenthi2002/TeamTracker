@@ -1,4 +1,4 @@
-﻿namespace UserInterface.ViewPage.BoardView
+﻿namespace TeamTracker
 {
     partial class UcDueDate
     {

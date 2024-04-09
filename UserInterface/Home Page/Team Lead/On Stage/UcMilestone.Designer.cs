@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
-            this.ucDueDate1 = new UserInterface.ViewPage.BoardView.UcDueDate();
+            this.ucDueDate1 = new UcDueDate();
             this.animatedLabelMilestoneName = new TeamTracker.AnimatedLabel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
@@ -114,7 +114,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBoxClose;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate1;
+        private UcDueDate ucDueDate1;
         private AnimatedLabel animatedLabelMilestoneName;
     }
 }

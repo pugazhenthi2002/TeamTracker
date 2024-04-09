@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelBaseMilestone = new System.Windows.Forms.Panel();
             this.panelMilestone = new System.Windows.Forms.Panel();
@@ -37,18 +38,28 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelDownloadAttachement = new System.Windows.Forms.Panel();
+            this.labelDownload = new System.Windows.Forms.Label();
+            this.pictureBoxDownload = new System.Windows.Forms.PictureBox();
             this.labelClientName = new System.Windows.Forms.Label();
             this.labelProjNameandVersion = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ucDueDate1 = new UserInterface.ViewPage.BoardView.UcDueDate();
-            this.ucStartDate = new UserInterface.ViewPage.BoardView.UcDueDate();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonOnStage = new System.Windows.Forms.Button();
+            this.buttonDiscard = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ucToDate = new TeamTracker.UcDueDate();
+            this.ucStartDate = new TeamTracker.UcDueDate();
             this.tableLayoutPanel2.SuspendLayout();
             this.panelBaseMilestone.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panelDownloadAttachement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -64,7 +75,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(551, 205);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(551, 274);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panelBaseMilestone
@@ -78,7 +89,7 @@
             this.panelBaseMilestone.Location = new System.Drawing.Point(280, 5);
             this.panelBaseMilestone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 8);
             this.panelBaseMilestone.Name = "panelBaseMilestone";
-            this.panelBaseMilestone.Size = new System.Drawing.Size(266, 192);
+            this.panelBaseMilestone.Size = new System.Drawing.Size(266, 261);
             this.panelBaseMilestone.TabIndex = 7;
             this.panelBaseMilestone.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaintPanelBaseMilestone);
             // 
@@ -90,7 +101,7 @@
             this.panelMilestone.Location = new System.Drawing.Point(15, 20);
             this.panelMilestone.Margin = new System.Windows.Forms.Padding(20);
             this.panelMilestone.Name = "panelMilestone";
-            this.panelMilestone.Size = new System.Drawing.Size(236, 152);
+            this.panelMilestone.Size = new System.Drawing.Size(236, 221);
             this.panelMilestone.TabIndex = 6;
             // 
             // panel3
@@ -127,7 +138,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(15, 172);
+            this.panel6.Size = new System.Drawing.Size(15, 241);
             this.panel6.TabIndex = 3;
             this.panel6.Tag = "12,1";
             // 
@@ -137,7 +148,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(251, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(15, 172);
+            this.panel5.Size = new System.Drawing.Size(15, 241);
             this.panel5.TabIndex = 2;
             this.panel5.Tag = "12,1";
             // 
@@ -145,7 +156,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 172);
+            this.panel4.Location = new System.Drawing.Point(0, 241);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(266, 20);
             this.panel4.TabIndex = 1;
@@ -154,6 +165,7 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.panelDownloadAttachement, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.labelClientName, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.labelProjNameandVersion, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
@@ -161,12 +173,55 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(5, 5);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(265, 195);
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(265, 264);
             this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // panelDownloadAttachement
+            // 
+            this.panelDownloadAttachement.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panelDownloadAttachement.Controls.Add(this.labelDownload);
+            this.panelDownloadAttachement.Controls.Add(this.pictureBoxDownload);
+            this.panelDownloadAttachement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDownloadAttachement.Location = new System.Drawing.Point(8, 219);
+            this.panelDownloadAttachement.Margin = new System.Windows.Forms.Padding(8);
+            this.panelDownloadAttachement.Name = "panelDownloadAttachement";
+            this.panelDownloadAttachement.Size = new System.Drawing.Size(249, 37);
+            this.panelDownloadAttachement.TabIndex = 5;
+            // 
+            // labelDownload
+            // 
+            this.labelDownload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelDownload.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDownload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.labelDownload.Location = new System.Drawing.Point(0, 0);
+            this.labelDownload.Name = "labelDownload";
+            this.labelDownload.Size = new System.Drawing.Size(178, 37);
+            this.labelDownload.TabIndex = 5;
+            this.labelDownload.Text = "Download Attachments";
+            this.labelDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelDownload.Click += new System.EventHandler(this.OnClickDownloadAttachement);
+            this.labelDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownload);
+            this.labelDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownload);
+            // 
+            // pictureBoxDownload
+            // 
+            this.pictureBoxDownload.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxDownload.Image = global::UserInterface.Properties.Resources.download_Icon;
+            this.pictureBoxDownload.Location = new System.Drawing.Point(178, 0);
+            this.pictureBoxDownload.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxDownload.Name = "pictureBoxDownload";
+            this.pictureBoxDownload.Size = new System.Drawing.Size(71, 37);
+            this.pictureBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxDownload.TabIndex = 4;
+            this.pictureBoxDownload.TabStop = false;
+            this.pictureBoxDownload.Click += new System.EventHandler(this.OnClickDownloadAttachement);
+            this.pictureBoxDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownload);
+            this.pictureBoxDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownload);
             // 
             // labelClientName
             // 
@@ -174,10 +229,10 @@
             this.labelClientName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelClientName.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelClientName.Location = new System.Drawing.Point(3, 68);
+            this.labelClientName.Location = new System.Drawing.Point(3, 82);
             this.labelClientName.Margin = new System.Windows.Forms.Padding(3);
             this.labelClientName.Name = "labelClientName";
-            this.labelClientName.Size = new System.Drawing.Size(259, 59);
+            this.labelClientName.Size = new System.Drawing.Size(259, 60);
             this.labelClientName.TabIndex = 1;
             this.labelClientName.Text = "Client Name ";
             this.labelClientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -191,7 +246,7 @@
             this.labelProjNameandVersion.Location = new System.Drawing.Point(3, 3);
             this.labelProjNameandVersion.Margin = new System.Windows.Forms.Padding(3);
             this.labelProjNameandVersion.Name = "labelProjNameandVersion";
-            this.labelProjNameandVersion.Size = new System.Drawing.Size(259, 59);
+            this.labelProjNameandVersion.Size = new System.Drawing.Size(259, 73);
             this.labelProjNameandVersion.TabIndex = 0;
             this.labelProjNameandVersion.Text = "Project Name - Version";
             this.labelProjNameandVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -201,15 +256,15 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.ucDueDate1, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ucToDate, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.ucStartDate, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 130);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 145);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(265, 65);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(265, 66);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -217,29 +272,81 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 343);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // ucDueDate1
+            // tableLayoutPanel5
             // 
-            this.ucDueDate1.BorderColor = System.Drawing.Color.Black;
-            this.ucDueDate1.CenterLabelText = null;
-            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDueDate1.DueDate = new System.DateTime(2024, 4, 13, 0, 0, 0, 0);
-            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ucDueDate1.LabelText = "To";
-            this.ucDueDate1.Location = new System.Drawing.Point(137, 10);
-            this.ucDueDate1.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
-            this.ucDueDate1.Name = "ucDueDate1";
-            this.ucDueDate1.Size = new System.Drawing.Size(123, 50);
-            this.ucDueDate1.TabIndex = 1;
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Controls.Add(this.buttonOnStage, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonDiscard, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 277);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(545, 63);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // buttonOnStage
+            // 
+            this.buttonOnStage.BackColor = System.Drawing.Color.LightSlateGray;
+            this.buttonOnStage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonOnStage.FlatAppearance.BorderSize = 0;
+            this.buttonOnStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOnStage.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOnStage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonOnStage.Location = new System.Drawing.Point(413, 15);
+            this.buttonOnStage.Margin = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.buttonOnStage.Name = "buttonOnStage";
+            this.buttonOnStage.Size = new System.Drawing.Size(127, 33);
+            this.buttonOnStage.TabIndex = 2;
+            this.buttonOnStage.Text = "Stage Project";
+            this.buttonOnStage.UseVisualStyleBackColor = false;
+            this.buttonOnStage.Click += new System.EventHandler(this.OnClickStageProject);
+            // 
+            // buttonDiscard
+            // 
+            this.buttonDiscard.BackColor = System.Drawing.Color.LightSlateGray;
+            this.buttonDiscard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDiscard.FlatAppearance.BorderSize = 0;
+            this.buttonDiscard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkRed;
+            this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiscard.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonDiscard.Location = new System.Drawing.Point(277, 15);
+            this.buttonDiscard.Margin = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(126, 33);
+            this.buttonDiscard.TabIndex = 2;
+            this.buttonDiscard.Text = "Discard";
+            this.buttonDiscard.UseVisualStyleBackColor = false;
+            this.buttonDiscard.Click += new System.EventHandler(this.OnClickDiscard);
+            // 
+            // ucToDate
+            // 
+            this.ucToDate.BorderColor = System.Drawing.Color.Black;
+            this.ucToDate.CenterLabelText = null;
+            this.ucToDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucToDate.DueDate = new System.DateTime(2024, 4, 13, 0, 0, 0, 0);
+            this.ucToDate.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.ucToDate.LabelText = "To";
+            this.ucToDate.Location = new System.Drawing.Point(137, 10);
+            this.ucToDate.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
+            this.ucToDate.Name = "ucToDate";
+            this.ucToDate.Size = new System.Drawing.Size(123, 51);
+            this.ucToDate.TabIndex = 1;
             // 
             // ucStartDate
             // 
@@ -252,7 +359,7 @@
             this.ucStartDate.Location = new System.Drawing.Point(5, 10);
             this.ucStartDate.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.ucStartDate.Name = "ucStartDate";
-            this.ucStartDate.Size = new System.Drawing.Size(122, 50);
+            this.ucStartDate.Size = new System.Drawing.Size(122, 51);
             this.ucStartDate.TabIndex = 0;
             // 
             // UcOnStage
@@ -267,8 +374,11 @@
             this.panelBaseMilestone.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.panelDownloadAttachement.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -281,8 +391,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelClientName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate1;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucStartDate;
+        private UcDueDate ucToDate;
+        private UcDueDate ucStartDate;
         private System.Windows.Forms.Panel panelBaseMilestone;
         private System.Windows.Forms.Panel panelMilestone;
         private System.Windows.Forms.Panel panel3;
@@ -290,5 +400,12 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button buttonAddMilestone;
+        private System.Windows.Forms.Panel panelDownloadAttachement;
+        private System.Windows.Forms.PictureBox pictureBoxDownload;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button buttonOnStage;
+        private System.Windows.Forms.Button buttonDiscard;
+        private System.Windows.Forms.Label labelDownload;
     }
 }
