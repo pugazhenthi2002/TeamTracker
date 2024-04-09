@@ -41,7 +41,7 @@
             this.animatedLabelMilestone = new TeamTracker.AnimatedLabel();
             this.employeeProfilePicAndName1 = new UserInterface.ViewProject.EmployeeProfilePicAndName();
             this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
-            this.ucDueDate1 = new UserInterface.ViewPage.BoardView.UcDueDate();
+            this.ucDueDate1 = new UcDueDate();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelCommits = new System.Windows.Forms.Panel();
@@ -386,7 +386,7 @@
         private UcTaskDescription ucTaskDescription1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private AnimatedLabel animatedLabelMilestone;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate1;
+        private UcDueDate ucDueDate1;
         private UserInterface.ViewProject.EmployeeProfilePicAndName employeeProfilePicAndName1;
         private AnimatedLabel animatedLabelStatus;
         private System.Windows.Forms.PictureBox pictureBoxFlag;

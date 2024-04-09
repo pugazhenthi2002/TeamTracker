@@ -23,6 +23,8 @@ namespace TeamTracker
             InitializeComponent();
             InitializeRoundedEdge();
             toolTip1.SetToolTip(pictureBoxAttachment, "Click to Add attachment");
+            toolTip1.SetToolTip(buttonSetMilestone, "Milestone");
+            tableLayoutPanelFileName.Hide();
 
         }
 
@@ -56,6 +58,7 @@ namespace TeamTracker
             buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
             buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
             labelSetPriority.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelSetPriority.Width, labelSetPriority.Height, 10, 10));
+            tableLayoutPanelFileName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanelFileName.Width, tableLayoutPanelFileName.Height, 10, 10));
             
 
         }
@@ -119,6 +122,7 @@ namespace TeamTracker
                     break;
             }
             PriortyDropForm.Dispose();
+            labelSetPriority.Text = clickedBtn.Text;
             pictureBoxFlag.Image = fImage;
 
         }
@@ -170,6 +174,10 @@ namespace TeamTracker
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FilePath = openFileDialog.FileName;
+                string[] seperatedPath = FilePath.Split('\\');
+
+                animatedLabelFilename.Text = seperatedPath[seperatedPath.Length-1];
+                tableLayoutPanelFileName.Show();
 
             }
         }
@@ -197,10 +205,9 @@ namespace TeamTracker
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
             Button clickedBtn = (sender as Button);
-            switch (clickedBtn.Text)
-            {
-                
-            }
+
+            buttonSetMilestone.Text = clickedBtn.Text;
+
             MilestoneDropForm.Dispose();
         }
 
@@ -223,11 +230,24 @@ namespace TeamTracker
         private void OnClickTeamMember(object sender, Employee e)
         {
             Button clickedBtn = (sender as Button);
-            switch (clickedBtn.Text)
-            {
-
-            }
+            tableLayoutPanel3.Hide();
+            employeeProfilePicAndName1.Profile = e;
             TeamMembersDropForm.Dispose();
+        }
+
+        private void OnClickCloseFile(object sender, EventArgs e)
+        {
+            tableLayoutPanelFileName.Hide();
+        }
+
+        private void OnMouseEnterCloseFile(object sender, EventArgs e)
+        {
+            pictureBoxCloseFile.Image = UserInterface.Properties.Resources.Close_Red;
+        }
+
+        private void OnMouseLeaveCloseFile(object sender, EventArgs e)
+        {
+            pictureBoxCloseFile.Image = UserInterface.Properties.Resources.Close_Black;
         }
     }
 }

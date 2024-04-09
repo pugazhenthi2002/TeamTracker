@@ -15,6 +15,7 @@ namespace TeamTracker
     {
 
         private List<Milestone> milestoneList = new List<Milestone>();
+        private const int CSDropShadow = 0x00020000;
 
 
         public MilestoneDropDownForm()
@@ -36,6 +37,15 @@ namespace TeamTracker
             }
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
 
         protected override void OnResize(EventArgs e)
         {

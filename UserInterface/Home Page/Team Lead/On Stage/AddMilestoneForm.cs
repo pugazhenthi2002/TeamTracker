@@ -14,7 +14,6 @@ namespace TeamTracker
     public partial class AddMilestoneForm : Form
     {
         
-
         public AddMilestoneForm()
         {
             InitializeComponent();
@@ -27,6 +26,10 @@ namespace TeamTracker
         public string MileStoneName { get; private set; }
         public DateTime From { get; private set; }
         public DateTime To { get; private set; }
+
+        public DateTime ProjectFrom { get;  set; }
+        public DateTime ProjectTo { get;  set; }
+
 
         protected override void OnResize(EventArgs e)
         {
@@ -77,7 +80,7 @@ namespace TeamTracker
                 labelWarning.Show();
                 return;
             }
-            else if(dateTimePickerFrom.Value>dateTimePickerTo.Value)
+            else if((dateTimePickerFrom.Value.Date<ProjectFrom.Date || dateTimePickerTo.Value.Date>ProjectTo.Date) || (dateTimePickerFrom.Value.Date> dateTimePickerTo.Value.Date))
             {
                 labelWarning.Text = "Invalid Due date!";
                 labelWarning.Show();

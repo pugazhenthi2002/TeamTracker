@@ -39,7 +39,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelTask = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ucDueDate1 = new UserInterface.ViewPage.BoardView.UcDueDate();
+            this.ucDueDate1 = new UcDueDate();
             this.profilePictureBoxAssignedBy = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -282,7 +282,7 @@
         private System.Windows.Forms.Label LabelTask;
         private ProfilePictureBox profilePictureBoxAssignedBy;
         private System.Windows.Forms.PictureBox pictureBoxInfo;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate1;
+        private UcDueDate ucDueDate1;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }

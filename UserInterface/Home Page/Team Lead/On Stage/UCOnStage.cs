@@ -15,11 +15,14 @@ namespace TeamTracker
     {
 
         private AddMilestoneForm addMilestoneForm;
+        private List<UcMilestone> milestoneList = new List<UcMilestone>();
 
         public UcOnStage()
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            toolTip1.SetToolTip(pictureBoxDownload, "Download Attachements");
+
         }
 
 
@@ -35,6 +38,8 @@ namespace TeamTracker
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
             labelProjNameandVersion.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelProjNameandVersion.Width, labelProjNameandVersion.Height, 20, 20));
             labelClientName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelClientName.Width, labelClientName.Height, 20, 20));
+            buttonDiscard.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDiscard.Width, buttonDiscard.Height, 10, 10));
+            buttonOnStage.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonOnStage.Width, buttonOnStage.Height, 10, 10));
 
         }
 
@@ -68,24 +73,32 @@ namespace TeamTracker
 
             addMilestoneForm = new AddMilestoneForm();
 
-            addMilestoneForm.Location = PointToScreen(new Point(e.Location.X + 320, e.Location.Y + 10));
+            addMilestoneForm.Location = buttonAddMilestone.PointToScreen(new Point(0,buttonAddMilestone.Height+3));
             addMilestoneForm.ClickAdd += OnClickAddMilestoneForm;
+            addMilestoneForm.ProjectFrom = ucStartDate.DueDate;
+            addMilestoneForm.ProjectTo = ucToDate.DueDate;
+
             addMilestoneForm.Show();
         }
 
         private void OnClickAddMilestoneForm(object sender, EventArgs e)
         {
             
-
             UcMilestone milestone = new UcMilestone();
             milestone.MilestoneName = addMilestoneForm.MileStoneName;
             milestone.DueDate = addMilestoneForm.To;
             milestone.Dock = DockStyle.Top;
             milestone.Size = new Size(panelMilestone.Width , 40);
-
+            milestone.milestoneClose += OnClickCloseMilestone;
             panelMilestone.Controls.Add(milestone);
 
+            milestoneList.Add(milestone);
 
+        }
+
+        private void OnClickCloseMilestone(object sender, UcMilestone e)
+        {
+            milestoneList.Remove(e);
         }
 
         private void CloseForm()
@@ -96,10 +109,42 @@ namespace TeamTracker
             {
                 f1.Close();
             }
-            
+
+        }
+
+        private void OnClickDownloadAttachement(object sender, EventArgs e)
+        {
 
         }
 
 
+
+        private void OnMouseEnterDownload(object sender, EventArgs e)
+        {
+            labelDownload.Font = new Font(labelDownload.Font.FontFamily, 10, labelDownload.Font.Style);
+            pictureBoxDownload.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void OnMouseLeaveDownload(object sender, EventArgs e)
+        {
+            labelDownload.Font = new Font(labelDownload.Font.FontFamily, 9, labelDownload.Font.Style);
+            pictureBoxDownload.SizeMode = PictureBoxSizeMode.CenterImage;
+        }
+
+
+
+
+        private void OnClickDiscard(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void OnClickStageProject(object sender, EventArgs e)
+        {
+            if(milestoneList.Count<4 || milestoneList.Count>20)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning","Milestone count should be greater than 4 and lesser than 20");
+            }
+        }
     }
 }

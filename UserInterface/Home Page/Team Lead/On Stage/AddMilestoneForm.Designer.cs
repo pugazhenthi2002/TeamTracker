@@ -32,6 +32,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelToBase = new System.Windows.Forms.Panel();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -39,18 +40,17 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.panelBaseFrom = new System.Windows.Forms.Panel();
             this.panelFromBase = new System.Windows.Forms.Panel();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.textBoxMilestone = new TeamTracker.TextBoxU();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelWarning = new System.Windows.Forms.Label();
             this.buttonDiscard = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.textBoxMilestone = new TeamTracker.TextBoxU();
-            this.labelWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,6 +124,21 @@
             this.panelToBase.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.panelToBase.Size = new System.Drawing.Size(148, 26);
             this.panelToBase.TabIndex = 6;
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.CalendarFont = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.dateTimePickerTo.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.dateTimePickerTo.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.dateTimePickerTo.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.dateTimePickerTo.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.dateTimePickerTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerTo.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerTo.Location = new System.Drawing.Point(0, 3);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(148, 24);
+            this.dateTimePickerTo.TabIndex = 1;
             // 
             // panel7
             // 
@@ -205,6 +220,21 @@
             this.panelFromBase.Size = new System.Drawing.Size(147, 26);
             this.panelFromBase.TabIndex = 6;
             // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.CalendarFont = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.dateTimePickerFrom.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.dateTimePickerFrom.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.dateTimePickerFrom.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.dateTimePickerFrom.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.dateTimePickerFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerFrom.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(0, 3);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(147, 24);
+            this.dateTimePickerFrom.TabIndex = 0;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
@@ -258,35 +288,27 @@
             this.panel4.Size = new System.Drawing.Size(171, 12);
             this.panel4.TabIndex = 1;
             // 
-            // dateTimePickerFrom
+            // textBoxMilestone
             // 
-            this.dateTimePickerFrom.CalendarFont = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.dateTimePickerFrom.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.dateTimePickerFrom.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.dateTimePickerFrom.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.dateTimePickerFrom.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.dateTimePickerFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerFrom.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(0, 3);
-            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(147, 24);
-            this.dateTimePickerFrom.TabIndex = 0;
-            // 
-            // dateTimePickerTo
-            // 
-            this.dateTimePickerTo.CalendarFont = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.dateTimePickerTo.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.dateTimePickerTo.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.dateTimePickerTo.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.dateTimePickerTo.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.dateTimePickerTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerTo.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerTo.Location = new System.Drawing.Point(0, 3);
-            this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(148, 24);
-            this.dateTimePickerTo.TabIndex = 1;
+            this.textBoxMilestone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.textBoxMilestone.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxMilestone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxMilestone.Location = new System.Drawing.Point(15, 15);
+            this.textBoxMilestone.Margin = new System.Windows.Forms.Padding(15);
+            this.textBoxMilestone.Multiline = true;
+            this.textBoxMilestone.Name = "textBoxMilestone";
+            this.textBoxMilestone.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
+            this.textBoxMilestone.PasswordChar = '\0';
+            this.textBoxMilestone.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBoxMilestone.PlaceholderLabelAtTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBoxMilestone.PlaceholderText = "Milestone Name*";
+            this.textBoxMilestone.Size = new System.Drawing.Size(349, 46);
+            this.textBoxMilestone.TabIndex = 3;
+            this.textBoxMilestone.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.textBoxMilestone.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxMilestone.TextBoxtext = "";
+            this.textBoxMilestone.TextForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxMilestone.UseSystemPasswordChar = false;
             // 
             // tableLayoutPanel3
             // 
@@ -304,6 +326,19 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(373, 32);
             this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // labelWarning
+            // 
+            this.labelWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelWarning.Location = new System.Drawing.Point(3, 0);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(180, 32);
+            this.labelWarning.TabIndex = 1;
+            this.labelWarning.Text = "Select all fields!!";
+            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonDiscard
             // 
@@ -338,41 +373,6 @@
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.OnClickAdd);
-            // 
-            // textBoxMilestone
-            // 
-            this.textBoxMilestone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.textBoxMilestone.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxMilestone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMilestone.Location = new System.Drawing.Point(15, 15);
-            this.textBoxMilestone.Margin = new System.Windows.Forms.Padding(15);
-            this.textBoxMilestone.Multiline = true;
-            this.textBoxMilestone.Name = "textBoxMilestone";
-            this.textBoxMilestone.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
-            this.textBoxMilestone.PasswordChar = '\0';
-            this.textBoxMilestone.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBoxMilestone.PlaceholderLabelAtTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBoxMilestone.PlaceholderText = "Milestone Name*";
-            this.textBoxMilestone.Size = new System.Drawing.Size(349, 46);
-            this.textBoxMilestone.TabIndex = 3;
-            this.textBoxMilestone.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.textBoxMilestone.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMilestone.TextBoxtext = "";
-            this.textBoxMilestone.TextForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMilestone.UseSystemPasswordChar = false;
-            // 
-            // labelWarning
-            // 
-            this.labelWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWarning.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelWarning.Location = new System.Drawing.Point(3, 0);
-            this.labelWarning.Name = "labelWarning";
-            this.labelWarning.Size = new System.Drawing.Size(180, 32);
-            this.labelWarning.TabIndex = 1;
-            this.labelWarning.Text = "Select all fields!!";
-            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AddMilestoneForm
             // 

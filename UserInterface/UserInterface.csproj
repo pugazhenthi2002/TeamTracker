@@ -266,11 +266,11 @@
     <Compile Include="Home Page\Team Lead\On Stage\CustomDatetimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\On Stage.cs">
+    <Compile Include="Home Page\Team Lead\On Stage\UCOnStage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\On Stage.Designer.cs">
-      <DependentUpon>On Stage.cs</DependentUpon>
+    <Compile Include="Home Page\Team Lead\On Stage\UCOnStage.Designer.cs">
+      <DependentUpon>UCOnStage.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\UcMilestone.cs">
       <SubType>UserControl</SubType>
@@ -675,8 +675,8 @@
     <EmbeddedResource Include="Home Page\Team Lead\On Stage\AddMilestoneForm.resx">
       <DependentUpon>AddMilestoneForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Team Lead\On Stage\On Stage.resx">
-      <DependentUpon>On Stage.cs</DependentUpon>
+    <EmbeddedResource Include="Home Page\Team Lead\On Stage\UCOnStage.resx">
+      <DependentUpon>UCOnStage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\On Stage\UcMilestone.resx">
       <DependentUpon>UcMilestone.cs</DependentUpon>

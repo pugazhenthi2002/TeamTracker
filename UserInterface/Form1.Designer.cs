@@ -30,8 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.ucOnStage1 = new TeamTracker.UcOnStage();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
+            this.ucDeploy1 = new TeamTracker.UcDeploy();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,14 +54,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // ucOnStage1
-            // 
-            this.ucOnStage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ucOnStage1.Location = new System.Drawing.Point(346, 98);
-            this.ucOnStage1.Name = "ucOnStage1";
-            this.ucOnStage1.Size = new System.Drawing.Size(624, 359);
-            this.ucOnStage1.TabIndex = 7;
-            // 
             // ucTaskBoardBase1
             // 
             this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
@@ -72,16 +64,24 @@
             this.ucTaskBoardBase1.Size = new System.Drawing.Size(1285, 514);
             this.ucTaskBoardBase1.TabIndex = 6;
             // 
+            // ucDeploy1
+            // 
+            this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.ucDeploy1.Location = new System.Drawing.Point(297, 102);
+            this.ucDeploy1.Name = "ucDeploy1";
+            this.ucDeploy1.Size = new System.Drawing.Size(536, 299);
+            this.ucDeploy1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.ucOnStage1);
+            this.Controls.Add(this.ucDeploy1);
             this.Controls.Add(this.ucTaskBoardBase1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "e";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -94,7 +94,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private TeamTracker.UcTaskBoardBase ucTaskBoardBase1;
-        private TeamTracker.UcOnStage ucOnStage1;
+        private TeamTracker.UcDeploy ucDeploy1;
     }
 }
 

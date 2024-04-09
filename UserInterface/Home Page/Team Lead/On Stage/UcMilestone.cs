@@ -23,6 +23,7 @@ namespace TeamTracker
             InitializeRoundedEdge();
         }
 
+        public EventHandler<UcMilestone> milestoneClose;
         
         public string MilestoneName
         {
@@ -73,6 +74,7 @@ namespace TeamTracker
 
         private void OnClickClose(object sender, EventArgs e)
         {
+            milestoneClose?.Invoke(sender, this);
             this.Dispose();
         }
         protected override void OnResize(EventArgs e)

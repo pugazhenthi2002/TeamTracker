@@ -54,8 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelTaskCount = new System.Windows.Forms.Label();
             this.profileAssignedBy = new TeamTracker.ProfilePicAndName();
-            this.ucDueDate2 = new UserInterface.ViewPage.BoardView.UcDueDate();
-            this.ucDueDate1 = new UserInterface.ViewPage.BoardView.UcDueDate();
+            this.ucDueDate2 = new UcDueDate();
+            this.ucDueDate1 = new UcDueDate();
             this.ucTaskDescription1 = new TeamTracker.UcTaskDescription();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -532,8 +532,8 @@
         private System.Windows.Forms.Label labelTitle;
         private TeamTracker.ProfilePicAndName profileAssignedBy;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate2;
-        private UserInterface.ViewPage.BoardView.UcDueDate ucDueDate1;
+        private UcDueDate ucDueDate2;
+        private UcDueDate ucDueDate1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private TeamTracker.UcTaskDescription ucTaskDescription1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;

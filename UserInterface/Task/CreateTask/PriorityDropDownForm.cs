@@ -13,6 +13,8 @@ namespace TeamTracker
 {
     public partial class PriorityDropDownForm : Form
     {
+        private const int CSDropShadow = 0x00020000;
+
         public PriorityDropDownForm()
         {
             InitializeComponent();
@@ -22,6 +24,15 @@ namespace TeamTracker
 
         public EventHandler PriorityBtnClicked;
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
 
         protected override void OnResize(EventArgs e)
         {
