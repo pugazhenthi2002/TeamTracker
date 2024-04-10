@@ -21,8 +21,13 @@ namespace TeamTracker
 
     public partial class TimelineTask : UserControl
     {
+        public delegate bool TimelineDateHandler(TimelineTask control);
+        public event TimelineDateHandler TaskTimelineCheck;
+
         public delegate void TimelineHandler(TimelineTask control, Task selectedTask, int direction);
         public event TimelineHandler TimeLineMovement;
+        public event TimelineHandler TaskDateChange;
+
         public int StepWidth = 20;
         private Color statusColor;
         public Color StatusColor
@@ -56,7 +61,8 @@ namespace TeamTracker
         private bool isRightEdged, isLeftEdged, isDragLeftEdged, isDragRightEdged;
         private bool isHovered, isDragging;
         private bool isRightSliderClicked, isLeftSliderClicked;
-        private bool isEndDateReached, isStartDateReached;
+        private bool? isEndDateReached, isStartDateReached;
+
         public TimelineDisplayMode DisplayMode { get; set; }
 
         public TimelineTask()
@@ -70,7 +76,7 @@ namespace TeamTracker
         private void SliderPanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(StatusColor);
+            Pen border = new Pen(StatusColor, 2);
 
             if (isHovered)
             {
@@ -98,6 +104,8 @@ namespace TeamTracker
                     e.Graphics.DrawLine(border, pt1, pt2);
                     e.Graphics.DrawLine(border, pt3, pt4);
                 }
+                border.Width = 3;
+
             }
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(5,5,Width-10, Height-10), 10));
             border.Dispose();
@@ -106,12 +114,14 @@ namespace TeamTracker
         private void OnTimelineTaskMouseEnter(object sender, EventArgs e)
         {
             isHovered = true;
+            Cursor = Cursors.Hand;
             label1.Invalidate();
         }
 
         private void OnTimelineTaskMouseLeave(object sender, EventArgs e)
         {
             isHovered = false;
+            Cursor = Cursors.Default;
             label1.Invalidate();
         }
 
@@ -148,6 +158,8 @@ namespace TeamTracker
             if (isDragLeftEdged || isDragRightEdged || isLeftEdged || isRightEdged)
                 edgeTimer.Stop();
 
+            TaskDateChange?.Invoke(this, selectedTask, 0);
+
             var x = Location;
             isRightSliderClicked = false;
             isLeftSliderClicked = false;
@@ -158,7 +170,7 @@ namespace TeamTracker
         {
             if(isRightEdged)
             {
-                if (!isEndDateReached)
+                if (!Convert.ToBoolean(isEndDateReached))
                 {
                     Location = new Point(Location.X - StepWidth, Location.Y);
                     Width = Width + StepWidth;
@@ -168,7 +180,7 @@ namespace TeamTracker
 
             if (isLeftEdged)
             {
-                if (!isStartDateReached)
+                if (!Convert.ToBoolean(isStartDateReached))
                 {
                     Width = Width + StepWidth;
                     TimeLineMovement?.Invoke(this, selectedTask, -1);
@@ -177,7 +189,7 @@ namespace TeamTracker
 
             if(isDragLeftEdged)
             {
-                if (!isStartDateReached)
+                if (!Convert.ToBoolean(isStartDateReached))
                 {
                     TimeLineMovement?.Invoke(this, selectedTask, -1);
                 }
@@ -185,7 +197,7 @@ namespace TeamTracker
 
             if (isDragRightEdged)
             {
-                if (!isEndDateReached)
+                if (!Convert.ToBoolean(isEndDateReached))
                 {
                     TimeLineMovement?.Invoke(this, selectedTask, 1);
                 }
@@ -197,6 +209,7 @@ namespace TeamTracker
             this.SuspendLayout();
             if (isRightSliderClicked)
             {
+                isEndDateReached = TaskTimelineCheck?.Invoke(this);
                 if ((Location.X + e.X + rightOffSetX) >= Parent.Width)
                 {
                     isRightEdged = true;
@@ -216,8 +229,10 @@ namespace TeamTracker
 
             if (isLeftSliderClicked)
             {
+                isStartDateReached = TaskTimelineCheck?.Invoke(this);
                 if (Location.X - (leftOffSetX - e.X) <= 0)
                 {
+
                     isLeftEdged = true;
                     edgeTimer.Start();
                 }

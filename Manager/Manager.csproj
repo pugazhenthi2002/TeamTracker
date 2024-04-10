@@ -68,6 +68,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manager\ColorManager.cs" />
     <Compile Include="Manager\DataHandler.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
     <Compile Include="Manager\MilestoneManager.cs" />

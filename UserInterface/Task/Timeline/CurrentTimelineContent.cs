@@ -51,8 +51,8 @@ namespace UserInterface.Task.Timeline
         {
             int width, x, y, stepWidth;
             width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             while (x < width)
             {
                 e.Graphics.DrawLine(border, x - 1, 0, x - 1, y);
@@ -181,15 +181,30 @@ namespace UserInterface.Task.Timeline
                         Height = height,
                         Width = controlWidth,
                         SelectedTask = Iter,
-                        StatusColor = SetColor(Iter.StatusOfTask),
+                        StatusColor = ColorManager.FetchTaskStatusColor(Iter.StatusOfTask),
                         StepWidth = tableLayoutPanel1.Width / 20,
                         DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate)
                     };
                     taskTimeline.TimeLineMovement += OnTimeLineMovement;
+                    taskTimeline.TaskTimelineCheck += OnTimelineDateChecked;
+                    taskTimeline.TaskDateChange += OnTaskDateChanged;
                     timelineControlPanel.Controls.Add(taskTimeline);
                 }
                 ctr++;
             }
+        }
+
+        private bool OnTimelineDateChecked(TimelineTask control)
+        {
+            int start = control.Location.X / (tableLayoutPanel1.Width / 20), end = (control.Location.X + control.Width) / (tableLayoutPanel1.Width / 20); end--;
+            DateTime startDate = startViewDate.AddDays(start);
+            DateTime endDate = startViewDate.AddDays(end);
+
+            if(startDate.Date == version.StartDate || endDate.Date.AddDays(1) == version.EndDate)
+            {
+                return true;
+            }
+            return false;
         }
 
         private int GetTimelinePosition(DateTime date, int width)
@@ -221,18 +236,6 @@ namespace UserInterface.Task.Timeline
             }
 
             return ((endDate - startdate).Days + 1) * width;
-        }
-
-        private Color SetColor(TaskStatus status)
-        {
-            switch (status)
-            {
-                case TaskStatus.UnderReview: return Color.Green;
-                case TaskStatus.Stuck: return Color.Red;
-                case TaskStatus.OnProcess: return Color.Yellow;
-                case TaskStatus.Done: return Color.DarkGreen;
-                default: return Color.Gray;
-            }
         }
 
         private void OnTimeLineMovement(TimelineTask control, TeamTracker.Task selectedTask, int direction)
@@ -281,6 +284,24 @@ namespace UserInterface.Task.Timeline
             else
             {
                 return TimelineDisplayMode.Outer;
+            }
+        }
+
+        private void OnTaskDateChanged(TimelineTask control, TeamTracker.Task selectedTask, int direction)
+        {
+            int start = control.Location.X / (tableLayoutPanel1.Width / 20), end = (control.Location.X + control.Width) / (tableLayoutPanel1.Width / 20);   end--;
+            foreach (var Iter in taskCollection)
+            {
+                if (selectedTask.TaskID == Iter.TaskID)
+                {
+                    iterDate = startViewDate;
+                    Iter.StartDate = startViewDate.AddDays(start);
+                    Iter.EndDate = startViewDate.AddDays(end);
+                    InitializeTimeline();
+                    SetViewTaskCollection();
+                    control.DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate);
+                    break;
+                }
             }
         }
     }

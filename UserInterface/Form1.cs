@@ -63,7 +63,8 @@ namespace UserInterface
             EmployeeManager.StoreEmployeeToCollection();
             EmployeeManager.StoreEmployeeManagingCollection();
             EmployeeManager.LogInEmployee("emmastonev@gmail.com", "Lucid123");
-            currentTimelineContent1.Version = VersionManager.FetchProjectLatestVersion(3);
+            //currentTimelineContent1.Version = VersionManager.FetchProjectLatestVersion(3);
+            ucTaskBoardBase1.CurrentProjVersion = VersionManager.FetchProjectLatestVersion(3);
         }
 
         
