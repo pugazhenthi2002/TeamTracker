@@ -19,6 +19,9 @@ namespace TeamTracker
         {
             InitializeComponent();
             //InitializeRoundedEdge();
+           
+
+
         }
 
         public EventHandler<Notification> CloseClick;
@@ -34,8 +37,16 @@ namespace TeamTracker
             {
                 notify = value;
                 labelHeader.Text = value.NotificationHeader;
-                labelContent.Text = value.NotificationContent;
+                textBoxContent.Text = value.NotificationContent;
                 labelDateTime.Text = value.NotificationDateTime.ToShortDateString();
+                if (textBoxContent.GetLineFromCharIndex(textBoxContent.Text.Length) > textBoxContent.ClientSize.Height / textBoxContent.Font.Height)
+                {
+                    textBoxContent.ScrollBars = ScrollBars.Vertical;
+                }
+                else
+                {
+                    textBoxContent.ScrollBars = ScrollBars.None;
+                }
             }
         }
 

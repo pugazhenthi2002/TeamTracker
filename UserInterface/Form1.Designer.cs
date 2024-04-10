@@ -31,7 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
-            this.ucDeploy1 = new TeamTracker.UcDeploy();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,12 +40,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 514);
+            this.panel1.Size = new System.Drawing.Size(655, 514);
             this.panel1.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 47);
+            this.button1.Location = new System.Drawing.Point(0, 233);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 53);
             this.button1.TabIndex = 3;
@@ -59,25 +58,16 @@
             this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.ucTaskBoardBase1.CurrentProjVersion = null;
             this.ucTaskBoardBase1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskBoardBase1.Location = new System.Drawing.Point(100, 0);
+            this.ucTaskBoardBase1.Location = new System.Drawing.Point(655, 0);
             this.ucTaskBoardBase1.Name = "ucTaskBoardBase1";
-            this.ucTaskBoardBase1.Size = new System.Drawing.Size(1285, 514);
+            this.ucTaskBoardBase1.Size = new System.Drawing.Size(730, 514);
             this.ucTaskBoardBase1.TabIndex = 6;
-            // 
-            // ucDeploy1
-            // 
-            this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ucDeploy1.Location = new System.Drawing.Point(297, 102);
-            this.ucDeploy1.Name = "ucDeploy1";
-            this.ucDeploy1.Size = new System.Drawing.Size(536, 299);
-            this.ucDeploy1.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.ucDeploy1);
             this.Controls.Add(this.ucTaskBoardBase1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -94,7 +84,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private TeamTracker.UcTaskBoardBase ucTaskBoardBase1;
-        private TeamTracker.UcDeploy ucDeploy1;
     }
 }
 

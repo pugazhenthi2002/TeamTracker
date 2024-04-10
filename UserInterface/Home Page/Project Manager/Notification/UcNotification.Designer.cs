@@ -34,7 +34,7 @@
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.labelHeader = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
-            this.labelContent = new System.Windows.Forms.Label();
+            this.textBoxContent = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
@@ -123,10 +123,9 @@
             // 
             // panelContent
             // 
-            this.panelContent.AutoScroll = true;
             this.panelContent.AutoSize = true;
             this.panelContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.panelContent.Controls.Add(this.labelContent);
+            this.panelContent.Controls.Add(this.textBoxContent);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 33);
             this.panelContent.Margin = new System.Windows.Forms.Padding(0);
@@ -134,17 +133,19 @@
             this.panelContent.Size = new System.Drawing.Size(583, 101);
             this.panelContent.TabIndex = 1;
             // 
-            // labelContent
+            // textBoxContent
             // 
-            this.labelContent.AutoSize = true;
-            this.labelContent.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelContent.Location = new System.Drawing.Point(0, 0);
-            this.labelContent.Margin = new System.Windows.Forms.Padding(5);
-            this.labelContent.Name = "labelContent";
-            this.labelContent.Size = new System.Drawing.Size(61, 20);
-            this.labelContent.TabIndex = 3;
-            this.labelContent.Text = "Content";
+            this.textBoxContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.textBoxContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxContent.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBoxContent.Location = new System.Drawing.Point(0, 0);
+            this.textBoxContent.Multiline = true;
+            this.textBoxContent.Name = "textBoxContent";
+            this.textBoxContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxContent.Size = new System.Drawing.Size(583, 101);
+            this.textBoxContent.TabIndex = 0;
             // 
             // UcNotification
             // 
@@ -174,6 +175,6 @@
         private System.Windows.Forms.Label labelDateTime;
         private System.Windows.Forms.Label labelHeader;
         private System.Windows.Forms.Panel panelContent;
-        private System.Windows.Forms.Label labelContent;
+        private System.Windows.Forms.TextBox textBoxContent;
     }
 }
