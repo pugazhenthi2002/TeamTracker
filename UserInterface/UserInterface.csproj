@@ -464,6 +464,12 @@
     <Compile Include="Task\Timeline\TimelineTask.designer.cs">
       <DependentUpon>TimelineTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="UcNotFound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcNotFound.Designer.cs">
+      <DependentUpon>UcNotFound.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPage\BoardView\CircleDownloadBtn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -840,6 +846,9 @@
     <EmbeddedResource Include="Task\Timeline\TimelineTask.resx">
       <DependentUpon>TimelineTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UcNotFound.resx">
+      <DependentUpon>UcNotFound.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
       <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </EmbeddedResource>
@@ -1041,6 +1050,7 @@
     <Content Include="Resources\info-black.png" />
     <Content Include="Resources\info-hover.png" />
     <None Include="Resources\Line.png" />
+    <None Include="Resources\Not found.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />

@@ -37,6 +37,10 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                         overviewMilestoneContent1.Version = value.Last().Value;
                     }
                 }
+                else
+                {
+                    panel5.Visible = false;
+                }
             }
         }
 

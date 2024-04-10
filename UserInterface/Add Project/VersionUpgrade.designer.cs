@@ -60,6 +60,8 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.upgradeButton = new TeamTracker.RippleButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -350,6 +352,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.panel5.Controls.Add(this.ucNotFound1);
             this.panel5.Controls.Add(this.teamLeaderPicAndNameVertical1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(820, 10);
@@ -385,6 +388,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.panel8.Controls.Add(this.ucNotFound2);
             this.panel8.Controls.Add(this.latestUpgradedVersion1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(678, 3);
@@ -494,6 +498,28 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ClearClick);
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Team leader found!!!";
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = "select project";
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(520, 153);
+            this.ucNotFound1.TabIndex = 1;
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Latest Upgrade!!!";
+            this.ucNotFound2.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound2.Message = "select project";
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(669, 346);
+            this.ucNotFound2.TabIndex = 1;
+            // 
             // VersionUpgrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,5 +586,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private RippleButton upgradeButton;
         private System.Windows.Forms.Button button1;
+        private UserInterface.UcNotFound ucNotFound1;
+        private UserInterface.UcNotFound ucNotFound2;
     }
 }

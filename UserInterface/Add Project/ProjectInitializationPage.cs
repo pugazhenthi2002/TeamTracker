@@ -21,6 +21,16 @@ namespace TeamTracker
             InitializePlaceHolders();
         }
 
+        public void InitializePage()
+        {
+            
+            ucNotFound1.Visible = true;
+            startDateTimePicker.Value = endDateTimePicker.Value = DateTime.Now;
+            projectTitleTextBox.Text = "Project Name";
+            projectDescTextBox.Text = "Enter your Desc...";
+            clientTextBox.Text = "Client Email";
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -74,7 +84,7 @@ namespace TeamTracker
             teamLeader = employee;
             selectedTeamLeader1.Visible = true;
             availableTeamLeaders1.Visible = false;
-            noResultFound1.Visible = false;
+            ucNotFound1.Visible = false;
         }
 
         private void SelectedTeamLeader_OnChangeTeamLeader(object sender, EventArgs e)
@@ -82,7 +92,7 @@ namespace TeamTracker
             teamLeader = null;
             selectedTeamLeader1.Visible = false;
             availableTeamLeaders1.Visible = true;
-            noResultFound1.Visible = false;
+            ucNotFound1.Visible = false;
         }
 
         private void InitializePlaceHolders()
@@ -147,7 +157,7 @@ namespace TeamTracker
                     teamLeader = null;
                     availableTeamLeaders1.Visible = false;
                     selectedTeamLeader1.Visible = false;
-                    noResultFound1.Visible = true;
+                    ucNotFound1.Visible = true;
                 }
                 else
                 {
@@ -155,7 +165,7 @@ namespace TeamTracker
                     availableTeamLeaders1.TeamLeaders = availableTL;
                     availableTeamLeaders1.Visible = true;
                     selectedTeamLeader1.Visible = false;
-                    noResultFound1.Visible = false;
+                    ucNotFound1.Visible = false;
                 }
             }
         }
@@ -237,7 +247,7 @@ namespace TeamTracker
             startDateTimePicker.Value = DateTime.Now;
             endDateTimePicker.Value = DateTime.Now;
             fileAttachment1.ClearAttachments = true;
-            noResultFound1.Visible = true;
+            ucNotFound1.Visible = true;
             availableTeamLeaders1.Visible = false;
             selectedTeamLeader1.Visible = false;
         }

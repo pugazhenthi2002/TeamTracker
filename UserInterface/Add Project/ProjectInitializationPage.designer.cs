@@ -33,7 +33,7 @@
             this.fileAttachment1 = new TeamTracker.FileAttachment();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.noResultFound1 = new TeamTracker.NoResultFound();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.selectedTeamLeader1 = new TeamTracker.SelectedTeamLeader();
             this.availableTeamLeaders1 = new TeamTracker.AvailableTeamLeaders();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -134,7 +134,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.panel2.Controls.Add(this.noResultFound1);
+            this.panel2.Controls.Add(this.ucNotFound1);
             this.panel2.Controls.Add(this.selectedTeamLeader1);
             this.panel2.Controls.Add(this.availableTeamLeaders1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -145,16 +145,16 @@
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
-            // noResultFound1
+            // ucNotFound1
             // 
-            this.noResultFound1.BackColor = System.Drawing.Color.Transparent;
-            this.noResultFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noResultFound1.Location = new System.Drawing.Point(0, 0);
-            this.noResultFound1.Margin = new System.Windows.Forms.Padding(2);
-            this.noResultFound1.MessageText = "* No Team Leaders Found on Selected Date";
-            this.noResultFound1.Name = "noResultFound1";
-            this.noResultFound1.Size = new System.Drawing.Size(246, 276);
-            this.noResultFound1.TabIndex = 2;
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Team Leader Found!!!";
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = "Invalid date";
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(246, 276);
+            this.ucNotFound1.TabIndex = 2;
             // 
             // selectedTeamLeader1
             // 
@@ -520,8 +520,8 @@
         private SelectedTeamLeader selectedTeamLeader1;
         private AvailableTeamLeaders availableTeamLeaders1;
         private RippleButton CreateProject;
-        private NoResultFound noResultFound1;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime startDateTimePicker;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime endDateTimePicker;
+        private UserInterface.UcNotFound ucNotFound1;
     }
 }

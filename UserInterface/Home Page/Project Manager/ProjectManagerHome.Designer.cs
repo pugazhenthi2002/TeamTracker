@@ -31,10 +31,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.notificationContent1 = new TeamTracker.NotificationContent();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.deployContent1 = new UserInterface.Home_Page.Project_Manager.Deploy.DeployContent();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.overview1 = new UserInterface.Home_Page.Project_Manager.Overview.Overview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -83,24 +83,6 @@
             this.panel3.Size = new System.Drawing.Size(809, 422);
             this.panel3.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.deployContent1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(809, 422);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.overview1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1624, 515);
-            this.panel1.TabIndex = 1;
-            // 
             // notificationContent1
             // 
             this.notificationContent1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -110,6 +92,15 @@
             this.notificationContent1.Size = new System.Drawing.Size(809, 422);
             this.notificationContent1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.deployContent1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(809, 422);
+            this.panel2.TabIndex = 2;
+            // 
             // deployContent1
             // 
             this.deployContent1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -118,6 +109,15 @@
             this.deployContent1.Name = "deployContent1";
             this.deployContent1.Size = new System.Drawing.Size(809, 422);
             this.deployContent1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.overview1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1624, 515);
+            this.panel1.TabIndex = 1;
             // 
             // overview1
             // 
