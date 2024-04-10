@@ -20,10 +20,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         public bool isOpened = false;
         private int month, year, priority;
-        List<System.Drawing.Color> colorsList = new List<System.Drawing.Color>
+        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>
         {
             System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
         };
+        private int colorIndex = 0;
         private Random rnd = new Random();
 
         public ReportContent()
@@ -108,7 +109,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 SeriesCollection seriesCollection = new SeriesCollection();
                 foreach(var Iter in result1)
                 {
-                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorsList[rnd.Next(colorsList.Count)].A, colorsList[rnd.Next(colorsList.Count)].R, colorsList[rnd.Next(colorsList.Count)].G, colorsList[rnd.Next(colorsList.Count)].B))});
+                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
+                    colorIndex = (colorIndex + 1) % colorList.Count;
                 }
                 pieChart1.Series = seriesCollection;
 
@@ -132,7 +134,9 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                     var lineSeries = new LineSeries
                     {
                         Title = employeeData.Key,
-                        Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value))
+                        Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
+                        Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
+                        Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B))
                     };
                     cartesianChart1.Series.Add(lineSeries);
                 }
