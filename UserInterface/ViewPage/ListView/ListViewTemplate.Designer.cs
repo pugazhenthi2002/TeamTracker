@@ -31,7 +31,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.projectDateLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.remainingTaskpaginateUp = new System.Windows.Forms.PictureBox();
+            this.remainingTaskpaginateDown = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.singleListControlPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -43,19 +47,31 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.paginateUp = new System.Windows.Forms.PictureBox();
-            this.paginateDown = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.customDonutChart2 = new UserInterface.ViewPage.ListView.CustomDonutChart();
+            this.customDonutChart1 = new UserInterface.ViewPage.ListView.CustomDonutChart();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.doneTaskPanel = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.doneTaskPageNext = new System.Windows.Forms.PictureBox();
+            this.doneTaskPageBack = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.remainingTaskpaginateUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.remainingTaskpaginateDown)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.taskTableLayoutPanel.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.paginateUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paginateDown)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageNext)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageBack)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -95,18 +111,70 @@
             this.projectDateLabel.Text = "Project Date";
             this.projectDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanel2
+            // panel5
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 467);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1628, 237);
-            this.tableLayoutPanel2.TabIndex = 5;
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.tableLayoutPanel3);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(10, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1615, 45);
+            this.panel5.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1580, 45);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Project Name";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.remainingTaskpaginateUp, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.remainingTaskpaginateDown, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1580, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(35, 45);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // remainingTaskpaginateUp
+            // 
+            this.remainingTaskpaginateUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.remainingTaskpaginateUp.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.remainingTaskpaginateUp.Location = new System.Drawing.Point(0, 0);
+            this.remainingTaskpaginateUp.Margin = new System.Windows.Forms.Padding(0);
+            this.remainingTaskpaginateUp.Name = "remainingTaskpaginateUp";
+            this.remainingTaskpaginateUp.Size = new System.Drawing.Size(35, 22);
+            this.remainingTaskpaginateUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.remainingTaskpaginateUp.TabIndex = 0;
+            this.remainingTaskpaginateUp.TabStop = false;
+            this.remainingTaskpaginateUp.Click += new System.EventHandler(this.OnPaginateUp);
+            // 
+            // remainingTaskpaginateDown
+            // 
+            this.remainingTaskpaginateDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.remainingTaskpaginateDown.Image = global::UserInterface.Properties.Resources.sort_down;
+            this.remainingTaskpaginateDown.Location = new System.Drawing.Point(0, 22);
+            this.remainingTaskpaginateDown.Margin = new System.Windows.Forms.Padding(0);
+            this.remainingTaskpaginateDown.Name = "remainingTaskpaginateDown";
+            this.remainingTaskpaginateDown.Size = new System.Drawing.Size(35, 23);
+            this.remainingTaskpaginateDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.remainingTaskpaginateDown.TabIndex = 1;
+            this.remainingTaskpaginateDown.TabStop = false;
+            this.remainingTaskpaginateDown.Click += new System.EventHandler(this.OnPaginateDown);
             // 
             // panel2
             // 
@@ -116,7 +184,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 70);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1628, 397);
+            this.panel2.Size = new System.Drawing.Size(1628, 353);
             this.panel2.TabIndex = 6;
             // 
             // singleListControlPanel
@@ -124,7 +192,7 @@
             this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
             this.singleListControlPanel.Name = "singleListControlPanel";
-            this.singleListControlPanel.Size = new System.Drawing.Size(1261, 347);
+            this.singleListControlPanel.Size = new System.Drawing.Size(1261, 303);
             this.singleListControlPanel.TabIndex = 6;
             // 
             // panel4
@@ -243,62 +311,110 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.tableLayoutPanel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(1261, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(367, 397);
+            this.panel3.Size = new System.Drawing.Size(367, 353);
             this.panel3.TabIndex = 0;
             // 
-            // panel5
+            // tableLayoutPanel4
             // 
-            this.panel5.Controls.Add(this.tableLayoutPanel3);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(10, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1615, 45);
-            this.panel5.TabIndex = 2;
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.customDonutChart2, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.customDonutChart1, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 353);
+            this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // tableLayoutPanel3
+            // customDonutChart2
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.paginateUp, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.paginateDown, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1580, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(35, 45);
-            this.tableLayoutPanel3.TabIndex = 0;
+            this.customDonutChart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customDonutChart2.Location = new System.Drawing.Point(30, 176);
+            this.customDonutChart2.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.customDonutChart2.Name = "customDonutChart2";
+            this.customDonutChart2.Size = new System.Drawing.Size(177, 177);
+            this.customDonutChart2.TabIndex = 1;
             // 
-            // paginateUp
+            // customDonutChart1
             // 
-            this.paginateUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paginateUp.Image = global::UserInterface.Properties.Resources.sort_up_hover;
-            this.paginateUp.Location = new System.Drawing.Point(0, 0);
-            this.paginateUp.Margin = new System.Windows.Forms.Padding(0);
-            this.paginateUp.Name = "paginateUp";
-            this.paginateUp.Size = new System.Drawing.Size(35, 22);
-            this.paginateUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.paginateUp.TabIndex = 0;
-            this.paginateUp.TabStop = false;
-            this.paginateUp.Click += new System.EventHandler(this.OnPaginateUp);
+            this.customDonutChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customDonutChart1.Location = new System.Drawing.Point(30, 0);
+            this.customDonutChart1.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.customDonutChart1.Name = "customDonutChart1";
+            this.customDonutChart1.Size = new System.Drawing.Size(176, 176);
+            this.customDonutChart1.TabIndex = 0;
             // 
-            // paginateDown
+            // panel6
             // 
-            this.paginateDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paginateDown.Image = global::UserInterface.Properties.Resources.sort_down;
-            this.paginateDown.Location = new System.Drawing.Point(0, 22);
-            this.paginateDown.Margin = new System.Windows.Forms.Padding(0);
-            this.paginateDown.Name = "paginateDown";
-            this.paginateDown.Size = new System.Drawing.Size(35, 23);
-            this.paginateDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.paginateDown.TabIndex = 1;
-            this.paginateDown.TabStop = false;
-            this.paginateDown.Click += new System.EventHandler(this.OnPaginateDown);
+            this.panel6.Controls.Add(this.doneTaskPanel);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 423);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1628, 281);
+            this.panel6.TabIndex = 7;
+            // 
+            // doneTaskPanel
+            // 
+            this.doneTaskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.doneTaskPanel.Location = new System.Drawing.Point(0, 38);
+            this.doneTaskPanel.Name = "doneTaskPanel";
+            this.doneTaskPanel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.doneTaskPanel.Size = new System.Drawing.Size(1628, 243);
+            this.doneTaskPanel.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.doneTaskPageNext);
+            this.panel7.Controls.Add(this.doneTaskPageBack);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1628, 38);
+            this.panel7.TabIndex = 0;
+            // 
+            // doneTaskPageNext
+            // 
+            this.doneTaskPageNext.Dock = System.Windows.Forms.DockStyle.Left;
+            this.doneTaskPageNext.Image = global::UserInterface.Properties.Resources.Next;
+            this.doneTaskPageNext.Location = new System.Drawing.Point(168, 0);
+            this.doneTaskPageNext.Name = "doneTaskPageNext";
+            this.doneTaskPageNext.Size = new System.Drawing.Size(24, 38);
+            this.doneTaskPageNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.doneTaskPageNext.TabIndex = 2;
+            this.doneTaskPageNext.TabStop = false;
+            this.doneTaskPageNext.Click += new System.EventHandler(this.OnDonePaginateNext);
+            // 
+            // doneTaskPageBack
+            // 
+            this.doneTaskPageBack.Dock = System.Windows.Forms.DockStyle.Left;
+            this.doneTaskPageBack.Image = global::UserInterface.Properties.Resources.Back_Hover;
+            this.doneTaskPageBack.Location = new System.Drawing.Point(144, 0);
+            this.doneTaskPageBack.Name = "doneTaskPageBack";
+            this.doneTaskPageBack.Size = new System.Drawing.Size(24, 38);
+            this.doneTaskPageBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.doneTaskPageBack.TabIndex = 1;
+            this.doneTaskPageBack.TabStop = false;
+            this.doneTaskPageBack.Click += new System.EventHandler(this.OnDonePaginateBack);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Done Task";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ListViewTemplate
             // 
@@ -306,19 +422,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Name = "ListViewTemplate";
             this.Size = new System.Drawing.Size(1628, 704);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.remainingTaskpaginateUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.remainingTaskpaginateDown)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.taskTableLayoutPanel.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.paginateUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paginateDown)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageNext)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageBack)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,7 +450,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label projectDateLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel singleListControlPanel;
         private System.Windows.Forms.Panel panel4;
@@ -342,7 +463,18 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.PictureBox paginateUp;
-        private System.Windows.Forms.PictureBox paginateDown;
+        private System.Windows.Forms.PictureBox remainingTaskpaginateUp;
+        private System.Windows.Forms.PictureBox remainingTaskpaginateDown;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private UserInterface.ViewPage.ListView.CustomDonutChart customDonutChart2;
+        private UserInterface.ViewPage.ListView.CustomDonutChart customDonutChart1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.PictureBox doneTaskPageNext;
+        private System.Windows.Forms.PictureBox doneTaskPageBack;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel doneTaskPanel;
     }
 }

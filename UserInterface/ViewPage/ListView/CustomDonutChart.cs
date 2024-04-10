@@ -10,6 +10,12 @@ namespace UserInterface.ViewPage.ListView
 {
     class CustomDonutChart:Panel
     {
+        public CustomDonutChart()
+        {
+            Width = Height = Math.Min(Height, Width);
+        }
+
+        public bool IsValueAssigned = false;
         public Dictionary<Color, int> values;
         public Dictionary<Color, int> Values
         {
@@ -18,7 +24,7 @@ namespace UserInterface.ViewPage.ListView
                 if (value != null && value.Count > 0)
                 {
                     values = value;
-
+                    IsValueAssigned = true;
                     foreach(var Iter in values)
                     {
                         total += Iter.Value;
@@ -34,26 +40,35 @@ namespace UserInterface.ViewPage.ListView
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            startAngle = 0;
-            sweepAngle = 0;
-            base.OnPaint(e);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Brush outerBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
-            Brush innerBrush;
-            Rectangle outerRec = new Rectangle(0, 0, Width, Height);
-            Rectangle innerRec = new Rectangle(Width / 10, Height / 10, Width * 8 / 10, Height * 8 / 10);
-            e.Graphics.FillEllipse(outerBrush, outerRec);
-            foreach (var Iter in values)
+            if (IsValueAssigned)
             {
-                innerBrush = new SolidBrush(Iter.Key);
-                percentage = Iter.Value * 100 / total;
-                sweepAngle = 360 * percentage / 100;
+                startAngle = 0;
+                sweepAngle = 0;
+                base.OnPaint(e);
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                Brush outerBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
+                Brush innerBrush;
+                Rectangle outerRec = new Rectangle(0, 0, Width, Height);
+                Rectangle innerRec = new Rectangle(Width / 10, Height / 10, Width * 8 / 10, Height * 8 / 10);
+                e.Graphics.FillEllipse(outerBrush, outerRec);
+                foreach (var Iter in values)
+                {
+                    innerBrush = new SolidBrush(Iter.Key);
+                    percentage = Iter.Value * 100 / total;
+                    sweepAngle = 360 * percentage / 100;
 
-                if (sweepAngle > 0)
-                    e.Graphics.FillPie(innerBrush, innerRec, startAngle, sweepAngle);
+                    if (sweepAngle > 0)
+                        e.Graphics.FillPie(innerBrush, innerRec, startAngle, sweepAngle);
 
-                startAngle = startAngle + sweepAngle;
+                    startAngle = startAngle + sweepAngle;
+                }
             }
+        }
+
+        protected override void OnResize(EventArgs eventargs)
+        {
+            base.OnResize(eventargs);
+            Width = Height = Math.Min(Height, Width);
         }
     }
 }

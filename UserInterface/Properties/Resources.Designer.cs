@@ -173,9 +173,29 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Calendar_15 {
+            get {
+                object obj = ResourceManager.GetObject("Calendar 15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar_24x24 {
             get {
                 object obj = ResourceManager.GetObject("calendar 24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Calendar_30 {
+            get {
+                object obj = ResourceManager.GetObject("Calendar 30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

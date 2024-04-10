@@ -45,11 +45,6 @@ namespace TeamTracker
             ucTaskStatusBaseUnderReview.TaskBoardMouseDown += OnMouseDownTaskBoard;
             ucTaskStatusBaseUnderReview.TaskBoardMouseUp += OnMouseUpTaskBoard;
             ucTaskStatusBaseUnderReview.TaskBoardMouseMove += OnMouseMoveTaskBoard;
-
-            ucTaskStatusBaseDone.TaskBoardMouseDown += OnMouseDownTaskBoard;
-            ucTaskStatusBaseDone.TaskBoardMouseUp += OnMouseUpTaskBoard;
-            ucTaskStatusBaseDone.TaskBoardMouseMove += OnMouseMoveTaskBoard;
-
         }
 
         public ProjectVersion CurrentProjVersion
@@ -57,11 +52,13 @@ namespace TeamTracker
             get { return currentProjectVersion; }
             set
             {
+                this.SuspendLayout();
                 if (value != null)
                 {
                     currentProjectVersion = value;
                     SetVersion();
                 }
+                this.ResumeLayout();
             }
         }
 
@@ -80,8 +77,6 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             DragForm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, DragForm.Width, DragForm.Height, 20, 20));
-
-
         }
 
         private void SetVersion()
@@ -90,8 +85,6 @@ namespace TeamTracker
             ucTaskStatusBaseOnProcess.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.OnProcess);
             ucTaskStatusBaseStuck.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.Stuck);
             ucTaskStatusBaseUnderReview.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.UnderReview);
-            ucTaskStatusBaseDone.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.Done);
-
         }
         
 
@@ -188,11 +181,6 @@ namespace TeamTracker
                     SubmitionForm.DoneClick += OnClickDoneSubmitionForm;
                     SubmitionForm.CloseClick += OnClickCloseSubmitionForm;
                     SubmitionForm.Show();
-
-                    break;
-                case 4:
-                    ucTaskStatusBaseDone.AddTask(BoardToAdd);
-                    DragForm.Dispose();
                     break;
             }
         }
@@ -236,8 +224,5 @@ namespace TeamTracker
 
             return FindParentUserControl(control.Parent);
         }
-
-
-
     }
 }

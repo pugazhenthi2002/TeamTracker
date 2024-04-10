@@ -19,9 +19,10 @@ namespace TeamTracker
 
         public UCTaskBoard()
         {
+            this.SuspendLayout();
             InitializeComponent();
             InitializeRoundedEdge();
-            
+            this.ResumeLayout();
         }
         
         public MouseEventHandler MouseDownTaskBoard;
@@ -33,13 +34,14 @@ namespace TeamTracker
             get { return TaskBoardData; }
             set
             {
+                this.SuspendLayout();
                 if (value != null)
                 {
                     TaskBoardData = value;
                     FlagChange();
                     InitializeBoardData();
                 }
-
+                this.ResumeLayout();
             }
         }
 

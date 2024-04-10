@@ -6,23 +6,40 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using UserInterface.ViewPage.ListView;
 
 namespace TeamTracker
 {
     public partial class ListViewTemplate : UserControl
     {
-        public List<Task> TaskCollection
+        public List<Task> DoneTaskCollection
+        {
+            set
+            {
+                if(value!=null && value.Count > 0)
+                {
+                    doneCardCollection = new List<DoneCardTemplate>();
+                    doneCollection = value;
+                    startDoneIdx = 0; isDoneBackEnabled = false;
+                    endDoneIdx = value.Count > 4 ? 4 : value.Count;
+                    isDoneNextEnabled = value.Count > 4 ? true : false;
+                    SetDoneAllignment();
+                }
+            }
+        }
+        public List<Task> RemainingTaskCollection
         {
             set
             {
                 if (value != null && value.Count > 0)
                 {
+                    singleListCollection = new List<SingleList>();
                     taskCollection = value;
-                    startIdx = 0;
-                    isBackEnabled = false;
-                    endIdx = value.Count > 5 ? 5 : value.Count;
-                    isNextEnabled = value.Count > 5 ? true : false;
-                    SetTaskAllignment();
+                    startRemainingIdx = 0;
+                    isRemainingBackEnabled = false;
+                    endRemainingIdx = value.Count > 5 ? 5 : value.Count;
+                    isRemainingNextEnables = value.Count > 5 ? true : false;
+                    SetRemainingTaskAllignment();
                 }
                 else
                 {
@@ -31,19 +48,42 @@ namespace TeamTracker
             }
         }
 
-        private bool isBackEnabled, isNextEnabled;
-        private int startIdx, endIdx;
+        private bool isRemainingBackEnabled, isRemainingNextEnables, isDoneBackEnabled, isDoneNextEnabled;
+        private int startRemainingIdx, endRemainingIdx, startDoneIdx, endDoneIdx;
+        private DoneCardTemplate doneCards;
         private SingleList listTemplate;
         private List<SingleList> singleListCollection;
+        private List<DoneCardTemplate> doneCardCollection;
         private List<Task> taskCollection;
+        private List<Task> doneCollection;
 
         private void OnPaginateDown(object sender, EventArgs e)
         {
-            if (isNextEnabled)
+            if (isRemainingNextEnables)
             {
-                startIdx++;
-                endIdx++;
-                ReorderTask();
+                startRemainingIdx++;
+                endRemainingIdx++;
+                ReorderRemainingTask();
+            }
+        }
+
+        private void OnDonePaginateBack(object sender, EventArgs e)
+        {
+            if(isDoneBackEnabled)
+            {
+                startDoneIdx--;
+                endDoneIdx--;
+                ReorderDoneTask();
+            }
+        }
+
+        private void OnDonePaginateNext(object sender, EventArgs e)
+        {
+            if (isDoneNextEnabled)
+            {
+                startDoneIdx++;
+                endDoneIdx++;
+                ReorderDoneTask();
             }
         }
 
@@ -54,17 +94,17 @@ namespace TeamTracker
 
         private void OnPaginateUp(object sender, EventArgs e)
         {
-            if (isBackEnabled)
+            if (isRemainingBackEnabled)
             {
-                startIdx--;
-                endIdx--;
-                ReorderTask();
+                startRemainingIdx--;
+                endRemainingIdx--;
+                ReorderRemainingTask();
             }
         }
 
-        private void SetTaskAllignment()
+        private void SetRemainingTaskAllignment()
         {
-            for(int ctr=0; ctr<=endIdx; ctr++)
+            for(int ctr=0; ctr<=endRemainingIdx; ctr++)
             {
                 listTemplate = new SingleList()
                 {
@@ -81,28 +121,67 @@ namespace TeamTracker
                 Iter.BringToFront();
             }
 
-            if (paginateUp.Image != null) paginateUp.Image.Dispose();
-            if (paginateDown.Image != null) paginateDown.Image.Dispose();
+            if (remainingTaskpaginateUp.Image != null) remainingTaskpaginateUp.Image.Dispose();
+            if (remainingTaskpaginateDown.Image != null) remainingTaskpaginateDown.Image.Dispose();
 
-            paginateDown.Image = isNextEnabled ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
-            paginateUp.Image = isBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
         }
 
-        private void ReorderTask()
+        private void ReorderRemainingTask()
         {
-            for(int ctr=startIdx, idx = 0; ctr<=endIdx; ctr++, idx++)
+            for(int ctr=startRemainingIdx, idx = 0; ctr<=endRemainingIdx; ctr++, idx++)
             {
                 singleListCollection[idx].ListTask = taskCollection[ctr];
             }
 
-            if (paginateUp.Image != null) paginateUp.Image.Dispose();
-            if (paginateDown.Image != null) paginateDown.Image.Dispose();
+            if (remainingTaskpaginateUp.Image != null) remainingTaskpaginateUp.Image.Dispose();
+            if (remainingTaskpaginateDown.Image != null) remainingTaskpaginateDown.Image.Dispose();
 
-            isNextEnabled = endIdx == taskCollection.Count - 1 ? false : true;
-            isBackEnabled = startIdx == 0 ? false : true;
+            isRemainingNextEnables = endRemainingIdx == taskCollection.Count - 1 ? false : true;
+            isRemainingBackEnabled = startRemainingIdx == 0 ? false : true;
 
-            paginateDown.Image = isNextEnabled ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
-            paginateUp.Image = isBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+        }
+
+        private void ReorderDoneTask()
+        {
+            for(int ctr=startDoneIdx, idx = 0; ctr<=endDoneIdx; ctr++, idx++)
+            {
+                singleListCollection[idx].ListTask = taskCollection[ctr];
+            }
+
+            if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
+            if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
+
+            doneTaskPageNext.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            doneTaskPageBack.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+        }
+
+        private void SetDoneAllignment()
+        {
+            for (int ctr = 0; ctr <= endDoneIdx; ctr++)
+            {
+                doneCards = new DoneCardTemplate()
+                {
+                    Width = 200,
+                    Dock = DockStyle.Left
+                };
+                doneTaskPanel.Controls.Add(doneCards);
+                doneCardCollection.Add(doneCards);
+            }
+
+            foreach (var Iter in doneCardCollection)
+            {
+                Iter.BringToFront();
+            }
+
+            if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
+            if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
+
+            doneTaskPageNext.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            doneTaskPageBack.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
         }
     }
 }

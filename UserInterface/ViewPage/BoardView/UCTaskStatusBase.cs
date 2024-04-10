@@ -60,6 +60,7 @@ namespace TeamTracker
         {
             set
             {
+                this.SuspendLayout();
                 RemoveControls();
                 StartIndex = 0;
                 flag = 0;
@@ -67,6 +68,7 @@ namespace TeamTracker
                 taskList = value;
                 taskList.Sort((t1, t2) => t2.EndDate.CompareTo(t1.EndDate));
                 InitializeBoard();
+                this.ResumeLayout();
             }
         }
 
@@ -85,6 +87,7 @@ namespace TeamTracker
 
         public void RemoveTaskBoard(UCTaskBoard tBoard)
         {
+            this.SuspendLayout();
             TaskBoardList.Remove(tBoard);
             panelBase.SuspendLayout();
             if (taskList.Count > MaxUserControls)
@@ -110,6 +113,7 @@ namespace TeamTracker
             panelBase.ResumeLayout();
 
             ReOrderBoard();
+            this.ResumeLayout();
         }
 
         public void AddTask(UCTaskBoard taskBoard)
@@ -127,6 +131,9 @@ namespace TeamTracker
             {
                 panelBase.Controls.Add(taskBoard);
                 TaskBoardList.Add(taskBoard);
+
+                foreach (var Iter in TaskBoardList)
+                    Iter.BringToFront();
             }
             if (taskList.Count > 1)
                 taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
@@ -134,6 +141,7 @@ namespace TeamTracker
 
 
             ReOrderBoard();
+            var y = TaskBoardList;
         }
 
         private void InitializeBoard()
@@ -244,7 +252,6 @@ namespace TeamTracker
         {
             TaskBoardList.Clear();
             panelBase.Controls.Clear();
-            
         }
 
 

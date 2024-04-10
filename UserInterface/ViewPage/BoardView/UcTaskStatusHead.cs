@@ -98,23 +98,23 @@ namespace TeamTracker
             switch (Tstatus)
             {
                 case TaskStatus.Done:
-                    TopPanelColor = Color.Green;
+                    TopPanelColor = Color.FromArgb(0, 180, 216);
                     StatusLabelText = TaskStatus.Done + "";
                     break;
                 case TaskStatus.UnderReview:
-                    TopPanelColor = Color.Blue;
+                    TopPanelColor = Color.FromArgb(0, 150, 199);
                     StatusLabelText = TaskStatus.UnderReview + "";
                     break;
                 case TaskStatus.OnProcess:
-                    TopPanelColor = Color.Yellow;
+                    TopPanelColor = Color.FromArgb(2, 62, 138);
                     StatusLabelText = TaskStatus.OnProcess + "";
                     break;
                 case TaskStatus.Stuck:
-                    TopPanelColor = Color.Red;
+                    TopPanelColor = Color.FromArgb(0, 119, 182);
                     StatusLabelText = TaskStatus.Stuck + "";
                     break;
                 case TaskStatus.NotYetStarted:
-                    TopPanelColor = Color.Gray;
+                    TopPanelColor = Color.FromArgb(3, 4, 94);
                     StatusLabelText = TaskStatus.NotYetStarted + "";
                     break;
             }

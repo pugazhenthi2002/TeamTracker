@@ -57,7 +57,7 @@ namespace UserInterface
             EmployeeManager.StoreEmployeeToCollection();
             EmployeeManager.StoreEmployeeManagingCollection();
             EmployeeManager.LogInEmployee("emmastonev@gmail.com", "Lucid123");
-            ucTaskBoardBase1.CurrentProjVersion = VersionManager.CurrentVersion;
+            currentTimelineContent1.Version = VersionManager.FetchProjectLatestVersion(3);
         }
     }
 }

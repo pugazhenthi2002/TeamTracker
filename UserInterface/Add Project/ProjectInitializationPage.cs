@@ -24,6 +24,12 @@ namespace TeamTracker
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
+            panel1.Invalidate();
+            panel2.Invalidate();
+            panel3.Invalidate();
+            panel4.Invalidate();
+            panel5.Invalidate();
+            panel6.Invalidate();
             InitializeRoundedEdge();
         }
 
@@ -236,5 +242,30 @@ namespace TeamTracker
             selectedTeamLeader1.Visible = false;
         }
 
+        private void BorderDrawPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Panel).Width-2, (sender as Panel).Height-2);
+            Pen border = new Pen(Color.FromArgb(221, 230, 237));
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border.Dispose();
+        }
+
+        private void TextBorderPanelPaint(object sender, PaintEventArgs e)
+        {
+            Pen border = new Pen(Color.FromArgb(3, 4, 94), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border, new Point(projectTitleTextBox.Location.X, projectTitleTextBox.Location.Y + projectTitleTextBox.Height), new Point(projectTitleTextBox.Location.X + projectTitleTextBox.Width, projectTitleTextBox.Location.Y + projectTitleTextBox.Height));
+            e.Graphics.DrawLine(border, new Point(projectDescTextBox.Location.X, projectDescTextBox.Location.Y + projectDescTextBox.Height), new Point(projectDescTextBox.Location.X + projectDescTextBox.Width, projectDescTextBox.Location.Y + projectDescTextBox.Height));
+            border.Dispose();
+        }
+
+        private void CLientTextBorderPanelPaint(object sender, PaintEventArgs e)
+        {
+            Pen border = new Pen(Color.FromArgb(3, 4, 94), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border, new Point(clientTextBox.Location.X, clientTextBox.Location.Y + clientTextBox.Height), new Point(clientTextBox.Location.X + projectDescTextBox.Width, clientTextBox.Location.Y + clientTextBox.Height));
+            border.Dispose();
+        }
     }
 }
