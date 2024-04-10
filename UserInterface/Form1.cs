@@ -8,7 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using LiveCharts;
+using LiveCharts.Wpf;
 using TeamTracker;
+
+
 
 namespace UserInterface
 {
@@ -18,6 +23,7 @@ namespace UserInterface
         {
             InitializeComponent();
             button1.Focus();
+            
         }
 
         private void rippleButton1_Click(object sender, EventArgs e)
@@ -59,5 +65,7 @@ namespace UserInterface
             EmployeeManager.LogInEmployee("emmastonev@gmail.com", "Lucid123");
             currentTimelineContent1.Version = VersionManager.FetchProjectLatestVersion(3);
         }
+
+        
     }
 }

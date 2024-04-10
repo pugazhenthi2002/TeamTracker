@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportContent));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,8 +50,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.filterPicBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.donutChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.barchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -73,8 +67,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filterPicBox)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.donutChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barchart)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -344,8 +336,8 @@
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.donutChart, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.barchart, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.pieChart1, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.cartesianChart1, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 143);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -354,60 +346,24 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1312, 256);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
-            // donutChart
+            // pieChart1
             // 
-            this.donutChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            chartArea5.Name = "ChartArea1";
-            this.donutChart.ChartAreas.Add(chartArea5);
-            this.donutChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.donutChart.Legends.Add(legend5);
-            this.donutChart.Location = new System.Drawing.Point(3, 3);
-            this.donutChart.Name = "donutChart";
-            this.donutChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.donutChart.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(199))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(216))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(202)))), ((int)(((byte)(228)))))};
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.donutChart.Series.Add(series5);
-            this.donutChart.Size = new System.Drawing.Size(650, 250);
-            this.donutChart.TabIndex = 0;
-            this.donutChart.Text = "chart1";
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart1.Location = new System.Drawing.Point(3, 3);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(650, 250);
+            this.pieChart1.TabIndex = 2;
+            this.pieChart1.Text = "pieChart1";
             // 
-            // barchart
+            // cartesianChart1
             // 
-            this.barchart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            chartArea6.Name = "ChartArea1";
-            this.barchart.ChartAreas.Add(chartArea6);
-            this.barchart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            this.barchart.Legends.Add(legend6);
-            this.barchart.Location = new System.Drawing.Point(659, 3);
-            this.barchart.Name = "barchart";
-            this.barchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.barchart.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(199))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(216))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(202)))), ((int)(((byte)(228)))))};
-            series6.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            series6.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.barchart.Series.Add(series6);
-            this.barchart.Size = new System.Drawing.Size(650, 250);
-            this.barchart.TabIndex = 1;
-            this.barchart.Text = "chart2";
+            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart1.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cartesianChart1.Location = new System.Drawing.Point(659, 3);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(650, 250);
+            this.cartesianChart1.TabIndex = 3;
+            this.cartesianChart1.Text = "cartesianChart1";
             // 
             // ReportContent
             // 
@@ -432,8 +388,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.filterPicBox)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.donutChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barchart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -461,7 +415,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label totalTaskCount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.DataVisualization.Charting.Chart donutChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart barchart;
+        private LiveCharts.WinForms.PieChart pieChart1;
+        private LiveCharts.WinForms.CartesianChart cartesianChart1;
     }
 }

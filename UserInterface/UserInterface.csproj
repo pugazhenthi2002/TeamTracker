@@ -42,9 +42,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Data Structure\Database DLL\GoLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +66,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Add Project\AddProject.cs">
@@ -79,9 +94,6 @@
     </Compile>
     <Compile Include="Add Project\Custom Control\ChooseProjectForm.Designer.cs">
       <DependentUpon>ChooseProjectForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\CustomDateTime.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Add Project\Custom Control\FileAttachment.cs">
       <SubType>UserControl</SubType>
@@ -155,7 +167,6 @@
     <Compile Include="Add Project\VersionUpgrade.designer.cs">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </Compile>
-    <Compile Include="BorderGraphicsPath.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,11 +329,35 @@
     <Compile Include="Home Page\Team Lead\TeamLeadHome.Designer.cs">
       <DependentUpon>TeamLeadHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Team Member\Milestone\CurrentMilestone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Member\Milestone\CurrentMilestone.Designer.cs">
+      <DependentUpon>CurrentMilestone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Member\Task\TaskContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Member\Task\TaskContent.Designer.cs">
+      <DependentUpon>TaskContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Member\TeamMemberHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Member\TeamMemberHome.Designer.cs">
+      <DependentUpon>TeamMemberHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginPage\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage\Logo\LogoAnimation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginPage\Logo\LogoAnimation.Designer.cs">
+      <DependentUpon>LogoAnimation.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginPage\TextBox.cs">
       <SubType>UserControl</SubType>
@@ -407,18 +442,6 @@
     <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\Timeline\CurrentTimelineContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Task\Timeline\CurrentTimelineContent.Designer.cs">
-      <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Task\Timeline\TimelineTask.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Task\Timeline\TimelineTask.designer.cs">
-      <DependentUpon>TimelineTask.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewPage\BoardView\CircleDownloadBtn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -494,12 +517,6 @@
     <Compile Include="ViewPage\ListView\CustomDonutChart.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ViewPage\ListView\DoneCardTemplate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ViewPage\ListView\DoneCardTemplate.Designer.cs">
-      <DependentUpon>DoneCardTemplate.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewPage\ListView\ListViewTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -523,12 +540,6 @@
     </Compile>
     <Compile Include="ViewPage\ListView\StatusDropDown.designer.cs">
       <DependentUpon>StatusDropDown.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\ViewPageContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ViewPage\ViewPageContent.Designer.cs">
-      <DependentUpon>ViewPageContent.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewProject\BoardView\BoardViewContent.cs">
       <SubType>UserControl</SubType>
@@ -727,8 +738,20 @@
     <EmbeddedResource Include="Home Page\Team Lead\TeamLeadHome.resx">
       <DependentUpon>TeamLeadHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Member\Milestone\CurrentMilestone.resx">
+      <DependentUpon>CurrentMilestone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Member\Task\TaskContent.resx">
+      <DependentUpon>TaskContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Member\TeamMemberHome.resx">
+      <DependentUpon>TeamMemberHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPage\Logo\LogoAnimation.resx">
+      <DependentUpon>LogoAnimation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\TextBox.resx">
       <DependentUpon>TextBox.cs</DependentUpon>
@@ -780,12 +803,6 @@
     <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\Timeline\CurrentTimelineContent.resx">
-      <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Task\Timeline\TimelineTask.resx">
-      <DependentUpon>TimelineTask.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
       <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </EmbeddedResource>
@@ -822,9 +839,6 @@
     <EmbeddedResource Include="ViewPage\BoardView\UcTaskStatusHead.resx">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\ListView\DoneCardTemplate.resx">
-      <DependentUpon>DoneCardTemplate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\ListView\ListViewTemplate.resx">
       <DependentUpon>ListViewTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -836,9 +850,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\ListView\StatusDropDown.resx">
       <DependentUpon>StatusDropDown.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\ViewPageContent.resx">
-      <DependentUpon>ViewPageContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\BoardViewContent.resx">
       <DependentUpon>BoardViewContent.cs</DependentUpon>
@@ -876,6 +887,7 @@
     <EmbeddedResource Include="ViewProject\ViewProjectTemplate.resx">
       <DependentUpon>ViewProjectTemplate.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -964,8 +976,6 @@
     <None Include="Images\Timeline Click.png" />
     <None Include="Images\Timeline Normal.png" />
     <None Include="Images\download Icon.png" />
-    <None Include="Pugazh Images\Calendar 15.png" />
-    <None Include="Pugazh Images\Calendar 30.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />
@@ -999,6 +1009,9 @@
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Home Page\Custom Controls\" />
+    <Folder Include="Pugazh Images\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
