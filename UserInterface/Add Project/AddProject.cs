@@ -22,6 +22,7 @@ namespace TeamTracker
             initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(221, 230, 237);
             versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(39, 55, 77);
             tabControl1.SelectedIndex = 0;
+            projectInitializationPage1.InitializePage();
         }
 
         private void OnVersionUpgradeClick(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace TeamTracker
             initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(39, 55, 77);
             versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(221, 230, 237);
             tabControl1.SelectedIndex = 1;
+            versionUpgrade1.InitializePage();
         }
     }
 }

@@ -25,6 +25,17 @@ namespace TeamTracker
             versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
             descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
             descTextBox.LostFocus += AddVersionDescPlaceHolders;
+
+            
+        }
+
+        public void InitializePage()
+        {
+            ucNotFound1.Visible = true;
+            ucNotFound2.Visible = true;
+            startDateTime.Value = endDateTime.Value = DateTime.Now;
+            versionNameTextBox.Text = "Enter Version";
+            descTextBox.Text = "Enter Version Description";
         }
 
         private void AddVersionNamePlaceHolders(object sender, EventArgs e)
@@ -91,6 +102,7 @@ namespace TeamTracker
 
         private void OnProjectSelected(object sender, Projects e)
         {
+            
             project = e;
             chooseProjectLabel.Text = e.ProjectName;
             InitializeVersionPage();

@@ -121,8 +121,14 @@
   <data name="sort-down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Search File" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Search File.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="flag-NotStarted" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag-NotStarted.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Zip Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Zip Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Next1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,11 +178,8 @@
   <data name="Home Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Home Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search File" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Search File.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag-OnProcess" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag-OnProcess.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Board Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Board Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloudHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,8 +223,8 @@
   <data name="View Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\View Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Board Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Board Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Add Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="View Project Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\View Project Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -231,6 +234,9 @@
   </data>
   <data name="Timeline Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Timeline Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calendar 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Calendar 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Calendar 15" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Calendar 15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,17 +310,14 @@
   <data name="flag-done" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag-done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Add Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="calendar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-upload-to-cloud-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-upload-to-cloud-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Zip Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Zip Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flag-OnProcess" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag-OnProcess.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -328,7 +331,7 @@
   <data name="Home Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Home Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Calendar 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Calendar 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Not found" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Not found.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
