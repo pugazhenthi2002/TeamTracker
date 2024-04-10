@@ -95,6 +95,9 @@
     <Compile Include="Add Project\Custom Control\ChooseProjectForm.Designer.cs">
       <DependentUpon>ChooseProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Add Project\Custom Control\CustomDateTime.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Add Project\Custom Control\FileAttachment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +170,7 @@
     <Compile Include="Add Project\VersionUpgrade.designer.cs">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </Compile>
+    <Compile Include="BorderGraphicsPath.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -442,6 +446,18 @@
     <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task\Timeline\CurrentTimelineContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\Timeline\CurrentTimelineContent.Designer.cs">
+      <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\Timeline\TimelineTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\Timeline\TimelineTask.designer.cs">
+      <DependentUpon>TimelineTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPage\BoardView\CircleDownloadBtn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -516,6 +532,12 @@
     </Compile>
     <Compile Include="ViewPage\ListView\CustomDonutChart.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewPage\ListView\DoneCardTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\ListView\DoneCardTemplate.Designer.cs">
+      <DependentUpon>DoneCardTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\ListView\ListViewTemplate.cs">
       <SubType>UserControl</SubType>
@@ -803,6 +825,12 @@
     <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Task\Timeline\CurrentTimelineContent.resx">
+      <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\Timeline\TimelineTask.resx">
+      <DependentUpon>TimelineTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
       <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </EmbeddedResource>
@@ -838,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\UcTaskStatusHead.resx">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\ListView\DoneCardTemplate.resx">
+      <DependentUpon>DoneCardTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\ListView\ListViewTemplate.resx">
       <DependentUpon>ListViewTemplate.cs</DependentUpon>
