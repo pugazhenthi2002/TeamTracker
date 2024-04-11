@@ -49,9 +49,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.chooseProjectLabel = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.teamLeaderPicAndNameVertical1 = new TeamTracker.TeamLeaderPicAndNameVertical();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.latestUpgradedVersion1 = new TeamTracker.LatestUpgradedVersion();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -60,8 +62,6 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.upgradeButton = new TeamTracker.RippleButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -361,6 +361,18 @@
             this.panel5.Size = new System.Drawing.Size(520, 153);
             this.panel5.TabIndex = 3;
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Team leader found!!!";
+            this.ucNotFound1.HeadTextSize = 10;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = "select project";
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(520, 153);
+            this.ucNotFound1.TabIndex = 1;
+            // 
             // teamLeaderPicAndNameVertical1
             // 
             this.teamLeaderPicAndNameVertical1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -395,6 +407,18 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(669, 346);
             this.panel8.TabIndex = 1;
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Latest Upgrade!!!";
+            this.ucNotFound2.HeadTextSize = 10;
+            this.ucNotFound2.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound2.Message = "select project";
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(669, 346);
+            this.ucNotFound2.TabIndex = 1;
             // 
             // latestUpgradedVersion1
             // 
@@ -497,28 +521,6 @@
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ClearClick);
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Team leader found!!!";
-            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound1.Message = "select project";
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(520, 153);
-            this.ucNotFound1.TabIndex = 1;
-            // 
-            // ucNotFound2
-            // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound2.HeadText = "No Latest Upgrade!!!";
-            this.ucNotFound2.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound2.Message = "select project";
-            this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(669, 346);
-            this.ucNotFound2.TabIndex = 1;
             // 
             // VersionUpgrade
             // 

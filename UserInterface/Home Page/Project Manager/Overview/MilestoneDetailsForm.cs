@@ -8,7 +8,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
+//using System.Windows.Forms.DataVisualization.Charting;
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Windows.Media;
+
 
 namespace UserInterface.Home_Page.Project_Manager.Overview
 {
@@ -17,6 +21,12 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private const int CSDropShadow = 0x00020000;
         private Dictionary<string, int> taskCounts;
+        private DateTime endDate;
+        private int colorIndex=0;
+        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>
+        {
+            System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
+        };
 
         public MilestoneDetailsForm()
         {
@@ -33,11 +43,19 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 InitializePieChart();
             }
         }
+        public DateTime EndDate
+        {
+            set
+            {
+                endDate = value;
+                InitializeEndDate();
+            }
+        }
 
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            chart1.Dispose();
+            pieChart1.Dispose();
             panel1.BackgroundImage.Dispose();
         }
 
@@ -66,16 +84,30 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void InitializePieChart()
         {
             int count = 0;
+
+            SeriesCollection seriesCollection = new SeriesCollection();
+
             foreach (var Iter in taskCounts)
             {
-                chart1.Series[0].Points.AddY(Iter.Value);
+                seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
+
+                colorIndex = (colorIndex + 1) % colorList.Count;
+
                 count = count + Iter.Value;
             }
+            pieChart1.Series = seriesCollection;
+
             label1.Text = "Task Count: " + count;
 
-            if (count == 0) chart1.Visible = false;
+            if (count == 0) pieChart1.Visible = false;
         }
 
-        
+        private void InitializeEndDate()
+        {
+            labelActualEndDate.Text = endDate + "";
+        }
+
+
+
     }
 }
