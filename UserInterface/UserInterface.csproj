@@ -357,6 +357,12 @@
     <Compile Include="LoginPage\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPage\Logo\Logo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginPage\Logo\Logo.Designer.cs">
+      <DependentUpon>Logo.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\Logo\LogoAnimation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -783,6 +789,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPage\Logo\Logo.resx">
+      <DependentUpon>Logo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\Logo\LogoAnimation.resx">
       <DependentUpon>LogoAnimation.cs</DependentUpon>
