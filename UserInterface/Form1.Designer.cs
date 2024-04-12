@@ -30,7 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.logo1 = new TeamTracker.Logo();
             this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,14 +53,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // logo1
-            // 
-            this.logo1.Location = new System.Drawing.Point(337, 133);
-            this.logo1.LogoColor = System.Drawing.Color.Black;
-            this.logo1.Name = "logo1";
-            this.logo1.Size = new System.Drawing.Size(239, 239);
-            this.logo1.TabIndex = 7;
-            // 
             // ucTaskBoardBase1
             // 
             this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -77,7 +68,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.logo1);
             this.Controls.Add(this.ucTaskBoardBase1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -94,7 +84,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private TeamTracker.UcTaskBoardBase ucTaskBoardBase1;
-        private TeamTracker.Logo logo1;
     }
 }
 
