@@ -35,13 +35,19 @@ namespace UserInterface.Add_Project.Custom_Control
             {
                 if (value != null && value.Count > 0)
                 {
+                    ucNotFound1.Visible = false;
                     availableProjects = value;
                     totalCount = value.Count % 2 == 0 ? value.Count / 2 : (value.Count / 2) + 1;
-                    viewCount = totalCount > 3 ? 3 : viewCount;
+                    viewCount = totalCount > 3 ? 3 : totalCount;
                     endIdx = viewCount - 1;
                     isDownEnable = totalCount > 3;
                     InitializeTemplates();
                     ReorderProjects();
+                }
+                else
+                {
+                    ucNotFound1.Visible = true;
+                    controlPanel.Visible = selectButton.Visible = upPicBox.Visible = downPicBox.Visible = false;
                 }
             }
         }

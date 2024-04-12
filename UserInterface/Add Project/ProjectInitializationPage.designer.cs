@@ -150,6 +150,7 @@
             this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "No Team Leader Found!!!";
+            this.ucNotFound1.HeadTextSize = 10;
             this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
             this.ucNotFound1.Message = "Invalid date";
             this.ucNotFound1.Name = "ucNotFound1";
@@ -328,6 +329,7 @@
             this.endDateTimePicker.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.endDateTimePicker.TabIndex = 2;
             this.endDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.endDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
             // 
             // label5
             // 

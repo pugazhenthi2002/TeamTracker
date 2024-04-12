@@ -77,6 +77,12 @@
     <Compile Include="Add Project\AddProject.designer.cs">
       <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Add Project\Custom Control\AttachmentWarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add Project\Custom Control\AttachmentWarningForm.Designer.cs">
+      <DependentUpon>AttachmentWarningForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Add Project\Custom Control\AvailableTeamLeaders.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -284,6 +290,19 @@
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\CustomDatetimePicker.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\On Stage\MilestoneHandler.cs" />
+    <Compile Include="Home Page\Team Lead\On Stage\MilestoneTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\On Stage\MilestoneTemplate.Designer.cs">
+      <DependentUpon>MilestoneTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\On Stage\OnStageTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Lead\On Stage\OnStageTemplate.Designer.cs">
+      <DependentUpon>OnStageTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\UCOnStage.cs">
       <SubType>UserControl</SubType>
@@ -575,6 +594,12 @@
     <Compile Include="ViewPage\ListView\StatusDropDown.designer.cs">
       <DependentUpon>StatusDropDown.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewPage\MyTaskTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPage\MyTaskTemplate.Designer.cs">
+      <DependentUpon>MyTaskTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject\BoardView\BoardViewContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -649,6 +674,9 @@
     </Compile>
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add Project\Custom Control\AttachmentWarningForm.resx">
+      <DependentUpon>AttachmentWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\AvailableTeamLeaders.resx">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
@@ -747,6 +775,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\On Stage\AddMilestoneForm.resx">
       <DependentUpon>AddMilestoneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\On Stage\MilestoneTemplate.resx">
+      <DependentUpon>MilestoneTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Lead\On Stage\OnStageTemplate.resx">
+      <DependentUpon>OnStageTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\On Stage\UCOnStage.resx">
       <DependentUpon>UCOnStage.cs</DependentUpon>
@@ -900,6 +934,9 @@
     <EmbeddedResource Include="ViewPage\ListView\StatusDropDown.resx">
       <DependentUpon>StatusDropDown.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\MyTaskTemplate.resx">
+      <DependentUpon>MyTaskTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\BoardViewContent.resx">
       <DependentUpon>BoardViewContent.cs</DependentUpon>
     </EmbeddedResource>
@@ -1025,6 +1062,10 @@
     <None Include="Images\Timeline Click.png" />
     <None Include="Images\Timeline Normal.png" />
     <None Include="Images\download Icon.png" />
+    <None Include="Pugazh Images\Back LightBlue.png" />
+    <None Include="Pugazh Images\Next LightBlue.png" />
+    <None Include="Pugazh Images\List Hover.png" />
+    <None Include="Pugazh Images\List Normal.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />
@@ -1061,7 +1102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Home Page\Custom Controls\" />
-    <Folder Include="Pugazh Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,15 +27,11 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             set
             {
-                if (value != null)
+                if (value != null && value.Count > 0)
                 {
-                    if (value.Count == 0) overviewMilestoneContent1.Visible = false;
-                    else
-                    {
-                        collection = value;
-                        projectNameLabel.Text = value.Last().Key;
-                        overviewMilestoneContent1.Version = value.Last().Value;
-                    }
+                    collection = value;
+                    projectNameLabel.Text = value.Last().Key;
+                    overviewMilestoneContent1.Version = value.Last().Value;
                 }
                 else
                 {

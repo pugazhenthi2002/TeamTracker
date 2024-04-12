@@ -59,8 +59,6 @@ namespace TeamTracker
             buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
             labelSetPriority.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelSetPriority.Width, labelSetPriority.Height, 10, 10));
             tableLayoutPanelFileName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanelFileName.Width, tableLayoutPanelFileName.Height, 10, 10));
-            
-
         }
 
         private void OnMouseEnterSetPriority(object sender, EventArgs e)
@@ -248,6 +246,11 @@ namespace TeamTracker
         private void OnMouseLeaveCloseFile(object sender, EventArgs e)
         {
             pictureBoxCloseFile.Image = UserInterface.Properties.Resources.Close_Black;
+        }
+
+        private void OnDiscar(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,18 +34,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.overviewMilestoneContent1 = new UserInterface.Home_Page.Project_Manager.Overview.OverviewMilestoneContent();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.projectNameLabel = new System.Windows.Forms.Label();
             this.dropDownPicBox = new System.Windows.Forms.PictureBox();
+            this.projectNameLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.overviewMilestoneContent1 = new UserInterface.Home_Page.Project_Manager.Overview.OverviewMilestoneContent();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dropDownPicBox)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,7 +86,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Project";
+            this.label1.Text = "On Process Project";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
@@ -102,36 +102,13 @@
             // 
             this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Current Project!!!";
+            this.ucNotFound1.HeadText = "Overview Not Found!!";
             this.ucNotFound1.HeadTextSize = 16;
             this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
-            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Message = "No On-Process Project";
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(1348, 448);
             this.ucNotFound1.TabIndex = 4;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.panel5.BackgroundImage = global::UserInterface.Properties.Resources.No_Result;
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel5.Controls.Add(this.overviewMilestoneContent1);
-            this.panel5.Controls.Add(this.panel6);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(20, 20);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1348, 448);
-            this.panel5.TabIndex = 6;
-            // 
-            // overviewMilestoneContent1
-            // 
-            this.overviewMilestoneContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewMilestoneContent1.Location = new System.Drawing.Point(0, 39);
-            this.overviewMilestoneContent1.Margin = new System.Windows.Forms.Padding(0);
-            this.overviewMilestoneContent1.Name = "overviewMilestoneContent1";
-            this.overviewMilestoneContent1.Size = new System.Drawing.Size(1348, 409);
-            this.overviewMilestoneContent1.TabIndex = 1;
-            this.overviewMilestoneContent1.Version = null;
             // 
             // panel6
             // 
@@ -145,19 +122,6 @@
             this.panel6.Size = new System.Drawing.Size(1348, 39);
             this.panel6.TabIndex = 0;
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Location = new System.Drawing.Point(953, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 29);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "On Process Version";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
@@ -169,6 +133,22 @@
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
             this.panel7.Size = new System.Drawing.Size(224, 29);
             this.panel7.TabIndex = 0;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnVersionSwitchPanelPaint);
+            // 
+            // dropDownPicBox
+            // 
+            this.dropDownPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.dropDownPicBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dropDownPicBox.Image = global::UserInterface.Properties.Resources.Paginate_Down_Blue;
+            this.dropDownPicBox.Location = new System.Drawing.Point(200, 2);
+            this.dropDownPicBox.Name = "dropDownPicBox";
+            this.dropDownPicBox.Size = new System.Drawing.Size(22, 25);
+            this.dropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.dropDownPicBox.TabIndex = 0;
+            this.dropDownPicBox.TabStop = false;
+            this.dropDownPicBox.Click += new System.EventHandler(this.OnOverviewClick);
+            this.dropDownPicBox.MouseEnter += new System.EventHandler(this.OnDropDownMouseEnter);
+            this.dropDownPicBox.MouseLeave += new System.EventHandler(this.OnDropDownMouseLEave);
             // 
             // projectNameLabel
             // 
@@ -183,17 +163,40 @@
             this.projectNameLabel.Text = "On Process Version";
             this.projectNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dropDownPicBox
+            // label2
             // 
-            this.dropDownPicBox.BackColor = System.Drawing.Color.Transparent;
-            this.dropDownPicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dropDownPicBox.Image = global::UserInterface.Properties.Resources.Paginate_Down_Blue;
-            this.dropDownPicBox.Location = new System.Drawing.Point(200, 2);
-            this.dropDownPicBox.Name = "dropDownPicBox";
-            this.dropDownPicBox.Size = new System.Drawing.Size(22, 25);
-            this.dropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.dropDownPicBox.TabIndex = 0;
-            this.dropDownPicBox.TabStop = false;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label2.Location = new System.Drawing.Point(953, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(166, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "On Process Version";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // overviewMilestoneContent1
+            // 
+            this.overviewMilestoneContent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewMilestoneContent1.Location = new System.Drawing.Point(0, 39);
+            this.overviewMilestoneContent1.Margin = new System.Windows.Forms.Padding(0);
+            this.overviewMilestoneContent1.Name = "overviewMilestoneContent1";
+            this.overviewMilestoneContent1.Size = new System.Drawing.Size(1348, 409);
+            this.overviewMilestoneContent1.TabIndex = 1;
+            this.overviewMilestoneContent1.Version = null;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel5.Controls.Add(this.overviewMilestoneContent1);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(20, 20);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1348, 448);
+            this.panel5.TabIndex = 6;
             // 
             // Overview
             // 
@@ -208,10 +211,10 @@
             this.Name = "Overview";
             this.Size = new System.Drawing.Size(1388, 488);
             this.panel3.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dropDownPicBox)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -224,12 +227,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private UcNotFound ucNotFound1;
-        private System.Windows.Forms.Panel panel5;
-        private OverviewMilestoneContent overviewMilestoneContent1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label projectNameLabel;
         private System.Windows.Forms.PictureBox dropDownPicBox;
+        private OverviewMilestoneContent overviewMilestoneContent1;
+        private System.Windows.Forms.Panel panel5;
     }
 }

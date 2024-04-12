@@ -29,7 +29,7 @@ namespace TeamTracker
 
         public delegate void DeployHandler(string name, ProjectVersion project);
         public event DeployHandler Deployment;
-
+        public event EventHandler SourceCodeDownlload;
 
         public ProjectVersion Version
         {
@@ -83,29 +83,7 @@ namespace TeamTracker
 
         private void OnDownloaded(object sender, EventArgs e)
         {
-            string fileNetworkPath = DataHandler.FetchVersionSourceCodeByVersionID(version.VersionID).VersionLocation;
-            string savePath = "";
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "ZIP files (*.zip)|*.zip";
-            saveFileDialog.FilterIndex = 1;
-            DialogResult result = saveFileDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                savePath = saveFileDialog.FileName;
-            }
-
-            try
-            {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.Combine(savePath, savePath);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + version.VersionName);
-            }
-            catch
-            {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", proj.ProjectName + "\n" + version.VersionName);
-            }
+            SourceCodeDownlload?.Invoke(this, e);
         }
 
         private void OnDeployClick(object sender, EventArgs e)

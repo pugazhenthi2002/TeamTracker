@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,90 +9,147 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.Home_Page.Team_Lead.On_Stage;
 
 namespace TeamTracker
 {
     public partial class AddMilestoneForm : Form
     {
-        
+        private bool isUpEnable, isDownEnable;
+        private int startIdx, endIdx;
+
+        private MilestoneTemplate Template;
+        private List<MilestoneTemplate> TemplateCollection;
+        public List<Milestone> milestoneCollection;
+        private DateTime prevEndDate, startDate, endDate;
+
+        private ProjectVersion selectedVersion;
+        public ProjectVersion SelectedVersion
+        {
+            set
+            {
+                selectedVersion = value;
+                prevEndDate = startDate = value.StartDate;
+                endDate = value.EndDate;
+            }
+        }
+
+        public List<Milestone> MilestoneCollection
+        {
+            get
+            {
+                return milestoneCollection;
+            }
+            set
+            {
+                milestoneCollection = value;
+            }
+        }
+
         public AddMilestoneForm()
         {
             InitializeComponent();
-            InitializeRoundedEdge();
-            labelWarning.Hide();
+            TemplateCollection = new List<MilestoneTemplate>();
+            milestoneCollection = new List<Milestone>();
         }
 
-        public EventHandler ClickAdd;
-
-        public string MileStoneName { get; private set; }
-        public DateTime From { get; private set; }
-        public DateTime To { get; private set; }
-
-        public DateTime ProjectFrom { get;  set; }
-        public DateTime ProjectTo { get;  set; }
-
-
-        protected override void OnResize(EventArgs e)
+        private void addMilestoneButton_Click(object sender, EventArgs e)
         {
-            base.OnResize(e);
-            InitializeRoundedEdge();
-        }
+            BooleanMsg message = new BooleanMsg();
+            message.Message = "Data Entered is Invalid";
+            message = (prevEndDate < milestoneDateTime.Value && milestoneDateTime.Value <= endDate) && (milestoneTextBox.Text != "") && (!MilestoneContains());
 
-
-        private void InitializeRoundedEdge()
-        {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            buttonDiscard.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDiscard.Width, buttonDiscard.Height, 10, 10));
-            buttonAdd.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonAdd.Width, buttonAdd.Height, 10, 10));
-
-
-        }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-        private void OnPaintDateBase(object sender, PaintEventArgs e)
-        {
-            Point pt1 = new Point(4, 4);
-            Point pt2 = new Point((sender as Panel).Width - 6, 4);
-            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
-            Point pt4 = new Point(4, (sender as Panel).Height - 6);
-            Pen border = new Pen(Color.Black, 2);
-            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
-
-        private void OnClickDiscard(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void OnClickAdd(object sender, EventArgs e)
-        {
-            if (textBoxMilestone.TextBoxtext == "" )
+            if (message)
             {
-                labelWarning.Text = "Milestone name not set!";
-                labelWarning.Show();
-                return;
+                milestoneCollection.Add(new Milestone()
+                {
+                    MileStoneName = milestoneTextBox.Text,
+                    StartDate = prevEndDate,
+                    EndDate = milestoneDateTime.Value,
+                    Status = SetMilestoneStatus(prevEndDate, milestoneDateTime.Value),
+                    VersionID = selectedVersion.VersionID,
+                });
+                prevEndDate = milestoneDateTime.Value;
+                milestoneTextBox.Text = "";
+                SetMilestoneForm();
             }
-            else if((dateTimePickerFrom.Value.Date<ProjectFrom.Date || dateTimePickerTo.Value.Date>ProjectTo.Date) || (dateTimePickerFrom.Value.Date> dateTimePickerTo.Value.Date))
+            else
             {
-                labelWarning.Text = "Invalid Due date!";
-                labelWarning.Show();
-                return;
+                //ProjectManagerMainForm.notify.AddNotification("Invalid Input", message);
             }
-            MileStoneName = textBoxMilestone.TextBoxtext;
-            From = dateTimePickerFrom.Value;
-            To = dateTimePickerTo.Value;
+        }
 
-            ClickAdd?.Invoke(sender, e);
-            this.Dispose();
+        private BooleanMsg MilestoneContains()
+        {
+            foreach(var Iter in milestoneCollection)
+            {
+                if(Iter.MileStoneName == milestoneTextBox.Text)
+                {
+                    return new BooleanMsg()
+                    {
+                        Message = "Duplicate Milestone",
+                        Result = true
+                    };
+                }
+            }
+            return false;
+        }
+
+        private MilestoneStatus SetMilestoneStatus(DateTime startDate, DateTime endDate)
+        {
+            if(endDate < DateTime.Now)
+            {
+                return MilestoneStatus.Completed;
+            }
+            else if(startDate <= DateTime.Now && DateTime.Now <= endDate)
+            {
+                return MilestoneStatus.OnProcess;
+            }
+            else
+            {
+                return MilestoneStatus.Upcoming;
+            }
+        }
+
+        private void SetMilestoneForm()
+        {
+            if(milestoneCollection.Count <= 4)
+            {
+                Template = new MilestoneTemplate()
+                {
+                    Dock = DockStyle.Top,
+                    SelectedMilestone = milestoneCollection[milestoneCollection.Count - 1],
+                    Counter = milestoneCollection.Count
+                };
+                Template.MilestoneOperate += OnMilestoneOperation;
+                basePanel.Controls.Add(Template);
+                TemplateCollection.Add(Template);
+                foreach(var Iter in TemplateCollection)
+                {
+                    Iter.BringToFront();
+                }
+                Template.Focus();
+                endIdx++;
+            }
+            else
+            {
+                startIdx++; endIdx++;
+                InitializeControl();
+            }
+        }
+
+        private void OnMilestoneOperation(object sender, MilestoneEventArgs m)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void InitializeControl()
+        {
+            for(int ctr=startIdx, idx = 0; ctr<endIdx;ctr++, idx++)
+            {
+                TemplateCollection[idx].SelectedMilestone = milestoneCollection[ctr];
+                TemplateCollection[idx].Counter = ctr+1;
+            }
         }
     }
 }

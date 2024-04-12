@@ -15,7 +15,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
     {
         private bool isClicked = true;
         private string text;
-        private Font textFont = new Font(new FontFamily("Ebrima"), 12);
+        private Font textFont = new Font(new FontFamily("Ebrima"), 12, FontStyle.Bold);
         private Color textColor = Color.FromArgb(39, 55, 77);
         private Projects project;
 
@@ -47,7 +47,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             set
             {
                 isClicked = value;
-                panel1.BackColor = textColor = isClicked ? Color.Red : Color.FromArgb(39, 55, 77);
+                panel2.BackColor = isClicked ? textColor: Color.FromArgb(221, 230, 237);
                 panel2.Invalidate();
             }
         }
@@ -77,15 +77,21 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         {
             base.OnPaint(e);
             Pen border = new Pen(textColor, 2);
-            e.Graphics.DrawLine(border, new Point(0, Height), new Point(Width, Height));
-            e.Graphics.DrawLine(border, new Point(0, 0), new Point(Width, 0));
-            e.Graphics.DrawLine(border, new Point(0, 0), new Point(0, Height));
+            e.Graphics.DrawLine(border, new Point(0, Height - 1), new Point(Width, Height - 1));
+            e.Graphics.DrawLine(border, new Point(1, 1), new Point(Width, 1));
+            e.Graphics.DrawLine(border, new Point(1, 1), new Point(1, Height));
             border.Dispose();
         }
 
         private void OnVerticalTextPaint(object sender, PaintEventArgs e)
         {
-            Brush b = new SolidBrush(textColor);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Brush b;
+            if (!isClicked)
+                b = new SolidBrush(textColor);
+            else
+                b = new SolidBrush(Color.FromArgb(221, 230, 237));
+
             StringFormat format = new StringFormat();
             format.Alignment = format.LineAlignment =  StringAlignment.Center;
             format.FormatFlags = StringFormatFlags.DirectionVertical;

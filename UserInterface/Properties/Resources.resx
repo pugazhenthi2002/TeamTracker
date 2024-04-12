@@ -151,6 +151,9 @@
   <data name="Attachment-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Attachment-gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Next LightBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Next LightBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sort-down-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-down-hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -174,6 +177,9 @@
   </data>
   <data name="Paginate Up Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Paginate Up Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Not found" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Not found.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Home Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Home Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,6 +292,9 @@
   <data name="CloudHover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Back LightBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Back LightBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Version Milestone Status Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Version Milestone Status Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -331,7 +340,10 @@
   <data name="Home Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Home Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Not found" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Not found.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="List Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\List Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="List Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\List Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

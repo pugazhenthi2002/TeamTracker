@@ -31,11 +31,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.nextBtn = new System.Windows.Forms.PictureBox();
+            this.backBtn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.ucDeploy1 = new TeamTracker.UcDeploy();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +66,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.nextBtn);
+            this.panel3.Controls.Add(this.backBtn);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(20, 0);
@@ -68,6 +75,32 @@
             this.panel3.Size = new System.Drawing.Size(485, 20);
             this.panel3.TabIndex = 2;
             this.panel3.Tag = "";
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Next_LightBlue;
+            this.nextBtn.Location = new System.Drawing.Point(99, 0);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(23, 20);
+            this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.nextBtn.TabIndex = 5;
+            this.nextBtn.TabStop = false;
+            this.nextBtn.Click += new System.EventHandler(this.OnNextClick);
+            // 
+            // backBtn
+            // 
+            this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Back_Hover;
+            this.backBtn.Location = new System.Drawing.Point(76, 0);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(23, 20);
+            this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.backBtn.TabIndex = 4;
+            this.backBtn.TabStop = false;
+            this.backBtn.Click += new System.EventHandler(this.OnBackClick);
             // 
             // label1
             // 
@@ -81,7 +114,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Deploy";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.OnVersionLabelClicked);
             // 
             // panel4
             // 
@@ -94,14 +126,26 @@
             // 
             // panel5
             // 
-            this.panel5.BackgroundImage = global::UserInterface.Properties.Resources.No_Result;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel5.Controls.Add(this.ucDeploy1);
+            this.panel5.Controls.Add(this.ucNotFound1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(20, 20);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(485, 289);
             this.panel5.TabIndex = 4;
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "Zero Deployment Project !!";
+            this.ucNotFound1.HeadTextSize = 12;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(485, 289);
+            this.ucNotFound1.TabIndex = 0;
             // 
             // ucDeploy1
             // 
@@ -110,8 +154,9 @@
             this.ucDeploy1.Location = new System.Drawing.Point(0, 0);
             this.ucDeploy1.Name = "ucDeploy1";
             this.ucDeploy1.Size = new System.Drawing.Size(485, 289);
-            this.ucDeploy1.TabIndex = 0;
+            this.ucDeploy1.TabIndex = 1;
             this.ucDeploy1.Deployment += new TeamTracker.UcDeploy.DeployHandler(this.OnDeployment);
+            this.ucDeploy1.SourceCodeDownlload += new System.EventHandler(this.OnSourceCodeDownload);
             // 
             // DeployContent
             // 
@@ -125,6 +170,8 @@
             this.Name = "DeployContent";
             this.Size = new System.Drawing.Size(525, 329);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -138,6 +185,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
+        private UcNotFound ucNotFound1;
+        private System.Windows.Forms.PictureBox nextBtn;
+        private System.Windows.Forms.PictureBox backBtn;
         private TeamTracker.UcDeploy ucDeploy1;
     }
 }

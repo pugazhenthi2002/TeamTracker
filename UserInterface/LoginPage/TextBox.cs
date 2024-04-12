@@ -39,6 +39,17 @@ namespace TeamTracker
             Click += Label1Click;
         }
 
+        public int Interval
+        {
+            get
+            {
+                return timer.Interval;
+            }
+            set
+            {
+                timer.Interval = value;
+            }
+        }
         public Color TextBoxColor
         {
             get { return textBox1.BackColor; }
@@ -220,10 +231,10 @@ namespace TeamTracker
         {
             if (isCenterPlaceHolder == true&& (label1.Location.X>0&& label1.Location.Y>-3))
             {
-                label1.Location=new Point(label1.Location.X-1, label1.Location.Y-2);
+                label1.Location=new Point(label1.Location.X-4, label1.Location.Y-4);
             }
             else if(isCenterPlaceHolder == false&& (label1.Location.X < placeholderlocation.X && label1.Location.Y< placeholderlocation.Y)){
-                label1.Location = new Point(label1.Location.X +1, label1.Location.Y +2);
+                label1.Location = new Point(label1.Location.X +4, label1.Location.Y +4);
             }
             else
             {

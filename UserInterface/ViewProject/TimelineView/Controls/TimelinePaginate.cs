@@ -54,9 +54,19 @@ namespace TeamTracker
                 isNextEnable = true;
                 endViewDate = startViewDate.AddDays(20);
                 taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
-                milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
-                InitializeTimeline();
-                SetViewTaskCollection();
+                if(taskCollection!=null && taskCollection.Count > 0)
+                {
+                    ucNotFound1.Visible = false;
+                    panel1.Visible = true;
+                    milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
+                    InitializeTimeline();
+                    SetViewTaskCollection();
+                }
+                else
+                {
+                    panel1.Visible = false;
+                    ucNotFound1.Visible = true;
+                }
             }
         }
 
@@ -66,9 +76,9 @@ namespace TeamTracker
         {
             int width, x, y, stepWidth;
             width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
-            border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            while(x < width)
+            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            while (x < width)
             {
                 e.Graphics.DrawLine(border, x - 1, 0, x - 1, y);
                 x += stepWidth;
@@ -144,12 +154,13 @@ namespace TeamTracker
                 }
             }
 
-            foreach(var Iter in viewTaskCollection)
+            viewTaskCollection.Sort((v1, v2) => v1.StartDate.CompareTo(v2.StartDate));
+
+            foreach (var Iter in viewTaskCollection)
             {
                 viewColorCollections.Add(FetchColorFromMilestoneID(Iter.MilestoneID));
             }
 
-            viewTaskCollection.Sort((v1, v2)=>v1.StartDate.CompareTo(v2.StartDate));
 
             DateTime prevStartDate = DateTime.MinValue, prevEndDate = DateTime.MinValue;
             int height = 50, width = tableLayoutPanel1.Width / 20 , x = 0, y = 0, controlWidth = 0;
@@ -185,7 +196,7 @@ namespace TeamTracker
                     Height = height,
                     Width = controlWidth,
                     TimelineTask = Iter,
-                    BackColor = viewColorCollections[ctr]
+                    TimelineColor = viewColorCollections[ctr]
                 };
                 timelineControlPanel.Controls.Add(taskTimeline);
                 ctr++;

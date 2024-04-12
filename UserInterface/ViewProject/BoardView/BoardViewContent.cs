@@ -15,8 +15,6 @@ namespace UserInterface.ViewProject.BoardView
     {
         private List<ProjectVersion> versionCollection;
 
-        
-
         public BoardViewContent()
         {
             InitializeComponent();
@@ -26,8 +24,18 @@ namespace UserInterface.ViewProject.BoardView
         {
             set
             {
-                versionCollection = value;
-                SetStatusviseVersion();
+                if (value != null && value.Count > 0)
+                {
+                    ucNotFound1.Visible = false;
+                    tableLayoutPanel1.Visible = true;
+                    versionCollection = value;
+                    SetStatusviseVersion();
+                }
+                else
+                {
+                    ucNotFound1.Visible = true;
+                    tableLayoutPanel1.Visible = false;
+                }
             }
         }
 

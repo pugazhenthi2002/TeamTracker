@@ -41,6 +41,10 @@ namespace TeamTracker
                     endIndex = MaxUserControls - 1;
                     InitializeNotifications();
                 }
+                else
+                {
+                    nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
+                }
             }
         }
 
@@ -105,8 +109,27 @@ namespace TeamTracker
                 nextBtn.Image.Dispose();
             }
 
-            backBtn.Image = (backEnable)?UserInterface.Properties.Resources.Back: UserInterface.Properties.Resources.Back_Hover;
-            nextBtn.Image = (nextEnable)?UserInterface.Properties.Resources.Next: UserInterface.Properties.Resources.Next_Hover;
+            backBtn.Image = (backEnable)?UserInterface.Properties.Resources.Back_LightBlue: UserInterface.Properties.Resources.Back_Hover;
+            nextBtn.Image = (nextEnable)?UserInterface.Properties.Resources.Next_LightBlue: UserInterface.Properties.Resources.Next_Hover;
+        }
+
+        private void ClearAllButtonClicked(object sender, EventArgs e)
+        {
+            panelBase.Controls.Clear();
+            UcNotiList.Clear();
+            DataHandler.DeleteAllNotification();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            (sender as Control).BackColor = Color.FromArgb(59, 75, 97);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            (sender as Control).BackColor = Color.FromArgb(39, 55, 77);
         }
 
         private void OnClickCloseNotification(object sender, Notification e)
@@ -117,7 +140,7 @@ namespace TeamTracker
                 else if (currentIndex == 0) { endIndex--; }
             }
 
-            //DataHandler.DeleteNotification(e.NotificationId);
+            DataHandler.DeleteNotification(e.NotificationId);
             if (endIndex - currentIndex < UcNotiList.Count - 1)
             {
                 UcNotification tempUCNotify = UcNotiList[UcNotiList.Count - 1];

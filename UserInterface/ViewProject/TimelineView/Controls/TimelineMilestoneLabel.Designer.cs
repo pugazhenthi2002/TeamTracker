@@ -39,16 +39,17 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(35, 33);
+            this.panel1.Size = new System.Drawing.Size(25, 25);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPanelPaint);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(35, 0);
+            this.panel2.Location = new System.Drawing.Point(25, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(145, 33);
+            this.panel2.Size = new System.Drawing.Size(138, 25);
             this.panel2.TabIndex = 1;
             // 
             // label1
@@ -58,10 +59,10 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 33);
+            this.label1.Size = new System.Drawing.Size(138, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Milestone Name";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TimelineMilestoneLabel
             // 
@@ -70,7 +71,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "TimelineMilestoneLabel";
-            this.Size = new System.Drawing.Size(180, 33);
+            this.Size = new System.Drawing.Size(163, 25);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

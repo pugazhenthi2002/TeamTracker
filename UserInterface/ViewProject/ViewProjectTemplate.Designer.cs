@@ -74,6 +74,7 @@
             this.filteredUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filteredUser.Location = new System.Drawing.Point(642, 0);
             this.filteredUser.Name = "filteredUser";
+            this.filteredUser.ParentColor = System.Drawing.Color.Empty;
             this.filteredUser.Size = new System.Drawing.Size(48, 48);
             this.filteredUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.filteredUser.TabIndex = 3;
@@ -163,6 +164,7 @@
             // 
             // boardPanel
             // 
+            this.boardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.boardPanel.ColumnCount = 2;
             this.boardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.boardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -179,7 +181,7 @@
             // boardPicBox
             // 
             this.boardPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board_Normal;
+            this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board_Click;
             this.boardPicBox.Location = new System.Drawing.Point(3, 3);
             this.boardPicBox.Name = "boardPicBox";
             this.boardPicBox.Size = new System.Drawing.Size(58, 42);
@@ -193,7 +195,7 @@
             this.boardLabel.AutoSize = true;
             this.boardLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boardLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.boardLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.boardLabel.Location = new System.Drawing.Point(67, 0);
             this.boardLabel.Name = "boardLabel";
             this.boardLabel.Size = new System.Drawing.Size(144, 48);

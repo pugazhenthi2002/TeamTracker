@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.completedTemplate = new UserInterface.ViewProject.BoardView.Custom_Controls.StatusViewTemplate();
             this.upcomingTemplates = new UserInterface.ViewProject.BoardView.Custom_Controls.StatusViewTemplate();
@@ -36,6 +37,18 @@
             this.deploymentTemplate = new UserInterface.ViewProject.BoardView.Custom_Controls.StatusViewTemplate();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Projects Found !!";
+            this.ucNotFound1.HeadTextSize = 20;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(1162, 581);
+            this.ucNotFound1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -56,7 +69,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1162, 581);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // completedTemplate
             // 
@@ -120,6 +133,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.ucNotFound1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BoardViewContent";
             this.Size = new System.Drawing.Size(1162, 581);
@@ -130,11 +144,12 @@
 
         #endregion
 
+        private UcNotFound ucNotFound1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Custom_Controls.StatusViewTemplate completedTemplate;
         private Custom_Controls.StatusViewTemplate upcomingTemplates;
         private Custom_Controls.StatusViewTemplate onStageTemplate;
         private Custom_Controls.StatusViewTemplate onProcessTemplate;
         private Custom_Controls.StatusViewTemplate deploymentTemplate;
-        private Custom_Controls.StatusViewTemplate completedTemplate;
     }
 }

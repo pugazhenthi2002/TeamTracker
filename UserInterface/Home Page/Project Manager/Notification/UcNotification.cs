@@ -69,12 +69,12 @@ namespace TeamTracker
         }
         private void OnMouseEnterClose(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Red;
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.close_Hover;
         }
 
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Black;
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
         }
 
         private void OnResizeUserControl(object sender, EventArgs e)
@@ -85,6 +85,14 @@ namespace TeamTracker
         private void OnClickClose(object sender, EventArgs e)
         {
             CloseClick?.Invoke(sender, NotficationData);
+        }
+
+        private void OnPanelPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Panel).Width - 1, (sender as Panel).Height - 1));
+            border.Dispose();
         }
     }
 }

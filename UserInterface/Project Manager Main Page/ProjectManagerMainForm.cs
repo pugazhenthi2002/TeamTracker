@@ -34,13 +34,20 @@ namespace TeamTracker
             base.OnLoad(e);
             if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
+                panel2.Visible = panel7.Visible = false;
                 projectManagerHome1.InitializeProjectManagerHome();
                 tabControl1.SelectedIndex = 0;
             }
             else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
+                panel5.Visible = false;
                 teamLeadHome1.InitializeHomePage();
                 tabControl1.SelectedIndex = 3;
+            }
+            else
+            {
+                addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
+                tabControl1.SelectedIndex = 4;
             }
         }
 
@@ -194,6 +201,7 @@ namespace TeamTracker
 
         private void OnAddProjectClicked(object sender, EventArgs e)
         {
+            addProject1.InitializePage();
             tabControl1.SelectedIndex = 1;
         }
 
@@ -217,5 +225,14 @@ namespace TeamTracker
             this.Close();
         }
 
+        private void OnMyTaskClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnAddTaskClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

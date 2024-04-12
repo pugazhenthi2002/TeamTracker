@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotificationContent));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.clearAllButton = new System.Windows.Forms.Label();
             this.nextBtn = new System.Windows.Forms.PictureBox();
             this.backBtn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panelBase = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
@@ -64,7 +64,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.clearAllButton);
             this.panel2.Controls.Add(this.nextBtn);
             this.panel2.Controls.Add(this.backBtn);
             this.panel2.Controls.Add(this.label1);
@@ -74,11 +74,27 @@
             this.panel2.Size = new System.Drawing.Size(547, 20);
             this.panel2.TabIndex = 4;
             // 
+            // clearAllButton
+            // 
+            this.clearAllButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.clearAllButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.clearAllButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearAllButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.clearAllButton.Location = new System.Drawing.Point(451, 0);
+            this.clearAllButton.Name = "clearAllButton";
+            this.clearAllButton.Size = new System.Drawing.Size(96, 20);
+            this.clearAllButton.TabIndex = 4;
+            this.clearAllButton.Text = "Clear All";
+            this.clearAllButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.clearAllButton.Click += new System.EventHandler(this.ClearAllButtonClicked);
+            this.clearAllButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.clearAllButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            // 
             // nextBtn
             // 
-            this.nextBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Next_LightBlue;
             this.nextBtn.Location = new System.Drawing.Point(178, 0);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(23, 20);
@@ -86,10 +102,12 @@
             this.nextBtn.TabIndex = 3;
             this.nextBtn.TabStop = false;
             this.nextBtn.Click += new System.EventHandler(this.OnNextClick);
+            this.nextBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.nextBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // backBtn
             // 
-            this.backBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.backBtn.Image = global::UserInterface.Properties.Resources.Back_Hover;
             this.backBtn.Location = new System.Drawing.Point(155, 0);
@@ -99,6 +117,8 @@
             this.backBtn.TabIndex = 2;
             this.backBtn.TabStop = false;
             this.backBtn.Click += new System.EventHandler(this.OnBackClick);
+            this.backBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.backBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 
@@ -122,32 +142,32 @@
             this.panel3.Size = new System.Drawing.Size(547, 20);
             this.panel3.TabIndex = 5;
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "Zero Notifications !!";
+            this.ucNotFound1.HeadTextSize = 12;
+            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(547, 336);
+            this.ucNotFound1.TabIndex = 6;
+            // 
             // panelBase
             // 
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBase.Location = new System.Drawing.Point(20, 20);
             this.panelBase.Name = "panelBase";
             this.panelBase.Size = new System.Drawing.Size(547, 336);
-            this.panelBase.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label2.Location = new System.Drawing.Point(451, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Clear All";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelBase.TabIndex = 7;
             // 
             // NotificationContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelBase);
+            this.Controls.Add(this.ucNotFound1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
@@ -167,10 +187,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panelBase;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox nextBtn;
         private System.Windows.Forms.PictureBox backBtn;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label clearAllButton;
+        private UserInterface.UcNotFound ucNotFound1;
+        private System.Windows.Forms.Panel panelBase;
     }
 }

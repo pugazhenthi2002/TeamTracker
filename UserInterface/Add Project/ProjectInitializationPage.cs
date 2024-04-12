@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using UserInterface.Add_Project.Custom_Control;
 
 namespace TeamTracker
 {
@@ -23,12 +24,15 @@ namespace TeamTracker
 
         public void InitializePage()
         {
-            
-            ucNotFound1.Visible = true;
-            startDateTimePicker.Value = endDateTimePicker.Value = DateTime.Now;
-            projectTitleTextBox.Text = "Project Name";
             projectDescTextBox.Text = "Enter your Desc...";
+            projectTitleTextBox.Text = "Project Name";
             clientTextBox.Text = "Client Email";
+            startDateTimePicker.Value = DateTime.Now;
+            endDateTimePicker.Value = DateTime.Now;
+            fileAttachment1.ClearAttachments = true;
+            ucNotFound1.Visible = true;
+            availableTeamLeaders1.Visible = false;
+            selectedTeamLeader1.Visible = false;
         }
 
         protected override void OnResize(EventArgs e)
@@ -168,19 +172,41 @@ namespace TeamTracker
                     ucNotFound1.Visible = false;
                 }
             }
+            else
+            {
+                teamLeader = null;
+                availableTeamLeaders1.Visible = false;
+                selectedTeamLeader1.Visible = false;
+                ucNotFound1.Visible = true;
+            }
         }
 
         private void OnCreateClick(object sender, EventArgs e)
         {
             if (EligibleForCreatingProject())
             {
-                List<VersionAttachment> versions = FetchAttachmentFiles();
-                if (versions.Count > 0)
+                List<VersionAttachment> attachments = FetchAttachmentFiles();
+                if (attachments.Count == 0)
                 {
-                    ProjectManagerMainForm.notify.AddNotification("Warning", "Are You Sure you want to Add Project without Attachments?");
+                    AttachmentWarningForm form = new AttachmentWarningForm();
+                    form.WarningStatus += OnWarningStatus;
+                    form.Show();
                 }
-                VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, versions);
-                ReInitializeComponents();
+                else
+                {
+                    VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, attachments);
+                    InitializePage();
+                    ProjectManagerMainForm.notify.AddNotification("Project Created", projectTitleTextBox.Text + "\n" + "Version Name: 1.0");
+                }
+            }
+        }
+
+        private void OnWarningStatus(object sender, bool e)
+        {
+            if (e)
+            {
+                VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, null);
+                ProjectManagerMainForm.notify.AddNotification("Project Created", projectTitleTextBox.Text + "\n" + "Version Name: 1.0");
             }
         }
 
@@ -221,13 +247,15 @@ namespace TeamTracker
                 ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Valid Project Date");
                 return false;
             }
-
             return true;
         }
 
         private List<VersionAttachment> FetchAttachmentFiles()
         {
             List<VersionAttachment> attachments = new List<VersionAttachment>();
+
+            if (fileAttachment1.AttachmentCollection == null || fileAttachment1.AttachmentCollection.Count == 0)
+                return attachments;
 
             foreach (var Iter in fileAttachment1.AttachmentCollection)
             {
@@ -237,19 +265,6 @@ namespace TeamTracker
             if(attachments.Count > 0)
             return attachments;
             else { return null; }
-        }
-
-        public void ReInitializeComponents()
-        {
-            projectDescTextBox.Text = "Enter your Desc...";
-            projectTitleTextBox.Text = "Project Name";
-            clientTextBox.Text = "Client Email";
-            startDateTimePicker.Value = DateTime.Now;
-            endDateTimePicker.Value = DateTime.Now;
-            fileAttachment1.ClearAttachments = true;
-            ucNotFound1.Visible = true;
-            availableTeamLeaders1.Visible = false;
-            selectedTeamLeader1.Visible = false;
         }
 
         private void BorderDrawPaint(object sender, PaintEventArgs e)

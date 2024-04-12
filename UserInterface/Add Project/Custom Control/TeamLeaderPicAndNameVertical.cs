@@ -17,12 +17,19 @@ namespace TeamTracker
             InitializeComponent();
         }
 
+        private Employee teamLeader;
+
         public Employee TeamLeader
         {
+            get
+            {
+                return teamLeader;
+            }
             set
             {
                 if (value != null)
                 {
+                    teamLeader = value;
                     tableLayoutPanel1.Visible = profilePictureBox1.Visible = true;
                     profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
                     label1.Text = value.EmployeeFirstName;

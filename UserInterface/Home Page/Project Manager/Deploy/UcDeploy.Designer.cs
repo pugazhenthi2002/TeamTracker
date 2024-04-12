@@ -225,6 +225,7 @@
             this.labelDownload.TabIndex = 5;
             this.labelDownload.Text = "Download Sourcecode";
             this.labelDownload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDownload.Click += new System.EventHandler(this.OnDownloaded);
             this.labelDownload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickDownloadSourceCode);
             this.labelDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownload);
             this.labelDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownload);
@@ -240,6 +241,7 @@
             this.pictureBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxDownload.TabIndex = 4;
             this.pictureBoxDownload.TabStop = false;
+            this.pictureBoxDownload.Click += new System.EventHandler(this.OnDownloaded);
             this.pictureBoxDownload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickDownloadSourceCode);
             this.pictureBoxDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownload);
             this.pictureBoxDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownload);
@@ -341,10 +343,10 @@
             this.buttonDeploy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeploy.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeploy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.buttonDeploy.Location = new System.Drawing.Point(323, 4);
+            this.buttonDeploy.Location = new System.Drawing.Point(324, 4);
             this.buttonDeploy.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeploy.Name = "buttonDeploy";
-            this.buttonDeploy.Size = new System.Drawing.Size(153, 33);
+            this.buttonDeploy.Size = new System.Drawing.Size(152, 33);
             this.buttonDeploy.TabIndex = 2;
             this.buttonDeploy.Text = "Deploy";
             this.buttonDeploy.UseVisualStyleBackColor = false;
@@ -354,7 +356,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "UcDeploy";
             this.Size = new System.Drawing.Size(486, 311);

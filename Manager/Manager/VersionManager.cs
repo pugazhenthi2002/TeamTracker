@@ -9,7 +9,6 @@ namespace TeamTracker
 {
     public static class VersionManager
     {
-
         public static List<Projects> ProjectCollection;
         public static List<ProjectVersion> VersionCollection;
 
@@ -77,12 +76,13 @@ namespace TeamTracker
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = newProject.ProjectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnProcess : ProjectStatus.UpComing
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
 
-            DataHandler.AddVersionAttachments(versionAttachments, newVersion.VersionID);
+            if (versionAttachments != null)
+                DataHandler.AddVersionAttachments(versionAttachments, newVersion.VersionID);
 
             ProjectCollection.Add(newProject);
             VersionCollection.Add(newVersion);
@@ -98,12 +98,13 @@ namespace TeamTracker
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = projectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnProcess : ProjectStatus.UpComing
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
 
-            DataHandler.AddVersionAttachments(versionAttachments, newVersion.VersionID);
+            if (versionAttachments != null)
+                DataHandler.AddVersionAttachments(versionAttachments, newVersion.VersionID);
 
             VersionCollection.Add(newVersion);
         }
@@ -214,17 +215,16 @@ namespace TeamTracker
             return result;
         }
 
-        public static Dictionary<string, ProjectVersion> FetchDeploymentsProjectVersion()
+        public static List<ProjectVersion> FetchDeploymentsProjectVersion()
         {
-            Dictionary<string, ProjectVersion> result = new Dictionary<string, ProjectVersion>();
+            List<ProjectVersion> result = new List<ProjectVersion>();
 
             string name = "";
             foreach (var Iter in VersionCollection)
             {
                 if(Iter.StatusOfVersion == ProjectStatus.Deployment && GetManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
                 {
-                    if (!result.ContainsKey(name = GetProjectName(Iter.ProjectID)))
-                        result.Add(name, Iter);
+                    result.Add(Iter);
                 }
             }
 
@@ -301,15 +301,25 @@ namespace TeamTracker
         //Fetches All Project That are only on Completed Status
         public static List<Projects> FetchAllProjectsOnCompletedStatus()
         {
+            List<ProjectVersion> latestVersions = FetchAllLastestVersionOfProject();
             List<Projects> result = new List<Projects>();
-            foreach(var Iter in ProjectCollection)
+
+            foreach(var Iter in latestVersions)
             {
-                if(Iter.ManagerID == EmployeeManager.CurrentEmployee.EmployeeID && (IsProjectAvailableForVersionUpgrade(Iter.ProjectID)))
+                if(Iter.StatusOfVersion == ProjectStatus.Completed)
                 {
-                    result.Add(Iter);
+                    result.Add(FetchProjectFromID(Iter.ProjectID));
                 }
             }
 
+            for(int ctr=0; ctr< result.Count; ctr++)
+            {
+                if(result[ctr].ManagerID != EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Remove(result[ctr]);
+                    ctr--;
+                }
+            }
             return result;
         }
 
@@ -439,11 +449,11 @@ namespace TeamTracker
             {
                 if(Iter.ProjectID == projectID && Iter.VersionName == versionName)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
         //Checks if Team Leader is Available for Version Upgrade for Project or New Project

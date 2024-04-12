@@ -23,6 +23,7 @@ namespace UserInterface.Home_Page.Team_Lead
             reportTemplate1.InitializeReport();
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
             notificationContent1.NotifyList = DataHandler.FetchNotification();
+            onStageTemplate1.SelectedVersion = VersionManager.FetchOnStageVersion(EmployeeManager.CurrentEmployee.EmployeeID);
         }
     }
 }

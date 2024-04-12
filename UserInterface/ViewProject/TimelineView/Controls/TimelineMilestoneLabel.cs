@@ -12,11 +12,13 @@ namespace UserInterface.ViewProject.TimelineView.Controls
 {
     public partial class TimelineMilestoneLabel : UserControl
     {
+        private Color milestoneColor = Color.AliceBlue;
         public Color MilestoneColor
         {
             set
             {
-                panel1.BackColor = value;
+                milestoneColor = value;
+                panel1.Invalidate();
             }
         }
 
@@ -31,6 +33,14 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         public TimelineMilestoneLabel()
         {
             InitializeComponent();
+        }
+
+        private void OnPanelPaint(object sender, PaintEventArgs e)
+        {
+            Brush brush = new SolidBrush(milestoneColor);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.FillEllipse(brush, new Rectangle(1,1,panel1.Width-1, panel1.Height-1));
+            brush.Dispose();
         }
     }
 }

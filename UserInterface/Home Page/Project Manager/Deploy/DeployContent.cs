@@ -13,8 +13,10 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 {
     public partial class DeployContent : UserControl
     {
-
-        private Dictionary<string, ProjectVersion> deployVersions;
+        private bool isSourceCodeDownloaded = false;
+        private int counter = 0;
+        private bool isBackEnable = false, isNextEnable = false;
+        private List<ProjectVersion> deployVersions;
         private Color borderColor = Color.Blue;
 
         public DeployContent()
@@ -22,21 +24,27 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             InitializeComponent();
         }
 
-
-        public Dictionary<string, ProjectVersion> DeployVersions
+        public List<ProjectVersion> DeployVersions
         {
             set
             {
-                deployVersions = value;
                 if (value != null && value.Count > 0)
                 {
-                    label1.Text = value.First().Key;
-                    ucDeploy1.Version = value.First().Value;
+                    counter = 0;
+                    deployVersions = value;
+                    isNextEnable = value.Count > 1 ? true : false;
+
+                    if (nextBtn.Image != null) nextBtn.Image.Dispose();
+                    if (backBtn.Image != null) backBtn.Image.Dispose();
+
+                    nextBtn.Image = isNextEnable ? Properties.Resources.Next_LightBlue : Properties.Resources.Next_Hover;
+                    backBtn.Image = isBackEnable ? Properties.Resources.Back_LightBlue : Properties.Resources.Back_Hover;
+
+                    ucDeploy1.Version = value[counter];
                 }
                 else
                 {
-                    label1.Text = "Deploy";
-                    ucDeploy1.Visible = false;
+                    nextBtn.Visible = backBtn.Visible = ucDeploy1.Visible = false;
                 }
             }
         }
@@ -65,20 +73,6 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
-        private void OnVersionLabelClicked(object sender, EventArgs e)
-        {
-            if(deployVersions != null && deployVersions.Count > 1)
-            {
-                OverviewDropDownForm form = new OverviewDropDownForm()
-                {
-                    Location = Cursor.Position,
-                    CurrentVersionCollection = deployVersions
-                };
-                form.OverviewSelected += Form_OverviewSelected;
-                form.Show();
-            }
-        }
-
         private void Form_OverviewSelected(string name, ProjectVersion version)
         {
             label1.Text = name;
@@ -87,17 +81,84 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 
         private void OnDeployment(string name, ProjectVersion e)
         {
-            deployVersions.Remove(name);
-            if (deployVersions.Count > 0)
+            if(isSourceCodeDownloaded)
             {
-                label1.Text = deployVersions.First().Key;
-                ucDeploy1.Version = deployVersions.First().Value;
+                if((counter == 0 && deployVersions.Count == 1))
+                {
+                    counter--;
+                    ucDeploy1.Visible = false;
+                    deployVersions.Remove(e);
+                    SetDeployControl();
+                    return;
+                }
+                if(counter == deployVersions.Count - 1)
+                {
+                    counter--;
+                    SetDeployControl();
+                }
+                isSourceCodeDownloaded = false;
             }
-            else
+        }
+
+        private void OnNextClick(object sender, EventArgs e)
+        {
+            if (isNextEnable)
             {
-                label1.Text = "Deploy";
-                ucDeploy1.Visible = false;
+                counter++;
+                SetDeployControl();
             }
+        }
+
+        private void OnBackClick(object sender, EventArgs e)
+        {
+            if (isBackEnable)
+            {
+                counter--;
+                SetDeployControl();
+            }
+        }
+
+        private void OnSourceCodeDownload(object sender, EventArgs e)
+        {
+            Projects proj = VersionManager.FetchProjectFromID(deployVersions[counter].VersionID);
+            string fileNetworkPath = DataHandler.FetchVersionSourceCodeByVersionID(deployVersions[counter].VersionID).VersionLocation;
+            string savePath = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = @"C:\";
+            saveFileDialog.Filter = "ZIP files (*.zip)|*.zip";
+            saveFileDialog.FilterIndex = 1;
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                savePath = saveFileDialog.FileName;
+            }
+
+            try
+            {
+                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
+                string filePath = System.IO.Path.Combine(savePath, savePath);
+                System.IO.File.Copy(fileNetworkPath, filePath, true);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + deployVersions[counter].VersionName);
+                isSourceCodeDownloaded = true;
+            }
+            catch
+            {
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", proj.ProjectName + "\n" + deployVersions[counter].VersionName);
+            }
+        }
+
+        private void SetDeployControl()
+        {
+            ucDeploy1.Version = deployVersions[counter];
+
+            isBackEnable = counter == 0 ? false : true;
+            isNextEnable = counter == deployVersions.Count - 1 ? false : true;
+
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+
+            nextBtn.Image = isNextEnable ? Properties.Resources.Next_LightBlue : Properties.Resources.Next_Hover;
+            backBtn.Image = isBackEnable ? Properties.Resources.Back_LightBlue : Properties.Resources.Back_Hover;
         }
     }
 }

@@ -17,7 +17,19 @@ namespace TeamTracker
         public Color HoverColor { get; set; }
         public Color NormalColor { get; set; }
         private Employee employeeProfile;
+        private Color foreColor;
 
+        public Color ProfileTextColor
+        {
+            get
+            {
+                return foreColor;
+            }
+            set
+            {
+                foreColor = designationLabel.ForeColor = employeeNameLabel.ForeColor = value;
+            }
+        }
 
         public ProfilePicAndName()
         {

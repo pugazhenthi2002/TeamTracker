@@ -25,9 +25,12 @@ namespace UserInterface.ViewProject
         {
             SelectedEmployee = EmployeeManager.CurrentEmployee;
             tabControl1.SelectedIndex = 0;
+            boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
+            boardPanel.BackColor = Color.FromArgb(39, 55, 77);
+            timelinePanel.BackColor = Color.FromArgb(221, 230, 237);
+            boardLabel.ForeColor = Color.FromArgb(221, 230, 237);
+            timelineLabel.ForeColor = Color.FromArgb(39, 55, 77);
         }
-
-        
 
         private void OnBoardClicked(object sender, EventArgs e)
         {

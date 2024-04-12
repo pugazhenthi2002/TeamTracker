@@ -40,11 +40,11 @@
             // labelDate
             // 
             this.labelDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDate.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDate.Location = new System.Drawing.Point(10, 10);
+            this.labelDate.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.Location = new System.Drawing.Point(15, 15);
             this.labelDate.Margin = new System.Windows.Forms.Padding(0);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(144, 24);
+            this.labelDate.Size = new System.Drawing.Size(154, 26);
             this.labelDate.TabIndex = 0;
             this.labelDate.Text = "dd/mm/yyyy";
             this.labelDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,10 +54,10 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.labelDue);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(10, 0);
+            this.panel1.Location = new System.Drawing.Point(15, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(154, 10);
+            this.panel1.Size = new System.Drawing.Size(169, 15);
             this.panel1.TabIndex = 1;
             // 
             // labelDue
@@ -65,11 +65,11 @@
             this.labelDue.BackColor = System.Drawing.SystemColors.Control;
             this.labelDue.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelDue.Font = new System.Drawing.Font("Ebrima", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.labelDue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.labelDue.Location = new System.Drawing.Point(0, 0);
             this.labelDue.Margin = new System.Windows.Forms.Padding(0);
             this.labelDue.Name = "labelDue";
-            this.labelDue.Size = new System.Drawing.Size(32, 10);
+            this.labelDue.Size = new System.Drawing.Size(32, 15);
             this.labelDue.TabIndex = 0;
             this.labelDue.Text = "Due";
             this.labelDue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -78,10 +78,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(10, 34);
+            this.panel2.Location = new System.Drawing.Point(15, 41);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(154, 10);
+            this.panel2.Size = new System.Drawing.Size(169, 15);
             this.panel2.TabIndex = 2;
             // 
             // panel3
@@ -91,17 +91,17 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 44);
+            this.panel3.Size = new System.Drawing.Size(15, 56);
             this.panel3.TabIndex = 3;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(154, 10);
+            this.panel4.Location = new System.Drawing.Point(169, 15);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 24);
+            this.panel4.Size = new System.Drawing.Size(15, 26);
             this.panel4.TabIndex = 4;
             // 
             // UcDueDate
@@ -114,7 +114,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Name = "UcDueDate";
-            this.Size = new System.Drawing.Size(164, 44);
+            this.Size = new System.Drawing.Size(184, 56);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

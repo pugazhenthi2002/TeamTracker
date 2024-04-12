@@ -93,5 +93,11 @@ namespace TeamTracker
         {
             MilestoneClick?.Invoke(sender, e);
         }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
+        }
     }
 }

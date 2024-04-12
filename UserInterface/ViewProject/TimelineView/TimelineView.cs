@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
 using UserInterface.ViewProject.TimelineView.Controls;
+using System.Drawing.Drawing2D;
 
 namespace UserInterface.ViewProject.TimelineView
 {
@@ -34,8 +35,11 @@ namespace UserInterface.ViewProject.TimelineView
         {
             set
             {
-                if (value != null)
+                if (value != null && value.Count > 0)
                 {
+                    ucNotFound1.Visible = false;
+                    panel1.Visible = true;
+
                     if (projectDisplayPanel.Controls != null)
                         projectDisplayPanel.Controls.Clear();
 
@@ -48,7 +52,19 @@ namespace UserInterface.ViewProject.TimelineView
                     downEnable = value.Count > 5 ? true : false;
                     startIdx = 0;
                     endIdx = projectViewCount - 1;
+
+                    if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
+                    if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
+
+                    projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+                    projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+
                     InitializeProjectsForTimeline();
+                }
+                else
+                {
+                    ucNotFound1.Visible = true;
+                    panel1.Visible = false;
                 }
             }
         }
@@ -59,19 +75,17 @@ namespace UserInterface.ViewProject.TimelineView
         {
             projectViewControlCollection = new List<VerticalLabel>();
             VerticalLabel control;
-            for(int ctr=0; ctr<projectViewCount; ctr++)
+            for(int ctr=0, idx = 0; ctr<projectViewCount; ctr++)
             {
-                foreach(var Iter in projectViewControlCollection)
-                {
-                    Iter.BringToFront();
-                }
-
                 control = new VerticalLabel()
                 {
                     Dock = DockStyle.Top,
                     Height = 175,
-                    Project = projectCollection[ctr]
+                    Project = projectCollection[ctr],
+                    TextColor = ColorManager.ColorFadingOut[idx % 20]
                 };
+                idx = idx + 4;
+                control.IsClicked = false;
                 if (ctr == 0)
                 {
                     currentProject = projectCollection[ctr];
@@ -83,7 +97,7 @@ namespace UserInterface.ViewProject.TimelineView
                     timelinePaginate1.Version = currentVersion;
                     versionNames.Text = currentVersion.VersionName;
                     prevControl = control;
-                    control.TextColor = Color.Red;
+                    prevControl.IsClicked = true;
                 }
                 control.ProjectSelected += OnProjectSelected;
                 projectDisplayPanel.Controls.Add(control);
@@ -109,7 +123,7 @@ namespace UserInterface.ViewProject.TimelineView
         private void VersionNamesClick(object sender, EventArgs e)
         {
             VersionViewForm form = new VersionViewForm();
-            form.Location = Cursor.Position;
+            form.Location = versionNames.PointToScreen(new Point(0, versionNames.Height));
             form.VersionCollection = VersionManager.FetchInvolvedVersion(currentProject, EmployeeManager.CurrentEmployee);
             form.VersionSelected += OnVersionSelected;
             form.Show();
@@ -143,6 +157,10 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnProjectSelected(object sender, Projects e)
         {
+            if (prevControl != null)
+            {
+                prevControl.IsClicked = false;
+            }
             currentVersion = VersionManager.FetchProjectLatestVersion(e.ProjectID);
             versionNames.Text = currentVersion.VersionName;
             currentProject = (sender as VerticalLabel).Project;
@@ -159,6 +177,27 @@ namespace UserInterface.ViewProject.TimelineView
             selectedIdx = projectViewControlCollection.IndexOf((sender as VerticalLabel));
             ProjectPaginate();
             prevControl = sender as VerticalLabel;
+            prevControl.IsClicked = true;
+        }
+
+        private void OnVersionSwitchPanelPaint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel4.Width - 1, panel4.Height - 1));
+            pen.Dispose();
+        }
+
+        private void OnVersionMouseEnter(object sender, EventArgs e)
+        {
+            versionNames.BackColor = Color.FromArgb(221, 230, 237);
+            panel4.Invalidate();
+        }
+
+        private void OnVersionMouseLeave(object sender, EventArgs e)
+        {
+            versionNames.BackColor = Color.FromArgb(231, 240, 250);
+            panel4.Invalidate();
         }
 
         private void ProjectPaginate()
@@ -178,23 +217,22 @@ namespace UserInterface.ViewProject.TimelineView
 
             upEnable = startIdx == 0 ? false : true;
             downEnable = endIdx == projectCollection.Count - 1 ? false : true;
+
+            if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
+            if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
+
+            projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+            projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
         }
 
         private void StoreColor()
         {
             colorCollection = new List<Color>();
-            Random random = new Random();
-            Color randomColor;
-            int red, blue, green;
+            int ctr = 0;
             foreach (var Iter in milestoneCollection)
             {
-                red = random.Next(255);
-                green = random.Next(255);
-                blue = random.Next(255);
-
-                randomColor = Color.FromArgb(red, green, blue);
-
-                colorCollection.Add(randomColor);
+                colorCollection.Add(ColorManager.MilestoneColorFadingOut[ctr%20]);
+                ctr++;
             }
         }
 
@@ -207,9 +245,15 @@ namespace UserInterface.ViewProject.TimelineView
                 {
                     Dock = DockStyle.Left,
                     MilestoneColor = colorCollection[ctr],
-                    MilestoneName = milestoneCollection[ctr].MileStoneName
+                    MilestoneName = milestoneCollection[ctr].MileStoneName,
+                    Width = 120
                 };
                 milestoneLabelPanel.Controls.Add(label);
+            }
+
+            foreach(TimelineMilestoneLabel Iter in milestoneLabelPanel.Controls)
+            {
+                Iter.BringToFront();
             }
         }
     }

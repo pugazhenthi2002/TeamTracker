@@ -36,9 +36,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(30, 0);
+            this.panel1.Location = new System.Drawing.Point(30, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 142);
+            this.panel1.Size = new System.Drawing.Size(10, 138);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.OnProjectClicked);
             // 
@@ -46,9 +47,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(30, 142);
+            this.panel2.Size = new System.Drawing.Size(28, 138);
             this.panel2.TabIndex = 1;
             this.panel2.Click += new System.EventHandler(this.OnProjectClicked);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnVerticalTextPaint);
@@ -60,6 +62,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "VerticalLabel";
+            this.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.Size = new System.Drawing.Size(40, 142);
             this.ResumeLayout(false);
 

@@ -134,7 +134,7 @@ namespace TeamTracker
 
         public static void AddVersionAttachments(List<VersionAttachment> versionAttachments, int versionID)
         {
-            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Version Attachment"; // Change this to your desired save path
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Version Attachment\\"; // Change this to your desired save path
             string filePath;
             try
             {
@@ -249,6 +249,31 @@ namespace TeamTracker
             manager.DeleteData("notification", $"NotifyID={notifyID}");
         }
 
+        public static void DeleteAllNotification()
+        {
+            manager.DeleteData("notification", $"AssignedTo={EmployeeManager.CurrentEmployee.EmployeeID}");
+        }
+
+        public static List<VersionAttachment> FetchAttachmentsByVersionID(int versionID)
+        {
+            List<VersionAttachment> result = new List<VersionAttachment>();
+
+            var attachments = manager.FetchData("versionattachment", $"VersionID={versionID}").Value;
+
+            for (int ctr = 0; attachments.Count > 0 &&  ctr < attachments["VersionAttachmentID"].Count; ctr++)
+            {
+                result.Add(new VersionAttachment()
+                {
+                    VersionID = Convert.ToInt32(attachments["VersionID"][ctr]),
+                    AttachmentLocation = Convert.ToString(attachments["AttachmentLocation"][ctr]),
+                    AttachmentName = Convert.ToString(attachments["AttachmentName"][ctr]),
+                    DisplayName = Convert.ToString(attachments["DisplayName"][ctr])
+                });
+            }
+
+            return result;
+        }
+
         public static List<SourceCode> FetchLastCommitedSourceCodeByTaskID(int taskID)
         {
             List<SourceCode> result = new List<SourceCode>();
@@ -257,7 +282,7 @@ namespace TeamTracker
             DateTime date = Convert.ToDateTime(x["SubmittedDate"][0]);
             var lastCommited = manager.FetchData("sourcecode", $"TaskID={taskID} AND SubmittedDate='{date}'").Value;
 
-            for (int ctr = 0; ctr < lastCommited["SourceCodeID"].Count; ctr++)
+            for (int ctr = 0; lastCommited.Count > 0 && ctr < lastCommited["SourceCodeID"].Count; ctr++)
             {
                 result.Add(new SourceCode()
                 {
@@ -280,7 +305,7 @@ namespace TeamTracker
 
             var sourceCodeCollection = manager.FetchDistinctData("sourcecode", $"TaskID={taskID}", orderBy: "SubmittedDate Desc").Value;
 
-            for(int ctr=0; ctr< sourceCodeCollection["SourceCodeID"].Count; ctr++)
+            for (int ctr = 0; sourceCodeCollection.Count > 0 && ctr < sourceCodeCollection["SourceCodeID"].Count; ctr++)
             {
                 if (prevCommitDate > Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]))
                 {
@@ -309,12 +334,12 @@ namespace TeamTracker
 
             var sourceCodeCollection = manager.FetchDistinctData("sourcecode", $"TaskID={taskID}", orderBy: "SubmittedDate Desc").Value;
 
-            if(sourceCodeCollection==null || sourceCodeCollection.Count==0)
+            if(sourceCodeCollection==null)
             {
                 return null;
             }
 
-            for (int ctr = 0; ctr < sourceCodeCollection["SourceCodeID"].Count; ctr++)
+            for (int ctr = 0; sourceCodeCollection.Count > 0 && ctr < sourceCodeCollection["SourceCodeID"].Count; ctr++)
             {
                 result.Add(new SourceCode()
                 {
@@ -359,7 +384,7 @@ namespace TeamTracker
             List<TaskAttachment> result = new List<TaskAttachment>();
             var attachments = manager.FetchData("taskattachment", $"TaskID='{taskID}").Value;
 
-            for(int ctr=0; ctr< attachments["TaskID"].Count; ctr++)
+            for(int ctr=0; attachments.Count > 0 && ctr < attachments["TaskID"].Count; ctr++)
             {
                 result.Add(new TaskAttachment()
                 {
@@ -397,8 +422,9 @@ namespace TeamTracker
             List<Notification> result = new List<Notification>();
             var notifyCollection = manager.FetchData("notification", $"AssignedTo={EmployeeManager.CurrentEmployee.EmployeeID}").Value;
 
-            if (notifyCollection == null || notifyCollection.Count == 0) return null;
-            for (int ctr = 0; ctr < notifyCollection["NotifyID"].Count; ctr++)
+            if (notifyCollection == null) return null;
+
+            for (int ctr = 0; notifyCollection.Count > 0 && ctr < notifyCollection["NotifyID"].Count; ctr++)
             {
                 result.Add(new Notification()
                 {
@@ -420,7 +446,7 @@ namespace TeamTracker
 
             if (result == null) return null;
 
-            for (int ctr = 0; ctr < result["EmpID"].Count; ctr++)
+            for (int ctr = 0; result.Count > 0 && ctr < result["EmpID"].Count; ctr++)
             {
                 employeeResult.Add(new Employee()
                 {
@@ -445,7 +471,7 @@ namespace TeamTracker
 
             if (result == null) return null;
 
-            for (int ctr = 0; ctr < result["ProjectManagingID"].Count; ctr++)
+            for (int ctr = 0; result.Count > 0 && ctr < result["ProjectManagingID"].Count; ctr++)
             {
                 employeeManagingResult.Add(new ManagingEmployee()
                 {
@@ -465,7 +491,7 @@ namespace TeamTracker
             List<Projects> projectResult = new List<Projects>();
 
             if (result == null) return null;
-            for (int ctr = 0; ctr < result["ProjectID"].Count; ctr++)
+            for (int ctr = 0; result.Count > 0 && ctr < result["ProjectID"].Count; ctr++)
             {
                 projectResult.Add(new Projects()
                 {
@@ -487,14 +513,14 @@ namespace TeamTracker
             if (result == null) return null;
 
             List<ProjectVersion> versionResult = new List<ProjectVersion>();
-            for (int ctr = 0; ctr < result["VersionID"].Count; ctr++)
+            for (int ctr = 0; result.Count > 0 && ctr < result["VersionID"].Count; ctr++)
             {
                 sts = Convert.ToString(result["StatusOfProject"][ctr]);
                 if (sts == "OnProcess")
                 {
                     status = ProjectStatus.OnProcess;
                 }
-                else if (sts == "Upcoming")
+                else if (sts == "UpComing")
                 {
                     status = ProjectStatus.UpComing;
                 }
@@ -534,7 +560,7 @@ namespace TeamTracker
 
             List<Task> TaskCollection = new List<Task>();
             string status, priority;
-            for (int ctr = 0; ctr < result["TaskID"].Count; ctr++)
+            for (int ctr = 0; result.Count > 0 && ctr < result["TaskID"].Count; ctr++)
             {
                 status = result["StatusOfTask"][ctr].ToString();
                 priority = result["PriorityOfTask"][ctr].ToString();
@@ -565,7 +591,7 @@ namespace TeamTracker
 
             List<Milestone> MilestoneCollection = new List<Milestone>();
             string status;
-            for (int ctr = 0; ctr < result["MilestoneID"].Count; ctr++)
+            for (int ctr = 0; result.Count > 0 && ctr < result["MilestoneID"].Count; ctr++)
             {
                 status = result["Status"][ctr].ToString();
                 MilestoneCollection.Add(new Milestone()

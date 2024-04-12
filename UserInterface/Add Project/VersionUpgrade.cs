@@ -25,17 +25,21 @@ namespace TeamTracker
             versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
             descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
             descTextBox.LostFocus += AddVersionDescPlaceHolders;
-
-            
+            clientTextBox.GotFocus += RemoveClientPlaceHolders;
+            clientTextBox.LostFocus += AddClientPlaceHolders;
         }
 
         public void InitializePage()
         {
-            ucNotFound1.Visible = true;
-            ucNotFound2.Visible = true;
-            startDateTime.Value = endDateTime.Value = DateTime.Now;
+            chooseProjectLabel.Text = "Choose Project";
             versionNameTextBox.Text = "Enter Version";
             descTextBox.Text = "Enter Version Description";
+            clientTextBox.Text = "Enter Client Email";
+            ucNotFound1.Visible = ucNotFound2.Visible = true;
+            startDateTimePicker.Value = endDateTimePicker.Value = DateTime.Today;
+            latestUpgradedVersion1.LatestVersion = null;
+            fileAttachment1.AttachmentCollection = null;
+            profilePicAndName1.EmployeeProfile = null;
         }
 
         private void AddVersionNamePlaceHolders(object sender, EventArgs e)
@@ -66,6 +70,20 @@ namespace TeamTracker
                 descTextBox.Text = "Enter Version Description";
         }
 
+        private void RemoveClientPlaceHolders(object sender, EventArgs e)
+        {
+            if (clientTextBox.Text == "Enter Client Email")
+            {
+                clientTextBox.Text = "";
+            }
+        }
+
+        private void AddClientPlaceHolders(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(clientTextBox.Text))
+                clientTextBox.Text = "Enter Client Email";
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -90,19 +108,16 @@ namespace TeamTracker
             upgradeButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, upgradeButton.Width, upgradeButton.Height, 10, 10));
         }
 
-        
-
         private void OnChooseProject(object sender, EventArgs e)
         {
             ChooseProjectForm form = new ChooseProjectForm();
-            form.AvailableProjects = VersionManager.ProjectCollection;
+            form.AvailableProjects = VersionManager.FetchAllProjectsOnCompletedStatus();
             form.ProjectSelect += OnProjectSelected;
             form.ShowDialog();
         }
 
         private void OnProjectSelected(object sender, Projects e)
         {
-            
             project = e;
             chooseProjectLabel.Text = e.ProjectName;
             InitializeVersionPage();
@@ -110,7 +125,9 @@ namespace TeamTracker
 
         private void InitializeVersionPage()
         {
-            teamLeaderPicAndNameVertical1.TeamLeader = EmployeeManager.FetchEmployeeFromEmpID(project.TeamLeadID);
+            profilePicAndName1.Visible = latestUpgradedVersion1.Visible = true;
+            ucNotFound1.Visible = ucNotFound2.Visible = false;
+            profilePicAndName1.EmployeeProfile = EmployeeManager.FetchEmployeeFromEmpID(project.TeamLeadID);
             latestUpgradedVersion1.LatestVersion = VersionManager.FetchProjectLatestVersion(project.ProjectID);
         }
 
@@ -119,26 +136,48 @@ namespace TeamTracker
             BooleanMsg message = isEligibleForVersionUpgrade();
             if (message)
             {
-                ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
+                List<VersionAttachment> attachments = FetchAttachmentFiles();
+                if (attachments.Count == 0)
+                {
+                    AttachmentWarningForm form = new AttachmentWarningForm();
+                    form.WarningStatus += OnWarningStatus;
+                    form.Show();
+                }
+                else
+                {
+                    VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, project.ProjectID, attachments);
+                    InitializePage();
+                    ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
+                }
+                
             }
             else
             {
                 ProjectManagerMainForm.notify.AddNotification("Invalid Input", message.Message);
             }
-            
+        }
+
+        private void OnWarningStatus(object sender, bool e)
+        {
+            if (e)
+            {
+                VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, project.ProjectID, null);
+                InitializePage();
+                ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
+            }
         }
 
         private BooleanMsg isEligibleForVersionUpgrade()
         {
             if (project == null) return "No Project Selected for Version Upgrade";
 
-            if (!VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTime.Value, endDateTime.Value))
+            if (!VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTimePicker.Value, endDateTimePicker.Value))
             {
                 DateTime availableDate = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
                 return "Project Cannot be Started on Mentioned Date\nTeam Leader Available After "+ availableDate.ToString();
             }
 
-            if (startDateTime.Value.Date == endDateTime.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
+            if (startDateTimePicker.Value.Date == endDateTimePicker.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
 
             if (versionNameTextBox.Text == "" || versionNameTextBox.Text == "Enter Version") return "Version Name Not Mentioned";
 
@@ -146,15 +185,25 @@ namespace TeamTracker
 
             if(descTextBox.Text == "" || descTextBox.Text == "Enter Version Description")   return "Version Description Not Mentioned";
 
+            if (clientTextBox.Text == "" || !clientTextBox.Text.Contains("@gmail.com") || clientTextBox.Text == "Client Email")
+            {
+                return "Invalid Input\nEnter Proper EmailID";
+            }
+
             return true;
         }
 
         private void OnDateValueChanged(object sender, EventArgs e)
         {
-            if(project != null && !VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTime.Value, endDateTime.Value))
+            if(project!=null && VersionManager.IsTeamAvailableForProject(project.TeamLeadID, startDateTimePicker.Value, endDateTimePicker.Value))
             {
-                DateTime availableDate = VersionManager.FetchTeamLeadAvailableDate(project.ProjectID);
-                ProjectManagerMainForm.notify.AddNotification("Invalid Input", "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date\nAvailable Date: " + availableDate.ToShortDateString());
+                ucNotFound1.Visible = ucNotFound2.Visible = false;
+                profilePicAndName1.Visible = latestUpgradedVersion1.Visible = true;
+            }
+            else
+            {
+                ucNotFound1.Visible = ucNotFound2.Visible = true;
+                profilePicAndName1.Visible = latestUpgradedVersion1.Visible = false;
             }
         }
 
@@ -202,24 +251,30 @@ namespace TeamTracker
 
         private void ClearClick(object sender, EventArgs e)
         {
-            InitializeVersionUpgrade();
-        }
-
-        private void InitializeVersionUpgrade()
-        {
-            chooseProjectLabel.Text = "Choose Project";
-            versionNameTextBox.Text = "Enter Version";
-            descTextBox.Text = "Enter Version Description";
-            startDateTime.Value = endDateTime.Value = DateTime.Today;
-            latestUpgradedVersion1.LatestVersion = null;
-            fileAttachment1.AttachmentCollection = null;
-            teamLeaderPicAndNameVertical1.TeamLeader = null;
+            InitializePage();
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             InitializeBorder();
+        }
+
+        private List<VersionAttachment> FetchAttachmentFiles()
+        {
+            List<VersionAttachment> attachments = new List<VersionAttachment>();
+
+            if (fileAttachment1.AttachmentCollection == null || fileAttachment1.AttachmentCollection.Count == 0)
+                return attachments;
+
+            foreach (var Iter in fileAttachment1.AttachmentCollection)
+            {
+                attachments.Add(Iter.Value);
+            }
+
+            if (attachments.Count > 0)
+                return attachments;
+            else { return null; }
         }
     }
 }

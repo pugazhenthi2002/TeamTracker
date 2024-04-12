@@ -13,6 +13,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 {
     public partial class BoardViewTemplate : UserControl
     {
+        private bool isHovered = false;
         private ProjectVersion boardVersion;
         private Milestone milestone;
         private string toolTipMessage;
@@ -65,7 +66,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void InitializeBorder()
         {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
         }
 
         private void OnMilestoneLabelPaint(object sender, PaintEventArgs e)
@@ -128,27 +129,37 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnBoardClick(object sender, EventArgs e)
         {
-            ;
+            ProjectInfoForm form = new ProjectInfoForm();
+            form.SelectedVersion = BoardVersion;
+            form.Show();
         }
 
         private void OnUserControlPaint(object sender, PaintEventArgs e)
         {
-            //OnUserControlPaint
+            Pen pen = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0,0, (sender as TableLayoutPanel).Width - 1, (sender as TableLayoutPanel).Height - 1), 10));
+            if(isHovered)
+            {
+                pen.Dispose();
+                pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+                e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(2, 2, (sender as TableLayoutPanel).Width - 5, (sender as TableLayoutPanel).Height - 5), 10));
+            }
+            pen.Dispose();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(181, 190, 197);
+            isHovered = true;
+            Cursor = Cursors.Hand;
+            tableLayoutPanel1.Invalidate();
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(201, 210, 217);
-        }
-
-        private void OnMilestoneStatusHover(object sender, EventArgs e)
-        {
-            ;
+            isHovered = false;
+            Cursor = Cursors.Default;
+            tableLayoutPanel1.Invalidate();
         }
     }
 }

@@ -133,6 +133,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Back_LightBlue {
+            get {
+                object obj = ResourceManager.GetObject("Back LightBlue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Back1 {
             get {
                 object obj = ResourceManager.GetObject("Back1", resourceCulture);
@@ -513,6 +523,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap List_Hover {
+            get {
+                object obj = ResourceManager.GetObject("List Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap List_Normal {
+            get {
+                object obj = ResourceManager.GetObject("List Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Next {
             get {
                 object obj = ResourceManager.GetObject("Next", resourceCulture);
@@ -536,6 +566,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Next_Hover1 {
             get {
                 object obj = ResourceManager.GetObject("Next Hover1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Next_LightBlue {
+            get {
+                object obj = ResourceManager.GetObject("Next LightBlue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

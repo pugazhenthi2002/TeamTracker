@@ -30,10 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTop = new System.Windows.Forms.Label();
-            this.labelCenter = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.labelCenter = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.labelTop.BackColor = System.Drawing.SystemColors.Control;
             this.labelTop.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTop.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.labelTop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.labelTop.Location = new System.Drawing.Point(0, 0);
             this.labelTop.Margin = new System.Windows.Forms.Padding(0);
             this.labelTop.Name = "labelTop";
@@ -61,18 +61,6 @@
             this.labelTop.TabIndex = 0;
             this.labelTop.Text = "Task Name";
             this.labelTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelCenter
-            // 
-            this.labelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCenter.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCenter.Location = new System.Drawing.Point(20, 20);
-            this.labelCenter.Margin = new System.Windows.Forms.Padding(0);
-            this.labelCenter.Name = "labelCenter";
-            this.labelCenter.Size = new System.Drawing.Size(265, 97);
-            this.labelCenter.TabIndex = 5;
-            this.labelCenter.Text = "Task Description";
-            this.labelCenter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -104,11 +92,23 @@
             this.panel3.Size = new System.Drawing.Size(20, 137);
             this.panel3.TabIndex = 8;
             // 
+            // labelCenter
+            // 
+            this.labelCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.labelCenter.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.labelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCenter.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCenter.Location = new System.Drawing.Point(20, 20);
+            this.labelCenter.Multiline = true;
+            this.labelCenter.Name = "labelCenter";
+            this.labelCenter.Size = new System.Drawing.Size(265, 97);
+            this.labelCenter.TabIndex = 10;
+            // 
             // UcTaskDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.labelCenter);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
@@ -118,6 +118,7 @@
             this.Size = new System.Drawing.Size(305, 137);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -125,9 +126,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelTop;
-        private System.Windows.Forms.Label labelCenter;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox labelCenter;
     }
 }
