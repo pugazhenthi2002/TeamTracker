@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,9 +24,14 @@ namespace UserInterface.Task.CreateTask
             tableLayoutPanelFileName.Hide();
         }
 
+        private TaskAttachment selectedAttachment;
+        private Priority selectedPriority;
+        private Milestone selectedMilestone = null;
+        private Employee selectedTeamLead = null;
         private PriorityDropDownForm PriortyDropForm;
         private MilestoneDropDownForm MilestoneDropForm;
         private TeamMembersListForm TeamMembersDropForm;
+
         private string FilePath;
 
         protected override void OnResize(EventArgs e)
@@ -56,16 +62,17 @@ namespace UserInterface.Task.CreateTask
             textBoxTaskName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxTaskName.Width, textBoxTaskName.Height, 10, 10));
             textBoxDesc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxDesc.Width, textBoxDesc.Height, 10, 10));
             buttonCreate.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonCreate.Width, buttonCreate.Height, 10, 10));
-            buttonDiscard.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDiscard.Width, buttonDiscard.Height, 10, 10));
+            buttonClose.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonClose.Width, buttonClose.Height, 10, 10));
             buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
             buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
             labelSetPriority.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelSetPriority.Width, labelSetPriority.Height, 10, 10));
             tableLayoutPanelFileName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanelFileName.Width, tableLayoutPanelFileName.Height, 10, 10));
         }
 
-        private void OnClickPriorityBtn(object sender, EventArgs e)
+        private void OnClickPriorityBtn(object sender, Priority e)
         {
-
+            selectedPriority = e;
+            labelSetPriority.Text = e.ToString();
         }
         
         private void OnClickAddAttachment(object sender, EventArgs e)
@@ -74,17 +81,18 @@ namespace UserInterface.Task.CreateTask
 
             openFileDialog.Title = "Open File";
             openFileDialog.InitialDirectory = @"C:\";
-
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                FilePath = openFileDialog.FileName;
-                string[] seperatedPath = FilePath.Split('\\');
+                string selectedFilePath = openFileDialog.FileName;
+                string safeFile = openFileDialog.SafeFileName;
 
-                animatedLabelFilename.Text = seperatedPath[seperatedPath.Length - 1];
-                tableLayoutPanelFileName.Show();
-
+                selectedAttachment = new TaskAttachment()
+                {
+                    TaskAttachmentName = safeFile,
+                    TaskAttachmentLocation = selectedFilePath
+                };
             }
         }
 
@@ -93,6 +101,7 @@ namespace UserInterface.Task.CreateTask
             Point formPoint = buttonSetMilestone.PointToScreen(new Point(buttonSetMilestone.Location.X, buttonSetMilestone.Location.Y));
 
             MilestoneDropForm = new MilestoneDropDownForm();
+            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.Show();
             MilestoneDropForm.Location = new Point(formPoint.X - 3, formPoint.Y + buttonSetMilestone.Height);
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
@@ -102,14 +111,22 @@ namespace UserInterface.Task.CreateTask
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
-
+            var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
+            foreach (var Iter in milestoneList)
+            {
+                if(Iter.MileStoneName == (sender as Button).Text)
+                {
+                    selectedMilestone = Iter;
+                    buttonSetMilestone.Text = Iter.MileStoneName;
+                }
+            }
         }
 
         private void OnClickAssignBtn(object sender, EventArgs e)
         {
             Point formPoint = BtnAssignTo.PointToScreen(new Point(BtnAssignTo.Location.X, BtnAssignTo.Location.Y));
             TeamMembersDropForm = new TeamMembersListForm();
-
+            TeamMembersDropForm.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
             TeamMembersDropForm.Show();
             TeamMembersDropForm.Location = new Point(formPoint.X - 3, formPoint.Y + 10);
             TeamMembersDropForm.Size = new Size(buttonSetMilestone.Width, TeamMembersDropForm.Height);
@@ -139,17 +156,52 @@ namespace UserInterface.Task.CreateTask
             PriortyDropForm.Show();
             PriortyDropForm.Location = new Point(formPoint.X - 45, formPoint.Y + labelSetPriority.Height + 2);
             PriortyDropForm.Size = new Size(labelSetPriority.Width, PriortyDropForm.Height);
-            PriortyDropForm.PriorityBtnClicked += OnClickPriorityBtn;
-        }
-
-        private void OnDiscardClick(object sender, EventArgs e)
-        {
-
+            PriortyDropForm.PrioritySelect += OnClickPriorityBtn;
         }
 
         private void OnCreateClick(object sender, EventArgs e)
         {
+            BooleanMsg message = CheckConstraints();
+        }
 
+        public void InitializeTaskForm()
+        {
+
+        }
+
+
+        private void OnCloseClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private BooleanMsg CheckConstraints()
+        {
+            if (startDate.Value > endDate.Value)
+            {
+                startDate.Value = endDate.Value = DateTime.Now;
+                return "Task Due Date is is Beyond Today's Date";
+            }
+
+            if (!(VersionManager.CurrentVersion.StartDate <= startDate.Value && endDate.Value <= VersionManager.CurrentVersion.EndDate))
+            {
+                startDate.Value = endDate.Value = DateTime.Now;
+                return "Task Due Date is Not Within the Projects End Date and StartDate";
+            }
+
+            if (selectedMilestone != null)
+            {
+                startDate.Value = endDate.Value = DateTime.Now;
+                return "Select Milestone Before Selected the Due Date";
+            }
+
+            if (!(selectedMilestone.StartDate <= startDate.Value && endDate.Value <= selectedMilestone.EndDate))
+            {
+                startDate.Value = endDate.Value = DateTime.Now;
+                return "Task Due Date is Not Within the Milestones End Date and StartDate";
+            }
+
+            return true;
         }
     }
 }

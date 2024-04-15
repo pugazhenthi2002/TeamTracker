@@ -27,7 +27,18 @@ namespace TeamTracker
             VersionCollection = DataHandler.StoreProjectVersionDetails();
 
             if (VersionCollection == null) return "Couldn't Able to connect Employee Table";
-            else return true;
+            else
+            {
+                foreach(var Iter in VersionCollection)
+                {
+                    if(Iter.StatusOfVersion == ProjectStatus.OnProcess && FetchTeamLeadIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
+                    {
+                        CurrentVersion = Iter;
+                        break;
+                    }
+                }
+                return true;
+            }
         }
 
         public static List<ProjectVersion> CurrentEmployeeInvolvedVersions(Employee emp)
@@ -119,7 +130,7 @@ namespace TeamTracker
                     Iter.VersionDescription = versionDesc;
                     Iter.StartDate = startDate;
                     Iter.EndDate = endDate;
-                    Iter.StatusOfVersion = ProjectStatus.Completed;
+                    Iter.StatusOfVersion = status;
                     Iter.ClientEmail = clientEmail;
                     DataHandler.UpdateVersion(Iter);
                     if (versionAttachments != null)
@@ -206,6 +217,23 @@ namespace TeamTracker
             foreach (var Iter in VersionCollection)
             {
                 if(Iter.StatusOfVersion == ProjectStatus.OnProcess && GetManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    if (!result.ContainsKey(name = GetProjectName(Iter.ProjectID)))
+                        result.Add(name, Iter);
+                }
+            }
+
+            return result;
+        }
+
+        public static Dictionary<string, ProjectVersion> FetchOnProcessProjectVersion(int teamLeadId)
+        {
+            Dictionary<string, ProjectVersion> result = new Dictionary<string, ProjectVersion>();
+
+            string name = "";
+            foreach (var Iter in VersionCollection)
+            {
+                if(Iter.StatusOfVersion == ProjectStatus.OnProcess && FetchTeamLeadIDFromProjectID(Iter.ProjectID) == teamLeadId)
                 {
                     if (!result.ContainsKey(name = GetProjectName(Iter.ProjectID)))
                         result.Add(name, Iter);

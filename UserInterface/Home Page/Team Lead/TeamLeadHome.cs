@@ -21,9 +21,14 @@ namespace UserInterface.Home_Page.Team_Lead
         public void InitializeHomePage()
         {
             reportTemplate1.InitializeReport();
-            overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
+            overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion(EmployeeManager.CurrentEmployee.EmployeeID);
             notificationContent1.NotifyList = DataHandler.FetchNotification();
             onStageTemplate1.SelectedVersion = VersionManager.FetchOnStageVersion(EmployeeManager.CurrentEmployee.EmployeeID);
+        }
+
+        private void OnResetHomePage(object sender, EventArgs e)
+        {
+            InitializeHomePage();
         }
     }
 }

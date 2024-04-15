@@ -13,6 +13,8 @@ namespace TeamTracker
 {
     public partial class UcOnStage : UserControl
     {
+        public event EventHandler ResetHomePage;
+        private List<Milestone> MilestoneCollection;
         private ProjectVersion selectedVersion;
         private AddMilestoneForm addMilestoneForm;
         private List<UcMilestone> milestoneList = new List<UcMilestone>();
@@ -23,12 +25,13 @@ namespace TeamTracker
             {
                 if (value != null)
                 {
+                    MilestoneCollection = new List<Milestone>();
                     selectedVersion = value;
                     InitializeOnStageControl();
                 }
                 else
                 {
-
+                    tableLayoutPanel1.Visible = false;
                 }
             }
         }
@@ -87,7 +90,35 @@ namespace TeamTracker
 
         private void OnClickDownloadAttachement(object sender, EventArgs e)
         {
+            List<VersionAttachment> attachments = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
 
+            string savePath = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = @"C:\";
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.FilterIndex = 1;
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                savePath = saveFileDialog.FileName;
+            }
+
+            for (int ctr = 0; ctr < attachments.Count; ctr++)
+            {
+                string fileNetworkPath = attachments[ctr].AttachmentLocation;
+                try
+                {
+                    string fileName = System.IO.Path.GetFileName(fileNetworkPath);
+                    string filePath = System.IO.Path.GetDirectoryName(savePath);
+                    filePath = System.IO.Path.Combine(filePath, attachments[ctr].DisplayName);
+                    System.IO.File.Copy(fileNetworkPath, filePath, true);
+                    ProjectManagerMainForm.notify.AddNotification("Download Completed", attachments[ctr].DisplayName);
+                }
+                catch
+                {
+                    ProjectManagerMainForm.notify.AddNotification("Download Failed", attachments[ctr].DisplayName);
+                }
+            }
         }
 
 
@@ -109,9 +140,12 @@ namespace TeamTracker
 
         private void OnClickStageProject(object sender, EventArgs e)
         {
-            if(milestoneList.Count<4 || milestoneList.Count>20)
+            if (MilestoneCollection != null && MilestoneCollection.Count >= 5 && MilestoneCollection.Count <= 20)
             {
-                ProjectManagerMainForm.notify.AddNotification("Warning","Milestone count should be greater than 4 and lesser than 20");
+                VersionManager.UpdateVersion(selectedVersion.VersionID,selectedVersion.VersionName, selectedVersion.VersionDescription, ProjectStatus.OnProcess, selectedVersion.StartDate, selectedVersion.EndDate, selectedVersion.ClientEmail, null);
+                MilestoneManager.AddMilestones(selectedVersion.VersionID, MilestoneCollection);
+                ResetHomePage?.Invoke(this, EventArgs.Empty);
+                DataHandler.AddNotification("Project Processed", VersionManager.FetchProjectName(selectedVersion.VersionID) + "  " + selectedVersion.VersionName + "has been started by" + EmployeeManager.FetchEmployeeFromProjectID(selectedVersion.ProjectID), DateTime.Now, EmployeeManager.FetchManagerFromTeamLeadID().EmployeeID);
             }
         }
 
@@ -135,7 +169,16 @@ namespace TeamTracker
 
         private void OnSetMilestoneFormClicked(object sender, EventArgs e)
         {
+            AddMilestoneForm form = new AddMilestoneForm();
+            form.SelectedVersion = selectedVersion;
+            form.MilestoneCollection = MilestoneCollection;
+            form.MilestoneExtract += OnMilestoneExtraction;
+            form.Show();
+        }
 
+        private void OnMilestoneExtraction(object sender, List<Milestone> e)
+        {
+            MilestoneCollection = e;
         }
     }
 }

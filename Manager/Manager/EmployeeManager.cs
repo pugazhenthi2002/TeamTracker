@@ -182,6 +182,19 @@ namespace TeamTracker
             return result;
         }
 
+        public static Employee FetchManagerFromTeamLeadID()
+        {
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.TeamLeadID == CurrentEmployee.EmployeeID)
+                {
+                    return FetchEmployeeFromEmpID(Iter.ManagerID);
+                }
+            }
+
+            return null;
+        }
+
         public static Employee FetchEmployeeFromID(int empID)
         {
             foreach(var Iter in EmployeeCollection)

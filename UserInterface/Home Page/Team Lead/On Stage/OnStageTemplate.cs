@@ -13,6 +13,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 {
     public partial class OnStageTemplate : UserControl
     {
+        public event EventHandler ResetHomePage;
         public OnStageTemplate()
         {
             InitializeComponent();
@@ -22,7 +23,17 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             set
             {
-                ucOnStage1.SelectedVersion = value;
+                if (value != null)
+                {
+                    ucNotFound1.Visible = false;
+                    ucOnStage1.Visible = true;
+                    ucOnStage1.SelectedVersion = value;
+                }
+                else
+                {
+                    ucOnStage1.Visible = false;
+                    ucNotFound1.Visible = true;
+                }
             }
         }
 
@@ -47,6 +58,11 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             Point pt4 = new Point(9, Height - 11);
             Pen border = new Pen(borderColor, 3);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
+        }
+
+        private void OnResetHomePage(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,6 +13,7 @@ namespace TeamTracker
 {
     public partial class PriorityDropDownForm : Form
     {
+        public event EventHandler<Priority> PrioritySelect;
         private const int CSDropShadow = 0x00020000;
 
         public PriorityDropDownForm()
@@ -21,8 +22,6 @@ namespace TeamTracker
             InitializeRoundedEdge();
 
         }
-
-        public EventHandler PriorityBtnClicked;
 
         protected override CreateParams CreateParams
         {
@@ -55,12 +54,20 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-
         }
 
         private void OnClickPriorityBtn(object sender, MouseEventArgs e)
         {
-            PriorityBtnClicked?.Invoke(sender, e);
+            Priority priority;
+            string text = (sender as Button).Text;
+
+            if (text == "Easy") priority = Priority.Easy;
+            else if (text == "Medium") priority = Priority.Medium;
+            else if (text == "Hard") priority = Priority.Hard;
+            else priority = Priority.Critical;
+
+            PrioritySelect?.Invoke(sender, priority);
+            this.Close();
         }
 
         protected override void OnLostFocus(EventArgs e)

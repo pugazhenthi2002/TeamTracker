@@ -17,8 +17,8 @@ namespace TeamTracker
 
         public static BooleanMsg ConnectDatabase()
         {
-            manager = new MySqlHandler("192.168.3.55", "Ilam", "Lucid123", "teamtracker");
-            //manager = new MySqlHandler("Localhost", "root", "root", "projectmanaging");
+            //manager = new MySqlHandler("192.168.3.55", "Ilam", "Lucid123", "teamtracker");
+            manager = new MySqlHandler("localhost", "root", "Lucid123", "projectmanagement");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -78,6 +78,30 @@ namespace TeamTracker
             task.TaskID = Convert.ToInt32(result["TaskID"][0]);
 
             return task;
+        }
+
+        public static List<Milestone> AddMilestones(int versionID, List<Milestone> milestoneCollections)
+        {
+            foreach(var Iter in milestoneCollections)
+            {
+                var x = manager.InsertData("milestone", new ParameterData[]
+                {
+                    new ParameterData("MilestoneName", Iter.MileStoneName),
+                    new ParameterData("VersionID", versionID),
+                    new ParameterData("StartDate", Iter.StartDate),
+                    new ParameterData("EndDate", Iter.EndDate),
+                    new ParameterData("Status", MilestoneStatus.Upcoming.ToString())
+                });
+            }
+
+            var result = manager.FetchData("milestone", $"VersionID='{versionID}'", orderBy:"EndDate").Value;
+
+            for(int ctr=0; ctr < result["MilestoneID"].Count; ctr++)
+            {
+                milestoneCollections[ctr].MileStoneID = Convert.ToInt32(result["MilestoneID"][ctr]);
+            }
+
+            return milestoneCollections;
         }
 
         public static void SubmitSourceCode(SourceCode sourceCode)

@@ -31,8 +31,11 @@ namespace TeamTracker
         {
             set
             {
-                teamList = value;
-                InitializeTeamMembers();
+                if(value!=null)
+                {
+                    teamList = value;
+                    InitializeTeamMembers();
+                }
             }
         }
 
@@ -100,6 +103,12 @@ namespace TeamTracker
         private void OnEmployeeSelect(object sender, Employee e)
         {
             TeamMemberClick?.Invoke(this, e);
+            this.Close();
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
             this.Close();
         }
     }

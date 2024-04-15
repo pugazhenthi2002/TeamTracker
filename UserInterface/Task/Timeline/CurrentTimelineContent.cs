@@ -35,15 +35,18 @@ namespace UserInterface.Task.Timeline
         {
             set
             {
-                version = value;
-                iterDate = startViewDate = value.StartDate;
-                dateDifference = value.EndDate - value.StartDate;
-                isBackEnable = false;
-                isNextEnable = true;
-                endViewDate = startViewDate.AddDays(20);
-                taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
-                InitializeTimeline();
-                SetViewTaskCollection();
+                if (value != null)
+                {
+                    version = value;
+                    iterDate = startViewDate = value.StartDate;
+                    dateDifference = value.EndDate - value.StartDate;
+                    isBackEnable = false;
+                    isNextEnable = true;
+                    endViewDate = startViewDate.AddDays(20);
+                    taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
+                    InitializeTimeline();
+                    SetViewTaskCollection();
+                }
             }
         }
 

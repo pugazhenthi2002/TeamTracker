@@ -232,7 +232,8 @@ namespace TeamTracker
 
         private void OnAddTaskClick(object sender, EventArgs e)
         {
-
+            addTask1.InitializePage();
+            tabControl1.SelectedIndex = 5;
         }
     }
 }

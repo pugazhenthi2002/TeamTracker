@@ -459,6 +459,12 @@
     <Compile Include="Task\CreateTask\MilestoneDropDownForm.Designer.cs">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task\CreateTask\MilestoneWarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\CreateTask\MilestoneWarningForm.Designer.cs">
+      <DependentUpon>MilestoneWarningForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Task\CreateTask\PriorityDropDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -873,6 +879,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\MilestoneDropDownForm.resx">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\CreateTask\MilestoneWarningForm.resx">
+      <DependentUpon>MilestoneWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
       <DependentUpon>PriorityDropDownForm.cs</DependentUpon>

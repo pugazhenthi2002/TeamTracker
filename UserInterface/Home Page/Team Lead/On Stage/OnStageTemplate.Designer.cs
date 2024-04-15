@@ -31,9 +31,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.ucOnStage1 = new TeamTracker.UcOnStage();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -67,24 +68,6 @@
             this.panel3.Size = new System.Drawing.Size(604, 20);
             this.panel3.TabIndex = 2;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(20, 371);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(604, 20);
-            this.panel4.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.ucOnStage1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(20, 20);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(604, 351);
-            this.panel5.TabIndex = 4;
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -98,19 +81,50 @@
             this.label1.Text = "On Stage";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(20, 371);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(604, 20);
+            this.panel4.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.ucNotFound1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(20, 20);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(604, 351);
+            this.panel5.TabIndex = 4;
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No On-Stage Project !!";
+            this.ucNotFound1.HeadTextSize = 14;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(604, 351);
+            this.ucNotFound1.TabIndex = 0;
+            // 
             // ucOnStage1
             // 
             this.ucOnStage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucOnStage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucOnStage1.Location = new System.Drawing.Point(0, 0);
+            this.ucOnStage1.Location = new System.Drawing.Point(20, 20);
             this.ucOnStage1.Name = "ucOnStage1";
             this.ucOnStage1.Size = new System.Drawing.Size(604, 351);
-            this.ucOnStage1.TabIndex = 0;
+            this.ucOnStage1.TabIndex = 5;
             // 
             // OnStageTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ucOnStage1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -132,6 +146,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private UcNotFound ucNotFound1;
         private TeamTracker.UcOnStage ucOnStage1;
     }
 }

@@ -33,24 +33,32 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.clearAllButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.milestoneTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.basePanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.addMilestoneButton = new System.Windows.Forms.Button();
             this.milestoneDateTime = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
+            this.addMilestoneButton = new System.Windows.Forms.Button();
+            this.basePanel = new System.Windows.Forms.Panel();
+            this.upPicBox = new System.Windows.Forms.PictureBox();
+            this.downPicBox = new System.Windows.Forms.PictureBox();
+            this.closeButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.closeButton);
+            this.panel2.Controls.Add(this.downPicBox);
+            this.panel2.Controls.Add(this.upPicBox);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -85,7 +93,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel1.Controls.Add(this.button2, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.clearAllButton, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.addMilestoneButton, 2, 0);
@@ -96,6 +104,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(546, 81);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // clearAllButton
+            // 
+            this.clearAllButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clearAllButton.BackgroundImage = global::UserInterface.Properties.Resources.Close;
+            this.clearAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.clearAllButton.Location = new System.Drawing.Point(498, 20);
+            this.clearAllButton.Name = "clearAllButton";
+            this.clearAllButton.Size = new System.Drawing.Size(44, 40);
+            this.clearAllButton.TabIndex = 3;
+            this.clearAllButton.UseVisualStyleBackColor = true;
+            this.clearAllButton.Click += new System.EventHandler(this.clearAllButton_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -163,24 +183,19 @@
             this.label3.Text = "Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // basePanel
+            // milestoneDateTime
             // 
-            this.basePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.basePanel.Location = new System.Drawing.Point(0, 126);
-            this.basePanel.Name = "basePanel";
-            this.basePanel.Size = new System.Drawing.Size(546, 430);
-            this.basePanel.TabIndex = 3;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackgroundImage = global::UserInterface.Properties.Resources.Close;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Location = new System.Drawing.Point(498, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(44, 40);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = true;
+            this.milestoneDateTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.milestoneDateTime.BorderSize = 2;
+            this.milestoneDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.milestoneDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.milestoneDateTime.Location = new System.Drawing.Point(3, 43);
+            this.milestoneDateTime.MinimumSize = new System.Drawing.Size(4, 35);
+            this.milestoneDateTime.Name = "milestoneDateTime";
+            this.milestoneDateTime.Size = new System.Drawing.Size(216, 35);
+            this.milestoneDateTime.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.milestoneDateTime.TabIndex = 2;
+            this.milestoneDateTime.TextColor = System.Drawing.Color.White;
             // 
             // addMilestoneButton
             // 
@@ -195,19 +210,49 @@
             this.addMilestoneButton.UseVisualStyleBackColor = false;
             this.addMilestoneButton.Click += new System.EventHandler(this.addMilestoneButton_Click);
             // 
-            // milestoneDateTime
+            // basePanel
             // 
-            this.milestoneDateTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.milestoneDateTime.BorderSize = 2;
-            this.milestoneDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.milestoneDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.milestoneDateTime.Location = new System.Drawing.Point(3, 43);
-            this.milestoneDateTime.MinimumSize = new System.Drawing.Size(4, 35);
-            this.milestoneDateTime.Name = "milestoneDateTime";
-            this.milestoneDateTime.Size = new System.Drawing.Size(216, 35);
-            this.milestoneDateTime.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.milestoneDateTime.TabIndex = 2;
-            this.milestoneDateTime.TextColor = System.Drawing.Color.White;
+            this.basePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.basePanel.Location = new System.Drawing.Point(0, 126);
+            this.basePanel.Name = "basePanel";
+            this.basePanel.Size = new System.Drawing.Size(546, 430);
+            this.basePanel.TabIndex = 3;
+            // 
+            // upPicBox
+            // 
+            this.upPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.upPicBox.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.upPicBox.Location = new System.Drawing.Point(301, 0);
+            this.upPicBox.Name = "upPicBox";
+            this.upPicBox.Size = new System.Drawing.Size(40, 45);
+            this.upPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.upPicBox.TabIndex = 1;
+            this.upPicBox.TabStop = false;
+            this.upPicBox.Click += new System.EventHandler(this.OnUpClick);
+            // 
+            // downPicBox
+            // 
+            this.downPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.downPicBox.Image = global::UserInterface.Properties.Resources.sort_down_hover;
+            this.downPicBox.Location = new System.Drawing.Point(341, 0);
+            this.downPicBox.Name = "downPicBox";
+            this.downPicBox.Size = new System.Drawing.Size(40, 45);
+            this.downPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.downPicBox.TabIndex = 2;
+            this.downPicBox.TabStop = false;
+            this.downPicBox.Click += new System.EventHandler(this.OnDownClick);
+            // 
+            // closeButton
+            // 
+            this.closeButton.BackgroundImage = global::UserInterface.Properties.Resources.Close;
+            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closeButton.Location = new System.Drawing.Point(502, 0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(44, 45);
+            this.closeButton.TabIndex = 4;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.OnCloseClick);
             // 
             // AddMilestoneForm
             // 
@@ -228,6 +273,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,9 +289,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button clearAllButton;
         private System.Windows.Forms.TextBox milestoneTextBox;
         private System.Windows.Forms.Button addMilestoneButton;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime milestoneDateTime;
+        private System.Windows.Forms.PictureBox downPicBox;
+        private System.Windows.Forms.PictureBox upPicBox;
+        private System.Windows.Forms.Button closeButton;
     }
 }

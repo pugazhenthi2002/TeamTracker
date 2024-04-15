@@ -13,7 +13,15 @@ namespace TeamTracker
         public static List<Milestone> MilestoneCollection = new List<Milestone>();
         public static Milestone CurrentMilestone { get; set; }
 
+        public static void AddMilestones(int versionID, List<Milestone> milestoneCollection)
+        {
+            milestoneCollection = DataHandler.AddMilestones(versionID, milestoneCollection);
 
+            foreach(var Iter in milestoneCollection)
+            {
+                MilestoneCollection.Add(Iter);
+            }
+        }
 
         public static BooleanMsg StoreMilestoneCollection()
         {

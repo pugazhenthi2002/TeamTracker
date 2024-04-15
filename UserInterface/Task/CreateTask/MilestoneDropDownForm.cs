@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.Task.CreateTask;
 
 namespace TeamTracker
 {
@@ -32,8 +33,11 @@ namespace TeamTracker
             
             set
             {
-                milestoneList = value;
-                InitializeMilestones();
+                if (value != null)
+                {
+                    milestoneList = value;
+                    InitializeMilestones();
+                }
             }
         }
 
@@ -68,36 +72,79 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-
         }
 
         private void InitializeMilestones()
         {
-            this.Size = new Size(this.Width, 40 * (milestoneList.Count()));
+            if (milestoneList.Count <= 4)
+            {
+                this.Size = new Size(this.Width, 50 * (milestoneList.Count()));
+            }
+            else
+            {
+                this.Size = new Size(this.Width, 50 * 4);
+            }
 
-            foreach(Milestone milestone in milestoneList)
+            foreach (Milestone milestone in milestoneList)
             {
                 Button mileStoneBtn = new Button();
                 mileStoneBtn.FlatStyle = FlatStyle.Flat;
                 mileStoneBtn.FlatAppearance.BorderSize = 0;
                 mileStoneBtn.ForeColor = Color.FromArgb(201, 210, 217);
                 mileStoneBtn.Text = milestone.MileStoneName;
-                mileStoneBtn.Size = new Size(this.Width, 40);
+                mileStoneBtn.Size = new Size(this.Width, 50);
                 mileStoneBtn.Dock = DockStyle.Top;
-
                 mileStoneBtn.Click += OnClickMilestoneBtn;
+                this.Controls.Add(mileStoneBtn);
+            }
+
+            foreach(Button Iter in Controls)
+            {
+                Iter.BringToFront();
             }
         }
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
-            MilestoneClick?.Invoke(sender, e);
+            if(IsMilestoneAlreadyCompleted((sender as Button).Text))
+            {
+                MilestoneWarningForm form = new MilestoneWarningForm();
+                form.WarningStatus += OnWarningStatus;
+                form.Show();
+            }
+            else
+            {
+                MilestoneClick?.Invoke(sender as Button, e);
+                this.Close();
+            }
+        }
+
+        private void OnWarningStatus(object sender, bool e)
+        {
+            if (e)
+            {
+                MilestoneClick?.Invoke(sender, EventArgs.Empty);
+                this.Close();
+            }
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
             this.Close();
+        }
+
+        private bool IsMilestoneAlreadyCompleted(string text)
+        {
+            foreach (var Iter in milestoneList)
+            {
+                if (Iter.MileStoneName == text)
+                {
+                    return Iter.Status == MilestoneStatus.Completed;
+                }
+            }
+
+            return false;
         }
     }
 }
