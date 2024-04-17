@@ -40,6 +40,29 @@ namespace TeamTracker
             DataHandler.AddSourceCode(sourceCodeCollection);
         }
 
+        public static Dictionary<string, int> FilterTeamMemberTaskCountByMilestone(int id)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            int count = 0;
+
+            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
+
+            foreach (var Iter in employeeCollection)
+            {
+                foreach (var TaskIter in TaskCollection)
+                {
+                    if (TaskIter.MilestoneID == id)
+                    {
+                        count++;
+                    }
+                }
+                result.Add(Iter.EmployeeFirstName, count);
+                count = 0;
+            }
+
+            return result;
+        }
+
         //Move to Done Status
         public static void MoveToDone(Task task)
         {
@@ -47,7 +70,7 @@ namespace TeamTracker
         }
 
         //Created a new Task
-        public static void AddTask(string taskName, string taskDescription, DateTime startDate, DateTime endDate, Priority priority, int assignedTo, List<TaskAttachment> taskAttachments)
+        public static void AddTask(string taskName, string taskDescription, DateTime startDate, DateTime endDate, int milestoneID, Priority priority, int assignedTo, TaskAttachment taskAttachment)
         {
             Task task = new Task()
             {
@@ -58,17 +81,19 @@ namespace TeamTracker
                 TaskPriority = priority,
                 StatusOfTask = TaskStatus.NotYetStarted,
                 VersionID = VersionManager.CurrentVersion.VersionID,
+                MilestoneID = milestoneID,
                 AssignedBy = EmployeeManager.CurrentEmployee.EmployeeID,
                 AssignedTo = assignedTo,
             };
 
             task = DataHandler.AddTask(task);
-
-            DataHandler.AddTaskAttachment(taskAttachments);
+            TaskCollection.Add(task);
+            taskAttachment.TaskID = task.TaskID;
+            DataHandler.AddTaskAttachment(taskAttachment);
         }
 
         //Update a Task
-        public static void UpdateTask(int taskID, string taskName, string taskDescription, DateTime startDate, DateTime endDate, TaskStatus status, Priority priority, int assignedTo, List<TaskAttachment> taskAttachments)
+        public static void UpdateTask(int taskID, string taskName, string taskDescription, DateTime startDate, DateTime endDate, TaskStatus status, int milestoneID, Priority priority, int assignedTo, TaskAttachment taskAttachment)
         {
 
             foreach(var Iter in TaskCollection)
@@ -79,11 +104,12 @@ namespace TeamTracker
                     Iter.StartDate = startDate; Iter.EndDate = endDate;
                     Iter.TaskPriority = priority;   Iter.AssignedTo = assignedTo;
                     Iter.StatusOfTask = status;
+                    Iter.MilestoneID = milestoneID;
                     DataHandler.UpdateTask(Iter);
                 }
             }
 
-            if(taskAttachments!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachments);
+            if(taskAttachment!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
         }
 
         public static Dictionary<string, int> FilterTeamMemberTaskCount(int month, int year, int priority)
@@ -146,6 +172,19 @@ namespace TeamTracker
             return finalResult;
         }
 
+        public static void DeleteTask(int taskID)
+        {
+            foreach(var Iter in TaskCollection)
+            {
+                if(Iter.TaskID == taskID)
+                {
+                    DataHandler.DeleteTask(taskID);
+                    TaskCollection.Remove(Iter);
+                    break;
+                }
+            }
+        }
+
         public static int FilterTaskCount(int month, int year, int priority)
         {
             int count = 0;
@@ -191,7 +230,24 @@ namespace TeamTracker
             List<Task> result = new List<Task>();
             foreach (var Iter in TaskCollection)
             {
-                if (Iter.VersionID == versionID && Iter.StatusOfTask == Tstatus)
+                if (Iter.VersionID == versionID && Iter.StatusOfTask == Tstatus && Iter.AssignedTo == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
+        }
+
+        //fetches list of task by versionId and Status
+        public static List<Task> FetchRemainingTasks(int versionID,TaskStatus Tstatus)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.VersionID == versionID && Iter.StatusOfTask != Tstatus && Iter.AssignedTo == EmployeeManager.CurrentEmployee.EmployeeID)
                 {
                     result.Add(Iter);
                 }

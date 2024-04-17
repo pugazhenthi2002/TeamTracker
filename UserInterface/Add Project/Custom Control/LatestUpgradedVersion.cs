@@ -34,7 +34,7 @@ namespace TeamTracker
                     endDateLabel.Text = value.EndDate.ToShortDateString();
                     clientEmailLabel.Text = value.ClientEmail;
                     taskCountLabel.Text = TaskManager.FetchTaskCount(value.VersionID).ToString();
-                    descriptionLabel.Text = value.VersionDescription;
+                    descTextBox.Text = value.VersionDescription;
                 }
                 else
                 {
@@ -69,6 +69,24 @@ namespace TeamTracker
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
+        }
+
+        private void BorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+
+            border1.Dispose();
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height), new Point((sender as Control).Width, (sender as Control).Height));
+            border.Dispose();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace TeamTracker
         public Task SourceCodeTask;
         public SourceCode TaskSourceCode;
         public EventHandler CloseClick;
-        public EventHandler DoneClick;
+        public EventHandler<SourceCode> DoneClick;
         private bool Uploaded = false;
         private string selectedFileName = "";
 
@@ -68,7 +68,6 @@ namespace TeamTracker
             if (selectedFileName == "")
             {
                 pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudHover1;
-                labelClickUpload.Font = new Font(labelClickUpload.Font, FontStyle.Bold);
             }
         }
 
@@ -77,10 +76,7 @@ namespace TeamTracker
             if (selectedFileName == "")
             {
                 pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack1;
-                labelClickUpload.Font = new Font(labelClickUpload.Font, FontStyle.Regular);
             }
-
-
         }
 
         private void OnMouseClickUpload(object sender, MouseEventArgs e)
@@ -88,25 +84,19 @@ namespace TeamTracker
             labelWarning.Hide();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.Title = "Commit Name";
-            openFileDialog1.Filter = "ZIP files (*.zip)|*.zip";
+            openFileDialog1.Title = "Source Code Name";
+            openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (DataHandler.CommitNameAlreadyExists(SourceCodeTask.TaskID, openFileDialog1.Title))
-                {
-                    ProjectManagerMainForm.notify.AddNotification("Submission Failed", "Source Code Commit Name Already Exists\nTry Some Other Name");
-                    return;
-                }
-
                 string selectedFilePath = openFileDialog1.FileName;
                 string safeFile = openFileDialog1.SafeFileName;
                 TaskSourceCode = new SourceCode()
                 {
                     TaskID = SourceCodeTask.TaskID,
-                    SubmittedDate = DateTime.Now,
-                    SourceCodeLocation = safeFile,
-                    CommitName = openFileDialog1.Title
+                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    SourceCodeLocation = selectedFilePath,
+                    SubmittedDate = DateTime.Now.Date
                 };
             }
         }
@@ -119,20 +109,21 @@ namespace TeamTracker
 
         private void OnClickClear(object sender, EventArgs e)
         {
+            TaskSourceCode = null;
             Uploaded = false;
             pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack1;
-            labelClickUpload.Text = "Click to Upload";
             selectedFileName = "";
         }
 
         private void OnClickDone(object sender, EventArgs e)
         {
-            if(selectedFileName=="")
+            if(TaskSourceCode==null || richTextBox1.Text == "")
             {
                 labelWarning.Show();
                 return;
             }
-            DoneClick?.Invoke(sender, e);
+            TaskSourceCode.CommitName = richTextBox1.Text;
+            DoneClick?.Invoke(sender, TaskSourceCode);
             this.Close();
         }
 

@@ -18,15 +18,25 @@ namespace UserInterface.Add_Project.Custom_Control
             InitializeComponent();
         }
 
+        public new void Dispose()
+        {
+            label1.Dispose();   label2.Dispose();
+            yesButton.Dispose();    noButton.Dispose();
+            panel1.Dispose();  panel2.Dispose();    panel3.Dispose();   panel4.Dispose();
+            tableLayoutPanel1.Dispose();
+        }
+
         private void OnYesClicked(object sender, EventArgs e)
         {
             WarningStatus?.Invoke(this, true);
+            Dispose();
             this.Close();
         }
 
         private void OnNoClicked(object sender, EventArgs e)
         {
             WarningStatus?.Invoke(this, false);
+            Dispose();
             this.Close();
         }
     }

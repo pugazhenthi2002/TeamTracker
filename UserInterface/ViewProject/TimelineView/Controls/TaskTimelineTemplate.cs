@@ -54,7 +54,9 @@ namespace TeamTracker
 
         private void OnClicked(object sender, EventArgs e)
         {
-            TaskSelect?.Invoke(this, timelineTask);
+            TaskInfoForm form = new TaskInfoForm();
+            form.SelectedTask = timelineTask;
+            form.Show();
         }
 
         private void TaskTimelineTemplate_Paint(object sender, PaintEventArgs e)

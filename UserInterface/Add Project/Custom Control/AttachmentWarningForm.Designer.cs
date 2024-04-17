@@ -55,8 +55,10 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(385, 42);
@@ -87,6 +89,7 @@
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(385, 76);
@@ -120,32 +123,41 @@
             // 
             // yesButton
             // 
+            this.yesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.yesButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.yesButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yesButton.FlatAppearance.BorderSize = 0;
+            this.yesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.yesButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.yesButton.Location = new System.Drawing.Point(138, 3);
             this.yesButton.Name = "yesButton";
             this.yesButton.Size = new System.Drawing.Size(97, 34);
             this.yesButton.TabIndex = 2;
             this.yesButton.Text = "Yes";
-            this.yesButton.UseVisualStyleBackColor = true;
+            this.yesButton.UseVisualStyleBackColor = false;
             this.yesButton.Click += new System.EventHandler(this.OnYesClicked);
             // 
             // noButton
             // 
+            this.noButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.noButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.noButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noButton.FlatAppearance.BorderSize = 0;
+            this.noButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.noButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.noButton.Location = new System.Drawing.Point(19, 3);
             this.noButton.Name = "noButton";
             this.noButton.Size = new System.Drawing.Size(97, 34);
             this.noButton.TabIndex = 1;
             this.noButton.Text = "No";
-            this.noButton.UseVisualStyleBackColor = true;
+            this.noButton.UseVisualStyleBackColor = false;
             this.noButton.Click += new System.EventHandler(this.OnNoClicked);
             // 
             // AttachmentWarningForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.ClientSize = new System.Drawing.Size(385, 158);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

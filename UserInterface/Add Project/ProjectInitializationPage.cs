@@ -29,7 +29,7 @@ namespace TeamTracker
             clientTextBox.Text = "Client Email";
             startDateTimePicker.Value = DateTime.Now;
             endDateTimePicker.Value = DateTime.Now;
-            fileAttachment1.ClearAttachments = true;
+            fileAttachment1.Dispose();
             ucNotFound1.Visible = true;
             availableTeamLeaders1.Visible = false;
             selectedTeamLeader1.Visible = false;
@@ -63,10 +63,10 @@ namespace TeamTracker
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
-            panel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel4.Width, panel4.Height, 20, 20));
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             CreateProject.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, CreateProject.Width, CreateProject.Height, 10, 10));
+            clearButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, clearButton.Width, clearButton.Height, 10, 10));
         }
 
         private void ProjectEntryTablePanel_Paint(object sender, PaintEventArgs e)
@@ -166,6 +166,7 @@ namespace TeamTracker
                 else
                 {
                     teamLeader = null;
+                    availableTeamLeaders1.Dispose();
                     availableTeamLeaders1.TeamLeaders = availableTL;
                     availableTeamLeaders1.Visible = true;
                     selectedTeamLeader1.Visible = false;
@@ -194,7 +195,7 @@ namespace TeamTracker
                 }
                 else
                 {
-                    VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, attachments);
+                    VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, attachments);
                     InitializePage();
                     ProjectManagerMainForm.notify.AddNotification("Project Created", projectTitleTextBox.Text + "\n" + "Version Name: 1.0");
                 }
@@ -205,8 +206,9 @@ namespace TeamTracker
         {
             if (e)
             {
-                VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, null);
+                VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, null);
                 ProjectManagerMainForm.notify.AddNotification("Project Created", projectTitleTextBox.Text + "\n" + "Version Name: 1.0");
+                fileAttachment1.Dispose();
             }
         }
 
@@ -247,6 +249,12 @@ namespace TeamTracker
                 ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Valid Project Date");
                 return false;
             }
+
+            if((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days <= 20)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nProject Duration Should be Atleast 20 Days");
+                return false;
+            }
             return true;
         }
 
@@ -269,28 +277,37 @@ namespace TeamTracker
 
         private void BorderDrawPaint(object sender, PaintEventArgs e)
         {
-            Rectangle rec = new Rectangle(0, 0, (sender as Panel).Width-2, (sender as Panel).Height-2);
-            Pen border = new Pen(Color.FromArgb(221, 230, 237));
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
-            border.Dispose();
+            if (sender is Button)
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
+            else
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+
+            border1.Dispose();
         }
 
         private void TextBorderPanelPaint(object sender, PaintEventArgs e)
         {
-            Pen border = new Pen(Color.FromArgb(3, 4, 94), 2);
+            Pen border1 = new Pen(Color.FromArgb(3, 4, 94), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.DrawLine(border, new Point(projectTitleTextBox.Location.X, projectTitleTextBox.Location.Y + projectTitleTextBox.Height), new Point(projectTitleTextBox.Location.X + projectTitleTextBox.Width, projectTitleTextBox.Location.Y + projectTitleTextBox.Height));
-            e.Graphics.DrawLine(border, new Point(projectDescTextBox.Location.X, projectDescTextBox.Location.Y + projectDescTextBox.Height), new Point(projectDescTextBox.Location.X + projectDescTextBox.Width, projectDescTextBox.Location.Y + projectDescTextBox.Height));
-            border.Dispose();
+            e.Graphics.DrawLine(border1, new Point(projectTitleTextBox.Location.X, projectTitleTextBox.Location.Y + projectTitleTextBox.Height), new Point(projectTitleTextBox.Location.X + projectTitleTextBox.Width - 1, projectTitleTextBox.Location.Y + projectTitleTextBox.Height));
+            e.Graphics.DrawLine(border1, new Point(projectDescTextBox.Location.X, projectDescTextBox.Location.Y + projectDescTextBox.Height), new Point(projectDescTextBox.Location.X + projectDescTextBox.Width - 1, projectDescTextBox.Location.Y + projectDescTextBox.Height));
+            border1.Dispose();
         }
 
         private void CLientTextBorderPanelPaint(object sender, PaintEventArgs e)
         {
             Pen border = new Pen(Color.FromArgb(3, 4, 94), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.DrawLine(border, new Point(clientTextBox.Location.X, clientTextBox.Location.Y + clientTextBox.Height), new Point(clientTextBox.Location.X + projectDescTextBox.Width, clientTextBox.Location.Y + clientTextBox.Height));
+            e.Graphics.DrawLine(border, new Point(clientTextBox.Location.X, clientTextBox.Location.Y + clientTextBox.Height), new Point(clientTextBox.Location.X + clientTextBox.Width - 1, clientTextBox.Location.Y + clientTextBox.Height));
             border.Dispose();
+        }
+
+        private void OnCLearClick(object sender, EventArgs e)
+        {
+            InitializePage();
         }
     }
 }

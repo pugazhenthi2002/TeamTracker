@@ -23,6 +23,19 @@ namespace TeamTracker
             }
         }
 
+        public static void UpdateMilestone(Milestone milestone, MilestoneStatus status)
+        {
+            foreach (var Iter in MilestoneCollection)
+            {
+                if (Iter.MileStoneID == milestone.MileStoneID)
+                {
+                    Iter.Status = milestone.Status = status;
+                    DataHandler.UpdateMilestone(milestone);
+                    return;
+                }
+            }
+        }
+
         public static BooleanMsg StoreMilestoneCollection()
         {
             MilestoneCollection = DataHandler.StoreMilestones();
@@ -60,13 +73,26 @@ namespace TeamTracker
             return null;
         }
 
+        public static Milestone FetchMilestoneFromID(int id)
+        {
+            foreach(var Iter in MilestoneCollection)
+            {
+                if(Iter.MileStoneID == id)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+
         public static int FetchTeamLeader(int milestoneID)
         {
-            foreach(var Iter in TaskManager.TaskCollection)
+            foreach(var Iter in MilestoneCollection)
             {
-                if(milestoneID == Iter.MilestoneID)
+                if(milestoneID == Iter.MileStoneID)
                 {
-                    return Iter.AssignedBy;
+                    return VersionManager.FetchTeamLeadFromVersionID(Iter.VersionID);
                 }
             }
             return -1;
@@ -102,5 +128,62 @@ namespace TeamTracker
             return count;
         }
 
+        public static bool IsAllTaskCompletedInCurrentMilestone()
+        {
+            bool flag = false;
+            foreach(var Iter in TaskManager.TaskCollection)
+            {
+                if (Iter.MilestoneID == CurrentMilestone.MileStoneID)
+                    flag = true;
+
+                if(Iter.MilestoneID == CurrentMilestone.MileStoneID && Iter.StatusOfTask != TaskStatus.Done)
+                {
+                    return false;
+                }
+            }
+
+            return true && flag;
+        }
+
+        public static void SwitchToNextMilestone()
+        {
+            List<Milestone> milestoneList = FetchMilestones(VersionManager.CurrentVersion.VersionID);
+
+            for(int ctr=0; ctr < milestoneList.Count; ctr++)
+            {
+                if(milestoneList[ctr].Status == MilestoneStatus.OnProcess)
+                {
+                    UpdateMilestone(milestoneList[ctr], MilestoneStatus.Completed);
+                    if (ctr < milestoneList.Count - 1)
+                    {
+                        UpdateMilestone(milestoneList[ctr + 1], MilestoneStatus.OnProcess);
+                        CurrentMilestone = milestoneList[ctr + 1];
+                    }
+                    break;
+                }
+            }
+        }
+
+        public static bool IsCurrentMilestoneIsLastMilestone()
+        {
+            if(CurrentMilestone.EndDate == VersionManager.CurrentVersion.EndDate)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsTaskWithinTheMilestone(DateTime startDate, DateTime endDate, int milestoneID)
+        {
+            foreach(var Iter in MilestoneCollection)
+            {
+                if(Iter.MileStoneID == milestoneID)
+                {
+                    return Iter.StartDate <= startDate && endDate <= Iter.EndDate;
+                }
+            }
+
+            return true;
+        }
     }
 }

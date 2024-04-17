@@ -42,8 +42,17 @@ namespace TeamTracker
                 if(value == null)
                 {
                     attachmentCollection = null;
-                    attachmentDisplayPanel.Controls.Clear();
                 }
+            }
+        }
+
+        public new void Dispose()
+        {
+            for(int ctr=0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
+            {
+                (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
+                ctr--;
+                attachmentDisplayPanel.Controls.Remove(attachmentDisplayPanel.Controls[ctr]);
             }
         }
 
@@ -98,6 +107,7 @@ namespace TeamTracker
         {
             AttachmentCollection.Remove((sender as PDFAttachment).FileName);
             attachmentDisplayPanel.Controls.Remove(sender as PDFAttachment);
+            (sender as PDFAttachment).Dispose();
         }
 
 
@@ -109,6 +119,14 @@ namespace TeamTracker
         private void OnBrowseMouseLeave(object sender, EventArgs e)
         {
             (sender as Label).BackColor = Color.RoyalBlue;
+        }
+
+        private void OnTablePanelPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(Width - 349, 0), new Point(Width - 349, tableLayoutPanel1.Height));
+            border.Dispose();
         }
     }
 }

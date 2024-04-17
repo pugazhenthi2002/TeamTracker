@@ -33,7 +33,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.descriptionLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -52,6 +51,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.versionName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.descTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -67,7 +67,7 @@
             // 
             // label6
             // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
             this.label6.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -109,7 +109,7 @@
             // panel7
             // 
             this.panel7.AutoScroll = true;
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -118,30 +118,21 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(518, 180);
             this.panel7.TabIndex = 3;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.descriptionLabel);
+            this.panel8.Controls.Add(this.descTextBox);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 25);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(518, 155);
             this.panel8.TabIndex = 2;
             // 
-            // descriptionLabel
-            // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.descriptionLabel.Location = new System.Drawing.Point(0, 0);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(73, 17);
-            this.descriptionLabel.TabIndex = 0;
-            this.descriptionLabel.Text = "description";
-            // 
             // label7
             // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -151,6 +142,7 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Description";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             // 
             // tableLayoutPanel2
             // 
@@ -170,7 +162,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.panel6.Controls.Add(this.taskCountLabel);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -179,6 +171,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(261, 54);
             this.panel6.TabIndex = 4;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // taskCountLabel
             // 
@@ -194,6 +187,7 @@
             // 
             // label5
             // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -203,10 +197,11 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Task Count";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.panel5.Controls.Add(this.clientEmailLabel);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -215,6 +210,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(261, 54);
             this.panel5.TabIndex = 3;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // clientEmailLabel
             // 
@@ -230,6 +226,7 @@
             // 
             // label4
             // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -239,6 +236,7 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Client Email";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             // 
             // tableLayoutPanel3
             // 
@@ -259,7 +257,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.panel4.Controls.Add(this.endDateLabel);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -268,6 +266,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(126, 54);
             this.panel4.TabIndex = 4;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // endDateLabel
             // 
@@ -283,6 +282,7 @@
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -292,10 +292,11 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Due Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.panel3.Controls.Add(this.startDateLabel);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -304,6 +305,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(125, 54);
             this.panel3.TabIndex = 3;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // startDateLabel
             // 
@@ -319,6 +321,7 @@
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -328,10 +331,11 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Start Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.panel2.Controls.Add(this.versionName);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -340,6 +344,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 54);
             this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // versionName
             // 
@@ -355,6 +360,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -364,6 +370,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Version Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            // 
+            // descTextBox
+            // 
+            this.descTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
+            this.descTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descTextBox.Location = new System.Drawing.Point(0, 0);
+            this.descTextBox.Multiline = true;
+            this.descTextBox.Name = "descTextBox";
+            this.descTextBox.Size = new System.Drawing.Size(518, 155);
+            this.descTextBox.TabIndex = 0;
             // 
             // LatestUpgradedVersion
             // 
@@ -398,7 +416,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label taskCountLabel;
@@ -415,5 +432,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label versionName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox descTextBox;
     }
 }

@@ -201,7 +201,7 @@ namespace TeamTracker
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "ZIP files (*.zip)|*.zip";
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)

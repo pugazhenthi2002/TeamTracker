@@ -68,6 +68,18 @@ namespace TeamTracker
             return null;
         }
 
+        public static ProjectVersion FetchVersionFromTaskID(int id)
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.VersionID == id)
+                {
+                    return Iter;
+                }
+            }
+            return null;
+        }
+
         public static void AddProject(string projectName, string versionDesc, int teamLeadID, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {
             Projects newProject = new Projects()
@@ -120,6 +132,11 @@ namespace TeamTracker
             VersionCollection.Add(newVersion);
         }
 
+        public static void SubmitVersionSourceCode(VersionSourceCode selectedVersionSourceCode)
+        {
+            DataHandler.SubmitVersionSourceCode(selectedVersionSourceCode);
+        }
+
         public static void UpdateVersion(int versionID, string versionName, string versionDesc, ProjectStatus status, DateTime startDate, DateTime endDate, string clientEmail, List<VersionAttachment> versionAttachments)
         {
             foreach(var Iter in VersionCollection)
@@ -135,6 +152,19 @@ namespace TeamTracker
                     DataHandler.UpdateVersion(Iter);
                     if (versionAttachments != null)
                         DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    return;
+                }
+            }
+        }
+
+        public static void UpdateVersion(ProjectVersion version, ProjectStatus status)
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.VersionID == version.VersionID)
+                {
+                    Iter.StatusOfVersion = CurrentVersion.StatusOfVersion = status;
+                    DataHandler.UpdateVersion(Iter);
                     return;
                 }
             }

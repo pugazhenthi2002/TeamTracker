@@ -132,7 +132,7 @@
             this.profileAssignedTo.Dock = System.Windows.Forms.DockStyle.Right;
             this.profileAssignedTo.EmployeeProfile = null;
             this.profileAssignedTo.HoverColor = System.Drawing.Color.Empty;
-            this.profileAssignedTo.isOperable = false;
+            this.profileAssignedTo.IsOperable = false;
             this.profileAssignedTo.Location = new System.Drawing.Point(608, 0);
             this.profileAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.profileAssignedTo.Name = "profileAssignedTo";

@@ -22,7 +22,7 @@ namespace TeamTracker
             }
         }
 
-        private SourceCode TaskSourceCode;
+        public event EventHandler Reset;
         private Task task;
         public SingleList()
         {
@@ -65,24 +65,28 @@ namespace TeamTracker
                     StatusChangeWarningForm form = new StatusChangeWarningForm();
                     form.PrevStatus = e;
                     form.WarningStatus += OnWarningStatusClicked;
+                    form.Show();
                 }
                 else
                 {
                     if (e == "Stuck") task.StatusOfTask = TaskStatus.Stuck;
-                    if (e == "On Process") task.StatusOfTask = TaskStatus.OnProcess;
+                    if (e == "Working On It") task.StatusOfTask = TaskStatus.OnProcess;
                     if (e == "Not Yet Started") task.StatusOfTask = TaskStatus.NotYetStarted;
 
-                    TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, task.StatusOfTask, task.TaskPriority, task.AssignedTo, null);
+                    TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, task.StatusOfTask, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
                     SetTaskUI();
+
+                    Reset?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
 
-        private void OnSourceCodeSubmission(object sender, EventArgs e)
+        private void OnSourceCodeSubmission(object sender, SourceCode e)
         {
             task.StatusOfTask = TaskStatus.UnderReview;
-            DataHandler.SubmitSourceCode(TaskSourceCode);
+            DataHandler.SubmitSourceCode(e);
             SetTaskUI();
+            Reset?.Invoke(this, EventArgs.Empty);
         }
 
         private void SetAnimatedLabelBackColor()
@@ -109,13 +113,34 @@ namespace TeamTracker
             if (result)
             {
                 if (e == "Stuck") task.StatusOfTask = TaskStatus.Stuck;
-                if (e == "On Process") task.StatusOfTask = TaskStatus.OnProcess;
+                if (e == "Working On It") task.StatusOfTask = TaskStatus.OnProcess;
                 if (e == "Not Yet Started") task.StatusOfTask = TaskStatus.NotYetStarted;
 
-                TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, task.StatusOfTask, task.TaskPriority, task.AssignedTo, null);
+                TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, task.StatusOfTask, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
                 DataHandler.DeleteSourceCode(task.TaskID);
                 SetTaskUI();
+                Reset?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            Rectangle rec = new Rectangle(0, 0, (Width / 6)-1, Height - 1);
+            
+            for(int ctr=0; ctr < 6; ctr++)
+            {
+                e.Graphics.DrawRectangle(border, rec);
+                rec.X = rec.X + (Width / 6);
+            }
+            border.Dispose();
+        }
+
+        private void ViewTaskClick(object sender, EventArgs e)
+        {
+            TaskInfoForm form = new TaskInfoForm();
+            form.SelectedTask = task;
+            form.Show();
         }
     }
 }

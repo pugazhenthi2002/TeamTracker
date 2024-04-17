@@ -60,6 +60,7 @@ namespace UserInterface.Project_Manager_Main_Page
         private void OnSignOutClick(object sender, EventArgs e)
         {
             SignOut?.Invoke(this, e);
+            this.Close();
         }
 
     }

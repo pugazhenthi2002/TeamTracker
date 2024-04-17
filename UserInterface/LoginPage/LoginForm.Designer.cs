@@ -35,11 +35,12 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.errorMessageLabel = new System.Windows.Forms.Label();
-            this.closePictureBox = new System.Windows.Forms.PictureBox();
-            this.letsTeamUpButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.password = new TeamTracker.TextBoxU();
             this.username = new TeamTracker.TextBoxU();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.letsTeamUpButton = new System.Windows.Forms.Button();
+            this.logo1 = new TeamTracker.Logo();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -96,6 +97,7 @@
             this.tableLayoutPanel2.Controls.Add(this.username, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.closePictureBox, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.letsTeamUpButton, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.logo1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
@@ -137,6 +139,54 @@
             this.errorMessageLabel.TabIndex = 5;
             this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // password
+            // 
+            this.password.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.password.Interval = 15;
+            this.password.Location = new System.Drawing.Point(54, 308);
+            this.password.Margin = new System.Windows.Forms.Padding(1);
+            this.password.Multiline = false;
+            this.password.Name = "password";
+            this.password.Padding = new System.Windows.Forms.Padding(18, 15, 8, 6);
+            this.password.PasswordChar = '●';
+            this.password.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.password.PlaceholderLabelAtTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.password.PlaceholderText = "Password";
+            this.password.Size = new System.Drawing.Size(366, 54);
+            this.password.TabIndex = 4;
+            this.password.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.password.TextBoxDock = System.Windows.Forms.DockStyle.None;
+            this.password.TextBoxtext = "";
+            this.password.TextForeColor = System.Drawing.SystemColors.WindowText;
+            this.password.UseSystemPasswordChar = true;
+            // 
+            // username
+            // 
+            this.username.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.username.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.username.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.username.Interval = 15;
+            this.username.Location = new System.Drawing.Point(54, 229);
+            this.username.Margin = new System.Windows.Forms.Padding(1);
+            this.username.Multiline = true;
+            this.username.Name = "username";
+            this.username.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
+            this.username.PasswordChar = '\0';
+            this.username.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.username.PlaceholderLabelAtTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.username.PlaceholderText = "Username";
+            this.username.Size = new System.Drawing.Size(366, 54);
+            this.username.TabIndex = 1;
+            this.username.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.username.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
+            this.username.TextBoxtext = "";
+            this.username.TextForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.username.UseSystemPasswordChar = false;
+            // 
             // closePictureBox
             // 
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
@@ -169,6 +219,15 @@
             this.letsTeamUpButton.UseVisualStyleBackColor = false;
             this.letsTeamUpButton.Click += new System.EventHandler(this.OnTeamUpClick);
             // 
+            // logo1
+            // 
+            this.logo1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logo1.Location = new System.Drawing.Point(209, 48);
+            this.logo1.LogoColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.logo1.Name = "logo1";
+            this.logo1.Size = new System.Drawing.Size(57, 57);
+            this.logo1.TabIndex = 8;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -181,52 +240,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // password
-            // 
-            this.password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.password.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.password.Location = new System.Drawing.Point(54, 308);
-            this.password.Margin = new System.Windows.Forms.Padding(1);
-            this.password.Multiline = false;
-            this.password.Name = "password";
-            this.password.Padding = new System.Windows.Forms.Padding(18, 15, 8, 6);
-            this.password.PasswordChar = '●';
-            this.password.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.password.PlaceholderLabelAtTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.password.PlaceholderText = "Password";
-            this.password.Size = new System.Drawing.Size(366, 54);
-            this.password.TabIndex = 4;
-            this.password.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.password.TextBoxDock = System.Windows.Forms.DockStyle.None;
-            this.password.TextBoxtext = "";
-            this.password.TextForeColor = System.Drawing.SystemColors.WindowText;
-            this.password.UseSystemPasswordChar = true;
-            // 
-            // username
-            // 
-            this.username.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.username.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.username.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.username.Location = new System.Drawing.Point(54, 229);
-            this.username.Margin = new System.Windows.Forms.Padding(1);
-            this.username.Multiline = true;
-            this.username.Name = "username";
-            this.username.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
-            this.username.PasswordChar = '\0';
-            this.username.PlaceholderLabelAtCenterColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.username.PlaceholderLabelAtTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.username.PlaceholderText = "Username";
-            this.username.Size = new System.Drawing.Size(366, 54);
-            this.username.TabIndex = 1;
-            this.username.TextBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.username.TextBoxDock = System.Windows.Forms.DockStyle.Fill;
-            this.username.TextBoxtext = "";
-            this.username.TextForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.username.UseSystemPasswordChar = false;
             // 
             // LoginForm
             // 
@@ -263,5 +276,6 @@
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Button letsTeamUpButton;
+        private Logo logo1;
     }
 }

@@ -12,6 +12,17 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class PriorityDropDownForm : Form
     {
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
         private int priority, prevPriority;
         private Label prevLabel;
 

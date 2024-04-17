@@ -48,7 +48,7 @@ namespace TeamTracker
 
         private void InitializeRoundedEdge()
         {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, panel1.Height, panel1.Height));
 
         }
         public Employee EmployeeProfile
@@ -82,6 +82,15 @@ namespace TeamTracker
         private void OnMouseLeave(object sender, EventArgs e)
         {
             teamLeaderName.ForeColor = Color.FromArgb(82, 109, 130);
+        }
+
+        public new void Dispose()
+        {
+            teamLeaderName.Dispose();
+            profilePictureBox2.Image.Dispose();
+            profilePictureBox2.Dispose();
+            panel1.Dispose();
+            tableLayoutPanel1.Dispose();
         }
     }
 }

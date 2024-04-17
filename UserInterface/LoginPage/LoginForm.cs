@@ -15,7 +15,6 @@ namespace TeamTracker
     public partial class LoginForm : Form
     {
         private BooleanMsg message;
-        private const int CSDropShadow = 0x00020000;
 
         public LoginForm()
         {
@@ -35,6 +34,7 @@ namespace TeamTracker
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
         }
 
+        private const int CSDropShadow = 0x00020000;
         protected override CreateParams CreateParams
         {
             get
@@ -66,6 +66,9 @@ namespace TeamTracker
 
             if (message == true)
             {
+                username.TextBoxtext = "";
+                password.TextBoxtext = "";
+                username.Focus();
                 SelectPageBasedOnRole();
             }
         }

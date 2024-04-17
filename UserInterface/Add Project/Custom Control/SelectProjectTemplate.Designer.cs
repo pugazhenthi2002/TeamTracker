@@ -51,8 +51,9 @@
             // 
             // singleProjectSelectTemplate2
             // 
-            this.singleProjectSelectTemplate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.singleProjectSelectTemplate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.singleProjectSelectTemplate2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.singleProjectSelectTemplate2.IsClicked = false;
             this.singleProjectSelectTemplate2.Location = new System.Drawing.Point(191, 7);
             this.singleProjectSelectTemplate2.Margin = new System.Windows.Forms.Padding(7);
             this.singleProjectSelectTemplate2.Name = "singleProjectSelectTemplate2";
@@ -63,8 +64,9 @@
             // 
             // singleProjectSelectTemplate1
             // 
-            this.singleProjectSelectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.singleProjectSelectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.singleProjectSelectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.singleProjectSelectTemplate1.IsClicked = false;
             this.singleProjectSelectTemplate1.Location = new System.Drawing.Point(7, 7);
             this.singleProjectSelectTemplate1.Margin = new System.Windows.Forms.Padding(7);
             this.singleProjectSelectTemplate1.Name = "singleProjectSelectTemplate1";

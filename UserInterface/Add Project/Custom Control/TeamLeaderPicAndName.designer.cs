@@ -69,7 +69,7 @@
             // 
             this.teamLeaderName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.teamLeaderName.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamLeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.teamLeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.teamLeaderName.Location = new System.Drawing.Point(56, 0);
             this.teamLeaderName.Name = "teamLeaderName";
             this.teamLeaderName.Size = new System.Drawing.Size(267, 56);
@@ -86,6 +86,7 @@
             this.profilePictureBox2.Location = new System.Drawing.Point(0, 0);
             this.profilePictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.profilePictureBox2.Name = "profilePictureBox2";
+            this.profilePictureBox2.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.profilePictureBox2.Size = new System.Drawing.Size(56, 56);
             this.profilePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox2.TabIndex = 3;
@@ -97,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TeamLeaderPicAndName";
             this.Size = new System.Drawing.Size(327, 67);

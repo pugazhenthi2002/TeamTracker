@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcOnStage));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.descTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panelDownloadAttachement = new System.Windows.Forms.Panel();
             this.labelDownload = new System.Windows.Forms.Label();
@@ -48,14 +51,12 @@
             this.clientLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.descTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonOnStage = new System.Windows.Forms.Button();
             this.setMilestoneButton = new System.Windows.Forms.Button();
+            this.buttonOnStage = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panelDownloadAttachement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
@@ -65,7 +66,6 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,8 +85,47 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(551, 274);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.panel1.Controls.Add(this.descTextBox);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(285, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.panel1.Size = new System.Drawing.Size(261, 264);
+            this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
+            // 
+            // descTextBox
+            // 
+            this.descTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.descTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descTextBox.Location = new System.Drawing.Point(2, 40);
+            this.descTextBox.Multiline = true;
+            this.descTextBox.Name = "descTextBox";
+            this.descTextBox.Size = new System.Drawing.Size(257, 224);
+            this.descTextBox.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.label4.Location = new System.Drawing.Point(2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(257, 40);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Description";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.panelDownloadAttachement, 0, 3);
@@ -105,6 +144,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(265, 264);
             this.tableLayoutPanel3.TabIndex = 0;
+            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
             // panelDownloadAttachement
             // 
@@ -122,7 +162,7 @@
             // 
             this.labelDownload.BackColor = System.Drawing.Color.Transparent;
             this.labelDownload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDownload.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDownload.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDownload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.labelDownload.Location = new System.Drawing.Point(0, 0);
             this.labelDownload.Name = "labelDownload";
@@ -152,7 +192,7 @@
             // 
             // labelProjNameandVersion
             // 
-            this.labelProjNameandVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.labelProjNameandVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelProjNameandVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelProjNameandVersion.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProjNameandVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -172,12 +212,12 @@
             this.tableLayoutPanel4.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 145);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 145);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(265, 66);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(261, 66);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // panel4
@@ -186,32 +226,35 @@
             this.panel4.Controls.Add(this.endDate);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(137, 5);
+            this.panel4.Location = new System.Drawing.Point(135, 5);
             this.panel4.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(118, 56);
+            this.panel4.Size = new System.Drawing.Size(116, 56);
             this.panel4.TabIndex = 1;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // endDate
             // 
+            this.endDate.BackColor = System.Drawing.Color.Transparent;
             this.endDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.endDate.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDate.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.endDate.Location = new System.Drawing.Point(0, 32);
             this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(118, 24);
+            this.endDate.Size = new System.Drawing.Size(116, 24);
             this.endDate.TabIndex = 1;
             this.endDate.Text = "11.10.2002";
             this.endDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 32);
+            this.label3.Size = new System.Drawing.Size(116, 32);
             this.label3.TabIndex = 0;
             this.label3.Text = "End Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -225,29 +268,32 @@
             this.panel3.Location = new System.Drawing.Point(10, 5);
             this.panel3.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(117, 56);
+            this.panel3.Size = new System.Drawing.Size(115, 56);
             this.panel3.TabIndex = 0;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // startDate
             // 
+            this.startDate.BackColor = System.Drawing.Color.Transparent;
             this.startDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startDate.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDate.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.startDate.Location = new System.Drawing.Point(0, 32);
             this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(117, 24);
+            this.startDate.Size = new System.Drawing.Size(115, 24);
             this.startDate.TabIndex = 1;
             this.startDate.Text = "11.10.2002";
             this.startDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 32);
+            this.label2.Size = new System.Drawing.Size(115, 32);
             this.label2.TabIndex = 0;
             this.label2.Text = "Start Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -273,11 +319,13 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(245, 56);
             this.panel6.TabIndex = 1;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // clientLabel
             // 
+            this.clientLabel.BackColor = System.Drawing.Color.Transparent;
             this.clientLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clientLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.clientLabel.Location = new System.Drawing.Point(0, 32);
             this.clientLabel.Name = "clientLabel";
@@ -288,8 +336,9 @@
             // 
             // label5
             // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
@@ -314,40 +363,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 343);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.panel1.Controls.Add(this.descTextBox);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(285, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 264);
-            this.panel1.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(261, 40);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Description";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // descTextBox
-            // 
-            this.descTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.descTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descTextBox.Location = new System.Drawing.Point(0, 40);
-            this.descTextBox.Multiline = true;
-            this.descTextBox.Name = "descTextBox";
-            this.descTextBox.Size = new System.Drawing.Size(261, 224);
-            this.descTextBox.TabIndex = 1;
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -363,23 +378,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(545, 63);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
-            // buttonOnStage
-            // 
-            this.buttonOnStage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOnStage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.buttonOnStage.FlatAppearance.BorderSize = 0;
-            this.buttonOnStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOnStage.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOnStage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.buttonOnStage.Location = new System.Drawing.Point(314, 15);
-            this.buttonOnStage.Margin = new System.Windows.Forms.Padding(5, 15, 5, 15);
-            this.buttonOnStage.Name = "buttonOnStage";
-            this.buttonOnStage.Size = new System.Drawing.Size(188, 33);
-            this.buttonOnStage.TabIndex = 4;
-            this.buttonOnStage.Text = "Stage Project";
-            this.buttonOnStage.UseVisualStyleBackColor = false;
-            this.buttonOnStage.Click += new System.EventHandler(this.OnClickStageProject);
-            // 
             // setMilestoneButton
             // 
             this.setMilestoneButton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -388,14 +386,31 @@
             this.setMilestoneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setMilestoneButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setMilestoneButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.setMilestoneButton.Location = new System.Drawing.Point(42, 15);
-            this.setMilestoneButton.Margin = new System.Windows.Forms.Padding(5, 15, 5, 15);
+            this.setMilestoneButton.Location = new System.Drawing.Point(45, 10);
+            this.setMilestoneButton.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.setMilestoneButton.Name = "setMilestoneButton";
-            this.setMilestoneButton.Size = new System.Drawing.Size(188, 33);
+            this.setMilestoneButton.Size = new System.Drawing.Size(181, 43);
             this.setMilestoneButton.TabIndex = 5;
             this.setMilestoneButton.Text = "Set Milestone";
             this.setMilestoneButton.UseVisualStyleBackColor = false;
             this.setMilestoneButton.Click += new System.EventHandler(this.OnSetMilestoneFormClicked);
+            // 
+            // buttonOnStage
+            // 
+            this.buttonOnStage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOnStage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.buttonOnStage.FlatAppearance.BorderSize = 0;
+            this.buttonOnStage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOnStage.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOnStage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.buttonOnStage.Location = new System.Drawing.Point(314, 10);
+            this.buttonOnStage.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
+            this.buttonOnStage.Name = "buttonOnStage";
+            this.buttonOnStage.Size = new System.Drawing.Size(188, 43);
+            this.buttonOnStage.TabIndex = 4;
+            this.buttonOnStage.Text = "Stage Project";
+            this.buttonOnStage.UseVisualStyleBackColor = false;
+            this.buttonOnStage.Click += new System.EventHandler(this.OnClickStageProject);
             // 
             // UcOnStage
             // 
@@ -406,6 +421,8 @@
             this.Name = "UcOnStage";
             this.Size = new System.Drawing.Size(551, 343);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panelDownloadAttachement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
@@ -415,8 +432,6 @@
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 

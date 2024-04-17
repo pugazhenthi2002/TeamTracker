@@ -83,9 +83,9 @@ namespace TeamTracker
                 milestoneCollection.Add(new Milestone()
                 {
                     MileStoneName = milestoneTextBox.Text,
-                    StartDate = prevEndDate,
-                    EndDate = milestoneDateTime.Value,
-                    Status = SetMilestoneStatus(prevEndDate, milestoneDateTime.Value),
+                    StartDate = prevEndDate.Date,
+                    EndDate = milestoneDateTime.Value.Date,
+                    Status = MilestoneStatus.Upcoming,
                     VersionID = selectedVersion.VersionID,
                 });
                 prevEndDate = milestoneDateTime.Value;
@@ -209,20 +209,27 @@ namespace TeamTracker
         private void SetMilestones()
         {
             DateTime prevDate = startDate;
+            milestoneCollection.Sort((m1, m2) => m1.EndDate.CompareTo(m2.EndDate));
 
             for (int ctr = 0; ctr < milestoneCollection.Count; ctr++)
             {
+                if (ctr == 0)
+                {
+                    milestoneCollection[ctr].Status = MilestoneStatus.OnProcess;
+                }
                 milestoneCollection[ctr].StartDate = prevDate;
                 prevDate = milestoneCollection[ctr].EndDate;
             }
+
+            milestoneCollection[milestoneCollection.Count - 1].EndDate = endDate;
         }
 
         private BooleanMsg isEligibleContraints()
         {
-            if (milestoneCollection.Count < 5 || milestoneCollection.Count > 20)
-            {
-                return "Milestone Count Should Be Between 4 and 20";
-            }
+            //if (milestoneCollection.Count < 5 || milestoneCollection.Count > 20)
+            //{
+            //    return "Milestone Count Should Be Between 4 and 20";
+            //}
 
             DateTime prevDate = startDate;
 
@@ -236,6 +243,14 @@ namespace TeamTracker
             }
 
             return true;
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
+            border.Dispose();
         }
 
         private bool OnCheckContraints(object sender, MilestoneEventArgs m)

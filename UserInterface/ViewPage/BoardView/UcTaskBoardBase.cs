@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using UserInterface.ViewPage.ListView;
 
 namespace TeamTracker
 {
@@ -20,7 +21,7 @@ namespace TeamTracker
 
         private Point TaskBoardStartPoint;
         private Point TaskBoardMouseUpPoint;
-        private int startColumn;
+        private int startColumn, selectedColumnNumber;
 
         private Point OffsetPoint;
         private bool IsDragging = false;
@@ -146,17 +147,62 @@ namespace TeamTracker
 
         private void OnMouseUpTaskBoard(UCTaskBoard sender, MouseEventArgs e)
         {
-            IsDragging = false;
             TaskBoardMouseUpPoint = tableLayoutPanel1.PointToClient(Control.MousePosition);
-
             int columnWidth = tableLayoutPanel1.Width / tableLayoutPanel1.ColumnCount;
             int columnNumber = TaskBoardMouseUpPoint.X / columnWidth;
-
             BoardToAdd = sender;
+            if (sender.TaskData.StatusOfTask == TaskStatus.UnderReview)
+            {
+                StatusChangeWarningForm form = new StatusChangeWarningForm();
+                selectedColumnNumber = columnNumber;
+                switch (columnNumber)
+                {
+                    case 0:
+                        form.PrevStatus = "NotYetStarted";
+                        break;
+                    case 1:
+                        form.PrevStatus = "OnProcess";
+                        break;
+                    case 2:
+                        form.PrevStatus = "Stuck";
+                        break;
+                    default:
+                        form.PrevStatus = "UnderReview";
+                        break;
+                }
 
-            AddBoardOnColumn(columnNumber);
+                if (form.PrevStatus == "UnderReview")
+                {
+                    toAdd = true;
+                    AddBoard(BoardToAdd);
+                }
+                else
+                {
+                    form.WarningStatus += OnWarningStatusClicked;
+                    form.Show();
+                }
+            }
+            else
+            {
+                AddBoardOnColumn(columnNumber);
+            }
+
+            IsDragging = false;
             
-            
+        }
+
+        private void OnWarningStatusClicked(string e, bool result)
+        {
+            if (result)
+            {
+                DataHandler.DeleteSourceCode(BoardToAdd.TaskData.TaskID);
+                AddBoardOnColumn(selectedColumnNumber);
+            }
+            else
+            {
+                toAdd = true;
+                AddBoard(BoardToAdd);
+            }
         }
 
         private void AddBoardOnColumn(int columnNumber)
@@ -178,6 +224,7 @@ namespace TeamTracker
                 case 3:
 
                     SubmitionForm = new SourceCodeSubmitionForm();
+                    SubmitionForm.SourceCodeTask = BoardToAdd.TaskData;
                     SubmitionForm.DoneClick += OnClickDoneSubmitionForm;
                     SubmitionForm.CloseClick += OnClickCloseSubmitionForm;
                     SubmitionForm.Show();
@@ -198,9 +245,10 @@ namespace TeamTracker
             }
         }
 
-        private void OnClickDoneSubmitionForm(object sender, EventArgs e)
+        private void OnClickDoneSubmitionForm(object sender, SourceCode e)
         {
             toAdd = true;
+            DataHandler.SubmitSourceCode(e);
             AddBoard(BoardToAdd);
 
         }

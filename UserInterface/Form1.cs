@@ -19,26 +19,10 @@ namespace UserInterface
 {
     public partial class Form1 : Form
     {
-        private string placeHolderText = "Hello";
+        private string prevString;
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            DataHandler.ConnectDatabase();
-            VersionManager.StoreProjectCollection();
-            VersionManager.StoreVersionCollection();
-            TaskManager.StoreTaskCollection();
-            EmployeeManager.StoreEmployeeToCollection();
-            EmployeeManager.StoreEmployeeManagingCollection();
-            EmployeeManager.LogInEmployee("emmastonev@gmail.com", "Lucid123");
-
-            AddMilestoneForm form = new AddMilestoneForm();
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.SelectedVersion = VersionManager.FetchProjectLatestVersion(2);
-            form.Show();
         }
     }
 }

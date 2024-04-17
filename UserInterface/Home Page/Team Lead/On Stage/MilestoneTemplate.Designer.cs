@@ -34,8 +34,8 @@
             this.downButton = new System.Windows.Forms.PictureBox();
             this.counterLabel = new System.Windows.Forms.Label();
             this.milestoneName = new System.Windows.Forms.TextBox();
-            this.upButton = new System.Windows.Forms.PictureBox();
             this.milestoneDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
+            this.upButton = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -56,13 +56,14 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel1.Controls.Add(this.closeButton, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.downButton, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.counterLabel, 0, 0);
@@ -81,10 +82,10 @@
             // 
             this.closeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.closeButton.Image = global::UserInterface.Properties.Resources.Close;
-            this.closeButton.Location = new System.Drawing.Point(523, 1);
+            this.closeButton.Location = new System.Drawing.Point(522, 1);
             this.closeButton.Margin = new System.Windows.Forms.Padding(1);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(41, 40);
+            this.closeButton.Size = new System.Drawing.Size(42, 40);
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.closeButton.TabIndex = 5;
             this.closeButton.TabStop = false;
@@ -94,19 +95,19 @@
             // 
             this.downButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.downButton.Image = global::UserInterface.Properties.Resources.sort_down;
-            this.downButton.Location = new System.Drawing.Point(488, 1);
+            this.downButton.Location = new System.Drawing.Point(487, 1);
             this.downButton.Margin = new System.Windows.Forms.Padding(1);
             this.downButton.Name = "downButton";
             this.downButton.Size = new System.Drawing.Size(33, 40);
             this.downButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.downButton.TabIndex = 4;
             this.downButton.TabStop = false;
-            this.downButton.Click += GetFocus;
             this.downButton.Click += new System.EventHandler(this.OnDownButtonClicked);
             // 
             // counterLabel
             // 
             this.counterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.counterLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.counterLabel.Location = new System.Drawing.Point(3, 0);
             this.counterLabel.Name = "counterLabel";
             this.counterLabel.Size = new System.Drawing.Size(29, 42);
@@ -117,6 +118,7 @@
             // 
             // milestoneName
             // 
+            this.milestoneName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.milestoneName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.milestoneName.Location = new System.Drawing.Point(38, 3);
             this.milestoneName.Multiline = true;
@@ -124,22 +126,7 @@
             this.milestoneName.Size = new System.Drawing.Size(265, 36);
             this.milestoneName.TabIndex = 1;
             this.milestoneName.Click += new System.EventHandler(this.OnClicked);
-            this.milestoneName.KeyDown += CheckDuplication;
             this.milestoneName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
-            // 
-            // upButton
-            // 
-            this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upButton.Image = global::UserInterface.Properties.Resources.sort_up;
-            this.upButton.Location = new System.Drawing.Point(453, 1);
-            this.upButton.Margin = new System.Windows.Forms.Padding(1);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(33, 40);
-            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.upButton.TabIndex = 3;
-            this.upButton.TabStop = false;
-            this.upButton.Click += GetFocus;
-            this.upButton.Click += new System.EventHandler(this.OnUpButtonClicked);
             // 
             // milestoneDate
             // 
@@ -150,12 +137,24 @@
             this.milestoneDate.Location = new System.Drawing.Point(309, 3);
             this.milestoneDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.milestoneDate.Name = "milestoneDate";
-            this.milestoneDate.Size = new System.Drawing.Size(140, 35);
-            this.milestoneDate.SkinColor = System.Drawing.Color.MediumSlateBlue;
+            this.milestoneDate.Size = new System.Drawing.Size(139, 35);
+            this.milestoneDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.milestoneDate.TabIndex = 2;
-            this.milestoneDate.TextColor = System.Drawing.Color.White;
-            this.milestoneDate.ValueChanged += CheckPreviousDate;
+            this.milestoneDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.milestoneDate.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // upButton
+            // 
+            this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upButton.Image = global::UserInterface.Properties.Resources.sort_up;
+            this.upButton.Location = new System.Drawing.Point(452, 1);
+            this.upButton.Margin = new System.Windows.Forms.Padding(1);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(33, 40);
+            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.upButton.TabIndex = 3;
+            this.upButton.TabStop = false;
+            this.upButton.Click += new System.EventHandler(this.OnUpButtonClicked);
             // 
             // MilestoneTemplate
             // 

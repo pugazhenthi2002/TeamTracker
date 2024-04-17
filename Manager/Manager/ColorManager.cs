@@ -32,11 +32,22 @@ namespace TeamTracker
         {
             switch (status)
             {
-                case TaskStatus.Done: return Color.FromArgb(3, 4, 94);
-                case TaskStatus.UnderReview: return Color.FromArgb(2, 62, 138);
-                case TaskStatus.OnProcess: return Color.FromArgb(0, 119, 182);
-                case TaskStatus.Stuck: return Color.FromArgb(0, 180, 216);
-                default: return Color.FromArgb(72, 149, 239);
+                case TaskStatus.Done: return Color.Green;
+                case TaskStatus.UnderReview: return Color.Blue;
+                case TaskStatus.OnProcess: return Color.Gold;
+                case TaskStatus.Stuck: return Color.Red;
+                default: return Color.Gray;
+            }
+        }
+
+        public static Color FetchTaskPriorityColor(Priority priority)
+        {
+            switch (priority)
+            {
+                case Priority.Critical: return Color.FromArgb(247, 37, 133);
+                case Priority.Hard: return Color.FromArgb(114, 9, 183);
+                case Priority.Medium: return Color.FromArgb(58, 12, 163);
+                default: return Color.FromArgb(67, 97, 238);
             }
         }
         public static List<Color> ColorFadingOut;

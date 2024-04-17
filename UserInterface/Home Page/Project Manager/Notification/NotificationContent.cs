@@ -48,7 +48,6 @@ namespace TeamTracker
             }
         }
 
-
         public Color BorderColor
         {
             get { return borderColor; }
@@ -86,6 +85,22 @@ namespace TeamTracker
                 tempNotification.SendToBack();
                 UcNotiList.Add(tempNotification);
             }
+
+            nextEnable = (endIndex == notifyList.Count - 1) ? false : true;
+            backEnable = (currentIndex == 0) ? false : true;
+
+            if (backBtn.Image != null)
+            {
+                backBtn.Image.Dispose();
+            }
+
+            if (nextBtn.Image != null)
+            {
+                nextBtn.Image.Dispose();
+            }
+
+            backBtn.Image = (backEnable) ? UserInterface.Properties.Resources.Back_LightBlue : UserInterface.Properties.Resources.Back_Hover;
+            nextBtn.Image = (nextEnable) ? UserInterface.Properties.Resources.Next_LightBlue : UserInterface.Properties.Resources.Next_Hover;
         }
 
         private void NotificationPagination()

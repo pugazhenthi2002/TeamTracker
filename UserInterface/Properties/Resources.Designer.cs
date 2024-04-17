@@ -83,6 +83,36 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_Task_30_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Add Task 30 Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Add_Task_30_Normal {
+            get {
+                object obj = ResourceManager.GetObject("Add Task 30 Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Add_Task_30_Normal1 {
+            get {
+                object obj = ResourceManager.GetObject("Add Task 30 Normal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Attachment_black {
             get {
                 object obj = ResourceManager.GetObject("Attachment-black", resourceCulture);
@@ -253,6 +283,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Close_30 {
+            get {
+                object obj = ResourceManager.GetObject("Close 30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_Alice_Blue_30 {
+            get {
+                object obj = ResourceManager.GetObject("Close Alice Blue 30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_Black {
             get {
                 object obj = ResourceManager.GetObject("Close Black", resourceCulture);
@@ -333,6 +383,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Critical {
+            get {
+                object obj = ResourceManager.GetObject("Critical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap download {
             get {
                 object obj = ResourceManager.GetObject("download", resourceCulture);
@@ -366,6 +426,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Download_Static {
             get {
                 object obj = ResourceManager.GetObject("Download Static", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Easy {
+            get {
+                object obj = ResourceManager.GetObject("Easy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,6 +533,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hard {
+            get {
+                object obj = ResourceManager.GetObject("Hard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Home_Hover {
             get {
                 object obj = ResourceManager.GetObject("Home Hover", resourceCulture);
@@ -536,6 +616,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap List_Normal {
             get {
                 object obj = ResourceManager.GetObject("List Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Medium {
+            get {
+                object obj = ResourceManager.GetObject("Medium", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -786,6 +876,26 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap View_Project_Hover {
             get {
                 object obj = ResourceManager.GetObject("View Project Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap View_Task_30_Hover {
+            get {
+                object obj = ResourceManager.GetObject("View Task 30 Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap View_Task_30_Normal {
+            get {
+                object obj = ResourceManager.GetObject("View Task 30 Normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

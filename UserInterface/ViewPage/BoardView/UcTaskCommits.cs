@@ -15,7 +15,6 @@ namespace TeamTracker
 
         private string commitName;
         private int sourceCodeId = 4;
-        private string sourceCodeLocation = "temp//temp2//temp3";
 
         public UcTaskCommits()
         {
@@ -33,16 +32,6 @@ namespace TeamTracker
             }
         }
 
-        public string SourceCodeLocation
-        {
-            get { return sourceCodeLocation; }
-            set
-            {
-                sourceCodeLocation = value;
-                SetSourceCodeLoc();
-            }
-        }
-
         public string CommitName
         {
             get { return commitName; }
@@ -53,8 +42,6 @@ namespace TeamTracker
             }
         }
 
-
-
         private void SetCommitName()
         {
             labelCommitName.Text = commitName ;
@@ -63,11 +50,6 @@ namespace TeamTracker
         private void SetSourceCodeId()
         {
             labelSourceCodeId.Text = sourceCodeId + "";
-        }
-
-        private void SetSourceCodeLoc()
-        {
-            labelSourceCodeLocation.Text = sourceCodeLocation;
         }
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
@@ -83,11 +65,12 @@ namespace TeamTracker
 
         private void OnClickDownloadSourceCode(object sender, MouseEventArgs e)
         {
-            string fileNetworkPath = sourceCodeLocation;
+            SourceCode sourceCode = DataHandler.GetTaskSourceBySourceCodeID(sourceCodeId);
+
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "ZIP files (*.zip)|*.zip";
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -95,16 +78,18 @@ namespace TeamTracker
                 savePath = saveFileDialog.FileName;
             }
 
+            string fileNetworkPath = sourceCode.SourceCodeLocation;
             try
             {
                 string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.Combine(savePath, savePath);
+                string filePath = System.IO.Path.GetDirectoryName(savePath);
+                filePath = System.IO.Path.Combine(filePath, sourceCode.CommitName);
                 System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", commitName + "\n" );
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.CommitName);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", commitName + "\n");
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", sourceCode.CommitName);
             }
         }
     }

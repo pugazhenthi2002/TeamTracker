@@ -12,7 +12,16 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class MonthForm : Form
     {
-
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
 
         private int month;
         private Label prevLabel;

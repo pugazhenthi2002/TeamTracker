@@ -10,6 +10,7 @@ namespace TeamTracker
     {
         public int TaskAttachmentID { get; set; }
         public int TaskID { get; set; }
+        public string DisplayName { get; set; }
         public string TaskAttachmentName { get; set; }
         public string TaskAttachmentLocation { get; set; }
     }

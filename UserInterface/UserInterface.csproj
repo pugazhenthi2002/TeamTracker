@@ -370,6 +370,18 @@
     <Compile Include="Home Page\Team Member\TeamMemberHome.Designer.cs">
       <DependentUpon>TeamMemberHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home Page\Team Member\TeamMemberReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Member\TeamMemberReport.Designer.cs">
+      <DependentUpon>TeamMemberReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home Page\Team Member\TeamMemberReportContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home Page\Team Member\TeamMemberReportContent.Designer.cs">
+      <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,11 +495,47 @@
     <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task\DeployForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\DeployForm.Designer.cs">
+      <DependentUpon>DeployForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\DeployWarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\DeployWarningForm.Designer.cs">
+      <DependentUpon>DeployWarningForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\MilestoneSwitch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\MilestoneSwitch.Designer.cs">
+      <DependentUpon>MilestoneSwitch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\ReviewTaskTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Task\ReviewTaskTemplate.Designer.cs">
+      <DependentUpon>ReviewTaskTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\SwitchMilestoneWarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\SwitchMilestoneWarningForm.Designer.cs">
+      <DependentUpon>SwitchMilestoneWarningForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Task\Timeline\CurrentTimelineContent.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Task\Timeline\CurrentTimelineContent.Designer.cs">
       <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Task\Timeline\TaskOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Task\Timeline\TaskOperationForm.Designer.cs">
+      <DependentUpon>TaskOperationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Task\Timeline\TimelineTask.cs">
       <SubType>UserControl</SubType>
@@ -611,6 +659,12 @@
     </Compile>
     <Compile Include="ViewPage\MyTaskTemplate.Designer.cs">
       <DependentUpon>MyTaskTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage\WarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPage\WarningForm.Designer.cs">
+      <DependentUpon>WarningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewProject\BoardView\BoardViewContent.cs">
       <SubType>UserControl</SubType>
@@ -827,6 +881,12 @@
     <EmbeddedResource Include="Home Page\Team Member\TeamMemberHome.resx">
       <DependentUpon>TeamMemberHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Member\TeamMemberReport.resx">
+      <DependentUpon>TeamMemberReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home Page\Team Member\TeamMemberReportContent.resx">
+      <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -892,8 +952,26 @@
     <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
       <DependentUpon>UcCreateTask.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Task\DeployForm.resx">
+      <DependentUpon>DeployForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\DeployWarningForm.resx">
+      <DependentUpon>DeployWarningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\MilestoneSwitch.resx">
+      <DependentUpon>MilestoneSwitch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\ReviewTaskTemplate.resx">
+      <DependentUpon>ReviewTaskTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\SwitchMilestoneWarningForm.resx">
+      <DependentUpon>SwitchMilestoneWarningForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Task\Timeline\CurrentTimelineContent.resx">
       <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Task\Timeline\TaskOperationForm.resx">
+      <DependentUpon>TaskOperationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\Timeline\TimelineTask.resx">
       <DependentUpon>TimelineTask.cs</DependentUpon>
@@ -954,6 +1032,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\MyTaskTemplate.resx">
       <DependentUpon>MyTaskTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPage\WarningForm.resx">
+      <DependentUpon>WarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProject\BoardView\BoardViewContent.resx">
       <DependentUpon>BoardViewContent.cs</DependentUpon>
@@ -1084,6 +1165,12 @@
     <None Include="Pugazh Images\Next LightBlue.png" />
     <None Include="Pugazh Images\List Hover.png" />
     <None Include="Pugazh Images\List Normal.png" />
+    <None Include="Pugazh Images\Close 30.png" />
+    <None Include="Pugazh Images\Close Alice Blue 30.png" />
+    <None Include="Pugazh Images\Add Task 30 Normal.png" />
+    <None Include="Pugazh Images\Add Task 30 Hover.png" />
+    <None Include="Pugazh Images\View Task 30 Hover.png" />
+    <None Include="Pugazh Images\View Task 30 Normal.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />
@@ -1099,6 +1186,8 @@
     <None Include="Resources\download.gif" />
     <None Include="Resources\cloud uploaded.png" />
     <None Include="Resources\Download Static.gif" />
+    <None Include="Resources\Easy.png" />
+    <None Include="Resources\Critical.png" />
     <Content Include="Resources\flag-done.png" />
     <Content Include="Resources\flag-empty.png" />
     <Content Include="Resources\flag-NotStarted.png" />
@@ -1106,10 +1195,12 @@
     <Content Include="Resources\flag-stuck.png" />
     <Content Include="Resources\flag-UnderReview.png" />
     <None Include="Resources\icons8-upload-to-cloud-100.png" />
+    <None Include="Resources\Hard.png" />
     <Content Include="Resources\info-black.png" />
     <Content Include="Resources\info-hover.png" />
     <None Include="Resources\Line.png" />
     <None Include="Resources\Not found.png" />
+    <None Include="Resources\Medium.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />

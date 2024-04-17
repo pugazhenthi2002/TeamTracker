@@ -105,16 +105,16 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
-                    MilestoneDate = milestoneDate.Value,
+                    MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
                     Position = Convert.ToInt32(counterLabel.Text),
                     Movement = MilestoneOperation.Steady
                 });
-                milestone.EndDate = milestoneDate.Value;
+                milestone.EndDate = milestoneDate.Value.Date;
             }
             else
             {
-                milestoneDate.Value = milestone.EndDate;
+                milestoneDate.Value = milestone.EndDate.Date;
             }
         }
 
@@ -122,7 +122,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             isEligibleContraints = CheckConstraints?.Invoke(this, new MilestoneEventArgs()
             {
-                MilestoneDate = milestoneDate.Value,
+                MilestoneDate = milestoneDate.Value.Date,
                 MilestoneName = milestoneName.Text,
                 Movement = MilestoneOperation.Steady,
                 Position = Convert.ToInt32(counterLabel.Text)
@@ -135,7 +135,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
-                    MilestoneDate = milestoneDate.Value,
+                    MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
                     Position = Convert.ToInt32(counterLabel.Text),
                     Movement = MilestoneOperation.Up
@@ -149,7 +149,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
-                    MilestoneDate = milestoneDate.Value,
+                    MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
                     Position = Convert.ToInt32(counterLabel.Text),
                     Movement = MilestoneOperation.Down
@@ -166,7 +166,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
             {
-                MilestoneDate = milestoneDate.Value,
+                MilestoneDate = milestoneDate.Value.Date,
                 MilestoneName = milestoneName.Text,
                 Position = Convert.ToInt32(counterLabel.Text),
                 Movement = MilestoneOperation.Delete
@@ -179,7 +179,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
-                    MilestoneDate = milestoneDate.Value,
+                    MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
                     Position = Convert.ToInt32(counterLabel.Text),
                     Movement = MilestoneOperation.Steady
@@ -194,7 +194,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             {
                 isEligibleContraints =  CheckConstraints?.Invoke(this, new MilestoneEventArgs()
                 {
-                    MilestoneDate = milestoneDate.Value,
+                    MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
                     Movement = MilestoneOperation.Steady,
                     Position = Convert.ToInt32(counterLabel.Text)

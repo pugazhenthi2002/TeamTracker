@@ -31,7 +31,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSourceCodeId = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelSourceCodeLocation = new System.Windows.Forms.Label();
             this.labelCommitName = new System.Windows.Forms.Label();
             this.pictureBoxDownload = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,7 +74,6 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.labelSourceCodeLocation, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.labelCommitName, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(125, 0);
@@ -86,18 +84,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(141, 46);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // labelSourceCodeLocation
-            // 
-            this.labelSourceCodeLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSourceCodeLocation.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSourceCodeLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelSourceCodeLocation.Location = new System.Drawing.Point(0, 27);
-            this.labelSourceCodeLocation.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSourceCodeLocation.Name = "labelSourceCodeLocation";
-            this.labelSourceCodeLocation.Size = new System.Drawing.Size(141, 19);
-            this.labelSourceCodeLocation.TabIndex = 5;
-            this.labelSourceCodeLocation.Text = "commit path";
             // 
             // labelCommitName
             // 
@@ -147,7 +133,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelSourceCodeId;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label labelSourceCodeLocation;
         private System.Windows.Forms.Label labelCommitName;
         private System.Windows.Forms.PictureBox pictureBoxDownload;
     }

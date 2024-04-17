@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.ViewPage.ListView;
 
 namespace TeamTracker
 {
@@ -72,6 +73,8 @@ namespace TeamTracker
             }
         }
 
+        public UCTaskBoard SelectedBoard { get; private set; }
+
         //public ProjectVersion CurrentProjVersion
         //{
         //    get { return currentProjectVersion; }
@@ -118,31 +121,32 @@ namespace TeamTracker
 
         public void AddTask(UCTaskBoard taskBoard)
         {
+            
+                var x = StartIndex;
 
-            var x = StartIndex;
-            Task tData = taskBoard.TaskData;
-            //taskBoard.TaskData.StatusOfTask = this.Status;
-
-
-            //TaskManager.UpdateTask(tData.TaskID, tData.TaskName, tData.TaskDesc, tData.StartDate, tData.EndDate, tData.TaskPriority, tData.AssignedTo, null);
-
-            taskList.Add(taskBoard.TaskData);
-            if (taskList.Count <= MaxUserControls)
-            {
-                panelBase.Controls.Add(taskBoard);
-                TaskBoardList.Add(taskBoard);
-
-                foreach (var Iter in TaskBoardList)
-                    Iter.BringToFront();
-            }
-            if (taskList.Count > 1)
-                taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
+                Task tData = taskBoard.TaskData;
+                tData.StatusOfTask = this.Status;
 
 
+                TaskManager.UpdateTask(tData.TaskID, tData.TaskName, tData.TaskDesc, tData.StartDate, tData.EndDate, tData.StatusOfTask, tData.MilestoneID, tData.TaskPriority, tData.AssignedTo, null);
 
-            ReOrderBoard();
-            var y = TaskBoardList;
+                taskList.Add(taskBoard.TaskData);
+                if (taskList.Count <= MaxUserControls)
+                {
+                    panelBase.Controls.Add(taskBoard);
+                    TaskBoardList.Add(taskBoard);
+                    foreach (var Iter in TaskBoardList)
+                        Iter.BringToFront();
+                }
+                if (taskList.Count > 1)
+                    taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
+
+                ReOrderBoard();
+                var y = TaskBoardList;
+            
         }
+
+        
 
         private void InitializeBoard()
         {
@@ -205,14 +209,14 @@ namespace TeamTracker
             
             if (StartIndex + MaxUserControls >= taskList.Count)//if it reaches the last page
             {
-                ucTaskStatusHead1.pictureBoxDown.Hide();
+                //ucTaskStatusHead1.pictureBoxDown.Hide();
                 return ;
             }
             else
             {
                 //need to check
-                ucTaskStatusHead1.pictureBoxUp.Show();
-                ucTaskStatusHead1.pictureBoxDown.Show();
+                //ucTaskStatusHead1.pictureBoxUp.Show();
+                //ucTaskStatusHead1.pictureBoxDown.Show();
 
             }
             StartIndex++;
@@ -225,14 +229,14 @@ namespace TeamTracker
             
             if (StartIndex <= 0)//if it reaches the first page
             {
-                ucTaskStatusHead1.pictureBoxUp.Hide();
+                //ucTaskStatusHead1.pictureBoxUp.Hide();
                 return;
             }
             else
             {
                 //need to check
-                ucTaskStatusHead1.pictureBoxUp.Show();
-                ucTaskStatusHead1.pictureBoxDown.Show();
+                //ucTaskStatusHead1.pictureBoxUp.Show();
+                //ucTaskStatusHead1.pictureBoxDown.Show();
 
             }
 

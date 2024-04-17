@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
-//using System.Windows.Forms.DataVisualization.Charting;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
@@ -25,11 +24,14 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
         };
         private int colorIndex = 0;
+        private FilterForm form;
         private Random rnd = new Random();
 
         public ReportContent()
         {
             InitializeComponent();
+            cartesianChart1.AxisX.Add(new Axis { Title = "Date" });
+            cartesianChart1.AxisY.Add(new Axis { Title = "Task Solved" });
         }
 
         public int Month
@@ -81,7 +83,13 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         private void OnFilterClick(object sender, EventArgs e)
         {
-            FilterForm form = new FilterForm();
+            if(form!=null && !form.IsDisposed)
+            {
+                form.Dispose();
+                form.Close();
+            }
+
+            form = new FilterForm();
             form.Month = month; form.Year = year; form.Priority = priority;
             form.Location = filterPicBox.PointToScreen(new Point(-225, 0));
             form.Filter += OnFiltered;
@@ -114,20 +122,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 }
                 pieChart1.Series = seriesCollection;
 
-                //donutChart.Series[0] = new Series();
-                //donutChart.Series[0].ChartType = SeriesChartType.Doughnut;
-                //foreach (var Iter in result1)
-                //{
-                //    donutChart.Series[0].Points.AddXY(Iter.Key, Iter.Value);
-                //}
-
-                //donutChart.Legends["Legend1"].ForeColor = Color.Black;
-
-
                 cartesianChart1.Series.Clear();
-
-                cartesianChart1.AxisX.Add(new Axis { Title = "Date" });
-                cartesianChart1.AxisY.Add(new Axis { Title = "Task Solved" });
+                cartesianChart1.AxisX.Clear();
 
                 foreach (var employeeData in result2)
                 {
@@ -136,30 +132,28 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                         Title = employeeData.Key,
                         Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
                         Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                        Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B))
                     };
+                    
                     cartesianChart1.Series.Add(lineSeries);
                 }
 
-                //barchart.Series.Clear();
+                IList<string> labels = new List<string>();
+                foreach (var employeeData in result2)
+                {
+                    
 
-                //int ctr = 0;
-                //foreach (var Iter in result2)
-                //{
-                //    Series series = new Series();
-                //    series.Name = Iter.Key;
-                //    series.ChartType = SeriesChartType.Line;
-                //    series.MarkerSize = 5;
+                    foreach (var Iter in employeeData.Value)
+                    {
+                        labels.Add(Iter.Key.ToShortDateString());
+                    }
+                }
 
-                //    foreach (var seriesIter in Iter.Value)
-                //    {
-                //        series.Points.AddXY(seriesIter.Key, seriesIter.Value);
-                //    }
-                //    barchart.Series.Add(series);
-                //}
+                cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
+                {
+                    Title = "Date",
+                    Labels = labels // Add your values here
+                });
 
-                //barchart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-                //barchart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
             }
         }
 

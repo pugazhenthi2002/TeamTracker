@@ -35,6 +35,16 @@ namespace TeamTracker
             }
         }
 
+        public new void Dispose()
+        {
+            pictureBox1.Image.Dispose();
+            closePicBox.Image.Dispose();
+            closePicBox.Dispose();
+            pictureBox1.Dispose();
+            label1.Dispose();
+            tableLayoutPanel1.Dispose();
+            panel1.Dispose();
+        }
 
         private void OnCloseCLick(object sender, EventArgs e)
         {
@@ -46,7 +56,7 @@ namespace TeamTracker
             if (closePicBox.Image != null)
                 closePicBox.Image.Dispose();
 
-            closePicBox.Image = UserInterface.Properties.Resources.Close;
+            closePicBox.Image = UserInterface.Properties.Resources.Close_Alice_Blue_30;
         }
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
@@ -54,7 +64,7 @@ namespace TeamTracker
             if (closePicBox.Image != null)
                 closePicBox.Image.Dispose();
 
-            closePicBox.Image = UserInterface.Properties.Resources.close_Hover;
+            closePicBox.Image = UserInterface.Properties.Resources.Close_30;
         }
     }
 }

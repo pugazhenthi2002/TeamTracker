@@ -28,6 +28,7 @@ namespace UserInterface.ViewPage.ListView
             {
                 if (value != null)
                 {
+                    selectedTask = value;
                     SetDoneTaskUI();
                 }
             }
@@ -61,21 +62,26 @@ namespace UserInterface.ViewPage.ListView
             switch (selectedTask.TaskPriority)
             {
                 case Priority.Critical:
-                    pictureBox1.Image = UserInterface.Properties.Resources.flag_OnProcess;
+                    pictureBox1.Image = UserInterface.Properties.Resources.Critical;
                     break;
                 case Priority.Hard:
-                    pictureBox1.Image = UserInterface.Properties.Resources.flag_stuck;
+                    pictureBox1.Image = UserInterface.Properties.Resources.Hard;
                     break;
                 case Priority.Medium:
-                    pictureBox1.Image = UserInterface.Properties.Resources.flag_NotStarted;
+                    pictureBox1.Image = UserInterface.Properties.Resources.Medium;
                     break;
                 case Priority.Easy:
-                    pictureBox1.Image = UserInterface.Properties.Resources.flag_UnderReview;
+                    pictureBox1.Image = UserInterface.Properties.Resources.Easy;
                     break;
                 default:
                     pictureBox1.Image = UserInterface.Properties.Resources.flag_empty;
                     break;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
         }
     }
 }

@@ -61,5 +61,25 @@ namespace TeamTracker
         {
             profilePictureBox1.Height = tableLayoutPanel1.Height / 2;
         }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.FromArgb(221, 230, 237);
+            button1.ForeColor = Color.FromArgb(39, 55, 77);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.FromArgb(39, 55, 77);
+            button1.ForeColor = Color.FromArgb(221, 230, 237);
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, button1.Width - 1, button1.Height - 1));
+            border.Dispose();
+        }
     }
 }

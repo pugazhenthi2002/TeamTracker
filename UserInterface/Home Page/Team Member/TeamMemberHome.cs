@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.Home_Page.Team_Member
 {
@@ -15,6 +16,13 @@ namespace UserInterface.Home_Page.Team_Member
         public TeamMemberHome()
         {
             InitializeComponent();
+        }
+
+        public void InitializePage()
+        {
+            teamMemberReport1.InitializeReport();
+            taskContent1.InitializePage();
+            notificationContent1.NotifyList = DataHandler.FetchNotification();
         }
     }
 }

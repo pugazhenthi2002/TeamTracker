@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,6 +15,7 @@ namespace UserInterface.Task.CreateTask
 {
     public partial class CreateTaskForm : Form
     {
+        public event EventHandler TaskCreate;
         public CreateTaskForm()
         {
             InitializeComponent();
@@ -24,15 +25,49 @@ namespace UserInterface.Task.CreateTask
             tableLayoutPanelFileName.Hide();
         }
 
+        private TeamTracker.Task selectedTask;
+        public TeamTracker.Task SelectedTask
+        {
+            set
+            {
+                selectedTask = value;
+                InitializePage();
+            }
+        }
+
+        private void InitializePage()
+        {
+            textBoxTaskName.TextBoxtext = selectedTask.TaskName;
+            textBoxDesc.TextBoxtext = selectedTask.TaskDesc;
+            var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
+            foreach (var Iter in milestoneList)
+            {
+                if (Iter.MileStoneID == selectedTask.MilestoneID)
+                {
+                    selectedMilestone = Iter;
+                    buttonSetMilestone.Text = Iter.MileStoneName;
+                }
+            }
+
+            tableLayoutPanel3.Visible = false;
+            employeeProfilePicAndName1.Profile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
+            startDate.Value = selectedTask.StartDate;
+            endDate.Value = selectedTask.EndDate;
+            labelSetPriority.Text = selectedTask.TaskPriority.ToString();
+            SetFlag(selectedTask.TaskPriority);
+            selectedAttachment = DataHandler.GetTaskAttachment(selectedTask.TaskID);
+            tableLayoutPanelFileName.Visible = true;
+            animatedLabelFilename.Text = selectedAttachment.DisplayName;
+            buttonCreate.Text = "Update";
+        }
+
         private TaskAttachment selectedAttachment;
         private Priority selectedPriority;
         private Milestone selectedMilestone = null;
-        private Employee selectedTeamLead = null;
+        private Employee selectedTeamMember = null;
         private PriorityDropDownForm PriortyDropForm;
         private MilestoneDropDownForm MilestoneDropForm;
         private TeamMembersListForm TeamMembersDropForm;
-
-        private string FilePath;
 
         protected override void OnResize(EventArgs e)
         {
@@ -71,6 +106,7 @@ namespace UserInterface.Task.CreateTask
 
         private void OnClickPriorityBtn(object sender, Priority e)
         {
+            SetFlag(e);
             selectedPriority = e;
             labelSetPriority.Text = e.ToString();
         }
@@ -90,9 +126,12 @@ namespace UserInterface.Task.CreateTask
 
                 selectedAttachment = new TaskAttachment()
                 {
-                    TaskAttachmentName = safeFile,
+                    DisplayName = safeFile,
+                    TaskAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
                     TaskAttachmentLocation = selectedFilePath
                 };
+                tableLayoutPanelFileName.Show();
+                animatedLabelFilename.Text = Path.GetFileNameWithoutExtension(safeFile);
             }
         }
 
@@ -124,11 +163,14 @@ namespace UserInterface.Task.CreateTask
 
         private void OnClickAssignBtn(object sender, EventArgs e)
         {
-            Point formPoint = BtnAssignTo.PointToScreen(new Point(BtnAssignTo.Location.X, BtnAssignTo.Location.Y));
+            List<Employee> taskAssigneeList = EmployeeManager.FetchTeamMembersForTeamLeaders();
+            taskAssigneeList.Add(EmployeeManager.CurrentEmployee);
+
+            Point formPoint = label2.PointToScreen(new Point(0,label2.Height));
             TeamMembersDropForm = new TeamMembersListForm();
-            TeamMembersDropForm.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
+            TeamMembersDropForm.TeamList = taskAssigneeList;
             TeamMembersDropForm.Show();
-            TeamMembersDropForm.Location = new Point(formPoint.X - 3, formPoint.Y + 10);
+            TeamMembersDropForm.Location = formPoint;
             TeamMembersDropForm.Size = new Size(buttonSetMilestone.Width, TeamMembersDropForm.Height);
 
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
@@ -137,6 +179,7 @@ namespace UserInterface.Task.CreateTask
 
         private void OnClickTeamMember(object sender, Employee e)
         {
+            selectedTeamMember = e;
             Button clickedBtn = (sender as Button);
             tableLayoutPanel3.Hide();
             employeeProfilePicAndName1.Profile = e;
@@ -145,6 +188,7 @@ namespace UserInterface.Task.CreateTask
 
         private void OnClickCloseFile(object sender, EventArgs e)
         {
+            selectedAttachment = null;
             tableLayoutPanelFileName.Hide();
         }
         
@@ -162,46 +206,96 @@ namespace UserInterface.Task.CreateTask
         private void OnCreateClick(object sender, EventArgs e)
         {
             BooleanMsg message = CheckConstraints();
+            if (message)
+            {
+                if(buttonCreate.Text == "Create")
+                {
+                    TaskManager.AddTask(textBoxTaskName.TextBoxtext, textBoxDesc.TextBoxtext, startDate.Value.Date, endDate.Value.Date, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    ProjectManagerMainForm.notify.AddNotification("Project Created", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
+                    DataHandler.AddNotification("Project Created", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
+                }
+                else
+                {
+                    TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.TextBoxtext, textBoxDesc.TextBoxtext, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    ProjectManagerMainForm.notify.AddNotification("Project Updated", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
+                    DataHandler.AddNotification("Project Updated", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
+                }
+                TaskCreate?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            }
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", message.Message);
+            }
         }
-
-        public void InitializeTaskForm()
-        {
-
-        }
-
 
         private void OnCloseClick(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private BooleanMsg CheckConstraints()
         {
+            if(textBoxTaskName.TextBoxtext == "" || textBoxTaskName.TextBoxtext == "Task Name")
+            {
+                return "Task Name has not been Entered";
+            }
+
+            if(textBoxDesc.TextBoxtext == "" || textBoxDesc.TextBoxtext == "Description")
+            {
+                return "Description has not been Entered";
+            }
+
+            if (selectedMilestone == null)
+            {
+                return "Milestone Has Not been Selected";
+            }
+
+            if (labelSetPriority.Text == "Set Priority")
+            {
+                return "Priority Has Not been Selected";
+            }
+
             if (startDate.Value > endDate.Value)
             {
-                startDate.Value = endDate.Value = DateTime.Now;
                 return "Task Due Date is is Beyond Today's Date";
             }
 
-            if (!(VersionManager.CurrentVersion.StartDate <= startDate.Value && endDate.Value <= VersionManager.CurrentVersion.EndDate))
+            var x = endDate.Value.Date - startDate.Value.Date;
+
+            if (!(VersionManager.CurrentVersion.StartDate <= startDate.Value.Date && endDate.Value.Date <= VersionManager.CurrentVersion.EndDate))
             {
-                startDate.Value = endDate.Value = DateTime.Now;
                 return "Task Due Date is Not Within the Projects End Date and StartDate";
             }
 
-            if (selectedMilestone != null)
+            if (!(selectedMilestone.StartDate <= startDate.Value.Date && endDate.Value.Date <= selectedMilestone.EndDate))
             {
-                startDate.Value = endDate.Value = DateTime.Now;
-                return "Select Milestone Before Selected the Due Date";
-            }
-
-            if (!(selectedMilestone.StartDate <= startDate.Value && endDate.Value <= selectedMilestone.EndDate))
-            {
-                startDate.Value = endDate.Value = DateTime.Now;
                 return "Task Due Date is Not Within the Milestones End Date and StartDate";
             }
 
+            if (selectedAttachment == null)
+            {
+                return "Task Attachment Has not been Added";
+            }
+
+            if(selectedTeamMember == null)
+            {
+                return "Team Member has not been Selected";
+            }
+
             return true;
+        }
+
+        private void SetFlag(Priority priority)
+        {
+            switch (priority)
+            {
+                case Priority.Critical: pictureBoxFlag.Image = Properties.Resources.Critical; break;
+                case Priority.Hard: pictureBoxFlag.Image = Properties.Resources.Hard; break;
+                case Priority.Medium: pictureBoxFlag.Image = Properties.Resources.Medium; break;
+                case Priority.Easy: pictureBoxFlag.Image = Properties.Resources.Easy; break;
+                default: pictureBoxFlag.Image = Properties.Resources.flag_empty;break;
+            }
         }
     }
 }

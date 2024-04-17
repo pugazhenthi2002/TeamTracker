@@ -40,19 +40,19 @@ namespace TeamTracker
             DoubleBuffered = true;
             Graphics g = e.Graphics;
 
-            Point[] p1 = { new Point(Width * 312 / 900  , Height * 327 / 900), new Point(Width * 328 / 900  , Height * 343 / 900), new Point(Width * 542 / 900 , Height * 343 / 900), new Point(Width * 559 / 900 , Height * 327 / 900) };
-            Point[] p2 = { new Point(Width * 337 / 900 , Height * 352 / 900), new Point(Width * 355 / 900 , Height * 370 / 900), new Point(Width * 517 / 900  , Height * 369 / 900), new Point(Width * 534 / 900  , Height * 352 / 900) };
-            Point[] p3 = { new Point(Width * 402 / 900, Height * 338 / 900 ), new Point(Width * 402 / 900, Height * 562 / 900 ), new Point(Width * 419 / 900, Height * 581 / 900 ), new Point(Width * 419 / 900, Height * 338 / 900 ) };
-            Point[] p4 = { new Point(Width * 428 / 900, Height * 338 / 900 ), new Point(Width * 427 / 900, Height * 590 / 900 ), new Point(Width * 436 / 900, Height * 600 / 900 ), new Point(Width * 445 / 900, Height * 590 / 900 ), new Point(Width * 444 / 900, Height * 338 / 900 ) };
-            Point[] p5 = { new Point(Width * 452 / 900, Height * 338 / 900 ), new Point(Width * 452 / 900, Height * 581 / 900 ), new Point(Width * 469 / 900, Height * 563 / 900 ), new Point(Width * 469 / 900, Height * 338 / 900 ) };
+            Point[] p1 = { new Point(Width * 25 / 300, Height * 20 / 300), new Point(Width * 42 / 300, Height * 38 / 300), new Point(Width * 257 / 300, Height * 38 / 300), new Point(Width * 274 / 300, Height * 20 / 300) };
+            Point[] p2 = { new Point(Width * 50 / 300, Height * 45 / 300), new Point(Width * 67 / 300, Height * 65 / 300), new Point(Width * 231 / 300, Height * 65 / 300), new Point(Width * 249 / 300, Height * 45 / 300) };
+            Point[] p3 = { new Point(Width * 114 / 300, Height * 35 / 300), new Point(Width * 114 / 300, Height * 257 / 300), new Point(Width * 133 / 300, Height * 276 / 300), new Point(Width * 133 / 300, Height * 35 / 300) };
+            Point[] p4 = { new Point(Width * 140 / 300, Height * 35 / 300), new Point(Width * 140 / 300, Height * 283 / 300), new Point(Width * 149 / 300, Height * 293 / 300), new Point(Width * 158 / 300, Height * 283 / 300), new Point(Width * 158 / 300, Height * 35 / 300) };
+            Point[] p5 = { new Point(Width * 165 / 300, Height * 35 / 300), new Point(Width * 165 / 300, Height * 277 / 300), new Point(Width * 184 / 300, Height * 259 / 300), new Point(Width * 184 / 300, Height * 35 / 300) };
 
-            
+
             g.FillPolygon(new SolidBrush(logoColor), p1);
             g.FillPolygon(new SolidBrush(logoColor), p2);
             g.FillPolygon(new SolidBrush(logoColor), p3);
             g.FillPolygon(new SolidBrush(logoColor), p4);
             g.FillPolygon(new SolidBrush(logoColor), p5);
-            
+
 
         }
     }

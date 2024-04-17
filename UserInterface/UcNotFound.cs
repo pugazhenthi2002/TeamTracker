@@ -24,6 +24,15 @@ namespace UserInterface
             InitializeRoundedEdge();
         }
 
+        public new void Dispose()
+        {
+            pictureBox1.Image.Dispose();
+            pictureBox1.Dispose();
+            labelHead.Dispose();
+            labelMessage.Dispose();
+            tableLayoutPanel1.Dispose();
+        }
+
         public string HeadText
         {
             get

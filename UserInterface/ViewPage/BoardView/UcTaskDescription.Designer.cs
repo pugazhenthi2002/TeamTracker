@@ -94,7 +94,7 @@
             // 
             // labelCenter
             // 
-            this.labelCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.labelCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.labelCenter.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.labelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCenter.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

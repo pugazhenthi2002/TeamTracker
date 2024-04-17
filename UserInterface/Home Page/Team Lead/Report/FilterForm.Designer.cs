@@ -79,6 +79,7 @@
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label2.Location = new System.Drawing.Point(35, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(190, 40);
@@ -113,6 +114,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(35, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 40);
@@ -134,6 +136,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
@@ -150,20 +153,26 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(3, 7);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.textBox1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBox1.Location = new System.Drawing.Point(20, 7);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(20, 7, 0, 0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 26);
+            this.textBox1.Size = new System.Drawing.Size(126, 33);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "2024";
+            this.textBox1.TextChanged += new System.EventHandler(this.OnTextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnYearKeyDown);
             // 
             // setLabel
             // 
             this.setLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.setLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.setLabel.Location = new System.Drawing.Point(149, 0);
             this.setLabel.Name = "setLabel";
             this.setLabel.Size = new System.Drawing.Size(73, 40);
@@ -176,6 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(225, 120);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

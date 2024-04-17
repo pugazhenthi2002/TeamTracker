@@ -51,7 +51,8 @@ namespace TeamTracker
 
         private void InitializeRoundedEdge()
         {
-
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
+            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -147,6 +148,10 @@ namespace TeamTracker
                 ResetHomePage?.Invoke(this, EventArgs.Empty);
                 DataHandler.AddNotification("Project Processed", VersionManager.FetchProjectName(selectedVersion.VersionID) + "  " + selectedVersion.VersionName + "has been started by" + EmployeeManager.FetchEmployeeFromProjectID(selectedVersion.ProjectID), DateTime.Now, EmployeeManager.FetchManagerFromTeamLeadID().EmployeeID);
             }
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", "Milestone Limit Should be within 5 and 20.\nPlease Add Milestones");
+            }
         }
 
         private void InitializeOnStageControl()
@@ -179,6 +184,24 @@ namespace TeamTracker
         private void OnMilestoneExtraction(object sender, List<Milestone> e)
         {
             MilestoneCollection = e;
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border.Dispose();
+        }
+
+        private void BorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border.Dispose();
         }
     }
 }

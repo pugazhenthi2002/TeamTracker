@@ -82,6 +82,8 @@ namespace TeamTracker
             int teamLeadID = MilestoneManager.FetchTeamLeader(milestoneID);
             List<Employee> teamMembers = FetchTeamMembersForTeamLeaders(teamLeadID);
 
+            teamMembers.Add(FetchEmployeeFromEmpID(teamLeadID));
+
             foreach (var Iter in teamMembers)
             {
                 result.Add(Iter.EmployeeFirstName, TaskManager.FetchTaskCount(Iter, milestoneID));

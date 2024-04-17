@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TeamTracker
 {
-    public partial class AvailableTeamLeaders : UserControl
+    public partial class AvailableTeamLeaders : UserControl, IDisposable
     {
 
         public delegate void EmployeeHandler(Employee employee);
@@ -22,6 +22,18 @@ namespace TeamTracker
             InitializeComponent();
         }
 
+        public new void Dispose()
+        {
+            if (profilePanel.Controls != null)
+            {
+                for(int ctr=0; ctr<profilePanel.Controls.Count; ctr++)
+                {
+                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
+                    profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
+                    ctr--;
+                }
+            }
+        }
 
         public List<Employee> TeamLeaders
         {
@@ -42,7 +54,6 @@ namespace TeamTracker
 
         private void InitializeProfiles()
         {
-            profilePanel.Controls.Clear();
             TeamLeaderPicAndName uc;
             foreach (var Iter in teamLeaders)
             {
@@ -61,5 +72,12 @@ namespace TeamTracker
             TeamLeaderClick?.Invoke(teamLead);
         }
 
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0,label1.Height), new Point(Width, label1.Height));
+            border.Dispose();
+        }
     }
 }

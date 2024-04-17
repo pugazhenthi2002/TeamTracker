@@ -58,6 +58,7 @@ namespace TeamTracker
             this.label1.Text = "TaskName";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Paint += new System.Windows.Forms.PaintEventHandler(this.SliderPanelPaint);
+            this.label1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnTaskMouseClick);
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.label1.MouseEnter += new System.EventHandler(this.OnTimelineTaskMouseEnter);
             this.label1.MouseLeave += new System.EventHandler(this.OnTimelineTaskMouseLeave);

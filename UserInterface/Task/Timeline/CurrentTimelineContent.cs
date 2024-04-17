@@ -297,9 +297,18 @@ namespace UserInterface.Task.Timeline
             {
                 if (selectedTask.TaskID == Iter.TaskID)
                 {
-                    iterDate = startViewDate;
-                    Iter.StartDate = startViewDate.AddDays(start);
-                    Iter.EndDate = startViewDate.AddDays(end);
+                    DateTime startDate = startViewDate.AddDays(start), endDate = startViewDate.AddDays(end);
+                    if (MilestoneManager.IsTaskWithinTheMilestone(startDate, endDate, selectedTask.MilestoneID))
+                    {
+                        iterDate = startViewDate;
+                        Iter.StartDate = startDate;
+                        Iter.EndDate = endDate;
+                    }
+                    else
+                    {
+                        ProjectManagerMainForm.notify.AddNotification("Warning", "Task Deadline is not within the Milestone Deadline");
+                    }
+
                     InitializeTimeline();
                     SetViewTaskCollection();
                     control.DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate);

@@ -39,8 +39,8 @@
             this.endDateLabel = new System.Windows.Forms.Label();
             this.startDatePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.startDateTimePicker = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.startDateLabel = new System.Windows.Forms.Label();
+            this.startDateTimePicker = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -54,6 +54,8 @@
             this.clientTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
+            this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.ucNotFound2 = new UserInterface.UcNotFound();
@@ -65,8 +67,6 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.upgradeButton = new TeamTracker.RippleButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -123,6 +123,7 @@
             // fileAttachment1
             // 
             this.fileAttachment1.AttachmentCollection = null;
+            this.fileAttachment1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.fileAttachment1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fileAttachment1.Location = new System.Drawing.Point(0, 0);
             this.fileAttachment1.Name = "fileAttachment1";
@@ -247,6 +248,20 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(389, 76);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
+            // startDateLabel
+            // 
+            this.startDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.startDateLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.startDateLabel.Location = new System.Drawing.Point(3, 0);
+            this.startDateLabel.Name = "startDateLabel";
+            this.startDateLabel.Size = new System.Drawing.Size(383, 34);
+            this.startDateLabel.TabIndex = 3;
+            this.startDateLabel.Text = "Start Date";
+            this.startDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.startDateLabel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
+            this.startDateLabel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
+            // 
             // startDateTimePicker
             // 
             this.startDateTimePicker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -261,20 +276,6 @@
             this.startDateTimePicker.TabIndex = 4;
             this.startDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.startDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
-            // 
-            // startDateLabel
-            // 
-            this.startDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startDateLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.startDateLabel.Location = new System.Drawing.Point(3, 0);
-            this.startDateLabel.Name = "startDateLabel";
-            this.startDateLabel.Size = new System.Drawing.Size(383, 34);
-            this.startDateLabel.TabIndex = 3;
-            this.startDateLabel.Text = "Start Date";
-            this.startDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.startDateLabel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.startDateLabel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // tableLayoutPanel4
             // 
@@ -441,6 +442,37 @@
             this.panel5.Size = new System.Drawing.Size(524, 76);
             this.panel5.TabIndex = 4;
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "Team Leader Not Available";
+            this.ucNotFound1.HeadTextSize = 7;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = "";
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(524, 76);
+            this.ucNotFound1.TabIndex = 2;
+            // 
+            // profilePicAndName1
+            // 
+            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
+            this.profilePicAndName1.BorderColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.BorderRadius = 0;
+            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profilePicAndName1.EmployeeProfile = null;
+            this.profilePicAndName1.HoverColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.IsBorderNeeded = false;
+            this.profilePicAndName1.IsOperable = false;
+            this.profilePicAndName1.Location = new System.Drawing.Point(0, 0);
+            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2);
+            this.profilePicAndName1.Name = "profilePicAndName1";
+            this.profilePicAndName1.NormalColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3);
+            this.profilePicAndName1.ProfileTextColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.Size = new System.Drawing.Size(524, 76);
+            this.profilePicAndName1.TabIndex = 0;
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -567,7 +599,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -580,34 +612,6 @@
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ClearClick);
-            // 
-            // profilePicAndName1
-            // 
-            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
-            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profilePicAndName1.EmployeeProfile = null;
-            this.profilePicAndName1.HoverColor = System.Drawing.Color.Empty;
-            this.profilePicAndName1.isOperable = false;
-            this.profilePicAndName1.Location = new System.Drawing.Point(0, 0);
-            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2);
-            this.profilePicAndName1.Name = "profilePicAndName1";
-            this.profilePicAndName1.NormalColor = System.Drawing.Color.Empty;
-            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3);
-            this.profilePicAndName1.ProfileTextColor = System.Drawing.Color.Empty;
-            this.profilePicAndName1.Size = new System.Drawing.Size(524, 76);
-            this.profilePicAndName1.TabIndex = 0;
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "Team Leader Not Available";
-            this.ucNotFound1.HeadTextSize = 7;
-            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound1.Message = "";
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(524, 76);
-            this.ucNotFound1.TabIndex = 2;
             // 
             // VersionUpgrade
             // 
@@ -675,7 +679,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private RippleButton upgradeButton;
         private System.Windows.Forms.Button button1;
-        private UserInterface.UcNotFound ucNotFound2;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime startDateTimePicker;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime endDateTimePicker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
@@ -686,5 +689,6 @@
         private System.Windows.Forms.Panel panel5;
         private ProfilePicAndName profilePicAndName1;
         private UserInterface.UcNotFound ucNotFound1;
+        private UserInterface.UcNotFound ucNotFound2;
     }
 }

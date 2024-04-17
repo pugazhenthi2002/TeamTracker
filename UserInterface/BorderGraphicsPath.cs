@@ -14,6 +14,7 @@ namespace TeamTracker
         {
             int l = 2 * r;
             GraphicsPath gp = new GraphicsPath();
+            gp.StartFigure();
             gp.AddLine(new Point(rectangle.X + r, rectangle.Y), new Point(rectangle.Right - r, rectangle.Y));
             gp.AddArc(new Rectangle(rectangle.Right - l, rectangle.Y, l, l), 270F, 90F);
 
@@ -25,7 +26,7 @@ namespace TeamTracker
 
             gp.AddLine(new Point(rectangle.X, rectangle.Bottom - r), new Point(rectangle.X, rectangle.Y + r));
             gp.AddArc(new Rectangle(rectangle.X, rectangle.Y, l, l), 180F, 90F);
-
+            gp.CloseAllFigures();
             return gp;
         }
     }

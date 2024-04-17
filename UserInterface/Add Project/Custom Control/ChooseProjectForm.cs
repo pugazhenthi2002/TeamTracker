@@ -29,6 +29,29 @@ namespace UserInterface.Add_Project.Custom_Control
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
+        public new void Dispose()
+        {
+            if(controlPanel.Controls != null)
+            {
+                for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
+                {
+                    (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
+                    ctr--;
+                    controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
+                }
+            }
+            downPicBox.Image.Dispose(); downPicBox.Dispose();
+            upPicBox.Image.Dispose();   upPicBox.Dispose();
+            label1.Dispose();
+            cancelButton.Dispose(); selectButton.Dispose();
+            tableLayoutPanel1.Dispose();
+            tableLayoutPanel2.Dispose();
+            panel1.Dispose();
+            panel2.Dispose();
+            controlPanel.Dispose();
+            ucNotFound1.Dispose();
+        }
+
         public List<Projects> AvailableProjects
         {
             set
@@ -108,11 +131,13 @@ namespace UserInterface.Add_Project.Custom_Control
                 return;
             }
             ProjectSelect?.Invoke(this, prevControl.Project);
+            Dispose();
             this.Close();
         }
 
         private void OnCancelClick(object sender, EventArgs e)
         {
+            Dispose();
             this.Close();
         }
 

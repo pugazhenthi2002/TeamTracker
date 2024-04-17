@@ -309,6 +309,7 @@
             this.textBoxTaskName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxTaskName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTaskName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBoxTaskName.Interval = 15;
             this.textBoxTaskName.Location = new System.Drawing.Point(10, 10);
             this.textBoxTaskName.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxTaskName.Multiline = true;
@@ -333,6 +334,7 @@
             this.textBoxDesc.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxDesc.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBoxDesc.Interval = 15;
             this.textBoxDesc.Location = new System.Drawing.Point(10, 96);
             this.textBoxDesc.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxDesc.Multiline = true;

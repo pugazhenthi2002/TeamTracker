@@ -34,6 +34,11 @@ namespace TeamTracker
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
+        public void InitializePage()
+        {
+            throw new NotImplementedException();
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
           (

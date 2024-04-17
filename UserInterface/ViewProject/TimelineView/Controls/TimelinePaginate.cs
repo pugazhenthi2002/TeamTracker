@@ -228,10 +228,10 @@ namespace TeamTracker
             dateDifference = endViewDate - endDate;
             if (dateDifference.Days <= 0)
             {
-                endDate = endViewDate;
+                endDate = endViewDate.AddDays(-1);
             }
 
-            return (endDate - startdate).Days * width;
+            return ((endDate - startdate).Days + 1) * width;
         }
 
         private Color FetchColorFromMilestoneID(int milestonID)

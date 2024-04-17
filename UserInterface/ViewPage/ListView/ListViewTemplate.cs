@@ -16,13 +16,14 @@ namespace TeamTracker
         {
             set
             {
-                if(value!=null && value.Count > 0)
+                doneTaskPanel.Controls.Clear();
+                doneCollection = value;
+                if (value != null && value.Count > 0)
                 {
                     doneCardCollection = new List<DoneCardTemplate>();
-                    doneCollection = value;
                     startDoneIdx = 0; isDoneBackEnabled = false;
-                    endDoneIdx = value.Count > 4 ? 4 : value.Count;
-                    isDoneNextEnabled = value.Count > 4 ? true : false;
+                    endDoneIdx = value.Count > 5 ? 4 : value.Count-1;
+                    isDoneNextEnabled = value.Count > 5 ? true : false;
                     SetDoneAllignment();
                 }
             }
@@ -31,13 +32,14 @@ namespace TeamTracker
         {
             set
             {
+                singleListControlPanel.Controls.Clear();
                 if (value != null && value.Count > 0)
                 {
                     singleListCollection = new List<SingleList>();
                     taskCollection = value;
                     startRemainingIdx = 0;
                     isRemainingBackEnabled = false;
-                    endRemainingIdx = value.Count > 5 ? 5 : value.Count;
+                    endRemainingIdx = value.Count > 5 ? 4 : value.Count - 1;
                     isRemainingNextEnables = value.Count > 5 ? true : false;
                     SetRemainingTaskAllignment();
                 }
@@ -57,6 +59,12 @@ namespace TeamTracker
         private List<Task> taskCollection;
         private List<Task> doneCollection;
 
+        public void InitializePage()
+        {
+            customDonutChart1.Values = FetchTaskCountsByStatus();
+            customDonutChart2.Values = FetchTaskCountsByPriority();
+        }
+
         private void OnPaginateDown(object sender, EventArgs e)
         {
             if (isRemainingNextEnables)
@@ -69,7 +77,7 @@ namespace TeamTracker
 
         private void OnDonePaginateBack(object sender, EventArgs e)
         {
-            if(isDoneBackEnabled)
+            if (isDoneBackEnabled)
             {
                 startDoneIdx--;
                 endDoneIdx--;
@@ -104,7 +112,7 @@ namespace TeamTracker
 
         private void SetRemainingTaskAllignment()
         {
-            for(int ctr=0; ctr<=endRemainingIdx; ctr++)
+            for (int ctr = 0; ctr <= endRemainingIdx; ctr++)
             {
                 listTemplate = new SingleList()
                 {
@@ -112,11 +120,12 @@ namespace TeamTracker
                     Height = 50,
                     Dock = DockStyle.Top
                 };
+                listTemplate.Reset += OnReset;
                 singleListControlPanel.Controls.Add(listTemplate);
                 singleListCollection.Add(listTemplate);
             }
 
-            foreach(var Iter in singleListCollection)
+            foreach (var Iter in singleListCollection)
             {
                 Iter.BringToFront();
             }
@@ -128,9 +137,14 @@ namespace TeamTracker
             remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
         }
 
+        private void OnReset(object sender, EventArgs e)
+        {
+            InitializePage();
+        }
+
         private void ReorderRemainingTask()
         {
-            for(int ctr=startRemainingIdx, idx = 0; ctr<=endRemainingIdx; ctr++, idx++)
+            for (int ctr = startRemainingIdx, idx = 0; ctr <= endRemainingIdx; ctr++, idx++)
             {
                 singleListCollection[idx].ListTask = taskCollection[ctr];
             }
@@ -147,7 +161,7 @@ namespace TeamTracker
 
         private void ReorderDoneTask()
         {
-            for(int ctr=startDoneIdx, idx = 0; ctr<=endDoneIdx; ctr++, idx++)
+            for (int ctr = startDoneIdx, idx = 0; ctr <= endDoneIdx; ctr++, idx++)
             {
                 singleListCollection[idx].ListTask = taskCollection[ctr];
             }
@@ -166,7 +180,8 @@ namespace TeamTracker
                 doneCards = new DoneCardTemplate()
                 {
                     Width = 200,
-                    Dock = DockStyle.Left
+                    Dock = DockStyle.Left,
+                    SelectedTask = doneCollection[ctr]
                 };
                 doneTaskPanel.Controls.Add(doneCards);
                 doneCardCollection.Add(doneCards);
@@ -182,6 +197,43 @@ namespace TeamTracker
 
             doneTaskPageNext.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
             doneTaskPageBack.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+        }
+
+        private Dictionary<Color, int> FetchTaskCountsByStatus()
+        {
+            Dictionary<Color, int> result = new Dictionary<Color, int>();
+            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.Done), doneCollection.Count);
+            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.NotYetStarted), 0);
+            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.OnProcess), 0);
+            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.UnderReview), 0);
+            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.Stuck), 0);
+
+            foreach(var Iter in taskCollection)
+            {
+                result[ColorManager.FetchTaskStatusColor(Iter.StatusOfTask)]++;
+            }
+            return result;
+        }
+
+        private Dictionary<Color, int> FetchTaskCountsByPriority()
+        {
+            Dictionary<Color, int> result = new Dictionary<Color, int>();
+            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Critical), 0);
+            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Hard), 0);
+            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Medium), 0);
+            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Easy), 0);
+
+            foreach(var Iter in taskCollection)
+            {
+                result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+            }
+
+            foreach(var Iter in doneCollection)
+            {
+                result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+            }
+
+            return result;
         }
     }
 }

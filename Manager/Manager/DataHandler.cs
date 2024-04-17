@@ -58,6 +58,22 @@ namespace TeamTracker
             return version;
         }
 
+        public static SourceCode GetTaskSourceBySourceCodeID(int sourceCodeID)
+        {
+            SourceCode result = new SourceCode();
+            var attachments = manager.FetchData("sourcecode", $"SourceCodeID='{sourceCodeID}", orderBy: "SubmittedDate", limitCount: 1).Value;
+
+            result = new SourceCode()
+            {
+                SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][0]),
+                TaskID = Convert.ToInt32(attachments["TaskID"][0]),
+                CommitName = Convert.ToString(attachments["CommitName"][0]),
+                SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0])
+            };
+
+            return result;
+        }
+
         public static Task AddTask(Task task)
         {
             var x = manager.InsertData("task", new ParameterData[]
@@ -67,8 +83,9 @@ namespace TeamTracker
                 new ParameterData("StartDate", task.StartDate),
                 new ParameterData("EndDate", task.EndDate),
                 new ParameterData("VersionID", task.VersionID),
-                new ParameterData("StatusOfTask", task.StatusOfTask),
-                new ParameterData("PriorityOfTask", task.TaskPriority),
+                new ParameterData("MilestoneID", task.MilestoneID),
+                new ParameterData("StatusOfTask", task.StatusOfTask.ToString()),
+                new ParameterData("PriorityOfTask", task.TaskPriority.ToString()),
                 new ParameterData("AssignedBy", task.AssignedBy),
                 new ParameterData("AssignedTo", task.AssignedTo)
             });
@@ -106,24 +123,65 @@ namespace TeamTracker
 
         public static void SubmitSourceCode(SourceCode sourceCode)
         {
-            var x = manager.InsertData("sourcecode", new ParameterData[]
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\SourceCode\\Task\\"; // Change this to your desired save path
+            try
             {
-                new ParameterData("TaskID", sourceCode.TaskID),
-                new ParameterData("CommitName", sourceCode.CommitName),
-                new ParameterData("SubmittedDate", sourceCode.SubmittedDate),
-                new ParameterData("SourceCodeLocation", sourceCode.SourceCodeLocation),
-            });
+                string filePath = System.IO.Path.Combine(savePath, sourceCode.SourceCodeName);
+                System.IO.File.Copy(sourceCode.SourceCodeLocation, filePath, true);
+
+                var x = manager.InsertData("sourcecode", new ParameterData[]
+                {
+                    new ParameterData("TaskID", sourceCode.TaskID),
+                    new ParameterData("CommitName", sourceCode.CommitName),
+                    new ParameterData("SourceCodeName", sourceCode.SourceCodeName),
+                    new ParameterData("SubmittedDate", sourceCode.SubmittedDate),
+                    new ParameterData("SourceCodeLocation", filePath),
+                });
+            }
+            catch
+            {
+                ;
+            }
+            
         }
 
         public static BooleanMsg DeleteSourceCode(int taskID)
         {
             var result = manager.FetchData("sourcecode", $"TaskID='{taskID}'", orderBy: "SubmittedDate", limitCount:1).Value;
 
-            if (result == null || result.Count > 0) return null;
+            if (result == null || result["SourceCodeID"].Count > 1) return null;
 
-            var x = manager.DeleteData("sourcecode", $"SourceCodeID='{result["SourceCode"][0]}'");
+            var x = manager.DeleteData("sourcecode", $"SourceCodeID='{result["SourceCodeID"][0]}'");
 
             return true;
+        }
+
+        public static void SubmitVersionSourceCode(VersionSourceCode selectedVersionSourceCode)
+        {
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\SourceCode\\Version\\"; // Change this to your desired save path
+            try
+            {
+                string filePath = System.IO.Path.Combine(savePath, selectedVersionSourceCode.SourceCodeName);
+                System.IO.File.Copy(selectedVersionSourceCode.VersionLocation, filePath, true);
+
+                var x = manager.InsertData("versionsourcecode", new ParameterData[]
+                {
+                    new ParameterData("VersionID", selectedVersionSourceCode.VersionID),
+                    new ParameterData("DisplayName", selectedVersionSourceCode.DisplayName),
+                    new ParameterData("SourceCodeName", selectedVersionSourceCode.SourceCodeName),
+                    new ParameterData("SourceCodeLocation", filePath),
+                });
+            }
+            catch
+            {
+                ;
+            }
+            
+        }
+
+        public static void DeleteTask(int taskID)
+        {
+            var x = manager.DeleteData("task", $"TaskID='{taskID}'");
         }
 
         public static void UpdateVersion(ProjectVersion version)
@@ -154,6 +212,18 @@ namespace TeamTracker
                 new ParameterData("PriorityOfTask", task.TaskPriority.ToString()),
                 new ParameterData("AssignedBy", task.AssignedBy),
                 new ParameterData("AssignedTo", task.AssignedTo)
+            });
+        }
+
+        public static void UpdateMilestone(Milestone milestone)
+        {
+            var x = manager.UpdateData("milestone", $"MilestoneID='{milestone.MileStoneID}'", new ParameterData[]
+            {
+                new ParameterData("MilestoneName", milestone.MileStoneName),
+                new ParameterData("VersionID", milestone.VersionID),
+                new ParameterData("StartDate", milestone.StartDate),
+                new ParameterData("EndDate", milestone.EndDate),
+                new ParameterData("Status", milestone.Status.ToString()),
             });
         }
 
@@ -191,17 +261,27 @@ namespace TeamTracker
             return result.Count > 0;
         }
 
-        public static void AddTaskAttachment(List<TaskAttachment> taskAttachment)
+        public static void AddTaskAttachment(TaskAttachment taskAttachment)
         {
-            foreach (var Iter in taskAttachment)
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Task Attachment\\"; // Change this to your desired save path
+            try
             {
+                string filePath = System.IO.Path.Combine(savePath, taskAttachment.TaskAttachmentName);
+                System.IO.File.Copy(taskAttachment.TaskAttachmentLocation, filePath, true);
+
                 manager.InsertData("taskattachment", new ParameterData[]
                 {
-                    new ParameterData("TaskID", Iter.TaskID),
-                    new ParameterData("TaskAttachmentName", Iter.TaskAttachmentName),
-                    new ParameterData("TaskAttachmentLocation", Iter.TaskAttachmentLocation)
+                    new ParameterData("TaskID", taskAttachment.TaskID),
+                    new ParameterData("DisplayName", taskAttachment.DisplayName),
+                    new ParameterData("TaskAttachmentName", taskAttachment.TaskAttachmentName),
+                    new ParameterData("TaskAttachmentLocation", filePath)
                 });
             }
+            catch
+            {
+                ;
+            }
+            
         }
 
         public static void AddSourceCode(List<SourceCode> sourceCodeAttachments)
@@ -253,20 +333,16 @@ namespace TeamTracker
             }
         }
 
-        public static void UpdateTaskAttachment(int taskID, List<TaskAttachment> taskAttachments)
+        public static void UpdateTaskAttachment(int taskID, TaskAttachment taskAttachments)
         {
-            var x = manager.DeleteData("taskattachment" +
-                "", $"TaskID='{taskID}'");
+            var x = manager.DeleteData("taskattachment", $"TaskID='{taskID}'");
 
-            foreach (var Iter in taskAttachments)
+            manager.InsertData("taskattachment", new ParameterData[]
             {
-                manager.InsertData("taskattachment", new ParameterData[]
-                {
-                    new ParameterData("TaskID", Iter.TaskID),
-                    new ParameterData("TaskAttachmentName", Iter.TaskAttachmentName),
-                    new ParameterData("TaskAttachmentLocation", Iter.TaskAttachmentLocation)
-                });
-            }
+                new ParameterData("TaskID", taskAttachments.TaskID),
+                new ParameterData("TaskAttachmentName", taskAttachments.TaskAttachmentName),
+                new ParameterData("TaskAttachmentLocation", taskAttachments.TaskAttachmentLocation)
+            });
         }
 
         public static void DeleteNotification(int notifyID)
@@ -342,6 +418,7 @@ namespace TeamTracker
                 temp.Add(new SourceCode()
                 {
                     SourceCodeID = Convert.ToInt32(sourceCodeCollection["SourceCodeID"][ctr]),
+                    SourceCodeName = Convert.ToString(sourceCodeCollection["SourceCodeName"][ctr]),
                     CommitName = Convert.ToString(sourceCodeCollection["CommitName"][ctr]),
                     SourceCodeLocation = Convert.ToString(sourceCodeCollection["SourceCodeLocation"][ctr]),
                     SubmittedDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]),
@@ -370,6 +447,7 @@ namespace TeamTracker
                 {
                     SourceCodeID = Convert.ToInt32(sourceCodeCollection["SourceCodeID"][ctr]),
                     CommitName = Convert.ToString(sourceCodeCollection["CommitName"][ctr]),
+                    SourceCodeName = Convert.ToString(sourceCodeCollection["SourceCodeName"][ctr]),
                     SourceCodeLocation = Convert.ToString(sourceCodeCollection["SourceCodeLocation"][ctr]),
                     SubmittedDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]),
                     TaskID = Convert.ToInt32(sourceCodeCollection["TaskID"][ctr])
@@ -404,40 +482,39 @@ namespace TeamTracker
                 });
         }
 
-        public static List<TaskAttachment> GetTaskAttachment(int taskID)
+        public static TaskAttachment GetTaskAttachment(int taskID)
         {
-            List<TaskAttachment> result = new List<TaskAttachment>();
-            var attachments = manager.FetchData("taskattachment", $"TaskID='{taskID}").Value;
-
-            for(int ctr=0; attachments.Count > 0 && ctr < attachments["TaskID"].Count; ctr++)
+            TaskAttachment result = new TaskAttachment();
+            var attachments = manager.FetchData("taskattachment", $"TaskID={taskID}").Value;
+            if (attachments == null)
             {
-                result.Add(new TaskAttachment()
-                {
-                    TaskAttachmentID = Convert.ToInt32(attachments["TaskAttachmentID"][ctr]),
-                    TaskID = Convert.ToInt32(attachments["TaskID"][ctr]),
-                    TaskAttachmentName = Convert.ToString(attachments["TaskAttachmentName"][ctr]),
-                    TaskAttachmentLocation = Convert.ToString(attachments["TaskAttachmentLocation"][ctr])
-                });
+                return null;
             }
+
+            result = new TaskAttachment()
+            {
+                TaskAttachmentID = Convert.ToInt32(attachments["AttachmentID"][0]),
+                TaskID = Convert.ToInt32(attachments["TaskID"][0]),
+                TaskAttachmentName = Convert.ToString(attachments["TaskAttachmentName"][0]),
+                TaskAttachmentLocation = Convert.ToString(attachments["TaskAttachmentLocation"][0]),
+                DisplayName = Convert.ToString(attachments["DisplayName"][0])
+            };
 
             return result;
         }
 
-        public static List<SourceCode> GetTaskSource(int taskID)
+        public static SourceCode GetTaskSource(int taskID)
         {
-            List<SourceCode> result = new List<SourceCode>();
-            var attachments = manager.FetchData("sourcecode", $"TaskID='{taskID}").Value;
+            SourceCode result = new SourceCode();
+            var attachments = manager.FetchData("sourcecode", $"TaskID='{taskID}", orderBy:"SubmittedDate", limitCount:1).Value;
 
-            for (int ctr = 0; ctr < attachments["TaskID"].Count; ctr++)
-            {
-                result.Add(new SourceCode()
+                result = new SourceCode()
                 {
-                    SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][ctr]),
-                    TaskID = Convert.ToInt32(attachments["TaskID"][ctr]),
-                    CommitName = Convert.ToString(attachments["CommitName"][ctr]),
-                    SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][ctr])
-                });
-            }
+                    SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][0]),
+                    TaskID = Convert.ToInt32(attachments["TaskID"][0]),
+                    CommitName = Convert.ToString(attachments["CommitName"][0]),
+                    SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0])
+                };
 
             return result;
         }
@@ -598,7 +675,7 @@ namespace TeamTracker
                     EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
                     AssignedBy = Convert.ToInt32(result["AssignedBy"][ctr]),
                     AssignedTo = Convert.ToInt32(result["AssignedTo"][ctr]),
-                    StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : TaskStatus.Done)),
+                    StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : (status == "UnderReview"?TaskStatus.UnderReview:TaskStatus.Done))),
                     TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
                     VersionID = Convert.ToInt32(result["VersionID"][ctr]),
                     MilestoneID = Convert.ToInt32(result["MilestoneID"][ctr])

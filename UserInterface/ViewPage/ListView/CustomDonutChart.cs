@@ -23,6 +23,7 @@ namespace UserInterface.ViewPage.ListView
             {
                 if (value != null && value.Count > 0)
                 {
+                    total = 0;
                     values = value;
                     IsValueAssigned = true;
                     foreach(var Iter in values)
@@ -46,22 +47,23 @@ namespace UserInterface.ViewPage.ListView
                 sweepAngle = 0;
                 base.OnPaint(e);
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                Brush outerBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
-                Brush innerBrush;
-                Rectangle outerRec = new Rectangle(0, 0, Width, Height);
-                Rectangle innerRec = new Rectangle(Width / 10, Height / 10, Width * 8 / 10, Height * 8 / 10);
-                e.Graphics.FillEllipse(outerBrush, outerRec);
+                Brush outerBrush;
+                Brush innerBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
+                Rectangle outerRec = new Rectangle(Width / 20, Height / 20, Width * 18 / 20, Height * 18 / 20);
+                Rectangle innerRec = new Rectangle(Width / 5, Height / 5, Width * 3 / 5, Height * 3 / 5);
+                
                 foreach (var Iter in values)
                 {
-                    innerBrush = new SolidBrush(Iter.Key);
+                    outerBrush = new SolidBrush(Iter.Key);
                     percentage = Iter.Value * 100 / total;
                     sweepAngle = 360 * percentage / 100;
 
                     if (sweepAngle > 0)
-                        e.Graphics.FillPie(innerBrush, innerRec, startAngle, sweepAngle);
+                        e.Graphics.FillPie(outerBrush, outerRec, startAngle, sweepAngle);
 
                     startAngle = startAngle + sweepAngle;
                 }
+                e.Graphics.FillEllipse(innerBrush, innerRec);
             }
         }
 

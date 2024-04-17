@@ -92,7 +92,7 @@ namespace TeamTracker
             PriortyDropForm.Location = new Point(formPoint.X -45, formPoint.Y + labelSetPriority.Height +2);
             PriortyDropForm.Size = new Size(labelSetPriority.Width , PriortyDropForm.Height);
 
-            PriortyDropForm.PriorityBtnClicked += OnClickPriorityBtn;
+            //PriortyDropForm.PriorityBtnClicked += OnClickPriorityBtn;
 
             
         }

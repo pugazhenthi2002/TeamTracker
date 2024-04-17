@@ -100,6 +100,7 @@
             // 
             // projectDateLabel
             // 
+            this.projectDateLabel.BackColor = System.Drawing.Color.Transparent;
             this.projectDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectDateLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -124,6 +125,7 @@
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -184,15 +186,16 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 70);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1628, 353);
+            this.panel2.Size = new System.Drawing.Size(1628, 426);
             this.panel2.TabIndex = 6;
             // 
             // singleListControlPanel
             // 
+            this.singleListControlPanel.BackColor = System.Drawing.Color.Transparent;
             this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
             this.singleListControlPanel.Name = "singleListControlPanel";
-            this.singleListControlPanel.Size = new System.Drawing.Size(1261, 303);
+            this.singleListControlPanel.Size = new System.Drawing.Size(1261, 376);
             this.singleListControlPanel.TabIndex = 6;
             // 
             // panel4
@@ -315,11 +318,12 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(1261, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(367, 353);
+            this.panel3.Size = new System.Drawing.Size(367, 426);
             this.panel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.customDonutChart2, 0, 1);
@@ -330,25 +334,27 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 353);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 426);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // customDonutChart2
             // 
+            this.customDonutChart2.BackColor = System.Drawing.Color.Transparent;
             this.customDonutChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customDonutChart2.Location = new System.Drawing.Point(30, 176);
-            this.customDonutChart2.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.customDonutChart2.Location = new System.Drawing.Point(30, 243);
+            this.customDonutChart2.Margin = new System.Windows.Forms.Padding(30);
             this.customDonutChart2.Name = "customDonutChart2";
-            this.customDonutChart2.Size = new System.Drawing.Size(177, 177);
+            this.customDonutChart2.Size = new System.Drawing.Size(153, 153);
             this.customDonutChart2.TabIndex = 1;
             // 
             // customDonutChart1
             // 
+            this.customDonutChart1.BackColor = System.Drawing.Color.Transparent;
             this.customDonutChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customDonutChart1.Location = new System.Drawing.Point(30, 0);
-            this.customDonutChart1.Margin = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.customDonutChart1.Location = new System.Drawing.Point(30, 30);
+            this.customDonutChart1.Margin = new System.Windows.Forms.Padding(30);
             this.customDonutChart1.Name = "customDonutChart1";
-            this.customDonutChart1.Size = new System.Drawing.Size(176, 176);
+            this.customDonutChart1.Size = new System.Drawing.Size(153, 153);
             this.customDonutChart1.TabIndex = 0;
             // 
             // panel6
@@ -356,22 +362,24 @@
             this.panel6.Controls.Add(this.doneTaskPanel);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 423);
+            this.panel6.Location = new System.Drawing.Point(0, 496);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1628, 281);
+            this.panel6.Size = new System.Drawing.Size(1628, 208);
             this.panel6.TabIndex = 7;
             // 
             // doneTaskPanel
             // 
+            this.doneTaskPanel.BackColor = System.Drawing.Color.Transparent;
             this.doneTaskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doneTaskPanel.Location = new System.Drawing.Point(0, 38);
             this.doneTaskPanel.Name = "doneTaskPanel";
             this.doneTaskPanel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.doneTaskPanel.Size = new System.Drawing.Size(1628, 243);
+            this.doneTaskPanel.Size = new System.Drawing.Size(1628, 170);
             this.doneTaskPanel.TabIndex = 1;
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.Controls.Add(this.doneTaskPageNext);
             this.panel7.Controls.Add(this.doneTaskPageBack);
             this.panel7.Controls.Add(this.label1);
@@ -383,6 +391,7 @@
             // 
             // doneTaskPageNext
             // 
+            this.doneTaskPageNext.BackColor = System.Drawing.Color.Transparent;
             this.doneTaskPageNext.Dock = System.Windows.Forms.DockStyle.Left;
             this.doneTaskPageNext.Image = global::UserInterface.Properties.Resources.Next;
             this.doneTaskPageNext.Location = new System.Drawing.Point(168, 0);
@@ -395,6 +404,7 @@
             // 
             // doneTaskPageBack
             // 
+            this.doneTaskPageBack.BackColor = System.Drawing.Color.Transparent;
             this.doneTaskPageBack.Dock = System.Windows.Forms.DockStyle.Left;
             this.doneTaskPageBack.Image = global::UserInterface.Properties.Resources.Back_Hover;
             this.doneTaskPageBack.Location = new System.Drawing.Point(144, 0);
@@ -407,6 +417,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);

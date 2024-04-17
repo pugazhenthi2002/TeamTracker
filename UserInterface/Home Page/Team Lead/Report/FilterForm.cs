@@ -12,7 +12,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class FilterForm : Form
     {
-        
+
+        private string prevString;
         private PriorityDropDownForm priorityForm;
         private MonthForm monthForm;
         private int monthClickCount = 0, priorityClickCount = 0;
@@ -22,7 +23,17 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             InitializeComponent();
         }
 
-        
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
         public delegate void FilterHandler(int month, int year, int priority);
         public event FilterHandler Filter;
 
@@ -99,6 +110,17 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             {
                 Year = Convert.ToInt32(textBox1.Text);
                 Filter?.Invoke(Month, Year, Priority);
+                this.Close();
+            }
+        }
+
+        private void OnYearKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                Year = Convert.ToInt32(textBox1.Text);
+                Filter?.Invoke(Month, Year, Priority);
+                this.Close();
             }
         }
 
@@ -106,6 +128,20 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             Priority = e;
             Filter?.Invoke(Month, Year, Priority);
+        }
+
+        private void OnTextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length > 4 || !textBox1.Text.All(char.IsNumber))
+            {
+                textBox1.Text = prevString;
+                textBox1.SelectionStart = 3;
+                textBox1.SelectionLength = 1;
+            }
+            else
+            {
+                prevString = textBox1.Text;
+            }
         }
     }
 }

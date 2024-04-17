@@ -25,6 +25,13 @@ namespace UserInterface.Add_Project.Custom_Control
         public delegate void ProjectHandler(Projects project, SingleProjectSelectTemplate control);
         public event ProjectHandler ProjectSelect;
 
+        public new void Dispose()
+        {
+            singleProjectSelectTemplate1.Dispose();
+            singleProjectSelectTemplate2.Dispose();
+            tableLayoutPanel1.Dispose();
+        }
+
         public List<Projects> DuoProject
         {
             set

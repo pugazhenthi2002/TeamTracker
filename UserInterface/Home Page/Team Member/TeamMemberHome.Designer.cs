@@ -31,11 +31,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.notificationContent1 = new TeamTracker.NotificationContent();
-            this.reportTemplate1 = new TeamTracker.ReportTemplate();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.taskContent1 = new TeamTracker.TaskContent();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.teamMemberReport1 = new UserInterface.Home_Page.Team_Member.TeamMemberReport();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -83,24 +83,6 @@
             this.panel3.Size = new System.Drawing.Size(670, 312);
             this.panel3.TabIndex = 3;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.taskContent1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 312);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.reportTemplate1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1346, 381);
-            this.panel1.TabIndex = 1;
-            // 
             // notificationContent1
             // 
             this.notificationContent1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -110,14 +92,14 @@
             this.notificationContent1.Size = new System.Drawing.Size(670, 312);
             this.notificationContent1.TabIndex = 0;
             // 
-            // reportTemplate1
+            // panel2
             // 
-            this.reportTemplate1.BorderColor = System.Drawing.Color.Black;
-            this.reportTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportTemplate1.Location = new System.Drawing.Point(0, 0);
-            this.reportTemplate1.Name = "reportTemplate1";
-            this.reportTemplate1.Size = new System.Drawing.Size(1346, 381);
-            this.reportTemplate1.TabIndex = 0;
+            this.panel2.Controls.Add(this.taskContent1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(670, 312);
+            this.panel2.TabIndex = 2;
             // 
             // taskContent1
             // 
@@ -126,6 +108,24 @@
             this.taskContent1.Name = "taskContent1";
             this.taskContent1.Size = new System.Drawing.Size(670, 312);
             this.taskContent1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.teamMemberReport1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1346, 381);
+            this.panel1.TabIndex = 1;
+            // 
+            // teamMemberReport1
+            // 
+            this.teamMemberReport1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.teamMemberReport1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teamMemberReport1.Location = new System.Drawing.Point(0, 0);
+            this.teamMemberReport1.Name = "teamMemberReport1";
+            this.teamMemberReport1.Size = new System.Drawing.Size(1346, 381);
+            this.teamMemberReport1.TabIndex = 0;
             // 
             // TeamMemberHome
             // 
@@ -151,7 +151,7 @@
         private TeamTracker.NotificationContent notificationContent1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private TeamTracker.ReportTemplate reportTemplate1;
         private TeamTracker.TaskContent taskContent1;
+        private TeamMemberReport teamMemberReport1;
     }
 }

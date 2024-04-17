@@ -23,11 +23,13 @@ namespace UserInterface.ViewPage.ListView
         private void OnYesClicked(object sender, EventArgs e)
         {
             WarningStatus?.Invoke(PrevStatus, true);
+            this.Close();
         }
 
         private void OnNoClicked(object sender, EventArgs e)
         {
             WarningStatus?.Invoke(PrevStatus, false);
+            this.Close();
         }
     }
 }

@@ -145,7 +145,7 @@ namespace TeamTracker
                 }
                 else
                 {
-                    VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, project.ProjectID, attachments);
+                    VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, attachments);
                     InitializePage();
                     ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
                 }
@@ -161,7 +161,7 @@ namespace TeamTracker
         {
             if (e)
             {
-                VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value, endDateTimePicker.Value, clientTextBox.Text, project.ProjectID, null);
+                VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, null);
                 InitializePage();
                 ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
             }
@@ -188,6 +188,11 @@ namespace TeamTracker
             if (clientTextBox.Text == "" || !clientTextBox.Text.Contains("@gmail.com") || clientTextBox.Text == "Client Email")
             {
                 return "Invalid Input\nEnter Proper EmailID";
+            }
+
+            if ((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days <= 20)
+            {
+                return "Project Duration Should be Atleast 20 Days";
             }
 
             return true;

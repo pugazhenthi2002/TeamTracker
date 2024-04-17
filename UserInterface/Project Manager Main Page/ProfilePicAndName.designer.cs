@@ -108,6 +108,7 @@
             this.profilePictureBox1.Location = new System.Drawing.Point(3, 3);
             this.profilePictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.profilePictureBox1.Name = "profilePictureBox1";
+            this.profilePictureBox1.ParentColor = System.Drawing.Color.Empty;
             this.profilePictureBox1.Size = new System.Drawing.Size(54, 54);
             this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox1.TabIndex = 0;

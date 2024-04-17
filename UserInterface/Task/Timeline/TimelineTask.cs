@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using UserInterface.Task.CreateTask;
+using UserInterface.Task.Timeline;
+using UserInterface.ViewPage;
 
 namespace TeamTracker
 {
@@ -132,6 +135,42 @@ namespace TeamTracker
         }
 
         private int rightOffSetX, leftOffSetX;
+
+        private void OnTaskMouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                TaskOperationForm form = new TaskOperationForm();
+                form.Location = Cursor.Position;
+                form.Operate += OnTaskOperation;
+                form.Show();
+            }
+        }
+
+        private void OnTaskOperation(object sender, OperateType e)
+        {
+            if(e == OperateType.Update)
+            {
+                CreateTaskForm form1 = new CreateTaskForm();
+                form1.SelectedTask = selectedTask;
+                form1.Show();
+            }
+            else
+            {
+                WarningForm form2 = new WarningForm();
+                form2.Content = "Are you sure, you want delete the task?";
+                form2.WarningStatus += OnWarningStatus;
+                form2.Show();
+            }
+        }
+
+        private void OnWarningStatus(object sender, bool e)
+        {
+            if(e)
+            {
+                TaskManager.DeleteTask(selectedTask.TaskID);
+            }
+        }
 
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
