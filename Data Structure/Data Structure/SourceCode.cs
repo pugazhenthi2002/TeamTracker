@@ -10,6 +10,7 @@ namespace TeamTracker
     {
         public int SourceCodeID { get; set; }
         public int TaskID { get; set; }
+        public int CommitedBy { get; set; }
         public string SourceCodeName { get; set; }
         public string CommitName { get; set; }
         public string SourceCodeLocation { get; set; }
