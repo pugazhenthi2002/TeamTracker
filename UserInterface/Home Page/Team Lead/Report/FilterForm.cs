@@ -45,7 +45,15 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         private int year;
         public int Year
         {
-            get; set;
+            get
+            {
+                return year;
+            }
+            set
+            {
+                year = value;
+                textBox1.Text = year.ToString();
+            }
         }
 
         public int Priority
@@ -79,7 +87,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         private void MonthForm_MonthSelect(object sender, int e)
         {
             Month = e;
-            Filter?.Invoke(Month, Year, Priority);
+            Filter?.Invoke(Month, year, Priority);
         }
 
         private void OnPriorityDropDownClick(object sender, EventArgs e)
@@ -109,8 +117,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             if (textBox1.Text.All(char.IsNumber))
             {
-                Year = Convert.ToInt32(textBox1.Text);
-                Filter?.Invoke(Month, Year, Priority);
+                year = Convert.ToInt32(textBox1.Text);
+                Filter?.Invoke(Month, year, Priority);
                 this.Close();
             }
         }
@@ -119,8 +127,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             if(e.KeyData == Keys.Enter)
             {
-                Year = Convert.ToInt32(textBox1.Text);
-                Filter?.Invoke(Month, Year, Priority);
+                year = Convert.ToInt32(textBox1.Text);
+                Filter?.Invoke(Month, year, Priority);
                 this.Close();
             }
         }
@@ -128,7 +136,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         private void OnPrioritySelected(object sender, int e)
         {
             Priority = e;
-            Filter?.Invoke(Month, Year, Priority);
+            Filter?.Invoke(Month, year, Priority);
         }
 
         private void OnTextChanged(object sender, EventArgs e)
