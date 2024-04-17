@@ -42,6 +42,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             get; set;
         }
 
+        private int year;
         public int Year
         {
             get; set;

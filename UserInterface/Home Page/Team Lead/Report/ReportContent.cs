@@ -114,45 +114,68 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 foreach (var Iter in result1) total += Iter.Value;
                 teammatesTaskCount.Text = total.ToString();
 
-                SeriesCollection seriesCollection = new SeriesCollection();
-                foreach(var Iter in result1)
+                if (total > 0)
                 {
-                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                    colorIndex = (colorIndex + 1) % colorList.Count;
+                    pieChart1.Visible = true;
+                    SeriesCollection seriesCollection = new SeriesCollection();
+                    foreach (var Iter in result1)
+                    {
+                        seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
+                        colorIndex = (colorIndex + 1) % colorList.Count;
+                    }
+                    pieChart1.Series = seriesCollection;
                 }
-                pieChart1.Series = seriesCollection;
+                else
+                {
+                    pieChart1.Visible = false;
+                }
 
                 cartesianChart1.Series.Clear();
                 cartesianChart1.AxisX.Clear();
 
+                bool flag = false;
+
                 foreach (var employeeData in result2)
                 {
-                    var lineSeries = new LineSeries
-                    {
-                        Title = employeeData.Key,
-                        Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
-                        Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                    };
-                    
-                    cartesianChart1.Series.Add(lineSeries);
+                    flag = employeeData.Value.Count > 0 ? true : false;
                 }
 
-                IList<string> labels = new List<string>();
-                foreach (var employeeData in result2)
+                if (flag)
                 {
-                    
-
-                    foreach (var Iter in employeeData.Value)
+                    cartesianChart1.Visible = true;
+                    foreach (var employeeData in result2)
                     {
-                        labels.Add(Iter.Key.ToShortDateString());
+                        var lineSeries = new LineSeries
+                        {
+                            Title = employeeData.Key,
+                            Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
+                            Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
+                        };
+
+                        cartesianChart1.Series.Add(lineSeries);
                     }
-                }
 
-                cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
+                    IList<string> labels = new List<string>();
+                    foreach (var employeeData in result2)
+                    {
+
+
+                        foreach (var Iter in employeeData.Value)
+                        {
+                            labels.Add(Iter.Key.ToShortDateString());
+                        }
+                    }
+
+                    cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
+                    {
+                        Title = "Date",
+                        Labels = labels // Add your values here
+                    });
+                }
+                else
                 {
-                    Title = "Date",
-                    Labels = labels // Add your values here
-                });
+                    cartesianChart1.Visible = false;
+                }
 
             }
         }
