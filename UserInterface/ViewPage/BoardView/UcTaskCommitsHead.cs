@@ -12,7 +12,7 @@ namespace TeamTracker
 {
     public partial class UcTaskCommitsHead : UserControl
     {
-        private DateTime commitDate;
+        private DateTime commitDate = DateTime.Today;
         private int commitCount = 4;
 
         public UcTaskCommitsHead()
@@ -26,7 +26,7 @@ namespace TeamTracker
             set
             {
                 commitCount = value;
-                SetCommitCount();
+                SetText();
             }
         }
 
@@ -36,18 +36,14 @@ namespace TeamTracker
             set
             {
                 commitDate = value;
-                SetCommitDate();
+                SetText();
             }
         }
 
-        private void SetCommitCount()
-        {
-            labelCommitCount.Text = commitCount+"";
-        }
 
-        private void SetCommitDate()
+        private void SetText()
         {
-            labelCommitDate.Text = commitDate.ToString("dd/MM/yyyy");
+            labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
         }
     }
 }

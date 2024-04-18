@@ -18,7 +18,7 @@ namespace TeamTracker
         public static BooleanMsg ConnectDatabase()
         {
             //manager = new MySqlHandler("192.168.3.55", "Ilam", "Lucid123", "teamtracker");
-            manager = new MySqlHandler("localhost", "root", "Lucid123", "projectmanagement");
+            manager = new MySqlHandler("localhost", "root", "", "projectmanagement");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -67,6 +67,7 @@ namespace TeamTracker
             {
                 SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][0]),
                 TaskID = Convert.ToInt32(attachments["TaskID"][0]),
+                CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
                 CommitName = Convert.ToString(attachments["CommitName"][0]),
                 SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0])
             };
@@ -314,6 +315,7 @@ namespace TeamTracker
                 {
                     new ParameterData("CommitName", Iter.CommitName),
                     new ParameterData("SourceCodeLocation", Iter.SourceCodeLocation),
+                    new ParameterData("CommitedBy", Iter.CommitedBy),
                     new ParameterData("SubmittedDate", Iter.SubmittedDate),
                     new ParameterData("TaskID", Iter.TaskID)
                 });
@@ -411,6 +413,7 @@ namespace TeamTracker
                 {
                     SourceCodeID = Convert.ToInt32(lastCommited["SourceCodeID"][ctr]),
                     CommitName = Convert.ToString(lastCommited["CommitName"][ctr]),
+                    CommitedBy = Convert.ToInt32(lastCommited["CommitedBy"][ctr]),
                     SourceCodeLocation = Convert.ToString(lastCommited["SourceCodeLocation"][ctr]),
                     SubmittedDate = Convert.ToDateTime(lastCommited["SubmittedDate"][ctr]),
                     TaskID = Convert.ToInt32(lastCommited["TaskID"][ctr])
@@ -442,6 +445,7 @@ namespace TeamTracker
                     SourceCodeID = Convert.ToInt32(sourceCodeCollection["SourceCodeID"][ctr]),
                     SourceCodeName = Convert.ToString(sourceCodeCollection["SourceCodeName"][ctr]),
                     CommitName = Convert.ToString(sourceCodeCollection["CommitName"][ctr]),
+                    CommitedBy = Convert.ToInt32(sourceCodeCollection["CommitedBy"][ctr]),
                     SourceCodeLocation = Convert.ToString(sourceCodeCollection["SourceCodeLocation"][ctr]),
                     SubmittedDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]),
                     TaskID = Convert.ToInt32(sourceCodeCollection["TaskID"][ctr])
@@ -469,7 +473,7 @@ namespace TeamTracker
                 {
                     SourceCodeID = Convert.ToInt32(sourceCodeCollection["SourceCodeID"][ctr]),
                     CommitName = Convert.ToString(sourceCodeCollection["CommitName"][ctr]),
-                    SourceCodeName = Convert.ToString(sourceCodeCollection["SourceCodeName"][ctr]),
+                    CommitedBy = Convert.ToInt32(sourceCodeCollection["CommitedBy"][ctr]),
                     SourceCodeLocation = Convert.ToString(sourceCodeCollection["SourceCodeLocation"][ctr]),
                     SubmittedDate = Convert.ToDateTime(sourceCodeCollection["SubmittedDate"][ctr]),
                     TaskID = Convert.ToInt32(sourceCodeCollection["TaskID"][ctr])
@@ -534,6 +538,7 @@ namespace TeamTracker
                 {
                     SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][0]),
                     TaskID = Convert.ToInt32(attachments["TaskID"][0]),
+                    CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
                     CommitName = Convert.ToString(attachments["CommitName"][0]),
                     SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0]),
                     SourceCodeName = Convert.ToString(attachments["SourceCodeName"][0]),
