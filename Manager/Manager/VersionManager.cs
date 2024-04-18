@@ -31,7 +31,7 @@ namespace TeamTracker
             {
                 foreach(var Iter in VersionCollection)
                 {
-                    if(Iter.StatusOfVersion == ProjectStatus.OnProcess && FetchTeamLeadIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)
+                    if(Iter.StatusOfVersion == ProjectStatus.OnProcess && ((FetchTeamLeadIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID) || (IsCurrentEmployeeInvolvedInVersion(FetchTeamLeadIDFromProjectID(Iter.ProjectID)))))
                     {
                         CurrentVersion = Iter;
                         break;
@@ -39,6 +39,21 @@ namespace TeamTracker
                 }
                 return true;
             }
+        }
+
+        private static bool IsCurrentEmployeeInvolvedInVersion(int id)
+        {
+            List<Employee> teamMembers = EmployeeManager.FetchTeamMembersForTeamLeaders(id);
+            
+            foreach(var Iter in teamMembers)
+            {
+                if(Iter.EmployeeID == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public static List<ProjectVersion> CurrentEmployeeInvolvedVersions(Employee emp)

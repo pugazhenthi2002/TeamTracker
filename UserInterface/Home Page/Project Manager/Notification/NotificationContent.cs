@@ -26,6 +26,18 @@ namespace TeamTracker
             InitializeComponent();
         }
 
+        public new void Dispose()
+        {
+            if(panelBase.Controls.Count > 0)
+            {
+                for(int ctr=0; ctr < panelBase.Controls.Count; ctr++)
+                {
+                    (panelBase.Controls[ctr] as UcNotification).Dispose();
+                    panelBase.Controls.RemoveAt(ctr);
+                    ctr--;
+                }
+            }
+        }
 
         public List<Notification> NotifyList
         {
@@ -33,6 +45,7 @@ namespace TeamTracker
             {
                 if (value != null && value.Count > 0)
                 {
+                    Dispose();
                     notifyList = value;
                     notifyList.Reverse();
                     currentIndex = 0;
@@ -155,6 +168,7 @@ namespace TeamTracker
                 else if (currentIndex == 0) { endIndex--; }
             }
 
+            
             DataHandler.DeleteNotification(e.NotificationId);
             if (endIndex - currentIndex < UcNotiList.Count - 1)
             {
@@ -162,8 +176,7 @@ namespace TeamTracker
                 UcNotiList.Remove(tempUCNotify);
                 panelBase.Controls.Remove(tempUCNotify);
             }
-            notifyList.Remove(e);
-
+            var x = notifyList.Remove(e);
             NotificationPagination();
         }
 

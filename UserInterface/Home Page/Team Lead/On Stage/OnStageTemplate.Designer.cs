@@ -119,6 +119,7 @@
             this.ucOnStage1.Name = "ucOnStage1";
             this.ucOnStage1.Size = new System.Drawing.Size(604, 351);
             this.ucOnStage1.TabIndex = 5;
+            this.ucOnStage1.ResetHomePage += new System.EventHandler(this.OnResetHomePage);
             // 
             // OnStageTemplate
             // 

@@ -64,6 +64,7 @@ namespace TeamTracker
             }
             else
             {
+                teamMemberHome1.InitializePage();
                 panel5.Visible = panel2.Visible = false;
                 addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
                 tabControl1.SelectedIndex = 4;
@@ -256,11 +257,13 @@ namespace TeamTracker
             }
             else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
+                teamLeadHome1.InitializeHomePage();
                 tabControl1.SelectedIndex = 3;
             }
             else
             {
-                tabControl1.SelectedIndex = 3;
+                teamMemberHome1.InitializePage();
+                tabControl1.SelectedIndex = 4;
             }
         }
 

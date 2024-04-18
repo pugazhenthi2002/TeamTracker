@@ -19,9 +19,6 @@ namespace TeamTracker
         {
             InitializeComponent();
             //InitializeRoundedEdge();
-           
-
-
         }
 
         public EventHandler<Notification> CloseClick;
@@ -39,15 +36,27 @@ namespace TeamTracker
                 labelHeader.Text = value.NotificationHeader;
                 textBoxContent.Text = value.NotificationContent;
                 labelDateTime.Text = value.NotificationDateTime.ToShortDateString();
-                if (textBoxContent.GetLineFromCharIndex(textBoxContent.Text.Length) > textBoxContent.ClientSize.Height / textBoxContent.Font.Height)
-                {
-                    textBoxContent.ScrollBars = ScrollBars.Vertical;
-                }
-                else
-                {
-                    textBoxContent.ScrollBars = ScrollBars.None;
-                }
+                //if (textBoxContent.GetLineFromCharIndex(textBoxContent.Text.Length) > textBoxContent.ClientSize.Height / textBoxContent.Font.Height)
+                //{
+                //    textBoxContent.ScrollBars = ScrollBars.Vertical;
+                //}
+                //else
+                //{
+                //    textBoxContent.ScrollBars = ScrollBars.None;
+                //}
             }
+        }
+
+        public new void Dispose()
+        {
+            labelDateTime.Dispose();
+            labelHeader.Dispose();
+            panelContent.Dispose();
+            tableLayoutPanel1.Dispose();
+            tableLayoutPanel2.Dispose();
+            pictureBoxClose.Image.Dispose();
+            pictureBoxClose.Dispose();
+            textBoxContent.Dispose();
         }
 
 
@@ -91,7 +100,7 @@ namespace TeamTracker
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
-            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Panel).Width - 1, (sender as Panel).Height - 1));
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Panel).Width - 2, (sender as Panel).Height - 2));
             border.Dispose();
         }
     }

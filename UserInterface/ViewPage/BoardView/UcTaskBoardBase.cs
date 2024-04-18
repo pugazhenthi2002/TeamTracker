@@ -16,7 +16,7 @@ namespace TeamTracker
     {
         private ProjectVersion currentProjectVersion;
         private SourceCodeSubmitionForm SubmitionForm;
-        private bool toAdd = false;
+        private bool toAdd = false, underReviewFlag = false;
         private UCTaskBoard BoardToAdd;
 
         private Point TaskBoardStartPoint;
@@ -178,6 +178,7 @@ namespace TeamTracker
                 }
                 else
                 {
+                    underReviewFlag = true;
                     form.WarningStatus += OnWarningStatusClicked;
                     form.Show();
                 }

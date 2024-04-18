@@ -33,6 +33,7 @@ namespace UserInterface.Task
                 return;
             }
             InitializeReviewPage();
+            milestoneSwitch1.InitializePage();
             currentTimelineContent1.Version = VersionManager.CurrentVersion;
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
         }
@@ -100,7 +101,7 @@ namespace UserInterface.Task
 
         private void InitializeReviewPage()
         {
-            underReviewCollection = new List<TeamTracker.Task>();
+            underReviewCollection = TaskManager.FetchUnderReviewTask();
             
             if(underReviewCollection != null && underReviewCollection.Count > 0)
             {
@@ -118,13 +119,15 @@ namespace UserInterface.Task
 
         private void CreateReviewUI()
         {
-            for(int ctr=0; ctr<endIdx; ctr++)
+            boardCollection = new List<ReviewTaskTemplate>();
+            for(int ctr=0; ctr<=endIdx; ctr++)
             {
                 template = new ReviewTaskTemplate()
                 {
                     SelectedTask = underReviewCollection[ctr],
                     Dock = DockStyle.Left
                 };
+                panelBase.Controls.Add(template);
                 template.TaskReviewed += OnTaskReviewed;
                 boardCollection.Add(template);
             }
@@ -156,8 +159,15 @@ namespace UserInterface.Task
         private void OnTaskReviewed(object sender, EventArgs e)
         {
             ReviewTaskTemplate control = sender as ReviewTaskTemplate;
-            
-            foreach(var Iter in underReviewCollection)
+
+            if (underReviewCollection.Count == boardCollection.Count)
+            {
+                panelBase.Controls.Remove(boardCollection[boardCollection.Count - 1]);
+                boardCollection.RemoveAt(boardCollection.Count - 1);
+                endIdx--;
+            }
+
+            foreach (var Iter in underReviewCollection)
             {
                 if(Iter.TaskID == control.SelectedTask.TaskID)
                 {
@@ -166,12 +176,7 @@ namespace UserInterface.Task
                 }
             }
 
-            if(underReviewCollection.Count == boardCollection.Count)
-            {
-                panelBase.Controls.Remove(boardCollection[boardCollection.Count - 1]);
-                boardCollection.RemoveAt(boardCollection.Count - 1);
-                endIdx--;
-            }
+            
             ResetReviewUI();
         }
 

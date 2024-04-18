@@ -104,6 +104,8 @@
             this.descTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.descTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.descTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descTextBox.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.descTextBox.Location = new System.Drawing.Point(2, 40);
             this.descTextBox.Multiline = true;
             this.descTextBox.Name = "descTextBox";

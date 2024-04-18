@@ -51,7 +51,7 @@ namespace TeamTracker
             {
                 foreach (var TaskIter in TaskCollection)
                 {
-                    if (TaskIter.MilestoneID == id)
+                    if (TaskIter.MilestoneID == id && Iter.EmployeeID == TaskIter.AssignedTo)
                     {
                         count++;
                     }
@@ -112,6 +112,19 @@ namespace TeamTracker
             if(taskAttachment!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
         }
 
+        public static List<Task> FetchUnderReviewTask()
+        {
+            List<Task> result = new List<Task>();
+            foreach(var Iter in TaskCollection)
+            {
+                if(Iter.VersionID == VersionManager.CurrentVersion.VersionID && Iter.StatusOfTask == TaskStatus.UnderReview)
+                {
+                    result.Add(Iter);
+                }
+            }
+            return result;
+        }
+
         public static Dictionary<string, int> FilterTeamMemberTaskCount(int month, int year, int priority)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -140,6 +153,34 @@ namespace TeamTracker
             }
 
             return result;
+        }
+
+        public static int TotalCommits(int month, int year, int priority)
+        {
+            List<SourceCode> result = DataHandler.FetchCommitsByFilter(month, year, priority);
+            Task task;
+            int count = 0;
+            foreach(var Iter in result)
+            {
+                task = FetchTaskFromTaskID(Iter.TaskID);
+                if (task!=null && task.TaskPriority == (Priority)priority)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private static Task FetchTaskFromTaskID(int taskID)
+        {
+            foreach(var Iter in TaskCollection)
+            {
+                if(Iter.TaskID == taskID)
+                {
+                    return Iter;
+                }
+            }
+            return null;
         }
 
         public static Dictionary<string, Dictionary<DateTime, int>> FilterTaskCountByDate(int month, int year)
@@ -188,7 +229,6 @@ namespace TeamTracker
         public static int FilterTaskCount(int month, int year, int priority)
         {
             int count = 0;
-
             foreach(var Iter in TaskCollection)
             {
                 if (Iter.EndDate.Month == month && Iter.EndDate.Year == year && Iter.AssignedTo == EmployeeManager.CurrentEmployee.EmployeeID)

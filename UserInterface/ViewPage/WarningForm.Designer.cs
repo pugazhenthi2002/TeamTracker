@@ -137,6 +137,7 @@
             this.yesButton.TabIndex = 3;
             this.yesButton.Text = "Yes";
             this.yesButton.UseVisualStyleBackColor = false;
+            this.yesButton.Click += new System.EventHandler(this.OnYesClicked);
             // 
             // noButton
             // 
@@ -152,6 +153,7 @@
             this.noButton.TabIndex = 2;
             this.noButton.Text = "No";
             this.noButton.UseVisualStyleBackColor = false;
+            this.noButton.Click += new System.EventHandler(this.OnNoClicked);
             // 
             // WarningForm
             // 

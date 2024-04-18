@@ -19,6 +19,10 @@ namespace TeamTracker
 
             foreach(var Iter in milestoneCollection)
             {
+                if(Iter.Status == MilestoneStatus.OnProcess)
+                {
+                    CurrentMilestone = Iter;
+                }
                 MilestoneCollection.Add(Iter);
             }
         }
@@ -119,13 +123,26 @@ namespace TeamTracker
             int count = 0;
             foreach(var Iter in MilestoneCollection)
             {
-                if(month == Iter.EndDate.Month && year == Iter.EndDate.Year && EmployeeManager.CurrentEmployee.EmployeeID == VersionManager.FetchTeamLeadFromVersionID(Iter.VersionID))
+                if(month == Iter.EndDate.Month && year == Iter.EndDate.Year && (EmployeeManager.CurrentEmployee.EmployeeID == VersionManager.FetchTeamLeadFromVersionID(Iter.VersionID) || IsEmployeeInvolvedInMilestone(Iter.MileStoneID)))
                 {
                     count++;
                 }
             }
 
             return count;
+        }
+
+        private static bool IsEmployeeInvolvedInMilestone(int mileStoneID)
+        {
+            foreach(var Iter in TaskManager.TaskCollection)
+            {
+                if(Iter.MilestoneID == mileStoneID && Iter.AssignedTo == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public static bool IsAllTaskCompletedInCurrentMilestone()

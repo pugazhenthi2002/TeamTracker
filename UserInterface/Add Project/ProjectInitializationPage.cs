@@ -214,10 +214,19 @@ namespace TeamTracker
 
         private bool EligibleForCreatingProject()
         {
-            if (clientTextBox.Text == "" || !clientTextBox.Text.Contains("@gmail.com") || clientTextBox.Text == "Client Email")
+            if (clientTextBox.Text == "" || !clientTextBox.Text.Contains("@gmail.com") || clientTextBox.Text == "Client Email" || clientTextBox.Text.Length <= 10)
             {
                 ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Proper EmailID");
                 return false;
+            }
+
+            for(int ctr=0; ctr < clientTextBox.Text.Length - 10; ctr++)
+            {
+                if(!((clientTextBox.Text[ctr]<='z' && clientTextBox.Text[ctr]>='a') || (clientTextBox.Text[ctr] <= '9' && clientTextBox.Text[ctr] >= '0')))
+                {
+                    ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Proper EmailID");
+                    return false;
+                }
             }
 
             if (projectTitleTextBox.Text == "" ||  projectTitleTextBox.Text == "Project Name")
@@ -226,9 +235,9 @@ namespace TeamTracker
                 return false;
             }
 
-            if (projectDescTextBox.Text == "" || projectDescTextBox.Text == "Enter your Desc...")
+            if (projectDescTextBox.Text == "" || projectDescTextBox.Text == "Enter your Desc..." || projectDescTextBox.Text.Length < 300)
             {
-                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Proper Description");
+                ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nEnter Proper Description\nDescription Length Should be Atleast 300 Characters");
                 return false;
             }
 
@@ -250,7 +259,7 @@ namespace TeamTracker
                 return false;
             }
 
-            if((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days <= 20)
+            if((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days < 19)
             {
                 ProjectManagerMainForm.notify.AddNotification("Project Creation Failed", "Invalid Input\nProject Duration Should be Atleast 20 Days");
                 return false;

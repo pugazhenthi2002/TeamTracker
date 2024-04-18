@@ -24,6 +24,12 @@ namespace UserInterface.ViewProject
         public void InitializeViewProject()
         {
             SelectedEmployee = EmployeeManager.CurrentEmployee;
+            if(SelectedEmployee.EmpRoleName == "Team Member")
+            {
+                filterPanel.Visible = false;
+            }
+            filteredUser.Visible = false;
+            PrevSelectedEmployee = null;
             tabControl1.SelectedIndex = 0;
             boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
             boardPanel.BackColor = Color.FromArgb(39, 55, 77);
@@ -77,7 +83,7 @@ namespace UserInterface.ViewProject
                 form.TeamList = EmployeeManager.FetchTeamLeadersFromManagerID();
                 form.ShowDialog();
             }
-            else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Leader")
+            else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
                 form.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
                 form.ShowDialog();

@@ -107,7 +107,7 @@ namespace TeamTracker
                     new ParameterData("VersionID", versionID),
                     new ParameterData("StartDate", Iter.StartDate),
                     new ParameterData("EndDate", Iter.EndDate),
-                    new ParameterData("Status", MilestoneStatus.Upcoming.ToString())
+                    new ParameterData("Status", Iter.Status.ToString())
                 });
             }
 
@@ -133,6 +133,7 @@ namespace TeamTracker
                 {
                     new ParameterData("TaskID", sourceCode.TaskID),
                     new ParameterData("CommitName", sourceCode.CommitName),
+                    new ParameterData("CommitedBy", sourceCode.CommitedBy),
                     new ParameterData("SourceCodeName", sourceCode.SourceCodeName),
                     new ParameterData("SubmittedDate", sourceCode.SubmittedDate),
                     new ParameterData("SourceCodeLocation", filePath),
@@ -143,6 +144,27 @@ namespace TeamTracker
                 ;
             }
             
+        }
+
+        public static List<SourceCode> FetchCommitsByFilter(int month, int year, int priority)
+        {
+            List<SourceCode> result = new List<SourceCode>();
+
+            var attachments = manager.FetchData("sourcecode", $"CommitedBy={EmployeeManager.CurrentEmployee.EmployeeID} && Month(SubmittedDate)={month} && Year(SubmittedDate)={year}").Value;
+
+            for (int ctr = 0; attachments.Count > 0 && ctr < attachments["TaskID"].Count; ctr++)
+            {
+                result.Add(new SourceCode()
+                {
+                    TaskID = Convert.ToInt32(attachments["TaskID"][ctr]),
+                    CommitName = Convert.ToString(attachments["CommitName"][ctr]),
+                    SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][ctr]),
+                    SourceCodeName = Convert.ToString(attachments["SourceCodeName"][ctr]),
+                    SubmittedDate = Convert.ToDateTime(attachments["SubmittedDate"][ctr]),
+                });
+            }
+
+            return result;
         }
 
         public static BooleanMsg DeleteSourceCode(int taskID)
@@ -506,14 +528,16 @@ namespace TeamTracker
         public static SourceCode GetTaskSource(int taskID)
         {
             SourceCode result = new SourceCode();
-            var attachments = manager.FetchData("sourcecode", $"TaskID='{taskID}", orderBy:"SubmittedDate", limitCount:1).Value;
+            var attachments = manager.FetchData("sourcecode", $"TaskID={taskID}", orderBy:"SubmittedDate", limitCount:1).Value;
 
                 result = new SourceCode()
                 {
                     SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][0]),
                     TaskID = Convert.ToInt32(attachments["TaskID"][0]),
                     CommitName = Convert.ToString(attachments["CommitName"][0]),
-                    SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0])
+                    SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0]),
+                    SourceCodeName = Convert.ToString(attachments["SourceCodeName"][0]),
+                    CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
                 };
 
             return result;

@@ -20,8 +20,6 @@ namespace TeamTracker
 
         }
 
-
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -36,7 +34,22 @@ namespace TeamTracker
 
         public void InitializePage()
         {
-            throw new NotImplementedException();
+            if(VersionManager.CurrentVersion == null)
+            {
+                tableLayoutPanelBase.Visible = false;
+            }
+            else
+            {
+                List<int> result = TaskManager.FetchTaskCount(VersionManager.CurrentVersion.VersionID);
+
+                taskCountLabel.Text = result[0].ToString();
+                completedTaskLabel.Text = result[1].ToString();
+                dueTaskLabel.Text = result[2].ToString();
+                incompleteTaskLabel.Text = result[3].ToString();
+
+                taskCompletionProgressBar1.TotalTask = result[0];
+                taskCompletionProgressBar1.CompletedTask = result[1];
+            }
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -58,7 +71,6 @@ namespace TeamTracker
 
         private void InitializeRoundedEdge()
         {
-
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));

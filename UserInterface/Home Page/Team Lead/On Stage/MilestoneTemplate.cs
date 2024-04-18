@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Home_Page.Team_Lead.On_Stage
 {
     public partial class MilestoneTemplate : UserControl
     {
+
         public delegate void MilestoneHandler(object sender, MilestoneEventArgs m);
         public delegate bool ContraintsHandler(object sender, MilestoneEventArgs m);
         public event MilestoneHandler MilestoneOperate;
@@ -70,9 +72,45 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             }
         }
 
+        private void InitializeRoundedEdge()
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 10, 10));
+            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 10, 10));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
         public MilestoneTemplate()
         {
             InitializeComponent();
+            InitializeRoundedEdge();
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            upButton.Click += GetFocus;
+            upButton.Click += OnUpButtonClicked;
+
+            downButton.Click += GetFocus;
+            downButton.Click += OnDownButtonClicked;
+
+            milestoneDate.ValueChanged += CheckPreviousDate;
+            milestoneDate.ValueChanged += OnValueChanged;
+
+            milestoneName.KeyDown += CheckDuplication;
+            milestoneName.KeyDown += OnKeyDown;
+
             milestoneName.LostFocus += AddMilestonePlaceHolders;
             milestoneDate.GotFocus += TemplateGotFocus;
         }
@@ -208,8 +246,8 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (isFocused)
             {
-                Pen border = new Pen(Color.Red);
-                e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 1, Height - 1), 10));
+                Pen border = new Pen(Color.Red, 2);
+                e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 1, Height - 1), 5));
                 border.Dispose();
             }
         }
@@ -217,6 +255,12 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         private void OnClicked(object sender, EventArgs e)
         {
             FocusChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
     }
 }

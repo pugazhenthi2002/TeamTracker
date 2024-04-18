@@ -21,6 +21,22 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         public FilterForm()
         {
             InitializeComponent();
+            textBox1.GotFocus += OnTextBoxGotFocus;
+        }
+
+        private void OnTextBoxGotFocus(object sender, EventArgs e)
+        {
+            if (priorityForm != null && !priorityForm.IsDisposed)
+            {
+                Priority = priorityForm.Priority;
+                priorityForm.Close();
+            }
+
+            if (monthForm != null && !monthForm.IsDisposed)
+            {
+                Month = monthForm.Month;
+                monthForm.Close();
+            }
         }
 
         private const int CSDropShadow = 0x00020000;
@@ -115,6 +131,18 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         private void YearSetClick(object sender, EventArgs e)
         {
+            if (priorityForm != null && !priorityForm.IsDisposed)
+            {
+                Priority = priorityForm.Priority;
+                priorityForm.Close();
+            }
+
+            if (monthForm != null && !monthForm.IsDisposed)
+            {
+                Month = monthForm.Month;
+                monthForm.Close();
+            }
+
             if (textBox1.Text.All(char.IsNumber))
             {
                 year = Convert.ToInt32(textBox1.Text);
@@ -151,6 +179,12 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             {
                 prevString = textBox1.Text;
             }
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
         }
     }
 }

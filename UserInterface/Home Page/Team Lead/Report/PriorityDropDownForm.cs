@@ -74,5 +74,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             prevPriority = priority;
             PrioritySelect?.Invoke(this, priority);
         }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
+        }
     }
 }

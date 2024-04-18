@@ -81,7 +81,7 @@ namespace UserInterface.Task
             {
                 string fileName = System.IO.Path.GetFileName(fileNetworkPath);
                 string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, sourceCode.CommitName);
+                filePath = System.IO.Path.Combine(filePath, sourceCode.CommitName+".pdf");
                 System.IO.File.Copy(fileNetworkPath, filePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.CommitName);
             }
@@ -101,7 +101,11 @@ namespace UserInterface.Task
 
         private void OnDoneWarningStatus(object sender, bool e)
         {
-            TaskManager.UpdateTask(selectedTask.TaskID, selectedTask.TaskName, selectedTask.TaskDesc, selectedTask.StartDate, selectedTask.EndDate, TeamTracker.TaskStatus.Done, selectedTask.MilestoneID, selectedTask.TaskPriority, selectedTask.AssignedTo, null);
+            if (e)
+            {
+                TaskManager.UpdateTask(selectedTask.TaskID, selectedTask.TaskName, selectedTask.TaskDesc, selectedTask.StartDate, selectedTask.EndDate, TeamTracker.TaskStatus.Done, selectedTask.MilestoneID, selectedTask.TaskPriority, selectedTask.AssignedTo, null);
+                TaskReviewed?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void OnReassignClick(object sender, EventArgs e)
@@ -110,15 +114,17 @@ namespace UserInterface.Task
             form.Content = "Are you sure, you want to Reassign the Task?";
             form.WarningStatus += OnReassignWarningStatus;
             form.Show();
-            TaskReviewed?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnReassignWarningStatus(object sender, bool e)
         {
-            CreateTaskForm form = new CreateTaskForm();
-            form.SelectedTask = selectedTask;
-            form.TaskCreate += OnUpdated;
-            form.Show();
+            if (e)
+            {
+                CreateTaskForm form = new CreateTaskForm();
+                form.SelectedTask = selectedTask;
+                form.TaskCreate += OnUpdated;
+                form.Show();
+            }
         }
 
         private void OnUpdated(object sender, EventArgs e)

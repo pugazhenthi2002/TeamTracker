@@ -32,6 +32,8 @@ namespace TeamTracker
                 if (value != null)
                 {
                     selectedVersion = value;
+                    startDateLabel.Text = value.EndDate.ToShortDateString();
+                    endDateLabel.Text = value.EndDate.ToShortDateString();
                     prevEndDate = startDate = value.StartDate;
                     endDate = value.EndDate;
                 }
@@ -75,8 +77,7 @@ namespace TeamTracker
         private void addMilestoneButton_Click(object sender, EventArgs e)
         {
             BooleanMsg message = new BooleanMsg();
-            message.Message = "Data Entered is Invalid";
-            message = (prevEndDate < milestoneDateTime.Value && milestoneDateTime.Value <= endDate) && (milestoneTextBox.Text != "") && (!MilestoneContains());
+            message = IsEligibleToAdd();
 
             if (message)
             {
@@ -96,6 +97,34 @@ namespace TeamTracker
             {
                 ProjectManagerMainForm.notify.AddNotification("Invalid Input", message);
             }
+        }
+
+        private BooleanMsg IsEligibleToAdd()
+        {
+            if(!(prevEndDate < milestoneDateTime.Value.Date && milestoneDateTime.Value.Date <= endDate))
+            {
+                return "Milestone Date is Invalid\nEnd Date should be within Previous Milestone Start Date and Version End Date";
+            }
+
+            if (milestoneTextBox.Text == "")
+            {
+                return "Milestone Name is Not Valid";
+            }
+
+            for(int ctr=0; ctr<milestoneTextBox.Text.Length; ctr++)
+            {
+                if(!((milestoneTextBox.Text[ctr]<='z' && milestoneTextBox.Text[ctr] >= 'a') || (milestoneTextBox.Text[ctr] <= 'Z' && milestoneTextBox.Text[ctr] >= 'A') || milestoneTextBox.Text[ctr]==' '))
+                {
+                    return "Milestone Name should not contains any numbers or characters";
+                }
+            }
+
+            if (MilestoneContains())
+            {
+                return "Milestone Name Already Exists";
+            }
+
+            return true;
         }
 
         private BooleanMsg MilestoneContains()
@@ -209,19 +238,22 @@ namespace TeamTracker
         private void SetMilestones()
         {
             DateTime prevDate = startDate;
-            milestoneCollection.Sort((m1, m2) => m1.EndDate.CompareTo(m2.EndDate));
-
-            for (int ctr = 0; ctr < milestoneCollection.Count; ctr++)
+            if (milestoneCollection.Count >= 1)
             {
-                if (ctr == 0)
-                {
-                    milestoneCollection[ctr].Status = MilestoneStatus.OnProcess;
-                }
-                milestoneCollection[ctr].StartDate = prevDate;
-                prevDate = milestoneCollection[ctr].EndDate;
-            }
+                milestoneCollection.Sort((m1, m2) => m1.EndDate.CompareTo(m2.EndDate));
 
-            milestoneCollection[milestoneCollection.Count - 1].EndDate = endDate;
+                for (int ctr = 0; ctr < milestoneCollection.Count; ctr++)
+                {
+                    if (ctr == 0)
+                    {
+                        milestoneCollection[ctr].Status = MilestoneStatus.OnProcess;
+                    }
+                    milestoneCollection[ctr].StartDate = prevDate;
+                    prevDate = milestoneCollection[ctr].EndDate;
+                }
+
+                milestoneCollection[milestoneCollection.Count - 1].EndDate = endDate;
+            }
         }
 
         private BooleanMsg isEligibleContraints()
@@ -337,7 +369,7 @@ namespace TeamTracker
 
             if(m.Movement == MilestoneOperation.Delete)
             {
-                if(endIdx == TemplateCollection.Count)
+                if(endIdx == milestoneCollection.Count)
                 {
                     MilestoneTemplate control = sender as MilestoneTemplate;
                     basePanel.Controls.Remove(TemplateCollection[TemplateCollection.Count-1]);

@@ -70,7 +70,8 @@ namespace UserInterface.Add_Project.Custom_Control
                 else
                 {
                     ucNotFound1.Visible = true;
-                    controlPanel.Visible = selectButton.Visible = upPicBox.Visible = downPicBox.Visible = false;
+                    controlPanel.Visible = upPicBox.Visible = downPicBox.Visible = false;
+                    selectButton.BackColor = selectButton.ForeColor = Color.FromArgb(157, 178, 191);
                 }
             }
         }
@@ -140,8 +141,6 @@ namespace UserInterface.Add_Project.Custom_Control
             Dispose();
             this.Close();
         }
-
-        
 
         private void InitializeTemplates()
         {

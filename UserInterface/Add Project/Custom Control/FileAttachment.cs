@@ -51,8 +51,8 @@ namespace TeamTracker
             for(int ctr=0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
             {
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
-                ctr--;
                 attachmentDisplayPanel.Controls.Remove(attachmentDisplayPanel.Controls[ctr]);
+                ctr--;
             }
         }
 

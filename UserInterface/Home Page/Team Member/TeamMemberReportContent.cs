@@ -13,14 +13,34 @@ using System.Windows.Forms.DataVisualization.Charting;
 using LiveCharts.Wpf;
 using LiveCharts;
 using System.Windows.Media;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Home_Page.Team_Member
 {
     public partial class TeamMemberReportContent : UserControl
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeRoundedEdge()
+        {
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
+            tableLayoutPanel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel4.Width, tableLayoutPanel4.Height, 20, 20));
+            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
+        }
+
         public TeamMemberReportContent()
         {
             InitializeComponent();
+            InitializeRoundedEdge();
         }
 
         public bool isOpened = false;
@@ -73,6 +93,12 @@ namespace UserInterface.Home_Page.Team_Member
             base.OnLoad(e);
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
+
         private void TablePanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -107,37 +133,53 @@ namespace UserInterface.Home_Page.Team_Member
             {
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
                 totalmilestoneCount.Text = MilestoneManager.FilterMilestoneCount(month, year).ToString();
+                //commitCount.Text = TaskManager.TotalCommits(month, year, priority).ToString();
                 Dictionary<string, Dictionary<DateTime, int>> result = TaskManager.FilterTaskCountByDate(month, year);
 
                 cartesianChart1.Series.Clear();
                 cartesianChart1.AxisX.Clear();
 
+                bool flag = false;
+
                 foreach (var employeeData in result)
                 {
-                    var lineSeries = new LineSeries
-                    {
-                        Title = employeeData.Key,
-                        Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
-                        Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                    };
-
-                    cartesianChart1.Series.Add(lineSeries);
+                    flag = employeeData.Value.Count > 0 ? true : false;
                 }
 
-                IList<string> labels = new List<string>();
-                foreach (var employeeData in result)
+                if (flag)
                 {
-                    foreach (var Iter in employeeData.Value)
+                    cartesianChart1.Visible = true;
+                    foreach (var employeeData in result)
                     {
-                        labels.Add(Iter.Key.ToShortDateString());
+                        var lineSeries = new LineSeries
+                        {
+                            Title = employeeData.Key,
+                            Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
+                            Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
+                        };
+
+                        cartesianChart1.Series.Add(lineSeries);
                     }
-                }
 
-                cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
+                    IList<string> labels = new List<string>();
+                    foreach (var employeeData in result)
+                    {
+                        foreach (var Iter in employeeData.Value)
+                        {
+                            labels.Add(Iter.Key.ToShortDateString());
+                        }
+                    }
+
+                    cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
+                    {
+                        Title = "Date",
+                        Labels = labels // Add your values here
+                    });
+                }
+                else
                 {
-                    Title = "Date",
-                    Labels = labels // Add your values here
-                });
+                    cartesianChart1.Visible = false;
+                }
 
             }
         }

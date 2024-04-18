@@ -34,8 +34,15 @@ namespace UserInterface.Task
             milestoneName = MilestoneManager.CurrentMilestone.MileStoneName;
             Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCountByMilestone(MilestoneManager.CurrentMilestone.MileStoneID);
 
-            if(result1 != null && result1.Count > 0)
+            int total = 0;
+            foreach (var Iter in result1)
             {
+                total += Iter.Value;
+            }
+            
+            if (total != 0)
+            {
+                pieChart1.Visible = true;
                 SeriesCollection seriesCollection = new SeriesCollection();
                 foreach (var Iter in result1)
                 {
@@ -48,7 +55,7 @@ namespace UserInterface.Task
             {
                 pieChart1.Visible = false;
             }
-            
+            panelBase.Invalidate();
         }
 
         private void OnMilestonePaint(object sender, PaintEventArgs e)

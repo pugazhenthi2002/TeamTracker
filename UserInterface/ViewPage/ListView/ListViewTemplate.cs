@@ -7,11 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using UserInterface.ViewPage.ListView;
+using System.Runtime.InteropServices;
 
 namespace TeamTracker
 {
     public partial class ListViewTemplate : UserControl
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeRoundedEdge()
+        {
+            panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 40, 40));
+            panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 40, 40));
+        }
+
         public List<Task> DoneTaskCollection
         {
             set
@@ -20,11 +38,16 @@ namespace TeamTracker
                 doneCollection = value;
                 if (value != null && value.Count > 0)
                 {
+                    doneTaskPanel.Visible = true;
                     doneCardCollection = new List<DoneCardTemplate>();
                     startDoneIdx = 0; isDoneBackEnabled = false;
                     endDoneIdx = value.Count > 5 ? 4 : value.Count-1;
                     isDoneNextEnabled = value.Count > 5 ? true : false;
                     SetDoneAllignment();
+                }
+                else
+                {
+                    doneTaskPanel.Visible = doneTaskPageBack.Visible = doneTaskPageNext.Visible = false;
                 }
             }
         }
@@ -35,6 +58,7 @@ namespace TeamTracker
                 singleListControlPanel.Controls.Clear();
                 if (value != null && value.Count > 0)
                 {
+                    singleListControlPanel.Visible = true;
                     singleListCollection = new List<SingleList>();
                     taskCollection = value;
                     startRemainingIdx = 0;
@@ -45,7 +69,7 @@ namespace TeamTracker
                 }
                 else
                 {
-
+                    singleListControlPanel.Visible = false;
                 }
             }
         }
@@ -61,6 +85,8 @@ namespace TeamTracker
 
         public void InitializePage()
         {
+            projectDateLabel.Text = VersionManager.CurrentVersion.StartDate.ToShortDateString() + "-" + VersionManager.CurrentVersion.EndDate.ToShortDateString();
+            projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
             customDonutChart1.Values = FetchTaskCountsByStatus();
             customDonutChart2.Values = FetchTaskCountsByPriority();
         }
@@ -98,6 +124,7 @@ namespace TeamTracker
         public ListViewTemplate()
         {
             InitializeComponent();
+            InitializeRoundedEdge();
         }
 
         private void OnPaginateUp(object sender, EventArgs e)
@@ -195,8 +222,8 @@ namespace TeamTracker
             if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
             if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
 
-            doneTaskPageNext.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
-            doneTaskPageBack.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+            doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
         }
 
         private Dictionary<Color, int> FetchTaskCountsByStatus()
@@ -207,10 +234,12 @@ namespace TeamTracker
             result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.OnProcess), 0);
             result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.UnderReview), 0);
             result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.Stuck), 0);
-
-            foreach(var Iter in taskCollection)
+            if (taskCollection != null)
             {
-                result[ColorManager.FetchTaskStatusColor(Iter.StatusOfTask)]++;
+                foreach (var Iter in taskCollection)
+                {
+                    result[ColorManager.FetchTaskStatusColor(Iter.StatusOfTask)]++;
+                }
             }
             return result;
         }
@@ -223,17 +252,29 @@ namespace TeamTracker
             result.Add(ColorManager.FetchTaskPriorityColor(Priority.Medium), 0);
             result.Add(ColorManager.FetchTaskPriorityColor(Priority.Easy), 0);
 
-            foreach(var Iter in taskCollection)
+            if (taskCollection != null)
             {
-                result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+                foreach (var Iter in taskCollection)
+                {
+                    result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+                }
             }
 
-            foreach(var Iter in doneCollection)
+            if (doneCardCollection != null)
             {
-                result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+                foreach (var Iter in doneCollection)
+                {
+                    result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+                }
             }
 
             return result;
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
     }
 }

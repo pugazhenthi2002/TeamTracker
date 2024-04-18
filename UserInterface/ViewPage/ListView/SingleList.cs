@@ -85,6 +85,7 @@ namespace TeamTracker
         {
             task.StatusOfTask = TaskStatus.UnderReview;
             DataHandler.SubmitSourceCode(e);
+            TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, TaskStatus.UnderReview, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
             SetTaskUI();
             Reset?.Invoke(this, EventArgs.Empty);
         }

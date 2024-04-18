@@ -43,7 +43,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(20, 257);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(589, 20);
+            this.panel4.Size = new System.Drawing.Size(760, 20);
             this.panel4.TabIndex = 7;
             // 
             // panel3
@@ -53,7 +53,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(20, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(589, 20);
+            this.panel3.Size = new System.Drawing.Size(760, 20);
             this.panel3.TabIndex = 6;
             // 
             // label1
@@ -73,7 +73,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(609, 0);
+            this.panel2.Location = new System.Drawing.Point(780, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(20, 277);
             this.panel2.TabIndex = 5;
@@ -95,7 +95,7 @@
             this.teamMemberReportContent1.Month = 0;
             this.teamMemberReportContent1.Name = "teamMemberReportContent1";
             this.teamMemberReportContent1.Priority = 0;
-            this.teamMemberReportContent1.Size = new System.Drawing.Size(589, 237);
+            this.teamMemberReportContent1.Size = new System.Drawing.Size(760, 237);
             this.teamMemberReportContent1.TabIndex = 8;
             this.teamMemberReportContent1.Year = 0;
             // 
@@ -109,7 +109,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "TeamMemberReport";
-            this.Size = new System.Drawing.Size(629, 277);
+            this.Size = new System.Drawing.Size(800, 277);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 

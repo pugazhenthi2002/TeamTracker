@@ -56,8 +56,8 @@
             this.clientTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.CreateProject = new TeamTracker.RippleButton();
             this.clearButton = new TeamTracker.RippleButton();
+            this.CreateProject = new TeamTracker.RippleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -473,23 +473,6 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(659, 33);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
-            // CreateProject
-            // 
-            this.CreateProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.CreateProject.Dock = System.Windows.Forms.DockStyle.Right;
-            this.CreateProject.FlatAppearance.BorderSize = 0;
-            this.CreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateProject.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.CreateProject.Location = new System.Drawing.Point(536, 3);
-            this.CreateProject.Name = "CreateProject";
-            this.CreateProject.Size = new System.Drawing.Size(120, 27);
-            this.CreateProject.TabIndex = 5;
-            this.CreateProject.Text = "Create";
-            this.CreateProject.UseVisualStyleBackColor = false;
-            this.CreateProject.Click += new System.EventHandler(this.OnCreateClick);
-            this.CreateProject.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
-            // 
             // clearButton
             // 
             this.clearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
@@ -506,6 +489,23 @@
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.OnCLearClick);
             this.clearButton.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            // 
+            // CreateProject
+            // 
+            this.CreateProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.CreateProject.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CreateProject.FlatAppearance.BorderSize = 0;
+            this.CreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateProject.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.CreateProject.Location = new System.Drawing.Point(536, 3);
+            this.CreateProject.Name = "CreateProject";
+            this.CreateProject.Size = new System.Drawing.Size(120, 27);
+            this.CreateProject.TabIndex = 5;
+            this.CreateProject.Text = "Create";
+            this.CreateProject.UseVisualStyleBackColor = false;
+            this.CreateProject.Click += new System.EventHandler(this.OnCreateClick);
+            this.CreateProject.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // ProjectInitializationPage
             // 

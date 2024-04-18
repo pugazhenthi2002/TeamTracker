@@ -66,5 +66,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             prevLabel.ForeColor = Color.FromArgb(221, 230, 237);
             MonthSelect?.Invoke(this, month);
         }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
+        }
     }
 }

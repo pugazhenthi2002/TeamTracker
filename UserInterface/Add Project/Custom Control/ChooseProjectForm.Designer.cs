@@ -37,15 +37,16 @@
             this.downPicBox = new System.Windows.Forms.PictureBox();
             this.upPicBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.controlPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.ucNotFound1 = new UserInterface.UcNotFound();
+            this.controlPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).BeginInit();
-            this.controlPanel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,8 +61,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.Controls.Add(this.cancelButton, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.selectButton, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -80,10 +81,10 @@
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.cancelButton.Location = new System.Drawing.Point(387, 8);
+            this.cancelButton.Location = new System.Drawing.Point(383, 8);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(98, 33);
+            this.cancelButton.Size = new System.Drawing.Size(112, 33);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
@@ -97,10 +98,10 @@
             this.selectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.selectButton.Location = new System.Drawing.Point(247, 8);
+            this.selectButton.Location = new System.Drawing.Point(242, 8);
             this.selectButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(109, 33);
+            this.selectButton.Size = new System.Drawing.Size(119, 33);
             this.selectButton.TabIndex = 0;
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = false;
@@ -174,14 +175,15 @@
             this.label1.Text = "Available Projects";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // controlPanel
+            // panel3
             // 
-            this.controlPanel.Controls.Add(this.ucNotFound1);
-            this.controlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlPanel.Location = new System.Drawing.Point(0, 47);
-            this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(514, 402);
-            this.controlPanel.TabIndex = 2;
+            this.panel3.Controls.Add(this.controlPanel);
+            this.panel3.Controls.Add(this.ucNotFound1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 47);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(514, 402);
+            this.panel3.TabIndex = 2;
             // 
             // ucNotFound1
             // 
@@ -193,7 +195,15 @@
             this.ucNotFound1.Message = "All Projects are already in Version Upgrade";
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(514, 402);
-            this.ucNotFound1.TabIndex = 0;
+            this.ucNotFound1.TabIndex = 2;
+            // 
+            // controlPanel
+            // 
+            this.controlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlPanel.Location = new System.Drawing.Point(0, 0);
+            this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Size = new System.Drawing.Size(514, 402);
+            this.controlPanel.TabIndex = 3;
             // 
             // ChooseProjectForm
             // 
@@ -201,7 +211,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.ClientSize = new System.Drawing.Size(514, 498);
-            this.Controls.Add(this.controlPanel);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -214,7 +224,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).EndInit();
-            this.controlPanel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -228,9 +238,10 @@
         private System.Windows.Forms.PictureBox downPicBox;
         private System.Windows.Forms.PictureBox upPicBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel controlPanel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button selectButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel controlPanel;
         private UcNotFound ucNotFound1;
     }
 }

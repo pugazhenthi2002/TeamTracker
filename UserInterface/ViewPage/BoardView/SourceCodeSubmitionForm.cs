@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,14 +18,12 @@ namespace TeamTracker
             InitializeComponent();
             InitializeRoundedEdge();
             this.Location = new Point(700, 300);
-            labelWarning.Hide();
         }
 
         public Task SourceCodeTask;
         public SourceCode TaskSourceCode;
         public EventHandler CloseClick;
         public EventHandler<SourceCode> DoneClick;
-        private bool Uploaded = false;
         private string selectedFileName = "";
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -47,10 +46,6 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            buttonClear.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonClear.Width, buttonClear.Height, 10, 10));
-            buttonDone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDone.Width, buttonDone.Height, 10, 10));
-            
-
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -81,7 +76,6 @@ namespace TeamTracker
 
         private void OnMouseClickUpload(object sender, MouseEventArgs e)
         {
-            labelWarning.Hide();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.Title = "Source Code Name";
@@ -98,6 +92,7 @@ namespace TeamTracker
                     SourceCodeLocation = selectedFilePath,
                     SubmittedDate = DateTime.Now.Date
                 };
+                label3.Text = safeFile;
             }
         }
 
@@ -109,23 +104,53 @@ namespace TeamTracker
 
         private void OnClickClear(object sender, EventArgs e)
         {
+            label3.Text = "UPLOAD";
             TaskSourceCode = null;
-            Uploaded = false;
-            pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack1;
-            selectedFileName = "";
         }
 
         private void OnClickDone(object sender, EventArgs e)
         {
-            if(TaskSourceCode==null || richTextBox1.Text == "")
+            BooleanMsg message = new BooleanMsg();
+            message = EligibleToUpload();
+            if (message)
             {
-                labelWarning.Show();
-                return;
+                TaskSourceCode.CommitName = commitTextBox.Text;
+                TaskSourceCode.CommitedBy = EmployeeManager.CurrentEmployee.EmployeeID;
+                DoneClick?.Invoke(sender, TaskSourceCode);
+                this.Close();
             }
-            TaskSourceCode.CommitName = richTextBox1.Text;
-            DoneClick?.Invoke(sender, TaskSourceCode);
-            this.Close();
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", message.Message);
+            }
         }
 
+        private BooleanMsg EligibleToUpload()
+        {
+            if(TaskSourceCode == null)
+            {
+                return "File Not Selected\nKindly Upload a File";
+            }
+
+            if(commitTextBox.Text == "")
+            {
+                return "Commit Name is Invalid\nPlease Enter Commit Name";
+            }
+
+            foreach(var Iter in commitTextBox.Text)
+            {
+                if(!((Iter<='z' && Iter >='a') ||  (Iter<='Z' && Iter>='A') || Iter==' '))
+                {
+                    return "Commit Name is Invalid\n Should Contains only Letters and Spaces";
+                }
+            }
+            return true;
+        }
+
+        private void OnClose(object sender, EventArgs e)
+        {
+            CloseClick?.Invoke(this, EventArgs.Empty);
+            this.Close();
+        }
     }
 }

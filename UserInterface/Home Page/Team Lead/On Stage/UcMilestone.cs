@@ -87,7 +87,6 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

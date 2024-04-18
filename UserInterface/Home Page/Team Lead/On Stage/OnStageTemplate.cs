@@ -62,7 +62,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
         private void OnResetHomePage(object sender, EventArgs e)
         {
-
+            ResetHomePage?.Invoke(this, EventArgs.Empty);
         }
     }
 }
