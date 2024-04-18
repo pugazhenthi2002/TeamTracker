@@ -542,8 +542,7 @@ namespace TeamTracker
                     CommitName = Convert.ToString(attachments["CommitName"][0]),
                     SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0]),
                     SourceCodeName = Convert.ToString(attachments["SourceCodeName"][0]),
-                    CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
-                };
+                  };
 
             return result;
         }

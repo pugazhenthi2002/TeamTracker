@@ -39,7 +39,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelTask = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ucDueDate1 = new UcDueDate();
+            this.ucDueDate1 = new TeamTracker.UcDueDate();
             this.profilePictureBoxAssignedBy = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -68,7 +68,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(362, 166);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(359, 185);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -84,7 +84,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(356, 59);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(353, 66);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // labelVersion
@@ -92,10 +92,10 @@
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelVersion.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelVersion.Location = new System.Drawing.Point(178, 0);
+            this.labelVersion.Location = new System.Drawing.Point(176, 0);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(0);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(178, 59);
+            this.labelVersion.Size = new System.Drawing.Size(177, 66);
             this.labelVersion.TabIndex = 1;
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,7 +114,7 @@
             this.labelProjectName.Location = new System.Drawing.Point(0, 0);
             this.labelProjectName.Margin = new System.Windows.Forms.Padding(0);
             this.labelProjectName.Name = "labelProjectName";
-            this.labelProjectName.Size = new System.Drawing.Size(178, 59);
+            this.labelProjectName.Size = new System.Drawing.Size(176, 66);
             this.labelProjectName.TabIndex = 0;
             this.labelProjectName.Text = "Project Name";
             this.labelProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -128,20 +128,20 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.Controls.Add(this.pictureBoxFlag, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBoxInfo, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.ucDueDate1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 121);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 135);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(356, 42);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(353, 47);
             this.tableLayoutPanel3.TabIndex = 2;
             this.tableLayoutPanel3.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.tableLayoutPanel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
@@ -154,10 +154,10 @@
             // 
             this.pictureBoxFlag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxFlag.Image = global::UserInterface.Properties.Resources.flag_UnderReview;
-            this.pictureBoxFlag.Location = new System.Drawing.Point(106, 0);
+            this.pictureBoxFlag.Location = new System.Drawing.Point(141, 0);
             this.pictureBoxFlag.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxFlag.Name = "pictureBoxFlag";
-            this.pictureBoxFlag.Size = new System.Drawing.Size(71, 42);
+            this.pictureBoxFlag.Size = new System.Drawing.Size(70, 47);
             this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxFlag.TabIndex = 1;
             this.pictureBoxFlag.TabStop = false;
@@ -172,10 +172,10 @@
             // 
             this.pictureBoxInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxInfo.Image = global::UserInterface.Properties.Resources.info_black;
-            this.pictureBoxInfo.Location = new System.Drawing.Point(283, 0);
+            this.pictureBoxInfo.Location = new System.Drawing.Point(281, 0);
             this.pictureBoxInfo.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxInfo.Name = "pictureBoxInfo";
-            this.pictureBoxInfo.Size = new System.Drawing.Size(73, 42);
+            this.pictureBoxInfo.Size = new System.Drawing.Size(72, 47);
             this.pictureBoxInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxInfo.TabIndex = 2;
             this.pictureBoxInfo.TabStop = false;
@@ -191,12 +191,12 @@
             this.tableLayoutPanel4.Controls.Add(this.LabelTask, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.profilePictureBoxAssignedBy, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 62);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 69);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(356, 59);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(353, 66);
             this.tableLayoutPanel4.TabIndex = 3;
             this.tableLayoutPanel4.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.tableLayoutPanel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
@@ -213,7 +213,7 @@
             this.LabelTask.Location = new System.Drawing.Point(0, 0);
             this.LabelTask.Margin = new System.Windows.Forms.Padding(0);
             this.LabelTask.Name = "LabelTask";
-            this.LabelTask.Size = new System.Drawing.Size(249, 59);
+            this.LabelTask.Size = new System.Drawing.Size(247, 66);
             this.LabelTask.TabIndex = 2;
             this.LabelTask.Text = "Task";
             this.LabelTask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,14 +235,15 @@
             this.ucDueDate1.Location = new System.Drawing.Point(0, 0);
             this.ucDueDate1.Margin = new System.Windows.Forms.Padding(0);
             this.ucDueDate1.Name = "ucDueDate1";
-            this.ucDueDate1.Size = new System.Drawing.Size(106, 42);
+            this.ucDueDate1.Size = new System.Drawing.Size(141, 47);
             this.ucDueDate1.TabIndex = 3;
             // 
             // profilePictureBoxAssignedBy
             // 
             this.profilePictureBoxAssignedBy.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.profilePictureBoxAssignedBy.Location = new System.Drawing.Point(283, 10);
+            this.profilePictureBoxAssignedBy.Location = new System.Drawing.Point(280, 13);
             this.profilePictureBoxAssignedBy.Name = "profilePictureBoxAssignedBy";
+            this.profilePictureBoxAssignedBy.ParentColor = System.Drawing.Color.Empty;
             this.profilePictureBoxAssignedBy.Size = new System.Drawing.Size(39, 39);
             this.profilePictureBoxAssignedBy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBoxAssignedBy.TabIndex = 3;
@@ -256,7 +257,7 @@
             this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "UCTaskBoard";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Size = new System.Drawing.Size(372, 176);
+            this.Size = new System.Drawing.Size(369, 195);
             this.Load += new System.EventHandler(this.OnLoad);
             this.Resize += new System.EventHandler(this.OnResize);
             this.tableLayoutPanel1.ResumeLayout(false);
