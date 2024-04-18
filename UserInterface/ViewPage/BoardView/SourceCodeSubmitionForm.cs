@@ -123,6 +123,7 @@ namespace TeamTracker
                 return;
             }
             TaskSourceCode.CommitName = richTextBox1.Text;
+            TaskSourceCode.CommitedBy = EmployeeManager.CurrentEmployee.EmployeeID;
             DoneClick?.Invoke(sender, TaskSourceCode);
             this.Close();
         }

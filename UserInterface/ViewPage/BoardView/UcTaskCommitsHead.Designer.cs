@@ -47,11 +47,11 @@
             this.tableLayoutPanel1.Controls.Add(this.labelText, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(574, 47);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(574, 48);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelText
@@ -62,7 +62,7 @@
             this.labelText.Location = new System.Drawing.Point(95, 0);
             this.labelText.Margin = new System.Windows.Forms.Padding(0);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(382, 47);
+            this.labelText.Size = new System.Drawing.Size(382, 48);
             this.labelText.TabIndex = 2;
             this.labelText.Text = "commits on";
             this.labelText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -70,11 +70,11 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::UserInterface.Properties.Resources.Next;
+            this.pictureBox1.Image = global::UserInterface.Properties.Resources.vertical_line;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(95, 47);
+            this.pictureBox1.Size = new System.Drawing.Size(95, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -87,7 +87,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UcTaskCommitsHead";
-            this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.Size = new System.Drawing.Size(574, 48);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

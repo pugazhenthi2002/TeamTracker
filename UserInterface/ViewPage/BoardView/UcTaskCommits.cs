@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TeamTracker
 {
@@ -14,23 +15,16 @@ namespace TeamTracker
     {
 
         private string commitName;
-        private int sourceCodeId = 4;
+        private Employee commitOwner ;
+        private int sourceCodeId;
 
         public UcTaskCommits()
         {
             InitializeComponent();
+            InitializeRoundedEdge();
+
         }
 
-
-        public int SourceCodeId
-        {
-            get { return sourceCodeId; }
-            set
-            {
-                sourceCodeId = value;
-                SetSourceCodeId();
-            }
-        }
 
         public string CommitName
         {
@@ -42,15 +36,62 @@ namespace TeamTracker
             }
         }
 
+        public int SourceCodeId
+        {
+            get { return sourceCodeId; }
+            set
+            {
+                sourceCodeId = value;
+                SetSourceCodeId();
+            }
+        }
+
+        public Employee CommitOwner
+        {
+            get { return commitOwner; }
+            set
+            {
+                commitOwner = value;
+                SetCommitOwner();
+            }
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeRoundedEdge()
+        {
+            //this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+        }
+        private void SetSourceCodeId()
+        {
+            
+        }
         private void SetCommitName()
         {
             labelCommitName.Text = commitName ;
         }
 
-        private void SetSourceCodeId()
+        private void SetCommitOwner()
         {
-            labelSourceCodeId.Text = sourceCodeId + "";
+            EmpProfilePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            EmpProfilePictureBox.ImageLocation = commitOwner.EmpProfileLocation;
+            labelEmpName.Text = commitOwner.EmployeeFirstName;
         }
+        
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
         {

@@ -1206,6 +1206,7 @@
     <Content Include="Resources\sort-up-hover.png" />
     <Content Include="Resources\sort-up.png" />
     <None Include="Resources\Upload Cloud.gif" />
+    <None Include="Resources\vertical line.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>

@@ -19,6 +19,7 @@ namespace TeamTracker
             InitializeRoundedEdge();
             this.Location = new Point(700, 300);
             toolTip1.SetToolTip(pictureBoxFlag, "Priority");
+            toolTip1.SetToolTip(animatedLabelMilestone, "Milestone");
 
         }
 
@@ -112,9 +113,9 @@ namespace TeamTracker
                 foreach (SourceCode srcCode in dateWiseDict[entry.Key])
                 {
                     UcTaskCommits commit = new UcTaskCommits();
-                    commit.SourceCodeId = srcCode.SourceCodeID;
                     commit.CommitName = srcCode.CommitName;
-                    commit.BackColor = Color.FromArgb(211, 220, 227);
+                    commit.CommitOwner = EmployeeManager.FetchEmployeeFromID(srcCode.CommitedBy);
+                    
                     commit.Dock = DockStyle.Top;
                     panelCommits.Controls.Add(commit);
 
@@ -135,8 +136,6 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-
-
         }
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
