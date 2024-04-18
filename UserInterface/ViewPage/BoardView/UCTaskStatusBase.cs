@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.ViewPage.ListView;
+using System.Reflection;
 
 namespace TeamTracker
 {
@@ -40,6 +41,7 @@ namespace TeamTracker
             ucTaskStatusHead1.ClickBack += OnClickBackPage;
             ucTaskStatusHead1.ClickNext += OnClickNextPage;
             InitializeBoard();
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, panelBase, new object[] { true });
         }
 
         public delegate void TaskBoardMouseEventHandler(UCTaskBoard sender, MouseEventArgs e);

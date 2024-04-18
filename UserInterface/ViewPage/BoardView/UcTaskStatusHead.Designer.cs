@@ -118,14 +118,14 @@
             // 
             // labelTaskCount
             // 
-            this.labelTaskCount.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.labelTaskCount.BackColor = System.Drawing.Color.DarkGray;
             this.labelTaskCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTaskCount.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTaskCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelTaskCount.Location = new System.Drawing.Point(252, 9);
-            this.labelTaskCount.Margin = new System.Windows.Forms.Padding(9);
+            this.labelTaskCount.ForeColor = System.Drawing.Color.White;
+            this.labelTaskCount.Location = new System.Drawing.Point(250, 7);
+            this.labelTaskCount.Margin = new System.Windows.Forms.Padding(7);
             this.labelTaskCount.Name = "labelTaskCount";
-            this.labelTaskCount.Size = new System.Drawing.Size(33, 31);
+            this.labelTaskCount.Size = new System.Drawing.Size(33, 35);
             this.labelTaskCount.TabIndex = 2;
             this.labelTaskCount.Text = "4";
             this.labelTaskCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

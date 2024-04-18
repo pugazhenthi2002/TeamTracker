@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Reflection;
+using System.Drawing.Drawing2D;
 
 namespace TeamTracker
 {
@@ -15,14 +17,24 @@ namespace TeamTracker
     {
         private Task TaskBoardData;
         private bool isDragging = false;
-
+        private TaskInfoForm taskInfoForm;
 
         public UCTaskBoard()
         {
-            this.SuspendLayout();
             InitializeComponent();
             InitializeRoundedEdge();
-            this.ResumeLayout();
+            DoubleBuffered = true;
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel1, new object[] { true });
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel2, new object[] { true });
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel3, new object[] { true });
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel4, new object[] { true });
+            typeof(ProfilePictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, profilePictureBoxAssignedBy, new object[] { true });
+            typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, pictureBoxFlag, new object[] { true });
+            typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, pictureBoxInfo, new object[] { true });
+            typeof(UcDueDate).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, ucDueDate1, new object[] { true });
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelProjectName, new object[] { true });
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, LabelTask, new object[] { true });
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelVersion, new object[] { true });
         }
         
         public MouseEventHandler MouseDownTaskBoard;
@@ -65,7 +77,7 @@ namespace TeamTracker
         private void OnLoad(object sender, EventArgs e)
         {
             InitializeRoundedEdge();
-            if(TaskBoardData!=null) toolTip1.SetToolTip(pictureBoxFlag, TaskBoardData.TaskPriority + "");
+            if(TaskBoardData!=null) toolTip1.SetToolTip(pictureBoxFlag,"Task priority: "+ TaskBoardData.TaskPriority );
             toolTip1.SetToolTip(pictureBoxInfo, "Info");
             toolTip1.SetToolTip(profilePictureBoxAssignedBy, "Assigned By");
         }
@@ -73,11 +85,15 @@ namespace TeamTracker
         private void OnMouseEnterInfo(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_hover;
+            this.BackColor = Color.FromArgb(39, 55, 77);
+            this.Cursor = Cursors.Hand;
         }
 
         private void OnMouseLeaveInfo(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
+            this.BackColor = Color.Transparent;
+            this.Cursor = Cursors.Default;
         }
 
         private void FlagChange()
@@ -115,7 +131,9 @@ namespace TeamTracker
 
         private void OnClickInfo(object sender, EventArgs e)
         {
-
+            taskInfoForm = new TaskInfoForm();
+            taskInfoForm.SelectedTask = TaskBoardData;
+            taskInfoForm.ShowDialog();
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -130,11 +148,13 @@ namespace TeamTracker
 
         private void OnMouseEnterTaskBoard(object sender, EventArgs e)
         {
+            this.BackColor = Color.FromArgb(39, 55, 77);
             this.Cursor = Cursors.Hand;
         }
 
         private void OnMouseLeaveTaskBoard(object sender, EventArgs e)
         {
+            this.BackColor = Color.Transparent;
             this.Cursor = Cursors.Default;
         }
 
@@ -164,5 +184,7 @@ namespace TeamTracker
                 MouseMoveTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
             }
         }
+
+        
     }
 }

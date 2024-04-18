@@ -24,6 +24,7 @@ namespace TeamTracker
         }
 
         public TeamTracker.Task selectedTask;
+
         public TeamTracker.Task SelectedTask
         {
             set
@@ -182,6 +183,7 @@ namespace TeamTracker
         {
             labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromTaskID(selectedTask.VersionID).VersionName;
             profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy);
+            ucTaskDescription1.TopLabelText = selectedTask.TaskName;
             ucTaskDescription1.CenterLabelText = selectedTask.TaskDesc;
             animatedLabelMilestone.Text = MilestoneManager.FetchMilestoneFromID(selectedTask.MilestoneID).MileStoneName;
             startDate.Value = selectedTask.StartDate;

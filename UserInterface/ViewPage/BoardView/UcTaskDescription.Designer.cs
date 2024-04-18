@@ -45,6 +45,7 @@
             this.panel1.Location = new System.Drawing.Point(20, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.panel1.Size = new System.Drawing.Size(265, 20);
             this.panel1.TabIndex = 6;
             // 
@@ -57,10 +58,10 @@
             this.labelTop.Location = new System.Drawing.Point(0, 0);
             this.labelTop.Margin = new System.Windows.Forms.Padding(0);
             this.labelTop.Name = "labelTop";
-            this.labelTop.Size = new System.Drawing.Size(117, 20);
+            this.labelTop.Size = new System.Drawing.Size(117, 17);
             this.labelTop.TabIndex = 0;
             this.labelTop.Text = "Task Name";
-            this.labelTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTop.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel4
             // 
@@ -99,6 +100,7 @@
             this.labelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCenter.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCenter.Location = new System.Drawing.Point(20, 20);
+            this.labelCenter.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.labelCenter.Multiline = true;
             this.labelCenter.Name = "labelCenter";
             this.labelCenter.Size = new System.Drawing.Size(265, 97);
