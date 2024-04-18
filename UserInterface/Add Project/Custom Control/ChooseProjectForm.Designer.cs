@@ -38,8 +38,8 @@
             this.upPicBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,6 +60,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -72,6 +73,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(514, 49);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // cancelButton
             // 
@@ -89,6 +91,9 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.OnCancelClick);
+            this.cancelButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            this.cancelButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.cancelButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
             // 
             // selectButton
             // 
@@ -106,6 +111,9 @@
             this.selectButton.Text = "Select";
             this.selectButton.UseVisualStyleBackColor = false;
             this.selectButton.Click += new System.EventHandler(this.OnSelectClick);
+            this.selectButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            this.selectButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.selectButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
             // 
             // panel2
             // 
@@ -130,17 +138,18 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(35, 47);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(48, 47);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // downPicBox
             // 
+            this.downPicBox.BackColor = System.Drawing.Color.Transparent;
             this.downPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.downPicBox.Image = global::UserInterface.Properties.Resources.sort_down;
+            this.downPicBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
             this.downPicBox.Location = new System.Drawing.Point(0, 23);
             this.downPicBox.Margin = new System.Windows.Forms.Padding(0);
             this.downPicBox.Name = "downPicBox";
-            this.downPicBox.Size = new System.Drawing.Size(35, 24);
+            this.downPicBox.Size = new System.Drawing.Size(48, 24);
             this.downPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.downPicBox.TabIndex = 1;
             this.downPicBox.TabStop = false;
@@ -150,12 +159,13 @@
             // 
             // upPicBox
             // 
+            this.upPicBox.BackColor = System.Drawing.Color.Transparent;
             this.upPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upPicBox.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.upPicBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
             this.upPicBox.Location = new System.Drawing.Point(0, 0);
             this.upPicBox.Margin = new System.Windows.Forms.Padding(0);
             this.upPicBox.Name = "upPicBox";
-            this.upPicBox.Size = new System.Drawing.Size(35, 23);
+            this.upPicBox.Size = new System.Drawing.Size(48, 23);
             this.upPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.upPicBox.TabIndex = 0;
             this.upPicBox.TabStop = false;
@@ -185,6 +195,14 @@
             this.panel3.Size = new System.Drawing.Size(514, 402);
             this.panel3.TabIndex = 2;
             // 
+            // controlPanel
+            // 
+            this.controlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlPanel.Location = new System.Drawing.Point(0, 0);
+            this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Size = new System.Drawing.Size(514, 402);
+            this.controlPanel.TabIndex = 3;
+            // 
             // ucNotFound1
             // 
             this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -196,14 +214,6 @@
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(514, 402);
             this.ucNotFound1.TabIndex = 2;
-            // 
-            // controlPanel
-            // 
-            this.controlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlPanel.Location = new System.Drawing.Point(0, 0);
-            this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(514, 402);
-            this.controlPanel.TabIndex = 3;
             // 
             // ChooseProjectForm
             // 

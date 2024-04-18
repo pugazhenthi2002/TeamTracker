@@ -56,7 +56,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             base.OnClosing(e);
             pieChart1.Dispose();
-            panel1.BackgroundImage.Dispose();
         }
 
         protected override CreateParams CreateParams
@@ -84,7 +83,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void InitializePieChart()
         {
             int count = 0;
-
+            colorIndex = 0;
             SeriesCollection seriesCollection = new SeriesCollection();
 
             foreach (var Iter in taskCounts)

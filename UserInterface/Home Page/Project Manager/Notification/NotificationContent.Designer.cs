@@ -78,7 +78,7 @@
             // 
             this.clearAllButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.clearAllButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.clearAllButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearAllButton.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearAllButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.clearAllButton.Location = new System.Drawing.Point(451, 0);
             this.clearAllButton.Name = "clearAllButton";
@@ -87,14 +87,15 @@
             this.clearAllButton.Text = "Clear All";
             this.clearAllButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.clearAllButton.Click += new System.EventHandler(this.ClearAllButtonClicked);
-            this.clearAllButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.clearAllButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.clearAllButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnClearAllPaint);
+            this.clearAllButton.MouseEnter += new System.EventHandler(this.OnClearAllMouseEnter);
+            this.clearAllButton.MouseLeave += new System.EventHandler(this.OnClearAllMouseLeave);
             // 
             // nextBtn
             // 
             this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.nextBtn.Image = global::UserInterface.Properties.Resources.Next_LightBlue;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
             this.nextBtn.Location = new System.Drawing.Point(178, 0);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(23, 20);
@@ -109,7 +110,7 @@
             // 
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.backBtn.Image = global::UserInterface.Properties.Resources.Back_Hover;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
             this.backBtn.Location = new System.Drawing.Point(155, 0);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(23, 20);

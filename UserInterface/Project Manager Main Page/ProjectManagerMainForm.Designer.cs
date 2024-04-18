@@ -34,21 +34,27 @@
             this.logo1 = new TeamTracker.Logo();
             this.panel7 = new System.Windows.Forms.Panel();
             this.myTaskLabel = new System.Windows.Forms.Label();
+            this.myTaskPicBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.addTaskLabel = new System.Windows.Forms.Label();
+            this.addTaskPicBox = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.viewProjectLabel = new System.Windows.Forms.Label();
+            this.viewProjectPictureBox = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.addProjectLabel = new System.Windows.Forms.Label();
+            this.addProjectPictureBox = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.homeLabel = new System.Windows.Forms.Label();
+            this.homePictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.headerPanel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
+            this.closePicBox = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.addProject1 = new TeamTracker.AddProject();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -61,22 +67,23 @@
             this.addTask1 = new UserInterface.Task.AddTask();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.myTaskTemplate1 = new UserInterface.ViewPage.MyTaskTemplate();
-            this.closePicBox = new System.Windows.Forms.PictureBox();
-            this.myTaskPicBox = new System.Windows.Forms.PictureBox();
-            this.addTaskPicBox = new System.Windows.Forms.PictureBox();
-            this.viewProjectPictureBox = new System.Windows.Forms.PictureBox();
-            this.addProjectPictureBox = new System.Windows.Forms.PictureBox();
-            this.homePictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myTaskPicBox)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addTaskPicBox)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewProjectPictureBox)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addProjectPictureBox)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.homePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.headerPanel.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.closePicBox)).BeginInit();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -86,13 +93,6 @@
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.closePicBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myTaskPicBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addTaskPicBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewProjectPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addProjectPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.homePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -127,10 +127,10 @@
             // logo1
             // 
             this.logo1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.logo1.Location = new System.Drawing.Point(89, 8);
-            this.logo1.LogoColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.logo1.Location = new System.Drawing.Point(94, 13);
+            this.logo1.LogoColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.logo1.Name = "logo1";
-            this.logo1.Size = new System.Drawing.Size(72, 72);
+            this.logo1.Size = new System.Drawing.Size(61, 61);
             this.logo1.TabIndex = 8;
             // 
             // panel7
@@ -160,6 +160,20 @@
             this.myTaskLabel.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
             this.myTaskLabel.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
+            // myTaskPicBox
+            // 
+            this.myTaskPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.myTaskPicBox.Image = global::UserInterface.Properties.Resources.View_Task_30_Normal;
+            this.myTaskPicBox.Location = new System.Drawing.Point(0, 0);
+            this.myTaskPicBox.Name = "myTaskPicBox";
+            this.myTaskPicBox.Size = new System.Drawing.Size(67, 50);
+            this.myTaskPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.myTaskPicBox.TabIndex = 1;
+            this.myTaskPicBox.TabStop = false;
+            this.myTaskPicBox.Click += new System.EventHandler(this.OnMyTaskClick);
+            this.myTaskPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.myTaskPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.addTaskLabel);
@@ -186,6 +200,20 @@
             this.addTaskLabel.Click += new System.EventHandler(this.OnAddTaskClick);
             this.addTaskLabel.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
             this.addTaskLabel.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
+            // addTaskPicBox
+            // 
+            this.addTaskPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.addTaskPicBox.Image = global::UserInterface.Properties.Resources.Add_Task_30_Normal;
+            this.addTaskPicBox.Location = new System.Drawing.Point(0, 0);
+            this.addTaskPicBox.Name = "addTaskPicBox";
+            this.addTaskPicBox.Size = new System.Drawing.Size(67, 50);
+            this.addTaskPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.addTaskPicBox.TabIndex = 1;
+            this.addTaskPicBox.TabStop = false;
+            this.addTaskPicBox.Click += new System.EventHandler(this.OnAddTaskClick);
+            this.addTaskPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.addTaskPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
             // panel6
             // 
@@ -214,6 +242,20 @@
             this.viewProjectLabel.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
             this.viewProjectLabel.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
+            // viewProjectPictureBox
+            // 
+            this.viewProjectPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.viewProjectPictureBox.Image = global::UserInterface.Properties.Resources.View_Project;
+            this.viewProjectPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.viewProjectPictureBox.Name = "viewProjectPictureBox";
+            this.viewProjectPictureBox.Size = new System.Drawing.Size(67, 50);
+            this.viewProjectPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.viewProjectPictureBox.TabIndex = 1;
+            this.viewProjectPictureBox.TabStop = false;
+            this.viewProjectPictureBox.Click += new System.EventHandler(this.OnViewProjectClicked);
+            this.viewProjectPictureBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.viewProjectPictureBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.addProjectLabel);
@@ -241,6 +283,20 @@
             this.addProjectLabel.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
             this.addProjectLabel.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
+            // addProjectPictureBox
+            // 
+            this.addProjectPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.addProjectPictureBox.Image = global::UserInterface.Properties.Resources.Add_Project;
+            this.addProjectPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.addProjectPictureBox.Name = "addProjectPictureBox";
+            this.addProjectPictureBox.Size = new System.Drawing.Size(67, 50);
+            this.addProjectPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.addProjectPictureBox.TabIndex = 1;
+            this.addProjectPictureBox.TabStop = false;
+            this.addProjectPictureBox.Click += new System.EventHandler(this.OnAddProjectClicked);
+            this.addProjectPictureBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.addProjectPictureBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.homeLabel);
@@ -267,6 +323,31 @@
             this.homeLabel.Click += new System.EventHandler(this.OnHomeClicked);
             this.homeLabel.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
             this.homeLabel.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
+            // homePictureBox
+            // 
+            this.homePictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.homePictureBox.Image = global::UserInterface.Properties.Resources.Home_Normal;
+            this.homePictureBox.Location = new System.Drawing.Point(0, 0);
+            this.homePictureBox.Name = "homePictureBox";
+            this.homePictureBox.Size = new System.Drawing.Size(67, 50);
+            this.homePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.homePictureBox.TabIndex = 0;
+            this.homePictureBox.TabStop = false;
+            this.homePictureBox.Click += new System.EventHandler(this.OnHomeClicked);
+            this.homePictureBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.homePictureBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(250, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // headerPanel
             // 
@@ -311,6 +392,21 @@
             this.profilePicAndName1.TabIndex = 2;
             this.profilePicAndName1.SignOut += new System.EventHandler(this.OnSignOut);
             // 
+            // closePicBox
+            // 
+            this.closePicBox.BackColor = System.Drawing.Color.Transparent;
+            this.closePicBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePicBox.Image = global::UserInterface.Properties.Resources.Close;
+            this.closePicBox.Location = new System.Drawing.Point(889, 0);
+            this.closePicBox.Name = "closePicBox";
+            this.closePicBox.Size = new System.Drawing.Size(56, 48);
+            this.closePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.closePicBox.TabIndex = 0;
+            this.closePicBox.TabStop = false;
+            this.closePicBox.Click += new System.EventHandler(this.OnCloseClick);
+            this.closePicBox.MouseEnter += new System.EventHandler(this.OnCloseMouseEnter);
+            this.closePicBox.MouseLeave += new System.EventHandler(this.OnCloseMouseLeave);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.tabControl1);
@@ -338,7 +434,8 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(945, 594);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabIndex = 2;
+            this.tabControl1.Visible = false;
             // 
             // tabPage1
             // 
@@ -350,15 +447,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // projectManagerHome1
-            // 
-            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
-            this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
-            this.projectManagerHome1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -475,101 +563,14 @@
             this.myTaskTemplate1.Size = new System.Drawing.Size(937, 585);
             this.myTaskTemplate1.TabIndex = 0;
             // 
-            // closePicBox
+            // projectManagerHome1
             // 
-            this.closePicBox.BackColor = System.Drawing.Color.Transparent;
-            this.closePicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePicBox.Image = global::UserInterface.Properties.Resources.Close;
-            this.closePicBox.Location = new System.Drawing.Point(889, 0);
-            this.closePicBox.Name = "closePicBox";
-            this.closePicBox.Size = new System.Drawing.Size(56, 48);
-            this.closePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.closePicBox.TabIndex = 0;
-            this.closePicBox.TabStop = false;
-            this.closePicBox.Click += new System.EventHandler(this.OnCloseClick);
-            this.closePicBox.MouseEnter += new System.EventHandler(this.OnCloseMouseEnter);
-            this.closePicBox.MouseLeave += new System.EventHandler(this.OnCloseMouseLeave);
-            // 
-            // myTaskPicBox
-            // 
-            this.myTaskPicBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.myTaskPicBox.Image = global::UserInterface.Properties.Resources.View_Task_30_Normal;
-            this.myTaskPicBox.Location = new System.Drawing.Point(0, 0);
-            this.myTaskPicBox.Name = "myTaskPicBox";
-            this.myTaskPicBox.Size = new System.Drawing.Size(67, 50);
-            this.myTaskPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.myTaskPicBox.TabIndex = 1;
-            this.myTaskPicBox.TabStop = false;
-            this.myTaskPicBox.Click += new System.EventHandler(this.OnMyTaskClick);
-            this.myTaskPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
-            this.myTaskPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
-            // 
-            // addTaskPicBox
-            // 
-            this.addTaskPicBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.addTaskPicBox.Image = global::UserInterface.Properties.Resources.Add_Task_30_Normal;
-            this.addTaskPicBox.Location = new System.Drawing.Point(0, 0);
-            this.addTaskPicBox.Name = "addTaskPicBox";
-            this.addTaskPicBox.Size = new System.Drawing.Size(67, 50);
-            this.addTaskPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.addTaskPicBox.TabIndex = 1;
-            this.addTaskPicBox.TabStop = false;
-            this.addTaskPicBox.Click += new System.EventHandler(this.OnAddTaskClick);
-            this.addTaskPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
-            this.addTaskPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
-            // 
-            // viewProjectPictureBox
-            // 
-            this.viewProjectPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.viewProjectPictureBox.Image = global::UserInterface.Properties.Resources.View_Project;
-            this.viewProjectPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.viewProjectPictureBox.Name = "viewProjectPictureBox";
-            this.viewProjectPictureBox.Size = new System.Drawing.Size(67, 50);
-            this.viewProjectPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.viewProjectPictureBox.TabIndex = 1;
-            this.viewProjectPictureBox.TabStop = false;
-            this.viewProjectPictureBox.Click += new System.EventHandler(this.OnViewProjectClicked);
-            this.viewProjectPictureBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
-            this.viewProjectPictureBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
-            // 
-            // addProjectPictureBox
-            // 
-            this.addProjectPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.addProjectPictureBox.Image = global::UserInterface.Properties.Resources.Add_Project;
-            this.addProjectPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.addProjectPictureBox.Name = "addProjectPictureBox";
-            this.addProjectPictureBox.Size = new System.Drawing.Size(67, 50);
-            this.addProjectPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.addProjectPictureBox.TabIndex = 1;
-            this.addProjectPictureBox.TabStop = false;
-            this.addProjectPictureBox.Click += new System.EventHandler(this.OnAddProjectClicked);
-            this.addProjectPictureBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
-            this.addProjectPictureBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
-            // 
-            // homePictureBox
-            // 
-            this.homePictureBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.homePictureBox.Image = global::UserInterface.Properties.Resources.Home_Normal;
-            this.homePictureBox.Location = new System.Drawing.Point(0, 0);
-            this.homePictureBox.Name = "homePictureBox";
-            this.homePictureBox.Size = new System.Drawing.Size(67, 50);
-            this.homePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.homePictureBox.TabIndex = 0;
-            this.homePictureBox.TabStop = false;
-            this.homePictureBox.Click += new System.EventHandler(this.OnHomeClicked);
-            this.homePictureBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
-            this.homePictureBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(250, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
+            this.projectManagerHome1.Name = "projectManagerHome1";
+            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
+            this.projectManagerHome1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 
@@ -584,12 +585,19 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.myTaskPicBox)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.addTaskPicBox)).EndInit();
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.viewProjectPictureBox)).EndInit();
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.addProjectPictureBox)).EndInit();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.homePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.headerPanel.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.closePicBox)).EndInit();
             this.panel3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -599,13 +607,6 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.closePicBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myTaskPicBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addTaskPicBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewProjectPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addProjectPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.homePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -616,22 +617,7 @@
         private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.PictureBox closePicBox;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private UserInterface.Home_Page.Project_Manager.ProjectManagerHome projectManagerHome1;
-        private AddProject addProject1;
-        private UserInterface.ViewProject.ViewProjectTemplate viewProjectTemplate1;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private UserInterface.Home_Page.Team_Lead.TeamLeadHome teamLeadHome1;
-        private UserInterface.Home_Page.Team_Member.TeamMemberHome teamMemberHome1;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TabPage tabPage7;
-        private UserInterface.ViewPage.MyTaskTemplate myTaskTemplate1;
-        private UserInterface.Task.AddTask addTask1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label addProjectLabel;
         private System.Windows.Forms.PictureBox addProjectPictureBox;
@@ -651,5 +637,20 @@
         private ProfilePicAndName profilePicAndName1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Logo logo1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private AddProject addProject1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private UserInterface.ViewProject.ViewProjectTemplate viewProjectTemplate1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private UserInterface.Home_Page.Team_Lead.TeamLeadHome teamLeadHome1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private UserInterface.Home_Page.Team_Member.TeamMemberHome teamMemberHome1;
+        private System.Windows.Forms.TabPage tabPage6;
+        private UserInterface.Task.AddTask addTask1;
+        private System.Windows.Forms.TabPage tabPage7;
+        private UserInterface.ViewPage.MyTaskTemplate myTaskTemplate1;
+        private UserInterface.Home_Page.Project_Manager.ProjectManagerHome projectManagerHome1;
     }
 }

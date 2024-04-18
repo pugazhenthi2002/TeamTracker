@@ -46,7 +46,7 @@ namespace TeamTracker
             int count = 0;
 
             List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
-
+            employeeCollection.Add(EmployeeManager.CurrentEmployee);
             foreach (var Iter in employeeCollection)
             {
                 foreach (var TaskIter in TaskCollection)

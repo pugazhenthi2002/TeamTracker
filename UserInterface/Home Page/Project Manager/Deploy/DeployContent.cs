@@ -121,11 +121,11 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
         private void OnSourceCodeDownload(object sender, EventArgs e)
         {
             Projects proj = VersionManager.FetchProjectFromID(deployVersions[counter].VersionID);
-            string fileNetworkPath = DataHandler.FetchVersionSourceCodeByVersionID(deployVersions[counter].VersionID).VersionLocation;
+            VersionSourceCode sourceCode = DataHandler.FetchVersionSourceCodeByVersionID(deployVersions[counter].VersionID);
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "ZIP files (*.zip)|*.zip";
+            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -135,9 +135,8 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.Combine(savePath, savePath);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
+                string filePath = System.IO.Path.Combine(savePath, sourceCode.DisplayName);
+                System.IO.File.Copy(sourceCode.VersionLocation, filePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + deployVersions[counter].VersionName);
                 isSourceCodeDownloaded = true;
             }

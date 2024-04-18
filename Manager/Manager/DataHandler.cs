@@ -11,14 +11,12 @@ namespace TeamTracker
 {
     public static class DataHandler
     {
-
         private static DatabaseManager manager;
-
 
         public static BooleanMsg ConnectDatabase()
         {
             //manager = new MySqlHandler("192.168.3.55", "Ilam", "Lucid123", "teamtracker");
-            manager = new MySqlHandler("localhost", "root", "", "projectmanagement");
+            manager = new MySqlHandler("localhost", "root", "Lucid123", "projectmanagement");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -324,11 +322,19 @@ namespace TeamTracker
 
         public static void AddVersionSourceCode(VersionSourceCode sourceCode)
         {
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\SourceCode\\Version\\";
+            string filePath = System.IO.Path.Combine(savePath, sourceCode.SourceCodeName);
+            System.IO.File.Copy(sourceCode.VersionLocation, filePath, true);
+
             var x = manager.InsertData("versionsourcecode", new ParameterData[]
             {
                 new ParameterData("VersionID", sourceCode.VersionID),
-                new ParameterData("SourceCodeLocation", sourceCode.VersionLocation)
+                new ParameterData("DisplayName", sourceCode.DisplayName),
+                new ParameterData("SourceCodeName", sourceCode.SourceCodeName),
+                new ParameterData("SourceCodeLocation", filePath)
             });
+            
+
         }
 
         public static void AddNotification(string header, string content, DateTime date, int assignedTo)
@@ -542,7 +548,6 @@ namespace TeamTracker
                     CommitName = Convert.ToString(attachments["CommitName"][0]),
                     SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0]),
                     SourceCodeName = Convert.ToString(attachments["SourceCodeName"][0]),
-                    CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
                 };
 
             return result;

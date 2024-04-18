@@ -183,7 +183,7 @@ namespace TeamTracker
 
         public static bool IsCurrentMilestoneIsLastMilestone()
         {
-            if(CurrentMilestone.EndDate == VersionManager.CurrentVersion.EndDate)
+            if (CurrentMilestone != null && CurrentMilestone.EndDate == VersionManager.CurrentVersion.EndDate)
             {
                 return true;
             }

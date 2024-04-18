@@ -48,32 +48,6 @@ namespace TeamTracker
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
         }
 
-        private void OnMouseEnter(object sender, EventArgs e)
-        {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.close_Hover;
-        }
-
-        private void OnMouseLeave(object sender, EventArgs e)
-        {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
-        }
-
-        private void OnMouseEnterUpload(object sender, EventArgs e)
-        {
-            if (selectedFileName == "")
-            {
-                pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudHover1;
-            }
-        }
-
-        private void OnMouseLeaveUpload(object sender, EventArgs e)
-        {
-            if (selectedFileName == "")
-            {
-                pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack1;
-            }
-        }
-
         private void OnMouseClickUpload(object sender, MouseEventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();

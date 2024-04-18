@@ -41,9 +41,11 @@ namespace TeamTracker
                     proj = VersionManager.FetchProjectFromID(value.ProjectID);
                     if (proj != null)
                     {
-                        //labelProjectName.Text = proj.ProjectName + "\n" + value.VersionName;
+                        labelProjNameandVersion.Text = proj.ProjectName + "\n" + value.VersionName;
                     }
-                    //DateLabel.Text = value.StartDate.ToShortDateString() + " - " + value.EndDate.ToShortDateString();
+                    labelClientName.Text = value.ClientEmail;
+                    ucStartDate1.DueDate = value.StartDate;
+                    ucToDate1.DueDate = value.EndDate;
                     profilePicAndNameSquare1.empProfile = EmployeeManager.FetchEmployeeFromProjectID(proj.ProjectID);
                     //downloadBtn1.TypeOfFile = FileType.Zip;
                     versionSourceCode = DataHandler.FetchVersionSourceCodeByVersionID(value.VersionID);

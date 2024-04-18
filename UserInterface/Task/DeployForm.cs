@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,14 +20,11 @@ namespace UserInterface.Task
             InitializeComponent();
             InitializeRoundedEdge();
             this.Location = new Point(700, 300);
-            labelWarning.Hide();
         }
 
         public VersionSourceCode SelectedVersionSourceCode;
         public EventHandler CloseClick;
-        public EventHandler DoneClick;
-        private bool Uploaded = false;
-        private string selectedFileName = "";
+        public EventHandler<VersionSourceCode> DoneClick;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -48,45 +46,36 @@ namespace UserInterface.Task
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            buttonClear.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonClear.Width, buttonClear.Height, 10, 10));
-            buttonDone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDone.Width, buttonDone.Height, 10, 10));
-
-
         }
 
-        private void OnMouseEnter(object sender, EventArgs e)
+        private void OnClickClear(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.close_Hover;
+            SelectedVersionSourceCode = null;
+            label3.Text = "UPLOAD";
         }
 
-        private void OnMouseLeave(object sender, EventArgs e)
+        private void OnClickDone(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
-        }
-
-        private void OnMouseEnterUpload(object sender, EventArgs e)
-        {
-            if (selectedFileName == "")
+            BooleanMsg message = new BooleanMsg();
+            message = EligibleToUpload();
+            if (message)
             {
-                pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudHover1;
-                labelClickUpload.Font = new Font(labelClickUpload.Font, FontStyle.Bold);
+                DoneClick?.Invoke(sender, SelectedVersionSourceCode);
+                this.Close();
+            }
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", message.Message);
             }
         }
 
-        private void OnMouseLeaveUpload(object sender, EventArgs e)
+        private void OnCloseClick(object sender, EventArgs e)
         {
-            if (selectedFileName == "")
-            {
-                pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack1;
-                labelClickUpload.Font = new Font(labelClickUpload.Font, FontStyle.Regular);
-            }
-
-
+            this.Close();
         }
 
-        private void OnMouseClickUpload(object sender, MouseEventArgs e)
+        private void OnUploadSourceCode(object sender, EventArgs e)
         {
-            labelWarning.Hide();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.Title = "Source Code Name";
@@ -99,37 +88,22 @@ namespace UserInterface.Task
                 SelectedVersionSourceCode = new VersionSourceCode()
                 {
                     VersionID = VersionManager.CurrentVersion.VersionID,
-                    DisplayName = safeFile,
                     SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
-                    VersionLocation = selectedFilePath
+                    VersionLocation = selectedFilePath,
+                    DisplayName = safeFile
                 };
+                label3.Text = safeFile;
             }
         }
 
-        private void OnClickClose(object sender, MouseEventArgs e)
+        private BooleanMsg EligibleToUpload()
         {
-            CloseClick?.Invoke(sender, e);
-            this.Close();
-        }
-
-        private void OnClickClear(object sender, EventArgs e)
-        {
-            Uploaded = false;
-            pictureBoxUpload.Image = UserInterface.Properties.Resources.CloudBlack1;
-            labelClickUpload.Text = "Click to Upload";
-            selectedFileName = "";
-        }
-
-        private void OnClickDone(object sender, EventArgs e)
-        {
-            if (selectedFileName == "")
+            if (SelectedVersionSourceCode == null)
             {
-                labelWarning.Show();
-                return;
+                return "File Not Selected\nKindly Upload a File";
             }
-            VersionManager.SubmitVersionSourceCode(SelectedVersionSourceCode);
-            DoneClick?.Invoke(sender, e);
-            this.Close();
+            
+            return true;
         }
     }
 }

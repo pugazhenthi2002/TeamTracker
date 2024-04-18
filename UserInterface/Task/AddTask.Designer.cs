@@ -34,6 +34,8 @@
             this.currentTimelineContent1 = new UserInterface.Task.Timeline.CurrentTimelineContent();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panelBase = new System.Windows.Forms.Panel();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel8 = new System.Windows.Forms.Panel();
             this.nextPicBox = new System.Windows.Forms.PictureBox();
             this.backPicBox = new System.Windows.Forms.PictureBox();
@@ -44,9 +46,8 @@
             this.addTaskButton = new System.Windows.Forms.Button();
             this.projectNameLabel = new System.Windows.Forms.Label();
             this.ucNotFound1 = new UserInterface.UcNotFound();
+            this.ucNotFound3 = new UserInterface.UcNotFound();
             this.milestoneSwitch1 = new UserInterface.Task.MilestoneSwitch();
-            this.ucNotFound2 = new UserInterface.UcNotFound();
-            this.panelBase = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -106,8 +107,28 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(752, 269);
+            this.panel7.Size = new System.Drawing.Size(758, 269);
             this.panel7.TabIndex = 1;
+            // 
+            // panelBase
+            // 
+            this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBase.Location = new System.Drawing.Point(0, 52);
+            this.panelBase.Name = "panelBase";
+            this.panelBase.Size = new System.Drawing.Size(758, 217);
+            this.panelBase.TabIndex = 3;
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Under-Review Task !!";
+            this.ucNotFound2.HeadTextSize = 14;
+            this.ucNotFound2.Location = new System.Drawing.Point(0, 52);
+            this.ucNotFound2.Message = null;
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(758, 217);
+            this.ucNotFound2.TabIndex = 2;
             // 
             // panel8
             // 
@@ -117,7 +138,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(752, 52);
+            this.panel8.Size = new System.Drawing.Size(758, 52);
             this.panel8.TabIndex = 1;
             // 
             // nextPicBox
@@ -160,10 +181,11 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.milestoneSwitch1);
+            this.panel6.Controls.Add(this.ucNotFound3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(752, 0);
+            this.panel6.Location = new System.Drawing.Point(758, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(449, 269);
+            this.panel6.Size = new System.Drawing.Size(443, 269);
             this.panel6.TabIndex = 0;
             // 
             // panel4
@@ -224,34 +246,26 @@
             this.ucNotFound1.Size = new System.Drawing.Size(1201, 621);
             this.ucNotFound1.TabIndex = 2;
             // 
+            // ucNotFound3
+            // 
+            this.ucNotFound3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound3.HeadText = "No Current Milestone !!";
+            this.ucNotFound3.HeadTextSize = 14;
+            this.ucNotFound3.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound3.Message = null;
+            this.ucNotFound3.Name = "ucNotFound3";
+            this.ucNotFound3.Size = new System.Drawing.Size(443, 269);
+            this.ucNotFound3.TabIndex = 0;
+            // 
             // milestoneSwitch1
             // 
             this.milestoneSwitch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.milestoneSwitch1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.milestoneSwitch1.Location = new System.Drawing.Point(0, 0);
             this.milestoneSwitch1.Name = "milestoneSwitch1";
-            this.milestoneSwitch1.Size = new System.Drawing.Size(449, 269);
-            this.milestoneSwitch1.TabIndex = 0;
-            // 
-            // ucNotFound2
-            // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound2.HeadText = "No Under-Review Task !!";
-            this.ucNotFound2.HeadTextSize = 14;
-            this.ucNotFound2.Location = new System.Drawing.Point(0, 52);
-            this.ucNotFound2.Message = null;
-            this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(752, 217);
-            this.ucNotFound2.TabIndex = 2;
-            // 
-            // panelBase
-            // 
-            this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBase.Location = new System.Drawing.Point(0, 52);
-            this.panelBase.Name = "panelBase";
-            this.panelBase.Size = new System.Drawing.Size(752, 217);
-            this.panelBase.TabIndex = 3;
+            this.milestoneSwitch1.Size = new System.Drawing.Size(443, 269);
+            this.milestoneSwitch1.TabIndex = 1;
             // 
             // AddTask
             // 
@@ -292,8 +306,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel6;
         private Timeline.CurrentTimelineContent currentTimelineContent1;
-        private MilestoneSwitch milestoneSwitch1;
         private UcNotFound ucNotFound2;
         private System.Windows.Forms.Panel panelBase;
+        private UcNotFound ucNotFound3;
+        private MilestoneSwitch milestoneSwitch1;
     }
 }

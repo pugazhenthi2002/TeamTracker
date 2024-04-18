@@ -26,7 +26,10 @@ namespace UserInterface.Add_Project.Custom_Control
 
         public new void Dispose()
         {
-            profilePictureBox1.Image.Dispose();
+            if(profilePictureBox1.Image != null)
+            {
+                profilePictureBox1.Image.Dispose();
+            }
             profilePictureBox1.Dispose();
             panel1.Dispose();
             tableLayoutPanel1.Dispose();
@@ -56,6 +59,7 @@ namespace UserInterface.Add_Project.Custom_Control
             set
             {
                 isClicked = value;
+                this.Invalidate();
             }
         }
 
@@ -81,20 +85,22 @@ namespace UserInterface.Add_Project.Custom_Control
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
+            Cursor = Cursors.Hand;
             isHovered = true;
             if (!isClicked)
             {
-                profilePictureBox1.ParentColor = this.BackColor = Color.FromArgb(201, 210, 217);
+                profilePictureBox1.ParentColor = Color.FromArgb(201, 210, 217);
             }
             Invalidate();
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
+            Cursor = Cursors.Default;
             isHovered = false;
             if (!isClicked)
             {
-                profilePictureBox1.ParentColor = this.BackColor = Color.FromArgb(221, 230, 237);
+                profilePictureBox1.ParentColor = Color.FromArgb(221, 230, 237);
             }
             Invalidate();
         }
@@ -106,15 +112,22 @@ namespace UserInterface.Add_Project.Custom_Control
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 2, Height - 2), 10));
             border.Dispose();
-
-            if (isHovered)
+            if (!isClicked)
             {
-                border = new Pen(Color.FromArgb(39, 55, 77), 2);
-                e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
+                if (isHovered)
+                {
+                    border = new Pen(Color.FromArgb(39, 55, 77), 2);
+                    e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
+                }
+                else
+                {
+                    border = new Pen(Color.FromArgb(157, 178, 191), 2);
+                    e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
+                }
             }
             else
             {
-                border = new Pen(Color.FromArgb(157, 178, 191), 2);
+                border = new Pen(Color.Red, 2);
                 e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
             }
             border.Dispose();

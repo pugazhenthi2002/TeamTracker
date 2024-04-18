@@ -16,7 +16,7 @@ namespace TeamTracker
         private List<Point[]> polygons = new List<Point[]>();
         private int interval = 1;
         private Color logoColor = Color.FromArgb(39, 55, 77);
-        private Timer timer;
+        private Timer timer = new Timer();
         private int ind = 1;
         private int diff = 30;
         private bool start = false;

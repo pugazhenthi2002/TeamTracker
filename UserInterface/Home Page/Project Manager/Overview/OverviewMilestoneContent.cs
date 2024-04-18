@@ -16,7 +16,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
     {
 
         private ProjectVersion version;
-        private bool backEnable = false, frontEnable = true;
+        private bool IsBackEnable = false, IsNextEnable = true;
         private int flag;
 
         public OverviewMilestoneContent()
@@ -37,14 +37,14 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 version = value;
                 if (value != null)
                     InitializeOverview();
-                backEnable = false;
-                frontEnable = true;
+                IsBackEnable = false;
+                IsNextEnable = true;
 
                 if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
                 if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
 
-                backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-                nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+                backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Medium_Blue : Properties.Resources.Left_Dark_Blue;
+                nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Medium_Blue : Properties.Resources.Right_Dark_Blue;
             }
         }
 
@@ -75,31 +75,31 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
-            if (backEnable)
+            if (IsBackEnable)
                 flag = milestoneView1.ChangeMilestoneUI(false);
 
-            if (flag < 0) backEnable = false;
-            else { backEnable = true; }
-            frontEnable = true;
+            if (flag < 0) IsBackEnable = false;
+            else { IsBackEnable = true; }
+            IsNextEnable = true;
 
             if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
             if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Medium_Blue : Properties.Resources.Left_Dark_Blue;
+            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Medium_Blue : Properties.Resources.Right_Dark_Blue;
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
         {
-            if (frontEnable)
+            if (IsNextEnable)
                 flag = milestoneView1.ChangeMilestoneUI(true);
 
-            if (flag > 0) frontEnable = false;
-            else { frontEnable = true; }
-            backEnable = true;
+            if (flag > 0) IsNextEnable = false;
+            else { IsNextEnable = true; }
+            IsBackEnable = true;
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Medium_Blue : Properties.Resources.Left_Dark_Blue;
+            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Medium_Blue : Properties.Resources.Right_Dark_Blue;
         }
 
         private void InitializeOverview()
@@ -115,8 +115,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
             flag = milestoneView1.ChangeMilestoneUI(true);
 
-            if (flag > 0) frontEnable = false;
-            else { frontEnable = backEnable = true; }
+            if (flag > 0) IsNextEnable = false;
+            else { IsNextEnable = IsBackEnable = true; }
 
             taskCompletionProgressBar1.TotalTask = result[0];
             taskCompletionProgressBar1.CompletedTask = result[1];
@@ -124,12 +124,34 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as PictureBox).BackColor = Color.FromArgb(82, 109, 130);
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Hand;
+            if (picBox.Name == "backNavigatePicBox")
+            {
+                picBox.Image = Properties.Resources.Left_Dark_Blue_Hover;
+            }
+            else
+            {
+                picBox.Image = Properties.Resources.Right_Dark_Blue_Hover;
+            }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Default;
+            if (picBox.Name == "backNavigatePicBox")
+            {
+                picBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
+            }
+            else
+            {
+                picBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
+            }
         }
 
         private void OnTablePanelPaint(object sender, PaintEventArgs e)
@@ -143,15 +165,22 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnLegendPaint(object sender, PaintEventArgs e)
         {
             Brush brush;
-
             if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(Color.FromArgb(3, 4, 94));
             else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(Color.FromArgb(0, 119, 182));
             else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(Color.FromArgb(0, 180, 216));
             else brush = new SolidBrush(Color.FromArgb(144, 224, 239));
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width, (sender as Panel).Height));
+            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width-1, (sender as Panel).Height-1));
             brush.Dispose();
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(221, 230, 237));
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
         }
 
         private void InitializeRoundedEdge()

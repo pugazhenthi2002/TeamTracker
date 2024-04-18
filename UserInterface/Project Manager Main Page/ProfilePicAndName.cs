@@ -68,6 +68,7 @@ namespace TeamTracker
         {
             if (IsOperable)
             {
+                Cursor = Cursors.Hand;
                 profilePictureBox1.ParentColor = BackColor = HoverColor;
                 this.Invalidate();
             }
@@ -77,6 +78,7 @@ namespace TeamTracker
         {
             if (IsOperable)
             {
+                Cursor = Cursors.Default;
                 profilePictureBox1.ParentColor = BackColor = NormalColor;
                 this.Invalidate();
             }

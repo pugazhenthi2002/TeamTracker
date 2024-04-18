@@ -31,7 +31,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 {
                     collection = value;
                     projectNameLabel.Text = value.Last().Key;
-                    overviewMilestoneContent1.Version = value.Last().Value;
+                    //overviewMilestoneContent1.Version = value.Last().Value;
                 }
                 else
                 {
@@ -77,10 +77,10 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnVersionSelected(string name, ProjectVersion version)
         {
+            //FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)
             overviewMilestoneContent1.Version = version;
             projectNameLabel.Text = name;
         }
-
         private void OnMouseEnter(object sender, EventArgs e)
         {
             projectNameLabel.BackColor = Color.FromArgb(39, 55, 77);
@@ -98,12 +98,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(200, 0), new Point(200, panel7.Height - 1));
             pen.Dispose();
         }
 
         private void OnDropDownMouseLEave(object sender, EventArgs e)
         {
-            dropDownPicBox.BackColor = Color.FromArgb(231, 240, 250);
+            dropDownPicBox.BackColor = Color.FromArgb(241, 250, 255);
             panel7.Invalidate();
         }
 

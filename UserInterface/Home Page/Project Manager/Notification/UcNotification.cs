@@ -100,7 +100,7 @@ namespace TeamTracker
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
-            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Panel).Width - 2, (sender as Panel).Height - 2));
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Panel).Width - 3, (sender as Panel).Height - 3));
             border.Dispose();
         }
     }

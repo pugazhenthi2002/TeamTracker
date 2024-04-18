@@ -31,7 +31,11 @@ namespace UserInterface.Task
 
         public void InitializePage()
         {
+            if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
+                switchMilestoneButton.Text = "Deploy";
+
             milestoneName = MilestoneManager.CurrentMilestone.MileStoneName;
+
             Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCountByMilestone(MilestoneManager.CurrentMilestone.MileStoneID);
 
             int total = 0;
@@ -124,16 +128,18 @@ namespace UserInterface.Task
             {
                 DeployForm form = new DeployForm();
                 form.DoneClick += OnSourceCodeSubmission;
-                form.Show();
+                form.ShowDialog();
             }
         }
 
-        private void OnSourceCodeSubmission(object sender, EventArgs e)
+        private void OnSourceCodeSubmission(object sender, VersionSourceCode e)
         {
             MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
-            VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.OnStage);
+            MilestoneManager.CurrentMilestone = null;
+            VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
+            DataHandler.AddVersionSourceCode(e);
             Visible = false;
-            InitializePage();
+            //InitializePage();
         }
     }
 }

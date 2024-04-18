@@ -13,7 +13,7 @@ namespace TeamTracker
     public partial class NotificationContent : UserControl
     {
 
-        private bool backEnable = false, nextEnable = true;
+        private bool IsBackEnable = false, IsNextEnable = true, IsClearAllEntered = false;
         private int currentIndex = 0, endIndex, notifyCount;
         private int MaxUserControls = 4;//alter this value for required usercontrols
         private List<Notification> notifyList = new List<Notification>();
@@ -99,8 +99,8 @@ namespace TeamTracker
                 UcNotiList.Add(tempNotification);
             }
 
-            nextEnable = (endIndex == notifyList.Count - 1) ? false : true;
-            backEnable = (currentIndex == 0) ? false : true;
+            IsNextEnable = (endIndex == notifyList.Count - 1) ? false : true;
+            IsBackEnable = (currentIndex == 0) ? false : true;
 
             if (backBtn.Image != null)
             {
@@ -112,8 +112,8 @@ namespace TeamTracker
                 nextBtn.Image.Dispose();
             }
 
-            backBtn.Image = (backEnable) ? UserInterface.Properties.Resources.Back_LightBlue : UserInterface.Properties.Resources.Back_Hover;
-            nextBtn.Image = (nextEnable) ? UserInterface.Properties.Resources.Next_LightBlue : UserInterface.Properties.Resources.Next_Hover;
+            backBtn.Image = (IsBackEnable) ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextBtn.Image = (IsNextEnable) ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
 
         private void NotificationPagination()
@@ -123,9 +123,8 @@ namespace TeamTracker
                 UcNotiList[idx].NotficationData = notifyList[ctr];
             }
 
-
-            nextEnable = (endIndex == notifyList.Count - 1) ? false : true;
-            backEnable = (currentIndex == 0) ? false : true;
+            IsNextEnable = (endIndex == notifyList.Count - 1) ? false : true;
+            IsBackEnable = (currentIndex == 0) ? false : true;
 
             if (backBtn.Image != null)
             {
@@ -137,8 +136,13 @@ namespace TeamTracker
                 nextBtn.Image.Dispose();
             }
 
-            backBtn.Image = (backEnable)?UserInterface.Properties.Resources.Back_LightBlue: UserInterface.Properties.Resources.Back_Hover;
-            nextBtn.Image = (nextEnable)?UserInterface.Properties.Resources.Next_LightBlue: UserInterface.Properties.Resources.Next_Hover;
+            backBtn.Image = (IsBackEnable) ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextBtn.Image = (IsNextEnable) ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+
+            if (endIndex == 0)
+            {
+                nextBtn.Visible = backBtn.Visible = clearAllButton.Visible = false;
+            }
         }
 
         private void ClearAllButtonClicked(object sender, EventArgs e)
@@ -151,13 +155,64 @@ namespace TeamTracker
         private void OnMouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
-            (sender as Control).BackColor = Color.FromArgb(59, 75, 97);
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Hand;
+            if (picBox.Name == "backBtn")
+            {
+                picBox.Image = UserInterface.Properties.Resources.Left_Light_Blue_Hover;
+            }
+            else
+            {
+                picBox.Image = UserInterface.Properties.Resources.Right_Light_Blue_Hover;
+            }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            (sender as Control).BackColor = Color.FromArgb(39, 55, 77);
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Default;
+            if (picBox.Name == "backBtn")
+            {
+                picBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            }
+            else
+            {
+                picBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            }
+        }
+
+        private void OnClearAllMouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            IsClearAllEntered = true;
+            clearAllButton.BackColor = Color.FromArgb(221, 230, 237);
+            clearAllButton.ForeColor = Color.FromArgb(39, 55, 77);
+            (sender as Control).Invalidate();
+        }
+
+        private void OnClearAllPaint(object sender, PaintEventArgs e)
+        {
+            if (IsClearAllEntered)
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                Pen border = new Pen(Color.FromArgb(39, 55, 77));
+                e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
+                border.Dispose();
+            }
+        }
+
+        private void OnClearAllMouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            clearAllButton.ForeColor = Color.FromArgb(221, 230, 237);
+            clearAllButton.BackColor = Color.FromArgb(39, 55, 77);
+            IsClearAllEntered = false;
+            (sender as Control).Invalidate();
         }
 
         private void OnClickCloseNotification(object sender, Notification e)
@@ -167,8 +222,6 @@ namespace TeamTracker
                 if (currentIndex > 0) { currentIndex--; endIndex--; }
                 else if (currentIndex == 0) { endIndex--; }
             }
-
-            
             DataHandler.DeleteNotification(e.NotificationId);
             if (endIndex - currentIndex < UcNotiList.Count - 1)
             {
@@ -182,7 +235,7 @@ namespace TeamTracker
 
         private void OnBackClick(object sender, EventArgs e)
         {
-            if (backEnable)
+            if (IsBackEnable)
             {
                 currentIndex--;
                 endIndex--;
@@ -192,7 +245,7 @@ namespace TeamTracker
 
         private void OnNextClick(object sender, EventArgs e)
         {
-            if (nextEnable)
+            if (IsNextEnable)
             {
                 currentIndex++;
                 endIndex++;

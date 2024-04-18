@@ -47,7 +47,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ucToDate1 = new TeamTracker.UcDueDate();
             this.ucStartDate1 = new TeamTracker.UcDueDate();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeploy = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -58,15 +57,14 @@
             this.panelDownloadAttachement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonDeploy, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -320,34 +318,19 @@
             this.ucStartDate1.Size = new System.Drawing.Size(107, 56);
             this.ucStartDate1.TabIndex = 0;
             // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.buttonDeploy, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 267);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(480, 41);
-            this.tableLayoutPanel5.TabIndex = 1;
-            // 
             // buttonDeploy
             // 
+            this.buttonDeploy.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonDeploy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.buttonDeploy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonDeploy.FlatAppearance.BorderSize = 0;
             this.buttonDeploy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeploy.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeploy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.buttonDeploy.Location = new System.Drawing.Point(324, 4);
+            this.buttonDeploy.Location = new System.Drawing.Point(128, 269);
             this.buttonDeploy.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeploy.Name = "buttonDeploy";
-            this.buttonDeploy.Size = new System.Drawing.Size(152, 33);
-            this.buttonDeploy.TabIndex = 2;
+            this.buttonDeploy.Size = new System.Drawing.Size(230, 36);
+            this.buttonDeploy.TabIndex = 3;
             this.buttonDeploy.Text = "Deploy";
             this.buttonDeploy.UseVisualStyleBackColor = false;
             this.buttonDeploy.Click += new System.EventHandler(this.OnDeployClick);
@@ -369,7 +352,6 @@
             this.panelDownloadAttachement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -391,11 +373,10 @@
         private System.Windows.Forms.Label labelClientName;
         private System.Windows.Forms.Label labelProjNameandVersion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button buttonDeploy;
         private UcDueDate ucToDate1;
         private UcDueDate ucStartDate1;
         private ProfilePicAndNameSquare profilePicAndNameSquare1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonDeploy;
     }
 }

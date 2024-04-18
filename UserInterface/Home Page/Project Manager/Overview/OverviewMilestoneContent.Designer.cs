@@ -62,6 +62,7 @@
             this.nextNavPicBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.milestonePanel = new System.Windows.Forms.Panel();
+            this.milestoneView1 = new TeamTracker.MilestoneView();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,7 +72,6 @@
             this.notstartedPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.milestoneView1 = new TeamTracker.MilestoneView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -141,7 +141,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel9.Controls.Add(this.tableLayoutPanel6);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(305, 5);
@@ -149,10 +149,11 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(275, 95);
             this.panel9.TabIndex = 4;
+            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.completedTaskLabel, 0, 1);
@@ -194,6 +195,7 @@
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -206,6 +208,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
@@ -217,7 +220,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel8.Controls.Add(this.taskCompletionProgressBar1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(1190, 5);
@@ -225,10 +228,11 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(278, 95);
             this.panel8.TabIndex = 3;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // taskCompletionProgressBar1
             // 
-            this.taskCompletionProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.taskCompletionProgressBar1.BackColor = System.Drawing.Color.Transparent;
             this.taskCompletionProgressBar1.CompletedTask = 0;
             this.taskCompletionProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.taskCompletionProgressBar1.Location = new System.Drawing.Point(0, 0);
@@ -240,7 +244,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel7.Controls.Add(this.tableLayoutPanel4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(895, 5);
@@ -248,10 +252,11 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(275, 95);
             this.panel7.TabIndex = 2;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.incompleteTaskLabel, 0, 1);
@@ -292,6 +297,7 @@
             // 
             // label8
             // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -304,6 +310,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
@@ -315,7 +322,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel6.Controls.Add(this.tableLayoutPanel3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(600, 5);
@@ -323,10 +330,11 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(275, 95);
             this.panel6.TabIndex = 1;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.dueTaskLabel, 0, 1);
@@ -367,6 +375,7 @@
             // 
             // dueTaskTitleLabel
             // 
+            this.dueTaskTitleLabel.BackColor = System.Drawing.Color.Transparent;
             this.dueTaskTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dueTaskTitleLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dueTaskTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -379,6 +388,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
@@ -390,7 +400,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel5.Controls.Add(this.tableLayoutPanel5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(10, 5);
@@ -398,10 +408,11 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(275, 95);
             this.panel5.TabIndex = 0;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.taskCountLabel, 0, 1);
@@ -455,6 +466,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
@@ -479,7 +491,7 @@
             // backNavigatePicBox
             // 
             this.backNavigatePicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.backNavigatePicBox.Image = global::UserInterface.Properties.Resources.Back_Hover;
+            this.backNavigatePicBox.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
             this.backNavigatePicBox.Location = new System.Drawing.Point(1380, 0);
             this.backNavigatePicBox.Name = "backNavigatePicBox";
             this.backNavigatePicBox.Size = new System.Drawing.Size(47, 50);
@@ -493,7 +505,7 @@
             // nextNavPicBox
             // 
             this.nextNavPicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.nextNavPicBox.Image = global::UserInterface.Properties.Resources.Next;
+            this.nextNavPicBox.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
             this.nextNavPicBox.Location = new System.Drawing.Point(1427, 0);
             this.nextNavPicBox.Name = "nextNavPicBox";
             this.nextNavPicBox.Size = new System.Drawing.Size(51, 50);
@@ -525,6 +537,15 @@
             this.milestonePanel.Name = "milestonePanel";
             this.milestonePanel.Size = new System.Drawing.Size(1478, 195);
             this.milestonePanel.TabIndex = 5;
+            // 
+            // milestoneView1
+            // 
+            this.milestoneView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.milestoneView1.Location = new System.Drawing.Point(0, 0);
+            this.milestoneView1.MilestoneCollection = null;
+            this.milestoneView1.Name = "milestoneView1";
+            this.milestoneView1.Size = new System.Drawing.Size(1478, 195);
+            this.milestoneView1.TabIndex = 0;
             // 
             // tableLayoutPanel7
             // 
@@ -643,15 +664,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Delay";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // milestoneView1
-            // 
-            this.milestoneView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.milestoneView1.Location = new System.Drawing.Point(0, 0);
-            this.milestoneView1.MilestoneCollection = null;
-            this.milestoneView1.Name = "milestoneView1";
-            this.milestoneView1.Size = new System.Drawing.Size(1478, 195);
-            this.milestoneView1.TabIndex = 0;
             // 
             // OverviewMilestoneContent
             // 

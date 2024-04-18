@@ -21,8 +21,8 @@ namespace TeamTracker
         public ProjectManagerMainForm()
         {
             InitializeComponent();
+            //logoAnimation1.Start = true;
             InitializePage();
-            
         }
 
         private void InitializePage()
@@ -69,6 +69,7 @@ namespace TeamTracker
                 addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
                 tabControl1.SelectedIndex = 4;
             }
+            tabControl1.Visible = true;
         }
 
 
@@ -233,12 +234,14 @@ namespace TeamTracker
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
+            Cursor = Cursors.Hand;
             if (closePicBox.Image != null) {  closePicBox.Image.Dispose(); }
             closePicBox.Image = UserInterface.Properties.Resources.close_Hover;
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
+            Cursor = Cursors.Default;
             if (closePicBox.Image != null) { closePicBox.Image.Dispose(); }
             closePicBox.Image = UserInterface.Properties.Resources.Close;
         }

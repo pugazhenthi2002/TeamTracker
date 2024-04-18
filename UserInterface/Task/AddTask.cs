@@ -14,6 +14,8 @@ namespace UserInterface.Task
 {
     public partial class AddTask : UserControl
     {
+        public event EventHandler Reset;
+
         private int startIdx, endIdx;
         private bool IsBackEnable, IsNextEnable;
         private List<TeamTracker.Task> underReviewCollection;
@@ -33,7 +35,15 @@ namespace UserInterface.Task
                 return;
             }
             InitializeReviewPage();
-            milestoneSwitch1.InitializePage();
+
+            if (MilestoneManager.CurrentMilestone == null)
+            {
+                milestoneSwitch1.Visible = true;
+            }
+            else
+            {
+                milestoneSwitch1.InitializePage();
+            }
             currentTimelineContent1.Version = VersionManager.CurrentVersion;
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
         }
@@ -50,57 +60,19 @@ namespace UserInterface.Task
             InitializePage();
         }
 
-        private void OnMoveToNextMilestoneClick(object sender, EventArgs e)
-        {
-            if (MilestoneManager.IsAllTaskCompletedInCurrentMilestone())
-            {
-                if(MilestoneManager.IsCurrentMilestoneIsLastMilestone())
-                {
-                    DeployWarningForm form1 = new DeployWarningForm();
-                    form1.WarningStatus += OnDeployWarningStatusSelected;
-                    form1.ShowDialog();
-                }
-                else
-                {
-                    SwitchMilestoneWarningForm form2 = new SwitchMilestoneWarningForm();
-                    form2.WarningStatus += OnWarningStatusSelected;
-                    form2.ShowDialog();
-                }
-            }
-            else
-            {
-                ProjectManagerMainForm.notify.AddNotification("Warning", "Not All are Completed under this Milestone");
-            }
-        }
 
-        private void OnWarningStatusSelected(object sender, bool e)
-        {
-            if (e)
-            {
-                MilestoneManager.SwitchToNextMilestone();
-                InitializePage();
-            }
-        }
-
-        private void OnDeployWarningStatusSelected(object sender, bool e)
-        {
-            if (e)
-            {
-                DeployForm form = new DeployForm();
-                form.DoneClick += OnSourceCodeSubmission;
-                form.Show();
-            }
-        }
-
-        private void OnSourceCodeSubmission(object sender, EventArgs e)
+        private void OnSourceCodeSubmission(object sender, VersionSourceCode e)
         {
             MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
-            VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.OnStage);
+            MilestoneManager.CurrentMilestone = null;
+            VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
+            DataHandler.AddVersionSourceCode(e);
             InitializePage();
         }
 
         private void InitializeReviewPage()
         {
+            panelBase.Controls.Clear();
             underReviewCollection = TaskManager.FetchUnderReviewTask();
             
             if(underReviewCollection != null && underReviewCollection.Count > 0)
@@ -175,9 +147,7 @@ namespace UserInterface.Task
                     break;
                 }
             }
-
-            
-            ResetReviewUI();
+            InitializePage();
         }
 
         private void ResetReviewUI()
@@ -195,7 +165,6 @@ namespace UserInterface.Task
 
             backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
             nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
-
         }
     }
 }

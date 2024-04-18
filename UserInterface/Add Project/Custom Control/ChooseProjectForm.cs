@@ -14,8 +14,9 @@ namespace UserInterface.Add_Project.Custom_Control
 {
     public partial class ChooseProjectForm : Form
     {
+
         public event EventHandler<Projects> ProjectSelect;
-        private bool isUpEnable = false, isDownEnable = false;
+        private bool isUpEnable = false, isDownEnable = false, isEntered;
         private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
         private List<Projects> availableProjects;
         private List<Projects> duoProjects;
@@ -27,6 +28,8 @@ namespace UserInterface.Add_Project.Custom_Control
         {
             InitializeComponent();
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
+            selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
         }
 
         public new void Dispose()
@@ -36,8 +39,8 @@ namespace UserInterface.Add_Project.Custom_Control
                 for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
                 {
                     (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
-                    ctr--;
                     controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
+                    ctr--;
                 }
             }
             downPicBox.Image.Dispose(); downPicBox.Dispose();
@@ -93,7 +96,6 @@ namespace UserInterface.Add_Project.Custom_Control
             if (prevControl != null)
             {
                 prevControl.IsClicked = false;
-                prevControl.BackColor = Color.FromArgb(82, 109, 130);
             }
             prevControl = null;
 
@@ -110,7 +112,6 @@ namespace UserInterface.Add_Project.Custom_Control
             if (prevControl != null)
             {
                 prevControl.IsClicked = false;
-                prevControl.BackColor = Color.FromArgb(82, 109, 130);
             }
             prevControl = null;
 
@@ -121,8 +122,6 @@ namespace UserInterface.Add_Project.Custom_Control
                 ReorderProjects();
             }
         }
-
-        
 
         private void OnSelectClick(object sender, EventArgs e)
         {
@@ -170,20 +169,98 @@ namespace UserInterface.Add_Project.Custom_Control
             if (prevControl != null)
             {
                 prevControl.IsClicked = false;
-                prevControl.BackColor = Color.FromArgb(82, 109, 130);
             }
             prevControl = control;
-            prevControl.BackColor = Color.FromArgb(221, 230, 237);
+            prevControl.IsClicked = true;
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0,0), new Point(Width, 0));
+            border.Dispose();
+        }
+
+        private void OnButtonMouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            isEntered = true;
+            if ((sender as Button).Name == "selectButton")
+            {
+                (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
+                (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
+            }
+            else
+            {
+                (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
+                (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
+            }
+            (sender as Button).Invalidate();
+        }
+
+        private void OnButtonMouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            isEntered = false;
+            if ((sender as Button).Name == "selectButton")
+            {
+                (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
+                (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
+            }
+            else
+            {
+                (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
+                (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
+            }
+            (sender as Button).Invalidate();
+        }
+
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border;
+            Rectangle rec = new Rectangle(2,2,(sender as Button).Width -6, (sender as Button).Height-6);
+            border = isEntered ? new Pen((sender as Button).ForeColor, 2) : new Pen((sender as Button).BackColor, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 2));
+            border.Dispose();
+            rec = new Rectangle(0, 0, (sender as Button).Width - 2, (sender as Button).Height - 2);
+            border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 5));
+            border.Dispose();
         }
 
         private void OnPaginateMouseEnter(object sender, EventArgs e)
         {
-            (sender as PictureBox).BackColor = Color.FromArgb(102, 129, 150);
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Hand;
+            if(picBox.Name == "upPicBox")
+            {
+                picBox.Image = Properties.Resources.Up_Light_Blue_Hover;
+            }
+            else
+            {
+                picBox.Image = Properties.Resources.Down_Light_Blue_Hover;
+            }
         }
 
         private void OnPaginateMouseLeave(object sender, EventArgs e)
         {
-            (sender as PictureBox).BackColor = Color.FromArgb(82, 109, 130);
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Default;
+            if (picBox.Name == "upPicBox")
+            {
+                picBox.Image = isUpEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Medium_Blue;
+            }
+            else
+            {
+                picBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
+            }
         }
 
         private void ReorderProjects()
@@ -203,8 +280,8 @@ namespace UserInterface.Add_Project.Custom_Control
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+            upPicBox.Image = isUpEnable ? Properties.Resources.Up_Light_Blue_Hover : Properties.Resources.Up_Medium_Blue;
+            downPicBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
