@@ -110,7 +110,7 @@
             // 
             this.labelProjectName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.labelProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProjectName.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProjectName.Font = new System.Drawing.Font("Ebrima", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.labelProjectName.Location = new System.Drawing.Point(0, 0);
             this.labelProjectName.Margin = new System.Windows.Forms.Padding(0);
@@ -238,6 +238,7 @@
             this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
             this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucDueDate1.LabelText = "Due";
             this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
             this.ucDueDate1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
