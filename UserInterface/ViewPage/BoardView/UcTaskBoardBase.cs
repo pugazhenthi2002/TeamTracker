@@ -103,12 +103,14 @@ namespace TeamTracker
                 IsDragging = true;
 
                 DragForm = new Form();
-                DragForm.Show();
+                DragForm.SuspendLayout();
                 DragForm.FormBorderStyle = FormBorderStyle.None;
                 DragForm.StartPosition = FormStartPosition.Manual;
                 DragForm.Size = (sender).Size;
                 DragForm.Controls.Add(sender);
                 DragForm.Location = TaskBoardStartPoint;
+                DragForm.ResumeLayout(true);
+                DragForm.Show();
                 InitializeRoundedEdge();
             }
 
@@ -123,8 +125,24 @@ namespace TeamTracker
 
                 DragForm.Location = new Point(DragForm.Location.X+(e.X-OffsetPoint.X), DragForm.Location.Y+(e.Y-OffsetPoint.Y));
 
+                //if(DragForm.Location.X<=0 && DragForm.Location.Y<=0)
+                //{
+                //    DragForm.Location = new Point(0,0);
+                //    return;
+                //}
+                //else if (DragForm.Location.X <= 0)
+                //{
+                //    DragForm.Location = new Point(0, DragForm.Location.Y);
+                //    return;
+                //}
+                //else if(DragForm.Location.Y<=0)
+                //{
+                //    DragForm.Location = new Point(DragForm.Location.X,0);
+                //    return;
+                //}
+
                 //DragForm.Location = this.PointToClient(sender.PointToScreen(e.Location));
-                
+
                 //switch (tBase.Status)
                 //{
                 //    case TaskStatus.Done:
@@ -222,13 +240,14 @@ namespace TeamTracker
                     ucTaskStatusBaseStuck.AddTask(BoardToAdd);
                     DragForm.Dispose();
                     break;
-                case 3:
+                default:
 
                     SubmitionForm = new SourceCodeSubmitionForm();
                     SubmitionForm.SourceCodeTask = BoardToAdd.TaskData;
+                    SubmitionForm.Owner = this.ParentForm;
                     SubmitionForm.DoneClick += OnClickDoneSubmitionForm;
                     SubmitionForm.CloseClick += OnClickCloseSubmitionForm;
-                    SubmitionForm.Show();
+                    SubmitionForm.ShowDialog(this);
                     break;
             }
         }
@@ -257,6 +276,8 @@ namespace TeamTracker
         {
             toAdd = false;
             AddBoard(BoardToAdd);
+            
+
         }
 
         private UCTaskStatusBase FindParentUserControl(Control control)

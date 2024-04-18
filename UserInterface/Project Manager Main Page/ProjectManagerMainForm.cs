@@ -279,6 +279,8 @@ namespace TeamTracker
             tabControl1.SelectedIndex = 2;
         }
 
+        
+
         private void OnSignOut(object sender, EventArgs e)
         {
             SignOutForm form = new SignOutForm();

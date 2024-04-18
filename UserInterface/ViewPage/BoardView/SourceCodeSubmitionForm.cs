@@ -98,8 +98,12 @@ namespace TeamTracker
 
         private void OnClickClose(object sender, MouseEventArgs e)
         {
-            CloseClick?.Invoke(sender, e);
-            this.Close();
+            //CloseClick?.Invoke(sender, e);
+            //this.Dispose();
+            //if (this.Owner != null)
+            //{
+                //this.Owner.Focus();
+            //}
         }
 
         private void OnClickClear(object sender, EventArgs e)
@@ -149,8 +153,12 @@ namespace TeamTracker
 
         private void OnClose(object sender, EventArgs e)
         {
+            
             CloseClick?.Invoke(this, EventArgs.Empty);
-            this.Close();
+            
+            this.Dispose();
+            
+
         }
     }
 }

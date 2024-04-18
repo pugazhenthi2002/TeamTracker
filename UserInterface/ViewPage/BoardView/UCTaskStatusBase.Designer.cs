@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panelTop = new System.Windows.Forms.Panel();
-            this.ucTaskStatusHead1 = new TeamTracker.UcTaskStatusHead();
             this.panelBase = new System.Windows.Forms.Panel();
             this.panelSpacePanel = new System.Windows.Forms.Panel();
+            this.ucTaskStatusHead1 = new TeamTracker.UcTaskStatusHead();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,18 +43,6 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(323, 57);
             this.panelTop.TabIndex = 1;
-            // 
-            // ucTaskStatusHead1
-            // 
-            this.ucTaskStatusHead1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(224)))), ((int)(((byte)(239)))));
-            this.ucTaskStatusHead1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskStatusHead1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucTaskStatusHead1.Location = new System.Drawing.Point(0, 0);
-            this.ucTaskStatusHead1.Name = "ucTaskStatusHead1";
-            this.ucTaskStatusHead1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.ucTaskStatusHead1.Size = new System.Drawing.Size(323, 57);
-            this.ucTaskStatusHead1.Status = TeamTracker.TaskStatus.Done;
-            this.ucTaskStatusHead1.TabIndex = 0;
             // 
             // panelBase
             // 
@@ -71,6 +59,18 @@
             this.panelSpacePanel.Name = "panelSpacePanel";
             this.panelSpacePanel.Size = new System.Drawing.Size(323, 47);
             this.panelSpacePanel.TabIndex = 3;
+            // 
+            // ucTaskStatusHead1
+            // 
+            this.ucTaskStatusHead1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucTaskStatusHead1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTaskStatusHead1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucTaskStatusHead1.Location = new System.Drawing.Point(0, 0);
+            this.ucTaskStatusHead1.Name = "ucTaskStatusHead1";
+            this.ucTaskStatusHead1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.ucTaskStatusHead1.Size = new System.Drawing.Size(323, 57);
+            this.ucTaskStatusHead1.Status = TeamTracker.TaskStatus.Done;
+            this.ucTaskStatusHead1.TabIndex = 0;
             // 
             // UCTaskStatusBase
             // 

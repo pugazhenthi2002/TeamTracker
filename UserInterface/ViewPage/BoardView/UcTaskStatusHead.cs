@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace TeamTracker
 {
@@ -21,7 +22,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
-
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelTaskCount, new object[] { true });
         }
 
         public EventHandler ClickBack;
@@ -58,7 +59,7 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            labelTaskCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelTaskCount.Width, labelTaskCount.Height, labelTaskCount.Width, labelTaskCount.Height));
+            labelTaskCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelTaskCount.Width, labelTaskCount.Height, 7, 7));
 
         }
         private void OnLoad(object sender, EventArgs e)
