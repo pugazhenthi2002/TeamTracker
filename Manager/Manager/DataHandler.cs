@@ -498,7 +498,8 @@ namespace TeamTracker
                 VersionID = Convert.ToInt32(result["VersionID"][0]),
                 DisplayName = Convert.ToString(result["DisplayName"][0]),
                 SourceCodeName = Convert.ToString(result["SourceCodeName"][0]),
-                VersionLocation = Convert.ToString(result["SourceCodeLocation"][0])
+                VersionLocation = Convert.ToString(result["SourceCodeLocation"][0]),
+                SubmissionDate = Convert.ToDateTime(result["SubmissionDate"][0])
             };
 
             return sourceCode;

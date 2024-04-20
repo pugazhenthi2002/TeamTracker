@@ -113,12 +113,14 @@ namespace TeamTracker
 
         private void OnBrowseMouseEnter(object sender, EventArgs e)
         {
-            (sender as Label).BackColor = Color.Blue;
+            Cursor = Cursors.Hand;
+            (sender as Label).BackColor = Color.FromArgb(82, 109, 130);
         }
 
         private void OnBrowseMouseLeave(object sender, EventArgs e)
         {
-            (sender as Label).BackColor = Color.RoyalBlue;
+            Cursor = Cursors.Default;
+            (sender as Label).BackColor = Color.FromArgb(39, 55, 77);
         }
 
         private void OnTablePanelPaint(object sender, PaintEventArgs e)

@@ -187,7 +187,7 @@ namespace TeamTracker
 
         public static void VersionCompletion(ProjectVersion version)
         {
-            UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, version.EndDate, version.ClientEmail, null);
+            UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, DateTime.Today.Date, version.ClientEmail, null);
         }
 
         public static void SelectedEmployeeInvolvedVersions(Employee emp)

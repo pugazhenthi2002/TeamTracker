@@ -13,7 +13,7 @@ namespace TeamTracker
 {
     public partial class TeamLeaderPicAndName : UserControl
     {
-
+        private bool IsEntered;
         private Employee employee;
 
         public TeamLeaderPicAndName()
@@ -76,11 +76,14 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
+            IsEntered = true;
             teamLeaderName.ForeColor = Color.FromArgb(39, 55, 77);
+            panel1.Invalidate();
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
+            IsEntered = false;
             teamLeaderName.ForeColor = Color.FromArgb(82, 109, 130);
         }
 
@@ -92,5 +95,6 @@ namespace TeamTracker
             panel1.Dispose();
             tableLayoutPanel1.Dispose();
         }
+
     }
 }

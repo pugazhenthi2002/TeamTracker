@@ -99,6 +99,7 @@ namespace TeamTracker
         {
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
+            panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
             endDatePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, endDatePanel.Width, endDatePanel.Height, 20, 20));
             startDatePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, startDatePanel.Width, startDatePanel.Height, 20, 20));
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
@@ -106,6 +107,7 @@ namespace TeamTracker
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             upgradeButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, upgradeButton.Width, upgradeButton.Height, 10, 10));
+            button1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
         }
 
         private void OnChooseProject(object sender, EventArgs e)
@@ -190,7 +192,7 @@ namespace TeamTracker
                 return "Invalid Input\nEnter Proper EmailID";
             }
 
-            if ((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days <= 20)
+            if ((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days < 19)
             {
                 return "Project Duration Should be Atleast 20 Days";
             }
@@ -227,7 +229,7 @@ namespace TeamTracker
         private void DateMouseEnter(object sender, EventArgs e)
         {
             string name = (sender as Control).Name;
-            if (name == "startDateTime" || name == "startDateLabel" || name == "startDatePanel")
+            if (name == "startDateTimePicker" || name == "startDateLabel" || name == "tableLayoutPanel6")
             {
                 startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(157, 178, 191);
                 startDateLabel.ForeColor = Color.Black;
@@ -280,6 +282,27 @@ namespace TeamTracker
             if (attachments.Count > 0)
                 return attachments;
             else { return null; }
+        }
+
+        private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(5, (sender as Control).Height - 7), new Point((sender as Control).Width - 5, (sender as Control).Height - 7));
+            border.Dispose();
+        }
+
+        private void BorderDrawPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            if (sender is Button)
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
+            else
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+
+            border1.Dispose();
         }
     }
 }

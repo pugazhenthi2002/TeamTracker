@@ -53,6 +53,7 @@ namespace TeamTracker
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
+            Cursor = Cursors.Default;
             if (closePicBox.Image != null)
                 closePicBox.Image.Dispose();
 
@@ -61,10 +62,11 @@ namespace TeamTracker
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
+            Cursor = Cursors.Hand;
             if (closePicBox.Image != null)
                 closePicBox.Image.Dispose();
 
-            closePicBox.Image = UserInterface.Properties.Resources.Close_30;
+            closePicBox.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
         }
     }
 }

@@ -1191,6 +1191,14 @@
     <None Include="Pugazh Images\Right Light Blue Hover.png" />
     <None Include="Pugazh Images\Right Light Blue.png" />
     <None Include="Pugazh Images\Right Medium Blue.png" />
+    <None Include="Pugazh Images\Close Dark Blue Hover.png" />
+    <None Include="Pugazh Images\Close Dark Blue.png" />
+    <None Include="Pugazh Images\Close Light Blue Hover.png" />
+    <None Include="Pugazh Images\Close Medium Blue.png" />
+    <None Include="Pugazh Images\Download Dark Blue.png" />
+    <None Include="Pugazh Images\Download Light Blue Hover.png" />
+    <None Include="Pugazh Images\Download Light Blue.png" />
+    <None Include="Pugazh Images\Download Medium Blue Color.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />

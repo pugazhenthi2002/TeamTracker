@@ -12,5 +12,6 @@ namespace TeamTracker
         public string DisplayName { get; set; }
         public string SourceCodeName { get; set; }
         public string VersionLocation { get; set; }
+        public DateTime SubmissionDate { get; set; }
     }
 }

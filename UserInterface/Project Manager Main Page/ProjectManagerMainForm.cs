@@ -124,7 +124,7 @@ namespace TeamTracker
                     addTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
                     picBox.Image = UserInterface.Properties.Resources.Add_Task_30_Hover;
                 }
-                else if (!isMyTaskSelected)
+                else if (picBox.Name == "myTaskPicBox" && !isMyTaskSelected)
                 {
                     myTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
                     picBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
@@ -155,7 +155,7 @@ namespace TeamTracker
                     if (addTaskPicBox.Image != null) { addTaskPicBox.Image.Dispose(); }
                     addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Hover;
                 }
-                else if (!isMyTaskSelected)
+                else if (label.Name == "myTaskLabel" && !isMyTaskSelected)
                 {
                     if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                     myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
@@ -189,7 +189,7 @@ namespace TeamTracker
                     addTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
                     picBox.Image = UserInterface.Properties.Resources.Add_Task_30_Normal;
                 }
-                else if (!isMyTaskSelected)
+                else if (picBox.Name == "myTaskPicBox" && !isMyTaskSelected)
                 {
                     myTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
                     picBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;
@@ -223,7 +223,7 @@ namespace TeamTracker
                     addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Normal;
                     addTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
                 }
-                else if (!isMyTaskSelected)
+                else if (label.Name == "myTaskLabel" && !isMyTaskSelected)
                 {
                     if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                     myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;

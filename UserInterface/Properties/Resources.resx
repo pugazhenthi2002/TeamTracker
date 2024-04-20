@@ -127,8 +127,8 @@
   <data name="flag-NotStarted" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag-NotStarted.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flag-done" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag-done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="No Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\No Result.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Zip Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zip Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -150,6 +150,9 @@
   </data>
   <data name="Download Static" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Download Static.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Left Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Left Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Zip red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zip red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,11 +208,17 @@
   <data name="Board Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Board Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Right Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Right Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Add Task 30 Normal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Add Task 30 Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Close 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add Task 30 Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Add Task 30 Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Up Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Up Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,6 +253,12 @@
   <data name="CloudBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Close Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Close Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Left Medium Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Left Medium Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Attachment-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Attachment-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -268,6 +283,9 @@
   <data name="Zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Right Dark Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Right Dark Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -286,9 +304,6 @@
   <data name="Timeline Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Timeline Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CloudHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Calendar 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Calendar 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -298,11 +313,17 @@
   <data name="info-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info-hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Left Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Left Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Close Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Filter Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Filter Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Right Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Right Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Board Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Board Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,14 +337,17 @@
   <data name="download Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\download Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Close Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Close Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cloud uploaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cloud uploaded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloudHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Home Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Home Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sort-up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,14 +358,17 @@
   <data name="Upload Cloud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Upload Cloud.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Version Milestone Status Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Version Milestone Status Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="calendar 24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar 24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloudHover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\CloudHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Version Milestone Status Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Version Milestone Status Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Left Dark Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Left Dark Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Back LightBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Back LightBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,8 +394,8 @@
   <data name="List Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\List Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="No Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\No Result.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Right Medium Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Right Medium Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Board" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Board.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -376,17 +403,32 @@
   <data name="Add Project Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Add Project Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CloudBlack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Right Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Right Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add Task 30 Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Add Task 30 Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flag-done" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag-done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Left Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Left Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Close Dark Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Close Dark Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cloud uploaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cloud uploaded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Up Dark Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Up Dark Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Up Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Up Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Close Medium Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Close Medium Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-upload-to-cloud-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-upload-to-cloud-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -409,37 +451,19 @@
   <data name="Next Hover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Next Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Home Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Home Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloudBlack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Left Dark Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Left Dark Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Download Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Left Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Left Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Download Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Left Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Left Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Download Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Left Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Left Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Left Medium Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Left Medium Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Right Dark Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Right Dark Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Right Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Right Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Right Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Right Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Right Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Right Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Right Medium Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Right Medium Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Download Medium Blue Color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Medium Blue Color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

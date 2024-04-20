@@ -63,6 +63,29 @@ namespace TeamTracker
             return result;
         }
 
+        public static Dictionary<string, int> FilterTeamMemberTaskCountByVersionID(int versionId)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            int count = 0;
+
+            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
+            foreach (var Iter in employeeCollection)
+            {
+                foreach (var TaskIter in TaskCollection)
+                {
+                    if (TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.VersionID == versionId)
+                    {
+                        count++;   
+                    }
+                }
+                result.Add(Iter.EmployeeFirstName, count);
+                count = 0;
+            }
+
+            return result;
+
+        }
+
         //Move to Done Status
         public static void MoveToDone(Task task)
         {

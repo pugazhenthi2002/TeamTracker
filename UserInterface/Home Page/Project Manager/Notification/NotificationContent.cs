@@ -50,7 +50,7 @@ namespace TeamTracker
                     notifyList.Reverse();
                     currentIndex = 0;
                     notifyCount = value.Count;
-                    MaxUserControls = (notifyCount >= 4) ? 4 : notifyCount;
+                    MaxUserControls = (notifyCount >= 2) ? 2 : notifyCount;
                     endIndex = MaxUserControls - 1;
                     InitializeNotifications();
                 }
@@ -92,7 +92,7 @@ namespace TeamTracker
                 tempNotification.NotficationData = notifyList[i];
                 tempNotification.Size = new Size(panelBase.Width, panelBase.Height / 4);
                 tempNotification.Dock = DockStyle.Top;
-                tempNotification.Height = 100;
+                tempNotification.Height = 200;
                 tempNotification.CloseClick += OnClickCloseNotification;
                 panelBase.Controls.Add(tempNotification);
                 tempNotification.SendToBack();

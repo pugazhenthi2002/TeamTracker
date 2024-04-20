@@ -62,17 +62,19 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(2);
             this.panel1.Size = new System.Drawing.Size(323, 56);
             this.panel1.TabIndex = 0;
             // 
             // teamLeaderName
             // 
+            this.teamLeaderName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.teamLeaderName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.teamLeaderName.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamLeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.teamLeaderName.Location = new System.Drawing.Point(56, 0);
+            this.teamLeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.teamLeaderName.Location = new System.Drawing.Point(54, 2);
             this.teamLeaderName.Name = "teamLeaderName";
-            this.teamLeaderName.Size = new System.Drawing.Size(267, 56);
+            this.teamLeaderName.Size = new System.Drawing.Size(267, 52);
             this.teamLeaderName.TabIndex = 2;
             this.teamLeaderName.Text = "Team Leader Name";
             this.teamLeaderName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,12 +84,13 @@
             // 
             // profilePictureBox2
             // 
+            this.profilePictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profilePictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.profilePictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.profilePictureBox2.Location = new System.Drawing.Point(2, 2);
             this.profilePictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.profilePictureBox2.Name = "profilePictureBox2";
             this.profilePictureBox2.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.profilePictureBox2.Size = new System.Drawing.Size(56, 56);
+            this.profilePictureBox2.Size = new System.Drawing.Size(52, 52);
             this.profilePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox2.TabIndex = 3;
             this.profilePictureBox2.TabStop = false;

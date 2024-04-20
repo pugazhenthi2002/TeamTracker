@@ -55,6 +55,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.addProject1 = new TeamTracker.AddProject();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -67,7 +68,6 @@
             this.addTask1 = new UserInterface.Task.AddTask();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.myTaskTemplate1 = new UserInterface.ViewPage.MyTaskTemplate();
-            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -146,6 +146,7 @@
             // 
             // myTaskLabel
             // 
+            this.myTaskLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.myTaskLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myTaskLabel.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myTaskLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -162,6 +163,7 @@
             // 
             // myTaskPicBox
             // 
+            this.myTaskPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.myTaskPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.myTaskPicBox.Image = global::UserInterface.Properties.Resources.View_Task_30_Normal;
             this.myTaskPicBox.Location = new System.Drawing.Point(0, 0);
@@ -187,6 +189,7 @@
             // 
             // addTaskLabel
             // 
+            this.addTaskLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addTaskLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addTaskLabel.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addTaskLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -203,6 +206,7 @@
             // 
             // addTaskPicBox
             // 
+            this.addTaskPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addTaskPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.addTaskPicBox.Image = global::UserInterface.Properties.Resources.Add_Task_30_Normal;
             this.addTaskPicBox.Location = new System.Drawing.Point(0, 0);
@@ -228,6 +232,7 @@
             // 
             // viewProjectLabel
             // 
+            this.viewProjectLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.viewProjectLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewProjectLabel.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewProjectLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -244,6 +249,7 @@
             // 
             // viewProjectPictureBox
             // 
+            this.viewProjectPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.viewProjectPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.viewProjectPictureBox.Image = global::UserInterface.Properties.Resources.View_Project;
             this.viewProjectPictureBox.Location = new System.Drawing.Point(0, 0);
@@ -269,6 +275,7 @@
             // 
             // addProjectLabel
             // 
+            this.addProjectLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addProjectLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addProjectLabel.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProjectLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -285,6 +292,7 @@
             // 
             // addProjectPictureBox
             // 
+            this.addProjectPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addProjectPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.addProjectPictureBox.Image = global::UserInterface.Properties.Resources.Add_Project;
             this.addProjectPictureBox.Location = new System.Drawing.Point(0, 0);
@@ -310,6 +318,7 @@
             // 
             // homeLabel
             // 
+            this.homeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeLabel.Font = new System.Drawing.Font("Corbel", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -326,6 +335,7 @@
             // 
             // homePictureBox
             // 
+            this.homePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homePictureBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.homePictureBox.Image = global::UserInterface.Properties.Resources.Home_Normal;
             this.homePictureBox.Location = new System.Drawing.Point(0, 0);
@@ -448,6 +458,15 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // projectManagerHome1
+            // 
+            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
+            this.projectManagerHome1.Name = "projectManagerHome1";
+            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
+            this.projectManagerHome1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.addProject1);
@@ -562,15 +581,6 @@
             this.myTaskTemplate1.Name = "myTaskTemplate1";
             this.myTaskTemplate1.Size = new System.Drawing.Size(937, 585);
             this.myTaskTemplate1.TabIndex = 0;
-            // 
-            // projectManagerHome1
-            // 
-            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
-            this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
-            this.projectManagerHome1.TabIndex = 0;
             // 
             // ProjectManagerMainForm
             // 

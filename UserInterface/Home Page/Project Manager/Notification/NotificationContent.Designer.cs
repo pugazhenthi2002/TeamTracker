@@ -36,8 +36,8 @@
             this.backBtn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panelBase = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
@@ -143,6 +143,15 @@
             this.panel3.Size = new System.Drawing.Size(547, 20);
             this.panel3.TabIndex = 5;
             // 
+            // panelBase
+            // 
+            this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBase.Location = new System.Drawing.Point(20, 20);
+            this.panelBase.Name = "panelBase";
+            this.panelBase.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.panelBase.Size = new System.Drawing.Size(547, 336);
+            this.panelBase.TabIndex = 7;
+            // 
             // ucNotFound1
             // 
             this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -154,14 +163,6 @@
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(547, 336);
             this.ucNotFound1.TabIndex = 6;
-            // 
-            // panelBase
-            // 
-            this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBase.Location = new System.Drawing.Point(20, 20);
-            this.panelBase.Name = "panelBase";
-            this.panelBase.Size = new System.Drawing.Size(547, 336);
-            this.panelBase.TabIndex = 7;
             // 
             // NotificationContent
             // 

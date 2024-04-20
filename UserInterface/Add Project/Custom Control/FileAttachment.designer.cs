@@ -102,10 +102,10 @@
             // 
             // browseLabel
             // 
-            this.browseLabel.BackColor = System.Drawing.Color.RoyalBlue;
+            this.browseLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.browseLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browseLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browseLabel.ForeColor = System.Drawing.Color.White;
+            this.browseLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.browseLabel.Location = new System.Drawing.Point(3, 248);
             this.browseLabel.Name = "browseLabel";
             this.browseLabel.Size = new System.Drawing.Size(493, 35);
@@ -136,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Name = "FileAttachment";

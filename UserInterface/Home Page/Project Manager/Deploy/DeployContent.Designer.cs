@@ -36,8 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.ucDeploy1 = new TeamTracker.UcDeploy();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
@@ -80,7 +80,7 @@
             // 
             this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.nextBtn.Image = global::UserInterface.Properties.Resources.Next_LightBlue;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
             this.nextBtn.Location = new System.Drawing.Point(99, 0);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(23, 20);
@@ -88,12 +88,14 @@
             this.nextBtn.TabIndex = 5;
             this.nextBtn.TabStop = false;
             this.nextBtn.Click += new System.EventHandler(this.OnNextClick);
+            this.nextBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.nextBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.backBtn.Image = global::UserInterface.Properties.Resources.Back_Hover;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
             this.backBtn.Location = new System.Drawing.Point(76, 0);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(23, 20);
@@ -101,6 +103,8 @@
             this.backBtn.TabIndex = 4;
             this.backBtn.TabStop = false;
             this.backBtn.Click += new System.EventHandler(this.OnBackClick);
+            this.backBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.backBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 
@@ -135,6 +139,16 @@
             this.panel5.Size = new System.Drawing.Size(485, 289);
             this.panel5.TabIndex = 4;
             // 
+            // ucDeploy1
+            // 
+            this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucDeploy1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDeploy1.Location = new System.Drawing.Point(0, 0);
+            this.ucDeploy1.Name = "ucDeploy1";
+            this.ucDeploy1.Size = new System.Drawing.Size(485, 289);
+            this.ucDeploy1.TabIndex = 1;
+            this.ucDeploy1.Deployment += new TeamTracker.UcDeploy.DeployHandler(this.OnDeployment);
+            // 
             // ucNotFound1
             // 
             this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -146,17 +160,6 @@
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(485, 289);
             this.ucNotFound1.TabIndex = 0;
-            // 
-            // ucDeploy1
-            // 
-            this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucDeploy1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDeploy1.Location = new System.Drawing.Point(0, 0);
-            this.ucDeploy1.Name = "ucDeploy1";
-            this.ucDeploy1.Size = new System.Drawing.Size(485, 289);
-            this.ucDeploy1.TabIndex = 1;
-            this.ucDeploy1.Deployment += new TeamTracker.UcDeploy.DeployHandler(this.OnDeployment);
-            this.ucDeploy1.SourceCodeDownlload += new System.EventHandler(this.OnSourceCodeDownload);
             // 
             // DeployContent
             // 

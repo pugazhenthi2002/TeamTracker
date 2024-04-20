@@ -32,8 +32,6 @@ namespace TeamTracker
                     versionName.Text = value.VersionName;
                     startDateLabel.Text = value.StartDate.ToShortDateString();
                     endDateLabel.Text = value.EndDate.ToShortDateString();
-                    clientEmailLabel.Text = value.ClientEmail;
-                    taskCountLabel.Text = TaskManager.FetchTaskCount(value.VersionID).ToString();
                     descTextBox.Text = value.VersionDescription;
                 }
                 else
@@ -66,15 +64,13 @@ namespace TeamTracker
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
             panel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel4.Width, panel4.Height, 20, 20));
-            panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
-            panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
         }
 
         private void BorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
 
@@ -85,7 +81,7 @@ namespace TeamTracker
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(Color.FromArgb(39, 55, 77));
-            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height), new Point((sender as Control).Width, (sender as Control).Height));
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height -2), new Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }
     }

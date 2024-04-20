@@ -313,9 +313,49 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Close_Dark_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Close Dark Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_Dark_Blue_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Close Dark Blue Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_Hover {
             get {
                 object obj = ResourceManager.GetObject("close Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_Light_Blue_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Close Light Blue Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_Medium_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Close Medium Blue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,6 +493,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Download_Dark_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Download Dark Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap download_Icon {
             get {
                 object obj = ResourceManager.GetObject("download Icon", resourceCulture);
@@ -466,6 +516,36 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap download_Icon1 {
             get {
                 object obj = ResourceManager.GetObject("download Icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Download_Light_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Download Light Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Download_Light_Blue_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Download Light Blue Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Download_Medium_Blue_Color {
+            get {
+                object obj = ResourceManager.GetObject("Download Medium Blue Color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

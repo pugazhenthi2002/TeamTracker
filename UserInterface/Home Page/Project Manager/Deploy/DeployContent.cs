@@ -81,23 +81,17 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 
         private void OnDeployment(string name, ProjectVersion e)
         {
-            if(isSourceCodeDownloaded)
+            if ((counter == 0 && deployVersions.Count == 1))
             {
-                if((counter == 0 && deployVersions.Count == 1))
-                {
-                    counter--;
-                    ucDeploy1.Visible = false;
-                    deployVersions.Remove(e);
-                    SetDeployControl();
-                    return;
-                }
-                if(counter == deployVersions.Count - 1)
-                {
-                    counter--;
-                    SetDeployControl();
-                }
-                isSourceCodeDownloaded = false;
+                counter--;
+                ucDeploy1.Visible = false;
             }
+            else
+            {
+                counter--;
+                SetDeployControl();
+            }
+            deployVersions.Remove(e);
         }
 
         private void OnNextClick(object sender, EventArgs e)
@@ -143,6 +137,40 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             catch
             {
                 ProjectManagerMainForm.notify.AddNotification("Download Failed", proj.ProjectName + "\n" + deployVersions[counter].VersionName);
+            }
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Hand;
+            if (picBox.Name == "backBtn")
+            {
+                picBox.Image = UserInterface.Properties.Resources.Left_Light_Blue_Hover;
+            }
+            else
+            {
+                picBox.Image = UserInterface.Properties.Resources.Right_Light_Blue_Hover;
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Default;
+            if (picBox.Name == "backBtn")
+            {
+                picBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            }
+            else
+            {
+                picBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
             }
         }
 

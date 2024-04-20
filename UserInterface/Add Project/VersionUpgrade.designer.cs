@@ -119,11 +119,12 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1336, 303);
             this.panel7.TabIndex = 2;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // fileAttachment1
             // 
             this.fileAttachment1.AttachmentCollection = null;
-            this.fileAttachment1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
+            this.fileAttachment1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.fileAttachment1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fileAttachment1.Location = new System.Drawing.Point(0, 0);
             this.fileAttachment1.Name = "fileAttachment1";
@@ -173,6 +174,7 @@
             this.endDatePanel.Name = "endDatePanel";
             this.endDatePanel.Size = new System.Drawing.Size(389, 77);
             this.endDatePanel.TabIndex = 1;
+            this.endDatePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             this.endDatePanel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
             this.endDatePanel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
@@ -190,13 +192,16 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(389, 77);
             this.tableLayoutPanel7.TabIndex = 0;
+            this.tableLayoutPanel7.MouseEnter += new System.EventHandler(this.DateMouseEnter);
+            this.tableLayoutPanel7.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // endDateTimePicker
             // 
+            this.endDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.endDateTimePicker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.endDateTimePicker.BorderSize = 2;
             this.endDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDateTimePicker.Location = new System.Drawing.Point(10, 35);
+            this.endDateTimePicker.Location = new System.Drawing.Point(10, 36);
             this.endDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 5);
             this.endDateTimePicker.MinimumSize = new System.Drawing.Size(4, 35);
             this.endDateTimePicker.Name = "endDateTimePicker";
@@ -205,6 +210,8 @@
             this.endDateTimePicker.TabIndex = 5;
             this.endDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.endDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
+            this.endDateTimePicker.MouseEnter += new System.EventHandler(this.DateMouseEnter);
+            this.endDateTimePicker.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // endDateLabel
             // 
@@ -230,6 +237,7 @@
             this.startDatePanel.Name = "startDatePanel";
             this.startDatePanel.Size = new System.Drawing.Size(389, 76);
             this.startDatePanel.TabIndex = 0;
+            this.startDatePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             this.startDatePanel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
             this.startDatePanel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
@@ -247,6 +255,8 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(389, 76);
             this.tableLayoutPanel6.TabIndex = 0;
+            this.tableLayoutPanel6.MouseEnter += new System.EventHandler(this.DateMouseEnter);
+            this.tableLayoutPanel6.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // startDateLabel
             // 
@@ -264,6 +274,7 @@
             // 
             // startDateTimePicker
             // 
+            this.startDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.startDateTimePicker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.startDateTimePicker.BorderSize = 2;
             this.startDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,6 +287,8 @@
             this.startDateTimePicker.TabIndex = 4;
             this.startDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.startDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
+            this.startDateTimePicker.MouseEnter += new System.EventHandler(this.DateMouseEnter);
+            this.startDateTimePicker.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // tableLayoutPanel4
             // 
@@ -311,9 +324,10 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 35);
             this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(5);
+            this.panel9.Padding = new System.Windows.Forms.Padding(5, 5, 5, 7);
             this.panel9.Size = new System.Drawing.Size(389, 42);
             this.panel9.TabIndex = 2;
+            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
             // 
             // versionNameTextBox
             // 
@@ -325,7 +339,7 @@
             this.versionNameTextBox.Location = new System.Drawing.Point(5, 5);
             this.versionNameTextBox.Multiline = true;
             this.versionNameTextBox.Name = "versionNameTextBox";
-            this.versionNameTextBox.Size = new System.Drawing.Size(379, 32);
+            this.versionNameTextBox.Size = new System.Drawing.Size(379, 30);
             this.versionNameTextBox.TabIndex = 3;
             this.versionNameTextBox.Text = "Enter Version";
             // 
@@ -351,9 +365,11 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(389, 76);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // chooseProjectLabel
             // 
+            this.chooseProjectLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chooseProjectLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chooseProjectLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseProjectLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -393,6 +409,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(524, 77);
             this.panel3.TabIndex = 5;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // panel4
             // 
@@ -400,9 +417,10 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 35);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(5);
+            this.panel4.Padding = new System.Windows.Forms.Padding(5, 5, 5, 7);
             this.panel4.Size = new System.Drawing.Size(524, 42);
             this.panel4.TabIndex = 2;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
             // 
             // clientTextBox
             // 
@@ -414,7 +432,7 @@
             this.clientTextBox.Location = new System.Drawing.Point(5, 5);
             this.clientTextBox.Multiline = true;
             this.clientTextBox.Name = "clientTextBox";
-            this.clientTextBox.Size = new System.Drawing.Size(514, 32);
+            this.clientTextBox.Size = new System.Drawing.Size(514, 30);
             this.clientTextBox.TabIndex = 3;
             this.clientTextBox.Text = "Enter Client Email";
             // 
@@ -441,6 +459,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(524, 76);
             this.panel5.TabIndex = 4;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // ucNotFound1
             // 
@@ -476,15 +495,15 @@
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel5.Controls.Add(this.panel8, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel6, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 188);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1350, 364);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
@@ -494,10 +513,11 @@
             this.panel8.Controls.Add(this.ucNotFound2);
             this.panel8.Controls.Add(this.latestUpgradedVersion1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(678, 3);
+            this.panel8.Location = new System.Drawing.Point(813, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(669, 358);
+            this.panel8.Size = new System.Drawing.Size(534, 358);
             this.panel8.TabIndex = 1;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // ucNotFound2
             // 
@@ -508,7 +528,7 @@
             this.ucNotFound2.Location = new System.Drawing.Point(0, 0);
             this.ucNotFound2.Message = "select project";
             this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(669, 358);
+            this.ucNotFound2.Size = new System.Drawing.Size(534, 358);
             this.ucNotFound2.TabIndex = 1;
             // 
             // latestUpgradedVersion1
@@ -516,7 +536,7 @@
             this.latestUpgradedVersion1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.latestUpgradedVersion1.Location = new System.Drawing.Point(0, 0);
             this.latestUpgradedVersion1.Name = "latestUpgradedVersion1";
-            this.latestUpgradedVersion1.Size = new System.Drawing.Size(669, 358);
+            this.latestUpgradedVersion1.Size = new System.Drawing.Size(534, 358);
             this.latestUpgradedVersion1.TabIndex = 0;
             // 
             // panel6
@@ -527,8 +547,9 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(669, 358);
+            this.panel6.Size = new System.Drawing.Size(804, 358);
             this.panel6.TabIndex = 0;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // panel10
             // 
@@ -536,9 +557,10 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 35);
             this.panel10.Name = "panel10";
-            this.panel10.Padding = new System.Windows.Forms.Padding(5);
-            this.panel10.Size = new System.Drawing.Size(669, 323);
+            this.panel10.Padding = new System.Windows.Forms.Padding(5, 5, 5, 7);
+            this.panel10.Size = new System.Drawing.Size(804, 323);
             this.panel10.TabIndex = 3;
+            this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
             // 
             // descTextBox
             // 
@@ -550,7 +572,7 @@
             this.descTextBox.Location = new System.Drawing.Point(5, 5);
             this.descTextBox.Multiline = true;
             this.descTextBox.Name = "descTextBox";
-            this.descTextBox.Size = new System.Drawing.Size(659, 313);
+            this.descTextBox.Size = new System.Drawing.Size(794, 311);
             this.descTextBox.TabIndex = 3;
             this.descTextBox.Text = "Enter Version Description";
             // 
@@ -561,7 +583,7 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(669, 35);
+            this.label5.Size = new System.Drawing.Size(804, 35);
             this.label5.TabIndex = 1;
             this.label5.Text = "Version Description";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -584,6 +606,7 @@
             // upgradeButton
             // 
             this.upgradeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.upgradeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upgradeButton.FlatAppearance.BorderSize = 0;
             this.upgradeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -596,10 +619,12 @@
             this.upgradeButton.Text = "Upgrade";
             this.upgradeButton.UseVisualStyleBackColor = false;
             this.upgradeButton.Click += new System.EventHandler(this.upgradeButton_Click);
+            this.upgradeButton.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -612,6 +637,7 @@
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ClearClick);
+            this.button1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // VersionUpgrade
             // 
