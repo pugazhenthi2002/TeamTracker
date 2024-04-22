@@ -75,5 +75,16 @@ namespace TeamTracker
             base.OnLostFocus(e);
             this.Close();
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            for (int i = 50; i < 200; i += 50)
+            {
+                e.Graphics.DrawLine(border, 3, i, Width - 3, i);
+            }
+            border.Dispose();
+        }
     }
 }

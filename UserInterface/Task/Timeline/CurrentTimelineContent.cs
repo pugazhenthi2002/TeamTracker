@@ -88,7 +88,6 @@ namespace UserInterface.Task.Timeline
 
         private void InitializeTimeline()
         {
-            isBackEnable = iterDate == version.StartDate ? false : true;
 
             for (int ctr = 0; ctr < labelCollections.Count; ctr++)
             {
@@ -96,13 +95,14 @@ namespace UserInterface.Task.Timeline
                 iterDate = iterDate.AddDays(1);
             }
 
+            isBackEnable = iterDate == version.StartDate ? false : true;
             isNextEnable = iterDate > version.EndDate ? false : true;
 
             if (backPictureBox.Image != null) { backPictureBox.Image.Dispose(); }
             if (nextPictureBox.Image != null) { nextPictureBox.Image.Dispose(); }
 
-            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue_Hover : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue_Hover : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
 
         private void InitializeLabels()
@@ -239,6 +239,34 @@ namespace UserInterface.Task.Timeline
             }
 
             return ((endDate - startdate).Days + 1) * width;
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if((sender as Control).Name == "nextPictureBox")
+            {
+                nextPictureBox.Image = Properties.Resources.Right_Dark_Blue_Hover;
+            }
+            else
+            {
+                backPictureBox.Image = Properties.Resources.Left_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if ((sender as Control).Name == "nextPictureBox")
+            {
+                nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue_Hover : UserInterface.Properties.Resources.Right_Medium_Blue;
+            }
+            else
+            {
+                backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue_Hover : UserInterface.Properties.Resources.Left_Medium_Blue;
+            }
         }
 
         private void OnTimeLineMovement(TimelineTask control, TeamTracker.Task selectedTask, int direction)

@@ -37,10 +37,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         public bool isOpened = false;
         private int month, year, priority;
-        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>
-        {
-            System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
-        };
+        private List<System.Drawing.Color> colorList;
         private int colorIndex = 0;
         private FilterForm form;
         private Random rnd = new Random();
@@ -49,6 +46,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            colorList = ColorManager.ColorFadingOut;
             cartesianChart1.AxisX.Add(new Axis { Title = "Date" });
             cartesianChart1.AxisY.Add(new Axis { Title = "Task Solved" });
         }
@@ -103,27 +101,49 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
             e.Graphics.DrawLine(pen, new Point(tableLayoutPanel4.Width / 20, tableLayoutPanel4.Height / 2), new Point(tableLayoutPanel4.Width * 19 / 20, tableLayoutPanel4.Height / 2));
+            System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             pen.Dispose();
         }
 
         private void OnFilterClick(object sender, EventArgs e)
         {
-            if(form!=null && !form.IsDisposed)
+            if (form != null && !form.IsDisposed)
             {
                 form.Dispose();
                 form.Close();
             }
-
-            form = new FilterForm();
-            form.Month = month; form.Year = year; form.Priority = priority;
-            form.Location = filterPicBox.PointToScreen(new Point(-225, 0));
-            form.Filter += OnFiltered;
-            form.Show();
+            else
+            {
+                form = new FilterForm();
+                form.Month = month; form.Year = year; form.Priority = priority;
+                form.Location = filterPicBox.PointToScreen(new Point(-225, 0));
+                form.Filter += OnFiltered;
+                form.ShowDialog();
+            }
         }
 
         private void OnFiltered(int month, int year, int priority)
         {
             Month = month; Year = year; Priority = priority;
+        }
+
+        private void OnFilterMouseEnter(object sender, EventArgs e)
+        {
+            if(filterPicBox.Image != null)
+                filterPicBox.Image.Dispose();
+
+            filterPicBox.Image = Properties.Resources.Filter_Click;
+            filterPicBox.BackColor = System.Drawing.Color.FromArgb(40, 50, 80);
+        }
+
+        private void OnFilterMouseLeave(object sender, EventArgs e)
+        {
+            if (filterPicBox.Image != null)
+                filterPicBox.Image.Dispose();
+
+            filterPicBox.Image = Properties.Resources.Filter_Normal;
+            filterPicBox.BackColor = System.Drawing.Color.FromArgb(221, 230, 237);
         }
 
         private void SetReport()
@@ -135,7 +155,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCount(month, year, priority);
                 Dictionary<string, Dictionary<DateTime, int>> result2 = TaskManager.FilterTaskCountByDate(month, year);
 
-                int total = 0;
+                int total = 0, colorIndex = 2;
                 foreach (var Iter in result1) total += Iter.Value;
                 teammatesTaskCount.Text = total.ToString();
 
@@ -146,7 +166,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                     foreach (var Iter in result1)
                     {
                         seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                        colorIndex = (colorIndex + 1) % colorList.Count;
+                        colorIndex = (colorIndex + 2) % colorList.Count;
                     }
                     pieChart1.Series = seriesCollection;
                 }
@@ -183,8 +203,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                     IList<string> labels = new List<string>();
                     foreach (var employeeData in result2)
                     {
-
-
                         foreach (var Iter in employeeData.Value)
                         {
                             labels.Add(Iter.Key.ToShortDateString());
@@ -205,6 +223,12 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
-        
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+        }
     }
 }

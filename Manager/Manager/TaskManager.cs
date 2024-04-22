@@ -213,6 +213,7 @@ namespace TeamTracker
 
             int count = 0;
 
+            TaskCollection.Sort((t1, t2)=>t1.EndDate.CompareTo(t2.EndDate));
             List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
             employeeCollection.Add(EmployeeManager.CurrentEmployee);
 
@@ -384,5 +385,45 @@ namespace TeamTracker
             return result;
         }
 
+        public static Dictionary<TaskStatus, int> FetchTaskCountByStatus(int versionID)
+        {
+            Dictionary<TaskStatus, int> result = new Dictionary<TaskStatus, int>();
+            result.Add(TaskStatus.NotYetStarted, 0);
+            result.Add(TaskStatus.OnProcess, 0);
+            result.Add(TaskStatus.Stuck, 0);
+            result.Add(TaskStatus.UnderReview, 0);
+            result.Add(TaskStatus.Done, 0);
+            foreach (var Iter in TaskCollection)
+            {
+                if(Iter.VersionID == versionID)
+                {
+                    result[Iter.StatusOfTask]++;
+                }
+            }
+
+            return result;
+        }
+
+        public static List<int> FetchTaskCountByEmployee(int versionID)
+        {
+            List<int> result;
+            int total = 0, completed = 0, due = 0, incomplete = 0;
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.VersionID == versionID && Iter.AssignedTo == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    total++;
+                    if (Iter.StatusOfTask == TaskStatus.Done) completed++;
+                    if (Iter.EndDate < DateTime.Now && !(Iter.StatusOfTask == TaskStatus.Done)) due++;
+                    if (Iter.StatusOfTask != TaskStatus.Done) incomplete++;
+                }
+            }
+            result = new List<int>()
+            {
+                total, completed, due, incomplete
+            };
+
+            return result;
+        }
     }
 }

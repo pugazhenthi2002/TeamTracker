@@ -24,13 +24,12 @@ namespace UserInterface.Task
 
         private string milestoneName;
         private int colorIndex = 0;
-        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>
-        {
-            System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
-        };
+        private List<System.Drawing.Color> colorList;
 
         public void InitializePage()
         {
+            colorList = ColorManager.ColorFadingOut;
+            colorIndex = 2;
             if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
                 switchMilestoneButton.Text = "Deploy";
 
@@ -51,7 +50,7 @@ namespace UserInterface.Task
                 foreach (var Iter in result1)
                 {
                     seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                    colorIndex = (colorIndex + 1) % colorList.Count;
+                    colorIndex = (colorIndex + 2) % colorList.Count;
                 }
                 pieChart1.Series = seriesCollection;
             }

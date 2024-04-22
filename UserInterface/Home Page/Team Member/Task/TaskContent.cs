@@ -17,7 +17,6 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
-
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -40,15 +39,12 @@ namespace TeamTracker
             }
             else
             {
-                List<int> result = TaskManager.FetchTaskCount(VersionManager.CurrentVersion.VersionID);
+                List<int> result = TaskManager.FetchTaskCountByEmployee(VersionManager.CurrentVersion.VersionID);
 
                 taskCountLabel.Text = result[0].ToString();
                 completedTaskLabel.Text = result[1].ToString();
                 dueTaskLabel.Text = result[2].ToString();
                 incompleteTaskLabel.Text = result[3].ToString();
-
-                taskCompletionProgressBar1.TotalTask = result[0];
-                taskCompletionProgressBar1.CompletedTask = result[1];
             }
         }
 
@@ -75,7 +71,16 @@ namespace TeamTracker
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
             panel11.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel11.Width, panel11.Height, 20, 20));
-            taskCompletionProgressBar1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, taskCompletionProgressBar1.Width, taskCompletionProgressBar1.Height, 10, 10));
+        }
+
+        private void BorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
+            e.Graphics.DrawLine(pen, new Point(tableLayoutPanel4.Width / 20, tableLayoutPanel4.Height / 2), new Point(tableLayoutPanel4.Width * 19 / 20, tableLayoutPanel4.Height / 2));
+            System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            pen.Dispose();
         }
     }
 }

@@ -20,9 +20,46 @@ namespace UserInterface.Task.CreateTask
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePlaceHolders();
             toolTip1.SetToolTip(pictureBoxAttachment, "Click to Add attachment");
             toolTip1.SetToolTip(buttonSetMilestone, "Milestone");
             tableLayoutPanelFileName.Hide();
+        }
+
+        private void InitializePlaceHolders()
+        {
+            textBoxDesc.GotFocus += RemoveDescPlaceHolders;
+            textBoxDesc.LostFocus += AddDescPlaceHolders;
+            textBoxTaskName.GotFocus += RemoveTaskPlaceHolders;
+            textBoxTaskName.LostFocus += AddTaskPlaceHolders;
+        }
+
+        private void AddTaskPlaceHolders(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxTaskName.Text))
+                textBoxTaskName.Text = "Enter Task Title..";
+        }
+
+        private void RemoveTaskPlaceHolders(object sender, EventArgs e)
+        {
+            if (textBoxTaskName.Text == "Enter Task Title..")
+            {
+                textBoxTaskName.Text = "";
+            }
+        }
+
+        private void AddDescPlaceHolders(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxDesc.Text))
+                textBoxDesc.Text = "Enter Task Description..";
+        }
+
+        private void RemoveDescPlaceHolders(object sender, EventArgs e)
+        {
+            if (textBoxDesc.Text == "Enter Task Description..")
+            {
+                textBoxDesc.Text = "";
+            }
         }
 
         private TeamTracker.Task selectedTask;
@@ -37,8 +74,8 @@ namespace UserInterface.Task.CreateTask
 
         private void InitializePage()
         {
-            textBoxTaskName.TextBoxtext = selectedTask.TaskName;
-            textBoxDesc.TextBoxtext = selectedTask.TaskDesc;
+            textBoxTaskName.Text = selectedTask.TaskName;
+            textBoxDesc.Text = selectedTask.TaskDesc;
             var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             foreach (var Iter in milestoneList)
             {
@@ -50,7 +87,6 @@ namespace UserInterface.Task.CreateTask
             }
 
             tableLayoutPanel3.Visible = false;
-            employeeProfilePicAndName1.Profile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
             startDate.Value = selectedTask.StartDate;
             endDate.Value = selectedTask.EndDate;
             labelSetPriority.Text = selectedTask.TaskPriority.ToString();
@@ -91,17 +127,6 @@ namespace UserInterface.Task.CreateTask
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
-            tableLayoutPanel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel4.Width, tableLayoutPanel4.Height, 20, 20));
-            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
-            textBoxTaskName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxTaskName.Width, textBoxTaskName.Height, 10, 10));
-            textBoxDesc.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBoxDesc.Width, textBoxDesc.Height, 10, 10));
-            buttonCreate.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonCreate.Width, buttonCreate.Height, 10, 10));
-            buttonClose.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonClose.Width, buttonClose.Height, 10, 10));
-            buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
-            buttonSetMilestone.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonSetMilestone.Width, buttonSetMilestone.Height, 10, 10));
-            labelSetPriority.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelSetPriority.Width, labelSetPriority.Height, 10, 10));
-            tableLayoutPanelFileName.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanelFileName.Width, tableLayoutPanelFileName.Height, 10, 10));
         }
 
         private void OnClickPriorityBtn(object sender, Priority e)
@@ -153,7 +178,7 @@ namespace UserInterface.Task.CreateTask
             var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             foreach (var Iter in milestoneList)
             {
-                if(Iter.MileStoneName == (sender as Button).Text)
+                if (Iter.MileStoneName == (sender as Button).Text)
                 {
                     selectedMilestone = Iter;
                     buttonSetMilestone.Text = Iter.MileStoneName;
@@ -172,17 +197,14 @@ namespace UserInterface.Task.CreateTask
             TeamMembersDropForm.Show();
             TeamMembersDropForm.Location = formPoint;
             TeamMembersDropForm.Size = new Size(buttonSetMilestone.Width, TeamMembersDropForm.Height);
-
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
-
         }
 
         private void OnClickTeamMember(object sender, Employee e)
         {
             selectedTeamMember = e;
             Button clickedBtn = (sender as Button);
-            tableLayoutPanel3.Hide();
-            employeeProfilePicAndName1.Profile = e;
+            employeeName.Text = e.EmployeeFirstName;
             TeamMembersDropForm.Dispose();
         }
 
@@ -210,13 +232,13 @@ namespace UserInterface.Task.CreateTask
             {
                 if(buttonCreate.Text == "Create")
                 {
-                    TaskManager.AddTask(textBoxTaskName.TextBoxtext, textBoxDesc.TextBoxtext, startDate.Value.Date, endDate.Value.Date, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    TaskManager.AddTask(textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
                     ProjectManagerMainForm.notify.AddNotification("Project Created", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
                     DataHandler.AddNotification("Project Created", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
                 else
                 {
-                    TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.TextBoxtext, textBoxDesc.TextBoxtext, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
                     ProjectManagerMainForm.notify.AddNotification("Project Updated", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
                     DataHandler.AddNotification("Project Updated", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
@@ -236,12 +258,17 @@ namespace UserInterface.Task.CreateTask
 
         private BooleanMsg CheckConstraints()
         {
-            if(textBoxTaskName.TextBoxtext == "" || textBoxTaskName.TextBoxtext == "Task Name")
+            if(textBoxTaskName.Text == "" || textBoxTaskName.Text == "Task Name")
             {
                 return "Task Name has not been Entered";
             }
 
-            if(textBoxDesc.TextBoxtext == "" || textBoxDesc.TextBoxtext == "Description")
+            if(textBoxTaskName.Text.Length > 50)
+            {
+                return "Task Name Length should be within 1 and 50";
+            }
+
+            if(textBoxDesc.Text == "" || textBoxDesc.Text == "Description")
             {
                 return "Description has not been Entered";
             }
@@ -296,6 +323,53 @@ namespace UserInterface.Task.CreateTask
                 case Priority.Easy: pictureBoxFlag.Image = Properties.Resources.Easy; break;
                 default: pictureBoxFlag.Image = Properties.Resources.flag_empty;break;
             }
+        }
+
+        private void OnAssigneePanelPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawRectangle(border, rec);
+            e.Graphics.DrawLine(border, 245, 0, 245, 285);
+            border.Dispose();
+        }
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name == "pictureBox2")
+            {
+                if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
+
+                pictureBox2.Image = Properties.Resources.Close_Light_Blue_Hover;
+            }
+            else
+            {
+                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+
+                pictureBox1.Image = Properties.Resources.Close_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name == "pictureBox2")
+            {
+                if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
+
+                pictureBox2.Image = Properties.Resources.Close_Dark_Blue;
+            }
+            else
+            {
+                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+
+                pictureBox1.Image = Properties.Resources.Close_30;
+            }
+        }
+
+        private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

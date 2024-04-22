@@ -117,7 +117,19 @@ namespace TeamTracker
         private void OnTimelineTaskMouseEnter(object sender, EventArgs e)
         {
             isHovered = true;
-            Cursor = Cursors.Hand;
+            Point pt = (e as MouseEventArgs).Location;
+            if(0<=pt.X && pt.X <= 15 && DisplayMode == TimelineDisplayMode.LeftPartial)
+            {
+                Cursor = Cursors.SizeWE;
+            }
+            else if(Width - 15 <= pt.X && pt.X <= Width && DisplayMode == TimelineDisplayMode.RightPartial)
+            {
+                Cursor = Cursors.SizeWE;
+            }
+            else
+            {
+                Cursor = Cursors.Hand;
+            }
             label1.Invalidate();
         }
 
@@ -141,7 +153,7 @@ namespace TeamTracker
             if(e.Button == MouseButtons.Right)
             {
                 TaskOperationForm form = new TaskOperationForm();
-                form.Location = Cursor.Position;
+                form.Location = PointToScreen(new Point(Width, 0));
                 form.Operate += OnTaskOperation;
                 form.Show();
             }
@@ -291,6 +303,8 @@ namespace TeamTracker
 
             if (isDragging)
             {
+                isStartDateReached = TaskTimelineCheck?.Invoke(this);
+                isEndDateReached = TaskTimelineCheck?.Invoke(this);
                 if (Location.X + (e.X - offSet.X) <= 0)
                 {
                     isDragLeftEdged = true;

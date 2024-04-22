@@ -49,17 +49,19 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(20, 329);
+            this.panel1.Size = new System.Drawing.Size(30, 506);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(20, 309);
+            this.panel2.Location = new System.Drawing.Point(30, 475);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(485, 20);
+            this.panel2.Size = new System.Drawing.Size(748, 31);
             this.panel2.TabIndex = 1;
             this.panel2.Tag = "";
             // 
@@ -70,9 +72,10 @@
             this.panel3.Controls.Add(this.backBtn);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(20, 0);
+            this.panel3.Location = new System.Drawing.Point(30, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(485, 20);
+            this.panel3.Size = new System.Drawing.Size(748, 31);
             this.panel3.TabIndex = 2;
             this.panel3.Tag = "";
             // 
@@ -81,9 +84,10 @@
             this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
-            this.nextBtn.Location = new System.Drawing.Point(99, 0);
+            this.nextBtn.Location = new System.Drawing.Point(148, 0);
+            this.nextBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(23, 20);
+            this.nextBtn.Size = new System.Drawing.Size(34, 31);
             this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.nextBtn.TabIndex = 5;
             this.nextBtn.TabStop = false;
@@ -96,9 +100,10 @@
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
-            this.backBtn.Location = new System.Drawing.Point(76, 0);
+            this.backBtn.Location = new System.Drawing.Point(114, 0);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(23, 20);
+            this.backBtn.Size = new System.Drawing.Size(34, 31);
             this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.backBtn.TabIndex = 4;
             this.backBtn.TabStop = false;
@@ -113,8 +118,9 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.Size = new System.Drawing.Size(114, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Deploy";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -123,9 +129,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(505, 0);
+            this.panel4.Location = new System.Drawing.Point(778, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(20, 329);
+            this.panel4.Size = new System.Drawing.Size(30, 506);
             this.panel4.TabIndex = 3;
             // 
             // panel5
@@ -134,9 +141,10 @@
             this.panel5.Controls.Add(this.ucDeploy1);
             this.panel5.Controls.Add(this.ucNotFound1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(20, 20);
+            this.panel5.Location = new System.Drawing.Point(30, 31);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(485, 289);
+            this.panel5.Size = new System.Drawing.Size(748, 444);
             this.panel5.TabIndex = 4;
             // 
             // ucDeploy1
@@ -144,8 +152,9 @@
             this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucDeploy1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDeploy1.Location = new System.Drawing.Point(0, 0);
+            this.ucDeploy1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.ucDeploy1.Name = "ucDeploy1";
-            this.ucDeploy1.Size = new System.Drawing.Size(485, 289);
+            this.ucDeploy1.Size = new System.Drawing.Size(748, 444);
             this.ucDeploy1.TabIndex = 1;
             this.ucDeploy1.Deployment += new TeamTracker.UcDeploy.DeployHandler(this.OnDeployment);
             // 
@@ -156,22 +165,24 @@
             this.ucNotFound1.HeadText = "Zero Deployment Project !!";
             this.ucNotFound1.HeadTextSize = 12;
             this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(485, 289);
+            this.ucNotFound1.Size = new System.Drawing.Size(748, 444);
             this.ucNotFound1.TabIndex = 0;
             // 
             // DeployContent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DeployContent";
-            this.Size = new System.Drawing.Size(525, 329);
+            this.Size = new System.Drawing.Size(808, 506);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();

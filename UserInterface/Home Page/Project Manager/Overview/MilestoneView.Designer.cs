@@ -44,48 +44,48 @@
             // startPathAndDate5
             // 
             this.startPathAndDate5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate5.Location = new System.Drawing.Point(1296, 0);
+            this.startPathAndDate5.Location = new System.Drawing.Point(1948, 0);
             this.startPathAndDate5.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate5.MilestoneColor = System.Drawing.Color.Orange;
             this.startPathAndDate5.MilestoneDate = new System.DateTime(((long)(0)));
             this.startPathAndDate5.Name = "startPathAndDate5";
-            this.startPathAndDate5.Size = new System.Drawing.Size(178, 150);
+            this.startPathAndDate5.Size = new System.Drawing.Size(263, 231);
             this.startPathAndDate5.SytleOfPath = TeamTracker.PathStyle.End;
             this.startPathAndDate5.TabIndex = 8;
             // 
             // startPathAndDate4
             // 
             this.startPathAndDate4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate4.Location = new System.Drawing.Point(972, 0);
+            this.startPathAndDate4.Location = new System.Drawing.Point(1461, 0);
             this.startPathAndDate4.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate4.MilestoneColor = System.Drawing.Color.Orange;
             this.startPathAndDate4.MilestoneDate = new System.DateTime(((long)(0)));
             this.startPathAndDate4.Name = "startPathAndDate4";
-            this.startPathAndDate4.Size = new System.Drawing.Size(174, 150);
+            this.startPathAndDate4.Size = new System.Drawing.Size(262, 231);
             this.startPathAndDate4.SytleOfPath = TeamTracker.PathStyle.Middle;
             this.startPathAndDate4.TabIndex = 7;
             // 
             // startPathAndDate3
             // 
             this.startPathAndDate3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate3.Location = new System.Drawing.Point(648, 0);
+            this.startPathAndDate3.Location = new System.Drawing.Point(974, 0);
             this.startPathAndDate3.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate3.MilestoneColor = System.Drawing.Color.Orange;
             this.startPathAndDate3.MilestoneDate = new System.DateTime(((long)(0)));
             this.startPathAndDate3.Name = "startPathAndDate3";
-            this.startPathAndDate3.Size = new System.Drawing.Size(174, 150);
+            this.startPathAndDate3.Size = new System.Drawing.Size(262, 231);
             this.startPathAndDate3.SytleOfPath = TeamTracker.PathStyle.Middle;
             this.startPathAndDate3.TabIndex = 6;
             // 
             // startPathAndDate2
             // 
             this.startPathAndDate2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startPathAndDate2.Location = new System.Drawing.Point(324, 0);
+            this.startPathAndDate2.Location = new System.Drawing.Point(487, 0);
             this.startPathAndDate2.Margin = new System.Windows.Forms.Padding(0);
             this.startPathAndDate2.MilestoneColor = System.Drawing.Color.Blue;
             this.startPathAndDate2.MilestoneDate = new System.DateTime(((long)(0)));
             this.startPathAndDate2.Name = "startPathAndDate2";
-            this.startPathAndDate2.Size = new System.Drawing.Size(174, 150);
+            this.startPathAndDate2.Size = new System.Drawing.Size(262, 231);
             this.startPathAndDate2.SytleOfPath = TeamTracker.PathStyle.Middle;
             this.startPathAndDate2.TabIndex = 5;
             // 
@@ -97,7 +97,7 @@
             this.startPathAndDate1.MilestoneColor = System.Drawing.Color.Green;
             this.startPathAndDate1.MilestoneDate = new System.DateTime(((long)(0)));
             this.startPathAndDate1.Name = "startPathAndDate1";
-            this.startPathAndDate1.Size = new System.Drawing.Size(174, 150);
+            this.startPathAndDate1.Size = new System.Drawing.Size(262, 231);
             this.startPathAndDate1.SytleOfPath = TeamTracker.PathStyle.Start;
             this.startPathAndDate1.TabIndex = 4;
             // 
@@ -105,13 +105,13 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 9;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Controls.Add(this.singleMilestone4, 7, 0);
             this.tableLayoutPanel2.Controls.Add(this.singleMilestone3, 5, 0);
@@ -124,63 +124,65 @@
             this.tableLayoutPanel2.Controls.Add(this.singleMilestone1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1474, 150);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(2211, 231);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // singleMilestone4
             // 
             this.singleMilestone4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone4.Location = new System.Drawing.Point(1146, 0);
+            this.singleMilestone4.Location = new System.Drawing.Point(1723, 0);
             this.singleMilestone4.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone4.MilestoneColor = System.Drawing.Color.Empty;
             this.singleMilestone4.MilestoneContent = null;
             this.singleMilestone4.Name = "singleMilestone4";
-            this.singleMilestone4.Size = new System.Drawing.Size(150, 150);
+            this.singleMilestone4.Size = new System.Drawing.Size(231, 231);
             this.singleMilestone4.TabIndex = 12;
             // 
             // singleMilestone3
             // 
             this.singleMilestone3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone3.Location = new System.Drawing.Point(822, 0);
+            this.singleMilestone3.Location = new System.Drawing.Point(1236, 0);
             this.singleMilestone3.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone3.MilestoneColor = System.Drawing.Color.Empty;
             this.singleMilestone3.MilestoneContent = null;
             this.singleMilestone3.Name = "singleMilestone3";
-            this.singleMilestone3.Size = new System.Drawing.Size(150, 150);
+            this.singleMilestone3.Size = new System.Drawing.Size(231, 231);
             this.singleMilestone3.TabIndex = 11;
             // 
             // singleMilestone2
             // 
             this.singleMilestone2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone2.Location = new System.Drawing.Point(498, 0);
+            this.singleMilestone2.Location = new System.Drawing.Point(749, 0);
             this.singleMilestone2.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone2.MilestoneColor = System.Drawing.Color.Empty;
             this.singleMilestone2.MilestoneContent = null;
             this.singleMilestone2.Name = "singleMilestone2";
-            this.singleMilestone2.Size = new System.Drawing.Size(150, 150);
+            this.singleMilestone2.Size = new System.Drawing.Size(231, 231);
             this.singleMilestone2.TabIndex = 10;
             // 
             // singleMilestone1
             // 
             this.singleMilestone1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleMilestone1.Location = new System.Drawing.Point(174, 0);
+            this.singleMilestone1.Location = new System.Drawing.Point(262, 0);
             this.singleMilestone1.Margin = new System.Windows.Forms.Padding(0);
             this.singleMilestone1.MilestoneColor = System.Drawing.Color.Empty;
             this.singleMilestone1.MilestoneContent = null;
             this.singleMilestone1.Name = "singleMilestone1";
-            this.singleMilestone1.Size = new System.Drawing.Size(150, 150);
+            this.singleMilestone1.Size = new System.Drawing.Size(231, 231);
             this.singleMilestone1.TabIndex = 9;
             // 
             // MilestoneView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MilestoneView";
-            this.Size = new System.Drawing.Size(1474, 150);
+            this.Size = new System.Drawing.Size(2211, 231);
             this.Resize += new System.EventHandler(this.OnMilestoneViewResize);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);

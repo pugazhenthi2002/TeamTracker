@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.Task.CreateTask;
+using UserInterface.ViewPage;
 
 namespace TeamTracker
 {
@@ -87,10 +88,13 @@ namespace TeamTracker
 
             foreach (Milestone milestone in milestoneList)
             {
-                Button mileStoneBtn = new Button();
+                Label mileStoneBtn = new Label();
+                mileStoneBtn.AutoSize = false;
+                mileStoneBtn.TextAlign = ContentAlignment.MiddleCenter;
                 mileStoneBtn.FlatStyle = FlatStyle.Flat;
-                mileStoneBtn.FlatAppearance.BorderSize = 0;
-                mileStoneBtn.ForeColor = Color.FromArgb(201, 210, 217);
+                mileStoneBtn.ForeColor = Color.FromArgb(39, 55, 77);
+                mileStoneBtn.BackColor = Color.Transparent;
+                mileStoneBtn.Font = new Font(new FontFamily("Ebrima"), 12, FontStyle.Bold);
                 mileStoneBtn.Text = milestone.MileStoneName;
                 mileStoneBtn.Size = new Size(this.Width, 50);
                 mileStoneBtn.Dock = DockStyle.Top;
@@ -102,13 +106,15 @@ namespace TeamTracker
             {
                 Iter.BringToFront();
             }
+            this.Invalidate();
         }
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
             if(IsMilestoneAlreadyCompleted((sender as Button).Text))
             {
-                MilestoneWarningForm form = new MilestoneWarningForm();
+                WarningForm form = new WarningForm();
+                form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
                 form.WarningStatus += OnWarningStatus;
                 form.Show();
             }
@@ -145,6 +151,17 @@ namespace TeamTracker
             }
 
             return false;
+        }
+
+        private void MilestoneDropDownForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            for(int i = 50; i < 200; i+=50)
+            {
+                e.Graphics.DrawLine(border, 3, i, Width - 3, i);
+            }
+            border.Dispose();
         }
     }
 }

@@ -186,5 +186,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             base.OnLostFocus(e);
             this.Close();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.Focus();
+        }
     }
 }

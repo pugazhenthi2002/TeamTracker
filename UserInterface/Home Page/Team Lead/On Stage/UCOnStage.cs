@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Windows;
 
 namespace TeamTracker
 {
@@ -65,30 +66,7 @@ namespace TeamTracker
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
-        private void OnPaintPanelBaseMilestone(object sender, PaintEventArgs e)
-        {
-            Point pt1 = new Point(4, 4);
-            Point pt2 = new Point((sender as Panel).Width - 6, 4);
-            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
-            Point pt4 = new Point(4, (sender as Panel).Height - 6);
-            Pen border = new Pen(Color.Black, 2);
-            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
-
-        private void OnClickCloseMilestone(object sender, UcMilestone e)
-        {
-            milestoneList.Remove(e);
-        }
-
-        private void CloseForm()
-        {
-            var f1 = (Application.OpenForms.OfType<AddMilestoneForm>().FirstOrDefault());
-            if (f1 != null)
-            {
-                f1.Close();
-            }
-        }
-
+        
         private void OnClickDownloadAttachement(object sender, EventArgs e)
         {
             List<VersionAttachment> attachments = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
@@ -127,11 +105,19 @@ namespace TeamTracker
         private void OnMouseEnterDownload(object sender, EventArgs e)
         {
             pictureBoxDownload.BackColor = labelDownload.BackColor = Color.FromArgb(62, 89, 110);
+
+            if (pictureBoxDownload.Image != null) pictureBoxDownload.Image.Dispose();
+
+            pictureBoxDownload.Image = UserInterface.Properties.Resources.Download_Medium_Blue_Color;
         }
 
         private void OnMouseLeaveDownload(object sender, EventArgs e)
         {
             pictureBoxDownload.BackColor = labelDownload.BackColor = Color.FromArgb(82, 109, 130);
+
+            if (pictureBoxDownload.Image != null) pictureBoxDownload.Image.Dispose();
+
+            pictureBoxDownload.Image = UserInterface.Properties.Resources.Download_Light_Blue;
         }
 
         private void OnClickDiscard(object sender, EventArgs e)
@@ -178,7 +164,7 @@ namespace TeamTracker
             form.SelectedVersion = selectedVersion;
             form.MilestoneCollection = MilestoneCollection;
             form.MilestoneExtract += OnMilestoneExtraction;
-            form.Show();
+            form.ShowDialog(this);
         }
 
         private void OnMilestoneExtraction(object sender, List<Milestone> e)
@@ -201,6 +187,14 @@ namespace TeamTracker
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border.Dispose();
+        }
+
+        private void OnDescriptionPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.DrawLine(border, new System.Drawing.Point(0,(sender as Control).Height - 2), new System.Drawing.Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }
     }

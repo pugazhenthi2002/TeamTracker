@@ -133,8 +133,8 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            upButton.Image = IsUpSwapEnable ? Properties.Resources.sort_up : Properties.Resources.sort_up_hover;
-            downButton.Image = IsDownSwapEnable ? Properties.Resources.sort_down : Properties.Resources.sort_down_hover;
+            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Medium_Blue;
+            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
         }
 
         private void OnValueChanged(object sender, EventArgs e)
@@ -213,7 +213,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyData == Keys.Enter && isEligibleContraints != null && isEligibleContraints == true)
+            if (e.KeyData == Keys.Enter && isEligibleContraints != null && isEligibleContraints == true)
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
@@ -237,6 +237,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
                     Movement = MilestoneOperation.Steady,
                     Position = Convert.ToInt32(counterLabel.Text)
                 });
+
             }
         }
 
@@ -261,6 +262,60 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             base.OnResize(e);
             InitializeRoundedEdge();
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
+            border.Dispose(); 
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Hand;
+            if (picBox.Name == "upButton")
+            {
+                picBox.Image = Properties.Resources.Up_Dark_Blue_Hover;
+            }
+            else
+            {
+                picBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Default;
+            if (picBox.Name == "upButton")
+            {
+                picBox.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Dark_Blue;
+            }
+            else
+            {
+                picBox.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Dark_Blue;
+            }
+        }
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            if(closeButton.Image != null)   closeButton.Image.Dispose();
+
+            closeButton.Image = Properties.Resources.Close_Light_Blue_Hover;
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            if (closeButton.Image != null) closeButton.Image.Dispose();
+
+            closeButton.Image = Properties.Resources.Close_30;
         }
     }
 }

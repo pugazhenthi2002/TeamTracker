@@ -117,16 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBoxDownload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAALhJREFUSEvtlbEOwiAQhnkNJwcXBxcXF99eow9BAI3xaMRD+wb1sGdqFFO1txj7
-        JX/SXOE7GkJR/4P1uLI+VnVwyWU5GnkdLsvRN2ilb9CKeAMD6B6lLwNoedr72AJnxmPMCu8DWBqIc572
-        GXp/npIgZMWU6wJoITz8OzZwHNO/Z/ckh+hNESc8rBvOn4Yk1Y0cnT6UI34twzaEAX3JOiU9c7lHkHRL
-        3TaxezI3nmQDOh8L1v48Sl0AmQjMReQBBTYAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

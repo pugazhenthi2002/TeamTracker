@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.Home_Page.Team_Lead.On_Stage;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace TeamTracker
 {
@@ -32,7 +33,7 @@ namespace TeamTracker
                 if (value != null)
                 {
                     selectedVersion = value;
-                    startDateLabel.Text = value.EndDate.ToShortDateString();
+                    startDateLabel.Text = value.StartDate.ToShortDateString();
                     endDateLabel.Text = value.EndDate.ToShortDateString();
                     prevEndDate = startDate = value.StartDate;
                     endDate = value.EndDate;
@@ -101,6 +102,11 @@ namespace TeamTracker
 
         private BooleanMsg IsEligibleToAdd()
         {
+            if(milestoneTextBox.Text.Length == 0 || milestoneTextBox.Text.Length > 30)
+            {
+                return "Milestone Name Length should be Between 0 and 30";
+            }
+
             if(!(prevEndDate < milestoneDateTime.Value.Date && milestoneDateTime.Value.Date <= endDate))
             {
                 return "Milestone Date is Invalid\nEnd Date should be within Previous Milestone Start Date and Version End Date";
@@ -277,11 +283,11 @@ namespace TeamTracker
             return true;
         }
 
-        private void OnBorderPaint(object sender, PaintEventArgs e)
+        private void OnLineSeperatePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77));
-            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
+            Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
         }
 
@@ -431,8 +437,8 @@ namespace TeamTracker
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Light_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
         }
 
         private void SetMilestoneTemplates()
@@ -458,6 +464,100 @@ namespace TeamTracker
                 Iter.BringToFront();
             }
             InitializeControl();
+        }
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            if (closeButton.Image != null) closeButton.Image.Dispose();
+
+            closeButton.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            if (closeButton.Image != null) closeButton.Image.Dispose();
+
+            closeButton.Image = UserInterface.Properties.Resources.Close_30;
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Hand;
+            if (picBox.Name == "upPicBox")
+            {
+                picBox.Image = UserInterface.Properties.Resources.Up_Light_Blue_Hover;
+            }
+            else
+            {
+                picBox.Image = UserInterface.Properties.Resources.Down_Light_Blue_Hover;
+            }
+        }
+
+        private void OnCurveBorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(157, 178, 191), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            if (sender is PictureBox)
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
+            else
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+
+            border1.Dispose();
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            PictureBox picBox = (sender as PictureBox);
+            if (picBox.Image != null)
+                picBox.Image.Dispose();
+            Cursor = Cursors.Default;
+            if (picBox.Name == "upPicBox")
+            {
+                picBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Light_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            }
+            else
+            {
+                picBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            }
+        }
+
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeRoundEdges()
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 30, 30));
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 30, 30));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundEdges();
         }
     }
 }

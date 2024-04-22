@@ -71,7 +71,7 @@ namespace TeamTracker
                 foreach (var Iter in result1)
                 {
                     seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                    colorIndex = (colorIndex + 1) % colorList.Count;
+                    colorIndex = (colorIndex + 2) % colorList.Count;
                 }
                 pieChart1.Series = seriesCollection;
             }

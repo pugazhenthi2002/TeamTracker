@@ -108,6 +108,15 @@ namespace UserInterface.Task
             {
                 Iter.BringToFront();
             }
+
+            IsBackEnable = startIdx == 0 ? false : true;
+            IsNextEnable = endIdx == underReviewCollection.Count - 1 ? false : true;
+
+            if (backPicBox.Image != null) backPicBox.Image.Dispose();
+            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+
+            backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
 
         private void BackClick(object sender, EventArgs e)
@@ -125,6 +134,34 @@ namespace UserInterface.Task
             {
                 startIdx++; endIdx++;
                 ResetReviewUI();
+            }
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if ((sender as Control).Name == "backPicBox")
+            {
+                backPicBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+            }
+            else
+            {
+                nextPicBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if((sender as PictureBox).Image != null)    (sender as PictureBox).Image.Dispose(); 
+
+            if((sender as Control).Name == "backPicBox")
+            {
+                backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            }
+            else
+            {
+                nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
             }
         }
 
@@ -163,8 +200,8 @@ namespace UserInterface.Task
             if (backPicBox.Image != null) backPicBox.Image.Dispose();
             if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
 
-            backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-            nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
     }
 }

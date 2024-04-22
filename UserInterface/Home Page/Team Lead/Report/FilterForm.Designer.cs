@@ -56,12 +56,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(225, 120);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 185);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel3
@@ -69,10 +70,10 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.priorityDropDownPicBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 80);
+            this.panel3.Location = new System.Drawing.Point(0, 122);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(225, 40);
+            this.panel3.Size = new System.Drawing.Size(338, 63);
             this.panel3.TabIndex = 2;
             // 
             // label2
@@ -80,20 +81,23 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Location = new System.Drawing.Point(35, 0);
+            this.label2.Location = new System.Drawing.Point(52, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 40);
+            this.label2.Size = new System.Drawing.Size(286, 63);
             this.label2.TabIndex = 2;
             this.label2.Text = "Priority";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // priorityDropDownPicBox
             // 
+            this.priorityDropDownPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.priorityDropDownPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.priorityDropDownPicBox.Image = ((System.Drawing.Image)(resources.GetObject("priorityDropDownPicBox.Image")));
             this.priorityDropDownPicBox.Location = new System.Drawing.Point(0, 0);
+            this.priorityDropDownPicBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.priorityDropDownPicBox.Name = "priorityDropDownPicBox";
-            this.priorityDropDownPicBox.Size = new System.Drawing.Size(35, 40);
+            this.priorityDropDownPicBox.Size = new System.Drawing.Size(52, 63);
             this.priorityDropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.priorityDropDownPicBox.TabIndex = 1;
             this.priorityDropDownPicBox.TabStop = false;
@@ -107,7 +111,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 40);
+            this.panel1.Size = new System.Drawing.Size(338, 61);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -115,20 +119,23 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label1.Location = new System.Drawing.Point(35, 0);
+            this.label1.Location = new System.Drawing.Point(52, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 40);
+            this.label1.Size = new System.Drawing.Size(286, 61);
             this.label1.TabIndex = 1;
             this.label1.Text = "Month";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // monthDropDownPicBox
             // 
+            this.monthDropDownPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.monthDropDownPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.monthDropDownPicBox.Image = ((System.Drawing.Image)(resources.GetObject("monthDropDownPicBox.Image")));
             this.monthDropDownPicBox.Location = new System.Drawing.Point(0, 0);
+            this.monthDropDownPicBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.monthDropDownPicBox.Name = "monthDropDownPicBox";
-            this.monthDropDownPicBox.Size = new System.Drawing.Size(35, 40);
+            this.monthDropDownPicBox.Size = new System.Drawing.Size(52, 61);
             this.monthDropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.monthDropDownPicBox.TabIndex = 0;
             this.monthDropDownPicBox.TabStop = false;
@@ -143,12 +150,12 @@
             this.tableLayoutPanel2.Controls.Add(this.textBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.setLabel, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 40);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 61);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(225, 40);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(338, 61);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // textBox1
@@ -158,11 +165,11 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBox1.Location = new System.Drawing.Point(20, 7);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(20, 7, 0, 0);
+            this.textBox1.Location = new System.Drawing.Point(30, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(30, 11, 0, 0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(126, 33);
+            this.textBox1.Size = new System.Drawing.Size(189, 50);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "2024";
             this.textBox1.TextChanged += new System.EventHandler(this.OnTextChanged);
@@ -170,12 +177,14 @@
             // 
             // setLabel
             // 
+            this.setLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.setLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.setLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.setLabel.Location = new System.Drawing.Point(149, 0);
+            this.setLabel.Location = new System.Drawing.Point(223, 0);
+            this.setLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.setLabel.Name = "setLabel";
-            this.setLabel.Size = new System.Drawing.Size(73, 40);
+            this.setLabel.Size = new System.Drawing.Size(111, 61);
             this.setLabel.TabIndex = 1;
             this.setLabel.Text = "Set";
             this.setLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -183,12 +192,13 @@
             // 
             // FilterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(225, 120);
+            this.ClientSize = new System.Drawing.Size(338, 185);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FilterForm";

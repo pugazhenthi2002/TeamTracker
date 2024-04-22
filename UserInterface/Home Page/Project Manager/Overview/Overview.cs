@@ -98,19 +98,25 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
-            e.Graphics.DrawLine(pen, new Point(200, 0), new Point(200, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(panel7.Width - 36, 0), new Point(panel7.Width - 36, panel7.Height - 1));
             pen.Dispose();
         }
 
         private void OnDropDownMouseLEave(object sender, EventArgs e)
         {
-            dropDownPicBox.BackColor = Color.FromArgb(241, 250, 255);
+            if (dropDownPicBox.Image != null)
+                dropDownPicBox.Image.Dispose();
+
+            dropDownPicBox.Image = Properties.Resources.Down_Dark_Blue;
             panel7.Invalidate();
         }
 
         private void OnDropDownMouseEnter(object sender, EventArgs e)
         {
-            dropDownPicBox.BackColor = Color.FromArgb(221, 230, 237);
+            if (dropDownPicBox.Image != null)
+                dropDownPicBox.Image.Dispose();
+
+            dropDownPicBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
             panel7.Invalidate();
         }
     }

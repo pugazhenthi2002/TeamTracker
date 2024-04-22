@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
 using System.Runtime.InteropServices;
+using LiveCharts.Wpf;
+using LiveCharts;
+using System.Windows.Media;
 
 namespace UserInterface.Home_Page.Project_Manager.Overview
 {
@@ -70,9 +73,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
               int nHeightEllipse // width of ellipse
           );
 
-        
-
-
         private void BackMilestoneClick(object sender, EventArgs e)
         {
             if (IsBackEnable)
@@ -118,8 +118,17 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (flag > 0) IsNextEnable = false;
             else { IsNextEnable = IsBackEnable = true; }
 
-            taskCompletionProgressBar1.TotalTask = result[0];
-            taskCompletionProgressBar1.CompletedTask = result[1];
+            var colorList = ColorManager.ColorFadingOut;
+            int colorIndex = 0;
+            Dictionary<TeamTracker.TaskStatus, int> result1 = TaskManager.FetchTaskCountByStatus(VersionManager.CurrentVersion.VersionID);
+
+            SeriesCollection seriesCollection = new SeriesCollection();
+            foreach (var Iter in result1)
+            {
+                seriesCollection.Add(new PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
+                colorIndex = (colorIndex + 2) % colorList.Count;
+            }
+            pieChart1.Series = seriesCollection;
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -156,7 +165,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnTablePanelPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(221, 230, 237), 2);
+            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawLine(pen, new Point(15, panel1.Height), new Point((sender as TableLayoutPanel).Width - 15, panel1.Height));
             pen.Dispose();
@@ -164,23 +173,31 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnLegendPaint(object sender, PaintEventArgs e)
         {
-            Brush brush;
-            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(Color.FromArgb(3, 4, 94));
-            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(Color.FromArgb(0, 119, 182));
-            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(Color.FromArgb(0, 180, 216));
-            else brush = new SolidBrush(Color.FromArgb(144, 224, 239));
+            System.Drawing.Brush brush;
+            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(System.Drawing.Color.FromArgb(3, 4, 94));
+            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(System.Drawing.Color.FromArgb(0, 119, 182));
+            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(System.Drawing.Color.FromArgb(0, 180, 216));
+            else brush = new SolidBrush(System.Drawing.Color.FromArgb(144, 224, 239));
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width-1, (sender as Panel).Height-1));
+            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width-2, (sender as Panel).Height-2));
             brush.Dispose();
         }
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(221, 230, 237));
+            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+        }
+
+        private void MilestoneDividerPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            System.Drawing.Pen border = new System.Drawing.Pen(System.Drawing.Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0, 0), new Point((sender as Control).Width, 0));
+            border.Dispose();
         }
 
         private void InitializeRoundedEdge()
@@ -190,8 +207,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
-            backNavigatePicBox.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, backNavigatePicBox.Width, backNavigatePicBox.Height, 10, 10));
-            nextNavPicBox.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, nextNavPicBox.Width, nextNavPicBox.Height, 10, 10));
         }
     }
 }

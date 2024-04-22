@@ -33,5 +33,11 @@ namespace UserInterface.Task.Timeline
         {
             Operate?.Invoke(this, OperateType.Delete);
         }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.Close();
+        }
     }
 }

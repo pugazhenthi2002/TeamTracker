@@ -37,8 +37,8 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
                     if (nextBtn.Image != null) nextBtn.Image.Dispose();
                     if (backBtn.Image != null) backBtn.Image.Dispose();
 
-                    nextBtn.Image = isNextEnable ? Properties.Resources.Next_LightBlue : Properties.Resources.Next_Hover;
-                    backBtn.Image = isBackEnable ? Properties.Resources.Back_LightBlue : Properties.Resources.Back_Hover;
+                    nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
+                    backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
 
                     ucDeploy1.Version = value[counter];
                 }
@@ -184,8 +184,8 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             if (nextBtn.Image != null) nextBtn.Image.Dispose();
             if (backBtn.Image != null) backBtn.Image.Dispose();
 
-            nextBtn.Image = isNextEnable ? Properties.Resources.Next_LightBlue : Properties.Resources.Next_Hover;
-            backBtn.Image = isBackEnable ? Properties.Resources.Back_LightBlue : Properties.Resources.Back_Hover;
+            nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
+            backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
         }
     }
 }

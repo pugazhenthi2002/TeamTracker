@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
+using TeamTracker;
 
 
 namespace UserInterface.Home_Page.Project_Manager.Overview
@@ -23,15 +24,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private Dictionary<string, int> taskCounts;
         private DateTime endDate;
         private int colorIndex=0;
-        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>
-        {
-            System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
-        };
+        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>();
 
         public MilestoneDetailsForm()
         {
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            colorList = ColorManager.ColorFadingOut;
         }
 
 
@@ -90,7 +89,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             {
                 seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
 
-                colorIndex = (colorIndex + 1) % colorList.Count;
+                colorIndex = (colorIndex + 2) % colorList.Count;
 
                 count = count + Iter.Value;
             }
@@ -103,10 +102,14 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void InitializeEndDate()
         {
-            labelActualEndDate.Text = endDate + "";
+            labelActualEndDate.Text = endDate.ToShortDateString();
         }
 
-
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
 
     }
 }
