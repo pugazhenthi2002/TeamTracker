@@ -45,6 +45,7 @@ namespace UserInterface.Task
                 milestoneSwitch1.InitializePage();
             }
             currentTimelineContent1.Version = VersionManager.CurrentVersion;
+            currentTimelineContent1.MilestoneCollection = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
         }
 

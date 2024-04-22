@@ -50,6 +50,8 @@ namespace UserInterface.Task.Timeline
             }
         }
 
+        public List<Milestone> MilestoneCollection { get; internal set; }
+
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
             int width, x, y, stepWidth;
@@ -92,6 +94,7 @@ namespace UserInterface.Task.Timeline
 
             for (int ctr = 0; ctr < labelCollections.Count; ctr++)
             {
+                //labelCollections[ctr].BackColor = 
                 labelCollections[ctr].Text = monthCollections[iterDate.Month - 1] + "\n" + iterDate.Day;
                 iterDate = iterDate.AddDays(1);
             }
@@ -351,12 +354,45 @@ namespace UserInterface.Task.Timeline
             {
                 if (selectedTask.TaskID == Iter.TaskID)
                 {
-                    DateTime startDate = startViewDate.AddDays(start), endDate = startViewDate.AddDays(end);
+                    DateTime startDate, endDate;
+                    if (direction == 1)
+                    {
+                        startDate = selectedTask.StartDate;
+                        endDate = startViewDate.AddDays(end);
+                    }
+                    else if(direction == -1)
+                    {
+                        startDate = startViewDate.AddDays(start);
+                        endDate = selectedTask.EndDate;
+                    }
+                    else
+                    {
+                        int duration = (Iter.EndDate - Iter.StartDate).Days;
+                        //duration++;
+                        if(Iter.StartDate < startViewDate)
+                        {
+                            endDate = startViewDate.AddDays(end);
+                            startDate = endDate.AddDays(-duration);
+                        }
+                        else if(endViewDate < Iter.EndDate)
+                        {
+                            startDate = startViewDate.AddDays(start);
+                            endDate = startDate.AddDays(duration);
+                        }
+                        else
+                        {
+                            startDate = startViewDate.AddDays(start);
+                            endDate = startViewDate.AddDays(end);
+                        }
+                    }
+
                     if (MilestoneManager.IsTaskWithinTheMilestone(startDate, endDate, selectedTask.MilestoneID))
                     {
                         iterDate = startViewDate;
                         Iter.StartDate = startDate;
                         Iter.EndDate = endDate;
+                        TaskManager.UpdateTask(Iter.TaskID, Iter.TaskName, Iter.TaskDesc, Iter.StartDate, Iter.EndDate, Iter.StatusOfTask, Iter.MilestoneID, Iter.TaskPriority, Iter.AssignedTo, null);
+                        ProjectManagerMainForm.notify.AddNotification("Task Updation", "Task Date has been Updated");
                     }
                     else
                     {

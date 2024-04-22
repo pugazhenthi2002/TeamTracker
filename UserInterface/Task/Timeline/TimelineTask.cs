@@ -196,7 +196,12 @@ namespace TeamTracker
             if (isDragLeftEdged || isDragRightEdged || isLeftEdged || isRightEdged)
                 edgeTimer.Stop();
 
-            TaskDateChange?.Invoke(this, selectedTask, 0);
+            if (isRightSliderClicked)
+                TaskDateChange?.Invoke(this, selectedTask, 1);
+            else if (isLeftSliderClicked)
+                TaskDateChange?.Invoke(this, selectedTask, -1);
+            else
+                TaskDateChange?.Invoke(this, selectedTask, 0);
 
             var x = Location;
             isRightSliderClicked = false;
