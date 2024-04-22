@@ -108,19 +108,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         private void OnFilterClick(object sender, EventArgs e)
         {
-            if (form != null && !form.IsDisposed)
-            {
-                form.Dispose();
-                form.Close();
-            }
-            else
-            {
-                form = new FilterForm();
-                form.Month = month; form.Year = year; form.Priority = priority;
-                form.Location = filterPicBox.PointToScreen(new Point(-225, 0));
-                form.Filter += OnFiltered;
-                form.ShowDialog();
-            }
+            form = new FilterForm();
+            form.Month = month; form.Year = year; form.Priority = priority;
+            form.Location = filterPicBox.PointToScreen(new Point(-225, 0));
+            form.Filter += OnFiltered;
+            form.ShowDialog();
         }
 
         private void OnFiltered(int month, int year, int priority)
@@ -166,7 +158,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                     foreach (var Iter in result1)
                     {
                         seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                        colorIndex = (colorIndex + 2) % colorList.Count;
+                        colorIndex = (colorIndex + 3) % colorList.Count;
                     }
                     pieChart1.Series = seriesCollection;
                 }

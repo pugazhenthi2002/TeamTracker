@@ -82,6 +82,7 @@ namespace UserInterface.Task
                 IsBackEnable = false;
                 IsNextEnable = endIdx > 5 ? true : false;
                 CreateReviewUI();
+                panelBase.Visible = true;
             }
             else
             {

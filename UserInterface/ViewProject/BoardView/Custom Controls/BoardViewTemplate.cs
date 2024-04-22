@@ -131,7 +131,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             ProjectInfoForm form = new ProjectInfoForm();
             form.SelectedVersion = BoardVersion;
-            form.Show();
+            form.ShowDialog();
         }
 
         private void OnUserControlPaint(object sender, PaintEventArgs e)

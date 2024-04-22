@@ -99,19 +99,32 @@ namespace TeamTracker
                 mileStoneBtn.Size = new Size(this.Width, 50);
                 mileStoneBtn.Dock = DockStyle.Top;
                 mileStoneBtn.Click += OnClickMilestoneBtn;
+                mileStoneBtn.MouseEnter += OnMilestoneMouseEntered;
+                mileStoneBtn.MouseLeave += OnMilestoneMouseLeft;
                 this.Controls.Add(mileStoneBtn);
             }
 
-            foreach(Button Iter in Controls)
+            foreach(Control Iter in Controls)
             {
                 Iter.BringToFront();
             }
             this.Invalidate();
+            Focus();
+        }
+
+        private void OnMilestoneMouseLeft(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void OnMilestoneMouseEntered(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
         }
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
-            if(IsMilestoneAlreadyCompleted((sender as Button).Text))
+            if(IsMilestoneAlreadyCompleted((sender as Label).Text))
             {
                 WarningForm form = new WarningForm();
                 form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
@@ -120,7 +133,7 @@ namespace TeamTracker
             }
             else
             {
-                MilestoneClick?.Invoke(sender as Button, e);
+                MilestoneClick?.Invoke(sender, e);
                 this.Close();
             }
         }

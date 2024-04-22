@@ -117,19 +117,6 @@ namespace TeamTracker
         private void OnTimelineTaskMouseEnter(object sender, EventArgs e)
         {
             isHovered = true;
-            Point pt = (e as MouseEventArgs).Location;
-            if(0<=pt.X && pt.X <= 15 && DisplayMode == TimelineDisplayMode.LeftPartial)
-            {
-                Cursor = Cursors.SizeWE;
-            }
-            else if(Width - 15 <= pt.X && pt.X <= Width && DisplayMode == TimelineDisplayMode.RightPartial)
-            {
-                Cursor = Cursors.SizeWE;
-            }
-            else
-            {
-                Cursor = Cursors.Hand;
-            }
             label1.Invalidate();
         }
 
@@ -219,7 +206,9 @@ namespace TeamTracker
 
         private void OnEdgeTick(object sender, EventArgs e)
         {
-            if(isRightEdged)
+            isStartDateReached = TaskTimelineCheck?.Invoke(this);
+            isEndDateReached = TaskTimelineCheck?.Invoke(this);
+            if (isRightEdged)
             {
                 if (!Convert.ToBoolean(isEndDateReached))
                 {
@@ -242,7 +231,7 @@ namespace TeamTracker
             {
                 if (!Convert.ToBoolean(isStartDateReached))
                 {
-                    TimeLineMovement?.Invoke(this, selectedTask, -1);
+                    TimeLineMovement?.Invoke(this, selectedTask, -2);
                 }
             }
 
@@ -250,14 +239,34 @@ namespace TeamTracker
             {
                 if (!Convert.ToBoolean(isEndDateReached))
                 {
-                    TimeLineMovement?.Invoke(this, selectedTask, 1);
+                    TimeLineMovement?.Invoke(this, selectedTask, 2);
                 }
+            }
+
+            if (Convert.ToBoolean(isStartDateReached))
+            {
+                ;
             }
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
             this.SuspendLayout();
+
+            Point pt = e.Location;
+            if (0 <= pt.X && pt.X <= 15 && (DisplayMode == TimelineDisplayMode.RightPartial || DisplayMode == TimelineDisplayMode.Full))
+            {
+                Cursor = Cursors.SizeWE;
+            }
+            else if (Width - 15 <= pt.X && pt.X <= Width && (DisplayMode == TimelineDisplayMode.LeftPartial || DisplayMode == TimelineDisplayMode.Full))
+            {
+                Cursor = Cursors.SizeWE;
+            }
+            else
+            {
+                Cursor = Cursors.SizeAll;
+            }
+
             if (isRightSliderClicked)
             {
                 isEndDateReached = TaskTimelineCheck?.Invoke(this);
@@ -318,9 +327,15 @@ namespace TeamTracker
                 else
                 {
                     if (isDragRightEdged)
+                    {
+                        isDragRightEdged = false;
                         edgeTimer.Stop();
+                    }
                     if (isDragLeftEdged)
+                    {
+                        isDragLeftEdged = false;
                         edgeTimer.Stop();
+                    }
 
                     Location = new Point(Location.X + (e.X - offSet.X), Location.Y + (e.Y - offSet.Y));
                 }

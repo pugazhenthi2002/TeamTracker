@@ -79,35 +79,7 @@ namespace TeamTracker
 
         private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
         {
-            if (sender is Label)
-            {
-                if ((sender as Label).Name == "labelAttachment")
-                {
-                    pictureBoxAttachment.SizeMode = PictureBoxSizeMode.Zoom;
 
-                }
-                else
-                {
-                    pictureBoxSoureCode.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-                (sender as Label).Font = new Font((sender as Label).Font.FontFamily, 10, FontStyle.Bold);
-                return;
-            }
-            else
-            {
-
-                if ((sender as PictureBox).Name == "pictureBoxSoureCode")
-                {
-                    labelSourceCode.Font = new Font(labelSourceCode.Font.FontFamily, 10, FontStyle.Bold);
-                }
-                else
-                {
-                    labelAttachment.Font = new Font(labelAttachment.Font.FontFamily, 10, FontStyle.Bold);
-                }
-
-
-                (sender as PictureBox).SizeMode = PictureBoxSizeMode.Zoom;
-            }
         }
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
@@ -172,26 +144,6 @@ namespace TeamTracker
         private void OnClose(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void OnMouseEnterDownloadSource(object sender, EventArgs e)
-        {
-            pictureBoxSoureCode.BackColor = labelSourceCode.BackColor = Color.FromArgb(201, 210, 217);
-        }
-
-        private void OnMouseLeaveDownloadSource(object sender, EventArgs e)
-        {
-            pictureBoxSoureCode.BackColor = labelSourceCode.BackColor = Color.FromArgb(221, 230, 237);
-        }
-
-        private void OnMouseEnterDownloadAttachment(object sender, EventArgs e)
-        {
-            labelAttachment.BackColor = pictureBoxAttachment.BackColor = Color.FromArgb(201, 210, 217);
-        }
-
-        private void OnMouseLeaveDownloadAttachment(object sender, EventArgs e)
-        {
-            labelAttachment.BackColor = pictureBoxAttachment.BackColor = Color.FromArgb(221, 230, 237);
         }
 
         private void SourceCodeDownload(object sender, EventArgs e)
@@ -268,6 +220,31 @@ namespace TeamTracker
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width, (sender as Panel).Height));
             brush.Dispose();
+        }
+
+        private void OnDownloadMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null)
+                (sender as PictureBox).Dispose();
+
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
+        }
+
+        private void OnDownloadMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null)
+                (sender as PictureBox).Dispose();
+
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Dark_Blue;
+        }
+
+        private void OnDownloadEdgePaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(40, 50, 80));
+            e.Graphics.DrawRectangle(border, 0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            e.Graphics.DrawLine(border, 128, 0, 128, (sender as Control).Height);
+            border.Dispose();
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)

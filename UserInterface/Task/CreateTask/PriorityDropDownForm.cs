@@ -59,7 +59,7 @@ namespace TeamTracker
         private void OnClickPriorityBtn(object sender, MouseEventArgs e)
         {
             Priority priority;
-            string text = (sender as Button).Text;
+            string text = (sender as Label).Text;
 
             if (text == "Easy") priority = Priority.Easy;
             else if (text == "Medium") priority = Priority.Medium;

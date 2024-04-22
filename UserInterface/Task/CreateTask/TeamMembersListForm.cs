@@ -98,6 +98,13 @@ namespace TeamTracker
                 control.EmployeeSelect += OnEmployeeSelect;
                 Controls.Add(control);
             }
+
+            foreach(Control Iter in Controls)
+            {
+                Iter.BringToFront();
+            }
+
+            Focus();
         }
 
         private void OnEmployeeSelect(object sender, Employee e)

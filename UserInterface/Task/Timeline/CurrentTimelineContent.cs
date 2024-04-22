@@ -88,6 +88,7 @@ namespace UserInterface.Task.Timeline
 
         private void InitializeTimeline()
         {
+            isBackEnable = iterDate == version.StartDate ? false : true;
 
             for (int ctr = 0; ctr < labelCollections.Count; ctr++)
             {
@@ -95,14 +96,13 @@ namespace UserInterface.Task.Timeline
                 iterDate = iterDate.AddDays(1);
             }
 
-            isBackEnable = iterDate == version.StartDate ? false : true;
             isNextEnable = iterDate > version.EndDate ? false : true;
 
             if (backPictureBox.Image != null) { backPictureBox.Image.Dispose(); }
             if (nextPictureBox.Image != null) { nextPictureBox.Image.Dispose(); }
 
-            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue_Hover : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue_Hover : UserInterface.Properties.Resources.Right_Medium_Blue;
+            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
 
         private void InitializeLabels()
@@ -203,7 +203,12 @@ namespace UserInterface.Task.Timeline
             DateTime startDate = startViewDate.AddDays(start);
             DateTime endDate = startViewDate.AddDays(end);
 
-            if(startDate.Date == version.StartDate || endDate.Date.AddDays(1) == version.EndDate)
+            if(startDate.Date <= version.StartDate.Date)
+            {
+                ;
+            }
+
+            if(startDate.Date <= version.StartDate.Date || endDate.Date.AddDays(1).Date == version.EndDate.Date)
             {
                 return true;
             }
@@ -261,11 +266,11 @@ namespace UserInterface.Task.Timeline
 
             if ((sender as Control).Name == "nextPictureBox")
             {
-                nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue_Hover : UserInterface.Properties.Resources.Right_Medium_Blue;
+                nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
             }
             else
             {
-                backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue_Hover : UserInterface.Properties.Resources.Left_Medium_Blue;
+                backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
             }
         }
 
@@ -275,7 +280,8 @@ namespace UserInterface.Task.Timeline
             {
                 if(selectedTask.TaskID == Iter.TaskID)
                 {
-                    if(direction == -1)
+                    dateCollection1.Add(startViewDate);
+                    if (direction == -1)
                     {
                         iterDate = startViewDate = startViewDate.AddDays(-1);
                         Iter.StartDate = startViewDate;
@@ -289,6 +295,26 @@ namespace UserInterface.Task.Timeline
                         endViewDate = endViewDate.AddDays(1);
                         edgedTask = Iter;
                     }
+                    if(direction == -2)
+                    {
+                        iterDate = startViewDate = startViewDate.AddDays(-1);
+                        var x = (Iter.EndDate - Iter.StartDate).Days;
+                        Iter.StartDate = startViewDate;
+                        Iter.EndDate = Iter.StartDate.AddDays(x);
+                        endViewDate = endViewDate.AddDays(-1);
+                        edgedTask = Iter;
+                    }
+                    if(direction == 2)
+                    {
+                        cnt++;
+                        iterDate = startViewDate = startViewDate.AddDays(1);
+                        var x = (Iter.EndDate - Iter.StartDate).Days;
+                        Iter.EndDate = endViewDate;
+                        Iter.StartDate = Iter.EndDate.AddDays(-x);
+                        endViewDate = endViewDate.AddDays(1);
+                        edgedTask = Iter;
+                    }
+                    dateCollection2.Add(startViewDate);
                     InitializeTimeline();
                     SetViewTaskCollection();
                     control.DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate);
@@ -335,6 +361,18 @@ namespace UserInterface.Task.Timeline
                     else
                     {
                         ProjectManagerMainForm.notify.AddNotification("Warning", "Task Deadline is not within the Milestone Deadline");
+                        TeamTracker.Task task = TaskManager.FetchTaskByTaskID(Iter.TaskID);
+                        startViewDate = Iter.StartDate = iterDate = task.StartDate;
+                        endViewDate = startViewDate.AddDays(20);
+                        if (endViewDate > version.EndDate)
+                        {
+                            endViewDate = version.EndDate.AddDays(1);
+                            startViewDate = iterDate = endViewDate.AddDays(-20);
+                        }
+                        Iter.EndDate = task.EndDate;
+                        cnt = 0;
+                        dateCollection1 = new List<DateTime>();
+                        dateCollection2 = new List<DateTime>();
                     }
 
                     InitializeTimeline();
@@ -344,5 +382,15 @@ namespace UserInterface.Task.Timeline
                 }
             }
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            //SetViewTaskCollection();
+        }
+
+        int cnt = 0;
+        private List<DateTime> dateCollection1 = new List<DateTime>();
+        private List<DateTime> dateCollection2 = new List<DateTime>();
     }
 }

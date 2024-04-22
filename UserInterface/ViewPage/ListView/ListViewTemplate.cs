@@ -169,6 +169,52 @@ namespace TeamTracker
             InitializePage();
         }
 
+        private void OnEdgePaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0, 0), new Point(0, (sender as Control).Height));
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height/2), new Point((sender as Control).Width, (sender as Control).Height/2));
+            border.Dispose();
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 20));
+            border1.Dispose();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if ((sender as Control).Name == "doneTaskPageNext")
+            {
+                doneTaskPageNext.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+            }
+            else
+            {
+                doneTaskPageBack.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if ((sender as Control).Name == "doneTaskPageNext")
+            {
+                doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            }
+            else
+            {
+                doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            }
+        }
+
         private void ReorderRemainingTask()
         {
             for (int ctr = startRemainingIdx, idx = 0; ctr <= endRemainingIdx; ctr++, idx++)
@@ -196,8 +242,8 @@ namespace TeamTracker
             if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
             if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
 
-            doneTaskPageNext.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
-            doneTaskPageBack.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+            doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
         }
 
         private void SetDoneAllignment()
@@ -222,8 +268,8 @@ namespace TeamTracker
             if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
             if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
 
-            doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
-            doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
+            doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
         }
 
         private Dictionary<Color, int> FetchTaskCountsByStatus()

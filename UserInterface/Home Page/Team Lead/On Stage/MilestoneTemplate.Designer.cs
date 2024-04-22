@@ -51,22 +51,21 @@
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.panel1.Size = new System.Drawing.Size(854, 71);
+            this.panel1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Size = new System.Drawing.Size(569, 46);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.Controls.Add(this.closeButton, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.downButton, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.counterLabel, 0, 0);
@@ -74,12 +73,11 @@
             this.tableLayoutPanel1.Controls.Add(this.upButton, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(848, 65);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(565, 42);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // closeButton
@@ -87,10 +85,10 @@
             this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.closeButton.Image = global::UserInterface.Properties.Resources.Close_30;
-            this.closeButton.Location = new System.Drawing.Point(774, 2);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeButton.Location = new System.Drawing.Point(515, 1);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(72, 61);
+            this.closeButton.Size = new System.Drawing.Size(49, 40);
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.closeButton.TabIndex = 5;
             this.closeButton.TabStop = false;
@@ -103,10 +101,10 @@
             this.downButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.downButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.downButton.Image = global::UserInterface.Properties.Resources.Down_Light_Blue;
-            this.downButton.Location = new System.Drawing.Point(722, 2);
-            this.downButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.downButton.Location = new System.Drawing.Point(480, 1);
+            this.downButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(48, 61);
+            this.downButton.Size = new System.Drawing.Size(33, 40);
             this.downButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.downButton.TabIndex = 4;
             this.downButton.TabStop = false;
@@ -117,10 +115,9 @@
             // 
             this.counterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.counterLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.counterLabel.Location = new System.Drawing.Point(4, 0);
-            this.counterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.counterLabel.Location = new System.Drawing.Point(3, 0);
             this.counterLabel.Name = "counterLabel";
-            this.counterLabel.Size = new System.Drawing.Size(44, 65);
+            this.counterLabel.Size = new System.Drawing.Size(29, 42);
             this.counterLabel.TabIndex = 0;
             this.counterLabel.Text = "1";
             this.counterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,11 +129,10 @@
             this.milestoneDate.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.milestoneDate.BorderSize = 0;
             this.milestoneDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.milestoneDate.Location = new System.Drawing.Point(458, 15);
-            this.milestoneDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.milestoneDate.Location = new System.Drawing.Point(304, 3);
             this.milestoneDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.milestoneDate.Name = "milestoneDate";
-            this.milestoneDate.Size = new System.Drawing.Size(204, 35);
+            this.milestoneDate.Size = new System.Drawing.Size(137, 35);
             this.milestoneDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.milestoneDate.TabIndex = 2;
             this.milestoneDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -146,10 +142,10 @@
             this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upButton.Image = global::UserInterface.Properties.Resources.Up_Light_Blue;
-            this.upButton.Location = new System.Drawing.Point(670, 2);
-            this.upButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.upButton.Location = new System.Drawing.Point(445, 1);
+            this.upButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(48, 61);
+            this.upButton.Size = new System.Drawing.Size(33, 40);
             this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.upButton.TabIndex = 3;
             this.upButton.TabStop = false;
@@ -160,10 +156,11 @@
             // 
             this.panel2.Controls.Add(this.milestoneName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(55, 3);
+            this.panel2.Location = new System.Drawing.Point(37, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(395, 59);
+            this.panel2.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panel2.Size = new System.Drawing.Size(262, 38);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
@@ -174,23 +171,21 @@
             this.milestoneName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.milestoneName.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.milestoneName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.milestoneName.Location = new System.Drawing.Point(10, 10);
-            this.milestoneName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.milestoneName.Location = new System.Drawing.Point(7, 6);
             this.milestoneName.Multiline = true;
             this.milestoneName.Name = "milestoneName";
-            this.milestoneName.Size = new System.Drawing.Size(375, 39);
+            this.milestoneName.Size = new System.Drawing.Size(248, 26);
             this.milestoneName.TabIndex = 2;
             this.milestoneName.Text = "Hello";
             // 
             // MilestoneTemplate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MilestoneTemplate";
-            this.Size = new System.Drawing.Size(854, 71);
+            this.Size = new System.Drawing.Size(569, 46);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();

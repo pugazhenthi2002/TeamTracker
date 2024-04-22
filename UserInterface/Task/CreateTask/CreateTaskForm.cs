@@ -85,8 +85,8 @@ namespace UserInterface.Task.CreateTask
                     buttonSetMilestone.Text = Iter.MileStoneName;
                 }
             }
-
-            tableLayoutPanel3.Visible = false;
+            selectedTeamMember = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
+            employeeName.Text = selectedTeamMember.EmployeeFirstName;
             startDate.Value = selectedTask.StartDate;
             endDate.Value = selectedTask.EndDate;
             labelSetPriority.Text = selectedTask.TaskPriority.ToString();
@@ -167,8 +167,8 @@ namespace UserInterface.Task.CreateTask
             MilestoneDropForm = new MilestoneDropDownForm();
             MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.Show();
-            MilestoneDropForm.Location = new Point(formPoint.X - 3, formPoint.Y + buttonSetMilestone.Height);
-            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
+            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(-10, buttonSetMilestone.Height + 2));
+            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width+20, MilestoneDropForm.Height);
 
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
         }
@@ -178,7 +178,7 @@ namespace UserInterface.Task.CreateTask
             var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             foreach (var Iter in milestoneList)
             {
-                if (Iter.MileStoneName == (sender as Button).Text)
+                if (Iter.MileStoneName == (sender as Label).Text)
                 {
                     selectedMilestone = Iter;
                     buttonSetMilestone.Text = Iter.MileStoneName;
@@ -195,8 +195,8 @@ namespace UserInterface.Task.CreateTask
             TeamMembersDropForm = new TeamMembersListForm();
             TeamMembersDropForm.TeamList = taskAssigneeList;
             TeamMembersDropForm.Show();
-            TeamMembersDropForm.Location = formPoint;
-            TeamMembersDropForm.Size = new Size(buttonSetMilestone.Width, TeamMembersDropForm.Height);
+            TeamMembersDropForm.Location = panel2.PointToScreen(new Point(-10, panel2.Height + 2));
+            TeamMembersDropForm.Size = new Size(panel2.Width+20, TeamMembersDropForm.Height);
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
         }
 
@@ -220,8 +220,8 @@ namespace UserInterface.Task.CreateTask
 
             PriortyDropForm = new PriorityDropDownForm();
             PriortyDropForm.Show();
-            PriortyDropForm.Location = new Point(formPoint.X - 45, formPoint.Y + labelSetPriority.Height + 2);
-            PriortyDropForm.Size = new Size(labelSetPriority.Width, PriortyDropForm.Height);
+            PriortyDropForm.Location = tableLayoutPanel5.PointToScreen(new Point(-10, tableLayoutPanel5.Height + 2));
+            PriortyDropForm.Size = new Size(tableLayoutPanel5.Width + 20, PriortyDropForm.Height);
             PriortyDropForm.PrioritySelect += OnClickPriorityBtn;
         }
 
@@ -238,7 +238,7 @@ namespace UserInterface.Task.CreateTask
                 }
                 else
                 {
-                    TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, TeamTracker.TaskStatus.OnProcess, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
                     ProjectManagerMainForm.notify.AddNotification("Project Updated", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
                     DataHandler.AddNotification("Project Updated", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
                 }

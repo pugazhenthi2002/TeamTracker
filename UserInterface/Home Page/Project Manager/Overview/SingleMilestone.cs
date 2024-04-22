@@ -85,6 +85,7 @@ namespace TeamTracker
             form = new MilestoneDetailsForm();
             form.Location = this.PointToScreen(new Point((Width - form.Width) / 2, -form.Height));
             form.TaskCounts = EmployeeManager.FetchTaskCountByMilestoneForEmployee(milestone.MileStoneID);
+            form.EndDate = MilestoneManager.MilestoneLastCompletedTaskDate(milestone.MileStoneID);
             form.Show();
         }
 

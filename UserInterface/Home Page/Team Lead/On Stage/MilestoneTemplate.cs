@@ -74,9 +74,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
         private void InitializeRoundedEdge()
         {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
             tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 10, 10));
-            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 10, 10));
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -133,8 +131,8 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Medium_Blue;
-            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
+            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Dark_Blue;
+            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Dark_Blue;
         }
 
         private void OnValueChanged(object sender, EventArgs e)

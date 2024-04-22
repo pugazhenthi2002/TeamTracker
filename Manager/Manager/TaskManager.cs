@@ -271,6 +271,19 @@ namespace TeamTracker
             return count;
         }
 
+        public static Task FetchTaskByTaskID(int taskID)
+        {
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.TaskID == taskID)
+                {
+                    return Iter;
+                }
+            }
+
+            return null;
+        }
+
         //Fetches Task Class by Selected Version ID For Project
         public static List<Task> FetchTasksByVersionID(int versionID)
         {
@@ -279,7 +292,7 @@ namespace TeamTracker
             {
                 if(Iter.VersionID == versionID)
                 {
-                    result.Add(Iter);
+                    result.Add(Iter.ShallowCopy());
                 }
             }
 

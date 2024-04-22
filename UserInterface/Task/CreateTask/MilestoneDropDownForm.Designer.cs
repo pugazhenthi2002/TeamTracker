@@ -32,13 +32,12 @@
             // 
             // MilestoneDropDownForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ClientSize = new System.Drawing.Size(312, 352);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.ClientSize = new System.Drawing.Size(208, 229);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MilestoneDropDownForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MilestoneDropDownForm";

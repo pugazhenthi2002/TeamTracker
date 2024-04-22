@@ -38,6 +38,7 @@
             this.remainingTaskpaginateDown = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.singleListControlPanel = new System.Windows.Forms.Panel();
             this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel8 = new System.Windows.Forms.Panel();
             this.taskTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -60,7 +61,6 @@
             this.doneTaskPageNext = new System.Windows.Forms.PictureBox();
             this.doneTaskPageBack = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.singleListControlPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -161,7 +161,7 @@
             // remainingTaskpaginateUp
             // 
             this.remainingTaskpaginateUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.remainingTaskpaginateUp.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.remainingTaskpaginateUp.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
             this.remainingTaskpaginateUp.Location = new System.Drawing.Point(0, 0);
             this.remainingTaskpaginateUp.Margin = new System.Windows.Forms.Padding(0);
             this.remainingTaskpaginateUp.Name = "remainingTaskpaginateUp";
@@ -174,7 +174,7 @@
             // remainingTaskpaginateDown
             // 
             this.remainingTaskpaginateDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.remainingTaskpaginateDown.Image = global::UserInterface.Properties.Resources.sort_down;
+            this.remainingTaskpaginateDown.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
             this.remainingTaskpaginateDown.Location = new System.Drawing.Point(0, 22);
             this.remainingTaskpaginateDown.Margin = new System.Windows.Forms.Padding(0);
             this.remainingTaskpaginateDown.Name = "remainingTaskpaginateDown";
@@ -207,6 +207,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1608, 406);
             this.panel3.TabIndex = 0;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
+            // 
+            // singleListControlPanel
+            // 
+            this.singleListControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
+            this.singleListControlPanel.Name = "singleListControlPanel";
+            this.singleListControlPanel.Size = new System.Drawing.Size(1241, 356);
+            this.singleListControlPanel.TabIndex = 9;
             // 
             // ucNotFound2
             // 
@@ -336,6 +346,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.tableLayoutPanel4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1241, 0);
@@ -358,6 +369,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 406);
             this.tableLayoutPanel4.TabIndex = 0;
+            this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnEdgePaint);
             // 
             // customDonutChart2
             // 
@@ -400,9 +412,11 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1608, 188);
             this.panel7.TabIndex = 0;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // doneTaskPanel
             // 
+            this.doneTaskPanel.BackColor = System.Drawing.Color.Transparent;
             this.doneTaskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doneTaskPanel.Location = new System.Drawing.Point(0, 38);
             this.doneTaskPanel.Name = "doneTaskPanel";
@@ -436,8 +450,9 @@
             // doneTaskPageNext
             // 
             this.doneTaskPageNext.BackColor = System.Drawing.Color.Transparent;
+            this.doneTaskPageNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.doneTaskPageNext.Dock = System.Windows.Forms.DockStyle.Left;
-            this.doneTaskPageNext.Image = global::UserInterface.Properties.Resources.Next;
+            this.doneTaskPageNext.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
             this.doneTaskPageNext.Location = new System.Drawing.Point(168, 0);
             this.doneTaskPageNext.Name = "doneTaskPageNext";
             this.doneTaskPageNext.Size = new System.Drawing.Size(24, 38);
@@ -445,12 +460,15 @@
             this.doneTaskPageNext.TabIndex = 2;
             this.doneTaskPageNext.TabStop = false;
             this.doneTaskPageNext.Click += new System.EventHandler(this.OnDonePaginateNext);
+            this.doneTaskPageNext.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.doneTaskPageNext.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // doneTaskPageBack
             // 
             this.doneTaskPageBack.BackColor = System.Drawing.Color.Transparent;
+            this.doneTaskPageBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.doneTaskPageBack.Dock = System.Windows.Forms.DockStyle.Left;
-            this.doneTaskPageBack.Image = global::UserInterface.Properties.Resources.Back_Hover;
+            this.doneTaskPageBack.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
             this.doneTaskPageBack.Location = new System.Drawing.Point(144, 0);
             this.doneTaskPageBack.Name = "doneTaskPageBack";
             this.doneTaskPageBack.Size = new System.Drawing.Size(24, 38);
@@ -458,6 +476,8 @@
             this.doneTaskPageBack.TabIndex = 1;
             this.doneTaskPageBack.TabStop = false;
             this.doneTaskPageBack.Click += new System.EventHandler(this.OnDonePaginateBack);
+            this.doneTaskPageBack.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.doneTaskPageBack.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 
@@ -470,14 +490,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Done Task";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // singleListControlPanel
-            // 
-            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
-            this.singleListControlPanel.Name = "singleListControlPanel";
-            this.singleListControlPanel.Size = new System.Drawing.Size(1241, 356);
-            this.singleListControlPanel.TabIndex = 9;
             // 
             // ListViewTemplate
             // 

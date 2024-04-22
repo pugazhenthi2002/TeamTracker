@@ -25,6 +25,10 @@ namespace UserInterface.ViewPage
                 panel1.Visible = false;
                 return;
             }
+            else
+            {
+                panel1.Visible = true;
+            }
             OnBoardClick(boardPicBox, EventArgs.Empty);
         }
 

@@ -46,8 +46,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
                 if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
 
-                backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Medium_Blue : Properties.Resources.Left_Dark_Blue;
-                nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Medium_Blue : Properties.Resources.Right_Dark_Blue;
+                backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
+                nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
             }
         }
 
@@ -85,8 +85,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
             if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
 
-            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Medium_Blue : Properties.Resources.Left_Dark_Blue;
-            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Medium_Blue : Properties.Resources.Right_Dark_Blue;
+            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
+            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
@@ -98,8 +98,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             else { IsNextEnable = true; }
             IsBackEnable = true;
 
-            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Medium_Blue : Properties.Resources.Left_Dark_Blue;
-            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Medium_Blue : Properties.Resources.Right_Dark_Blue;
+            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
+            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
         }
 
         private void InitializeOverview()

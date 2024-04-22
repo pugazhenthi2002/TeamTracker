@@ -29,9 +29,10 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             {
                 if (value != null && value.Count > 0)
                 {
+                    panel5.Visible = true;
                     collection = value;
                     projectNameLabel.Text = value.Last().Key;
-                    //overviewMilestoneContent1.Version = value.Last().Value;
+                    overviewMilestoneContent1.Version = value.Last().Value;
                 }
                 else
                 {

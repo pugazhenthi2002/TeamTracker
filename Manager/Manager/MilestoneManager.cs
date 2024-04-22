@@ -90,6 +90,20 @@ namespace TeamTracker
             return null;
         }
 
+        public static DateTime MilestoneLastCompletedTaskDate(int milestoneID)
+        {
+            DateTime result = DateTime.MinValue;
+            foreach(var Iter in TaskManager.TaskCollection)
+            {
+                if (Iter.MilestoneID == milestoneID && result < Iter.EndDate)
+                {
+                    result = Iter.EndDate;
+                }
+            }
+
+            return result;
+        }
+
         public static int FetchTeamLeader(int milestoneID)
         {
             foreach(var Iter in MilestoneCollection)

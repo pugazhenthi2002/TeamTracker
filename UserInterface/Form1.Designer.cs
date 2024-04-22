@@ -28,22 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.listViewTemplate1 = new TeamTracker.ListViewTemplate();
             this.SuspendLayout();
             // 
-            // panel1
+            // listViewTemplate1
             // 
-            this.panel1.Location = new System.Drawing.Point(156, 73);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 378);
-            this.panel1.TabIndex = 0;
+            this.listViewTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.listViewTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewTemplate1.Location = new System.Drawing.Point(0, 0);
+            this.listViewTemplate1.Name = "listViewTemplate1";
+            this.listViewTemplate1.Size = new System.Drawing.Size(1387, 514);
+            this.listViewTemplate1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1385, 514);
-            this.Controls.Add(this.panel1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ClientSize = new System.Drawing.Size(1387, 514);
+            this.Controls.Add(this.listViewTemplate1);
             this.Name = "Form1";
             this.Text = "e";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -54,7 +57,7 @@
         #endregion
 
         private TeamTracker.RippleButton rippleButton1;
-        private System.Windows.Forms.Panel panel1;
+        private TeamTracker.ListViewTemplate listViewTemplate1;
     }
 }
 

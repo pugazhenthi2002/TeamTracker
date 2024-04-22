@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using TeamTracker;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.ViewPage.ListView
 {
@@ -82,6 +83,51 @@ namespace UserInterface.ViewPage.ListView
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border1.Dispose();
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void OnClick(object sender, EventArgs e)
+        {
+            TaskInfoForm form = new TaskInfoForm();
+            form.SelectedTask = selectedTask;
+            form.Show();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = Color.FromArgb(39, 55, 77);
+            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = Color.FromArgb(181, 190, 197);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = Color.FromArgb(181, 190, 197);
+            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = Color.FromArgb(39, 55, 77);
         }
     }
 }

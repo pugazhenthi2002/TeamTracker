@@ -287,7 +287,9 @@ namespace TeamTracker
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
-            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
+            //e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height/2), new Point((sender as Control).Width, (sender as Control).Height/2));
+            e.Graphics.DrawLine(border, new Point((sender as Control).Width / 2, 0), new Point((sender as Control).Width / 2, (sender as Control).Height));
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 2), new Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }
 
@@ -504,7 +506,7 @@ namespace TeamTracker
             if (sender is PictureBox)
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
             else
-                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 15));
 
             border1.Dispose();
         }
@@ -523,6 +525,14 @@ namespace TeamTracker
             {
                 picBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
             }
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 2), new Point((sender as Control).Width, (sender as Control).Height - 2));
+            border.Dispose();
         }
 
         private const int CSDropShadow = 0x00020000;
@@ -552,6 +562,8 @@ namespace TeamTracker
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
             tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 30, 30));
             tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 30, 30));
+            pictureBox2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox2.Width, pictureBox2.Height, 10, 10));
+            pictureBox3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox3.Width, pictureBox3.Height, 10, 10));
         }
 
         protected override void OnResize(EventArgs e)

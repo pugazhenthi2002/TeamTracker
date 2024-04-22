@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TeamTracker;
 using UserInterface.ViewPage;
 using UserInterface.Task.CreateTask;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Task
 {
@@ -130,6 +131,32 @@ namespace UserInterface.Task
         private void OnUpdated(object sender, EventArgs e)
         {
             TaskReviewed?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border1.Dispose();
         }
     }
 }

@@ -130,6 +130,7 @@ namespace TeamTracker
             if (MilestoneCollection != null && MilestoneCollection.Count >= 5 && MilestoneCollection.Count <= 20)
             {
                 VersionManager.UpdateVersion(selectedVersion.VersionID,selectedVersion.VersionName, selectedVersion.VersionDescription, ProjectStatus.OnProcess, selectedVersion.StartDate, selectedVersion.EndDate, selectedVersion.ClientEmail, null);
+                VersionManager.CurrentVersion = selectedVersion;
                 MilestoneManager.AddMilestones(selectedVersion.VersionID, MilestoneCollection);
                 ResetHomePage?.Invoke(this, EventArgs.Empty);
                 DataHandler.AddNotification("Project Processed", VersionManager.FetchProjectName(selectedVersion.VersionID) + "  " + selectedVersion.VersionName + "has been started by" + EmployeeManager.FetchEmployeeFromProjectID(selectedVersion.ProjectID), DateTime.Now, EmployeeManager.FetchManagerFromTeamLeadID().EmployeeID);

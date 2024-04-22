@@ -42,9 +42,8 @@ namespace TeamTracker
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(618, 83);
+            this.panel1.Size = new System.Drawing.Size(412, 54);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -52,10 +51,9 @@ namespace TeamTracker
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(22, 5, 22, 0);
-            this.label1.Size = new System.Drawing.Size(618, 83);
+            this.label1.Padding = new System.Windows.Forms.Padding(15, 3, 15, 0);
+            this.label1.Size = new System.Drawing.Size(412, 54);
             this.label1.TabIndex = 0;
             this.label1.Text = "TaskName";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -70,18 +68,17 @@ namespace TeamTracker
             // 
             // edgeTimer
             // 
-            this.edgeTimer.Interval = 1000;
+            this.edgeTimer.Interval = 500;
             this.edgeTimer.Tick += new System.EventHandler(this.OnEdgeTick);
             // 
             // TimelineTask
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TimelineTask";
-            this.Size = new System.Drawing.Size(618, 83);
+            this.Size = new System.Drawing.Size(412, 54);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

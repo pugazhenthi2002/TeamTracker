@@ -370,6 +370,7 @@ namespace TeamTracker
             manager.InsertData("taskattachment", new ParameterData[]
             {
                 new ParameterData("TaskID", taskAttachments.TaskID),
+                new ParameterData("DisplayName", taskAttachments.DisplayName),
                 new ParameterData("TaskAttachmentName", taskAttachments.TaskAttachmentName),
                 new ParameterData("TaskAttachmentLocation", taskAttachments.TaskAttachmentLocation)
             });
