@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
 using UserInterface.Task.CreateTask;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Task
 {
     public partial class AddTask : UserControl
     {
-        public event EventHandler Reset;
-
         private int startIdx, endIdx;
         private bool IsBackEnable, IsNextEnable;
         private List<TeamTracker.Task> underReviewCollection;
@@ -44,8 +43,8 @@ namespace UserInterface.Task
             {
                 milestoneSwitch1.InitializePage();
             }
-            currentTimelineContent1.Version = VersionManager.CurrentVersion;
             currentTimelineContent1.MilestoneCollection = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
+            currentTimelineContent1.Version = VersionManager.CurrentVersion;
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
         }
 
@@ -167,6 +166,20 @@ namespace UserInterface.Task
             }
         }
 
+        private void OnReset(object sender, EventArgs e)
+        {
+            InitializePage();
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border1.Dispose();
+        }
+
         private void OnTaskReviewed(object sender, EventArgs e)
         {
             ReviewTaskTemplate control = sender as ReviewTaskTemplate;
@@ -204,6 +217,29 @@ namespace UserInterface.Task
 
             backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
             nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeRoundedEdge()
+        {
+            milestoneSwitch1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, milestoneSwitch1.Width, milestoneSwitch1.Height, 20, 20));
+            panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
         }
     }
 }

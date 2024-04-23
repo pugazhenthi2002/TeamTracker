@@ -206,10 +206,10 @@ namespace TeamTracker
             return null;
         }
 
-        public static Dictionary<string, Dictionary<DateTime, int>> FilterTaskCountByDate(int month, int year)
+        public static Dictionary<string, SortedDictionary<DateTime, int>> FilterTaskCountByDate(int month, int year)
         {
-            Dictionary<string, Dictionary<DateTime, int>> finalResult = new Dictionary<string, Dictionary<DateTime, int>>();
-            Dictionary<DateTime, int> result = new Dictionary<DateTime, int>();
+            Dictionary<string, SortedDictionary<DateTime, int>> finalResult = new Dictionary<string, SortedDictionary<DateTime, int>>();
+            SortedDictionary<DateTime, int> result = new SortedDictionary<DateTime, int>();
 
             int count = 0;
 
@@ -231,7 +231,7 @@ namespace TeamTracker
                     }
                 }
                 finalResult.Add(Iter.EmployeeFirstName, result);
-                result = new Dictionary<DateTime, int>();
+                result = new SortedDictionary<DateTime, int>();
             }
 
             return finalResult;

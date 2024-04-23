@@ -31,7 +31,6 @@ namespace UserInterface.ViewPage.ListView
                         total += Iter.Value;
                     }
 
-
                     this.Invalidate();
                 }
             }

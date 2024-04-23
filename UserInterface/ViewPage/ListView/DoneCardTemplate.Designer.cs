@@ -61,6 +61,8 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(187, 134);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
+            this.tableLayoutPanel1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // projectName
             // 
@@ -151,6 +153,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(183, 25);
             this.tableLayoutPanel3.TabIndex = 2;
+            this.tableLayoutPanel3.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.tableLayoutPanel3.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // pictureBox1
             // 

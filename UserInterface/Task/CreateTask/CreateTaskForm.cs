@@ -16,6 +16,7 @@ namespace UserInterface.Task.CreateTask
     public partial class CreateTaskForm : Form
     {
         public event EventHandler TaskCreate;
+        public event EventHandler Reset;
         public CreateTaskForm()
         {
             InitializeComponent();
@@ -238,7 +239,11 @@ namespace UserInterface.Task.CreateTask
                 }
                 else
                 {
-                    TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, TeamTracker.TaskStatus.OnProcess, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    if (selectedTask.StatusOfTask == TeamTracker.TaskStatus.UnderReview)
+                        TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, TeamTracker.TaskStatus.OnProcess, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                    else
+                        TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+
                     ProjectManagerMainForm.notify.AddNotification("Project Updated", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
                     DataHandler.AddNotification("Project Updated", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
                 }

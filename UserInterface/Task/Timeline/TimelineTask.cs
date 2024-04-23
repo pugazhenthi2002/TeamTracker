@@ -30,6 +30,7 @@ namespace TeamTracker
         public delegate void TimelineHandler(TimelineTask control, Task selectedTask, int direction);
         public event TimelineHandler TimeLineMovement;
         public event TimelineHandler TaskDateChange;
+        public event EventHandler Reset;
 
         public int StepWidth = 20;
         private Color statusColor;
@@ -152,6 +153,7 @@ namespace TeamTracker
             {
                 CreateTaskForm form1 = new CreateTaskForm();
                 form1.SelectedTask = selectedTask;
+                form1.TaskCreate += OnTaskUpdation;
                 form1.Show();
             }
             else
@@ -159,8 +161,13 @@ namespace TeamTracker
                 WarningForm form2 = new WarningForm();
                 form2.Content = "Are you sure, you want delete the task?";
                 form2.WarningStatus += OnWarningStatus;
-                form2.Show();
+                form2.ShowDialog();
             }
+        }
+
+        private void OnTaskUpdation(object sender, EventArgs e)
+        {
+            Reset?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnWarningStatus(object sender, bool e)
@@ -168,6 +175,7 @@ namespace TeamTracker
             if(e)
             {
                 TaskManager.DeleteTask(selectedTask.TaskID);
+                Reset?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -246,11 +254,6 @@ namespace TeamTracker
                 {
                     TimeLineMovement?.Invoke(this, selectedTask, 2);
                 }
-            }
-
-            if (Convert.ToBoolean(isStartDateReached))
-            {
-                ;
             }
         }
 

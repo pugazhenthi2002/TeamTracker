@@ -145,7 +145,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
                 totalmilestoneCount.Text = MilestoneManager.FilterMilestoneCount(month, year).ToString();
                 Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCount(month, year, priority);
-                Dictionary<string, Dictionary<DateTime, int>> result2 = TaskManager.FilterTaskCountByDate(month, year);
+                Dictionary<string, SortedDictionary<DateTime, int>> result2 = TaskManager.FilterTaskCountByDate(month, year);
 
                 int total = 0, colorIndex = 2;
                 foreach (var Iter in result1) total += Iter.Value;
@@ -180,32 +180,61 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 if (flag)
                 {
                     cartesianChart1.Visible = true;
-                    foreach (var employeeData in result2)
-                    {
-                        var lineSeries = new LineSeries
-                        {
-                            Title = employeeData.Key,
-                            Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
-                            Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                        };
 
-                        cartesianChart1.Series.Add(lineSeries);
-                    }
-
-                    IList<string> labels = new List<string>();
+                    SortedSet<DateTime> labels = new SortedSet<DateTime>();
                     foreach (var employeeData in result2)
                     {
                         foreach (var Iter in employeeData.Value)
                         {
-                            labels.Add(Iter.Key.ToShortDateString());
+                            labels.Add(Iter.Key);
                         }
+                    }
+
+                    List<DateTime> labelList = labels.ToList();
+
+                    IList<string> list = new List<string>();
+                    foreach (var Iter in labels)
+                    {
+                        list.Add(Iter.ToShortDateString());
                     }
 
                     cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
                         Title = "Date",
-                        Labels = labels // Add your values here
+                        Labels = list// Add your values here
                     });
+                    colorIndex = 0;
+                    foreach (var employeeData in result2)
+                    {
+                        
+                        int[] values = new int[labelList.Count];
+
+                        foreach (var Iter in employeeData.Value)
+                        {
+                            if (labelList.Contains(Iter.Key))
+                            {
+                                int x = labelList.IndexOf(Iter.Key);
+                                values[x] = Iter.Value;
+                            }
+                            else
+                            {
+                                int x = labelList.IndexOf(Iter.Key);
+                                values[x] = 0;
+                            }
+                        }
+
+                        var lineSeries = new LineSeries
+                        {
+                            Title = employeeData.Key,
+                            Values = new ChartValues<int>(values),
+                            Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
+                            //Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 157, 178, 191)),
+                            
+                        };
+                        colorIndex+=4;
+                        cartesianChart1.Series.Add(lineSeries);
+                    }
+
                 }
                 else
                 {

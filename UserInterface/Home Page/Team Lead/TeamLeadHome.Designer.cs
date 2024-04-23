@@ -46,32 +46,31 @@ namespace UserInterface.Home_Page.Team_Lead
             this.tableLayoutPanel1.Controls.Add(this.notificationContent1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.onStageTemplate1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 1314);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 854);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1948, 615);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1265, 400);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // notificationContent1
             // 
             this.notificationContent1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.notificationContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notificationContent1.Location = new System.Drawing.Point(980, 8);
-            this.notificationContent1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.notificationContent1.Location = new System.Drawing.Point(636, 5);
+            this.notificationContent1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.notificationContent1.Name = "notificationContent1";
-            this.notificationContent1.Size = new System.Drawing.Size(962, 599);
+            this.notificationContent1.Size = new System.Drawing.Size(625, 390);
             this.notificationContent1.TabIndex = 0;
             // 
             // onStageTemplate1
             // 
             this.onStageTemplate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.onStageTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.onStageTemplate1.Location = new System.Drawing.Point(6, 8);
-            this.onStageTemplate1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.onStageTemplate1.Location = new System.Drawing.Point(4, 5);
+            this.onStageTemplate1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.onStageTemplate1.Name = "onStageTemplate1";
-            this.onStageTemplate1.Size = new System.Drawing.Size(962, 599);
+            this.onStageTemplate1.Size = new System.Drawing.Size(624, 390);
             this.onStageTemplate1.TabIndex = 1;
             this.onStageTemplate1.ResetHomePage += new System.EventHandler(this.OnResetHomePage);
             // 
@@ -79,10 +78,10 @@ namespace UserInterface.Home_Page.Team_Lead
             // 
             this.overview1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.overview1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.overview1.Location = new System.Drawing.Point(0, 582);
-            this.overview1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.overview1.Location = new System.Drawing.Point(0, 378);
+            this.overview1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.overview1.Name = "overview1";
-            this.overview1.Size = new System.Drawing.Size(1948, 732);
+            this.overview1.Size = new System.Drawing.Size(1265, 476);
             this.overview1.TabIndex = 1;
             // 
             // reportTemplate1
@@ -90,23 +89,22 @@ namespace UserInterface.Home_Page.Team_Lead
             this.reportTemplate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.reportTemplate1.Dock = System.Windows.Forms.DockStyle.Top;
             this.reportTemplate1.Location = new System.Drawing.Point(0, 0);
-            this.reportTemplate1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.reportTemplate1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.reportTemplate1.Name = "reportTemplate1";
-            this.reportTemplate1.Size = new System.Drawing.Size(1948, 582);
+            this.reportTemplate1.Size = new System.Drawing.Size(1265, 378);
             this.reportTemplate1.TabIndex = 0;
             // 
             // TeamLeadHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.overview1);
             this.Controls.Add(this.reportTemplate1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TeamLeadHome";
-            this.Size = new System.Drawing.Size(1948, 1098);
+            this.Size = new System.Drawing.Size(1265, 714);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

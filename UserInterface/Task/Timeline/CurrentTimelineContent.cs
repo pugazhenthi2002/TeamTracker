@@ -13,6 +13,7 @@ namespace UserInterface.Task.Timeline
 {
     public partial class CurrentTimelineContent : UserControl
     {
+        public event EventHandler Reset;
         private List<TeamTracker.Task> taskCollection;
         private List<TeamTracker.Task> viewTaskCollection;
         private bool isBackEnable, isNextEnable;
@@ -94,7 +95,7 @@ namespace UserInterface.Task.Timeline
 
             for (int ctr = 0; ctr < labelCollections.Count; ctr++)
             {
-                //labelCollections[ctr].BackColor = 
+                labelCollections[ctr].BackColor = GetColorForLabel(iterDate);
                 labelCollections[ctr].Text = monthCollections[iterDate.Month - 1] + "\n" + iterDate.Day;
                 iterDate = iterDate.AddDays(1);
             }
@@ -106,6 +107,21 @@ namespace UserInterface.Task.Timeline
 
             backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
             nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+        }
+
+        private Color GetColorForLabel(DateTime iterDate)
+        {
+            int ctr = 0;
+            foreach(var Iter in MilestoneCollection)
+            {
+                if(Iter.StartDate<=iterDate && iterDate <= Iter.EndDate)
+                {
+                    return ColorManager.MilestoneColorFadingOut[ctr];
+                }
+                ctr++;
+            }
+
+            return ColorManager.MilestoneColorFadingOut[0];
         }
 
         private void InitializeLabels()
@@ -194,10 +210,16 @@ namespace UserInterface.Task.Timeline
                     taskTimeline.TimeLineMovement += OnTimeLineMovement;
                     taskTimeline.TaskTimelineCheck += OnTimelineDateChecked;
                     taskTimeline.TaskDateChange += OnTaskDateChanged;
+                    taskTimeline.Reset += OnReset;
                     timelineControlPanel.Controls.Add(taskTimeline);
                 }
                 ctr++;
             }
+        }
+
+        private void OnReset(object sender, EventArgs e)
+        {
+            Reset?.Invoke(this, EventArgs.Empty);
         }
 
         private bool OnTimelineDateChecked(TimelineTask control)
@@ -252,7 +274,7 @@ namespace UserInterface.Task.Timeline
         private void OnMouseEnter(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
+            (sender as PictureBox).BackColor = Color.FromArgb(201, 210, 217);
             if((sender as Control).Name == "nextPictureBox")
             {
                 nextPictureBox.Image = Properties.Resources.Right_Dark_Blue_Hover;
@@ -266,7 +288,7 @@ namespace UserInterface.Task.Timeline
         private void OnMouseLeave(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
+            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
             if ((sender as Control).Name == "nextPictureBox")
             {
                 nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
@@ -392,7 +414,7 @@ namespace UserInterface.Task.Timeline
                         Iter.StartDate = startDate;
                         Iter.EndDate = endDate;
                         TaskManager.UpdateTask(Iter.TaskID, Iter.TaskName, Iter.TaskDesc, Iter.StartDate, Iter.EndDate, Iter.StatusOfTask, Iter.MilestoneID, Iter.TaskPriority, Iter.AssignedTo, null);
-                        ProjectManagerMainForm.notify.AddNotification("Task Updation", "Task Date has been Updated");
+                        //ProjectManagerMainForm.notify.AddNotification("Task Updation", "Task Date has been Updated");
                     }
                     else
                     {

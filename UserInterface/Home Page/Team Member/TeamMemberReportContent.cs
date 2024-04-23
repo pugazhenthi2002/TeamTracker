@@ -136,7 +136,7 @@ namespace UserInterface.Home_Page.Team_Member
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
                 totalmilestoneCount.Text = MilestoneManager.FilterMilestoneCount(month, year).ToString();
                 //commitCount.Text = TaskManager.TotalCommits(month, year, priority).ToString();
-                Dictionary<string, Dictionary<DateTime, int>> result = TaskManager.FilterTaskCountByDate(month, year);
+                Dictionary<string, SortedDictionary<DateTime, int>> result = TaskManager.FilterTaskCountByDate(month, year);
 
                 cartesianChart1.Series.Clear();
                 cartesianChart1.AxisX.Clear();
@@ -151,32 +151,60 @@ namespace UserInterface.Home_Page.Team_Member
                 if (flag)
                 {
                     cartesianChart1.Visible = true;
-                    foreach (var employeeData in result)
-                    {
-                        var lineSeries = new LineSeries
-                        {
-                            Title = employeeData.Key,
-                            Values = new ChartValues<int>(employeeData.Value.OrderBy(kv => kv.Key).Select(kv => kv.Value)),
-                            Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                        };
 
-                        cartesianChart1.Series.Add(lineSeries);
-                    }
-
-                    IList<string> labels = new List<string>();
+                    SortedSet<DateTime> labels = new SortedSet<DateTime>();
                     foreach (var employeeData in result)
                     {
                         foreach (var Iter in employeeData.Value)
                         {
-                            labels.Add(Iter.Key.ToShortDateString());
+                            labels.Add(Iter.Key);
                         }
+                    }
+
+                    List<DateTime> labelList = labels.ToList();
+
+                    IList<string> list = new List<string>();
+                    foreach (var Iter in labels)
+                    {
+                        list.Add(Iter.ToShortDateString());
                     }
 
                     cartesianChart1.AxisX.Add(new LiveCharts.Wpf.Axis
                     {
                         Title = "Date",
-                        Labels = labels // Add your values here
+                        Labels = list// Add your values here
                     });
+                    colorIndex = 0;
+                    foreach (var employeeData in result)
+                    {
+
+                        int[] values = new int[labelList.Count];
+
+                        foreach (var Iter in employeeData.Value)
+                        {
+                            if (labelList.Contains(Iter.Key))
+                            {
+                                int x = labelList.IndexOf(Iter.Key);
+                                values[x] = Iter.Value;
+                            }
+                            else
+                            {
+                                int x = labelList.IndexOf(Iter.Key);
+                                values[x] = 0;
+                            }
+                        }
+
+                        var lineSeries = new LineSeries
+                        {
+                            Title = employeeData.Key,
+                            Values = new ChartValues<int>(values),
+                            Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
+                            //Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 157, 178, 191)),
+
+                        };
+                        colorIndex += 4;
+                        cartesianChart1.Series.Add(lineSeries);
+                    }
                 }
                 else
                 {

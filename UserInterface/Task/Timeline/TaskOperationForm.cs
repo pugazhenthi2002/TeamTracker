@@ -27,11 +27,13 @@ namespace UserInterface.Task.Timeline
         private void OnUpdateClick(object sender, EventArgs e)
         {
             Operate?.Invoke(this, OperateType.Update);
+            this.Close();
         }
 
         private void OnDeleteClick(object sender, EventArgs e)
         {
             Operate?.Invoke(this, OperateType.Delete);
+            this.Close();
         }
 
         protected override void OnLostFocus(EventArgs e)

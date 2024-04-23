@@ -38,8 +38,6 @@
             this.remainingTaskpaginateDown = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.singleListControlPanel = new System.Windows.Forms.Panel();
-            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel8 = new System.Windows.Forms.Panel();
             this.taskTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,17 +48,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.customDonutChart2 = new UserInterface.ViewPage.ListView.CustomDonutChart();
-            this.customDonutChart1 = new UserInterface.ViewPage.ListView.CustomDonutChart();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.doneTaskPanel = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel9 = new System.Windows.Forms.Panel();
             this.doneTaskPageNext = new System.Windows.Forms.PictureBox();
             this.doneTaskPageBack = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.singleListControlPanel = new System.Windows.Forms.Panel();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.pieChart2 = new LiveCharts.WinForms.PieChart();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -209,27 +209,6 @@
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
-            // singleListControlPanel
-            // 
-            this.singleListControlPanel.BackColor = System.Drawing.Color.Transparent;
-            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
-            this.singleListControlPanel.Name = "singleListControlPanel";
-            this.singleListControlPanel.Size = new System.Drawing.Size(1241, 356);
-            this.singleListControlPanel.TabIndex = 9;
-            // 
-            // ucNotFound2
-            // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound2.HeadText = "No Current Task Found !!";
-            this.ucNotFound2.HeadTextSize = 16;
-            this.ucNotFound2.Location = new System.Drawing.Point(0, 50);
-            this.ucNotFound2.Message = null;
-            this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(1241, 356);
-            this.ucNotFound2.TabIndex = 8;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.taskTableLayoutPanel);
@@ -359,8 +338,8 @@
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.customDonutChart2, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.customDonutChart1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.pieChart2, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.pieChart1, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -370,26 +349,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 406);
             this.tableLayoutPanel4.TabIndex = 0;
             this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnEdgePaint);
-            // 
-            // customDonutChart2
-            // 
-            this.customDonutChart2.BackColor = System.Drawing.Color.Transparent;
-            this.customDonutChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customDonutChart2.Location = new System.Drawing.Point(30, 233);
-            this.customDonutChart2.Margin = new System.Windows.Forms.Padding(30);
-            this.customDonutChart2.Name = "customDonutChart2";
-            this.customDonutChart2.Size = new System.Drawing.Size(143, 143);
-            this.customDonutChart2.TabIndex = 1;
-            // 
-            // customDonutChart1
-            // 
-            this.customDonutChart1.BackColor = System.Drawing.Color.Transparent;
-            this.customDonutChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customDonutChart1.Location = new System.Drawing.Point(30, 30);
-            this.customDonutChart1.Margin = new System.Windows.Forms.Padding(30);
-            this.customDonutChart1.Name = "customDonutChart1";
-            this.customDonutChart1.Size = new System.Drawing.Size(143, 143);
-            this.customDonutChart1.TabIndex = 0;
             // 
             // panel6
             // 
@@ -422,18 +381,6 @@
             this.doneTaskPanel.Name = "doneTaskPanel";
             this.doneTaskPanel.Size = new System.Drawing.Size(1608, 150);
             this.doneTaskPanel.TabIndex = 4;
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "Zero Done Tasks";
-            this.ucNotFound1.HeadTextSize = 12;
-            this.ucNotFound1.Location = new System.Drawing.Point(0, 38);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(1608, 150);
-            this.ucNotFound1.TabIndex = 3;
             // 
             // panel9
             // 
@@ -491,6 +438,57 @@
             this.label1.Text = "Done Task";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // singleListControlPanel
+            // 
+            this.singleListControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
+            this.singleListControlPanel.Name = "singleListControlPanel";
+            this.singleListControlPanel.Size = new System.Drawing.Size(1241, 356);
+            this.singleListControlPanel.TabIndex = 9;
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Current Task Found !!";
+            this.ucNotFound2.HeadTextSize = 16;
+            this.ucNotFound2.Location = new System.Drawing.Point(0, 50);
+            this.ucNotFound2.Message = null;
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(1241, 356);
+            this.ucNotFound2.TabIndex = 8;
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "Zero Done Tasks";
+            this.ucNotFound1.HeadTextSize = 12;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 38);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(1608, 150);
+            this.ucNotFound1.TabIndex = 3;
+            // 
+            // pieChart1
+            // 
+            this.pieChart1.Location = new System.Drawing.Point(30, 30);
+            this.pieChart1.Margin = new System.Windows.Forms.Padding(30);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(211, 143);
+            this.pieChart1.TabIndex = 2;
+            this.pieChart1.Text = "pieChart1";
+            // 
+            // pieChart2
+            // 
+            this.pieChart2.Location = new System.Drawing.Point(30, 233);
+            this.pieChart2.Margin = new System.Windows.Forms.Padding(30);
+            this.pieChart2.Name = "pieChart2";
+            this.pieChart2.Size = new System.Drawing.Size(211, 143);
+            this.pieChart2.TabIndex = 3;
+            this.pieChart2.Text = "pieChart2";
+            // 
             // ListViewTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,8 +536,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private UserInterface.ViewPage.ListView.CustomDonutChart customDonutChart2;
-        private UserInterface.ViewPage.ListView.CustomDonutChart customDonutChart1;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TableLayoutPanel taskTableLayoutPanel;
         private System.Windows.Forms.Label label9;
@@ -557,5 +553,7 @@
         private System.Windows.Forms.Panel doneTaskPanel;
         private UserInterface.UcNotFound ucNotFound2;
         private System.Windows.Forms.Panel singleListControlPanel;
+        private LiveCharts.WinForms.PieChart pieChart1;
+        private LiveCharts.WinForms.PieChart pieChart2;
     }
 }

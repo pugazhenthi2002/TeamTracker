@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using UserInterface.ViewPage.ListView;
 using System.Runtime.InteropServices;
+using LiveCharts;
 
 namespace TeamTracker
 {
@@ -85,10 +86,61 @@ namespace TeamTracker
 
         public void InitializePage()
         {
-            projectDateLabel.Text = VersionManager.CurrentVersion.StartDate.ToShortDateString() + "-" + VersionManager.CurrentVersion.EndDate.ToShortDateString();
+            projectDateLabel.Text = VersionManager.CurrentVersion.StartDate.ToShortDateString() + "  -  " + VersionManager.CurrentVersion.EndDate.ToShortDateString();
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
-            customDonutChart1.Values = FetchTaskCountsByStatus();
-            customDonutChart2.Values = FetchTaskCountsByPriority();
+
+            if (singleListControlPanel.Visible || doneTaskPanel.Visible)
+            {
+                Dictionary<TaskStatus, int> result1 = new Dictionary<TaskStatus, int>();
+                result1.Add(TaskStatus.Done, doneCollection.Count);
+                result1.Add(TaskStatus.NotYetStarted, 0);
+                result1.Add(TaskStatus.OnProcess, 0);
+                result1.Add(TaskStatus.UnderReview, 0);
+                result1.Add(TaskStatus.Stuck, 0);
+
+                Dictionary<Priority, int> result2 = new Dictionary<Priority, int>();
+                result2.Add(Priority.Critical, 0);
+                result2.Add(Priority.Hard, 0);
+                result2.Add(Priority.Medium, 0);
+                result2.Add(Priority.Easy, 0);
+
+                if (doneCardCollection != null)
+                {
+                    foreach (var Iter in doneCollection)
+                    {
+                        result2[Iter.TaskPriority]++;
+                    }
+                }
+
+                if (taskCollection != null)
+                {
+                    foreach (var Iter in taskCollection)
+                    {
+                        result2[Iter.TaskPriority]++;
+                        result1[Iter.StatusOfTask]++;
+                    }
+                }
+
+                pieChart1.Visible = true;
+                SeriesCollection seriesCollection = new SeriesCollection();
+                foreach (var Iter in result1)
+                {
+                    seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ColorManager.FetchTaskStatusColor(Iter.Key).A, ColorManager.FetchTaskStatusColor(Iter.Key).R, ColorManager.FetchTaskStatusColor(Iter.Key).G, ColorManager.FetchTaskStatusColor(Iter.Key).B)) });
+                }
+                pieChart1.Series = seriesCollection;
+
+                pieChart2.Visible = true;
+                seriesCollection = new SeriesCollection();
+                foreach (var Iter in result2)
+                {
+                    seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ColorManager.FetchTaskPriorityColor(Iter.Key).A, ColorManager.FetchTaskPriorityColor(Iter.Key).R, ColorManager.FetchTaskPriorityColor(Iter.Key).G, ColorManager.FetchTaskPriorityColor(Iter.Key).B)) });
+                }
+                pieChart2.Series = seriesCollection;
+            }
+            else
+            {
+                pieChart1.Visible = pieChart2.Visible = false;
+            }
         }
 
         private void OnPaginateDown(object sender, EventArgs e)

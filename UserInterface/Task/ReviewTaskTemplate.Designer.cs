@@ -73,6 +73,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(5, 5);
@@ -145,7 +146,7 @@
             this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.profilePictureBox1.Location = new System.Drawing.Point(156, 13);
             this.profilePictureBox1.Name = "profilePictureBox1";
-            this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.profilePictureBox1.Size = new System.Drawing.Size(44, 44);
             this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox1.TabIndex = 0;
