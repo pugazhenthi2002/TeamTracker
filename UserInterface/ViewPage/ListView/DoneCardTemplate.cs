@@ -8,6 +8,7 @@ using System.Text;
 using TeamTracker;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace UserInterface.ViewPage.ListView
 {
@@ -44,6 +45,20 @@ namespace UserInterface.ViewPage.ListView
         public DoneCardTemplate()
         {
             InitializeComponent();
+            InitializeDoubleBuffer();
+        }
+
+        private void InitializeDoubleBuffer()
+        {
+            DoubleBuffered = true;
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel1, new object[] { true });
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel2, new object[] { true });
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel3, new object[] { true });
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, taskNameLabel, new object[] { true });
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, projectName, new object[] { true });
+            typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, dueDate, new object[] { true });
+            typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, pictureBox1, new object[] { true });
+            typeof(ProfilePictureBox).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, profilePictureBox1, new object[] { true });
         }
 
         private void SetDoneTaskUI()
@@ -93,11 +108,15 @@ namespace UserInterface.ViewPage.ListView
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
-            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Rectangle rec1 = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Rectangle rec2 = new Rectangle(2, 2, (sender as Control).Width - 5, (sender as Control).Height - 5);
             Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            Pen border2 = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec1, 10));
+            e.Graphics.DrawPath(border2, BorderGraphicsPath.GetRoundRectangle(rec2, 10));
             border1.Dispose();
+            border2.Dispose();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

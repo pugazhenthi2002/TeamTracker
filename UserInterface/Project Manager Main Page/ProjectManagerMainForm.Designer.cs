@@ -53,21 +53,21 @@
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.closePicBox = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.addProject1 = new TeamTracker.AddProject();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.viewProjectTemplate1 = new UserInterface.ViewProject.ViewProjectTemplate();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.teamLeadHome1 = new UserInterface.Home_Page.Team_Lead.TeamLeadHome();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.teamMemberHome1 = new UserInterface.Home_Page.Team_Member.TeamMemberHome();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.addTask1 = new UserInterface.Task.AddTask();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.myTaskTemplate1 = new UserInterface.ViewPage.MyTaskTemplate();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.addTask1 = new UserInterface.Task.AddTask();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.teamMemberHome1 = new UserInterface.Home_Page.Team_Member.TeamMemberHome();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.teamLeadHome1 = new UserInterface.Home_Page.Team_Lead.TeamLeadHome();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.viewProjectTemplate1 = new UserInterface.ViewProject.ViewProjectTemplate();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.addProject1 = new TeamTracker.AddProject();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -85,14 +85,14 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePicBox)).BeginInit();
             this.panel3.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -426,84 +426,62 @@
             this.panel3.Size = new System.Drawing.Size(945, 594);
             this.panel3.TabIndex = 2;
             // 
-            // tabControl1
+            // tabPage7
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(945, 594);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 2;
-            this.tabControl1.Visible = false;
+            this.tabPage7.Controls.Add(this.myTaskTemplate1);
+            this.tabPage7.Location = new System.Drawing.Point(4, 5);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(937, 585);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "tabPage7";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // myTaskTemplate1
             // 
-            this.tabPage1.Controls.Add(this.projectManagerHome1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 5);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(937, 585);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.myTaskTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.myTaskTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myTaskTemplate1.Location = new System.Drawing.Point(0, 0);
+            this.myTaskTemplate1.Name = "myTaskTemplate1";
+            this.myTaskTemplate1.Size = new System.Drawing.Size(937, 585);
+            this.myTaskTemplate1.TabIndex = 0;
             // 
-            // projectManagerHome1
+            // tabPage6
             // 
-            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
-            this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
-            this.projectManagerHome1.TabIndex = 0;
+            this.tabPage6.Controls.Add(this.addTask1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 5);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(937, 585);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "tabPage6";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // addTask1
             // 
-            this.tabPage2.Controls.Add(this.addProject1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 5);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(937, 585);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.addTask1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.addTask1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addTask1.Location = new System.Drawing.Point(0, 0);
+            this.addTask1.Name = "addTask1";
+            this.addTask1.Size = new System.Drawing.Size(937, 585);
+            this.addTask1.TabIndex = 0;
             // 
-            // addProject1
+            // tabPage5
             // 
-            this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addProject1.Location = new System.Drawing.Point(3, 3);
-            this.addProject1.Name = "addProject1";
-            this.addProject1.Size = new System.Drawing.Size(931, 579);
-            this.addProject1.TabIndex = 0;
+            this.tabPage5.Controls.Add(this.teamMemberHome1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 5);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(937, 585);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // teamMemberHome1
             // 
-            this.tabPage3.Controls.Add(this.viewProjectTemplate1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 5);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(937, 585);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // viewProjectTemplate1
-            // 
-            this.viewProjectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.viewProjectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewProjectTemplate1.Location = new System.Drawing.Point(0, 0);
-            this.viewProjectTemplate1.Name = "viewProjectTemplate1";
-            this.viewProjectTemplate1.Size = new System.Drawing.Size(937, 585);
-            this.viewProjectTemplate1.TabIndex = 0;
+            this.teamMemberHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.teamMemberHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teamMemberHome1.Location = new System.Drawing.Point(0, 0);
+            this.teamMemberHome1.Name = "teamMemberHome1";
+            this.teamMemberHome1.Size = new System.Drawing.Size(937, 585);
+            this.teamMemberHome1.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -525,62 +503,83 @@
             this.teamLeadHome1.Size = new System.Drawing.Size(937, 585);
             this.teamLeadHome1.TabIndex = 0;
             // 
-            // tabPage5
+            // tabPage3
             // 
-            this.tabPage5.Controls.Add(this.teamMemberHome1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 5);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(937, 585);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage3.Controls.Add(this.viewProjectTemplate1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 5);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(937, 585);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // teamMemberHome1
+            // viewProjectTemplate1
             // 
-            this.teamMemberHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.teamMemberHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.teamMemberHome1.Location = new System.Drawing.Point(0, 0);
-            this.teamMemberHome1.Name = "teamMemberHome1";
-            this.teamMemberHome1.Size = new System.Drawing.Size(937, 585);
-            this.teamMemberHome1.TabIndex = 0;
+            this.viewProjectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.viewProjectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewProjectTemplate1.Location = new System.Drawing.Point(0, 0);
+            this.viewProjectTemplate1.Name = "viewProjectTemplate1";
+            this.viewProjectTemplate1.Size = new System.Drawing.Size(937, 585);
+            this.viewProjectTemplate1.TabIndex = 0;
             // 
-            // tabPage6
+            // tabPage2
             // 
-            this.tabPage6.Controls.Add(this.addTask1);
-            this.tabPage6.Location = new System.Drawing.Point(4, 5);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(937, 585);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "tabPage6";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.addProject1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 5);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(937, 585);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // addTask1
+            // addProject1
             // 
-            this.addTask1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.addTask1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addTask1.Location = new System.Drawing.Point(0, 0);
-            this.addTask1.Name = "addTask1";
-            this.addTask1.Size = new System.Drawing.Size(937, 585);
-            this.addTask1.TabIndex = 0;
+            this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addProject1.Location = new System.Drawing.Point(3, 3);
+            this.addProject1.Name = "addProject1";
+            this.addProject1.Size = new System.Drawing.Size(931, 579);
+            this.addProject1.TabIndex = 0;
             // 
-            // tabPage7
+            // tabPage1
             // 
-            this.tabPage7.Controls.Add(this.myTaskTemplate1);
-            this.tabPage7.Location = new System.Drawing.Point(4, 5);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(937, 585);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "tabPage7";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.projectManagerHome1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 5);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(937, 585);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // myTaskTemplate1
+            // projectManagerHome1
             // 
-            this.myTaskTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.myTaskTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myTaskTemplate1.Location = new System.Drawing.Point(0, 0);
-            this.myTaskTemplate1.Name = "myTaskTemplate1";
-            this.myTaskTemplate1.Size = new System.Drawing.Size(937, 585);
-            this.myTaskTemplate1.TabIndex = 0;
+            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
+            this.projectManagerHome1.Name = "projectManagerHome1";
+            this.projectManagerHome1.Size = new System.Drawing.Size(931, 579);
+            this.projectManagerHome1.TabIndex = 0;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(945, 594);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 2;
             // 
             // ProjectManagerMainForm
             // 
@@ -609,14 +608,14 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.closePicBox)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -649,6 +648,7 @@
         private Logo logo1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private UserInterface.Home_Page.Project_Manager.ProjectManagerHome projectManagerHome1;
         private System.Windows.Forms.TabPage tabPage2;
         private AddProject addProject1;
         private System.Windows.Forms.TabPage tabPage3;
@@ -661,6 +661,5 @@
         private UserInterface.Task.AddTask addTask1;
         private System.Windows.Forms.TabPage tabPage7;
         private UserInterface.ViewPage.MyTaskTemplate myTaskTemplate1;
-        private UserInterface.Home_Page.Project_Manager.ProjectManagerHome projectManagerHome1;
     }
 }

@@ -112,6 +112,10 @@ namespace TeamTracker
                     Iter.BringToFront();
                 }
             }
+            if(StartIndex+TaskBoardList.Count == taskList.Count)
+            {
+                StartIndex--;
+            }
 
             taskList.Remove(tBoard.TaskData);
             if (taskList.Count > 1) taskList.Sort((r1, r2) => r2.EndDate.CompareTo(r1.EndDate));
@@ -264,7 +268,7 @@ namespace TeamTracker
         private void OnMouseDownTaskBoard(object sender, MouseEventArgs e)
         {
             
-            UCTaskBoard parentUserControl = FindParentUserControl(sender as Control);
+            UCTaskBoard parentUserControl = sender as UCTaskBoard;
             IsDragging = true;
 
             TaskBoardMouseDown?.Invoke(parentUserControl, e);
@@ -273,7 +277,7 @@ namespace TeamTracker
         private void OnMouseUpTaskBoard(object sender, MouseEventArgs e)
         {
             IsDragging = false;
-            UCTaskBoard parentUserControl = FindParentUserControl(sender as Control);
+            UCTaskBoard parentUserControl = sender as UCTaskBoard;
             TaskBoardMouseUp?.Invoke(parentUserControl, e);
         }
 
@@ -281,7 +285,7 @@ namespace TeamTracker
         {
             if (IsDragging)
             {
-                UCTaskBoard parentUserControl = FindParentUserControl(sender as Control);
+                UCTaskBoard parentUserControl = sender as UCTaskBoard;
                 TaskBoardMouseMove?.Invoke(parentUserControl, e);
             }
         }

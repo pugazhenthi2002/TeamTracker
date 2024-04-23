@@ -28,6 +28,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
         {
             set
             {
+                ucDeploy1.SuspendLayout();
                 if (value != null && value.Count > 0)
                 {
                     counter = 0;
@@ -46,6 +47,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
                 {
                     nextBtn.Visible = backBtn.Visible = ucDeploy1.Visible = false;
                 }
+                ucDeploy1.ResumeLayout();
             }
         }
 
@@ -71,12 +73,6 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             Point pt4 = new Point(9, Height - 11);
             Pen border = new Pen(borderColor, 3);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
-
-        private void Form_OverviewSelected(string name, ProjectVersion version)
-        {
-            label1.Text = name;
-            ucDeploy1.Version = version;
         }
 
         private void OnDeployment(string name, ProjectVersion e)

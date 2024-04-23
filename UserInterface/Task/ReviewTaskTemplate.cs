@@ -139,6 +139,12 @@ namespace UserInterface.Task
             tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -153,7 +159,7 @@ namespace UserInterface.Task
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border1.Dispose();

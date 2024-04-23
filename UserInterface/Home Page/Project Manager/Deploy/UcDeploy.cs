@@ -37,6 +37,7 @@ namespace TeamTracker
         {
             set
             {
+                //SuspendLayout();
                 if (value != null)
                 {
                     version = value;
@@ -47,6 +48,7 @@ namespace TeamTracker
                     }
                     InitializePage();
                 }
+                //ResumeLayout();
             }
         }
 

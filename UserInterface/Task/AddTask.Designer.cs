@@ -103,6 +103,7 @@
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBase.Location = new System.Drawing.Point(0, 52);
             this.panelBase.Name = "panelBase";
+            this.panelBase.Padding = new System.Windows.Forms.Padding(5);
             this.panelBase.Size = new System.Drawing.Size(738, 197);
             this.panelBase.TabIndex = 3;
             // 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
 using Manager;
+using System.Reflection;
 
 namespace UserInterface.Home_Page.Project_Manager
 {
@@ -17,13 +18,17 @@ namespace UserInterface.Home_Page.Project_Manager
         public ProjectManagerHome()
         {
             InitializeComponent();
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel1, new object[] { true });
+            typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel2, new object[] { true });
         }
 
         public void InitializeProjectManagerHome()
         {
+            SuspendLayout();
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
             notificationContent1.NotifyList = DataHandler.FetchNotification();
             deployContent1.DeployVersions = VersionManager.FetchDeploymentsProjectVersion();
+            ResumeLayout();
         }
     }
 }

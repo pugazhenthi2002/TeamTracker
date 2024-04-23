@@ -27,6 +27,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             set
             {
+                SuspendLayout();
                 if (value != null && value.Count > 0)
                 {
                     panel5.Visible = true;
@@ -38,6 +39,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 {
                     panel5.Visible = false;
                 }
+                ResumeLayout();
             }
         }
 

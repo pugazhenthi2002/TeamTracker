@@ -34,7 +34,6 @@
             this.projectName = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.taskNameLabel = new System.Windows.Forms.Label();
-            this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dueDate = new System.Windows.Forms.Label();
@@ -42,19 +41,20 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.doneButton = new System.Windows.Forms.Button();
             this.reassignButton = new System.Windows.Forms.Button();
+            this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
@@ -73,7 +73,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(5, 5);
@@ -141,17 +141,6 @@
             this.taskNameLabel.Text = "Task Name";
             this.taskNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // profilePictureBox1
-            // 
-            this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.profilePictureBox1.Location = new System.Drawing.Point(156, 13);
-            this.profilePictureBox1.Name = "profilePictureBox1";
-            this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.profilePictureBox1.Size = new System.Drawing.Size(44, 44);
-            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilePictureBox1.TabIndex = 0;
-            this.profilePictureBox1.TabStop = false;
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -177,7 +166,7 @@
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(68, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -264,6 +253,17 @@
             this.reassignButton.UseVisualStyleBackColor = false;
             this.reassignButton.Click += new System.EventHandler(this.OnReassignClick);
             // 
+            // profilePictureBox1
+            // 
+            this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.profilePictureBox1.Location = new System.Drawing.Point(156, 13);
+            this.profilePictureBox1.Name = "profilePictureBox1";
+            this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.profilePictureBox1.Size = new System.Drawing.Size(44, 44);
+            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePictureBox1.TabIndex = 0;
+            this.profilePictureBox1.TabStop = false;
+            // 
             // ReviewTaskTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,11 +277,11 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

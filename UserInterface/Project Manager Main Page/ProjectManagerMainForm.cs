@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,12 @@ namespace TeamTracker
     {
         static public NotificationManager notify;
         private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false;
-        private bool isEnter = false, isLeave = true; 
         public ProjectManagerMainForm()
         {
             InitializeComponent();
-            //logoAnimation1.Start = true;
             InitializePage();
+            //tabControl1.Visible = false;
+            tabControl1.SuspendLayout();
         }
 
         private void InitializePage()
@@ -43,6 +44,14 @@ namespace TeamTracker
             notify.NotificationScreenTime = 10;
             notify.NotificationAlignment = FromNotificationAlignment.RightDown;
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
+
+            tabPage1.Visible = true;
+            tabPage2.Visible = true;
+            tabPage3.Visible = true;
+            tabPage4.Visible = true;
+            tabPage5.Visible = true;
+            tabPage6.Visible = true;
+            tabPage7.Visible = true;
         }
 
         public event EventHandler ManagerClose;
@@ -50,11 +59,13 @@ namespace TeamTracker
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            
+
             if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
                 panel2.Visible = panel7.Visible = false;
-                projectManagerHome1.InitializeProjectManagerHome();
                 tabControl1.SelectedIndex = 0;
+                projectManagerHome1.InitializeProjectManagerHome();
             }
             else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
@@ -69,7 +80,9 @@ namespace TeamTracker
                 addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
                 tabControl1.SelectedIndex = 4;
             }
-            tabControl1.Visible = true;
+            //projectManagerHome1.SuspendLayout();
+            //tabControl1.Visible = true;
+            //projectManagerHome1.ResumeLayout();
         }
 
 

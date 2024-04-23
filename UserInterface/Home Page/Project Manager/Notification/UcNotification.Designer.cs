@@ -145,6 +145,7 @@
             this.textBoxContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.textBoxContent.Location = new System.Drawing.Point(3, 0);
             this.textBoxContent.Name = "textBoxContent";
+            this.textBoxContent.ReadOnly = true;
             this.textBoxContent.Size = new System.Drawing.Size(577, 91);
             this.textBoxContent.TabIndex = 0;
             this.textBoxContent.Text = "";

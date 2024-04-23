@@ -38,6 +38,7 @@
             this.remainingTaskpaginateDown = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.singleListControlPanel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.taskTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.pieChart2 = new LiveCharts.WinForms.PieChart();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -56,11 +59,8 @@
             this.doneTaskPageNext = new System.Windows.Forms.PictureBox();
             this.doneTaskPageBack = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.singleListControlPanel = new System.Windows.Forms.Panel();
             this.ucNotFound2 = new UserInterface.UcNotFound();
             this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
-            this.pieChart2 = new LiveCharts.WinForms.PieChart();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -160,6 +160,7 @@
             // 
             // remainingTaskpaginateUp
             // 
+            this.remainingTaskpaginateUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.remainingTaskpaginateUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.remainingTaskpaginateUp.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
             this.remainingTaskpaginateUp.Location = new System.Drawing.Point(0, 0);
@@ -170,9 +171,12 @@
             this.remainingTaskpaginateUp.TabIndex = 0;
             this.remainingTaskpaginateUp.TabStop = false;
             this.remainingTaskpaginateUp.Click += new System.EventHandler(this.OnPaginateUp);
+            this.remainingTaskpaginateUp.MouseEnter += new System.EventHandler(this.OnListPaginateMouseEnter);
+            this.remainingTaskpaginateUp.MouseLeave += new System.EventHandler(this.OnListPaginateMouseLeave);
             // 
             // remainingTaskpaginateDown
             // 
+            this.remainingTaskpaginateDown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.remainingTaskpaginateDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.remainingTaskpaginateDown.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
             this.remainingTaskpaginateDown.Location = new System.Drawing.Point(0, 22);
@@ -183,6 +187,8 @@
             this.remainingTaskpaginateDown.TabIndex = 1;
             this.remainingTaskpaginateDown.TabStop = false;
             this.remainingTaskpaginateDown.Click += new System.EventHandler(this.OnPaginateDown);
+            this.remainingTaskpaginateDown.MouseEnter += new System.EventHandler(this.OnListPaginateMouseEnter);
+            this.remainingTaskpaginateDown.MouseLeave += new System.EventHandler(this.OnListPaginateMouseLeave);
             // 
             // panel2
             // 
@@ -192,7 +198,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 70);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(1628, 426);
+            this.panel2.Size = new System.Drawing.Size(1628, 391);
             this.panel2.TabIndex = 6;
             // 
             // panel3
@@ -205,9 +211,18 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(10, 10);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1608, 406);
+            this.panel3.Size = new System.Drawing.Size(1608, 371);
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
+            // 
+            // singleListControlPanel
+            // 
+            this.singleListControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
+            this.singleListControlPanel.Name = "singleListControlPanel";
+            this.singleListControlPanel.Size = new System.Drawing.Size(1241, 321);
+            this.singleListControlPanel.TabIndex = 9;
             // 
             // panel8
             // 
@@ -330,7 +345,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1241, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(367, 406);
+            this.panel4.Size = new System.Drawing.Size(367, 371);
             this.panel4.TabIndex = 2;
             // 
             // tableLayoutPanel4
@@ -346,18 +361,38 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 406);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 371);
             this.tableLayoutPanel4.TabIndex = 0;
             this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnEdgePaint);
+            // 
+            // pieChart2
+            // 
+            this.pieChart2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pieChart2.Location = new System.Drawing.Point(10, 195);
+            this.pieChart2.Margin = new System.Windows.Forms.Padding(10);
+            this.pieChart2.Name = "pieChart2";
+            this.pieChart2.Size = new System.Drawing.Size(347, 166);
+            this.pieChart2.TabIndex = 3;
+            this.pieChart2.Text = "pieChart2";
+            // 
+            // pieChart1
+            // 
+            this.pieChart1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pieChart1.Location = new System.Drawing.Point(10, 10);
+            this.pieChart1.Margin = new System.Windows.Forms.Padding(10);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(347, 165);
+            this.pieChart1.TabIndex = 2;
+            this.pieChart1.Text = "pieChart1";
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 496);
+            this.panel6.Location = new System.Drawing.Point(0, 461);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(1628, 208);
+            this.panel6.Size = new System.Drawing.Size(1628, 243);
             this.panel6.TabIndex = 7;
             // 
             // panel7
@@ -369,7 +404,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(10, 10);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1608, 188);
+            this.panel7.Size = new System.Drawing.Size(1608, 223);
             this.panel7.TabIndex = 0;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
@@ -379,7 +414,7 @@
             this.doneTaskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doneTaskPanel.Location = new System.Drawing.Point(0, 38);
             this.doneTaskPanel.Name = "doneTaskPanel";
-            this.doneTaskPanel.Size = new System.Drawing.Size(1608, 150);
+            this.doneTaskPanel.Size = new System.Drawing.Size(1608, 185);
             this.doneTaskPanel.TabIndex = 4;
             // 
             // panel9
@@ -438,15 +473,6 @@
             this.label1.Text = "Done Task";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // singleListControlPanel
-            // 
-            this.singleListControlPanel.BackColor = System.Drawing.Color.Transparent;
-            this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
-            this.singleListControlPanel.Name = "singleListControlPanel";
-            this.singleListControlPanel.Size = new System.Drawing.Size(1241, 356);
-            this.singleListControlPanel.TabIndex = 9;
-            // 
             // ucNotFound2
             // 
             this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
@@ -456,7 +482,7 @@
             this.ucNotFound2.Location = new System.Drawing.Point(0, 50);
             this.ucNotFound2.Message = null;
             this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(1241, 356);
+            this.ucNotFound2.Size = new System.Drawing.Size(1241, 321);
             this.ucNotFound2.TabIndex = 8;
             // 
             // ucNotFound1
@@ -468,26 +494,8 @@
             this.ucNotFound1.Location = new System.Drawing.Point(0, 38);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(1608, 150);
+            this.ucNotFound1.Size = new System.Drawing.Size(1608, 185);
             this.ucNotFound1.TabIndex = 3;
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.Location = new System.Drawing.Point(30, 30);
-            this.pieChart1.Margin = new System.Windows.Forms.Padding(30);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(211, 143);
-            this.pieChart1.TabIndex = 2;
-            this.pieChart1.Text = "pieChart1";
-            // 
-            // pieChart2
-            // 
-            this.pieChart2.Location = new System.Drawing.Point(30, 233);
-            this.pieChart2.Margin = new System.Windows.Forms.Padding(30);
-            this.pieChart2.Name = "pieChart2";
-            this.pieChart2.Size = new System.Drawing.Size(211, 143);
-            this.pieChart2.TabIndex = 3;
-            this.pieChart2.Text = "pieChart2";
             // 
             // ListViewTemplate
             // 

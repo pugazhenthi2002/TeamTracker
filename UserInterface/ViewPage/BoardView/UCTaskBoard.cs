@@ -102,16 +102,16 @@ namespace TeamTracker
             switch (TaskBoardData.TaskPriority)
             {
                 case Priority.Easy:
-                    fImage = UserInterface.Properties.Resources.flag_UnderReview;
+                    fImage = UserInterface.Properties.Resources.Easy;
                     break;
                 case Priority.Medium:
-                    fImage = UserInterface.Properties.Resources.flag_NotStarted;
+                    fImage = UserInterface.Properties.Resources.Medium;
                     break;
                 case Priority.Hard:
-                    fImage = UserInterface.Properties.Resources.flag_stuck ;
+                    fImage = UserInterface.Properties.Resources.Hard ;
                     break;
                 case Priority.Critical:
-                    fImage = UserInterface.Properties.Resources.flag_OnProcess;
+                    fImage = UserInterface.Properties.Resources.Critical;
                     break;
             }
             pictureBoxFlag.Image = fImage;
@@ -163,7 +163,7 @@ namespace TeamTracker
         {
             Point pt = (sender as Control).PointToScreen(e.Location);
             pt = this.PointToClient(pt);
-            MouseDownTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+            MouseDownTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
             isDragging = true;
         }
 
@@ -171,7 +171,7 @@ namespace TeamTracker
         {
             Point pt = (sender as Control).PointToScreen(e.Location);
             pt = this.PointToClient(pt);
-            MouseUpTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+            MouseUpTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
             isDragging = false;
         }
 

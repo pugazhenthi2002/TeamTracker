@@ -43,6 +43,7 @@ namespace TeamTracker
         {
             set
             {
+                SuspendLayout();
                 if (value != null && value.Count > 0)
                 {
                     Dispose();
@@ -58,6 +59,7 @@ namespace TeamTracker
                 {
                     nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
                 }
+                ResumeLayout();
             }
         }
 
@@ -89,6 +91,7 @@ namespace TeamTracker
             for (int i = 0; i < MaxUserControls; i++)
             {
                 UcNotification tempNotification = new UcNotification();
+                tempNotification.SuspendLayout();
                 tempNotification.NotficationData = notifyList[i];
                 tempNotification.Size = new Size(panelBase.Width, panelBase.Height / 4);
                 tempNotification.Dock = DockStyle.Top;
@@ -97,6 +100,7 @@ namespace TeamTracker
                 panelBase.Controls.Add(tempNotification);
                 tempNotification.SendToBack();
                 UcNotiList.Add(tempNotification);
+                tempNotification.ResumeLayout();
             }
 
             IsNextEnable = (endIndex == notifyList.Count - 1) ? false : true;
@@ -114,6 +118,7 @@ namespace TeamTracker
 
             backBtn.Image = (IsBackEnable) ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
             nextBtn.Image = (IsNextEnable) ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            ResumeLayout();
         }
 
         private void NotificationPagination()

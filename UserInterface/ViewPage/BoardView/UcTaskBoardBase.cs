@@ -157,9 +157,6 @@ namespace TeamTracker
                 //        break;
                 //}
                 //tBase.RemoveTaskBoard(sender);
-
-
-
             }
         }
 
