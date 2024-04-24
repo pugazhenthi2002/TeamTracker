@@ -183,6 +183,14 @@ namespace TeamTracker
 
             if (versionNameTextBox.Text == "" || versionNameTextBox.Text == "Enter Version") return "Version Name Not Mentioned";
 
+            foreach(var Iter in versionNameTextBox.Text)
+            {
+                if(!((Iter<='9' && Iter>='0') || Iter == '.'))
+                {
+                    return "Version Name should be only Pointed Format\nLike 1.0,  2.1";
+                }
+            }
+
             if (VersionManager.IsVersionNameAlreadyExist(versionNameTextBox.Text, project.ProjectID)) return "Version Name Already Exists\nTry Another Version";
 
             if(descTextBox.Text == "" || descTextBox.Text == "Enter Version Description")   return "Version Description Not Mentioned";
@@ -244,7 +252,7 @@ namespace TeamTracker
         private void DateMouseLeave(object sender, EventArgs e)
         {
             string name = (sender as Control).Name;
-            if (name == "startDateTime" || name == "startDateLabel" || name == "startDatePanel")
+            if (name == "startDateTimePicker" || name == "startDateLabel" || name == "tableLayoutPanel6")
             {
                 startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(201, 210, 217);
                 startDateLabel.ForeColor = Color.FromArgb(39, 55, 77);

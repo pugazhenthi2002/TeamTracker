@@ -24,11 +24,14 @@ namespace UserInterface.Home_Page.Project_Manager
 
         public void InitializeProjectManagerHome()
         {
-            SuspendLayout();
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
             notificationContent1.NotifyList = DataHandler.FetchNotification();
             deployContent1.DeployVersions = VersionManager.FetchDeploymentsProjectVersion();
-            ResumeLayout();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
         }
     }
 }

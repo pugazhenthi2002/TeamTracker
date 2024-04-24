@@ -56,8 +56,8 @@ namespace UserInterface.ViewProject.TimelineView
                     if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
                     if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
 
-                    projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-                    projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+                    projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                    projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
 
                     InitializeProjectsForTimeline();
                 }
@@ -184,7 +184,8 @@ namespace UserInterface.ViewProject.TimelineView
         {
             Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel4.Width - 1, panel4.Height - 1));
+            e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(panel7.Width - 33, 0), new Point(panel7.Width - 33, panel7.Height - 1));
             pen.Dispose();
         }
 
@@ -198,6 +199,34 @@ namespace UserInterface.ViewProject.TimelineView
         {
             versionNames.BackColor = Color.FromArgb(231, 240, 250);
             panel4.Invalidate();
+        }
+
+        private void OnProjectPaginateMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            {
+                projectUpBox.Image = UserInterface.Properties.Resources.Up_Dark_Blue_Hover;
+            }
+            else
+            {
+                projectDownBox.Image = UserInterface.Properties.Resources.Down_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnProjectPaginateMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+
+            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            {
+                projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            }
+            else
+            {
+                projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            }
         }
 
         private void ProjectPaginate()

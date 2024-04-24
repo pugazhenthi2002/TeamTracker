@@ -22,8 +22,6 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePage();
-            //tabControl1.Visible = false;
-            tabControl1.SuspendLayout();
         }
 
         private void InitializePage()
@@ -52,14 +50,6 @@ namespace TeamTracker
             tabPage5.Visible = true;
             tabPage6.Visible = true;
             tabPage7.Visible = true;
-        }
-
-        public event EventHandler ManagerClose;
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            
 
             if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
@@ -80,9 +70,37 @@ namespace TeamTracker
                 addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
                 tabControl1.SelectedIndex = 4;
             }
-            //projectManagerHome1.SuspendLayout();
-            //tabControl1.Visible = true;
-            //projectManagerHome1.ResumeLayout();
+        }
+
+        public event EventHandler ManagerClose;
+
+        protected override void OnLoad(EventArgs e)
+        {
+            //tabControl1.SuspendLayout();
+            //base.OnLoad(e);
+
+            //if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
+            //{
+            //    panel2.Visible = panel7.Visible = false;
+            //    tabControl1.SelectedIndex = 0;
+            //    projectManagerHome1.InitializeProjectManagerHome();
+            //}
+            //else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
+            //{
+            //    panel5.Visible = false;
+            //    teamLeadHome1.InitializeHomePage();
+            //    tabControl1.SelectedIndex = 3;
+            //}
+            //else
+            //{
+            //    teamMemberHome1.InitializePage();
+            //    panel5.Visible = panel2.Visible = false;
+            //    addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
+            //    tabControl1.SelectedIndex = 4;
+            //}
+            ////projectManagerHome1.SuspendLayout();
+            ////tabPage1.Visible = true;
+            //tabControl1.ResumeLayout();
         }
 
 
@@ -268,8 +286,8 @@ namespace TeamTracker
         {
             if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
-                projectManagerHome1.InitializeProjectManagerHome();
                 tabControl1.SelectedIndex = 0;
+                projectManagerHome1.InitializeProjectManagerHome();
             }
             else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {

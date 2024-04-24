@@ -37,9 +37,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
             set
             {
-                tableLayoutPanel2.SuspendLayout();// tableLayoutPanel3.SuspendLayout(); tableLayoutPanel4.SuspendLayout(); tableLayoutPanel5.SuspendLayout(); tableLayoutPanel6.SuspendLayout();
-                milestoneView1.SuspendLayout();
-                SuspendLayout();
+                //tableLayoutPanel2.SuspendLayout();// tableLayoutPanel3.SuspendLayout(); tableLayoutPanel4.SuspendLayout(); tableLayoutPanel5.SuspendLayout(); tableLayoutPanel6.SuspendLayout();
+                //SuspendLayout();
                 version = value;
                 if (value != null)
                     InitializeOverview();
@@ -51,9 +50,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
                 backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
                 nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
-                ResumeLayout();
-                milestoneView1.ResumeLayout();
-                tableLayoutPanel2.ResumeLayout(); //tableLayoutPanel3.ResumeLayout(); tableLayoutPanel4.ResumeLayout(); tableLayoutPanel5.ResumeLayout(); tableLayoutPanel6.ResumeLayout();
+                //ResumeLayout();
+                //tableLayoutPanel2.ResumeLayout(); //tableLayoutPanel3.ResumeLayout(); tableLayoutPanel4.ResumeLayout(); tableLayoutPanel5.ResumeLayout(); tableLayoutPanel6.ResumeLayout();
             }
         }
 

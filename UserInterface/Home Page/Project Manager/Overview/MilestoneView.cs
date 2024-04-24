@@ -39,7 +39,7 @@ namespace TeamTracker
 
         public int ChangeMilestoneUI(bool flag)
         {
-            SuspendLayout();
+            //SuspendLayout();
             if (flag)
             {
                 startCount++;
@@ -76,7 +76,7 @@ namespace TeamTracker
             {
                 return 0;
             }
-            ResumeLayout();
+            //ResumeLayout();
         }
 
         private void OnMilestoneViewResize(object sender, EventArgs e)

@@ -27,7 +27,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             set
             {
-                SuspendLayout();
                 if (value != null && value.Count > 0)
                 {
                     panel5.Visible = true;
@@ -39,7 +38,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 {
                     panel5.Visible = false;
                 }
-                ResumeLayout();
             }
         }
 
@@ -101,7 +99,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
-            e.Graphics.DrawLine(pen, new Point(panel7.Width - 36, 0), new Point(panel7.Width - 36, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(panel7.Width - 33, 0), new Point(panel7.Width - 33, panel7.Height - 1));
             pen.Dispose();
         }
 

@@ -70,8 +70,8 @@ namespace TeamTracker
                     taskCollection = value;
                     startRemainingIdx = 0;
                     isRemainingBackEnabled = false;
-                    endRemainingIdx = value.Count > 5 ? 4 : value.Count - 1;
-                    isRemainingNextEnables = value.Count > 5 ? true : false;
+                    endRemainingIdx = value.Count > 10 ? 9 : value.Count - 1;
+                    isRemainingNextEnables = value.Count > 10 ? true : false;
                     SetRemainingTaskAllignment();
                 }
                 else
@@ -133,7 +133,7 @@ namespace TeamTracker
                 {
                     seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ColorManager.FetchTaskStatusColor(Iter.Key).A, ColorManager.FetchTaskStatusColor(Iter.Key).R, ColorManager.FetchTaskStatusColor(Iter.Key).G, ColorManager.FetchTaskStatusColor(Iter.Key).B)) });
                 }
-                pieChart1.InnerRadius = 30;
+                pieChart1.InnerRadius = 60;
                 pieChart1.Series = seriesCollection;
 
                 pieChart2.Visible = true;
@@ -142,7 +142,7 @@ namespace TeamTracker
                 {
                     seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ColorManager.FetchTaskPriorityColor(Iter.Key).A, ColorManager.FetchTaskPriorityColor(Iter.Key).R, ColorManager.FetchTaskPriorityColor(Iter.Key).G, ColorManager.FetchTaskPriorityColor(Iter.Key).B)) });
                 }
-                pieChart2.InnerRadius = 30;
+                pieChart2.InnerRadius = 60;
                 pieChart2.Series = seriesCollection;
             }
             else
@@ -220,8 +220,8 @@ namespace TeamTracker
             if (remainingTaskpaginateUp.Image != null) remainingTaskpaginateUp.Image.Dispose();
             if (remainingTaskpaginateDown.Image != null) remainingTaskpaginateDown.Image.Dispose();
 
-            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
-            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
         }
 
         private void OnReset(object sender, EventArgs e)
@@ -316,8 +316,8 @@ namespace TeamTracker
             isRemainingNextEnables = endRemainingIdx == taskCollection.Count - 1 ? false : true;
             isRemainingBackEnabled = startRemainingIdx == 0 ? false : true;
 
-            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
-            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
+            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
         }
 
         private void ReorderDoneTask()

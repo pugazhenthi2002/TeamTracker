@@ -39,7 +39,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         {
             Brush brush = new SolidBrush(milestoneColor);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillEllipse(brush, new Rectangle(1,1,panel1.Width-1, panel1.Height-1));
+            e.Graphics.FillEllipse(brush, new Rectangle(1,1,panel1.Width-2, panel1.Height-2));
             brush.Dispose();
         }
     }

@@ -126,6 +126,7 @@
             // yesButton
             // 
             this.yesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.yesButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.yesButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.yesButton.FlatAppearance.BorderSize = 0;
             this.yesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -142,6 +143,7 @@
             // noButton
             // 
             this.noButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.noButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.noButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.noButton.FlatAppearance.BorderSize = 0;
             this.noButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
