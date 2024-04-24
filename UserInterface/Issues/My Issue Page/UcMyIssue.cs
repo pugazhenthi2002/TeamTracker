@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.Issues.My_Issue_Page;
 
 namespace TeamTracker
 {
@@ -146,6 +147,13 @@ namespace TeamTracker
                 }
                 
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ViewSolutionForm form = new ViewSolutionForm();
+            form.IssueSolutionCollection = IssueManager.FetchSolutionForIssue(MyIssueList[e.RowIndex].IssueID);
+            form.Show();
         }
     }
 }

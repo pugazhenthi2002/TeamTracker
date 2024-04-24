@@ -18,7 +18,7 @@ namespace TeamTracker
         public static BooleanMsg ConnectDatabase()
         {
             //manager = new MySqlHandler("192.168.3.55", "Ilam", "Lucid123", "teamtracker");
-            manager = new MySqlHandler("localhost", "root", "", "projectmanagement");
+            manager = new MySqlHandler("localhost", "root", "Lucid123", "teamtracker");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -56,6 +56,24 @@ namespace TeamTracker
             version.VersionID = Convert.ToInt32(result["VersionID"][0]);
 
             return version;
+        }
+
+        public static IssueSolutionAttachment FetchIssueSolutionAttachment(int issueSolutionID)
+        {
+            IssueSolutionAttachment result = new IssueSolutionAttachment();
+            var attachments = manager.FetchData("issuesolutionattachment", $"IssueSolutionID={issueSolutionID}").Value;
+            if (attachments != null && attachments.Count == 0)
+                return null;
+            result = new IssueSolutionAttachment()
+            {
+                DisplayName = Convert.ToString(attachments["DisplayName"][0]),
+                IssueSolnAttachmentID = Convert.ToInt32(attachments["IssueSolutionAttachmentID"][0]),
+                IssueSolnAttachmentLocation = Convert.ToString(attachments["AttachmentLocation"][0]),
+                IssueSolnAttachmentName = Convert.ToString(attachments["AttachmentName"][0]),
+                IssueSolutionID = Convert.ToInt32(attachments["IssueSolutionID"][0])
+            };
+
+            return result;
         }
 
         public static SourceCode GetTaskSourceBySourceCodeID(int sourceCodeID)

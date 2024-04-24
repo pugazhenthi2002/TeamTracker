@@ -47,10 +47,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCreateIssue = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.SidePanel.SuspendLayout();
             this.tableLayoutPanelSide.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -292,6 +292,22 @@
             this.TopPanel.Size = new System.Drawing.Size(974, 53);
             this.TopPanel.TabIndex = 2;
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.buttonDelete.FlatAppearance.BorderSize = 0;
+            this.buttonDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonDelete.Location = new System.Drawing.Point(745, 11);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(109, 33);
+            this.buttonDelete.TabIndex = 2;
+            this.buttonDelete.Text = "Delete Issue";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.OnClickDeleteIssue);
+            // 
             // buttonCreateIssue
             // 
             this.buttonCreateIssue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
@@ -364,23 +380,8 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(974, 532);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownDatagridview);
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.buttonDelete.FlatAppearance.BorderSize = 0;
-            this.buttonDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonDelete.Location = new System.Drawing.Point(745, 11);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(109, 33);
-            this.buttonDelete.TabIndex = 2;
-            this.buttonDelete.Text = "Delete Issue";
-            this.buttonDelete.UseVisualStyleBackColor = false;
-            this.buttonDelete.Click += new System.EventHandler(this.OnClickDeleteIssue);
             // 
             // UcMyIssue
             // 
