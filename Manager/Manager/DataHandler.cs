@@ -490,5 +490,6 @@ namespace TeamTracker
         }
 
         private static DatabaseManager manager;
+        private static int i;
     }
 }
