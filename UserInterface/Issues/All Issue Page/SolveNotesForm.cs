@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,11 +14,22 @@ namespace TeamTracker
 {
     public partial class SolveNotesForm : Form
     {
+        private PictureBox curStyle;
+        private FontStyle currentFontStyle;
+        private string style;
+        private Point mouseDownPoint;
+        private bool isDragging = false;
+        private Issue currentIssue = null;
+        IssueSolutionAttachment solnAttachment;
+
         public SolveNotesForm()
         {
             InitializeComponent();
-
+            InitializeRoundedEdge();
+            labelAttachmentCount.Visible = false;
             this.BackColor = Color.FromArgb(255,255,254);
+            labelWarning.Hide();
+
             //this.TransparencyKey = Color.FromArgb(255, 255, 254);
             //ucOptions1.Location = new Point(0, 0);
             //ucOptions1.Visible = false;
@@ -27,6 +39,16 @@ namespace TeamTracker
             
         }
 
+        public SolveNotesForm(Issue issue)
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+            labelAttachmentCount.Visible = false;
+            this.BackColor = Color.FromArgb(255, 255, 254);
+            labelWarning.Hide();
+            currentIssue = issue;
+        }
+
         public EventHandler<FontStyle> TextChange;
         public EventHandler tempTextChange;
         public EventHandler<Color> ColorChange;
@@ -34,13 +56,24 @@ namespace TeamTracker
         public EventHandler AddNoteClick;
         public EventHandler DeleteNoteForm;
 
-        private PictureBox curStyle;
-        private FontStyle currentFontStyle;
-        private string style;
-        private Point mouseDownPoint;
-        private bool isDragging = false;
+        
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
+        private void InitializeRoundedEdge()
+        {
+            labelAttachmentCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachmentCount.Width, labelAttachmentCount.Height, labelAttachmentCount.Width, labelAttachmentCount.Height));
+          
+        }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
@@ -72,7 +105,7 @@ namespace TeamTracker
             
             if (style != "ImagePicBox")
             {
-                curStyle.BackColor = curStyle.BackColor != Color.Gray ? Color.Gray : Color.Transparent;
+                curStyle.BackColor = curStyle.BackColor != Color.Silver ? Color.Silver : Color.Transparent;
             }
             else
             {
@@ -229,6 +262,14 @@ namespace TeamTracker
             {
                 string selectedFilePath = openFileDialog.FileName;
                 string safeFile = openFileDialog.SafeFileName;
+                labelAttachmentCount.Visible = true;
+
+                solnAttachment = new IssueSolutionAttachment()
+                {
+                    DisplayName = safeFile,
+                    IssueSolnAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    IssueSolnAttachmentLocation = selectedFilePath
+                };
 
             }
         }
@@ -251,7 +292,24 @@ namespace TeamTracker
 
         private void OnClickPost(object sender, EventArgs e)
         {
-            this.Dispose();
+            if(NotesTextBox.Text=="")
+            {
+                labelWarning.Text = "Add Solution";
+                labelWarning.Show();
+                return;
+            }
+
+            IssueSolution soln = new IssueSolution()
+            {
+                IssueID = currentIssue.IssueID,
+                Solution = NotesTextBox.Text,
+                SolvedByID = EmployeeManager.CurrentEmployee.EmployeeID
+            };
+
+
+            IssueManager.AddSolution(soln,solnAttachment);
+
+            this.Close();
         }
     }
 }

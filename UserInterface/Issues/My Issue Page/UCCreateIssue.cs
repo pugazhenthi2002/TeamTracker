@@ -199,6 +199,13 @@ namespace TeamTracker
                 return;
             }
 
+            if(textBoxTags.Text.Contains(","))
+            {
+                labelWarning.Text = "No delimiters allowed for tags!";
+                labelWarning.Show();
+                return;
+            }
+
             tag = new UCTags();
             tag.Size = new Size(panelTags.Width-20, panelTags.Height / 4 - 5);
             tag.Dock = DockStyle.Top;

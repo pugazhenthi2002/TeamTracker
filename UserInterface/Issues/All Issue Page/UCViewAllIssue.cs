@@ -15,10 +15,14 @@ namespace TeamTracker
         private DataTable dataTable = new DataTable();
         private string SolutionFilePath="";
         private List<Issue> IssueList;
+   
 
         public UCViewAllIssue()
         {
             InitializeComponent();
+            InitializeIssueManager();
+            dataGridView1.AllowUserToAddRows = false;
+            SetData();
             //IssueManager.StoreIssueCollection();
             //IssueList = IssueManager.IssueCollection;
 
@@ -39,7 +43,64 @@ namespace TeamTracker
 
             //dataGridView1.DataSource = dataTable;
 
-            
+            //DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            //buttonColumn.HeaderText = "Solve";
+            //buttonColumn.Name = "SolveButtonCol";
+            ////buttonColumn.Text = "Add solution";
+            //buttonColumn.FlatStyle = FlatStyle.Flat;
+            //dataGridView1.Columns.Add(buttonColumn);
+            //dataGridView1.AllowUserToAddRows = false;
+
+
+        }
+
+        private void InitializeIssueManager()
+        {
+            IssueManager.IssueAdded += IssueManagerIssueAdded;
+            IssueManager.IssueUpdated += IssueManagerIssueUpdated;
+            IssueManager.IssueRemoved += IssueManagerIssueRemoved;
+        }
+
+        private void IssueManagerIssueRemoved(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            SetData();
+        }
+
+        private void IssueManagerIssueAdded(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            SetData();
+        }
+
+        private void IssueManagerIssueUpdated(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            SetData();
+        }
+
+        private void SetData()
+        {
+            IssueList = IssueManager.IssueCollection;
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("IssueID", typeof(int));
+            dt.Columns.Add("IssueName", typeof(string));
+            dt.Columns.Add("IssueDesc", typeof(string));
+            dt.Columns.Add("PostedBy", typeof(int));
+            dt.Columns.Add("Type", typeof(string));
+            dt.Columns.Add("Priority", typeof(string));
+            dt.Columns.Add("PostedDate", typeof(DateTime));
+
+            foreach (var issue in IssueList)
+            {
+                dt.Rows.Add(issue.IssueID,issue.IssueName, issue.IssueDesc, issue.PostedBy, issue.Type + "", issue.Priority + "", issue.PostedDate);
+            }
+
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns["IssueID"].Visible = false;
+
 
 
         }
@@ -127,32 +188,30 @@ namespace TeamTracker
 
         private void OnLoad(object sender, EventArgs e)
         {
-            IssueList = IssueManager.IssueCollection;
+            
+        }
 
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("IssueName", typeof(string));
-            dt.Columns.Add("IssueDesc", typeof(string));
-            dt.Columns.Add("PostedBy", typeof(int));
-            dt.Columns.Add("Type", typeof(string));
-            dt.Columns.Add("Priority", typeof(string));
-            dt.Columns.Add("PostedDate", typeof(DateTime));
-
-            foreach (var issue in IssueList)
+        private void OnDoubleClickCell(object sender, DataGridViewCellEventArgs e)
+        {
+            int columnIndex = -1;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                dt.Rows.Add(issue.IssueName, issue.IssueDesc, issue.PostedBy, issue.Type + "", issue.Priority + "", issue.PostedDate);
+                if (column.HeaderText == "IssueID")
+                {
+                    columnIndex = column.Index;
+                    break;
+                }
             }
+            if (e.RowIndex != -1)
+            {
+                int issueID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[columnIndex].Value);
 
-            dataGridView1.DataSource = dt;
+                IssueInfoForm issueInfoForm = new IssueInfoForm();
+                issueInfoForm.IssueData = IssueManager.GetIssueById(issueID);
 
-
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.HeaderText = "Solve";
-            buttonColumn.Name = "SolveButtonCol";
-            //buttonColumn.Text = "Add solution";
-            buttonColumn.FlatStyle = FlatStyle.Flat;
-            dataGridView1.Columns.Add(buttonColumn);
-            dataGridView1.AllowUserToAddRows = false;
+                issueInfoForm.Show();
+            }
+            
         }
     }
 }

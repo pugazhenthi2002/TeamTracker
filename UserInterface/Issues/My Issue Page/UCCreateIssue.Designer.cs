@@ -49,11 +49,11 @@
             this.BtnSetPriority = new System.Windows.Forms.Button();
             this.BtnSetType = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelWarning = new System.Windows.Forms.Label();
             this.pictureBoxAttachments = new System.Windows.Forms.PictureBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.buttonDiscard = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.labelWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,7 +92,7 @@
             // 
             this.panelAttachment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panelAttachment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAttachment.Location = new System.Drawing.Point(11, 335);
+            this.panelAttachment.Location = new System.Drawing.Point(11, 336);
             this.panelAttachment.Margin = new System.Windows.Forms.Padding(11, 6, 11, 6);
             this.panelAttachment.Name = "panelAttachment";
             this.panelAttachment.Size = new System.Drawing.Size(546, 33);
@@ -111,7 +111,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(568, 253);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(568, 254);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel2
@@ -122,7 +122,7 @@
             this.panel2.Location = new System.Drawing.Point(347, 6);
             this.panel2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 241);
+            this.panel2.Size = new System.Drawing.Size(214, 242);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanelTags
@@ -138,7 +138,7 @@
             this.tableLayoutPanelTags.RowCount = 2;
             this.tableLayoutPanelTags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanelTags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanelTags.Size = new System.Drawing.Size(214, 241);
+            this.tableLayoutPanelTags.Size = new System.Drawing.Size(214, 242);
             this.tableLayoutPanelTags.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -196,7 +196,7 @@
             this.panelTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTags.Location = new System.Drawing.Point(3, 51);
             this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(208, 187);
+            this.panelTags.Size = new System.Drawing.Size(208, 188);
             this.panelTags.TabIndex = 1;
             // 
             // panel1
@@ -207,7 +207,7 @@
             this.panel1.Location = new System.Drawing.Point(7, 6);
             this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(326, 241);
+            this.panel1.Size = new System.Drawing.Size(326, 242);
             this.panel1.TabIndex = 0;
             // 
             // ProjectEntryTablePanel
@@ -228,7 +228,7 @@
             this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ProjectEntryTablePanel.Size = new System.Drawing.Size(326, 241);
+            this.ProjectEntryTablePanel.Size = new System.Drawing.Size(326, 242);
             this.ProjectEntryTablePanel.TabIndex = 0;
             // 
             // IssueDescTextBox
@@ -242,7 +242,7 @@
             this.IssueDescTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 13);
             this.IssueDescTextBox.Multiline = true;
             this.IssueDescTextBox.Name = "IssueDescTextBox";
-            this.IssueDescTextBox.Size = new System.Drawing.Size(312, 138);
+            this.IssueDescTextBox.Size = new System.Drawing.Size(312, 139);
             this.IssueDescTextBox.TabIndex = 3;
             this.IssueDescTextBox.Text = "Enter Your Text";
             this.IssueDescTextBox.Click += new System.EventHandler(this.OnClickTextBox);
@@ -294,7 +294,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panel3.Controls.Add(this.tableLayoutPanel3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(7, 259);
+            this.panel3.Location = new System.Drawing.Point(7, 260);
             this.panel3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(554, 64);
@@ -357,12 +357,25 @@
             this.tableLayoutPanel5.Controls.Add(this.buttonPost, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.buttonDiscard, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 377);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 378);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(562, 46);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(562, 45);
             this.tableLayoutPanel5.TabIndex = 3;
+            // 
+            // labelWarning
+            // 
+            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelWarning.Location = new System.Drawing.Point(2, 0);
+            this.labelWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(220, 45);
+            this.labelWarning.TabIndex = 4;
+            this.labelWarning.Text = "Warning";
+            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxAttachments
             // 
@@ -370,7 +383,7 @@
             this.pictureBoxAttachments.Image = global::UserInterface.Properties.Resources.Attachment_black;
             this.pictureBoxAttachments.Location = new System.Drawing.Point(227, 3);
             this.pictureBoxAttachments.Name = "pictureBoxAttachments";
-            this.pictureBoxAttachments.Size = new System.Drawing.Size(50, 40);
+            this.pictureBoxAttachments.Size = new System.Drawing.Size(50, 39);
             this.pictureBoxAttachments.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxAttachments.TabIndex = 3;
             this.pictureBoxAttachments.TabStop = false;
@@ -387,7 +400,7 @@
             this.buttonPost.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.buttonPost.Location = new System.Drawing.Point(395, 3);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(164, 40);
+            this.buttonPost.Size = new System.Drawing.Size(164, 39);
             this.buttonPost.TabIndex = 2;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = false;
@@ -403,24 +416,11 @@
             this.buttonDiscard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.buttonDiscard.Location = new System.Drawing.Point(283, 3);
             this.buttonDiscard.Name = "buttonDiscard";
-            this.buttonDiscard.Size = new System.Drawing.Size(106, 40);
+            this.buttonDiscard.Size = new System.Drawing.Size(106, 39);
             this.buttonDiscard.TabIndex = 2;
             this.buttonDiscard.Text = "Discard";
             this.buttonDiscard.UseVisualStyleBackColor = false;
             this.buttonDiscard.Click += new System.EventHandler(this.OnClickDiscard);
-            // 
-            // labelWarning
-            // 
-            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWarning.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelWarning.Location = new System.Drawing.Point(2, 0);
-            this.labelWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelWarning.Name = "labelWarning";
-            this.labelWarning.Size = new System.Drawing.Size(220, 46);
-            this.labelWarning.TabIndex = 4;
-            this.labelWarning.Text = "Warning";
-            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UCCreateIssue
             // 

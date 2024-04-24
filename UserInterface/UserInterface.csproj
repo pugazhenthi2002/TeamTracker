@@ -394,6 +394,12 @@
     <Compile Include="Home Page\Team Member\TeamMemberReportContent.Designer.cs">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\IssueInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\IssueInfoForm.Designer.cs">
+      <DependentUpon>IssueInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Issues\UcFileName.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -940,6 +946,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Member\TeamMemberReportContent.resx">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\IssueInfoForm.resx">
+      <DependentUpon>IssueInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\UcFileName.resx">
       <DependentUpon>UcFileName.cs</DependentUpon>

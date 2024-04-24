@@ -21,9 +21,31 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeIssueManager();
-            
+            dataGridView1.AllowUserToAddRows = false;
+
             SetData();
 
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "Solution";
+            buttonColumn.Text = "Click To view Solutions";
+            buttonColumn.UseColumnTextForButtonValue = true;
+            buttonColumn.FlatStyle = FlatStyle.Flat;
+            buttonColumn.DefaultCellStyle.BackColor = Color.FromArgb(157, 178, 191);
+
+            dataGridView1.Columns.Add(buttonColumn);
+
+            dataGridView1.CellClick += DataGridViewCellClick;
+
+        }
+
+        private void DataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                int rowIndex = e.RowIndex;
+                string issueID = dataGridView1["IssueID", rowIndex].Value.ToString();
+                MessageBox.Show($"Button clicked for IssueID: {issueID}");
+            }
         }
 
         private void SetData()
@@ -31,6 +53,7 @@ namespace TeamTracker
             MyIssueList = IssueManager.FetchMyIssue();
             DataTable dt = new DataTable();
 
+            dt.Columns.Add("IssueID", typeof(int));
             dt.Columns.Add("IssueName", typeof(string));
             dt.Columns.Add("IssueDesc", typeof(string));
             dt.Columns.Add("PostedBy", typeof(int));
@@ -40,19 +63,33 @@ namespace TeamTracker
 
             foreach (var issue in MyIssueList)
             {
-                dt.Rows.Add(issue.IssueName, issue.IssueDesc, issue.PostedBy, issue.Type + "", issue.Priority + "", issue.PostedDate);
+                dt.Rows.Add(issue.IssueID, issue.IssueName, issue.IssueDesc, issue.PostedBy, issue.Type + "", issue.Priority + "", issue.PostedDate);
             }
 
             dataGridView1.DataSource = dt;
+            dataGridView1.Columns["IssueID"].Visible = false;
         }
 
         private void InitializeIssueManager()
         {
-            // Subscribe to the IssuesChanged event
-            IssueManager.IssuesChanged += IssueManager_IssuesChanged;
+            IssueManager.IssueAdded += IssueManagerIssueAdded;
+            IssueManager.IssueUpdated += IssueManagerIssueUpdated;
+            IssueManager.IssueRemoved += IssueManagerIssueRemoved;
         }
 
-        private void IssueManager_IssuesChanged(object sender, EventArgs e)
+        private void IssueManagerIssueRemoved(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            SetData();
+        }
+
+        private void IssueManagerIssueAdded(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            SetData();
+        }
+
+        private void IssueManagerIssueUpdated(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
             SetData();
@@ -117,6 +154,8 @@ namespace TeamTracker
             ucCreate.Dock = DockStyle.Fill;
             ucCreate.DiscardClick += OnClickDiscardIssue;
             ucCreate.PostClick+= OnClickPostIssue;
+            
+
 
             CreateIssueForm.Controls.Add(ucCreate);
             CreateIssueForm.ShowDialog();
@@ -124,27 +163,47 @@ namespace TeamTracker
 
         private void OnClickDiscardIssue(object sender, EventArgs e)
         {
-            CreateIssueForm.Dispose();
+            //CreateIssueForm.Dispose();
+            CreateIssueForm.Close();
         }
 
         private void OnClickPostIssue(object sender, EventArgs e)
         {
             
-            CreateIssueForm.Dispose();
+            //CreateIssueForm.Dispose();
+            CreateIssueForm.Close();
         }
 
         private void OnClickDeleteIssue(object sender, EventArgs e)
         {
+
+            List<int> rowsToRemove = new List<int> ();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                if (!row.IsNewRow) 
+                if (!row.IsNewRow)
                 {
-                    dataGridView1.Rows.Remove(row);
-
-                    int issueID = Convert.ToInt32(row.Cells["IssueID"].Value);
-                    IssueManager.RemoveIssue(IssueManager.GetIssueById(issueID));
+                    rowsToRemove.Add(row.Index);
                 }
-                
+            }
+
+
+            for (int ctr = 0;ctr<rowsToRemove.Count;ctr++)
+            {
+                int row = rowsToRemove[ctr];
+                int issueID = Convert.ToInt32(dataGridView1["IssueID", row-ctr].Value);
+                IssueManager.RemoveIssue(IssueManager.GetIssueById(issueID));
+                  
+            }
+        }
+
+        private void OnDoubleClickCell(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                int issueID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["IssueID"].Value);
+
+                //OnClickCreateIssue(null, e);
+                //ucCreate.IssueData = IssueManager.GetIssueById(issueID);
             }
         }
     }
