@@ -12,7 +12,10 @@ namespace TeamTracker
     {
         public static List<Issue> IssueCollection = new List<Issue>();
         public static List<IssueSolution> IssueSolutionCollection = new List<IssueSolution>();
-        public static event EventHandler IssuesChanged;
+        public static event EventHandler IssueUpdated;
+        public static event EventHandler IssueAdded;
+        public static event EventHandler IssueRemoved;
+        
 
         public static BooleanMsg StoreIssueCollection()
         {
@@ -35,15 +38,24 @@ namespace TeamTracker
                 attachment.IssueID = issue.IssueID;
                 DataHandler.AddIssueAttachment(attachment);
             }
-            OnIssuesChanged(EventArgs.Empty);
+            OnIssueAdded(EventArgs.Empty);
 
 
         }
 
-        private static void OnIssuesChanged(EventArgs e)
+        private static void OnIssueUpdated(EventArgs e)
         {
-            IssuesChanged?.Invoke(null, e);
+            IssueUpdated?.Invoke(null, e);
         }
+        private static void OnIssueAdded(EventArgs e)
+        {
+            IssueAdded?.Invoke(null, e);
+        }
+        private static void OnIssueRemoved(EventArgs e)
+        {
+            IssueRemoved?.Invoke(null, e);
+        }
+
 
         public static List<Issue> GetIssueCollection()
         {
@@ -69,6 +81,7 @@ namespace TeamTracker
                 }
             }
             if (attachment != null) DataHandler.UpdateIssueAttachment(issue.IssueID, attachment);
+            OnIssueUpdated(EventArgs.Empty);
         }
 
         //removes the entire issue
@@ -80,12 +93,13 @@ namespace TeamTracker
                 if (issue.IssueID == IssueCollection[ctr].IssueID)
                 {
                     DataHandler.RemoveIssue(issue);
-                    IssueCollection.Remove(issue);
                     DataHandler.RemoveIssueAttachment(issue);
 
                     RemoveAllSolutionOfIssue(IssueCollection[ctr]);
+                    IssueCollection.Remove(issue);
                 }
             }
+            OnIssueRemoved(EventArgs.Empty);
         }
 
         //returns the issue posted by the current user
