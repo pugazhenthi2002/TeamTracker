@@ -77,5 +77,7 @@ namespace TeamTracker
             panel11.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel11.Width, panel11.Height, 20, 20));
             taskCompletionProgressBar1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, taskCompletionProgressBar1.Width, taskCompletionProgressBar1.Height, 10, 10));
         }
+
+        
     }
 }

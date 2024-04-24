@@ -104,5 +104,11 @@ namespace TeamTracker
             (sender as ProjectManagerMainForm).Close();
             this.Close();
         }
+
+        private void OnLoad(object sender, EventArgs e)
+        {
+            DataHandler.StoreIssueDetails();
+            IssueManager.StoreIssueCollection();
+        }
     }
 }

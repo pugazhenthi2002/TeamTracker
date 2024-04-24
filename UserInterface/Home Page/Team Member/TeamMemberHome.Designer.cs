@@ -35,7 +35,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.taskContent1 = new TeamTracker.TaskContent();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ucViewAllIssue1 = new TeamTracker.UCViewAllIssue();
             this.teamMemberReport1 = new UserInterface.Home_Page.Team_Member.TeamMemberReport();
+            this.ucMyIssue1 = new TeamTracker.UcMyIssue();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -94,6 +96,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.ucViewAllIssue1);
             this.panel2.Controls.Add(this.taskContent1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -111,12 +114,22 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ucMyIssue1);
             this.panel1.Controls.Add(this.teamMemberReport1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1346, 381);
             this.panel1.TabIndex = 1;
+            // 
+            // ucViewAllIssue1
+            // 
+            this.ucViewAllIssue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucViewAllIssue1.Location = new System.Drawing.Point(-25, -31);
+            this.ucViewAllIssue1.Margin = new System.Windows.Forms.Padding(0);
+            this.ucViewAllIssue1.Name = "ucViewAllIssue1";
+            this.ucViewAllIssue1.Size = new System.Drawing.Size(1256, 615);
+            this.ucViewAllIssue1.TabIndex = 1;
             // 
             // teamMemberReport1
             // 
@@ -126,6 +139,14 @@
             this.teamMemberReport1.Name = "teamMemberReport1";
             this.teamMemberReport1.Size = new System.Drawing.Size(1346, 381);
             this.teamMemberReport1.TabIndex = 0;
+            this.teamMemberReport1.Load += new System.EventHandler(this.teamMemberReport1_Load_1);
+            // 
+            // ucMyIssue1
+            // 
+            this.ucMyIssue1.Location = new System.Drawing.Point(-3, -3);
+            this.ucMyIssue1.Name = "ucMyIssue1";
+            this.ucMyIssue1.Size = new System.Drawing.Size(1160, 585);
+            this.ucMyIssue1.TabIndex = 1;
             // 
             // TeamMemberHome
             // 
@@ -134,6 +155,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TeamMemberHome";
             this.Size = new System.Drawing.Size(1352, 705);
+            this.Load += new System.EventHandler(this.OnLoadHome);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -153,5 +175,7 @@
         private System.Windows.Forms.Panel panel1;
         private TeamTracker.TaskContent taskContent1;
         private TeamMemberReport teamMemberReport1;
+        private TeamTracker.UCViewAllIssue ucViewAllIssue1;
+        private TeamTracker.UcMyIssue ucMyIssue1;
     }
 }

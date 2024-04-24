@@ -176,6 +176,18 @@
     <Compile Include="Add Project\VersionUpgrade.designer.cs">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\All Issue Page\SolveNotesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\SolveNotesForm.designer.cs">
+      <DependentUpon>SolveNotesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\UCViewAllIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\UCViewAllIssue.Designer.cs">
+      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="BorderGraphicsPath.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -382,6 +394,12 @@
     <Compile Include="Home Page\Team Member\TeamMemberReportContent.Designer.cs">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\UcFileName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\UcFileName.Designer.cs">
+      <DependentUpon>UcFileName.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -405,6 +423,36 @@
     </Compile>
     <Compile Include="LoginPage\TextBox.designer.cs">
       <DependentUpon>TextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssuePriorityDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssuePriorityDropDownForm.Designer.cs">
+      <DependentUpon>IssuePriorityDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssueTypeDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssueTypeDropDownForm.Designer.cs">
+      <DependentUpon>IssueTypeDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCCreateIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCCreateIssue.Designer.cs">
+      <DependentUpon>UCCreateIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UcMyIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UcMyIssue.Designer.cs">
+      <DependentUpon>UcMyIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCTags.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCTags.Designer.cs">
+      <DependentUpon>UCTags.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification Manager\CloseButton.cs">
       <SubType>UserControl</SubType>
@@ -786,6 +834,12 @@
     <EmbeddedResource Include="Add Project\VersionUpgrade.resx">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Issues\All Issue Page\SolveNotesForm.resx">
+      <DependentUpon>SolveNotesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\All Issue Page\UCViewAllIssue.resx">
+      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -887,6 +941,9 @@
     <EmbeddedResource Include="Home Page\Team Member\TeamMemberReportContent.resx">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Issues\UcFileName.resx">
+      <DependentUpon>UcFileName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -898,6 +955,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\TextBox.resx">
       <DependentUpon>TextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\IssuePriorityDropDownForm.resx">
+      <DependentUpon>IssuePriorityDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\IssueTypeDropDownForm.resx">
+      <DependentUpon>IssueTypeDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\UCCreateIssue.resx">
+      <DependentUpon>UCCreateIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\UcMyIssue.resx">
+      <DependentUpon>UcMyIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\UCTags.resx">
+      <DependentUpon>UCTags.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notification Manager\CloseButton.resx">
       <DependentUpon>CloseButton.cs</DependentUpon>
@@ -1177,6 +1249,8 @@
     <None Include="Resources\calendar light.png" />
     <None Include="Resources\calendar 24x24.png" />
     <None Include="Resources\calendar1.png" />
+    <None Include="Resources\Bold.png" />
+    <None Include="Resources\bullets.png" />
     <Content Include="Resources\Close Black.png" />
     <Content Include="Resources\close Hover.png" />
     <Content Include="Resources\Close Red.png" />
@@ -1201,12 +1275,15 @@
     <None Include="Resources\Line.png" />
     <None Include="Resources\Not found.png" />
     <None Include="Resources\Medium.png" />
+    <None Include="Resources\italic.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
     <Content Include="Resources\sort-up.png" />
     <None Include="Resources\Upload Cloud.gif" />
     <None Include="Resources\vertical line.png" />
+    <None Include="Resources\strikethrough.png" />
+    <None Include="Resources\underline.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>

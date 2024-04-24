@@ -34,7 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -64,6 +63,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.taskCompletionProgressBar1 = new UserInterface.Home_Page.Project_Manager.Overview.TaskCompletionProgressBar();
             this.currentMilestone1 = new TeamTracker.CurrentMilestone();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel3.SuspendLayout();
             this.tableLayoutPanelBase.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -135,18 +135,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(20, 312);
             this.panel1.TabIndex = 4;
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Current Version !!";
-            this.ucNotFound1.HeadTextSize = 10;
-            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(630, 272);
-            this.ucNotFound1.TabIndex = 8;
             // 
             // tableLayoutPanelBase
             // 
@@ -515,6 +503,18 @@
             this.currentMilestone1.Name = "currentMilestone1";
             this.currentMilestone1.Size = new System.Drawing.Size(306, 138);
             this.currentMilestone1.TabIndex = 9;
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Current Version !!";
+            this.ucNotFound1.HeadTextSize = 10;
+            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(630, 272);
+            this.ucNotFound1.TabIndex = 8;
             // 
             // TaskContent
             // 

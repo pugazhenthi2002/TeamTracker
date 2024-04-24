@@ -739,5 +739,256 @@ namespace TeamTracker
         }
 
         
+        public static List<Issue> StoreIssueDetails()
+        {
+            var result = manager.FetchData("issue", "").Value;
+
+            if (result == null) return null;
+
+            List<Issue> IssueCollection = new List<Issue>();
+            string issuePriority,issueType;
+            string tagString;
+
+            for (int ctr = 0; result.Count > 0 && ctr < result["IssueID"].Count; ctr++)
+            {
+                issuePriority = result["Priority"][ctr].ToString();
+                issueType = result["Type"][ctr].ToString();
+
+                tagString = result["Tags"][ctr].ToString();
+                string[] tagsArray = tagString.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                IssueCollection.Add(new Issue()
+                {
+                    IssueID = Convert.ToInt32(result["IssueID"][ctr]),
+                    PostedBy = Convert.ToInt32(result["PostedBy"][ctr]),
+                    IssueName = Convert.ToString(result["Title"][ctr]),
+                    IssueDesc = Convert.ToString(result["Description"][ctr]),
+                    PostedDate = Convert.ToDateTime(result["Date"][ctr]),
+                    Type = (issueType == "Bug") ? Issue.IssueType.Bug : ((issueType == "FeatureRequest") ? Issue.IssueType.FeatureRequest : ((issueType == "Optimization") ? Issue.IssueType.Optimization : ((issueType == "Security") ? Issue.IssueType.Security : ((issueType == "LogicalNeed") ? Issue.IssueType.LogicalNeed : Issue.IssueType.Other)))),
+                    Priority = (issuePriority == "High") ? Issue.IssuePriority.High : ((issuePriority == "Medium") ? Issue.IssuePriority.Medium : Issue.IssuePriority.Low),
+                    Tags = new List<string>(tagsArray)
+                });
+            }
+
+            return IssueCollection;
+        }
+
+        public static List<IssueAttachment> StoreIssueAttachmentDetails()
+        {
+            var result = manager.FetchData("issueattachment", "").Value;
+
+            if (result == null) return null;
+
+            List<IssueAttachment> IssueAttachmentCollection = new List<IssueAttachment>();
+            
+
+            for (int ctr = 0; result.Count > 0 && ctr < result["IssueID"].Count; ctr++)
+            {
+
+                IssueAttachmentCollection.Add(new IssueAttachment()
+                {
+                    IssueAttachmentID = Convert.ToInt32(result["IssueAttachmentID"][ctr]),
+                    IssueID = Convert.ToInt32(result["IssueID"][ctr]),
+                    DisplayName = Convert.ToString(result["DisplayName"][ctr]),
+                    IssueAttachmentName = Convert.ToString(result["AttachmentName"][ctr]),
+                    IssueAttachmentLocation = Convert.ToString(result["Location"][ctr])
+                    
+                });
+            }
+
+            return IssueAttachmentCollection;
+        }
+
+        public static List<IssueSolution> StoreIssueSolutionDetails()
+        {
+            var result = manager.FetchData("issuesolution", "").Value;
+
+            if (result == null) return null;
+
+            List<IssueSolution> IssueSolutionCollection = new List<IssueSolution>();
+
+
+            for (int ctr = 0; result.Count > 0 && ctr < result["IssueID"].Count; ctr++)
+            {
+
+                IssueSolutionCollection.Add(new IssueSolution()
+                {
+                    IssueSolutionID = Convert.ToInt32(result["IssueSolutionID"][ctr]),
+                    IssueID = Convert.ToInt32(result["IssueID"][ctr]),
+                    Solution = Convert.ToString(result["Solution"][ctr]),
+                    SolvedByID = Convert.ToInt32(result["SolvedBy"][ctr])
+
+                });
+            }
+
+            return IssueSolutionCollection;
+        }
+
+        public static List<IssueSolutionAttachment> StoreIssueSolutionAttachmentDetails()
+        {
+            var result = manager.FetchData("issuesolutionattachment", "").Value;
+
+            if (result == null) return null;
+
+            List<IssueSolutionAttachment> IssueSolnAttachmentCollection = new List<IssueSolutionAttachment>();
+
+
+            for (int ctr = 0; result.Count > 0 && ctr < result["IssueID"].Count; ctr++)
+            {
+
+                IssueSolnAttachmentCollection.Add(new IssueSolutionAttachment()
+                {
+                    IssueSolnAttachmentID = Convert.ToInt32(result["IssueSolutionAttachmentID"][ctr]),
+                    IssueSolutionID = Convert.ToInt32(result["IssueSolutionID"][ctr]),
+                    DisplayName = Convert.ToString(result["DisplayName"][ctr]),
+                    IssueSolnAttachmentName = Convert.ToString(result["AttachmentName"][ctr]),
+                    IssueSolnAttachmentLocation = Convert.ToString(result["Location"][ctr])
+
+                });
+            }
+
+            return IssueSolnAttachmentCollection;
+        }
+
+
+        public static Issue AddIssue(Issue issue)
+        {
+
+            string tags = "";
+            foreach(string str in issue.Tags)
+            {
+                tags += str+",";
+            }
+
+            var x = manager.InsertData("issue", new ParameterData[]
+            {
+                new ParameterData("Title", issue.IssueName),
+                new ParameterData("Description", issue.IssueDesc),
+                new ParameterData("PostedBy", issue.PostedBy),
+                new ParameterData("Priority", issue.Priority+""),
+                new ParameterData("Type", issue.Type+""),
+                new ParameterData("Date", issue.PostedDate.Date),
+                new ParameterData("Tags", tags)
+            }).Result;
+
+            var result = manager.FetchData("issue", $"Title='{issue.IssueName}'").Value;
+            issue.IssueID = Convert.ToInt32(result["IssueID"][0]);
+
+            return issue;
+        }
+
+        public static void UpdateIssue(Issue issue)
+        {
+            string tags = "";
+            foreach (string str in issue.Tags)
+            {
+                tags += str + ",";
+            }
+            var x = manager.UpdateData("issue", $"IssueID='{issue.IssueID}'", new ParameterData[]
+            {
+                new ParameterData("Title", issue.IssueName),
+                new ParameterData("Description", issue.IssueDesc),
+                new ParameterData("PostedBy", issue.PostedBy),
+                new ParameterData("Date", issue.PostedDate),
+                new ParameterData("Priority", issue.Priority+""),
+                new ParameterData("Type", issue.Type+""),
+                new ParameterData("Tags", tags)
+            });
+        }
+
+        public static void RemoveIssue(Issue issue)
+        {
+            var x = manager.DeleteData("issue", $"IssueID='{issue.IssueID}'");
+            RemoveAllSolutionOfIssue(issue);
+        }
+
+        public static void AddIssueAttachment(IssueAttachment attachment)
+        {
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Task Attachment\\"; // Change this to your desired save path
+            try
+            {
+                string filePath = System.IO.Path.Combine(savePath, attachment.IssueAttachmentName);
+                System.IO.File.Copy(attachment.IssueAttachmentLocation, filePath, true);
+
+                manager.InsertData("issueattachment", new ParameterData[]
+                {
+                    new ParameterData("IssueID", attachment.IssueID),
+                    new ParameterData("DisplayName", attachment.DisplayName),
+                    new ParameterData("AttachmentName", attachment.IssueAttachmentName),
+                    new ParameterData("Location", filePath)
+                });
+            }
+            catch
+            {
+                ;
+            }
+        }
+
+        public static void RemoveIssueAttachment(Issue issue)
+        {
+            var x = manager.DeleteData("issueattachment", $"IssueAttachmentID='{issue.IssueID}'");
+        }
+
+        public static void UpdateIssueAttachment(int issueId,IssueAttachment attachment)
+        {
+            
+        }
+
+        public static IssueSolution AddIssueSolution(IssueSolution issueSoln)
+        {
+            var x = manager.InsertData("issuesolution", new ParameterData[]
+            {
+                new ParameterData("IssueID", issueSoln.IssueID),
+                new ParameterData("Solution", issueSoln.Solution),
+                new ParameterData("SolvedBy", issueSoln.SolvedByID)
+                
+            }).Result;
+
+            var result = manager.FetchData("issuesolution", $"IssueId='{issueSoln.IssueID}'").Value;
+            issueSoln.IssueSolutionID = Convert.ToInt32(result["IssueSolutionID"][0]);
+            return issueSoln;
+        }
+
+        public static void AddIssueSolutionAttachment(IssueSolutionAttachment attachment)
+        {
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Task Attachment\\"; // Change this to your desired save path
+            try
+            {
+                string filePath = System.IO.Path.Combine(savePath, attachment.IssueSolnAttachmentName);
+                System.IO.File.Copy(attachment.IssueSolnAttachmentLocation, filePath, true);
+
+                manager.InsertData("issuesolutionattachment", new ParameterData[]
+                {
+                    new ParameterData("IssuesolutionID", attachment.IssueSolutionID),
+                    new ParameterData("DisplayName", attachment.DisplayName),
+                    new ParameterData("AttachmentName", attachment.IssueSolnAttachmentName),
+                    new ParameterData("Location", filePath)
+                });
+            }
+            catch
+            {
+                ;
+            }
+        }
+
+
+
+        public static void RemoveSolutionAttachment(IssueSolution issueSoln)
+        {
+            var x = manager.DeleteData("issuesolution", $"IssueSolutionID='{issueSoln.IssueSolutionID}'");
+        }
+
+        public static void RemoveSolution(IssueSolution issueSoln)
+        {
+            var x = manager.DeleteData("issuesolution", $"IssueSolutionID='{issueSoln.IssueSolutionID}'");
+        }
+
+        public static void RemoveAllSolutionOfIssue(Issue issue)
+        {
+            var x = manager.DeleteData("issuesolution", $"IssueID='{issue.IssueID}'");
+        }
+
+
+
     }
 }
