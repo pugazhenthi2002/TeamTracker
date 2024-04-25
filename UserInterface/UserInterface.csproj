@@ -400,6 +400,30 @@
     <Compile Include="Issues\IssueInfoForm.Designer.cs">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionAttachmentTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionAttachmentTemplate.Designer.cs">
+      <DependentUpon>SolutionAttachmentTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionButton.Designer.cs">
+      <DependentUpon>SolutionButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionTemplate.Designer.cs">
+      <DependentUpon>SolutionTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\ViewSolutionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\ViewSolutionForm.Designer.cs">
+      <DependentUpon>ViewSolutionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Issues\UcFileName.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -596,6 +620,12 @@
     </Compile>
     <Compile Include="Task\Timeline\TimelineTask.designer.cs">
       <DependentUpon>TimelineTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TransparencyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransparencyForm.Designer.cs">
+      <DependentUpon>TransparencyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UcNotFound.cs">
       <SubType>UserControl</SubType>
@@ -950,6 +980,18 @@
     <EmbeddedResource Include="Issues\IssueInfoForm.resx">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\SolutionAttachmentTemplate.resx">
+      <DependentUpon>SolutionAttachmentTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\SolutionButton.resx">
+      <DependentUpon>SolutionButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\SolutionTemplate.resx">
+      <DependentUpon>SolutionTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\ViewSolutionForm.resx">
+      <DependentUpon>ViewSolutionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Issues\UcFileName.resx">
       <DependentUpon>UcFileName.cs</DependentUpon>
     </EmbeddedResource>
@@ -1056,6 +1098,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Task\Timeline\TimelineTask.resx">
       <DependentUpon>TimelineTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransparencyForm.resx">
+      <DependentUpon>TransparencyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcNotFound.resx">
       <DependentUpon>UcNotFound.cs</DependentUpon>
