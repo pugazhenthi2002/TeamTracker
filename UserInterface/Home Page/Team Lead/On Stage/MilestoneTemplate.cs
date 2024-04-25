@@ -95,6 +95,19 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             SubscribeEvents();
         }
 
+        public new void Dispose()
+        {
+            if (closeButton.Image != null) closeButton.Image.Dispose();
+            if (upButton.Image != null) upButton.Image.Dispose();
+            if (downButton.Image != null) downButton.Image.Dispose();
+
+            closeButton.Dispose();  upButton.Dispose(); downButton.Dispose();
+            panel1.Dispose();   panel2.Dispose();   counterLabel.Dispose();
+            tableLayoutPanel1.Dispose();
+            milestoneDate.Dispose();
+            milestoneName.Dispose();
+        }
+
         private void SubscribeEvents()
         {
             upButton.Click += GetFocus;

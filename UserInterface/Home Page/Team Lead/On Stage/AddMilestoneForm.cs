@@ -75,6 +75,28 @@ namespace TeamTracker
             milestoneCollection = new List<Milestone>();
         }
 
+        public new void Dispose()
+        {
+            for(int ctr=0; ctr < basePanel.Controls.Count; ctr++)
+            {
+                (basePanel.Controls[ctr] as MilestoneTemplate).Dispose();
+                (basePanel.Controls[ctr] as MilestoneTemplate).Controls.RemoveAt(ctr);
+                ctr--;
+            }
+
+            if (upPicBox.Image != null) upPicBox.Image.Dispose();
+            if (downPicBox.Image != null) downPicBox.Image.Dispose();
+            if (closeButton.Image != null) closeButton.Image.Dispose();
+            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
+            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
+
+            pictureBox2.Dispose();  pictureBox3.Dispose();  closeButton.Dispose();  downPicBox.Dispose();   upPicBox.Dispose();
+            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   startDateLabel.Dispose();   endDateLabel.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   basePanel.Dispose();
+            milestoneDateTime.Dispose();    milestoneTextBox.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    
+        }
+
         private void addMilestoneButton_Click(object sender, EventArgs e)
         {
             BooleanMsg message = new BooleanMsg();
@@ -233,7 +255,7 @@ namespace TeamTracker
             {
                 SetMilestones();
                 MilestoneExtract?.Invoke(this, milestoneCollection);
-                this.Close();
+                //this.Close();
             }
             else
             {

@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows;
+using UserInterface;
 
 namespace TeamTracker
 {
     public partial class UcOnStage : UserControl
     {
+        private TransparentForm transparentForm;
         public event EventHandler ResetHomePage;
         private List<Milestone> MilestoneCollection;
         private ProjectVersion selectedVersion;
@@ -41,6 +43,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            transparentForm = new TransparentForm();
             toolTip1.SetToolTip(pictureBoxDownload, "Download Attachements");
         }
 
@@ -165,12 +168,18 @@ namespace TeamTracker
             form.SelectedVersion = selectedVersion;
             form.MilestoneCollection = MilestoneCollection;
             form.MilestoneExtract += OnMilestoneExtraction;
-            form.ShowDialog(this);
+
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+            //form.ShowDialog(this);
         }
 
         private void OnMilestoneExtraction(object sender, List<Milestone> e)
         {
             MilestoneCollection = e;
+            (sender as AddMilestoneForm).Dispose();
+            (sender as AddMilestoneForm).Close();
+            transparentForm.Close();
         }
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
