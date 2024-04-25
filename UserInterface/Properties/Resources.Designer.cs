@@ -223,6 +223,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bold_gray {
+            get {
+                object obj = ResourceManager.GetObject("bold-gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bullet_list_gray {
+            get {
+                object obj = ResourceManager.GetObject("bullet-list-gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bullets {
             get {
                 object obj = ResourceManager.GetObject("bullets", resourceCulture);
@@ -623,6 +643,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Italic_gray {
+            get {
+                object obj = ResourceManager.GetObject("Italic gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Line {
             get {
                 object obj = ResourceManager.GetObject("Line", resourceCulture);
@@ -823,6 +853,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap strikethrough_gray {
+            get {
+                object obj = ResourceManager.GetObject("strikethrough-gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Timeline {
             get {
                 object obj = ResourceManager.GetObject("Timeline", resourceCulture);
@@ -856,6 +896,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap underline {
             get {
                 object obj = ResourceManager.GetObject("underline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap underline_gray {
+            get {
+                object obj = ResourceManager.GetObject("underline-gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

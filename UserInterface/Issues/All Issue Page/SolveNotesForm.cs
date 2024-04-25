@@ -29,6 +29,8 @@ namespace TeamTracker
             labelAttachmentCount.Visible = false;
             this.BackColor = Color.FromArgb(255,255,254);
             labelWarning.Hide();
+            toolTip1.SetToolTip(labelAttachmentCount, "Click to remove attachment");
+
 
             //this.TransparencyKey = Color.FromArgb(255, 255, 254);
             //ucOptions1.Location = new Point(0, 0);
@@ -36,7 +38,7 @@ namespace TeamTracker
             //ucOptions1.BringToFront();
             //ucOptions1.colorChange += OnColorChange;
             //ucOptions1.DeleteNoteClick += OnClickDeleteNoteBtn;
-            
+
         }
 
         public SolveNotesForm(Issue issue)
@@ -72,6 +74,7 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             labelAttachmentCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachmentCount.Width, labelAttachmentCount.Height, labelAttachmentCount.Width, labelAttachmentCount.Height));
+
           
         }
 
@@ -272,6 +275,10 @@ namespace TeamTracker
                 };
 
             }
+            else
+            {
+                labelAttachmentCount.Visible = false;
+            }
         }
 
         private void OnClickDiscard(object sender, EventArgs e)
@@ -310,6 +317,77 @@ namespace TeamTracker
             IssueManager.AddSolution(soln,solnAttachment);
 
             this.Close();
+        }
+
+        private void OnPaintLabel(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(201, 210, 217), 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, labelAttachmentCount.Width - 1, labelAttachmentCount.Height - 1), labelAttachmentCount.Width / 2));
+
+            pen.Dispose();
+        }
+
+        private void OnClickAttachmentCount(object sender, EventArgs e)
+        {
+            labelAttachmentCount.Visible = false;
+            solnAttachment = null;
+
+        }
+
+        private void OnMouseEnterTextStyle(object sender, EventArgs e)
+        {
+            curStyle = (sender as PictureBox);
+            style = curStyle.Name;
+
+
+            switch (style)
+            {
+                case "BoldPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.bold_gray;
+                    break;
+                case "ItalicPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.Italic_gray;
+                    break;
+                case "UnderLinePicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.underline_gray;
+                    break;
+                case "StrikeOutPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.strikethrough_gray;
+                    break;
+                case "BulletesPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.bullet_list_gray;
+                    break;
+
+            }
+        }
+
+        private void OnMouseLeaveTextStyle(object sender, EventArgs e)
+        {
+            curStyle = (sender as PictureBox);
+            style = curStyle.Name;
+
+            
+            switch (style)
+            {
+                case "BoldPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.Bold;
+                    break;
+                case "ItalicPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.italic;
+                    break;
+                case "UnderLinePicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.underline;
+                    break;
+                case "StrikeOutPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.strikethrough;
+                    break;
+                case "BulletesPicBox":
+                    curStyle.Image = UserInterface.Properties.Resources.bullets;
+                    break;
+
+            }
+
         }
     }
 }

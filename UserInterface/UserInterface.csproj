@@ -1260,6 +1260,8 @@
     <None Include="Resources\calendar1.png" />
     <None Include="Resources\Bold.png" />
     <None Include="Resources\bullets.png" />
+    <None Include="Resources\bold-gray.png" />
+    <None Include="Resources\bullet-list-gray.png" />
     <Content Include="Resources\Close Black.png" />
     <Content Include="Resources\close Hover.png" />
     <Content Include="Resources\Close Red.png" />
@@ -1285,6 +1287,7 @@
     <None Include="Resources\Not found.png" />
     <None Include="Resources\Medium.png" />
     <None Include="Resources\italic.png" />
+    <None Include="Resources\Italic gray.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
@@ -1293,6 +1296,8 @@
     <None Include="Resources\vertical line.png" />
     <None Include="Resources\strikethrough.png" />
     <None Include="Resources\underline.png" />
+    <None Include="Resources\strikethrough-gray.png" />
+    <None Include="Resources\underline-gray.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>

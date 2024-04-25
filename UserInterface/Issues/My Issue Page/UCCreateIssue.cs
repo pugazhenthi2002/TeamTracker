@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace TeamTracker 
 {
@@ -32,9 +33,11 @@ namespace TeamTracker
             toolTip1.SetToolTip( pictureBoxAttachments, "Add Attachments");
             toolTip1.SetToolTip( BtnSetPriority, "Issue Priority");
             toolTip1.SetToolTip( BtnSetType, "Issue type");
+            toolTip1.SetToolTip(labelAttachment, "Click to remove attachment");
             labelWarning.Hide();
-            
-            
+            labelAttachment.Hide();
+            profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
+
         }
 
 
@@ -72,7 +75,8 @@ namespace TeamTracker
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
-            panelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelAttachment.Width, panelAttachment.Height, 20, 20));
+            labelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachment.Width, labelAttachment.Height, labelAttachment.Width, labelAttachment.Width));
+            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
         }
 
         private void SetIssue()
@@ -317,11 +321,12 @@ namespace TeamTracker
             {
                 string selectedFilePath = openFileDialog.FileName;
                 string safeFile = openFileDialog.SafeFileName;
-                UcFileName file = new UcFileName();
 
-                file.FileName = safeFile;
-                file.Dock = DockStyle.Fill;
-                panelAttachment.Controls.Add(file);
+                //UcFileName file = new UcFileName();
+
+                //file.FileName = safeFile;
+                //file.Dock = DockStyle.Fill;
+                //panelAttachment.Controls.Add(file);
 
                 Attachement = new IssueAttachment()
                 {
@@ -330,8 +335,12 @@ namespace TeamTracker
                     IssueAttachmentLocation = selectedFilePath
                 };
 
-        
+                labelAttachment.Show();
 
+            }
+            else
+            {
+                labelAttachment.Hide();
             }
         }
 
@@ -343,6 +352,33 @@ namespace TeamTracker
         private void OnMouseLeaveAttachmentPicBox(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Attachment_black;
+        }
+
+
+        private void OnMouseEnterClose(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.close_Hover;
+        }
+
+        private void OnMouseLeaveClose(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Alice_Blue_30;
+
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(150, 170, 190),2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, labelAttachment.Width - 1, labelAttachment.Height -  1),labelAttachment.Width/2));
+
+            pen.Dispose();
+        }
+        private void OnClickAttachmentCount(object sender, EventArgs e)
+        {
+            labelAttachment.Hide();
+            Attachement = null;
+
         }
     }
 }

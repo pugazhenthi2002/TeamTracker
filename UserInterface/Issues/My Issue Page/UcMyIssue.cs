@@ -147,7 +147,7 @@ namespace TeamTracker
             CreateIssueForm = new Form();
             CreateIssueForm.StartPosition = FormStartPosition.CenterScreen;
             CreateIssueForm.FormBorderStyle = FormBorderStyle.None;
-            CreateIssueForm.Size = new Size(700, 600);
+            CreateIssueForm.Size = new Size(650, 450);
 
 
             ucCreate = new UCCreateIssue();
