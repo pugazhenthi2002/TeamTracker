@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace TeamTracker 
 {
@@ -54,7 +55,7 @@ namespace TeamTracker
             set
             {
                 issueData = value;
-                SetIssue();
+               // SetIssue();
             }
         }
 
@@ -81,6 +82,11 @@ namespace TeamTracker
 
         private void SetIssue()
         {
+
+            if(issueData==null)
+            {
+                return;
+            }
             IssueTitleTextBox.Text = issueData.IssueName;
             IssueDescTextBox.Text = issueData.IssueDesc;
             BtnSetPriority.Text = issueData.Priority+"";
@@ -89,10 +95,10 @@ namespace TeamTracker
             foreach(string tag in issueData.Tags)
             {
                 UCTags tagUc = new UCTags();
-                tagUc.Size = new Size(panelTags.Width - 20, panelTags.Height / 4 - 5);
+                tagUc.Size = new Size(panelTags.Width - 50, panelTags.Height / 4 - 5);
                 tagUc.Dock = DockStyle.Top;
 
-                tagUc.SetText(textBoxTags.Text);
+                tagUc.SetText(tag);
 
                 panelTags.Controls.Add(tagUc);
                 tagUc.BringToFront();
@@ -238,7 +244,7 @@ namespace TeamTracker
 
         private void OnClickPostIssue(object sender, EventArgs e)
         {
-            if(IssueTitleTextBox.Text==""|| IssueTitleTextBox.Text == "Enter Issue Name")
+            if(IssueTitleTextBox.Text==""|| IssueTitleTextBox.Text == "Enter Issue Name" ||  Regex.IsMatch(textBoxTags.Text, @"\d"))
             {
                 labelWarning.Show();
                 labelWarning.Text = "Set valid Title!";
@@ -379,6 +385,12 @@ namespace TeamTracker
             labelAttachment.Hide();
             Attachement = null;
 
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            SetIssue();
         }
     }
 }

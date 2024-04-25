@@ -88,14 +88,14 @@ namespace TeamTracker
             dt.Columns.Add("IssueID", typeof(int));
             dt.Columns.Add("IssueName", typeof(string));
             dt.Columns.Add("IssueDesc", typeof(string));
-            dt.Columns.Add("PostedBy", typeof(int));
+            dt.Columns.Add("PostedBy", typeof(string));
             dt.Columns.Add("Type", typeof(string));
             dt.Columns.Add("Priority", typeof(string));
             dt.Columns.Add("PostedDate", typeof(DateTime));
 
             foreach (var issue in IssueList)
             {
-                dt.Rows.Add(issue.IssueID,issue.IssueName, issue.IssueDesc, issue.PostedBy, issue.Type + "", issue.Priority + "", issue.PostedDate);
+                dt.Rows.Add(issue.IssueID,issue.IssueName, issue.IssueDesc, (EmployeeManager.FetchEmployeeFromID(issue.PostedBy)).EmployeeFirstName, issue.Type + "", issue.Priority + "", issue.PostedDate);
             }
 
             dataGridView1.DataSource = dt;
@@ -134,7 +134,7 @@ namespace TeamTracker
                 if (checkBoxOther.Checked)
                     filters.Add("Type = 'Other'");
 
-                string filter = string.Join(" AND ", filters);
+                string filter = string.Join(" OR ", filters);
 
                 if (!string.IsNullOrEmpty(filter))
                     dataTable.DefaultView.RowFilter = filter;

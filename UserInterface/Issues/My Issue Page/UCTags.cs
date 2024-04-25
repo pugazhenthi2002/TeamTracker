@@ -84,5 +84,11 @@ namespace TeamTracker
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Black;
         }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundedEdge();
+        }
     }
 }

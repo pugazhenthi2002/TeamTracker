@@ -400,6 +400,12 @@
     <Compile Include="Issues\IssueInfoForm.Designer.cs">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\My Issue Page\MenuFormMyIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\MenuFormMyIssue.Designer.cs">
+      <DependentUpon>MenuFormMyIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Issues\UcFileName.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -949,6 +955,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\IssueInfoForm.resx">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\MenuFormMyIssue.resx">
+      <DependentUpon>MenuFormMyIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\UcFileName.resx">
       <DependentUpon>UcFileName.cs</DependentUpon>

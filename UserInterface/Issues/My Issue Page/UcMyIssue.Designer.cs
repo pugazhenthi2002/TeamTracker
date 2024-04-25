@@ -382,6 +382,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(974, 532);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnDoubleClickCell);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewCellMouseClick);
+            this.dataGridView1.Click += new System.EventHandler(this.OnClickDatagridview);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownDatagridview);
             // 
             // UcMyIssue

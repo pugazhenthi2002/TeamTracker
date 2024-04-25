@@ -190,7 +190,6 @@
             // panelTags
             // 
             this.panelTags.AutoScroll = true;
-            this.panelTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
             this.panelTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTags.Location = new System.Drawing.Point(3, 47);
             this.panelTags.Name = "panelTags";

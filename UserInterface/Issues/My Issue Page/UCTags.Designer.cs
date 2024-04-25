@@ -38,6 +38,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -65,11 +66,11 @@
             // 
             // ClosePicBox
             // 
-            this.ClosePicBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ClosePicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ClosePicBox.Image = global::UserInterface.Properties.Resources.Close_Black;
             this.ClosePicBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("ClosePicBox.InitialImage")));
-            this.ClosePicBox.Location = new System.Drawing.Point(181, 9);
-            this.ClosePicBox.Margin = new System.Windows.Forms.Padding(0, 7, 20, 7);
+            this.ClosePicBox.Location = new System.Drawing.Point(191, 9);
+            this.ClosePicBox.Margin = new System.Windows.Forms.Padding(0);
             this.ClosePicBox.Name = "ClosePicBox";
             this.ClosePicBox.Size = new System.Drawing.Size(25, 33);
             this.ClosePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
