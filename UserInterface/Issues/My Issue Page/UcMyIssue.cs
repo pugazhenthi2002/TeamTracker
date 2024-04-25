@@ -155,6 +155,10 @@ namespace TeamTracker
             ucCreate.DiscardClick += OnClickDiscardIssue;
             ucCreate.PostClick+= OnClickPostIssue;
             
+            if(sender is int)
+            {
+                ucCreate.IssueData = IssueManager.GetIssueById(Convert.ToInt32(sender));
+            }
 
 
             CreateIssueForm.Controls.Add(ucCreate);
@@ -202,7 +206,7 @@ namespace TeamTracker
             {
                 int issueID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["IssueID"].Value);
 
-                //OnClickCreateIssue(null, e);
+                OnClickCreateIssue(issueID, e);
                 //ucCreate.IssueData = IssueManager.GetIssueById(issueID);
             }
         }

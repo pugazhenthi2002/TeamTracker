@@ -119,7 +119,7 @@ namespace TeamTracker
 
         private void OnClickSetPriority(object sender, EventArgs e)
         {
-            if(Application.OpenForms.OfType<PriorityDropDownForm>().Any())
+            if(Application.OpenForms.OfType<IssuePriorityDropDownForm>().Any())
             {
                 CloseForm();
                 return;
