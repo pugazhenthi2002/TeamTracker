@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TeamTracker;
+using UserInterface;
 
 namespace TeamTracker
 {
     public partial class TaskTimelineTemplate : UserControl
     {
+        private TransparentForm transparentForm;
         private bool isHovered = false;
         private Color timelineColor;
         private Task timelineTask;
@@ -56,7 +58,20 @@ namespace TeamTracker
         {
             TaskInfoForm form = new TaskInfoForm();
             form.SelectedTask = timelineTask;
-            form.Show();
+            form.InfoFormClose += OnInforFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show(ParentForm);
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnInforFormClosed(object sender, EventArgs e)
+        {
+            (sender as TaskInfoForm).Dispose();
+            (sender as TaskInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void TaskTimelineTemplate_Paint(object sender, PaintEventArgs e)

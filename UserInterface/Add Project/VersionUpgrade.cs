@@ -10,11 +10,14 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using UserInterface.Add_Project.Custom_Control;
 using GoLibrary;
+using UserInterface;
+using UserInterface.ViewPage;
 
 namespace TeamTracker
 {
     public partial class VersionUpgrade : UserControl
     {
+        private TransparentForm transparentForm;
         private Projects project;
 
         public VersionUpgrade()
@@ -115,14 +118,26 @@ namespace TeamTracker
             ChooseProjectForm form = new ChooseProjectForm();
             form.AvailableProjects = VersionManager.FetchAllProjectsOnCompletedStatus();
             form.ProjectSelect += OnProjectSelected;
-            form.ShowDialog();
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show(ParentForm);
+            transparentForm.ShowForm(form);
         }
 
         private void OnProjectSelected(object sender, Projects e)
         {
-            project = e;
-            chooseProjectLabel.Text = e.ProjectName;
-            InitializeVersionPage();
+            (sender as ChooseProjectForm).Dispose();
+            (sender as ChooseProjectForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
+            if (e != null)
+            {
+                project = e;
+                chooseProjectLabel.Text = e.ProjectName;
+                InitializeVersionPage();
+            }
         }
 
         private void InitializeVersionPage()
@@ -141,9 +156,14 @@ namespace TeamTracker
                 List<VersionAttachment> attachments = FetchAttachmentFiles();
                 if (attachments.Count == 0)
                 {
-                    AttachmentWarningForm form = new AttachmentWarningForm();
+                    WarningForm form = new WarningForm();
+                    form.Content = "Are you sure, you want to Create a Project Without any Attachments?";
                     form.WarningStatus += OnWarningStatus;
-                    form.Show();
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(form);
+                    //form.Show();
                 }
                 else
                 {
@@ -161,6 +181,12 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, null);

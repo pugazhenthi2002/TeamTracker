@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.ViewPage.ListView;
+using UserInterface;
 
 namespace TeamTracker
 {
@@ -22,6 +23,7 @@ namespace TeamTracker
             }
         }
 
+        private TransparentForm transparentForm;
         public event EventHandler Reset;
         private Task task;
         public SingleList()
@@ -36,7 +38,8 @@ namespace TeamTracker
             statusLabel.Text = task.StatusOfTask.ToString();
             priorityLabel.Text = task.TaskPriority.ToString();
             dueDateLabel.Text = task.EndDate.ToShortDateString();
-            SetAnimatedLabelBackColor();
+            statusLabel.BackColor = ColorManager.FetchTaskStatusColor(task.StatusOfTask);
+            priorityLabel.BackColor = ColorManager.FetchTaskPriorityColor(task.TaskPriority);
         }
 
         private void OnStatusClicked(object sender, EventArgs e)
@@ -56,7 +59,10 @@ namespace TeamTracker
                 SourceCodeSubmitionForm newForm = new SourceCodeSubmitionForm();
                 newForm.SourceCodeTask = task;
                 newForm.DoneClick += OnSourceCodeSubmission;
-                newForm.Show();
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(newForm);
             }
             else
             {
@@ -65,7 +71,10 @@ namespace TeamTracker
                     StatusChangeWarningForm form = new StatusChangeWarningForm();
                     form.PrevStatus = e;
                     form.WarningStatus += OnWarningStatusClicked;
-                    form.Show();
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(form);
                 }
                 else
                 {
@@ -83,34 +92,32 @@ namespace TeamTracker
 
         private void OnSourceCodeSubmission(object sender, SourceCode e)
         {
-            task.StatusOfTask = TaskStatus.UnderReview;
-            DataHandler.SubmitSourceCode(e);
-            TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, TaskStatus.UnderReview, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
-            SetTaskUI();
-            Reset?.Invoke(this, EventArgs.Empty);
-        }
+            (sender as SourceCodeSubmitionForm).Dispose();
+            (sender as SourceCodeSubmitionForm).Close();
+            //transparentForm.Close();
 
-        private void SetAnimatedLabelBackColor()
-        {
-            switch (task.StatusOfTask)
-            {
-                case TaskStatus.UnderReview: statusLabel.BackColor = Color.Green; break;
-                case TaskStatus.Stuck: statusLabel.BackColor = Color.Red; break;
-                case TaskStatus.OnProcess: statusLabel.BackColor = Color.Yellow; break;
-                default: statusLabel.BackColor = Color.Gray; break;
-            }
+            if (ParentForm != null)
+                ParentForm.Show();
 
-            switch (task.TaskPriority)
+            if (e != null)
             {
-                case Priority.Critical: priorityLabel.BackColor = Color.FromArgb(181, 23, 158); break;
-                case Priority.Hard: priorityLabel.BackColor = Color.FromArgb(114, 9, 183); break;
-                case Priority.Medium: priorityLabel.BackColor = Color.FromArgb(72, 12, 168); break;
-                default: priorityLabel.BackColor = Color.FromArgb(63, 55, 201); break;
+                task.StatusOfTask = TaskStatus.UnderReview;
+                DataHandler.SubmitSourceCode(e);
+                TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, TaskStatus.UnderReview, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
+                SetTaskUI();
+                Reset?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        private void OnWarningStatusClicked(string e, bool result)
+        private void OnWarningStatusClicked(object sender, string e, bool result)
         {
+            (sender as StatusChangeWarningForm).Dispose();
+            (sender as StatusChangeWarningForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (result)
             {
                 if (e == "Stuck") task.StatusOfTask = TaskStatus.Stuck;
@@ -126,7 +133,7 @@ namespace TeamTracker
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
             Rectangle rec = new Rectangle(0, 0, (Width / 6)-1, Height - 1);
             
             for(int ctr=0; ctr < 6; ctr++)
@@ -141,7 +148,20 @@ namespace TeamTracker
         {
             TaskInfoForm form = new TaskInfoForm();
             form.SelectedTask = task;
-            form.Show();
+            form.InfoFormClose += OnTaskInfoFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnTaskInfoFormClosed(object sender, EventArgs e)
+        {
+            (sender as TaskInfoForm).Dispose();
+            (sender as TaskInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
     }
 }

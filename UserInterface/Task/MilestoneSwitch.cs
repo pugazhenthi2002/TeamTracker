@@ -17,6 +17,7 @@ namespace UserInterface.Task
 {
     public partial class MilestoneSwitch : UserControl
     {
+        private TransparentForm transparentForm;
         public MilestoneSwitch()
         {
             InitializeComponent();
@@ -94,14 +95,20 @@ namespace UserInterface.Task
                     WarningForm form1 = new WarningForm();
                     form1.Content = "All Milestones Have Been Completed. Do you want to Deploy your Project?";
                     form1.WarningStatus += OnDeployWarningStatusSelected;
-                    form1.ShowDialog();
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(form1);
                 }
                 else
                 {
                     WarningForm form2 = new WarningForm();
                     form2.Content = "Are you sure, you want move to Next Milestone?";
                     form2.WarningStatus += OnWarningStatusSelected;
-                    form2.ShowDialog();
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(form2);
                 }
             }
             else
@@ -112,6 +119,13 @@ namespace UserInterface.Task
 
         private void OnWarningStatusSelected(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 MilestoneManager.SwitchToNextMilestone();
@@ -123,21 +137,41 @@ namespace UserInterface.Task
 
         private void OnDeployWarningStatusSelected(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 DeployForm form = new DeployForm();
                 form.DoneClick += OnSourceCodeSubmission;
-                form.ShowDialog();
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form);
             }
         }
 
         private void OnSourceCodeSubmission(object sender, VersionSourceCode e)
         {
-            MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
-            MilestoneManager.CurrentMilestone = null;
-            VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
-            DataHandler.AddVersionSourceCode(e);
-            Visible = false;
+            (sender as DeployForm).Dispose();
+            (sender as DeployForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
+            if (e != null)
+            {
+                MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
+                MilestoneManager.CurrentMilestone = null;
+                VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
+                DataHandler.AddVersionSourceCode(e);
+                Visible = false;
+            }
             //InitializePage();
         }
     }

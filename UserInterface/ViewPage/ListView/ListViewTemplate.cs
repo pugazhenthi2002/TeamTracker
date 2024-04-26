@@ -324,8 +324,11 @@ namespace TeamTracker
         {
             for (int ctr = startDoneIdx, idx = 0; ctr <= endDoneIdx; ctr++, idx++)
             {
-                singleListCollection[idx].ListTask = taskCollection[ctr];
+                doneCardCollection[idx].SelectedTask = doneCollection[ctr];
             }
+
+            isDoneBackEnabled = startDoneIdx == 0 ? false : true;
+            isDoneNextEnabled = endDoneIdx == doneCollection.Count - 1 ? false : true;
 
             if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
             if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
@@ -352,6 +355,9 @@ namespace TeamTracker
             {
                 Iter.BringToFront();
             }
+
+            isDoneBackEnabled = startDoneIdx == 0 ? false : true;
+            isDoneNextEnabled = endDoneIdx == doneCollection.Count - 1 ? false : true;
 
             if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
             if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();

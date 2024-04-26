@@ -13,7 +13,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class FilterForm : Form
     {
-
+        public event EventHandler FilterFormClose;
         private string prevString;
         private PriorityDropDownForm priorityForm;
         private MonthForm monthForm;
@@ -90,6 +90,15 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             get; set;
         }
 
+        public new void Dispose()
+        {
+            if (monthDropDownPicBox.Image != null) monthDropDownPicBox.Image.Dispose();
+            if (priorityDropDownPicBox.Image != null) priorityDropDownPicBox.Image.Dispose();
+
+            label1.Dispose();   label2.Dispose();
+            textBox1.Dispose(); monthDropDownPicBox.Dispose();  priorityDropDownPicBox.Dispose();   setLabel.Dispose();
+        }
+
         private void OnMonthDropDownClick(object sender, EventArgs e)
         {
             if (priorityForm != null && !priorityForm.IsDisposed)
@@ -160,7 +169,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             {
                 year = Convert.ToInt32(textBox1.Text);
                 Filter?.Invoke(Month, year, Priority);
-                this.Close();
+                FilterFormClose?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -170,7 +179,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             {
                 year = Convert.ToInt32(textBox1.Text);
                 Filter?.Invoke(Month, year, Priority);
-                this.Close();
+                FilterFormClose?.Invoke(this, EventArgs.Empty);
             }
         }
 

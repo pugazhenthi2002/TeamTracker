@@ -31,9 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectInfoForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.profileAssignedTo = new TeamTracker.ProfilePicAndName();
             this.labelTitle = new System.Windows.Forms.Label();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.endDate = new TeamTracker.UcDueDate();
+            this.startDate = new TeamTracker.UcDueDate();
             this.panelSourceCode = new System.Windows.Forms.Panel();
             this.labelSourceCode = new System.Windows.Forms.Label();
             this.pictureBoxSoureCode = new System.Windows.Forms.PictureBox();
@@ -42,12 +45,14 @@
             this.labelAttachment = new System.Windows.Forms.Label();
             this.pictureBoxAttachment = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.ucTaskDescription1 = new TeamTracker.UcTaskDescription();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.labelTaskCount = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.milestoneView1 = new TeamTracker.MilestoneView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,11 +68,6 @@
             this.backNavigatePicBox = new System.Windows.Forms.PictureBox();
             this.nextNavPicBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.profileAssignedTo = new TeamTracker.ProfilePicAndName();
-            this.endDate = new TeamTracker.UcDueDate();
-            this.startDate = new TeamTracker.UcDueDate();
-            this.ucTaskDescription1 = new TeamTracker.UcTaskDescription();
-            this.milestoneView1 = new TeamTracker.MilestoneView();
             this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -126,6 +126,25 @@
             this.panel1.Size = new System.Drawing.Size(903, 61);
             this.panel1.TabIndex = 1;
             // 
+            // profileAssignedTo
+            // 
+            this.profileAssignedTo.BackColor = System.Drawing.Color.Transparent;
+            this.profileAssignedTo.BorderColor = System.Drawing.Color.Empty;
+            this.profileAssignedTo.BorderRadius = 0;
+            this.profileAssignedTo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.profileAssignedTo.EmployeeProfile = null;
+            this.profileAssignedTo.HoverColor = System.Drawing.Color.Empty;
+            this.profileAssignedTo.IsBorderNeeded = false;
+            this.profileAssignedTo.IsOperable = false;
+            this.profileAssignedTo.Location = new System.Drawing.Point(608, 0);
+            this.profileAssignedTo.Margin = new System.Windows.Forms.Padding(2);
+            this.profileAssignedTo.Name = "profileAssignedTo";
+            this.profileAssignedTo.NormalColor = System.Drawing.Color.Empty;
+            this.profileAssignedTo.Padding = new System.Windows.Forms.Padding(3);
+            this.profileAssignedTo.ProfileTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.profileAssignedTo.Size = new System.Drawing.Size(240, 58);
+            this.profileAssignedTo.TabIndex = 2;
+            // 
             // labelTitle
             // 
             this.labelTitle.Dock = System.Windows.Forms.DockStyle.Left;
@@ -171,6 +190,39 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(903, 92);
             this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // endDate
+            // 
+            this.endDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.endDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.endDate.CenterLabelText = null;
+            this.endDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.endDate.DueDate = new System.DateTime(2024, 4, 4, 17, 49, 29, 0);
+            this.endDate.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.endDate.LabelText = "To";
+            this.endDate.Location = new System.Drawing.Point(275, 20);
+            this.endDate.Margin = new System.Windows.Forms.Padding(5, 20, 5, 20);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(260, 52);
+            this.endDate.TabIndex = 3;
+            // 
+            // startDate
+            // 
+            this.startDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.startDate.CenterLabelText = null;
+            this.startDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.startDate.DueDate = new System.DateTime(2024, 4, 12, 0, 0, 0, 0);
+            this.startDate.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.startDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.startDate.LabelText = "From";
+            this.startDate.Location = new System.Drawing.Point(5, 20);
+            this.startDate.Margin = new System.Windows.Forms.Padding(5, 20, 5, 20);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(260, 52);
+            this.startDate.TabIndex = 2;
             // 
             // panelSourceCode
             // 
@@ -289,6 +341,21 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(897, 179);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
+            // ucTaskDescription1
+            // 
+            this.ucTaskDescription1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
+            this.ucTaskDescription1.CenterLabelText = "Task Description...";
+            this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskDescription1.Location = new System.Drawing.Point(3, 10);
+            this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.ucTaskDescription1.Name = "ucTaskDescription1";
+            this.ucTaskDescription1.Size = new System.Drawing.Size(532, 166);
+            this.ucTaskDescription1.TabIndex = 3;
+            this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.ucTaskDescription1.TopLabelText = "Description";
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -365,6 +432,15 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(897, 210);
             this.panel5.TabIndex = 2;
+            // 
+            // milestoneView1
+            // 
+            this.milestoneView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.milestoneView1.Location = new System.Drawing.Point(0, 0);
+            this.milestoneView1.MilestoneCollection = null;
+            this.milestoneView1.Name = "milestoneView1";
+            this.milestoneView1.Size = new System.Drawing.Size(897, 210);
+            this.milestoneView1.TabIndex = 0;
             // 
             // panel4
             // 
@@ -527,6 +603,8 @@
             this.backNavigatePicBox.TabIndex = 2;
             this.backNavigatePicBox.TabStop = false;
             this.backNavigatePicBox.Click += new System.EventHandler(this.BackMilestoneClick);
+            this.backNavigatePicBox.MouseEnter += new System.EventHandler(this.OnMilestoneNavMouseEnter);
+            this.backNavigatePicBox.MouseLeave += new System.EventHandler(this.OnMilestoneNavMouseLeave);
             // 
             // nextNavPicBox
             // 
@@ -540,6 +618,8 @@
             this.nextNavPicBox.TabIndex = 1;
             this.nextNavPicBox.TabStop = false;
             this.nextNavPicBox.Click += new System.EventHandler(this.NextMilestoneClick);
+            this.nextNavPicBox.MouseEnter += new System.EventHandler(this.OnMilestoneNavMouseEnter);
+            this.nextNavPicBox.MouseLeave += new System.EventHandler(this.OnMilestoneNavMouseLeave);
             // 
             // label1
             // 
@@ -552,82 +632,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Milestones";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // profileAssignedTo
-            // 
-            this.profileAssignedTo.BackColor = System.Drawing.Color.Transparent;
-            this.profileAssignedTo.BorderColor = System.Drawing.Color.Empty;
-            this.profileAssignedTo.BorderRadius = 0;
-            this.profileAssignedTo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.profileAssignedTo.EmployeeProfile = null;
-            this.profileAssignedTo.HoverColor = System.Drawing.Color.Empty;
-            this.profileAssignedTo.IsBorderNeeded = false;
-            this.profileAssignedTo.IsOperable = false;
-            this.profileAssignedTo.Location = new System.Drawing.Point(608, 0);
-            this.profileAssignedTo.Margin = new System.Windows.Forms.Padding(2);
-            this.profileAssignedTo.Name = "profileAssignedTo";
-            this.profileAssignedTo.NormalColor = System.Drawing.Color.Empty;
-            this.profileAssignedTo.Padding = new System.Windows.Forms.Padding(3);
-            this.profileAssignedTo.ProfileTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.profileAssignedTo.Size = new System.Drawing.Size(240, 58);
-            this.profileAssignedTo.TabIndex = 2;
-            // 
-            // endDate
-            // 
-            this.endDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.endDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.endDate.CenterLabelText = null;
-            this.endDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.endDate.DueDate = new System.DateTime(2024, 4, 4, 17, 49, 29, 0);
-            this.endDate.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.endDate.LabelText = "To";
-            this.endDate.Location = new System.Drawing.Point(275, 20);
-            this.endDate.Margin = new System.Windows.Forms.Padding(5, 20, 5, 20);
-            this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(260, 52);
-            this.endDate.TabIndex = 3;
-            // 
-            // startDate
-            // 
-            this.startDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.startDate.CenterLabelText = null;
-            this.startDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startDate.DueDate = new System.DateTime(2024, 4, 12, 0, 0, 0, 0);
-            this.startDate.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.startDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.startDate.LabelText = "From";
-            this.startDate.Location = new System.Drawing.Point(5, 20);
-            this.startDate.Margin = new System.Windows.Forms.Padding(5, 20, 5, 20);
-            this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(260, 52);
-            this.startDate.TabIndex = 2;
-            // 
-            // ucTaskDescription1
-            // 
-            this.ucTaskDescription1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
-            this.ucTaskDescription1.CenterLabelText = "Task Description...";
-            this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucTaskDescription1.Location = new System.Drawing.Point(3, 10);
-            this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.ucTaskDescription1.Name = "ucTaskDescription1";
-            this.ucTaskDescription1.Size = new System.Drawing.Size(532, 166);
-            this.ucTaskDescription1.TabIndex = 3;
-            this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.ucTaskDescription1.TopLabelText = "Description";
-            // 
-            // milestoneView1
-            // 
-            this.milestoneView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.milestoneView1.Location = new System.Drawing.Point(0, 0);
-            this.milestoneView1.MilestoneCollection = null;
-            this.milestoneView1.Name = "milestoneView1";
-            this.milestoneView1.Size = new System.Drawing.Size(897, 210);
-            this.milestoneView1.TabIndex = 0;
             // 
             // ucNotFound1
             // 

@@ -210,7 +210,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = global::UserInterface.Properties.Resources.close_Hover;
+            this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
             this.pictureBox1.Location = new System.Drawing.Point(748, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(59, 53);
@@ -234,16 +234,17 @@
             // 
             // ucTaskDescription1
             // 
-            this.ucTaskDescription1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.ucTaskDescription1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
             this.ucTaskDescription1.CenterLabelText = "Task Description...";
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskDescription1.Location = new System.Drawing.Point(3, 66);
-            this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskDescription1.Location = new System.Drawing.Point(20, 66);
+            this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.ucTaskDescription1.Name = "ucTaskDescription1";
-            this.ucTaskDescription1.Size = new System.Drawing.Size(801, 157);
+            this.ucTaskDescription1.Size = new System.Drawing.Size(767, 150);
             this.ucTaskDescription1.TabIndex = 2;
-            this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.ucTaskDescription1.TopLabelText = "Task Name";
             // 
             // tableLayoutPanel3
@@ -280,6 +281,7 @@
             this.animatedLabelStatus.Location = new System.Drawing.Point(568, 10);
             this.animatedLabelStatus.Margin = new System.Windows.Forms.Padding(5);
             this.animatedLabelStatus.Name = "animatedLabelStatus";
+            this.animatedLabelStatus.ParentColor = System.Drawing.Color.Empty;
             this.animatedLabelStatus.Size = new System.Drawing.Size(151, 35);
             this.animatedLabelStatus.TabIndex = 4;
             this.animatedLabelStatus.Text = "Status";
@@ -295,6 +297,7 @@
             this.animatedLabelMilestone.Location = new System.Drawing.Point(5, 10);
             this.animatedLabelMilestone.Margin = new System.Windows.Forms.Padding(5);
             this.animatedLabelMilestone.Name = "animatedLabelMilestone";
+            this.animatedLabelMilestone.ParentColor = System.Drawing.Color.Empty;
             this.animatedLabelMilestone.Size = new System.Drawing.Size(151, 35);
             this.animatedLabelMilestone.TabIndex = 0;
             this.animatedLabelMilestone.Text = "Milestone";

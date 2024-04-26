@@ -17,6 +17,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class ReportContent : UserControl
     {
+        private TransparentForm transparentForm;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -112,7 +113,19 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             form.Month = month; form.Year = year; form.Priority = priority;
             form.Location = filterPicBox.PointToScreen(new Point(-225, 0));
             form.Filter += OnFiltered;
-            form.ShowDialog();
+            form.FilterFormClose += OnFilterFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show(ParentForm);
+            transparentForm.ShowForm(form);
+            //form.ShowDialog();
+        }
+
+        private void OnFilterFormClosed(object sender, EventArgs e)
+        {
+            (sender as FilterForm).Dispose();
+            (sender as FilterForm).Close();
+            ParentForm.Show();
         }
 
         private void OnFiltered(int month, int year, int priority)

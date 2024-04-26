@@ -14,8 +14,6 @@ namespace UserInterface.ViewProject
 {
     public partial class VersionViewForm : Form
     {
-
-
         public List<ProjectVersion> VersionCollection;
         public List<Label> labelControlCollection;
 

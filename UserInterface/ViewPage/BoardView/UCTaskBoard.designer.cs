@@ -36,11 +36,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
             this.pictureBoxInfo = new System.Windows.Forms.PictureBox();
+            this.ucDueDate1 = new TeamTracker.UcDueDate();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelTask = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ucDueDate1 = new TeamTracker.UcDueDate();
             this.profilePictureBoxAssignedBy = new TeamTracker.ProfilePictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -99,7 +99,6 @@
             this.labelVersion.TabIndex = 1;
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelVersion.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.labelVersion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
             this.labelVersion.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.labelVersion.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
@@ -119,7 +118,6 @@
             this.labelProjectName.TabIndex = 0;
             this.labelProjectName.Text = "Project Name";
             this.labelProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelProjectName.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.labelProjectName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
             this.labelProjectName.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.labelProjectName.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
@@ -145,7 +143,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(363, 53);
             this.tableLayoutPanel3.TabIndex = 2;
-            this.tableLayoutPanel3.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.tableLayoutPanel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
             this.tableLayoutPanel3.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.tableLayoutPanel3.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
@@ -164,7 +161,6 @@
             this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxFlag.TabIndex = 1;
             this.pictureBoxFlag.TabStop = false;
-            this.pictureBoxFlag.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.pictureBoxFlag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
             this.pictureBoxFlag.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.pictureBoxFlag.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
@@ -187,6 +183,24 @@
             this.pictureBoxInfo.MouseEnter += new System.EventHandler(this.OnMouseEnterInfo);
             this.pictureBoxInfo.MouseLeave += new System.EventHandler(this.OnMouseLeaveInfo);
             // 
+            // ucDueDate1
+            // 
+            this.ucDueDate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.CenterLabelText = null;
+            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
+            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucDueDate1.LabelText = "Due";
+            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
+            this.ucDueDate1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.ucDueDate1.Name = "ucDueDate1";
+            this.ucDueDate1.Size = new System.Drawing.Size(139, 49);
+            this.ucDueDate1.TabIndex = 3;
+            this.ucDueDate1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
+            this.ucDueDate1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
@@ -203,7 +217,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(363, 68);
             this.tableLayoutPanel4.TabIndex = 3;
-            this.tableLayoutPanel4.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.tableLayoutPanel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
             this.tableLayoutPanel4.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.tableLayoutPanel4.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
@@ -223,30 +236,11 @@
             this.LabelTask.TabIndex = 2;
             this.LabelTask.Text = "Task";
             this.LabelTask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LabelTask.Click += new System.EventHandler(this.OnClickTaskBoard);
             this.LabelTask.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownTaskBoard);
             this.LabelTask.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.LabelTask.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
             this.LabelTask.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMoveTaskBoard);
             this.LabelTask.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUpTaskBoard);
-            // 
-            // ucDueDate1
-            // 
-            this.ucDueDate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.CenterLabelText = null;
-            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
-            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucDueDate1.LabelText = "Due";
-            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
-            this.ucDueDate1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.ucDueDate1.Name = "ucDueDate1";
-            this.ucDueDate1.Size = new System.Drawing.Size(139, 49);
-            this.ucDueDate1.TabIndex = 3;
-            this.ucDueDate1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
-            this.ucDueDate1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
             // 
             // profilePictureBoxAssignedBy
             // 

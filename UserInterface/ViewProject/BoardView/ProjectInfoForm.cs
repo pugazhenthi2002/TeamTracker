@@ -13,6 +13,7 @@ namespace TeamTracker
 {
     public partial class ProjectInfoForm : Form
     {
+        public event EventHandler InfoFormClose;
         public ProjectInfoForm()
         {
             InitializeComponent();
@@ -29,6 +30,23 @@ namespace TeamTracker
                 selectedVersion = value;
                 InitializeForm();
             }
+        }
+
+        public new void Dispose()
+        {
+            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
+            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
+            if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
+            if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
+
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
+            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   label6.Dispose();   label7.Dispose();
+            backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();    pictureBoxClose.Dispose();  pictureBoxSoureCode.Dispose();  pictureBoxAttachment.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel7.Dispose();
+            ucTaskDescription1.Dispose();   milestoneView1.Dispose();   startDate.Dispose();    endDate.Dispose();
+            donePanel.Dispose();    notstartedPanel.Dispose();  delayPanel.Dispose();   currentPanel.Dispose();
+            labelTaskCount.Dispose();   profileAssignedTo.Dispose();    labelTitle.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -63,7 +81,7 @@ namespace TeamTracker
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
         {
-            this.Dispose();
+            
         }
 
         private void OnMouseEnterClose(object sender, EventArgs e)
@@ -143,7 +161,7 @@ namespace TeamTracker
 
         private void OnClose(object sender, EventArgs e)
         {
-            this.Close();
+            InfoFormClose?.Invoke(this, EventArgs.Empty);
         }
 
         private void SourceCodeDownload(object sender, EventArgs e)
@@ -245,6 +263,16 @@ namespace TeamTracker
             e.Graphics.DrawRectangle(border, 0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
             e.Graphics.DrawLine(border, 128, 0, 128, (sender as Control).Height);
             border.Dispose();
+        }
+
+        private void OnMilestoneNavMouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnMilestoneNavMouseLeave(object sender, EventArgs e)
+        {
+
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)

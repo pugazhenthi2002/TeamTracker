@@ -156,7 +156,7 @@ namespace TeamTracker
                 LineAlignment = StringAlignment.Center
             };
 
-            headerFont = new Font(new FontFamily("Microsoft PhagsPa"), 14, FontStyle.Bold);
+            headerFont = new Font(new FontFamily("Ebrima"), 14, FontStyle.Bold);
             textBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
             stringRectangle = new Rectangle(0, 0, headerPanel.Width, headerPanel.Height);
 
@@ -171,7 +171,7 @@ namespace TeamTracker
                 LineAlignment = StringAlignment.Center
             };
 
-            contentFont = new Font(new FontFamily("Microsoft PhagsPa"), 10, FontStyle.Italic);
+            contentFont = new Font(new FontFamily("Ebrima"), 12, FontStyle.Italic);
             textBrush = new SolidBrush(Color.FromArgb(52, 104, 192));
             stringRectangle = new Rectangle(0, 0, timePanel.Width, timePanel.Height);
 
@@ -187,7 +187,7 @@ namespace TeamTracker
             };
 
             contentFont = new Font(new FontFamily("Microsoft PhagsPa"), 12);
-            textBrush = new SolidBrush(Color.FromArgb(52, 104, 192));
+            textBrush = new SolidBrush(Color.FromArgb(39, 55, 77));
             stringRectangle = new Rectangle(0, 0, contentPanel.Width, contentPanel.Height);
 
             contentMessage = GenerateContent(e.Graphics);
@@ -335,6 +335,14 @@ namespace TeamTracker
         private void OnNotifyResize(object sender, EventArgs e)
         {
             InitializeBorder();
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, Width, Height));
+            border.Dispose();
         }
 
         private void InitializeBorder()

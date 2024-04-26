@@ -13,6 +13,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 {
     public partial class BoardViewTemplate : UserControl
     {
+        private TransparentForm transparentForm;
         private bool isHovered = false;
         private ProjectVersion boardVersion;
         private Milestone milestone;
@@ -131,7 +132,20 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             ProjectInfoForm form = new ProjectInfoForm();
             form.SelectedVersion = BoardVersion;
-            form.ShowDialog();
+            form.InfoFormClose += OnInfoFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnInfoFormClosed(object sender, EventArgs e)
+        {
+            (sender as ProjectInfoForm).Dispose();
+            (sender as ProjectInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnUserControlPaint(object sender, PaintEventArgs e)

@@ -39,6 +39,8 @@ namespace TeamTracker
 
         public static ProjectVersion AddVersion(ProjectVersion version)
         {
+            //version.VersionDescription = "A";
+            var y = manager.ColumnExist("projectversion", "EndDate");
             var x = manager.InsertData("projectversion", new ParameterData[] 
             {
                 new ParameterData("ProjectID", version.ProjectID),
@@ -520,7 +522,7 @@ namespace TeamTracker
         {
             TaskAttachment result = new TaskAttachment();
             var attachments = manager.FetchData("taskattachment", $"TaskID={taskID}").Value;
-            if (attachments == null)
+            if (attachments == null || attachments.Count == 0)
             {
                 return null;
             }

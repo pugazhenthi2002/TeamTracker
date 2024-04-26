@@ -78,6 +78,8 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.OnClose);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.OnCloseMouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.OnCloseMouseLeave);
             // 
             // label1
             // 
@@ -238,7 +240,7 @@
             // 
             // commitTextBox
             // 
-            this.commitTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.commitTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(198)))), ((int)(((byte)(211)))));
             this.commitTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.commitTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.commitTextBox.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -254,7 +256,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
             this.ClientSize = new System.Drawing.Size(587, 488);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

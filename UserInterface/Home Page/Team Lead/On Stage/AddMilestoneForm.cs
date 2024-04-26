@@ -80,7 +80,7 @@ namespace TeamTracker
             for(int ctr=0; ctr < basePanel.Controls.Count; ctr++)
             {
                 (basePanel.Controls[ctr] as MilestoneTemplate).Dispose();
-                (basePanel.Controls[ctr] as MilestoneTemplate).Controls.RemoveAt(ctr);
+                basePanel.Controls.RemoveAt(ctr);
                 ctr--;
             }
 

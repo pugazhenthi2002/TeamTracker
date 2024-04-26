@@ -32,15 +32,15 @@
             this.projectName = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.taskNameLabel = new System.Windows.Forms.Label();
+            this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dueDate = new System.Windows.Forms.Label();
-            this.profilePictureBox1 = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -120,6 +120,22 @@
             this.taskNameLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.taskNameLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
+            // profilePictureBox1
+            // 
+            this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.profilePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.profilePictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profilePictureBox1.Location = new System.Drawing.Point(140, 24);
+            this.profilePictureBox1.Name = "profilePictureBox1";
+            this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.profilePictureBox1.Size = new System.Drawing.Size(44, 44);
+            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePictureBox1.TabIndex = 0;
+            this.profilePictureBox1.TabStop = false;
+            this.profilePictureBox1.Click += new System.EventHandler(this.OnClick);
+            this.profilePictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.profilePictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
@@ -175,22 +191,6 @@
             this.dueDate.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.dueDate.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
-            // profilePictureBox1
-            // 
-            this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.profilePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.profilePictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profilePictureBox1.Location = new System.Drawing.Point(140, 24);
-            this.profilePictureBox1.Name = "profilePictureBox1";
-            this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.profilePictureBox1.Size = new System.Drawing.Size(44, 44);
-            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilePictureBox1.TabIndex = 0;
-            this.profilePictureBox1.TabStop = false;
-            this.profilePictureBox1.Click += new System.EventHandler(this.OnClick);
-            this.profilePictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.profilePictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
-            // 
             // DoneCardTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,10 +202,10 @@
             this.Size = new System.Drawing.Size(200, 185);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -52,7 +52,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(241, 46);
+            this.panel1.Size = new System.Drawing.Size(241, 54);
             this.panel1.TabIndex = 0;
             // 
             // statusLabel
@@ -62,7 +62,7 @@
             this.statusLabel.Location = new System.Drawing.Point(0, 18);
             this.statusLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(214, 28);
+            this.statusLabel.Size = new System.Drawing.Size(214, 36);
             this.statusLabel.TabIndex = 1;
             this.statusLabel.Text = "Status Of Project";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -74,7 +74,7 @@
             this.panel3.Location = new System.Drawing.Point(214, 18);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(27, 28);
+            this.panel3.Size = new System.Drawing.Size(27, 36);
             this.panel3.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -90,34 +90,40 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(27, 28);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(27, 36);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // downPicBox
             // 
+            this.downPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.downPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.downPicBox.Image = global::UserInterface.Properties.Resources.sort_down;
-            this.downPicBox.Location = new System.Drawing.Point(0, 14);
+            this.downPicBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
+            this.downPicBox.Location = new System.Drawing.Point(0, 18);
             this.downPicBox.Margin = new System.Windows.Forms.Padding(0);
             this.downPicBox.Name = "downPicBox";
-            this.downPicBox.Size = new System.Drawing.Size(27, 14);
+            this.downPicBox.Size = new System.Drawing.Size(27, 18);
             this.downPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.downPicBox.TabIndex = 1;
             this.downPicBox.TabStop = false;
             this.downPicBox.Click += new System.EventHandler(this.OnPaginateDown);
+            this.downPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.downPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
             // upPicBox
             // 
+            this.upPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upPicBox.Image = global::UserInterface.Properties.Resources.sort_up_hover;
+            this.upPicBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
             this.upPicBox.Location = new System.Drawing.Point(0, 0);
             this.upPicBox.Margin = new System.Windows.Forms.Padding(0);
             this.upPicBox.Name = "upPicBox";
-            this.upPicBox.Size = new System.Drawing.Size(27, 14);
+            this.upPicBox.Size = new System.Drawing.Size(27, 18);
             this.upPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.upPicBox.TabIndex = 0;
             this.upPicBox.TabStop = false;
             this.upPicBox.Click += new System.EventHandler(this.OnPaginateUp);
+            this.upPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.upPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
             // panel2
             // 
@@ -131,10 +137,10 @@
             // boardBasePanel
             // 
             this.boardBasePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boardBasePanel.Location = new System.Drawing.Point(0, 46);
+            this.boardBasePanel.Location = new System.Drawing.Point(0, 54);
             this.boardBasePanel.Margin = new System.Windows.Forms.Padding(2);
             this.boardBasePanel.Name = "boardBasePanel";
-            this.boardBasePanel.Size = new System.Drawing.Size(241, 448);
+            this.boardBasePanel.Size = new System.Drawing.Size(241, 440);
             this.boardBasePanel.TabIndex = 1;
             // 
             // StatusViewTemplate

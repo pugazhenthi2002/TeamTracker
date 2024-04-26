@@ -28,6 +28,7 @@ namespace UserInterface
         public void ShowForm(Form form)
         {
             form.ShowDialog();
+            this.Close();
         }
     }
 }

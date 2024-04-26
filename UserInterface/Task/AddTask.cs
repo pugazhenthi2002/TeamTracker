@@ -15,6 +15,7 @@ namespace UserInterface.Task
 {
     public partial class AddTask : UserControl
     {
+        private TransparentForm transparentForm;
         private int startIdx, endIdx;
         private bool IsBackEnable, IsNextEnable;
         private List<TeamTracker.Task> underReviewCollection;
@@ -52,7 +53,21 @@ namespace UserInterface.Task
         {
             CreateTaskForm form = new CreateTaskForm();
             form.TaskCreate += OnTaskCreated;
-            form.ShowDialog();
+            form.TaskFormClose += OnTaskFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnTaskFormClosed(object sender, EventArgs e)
+        {
+            (sender as CreateTaskForm).Dispose();
+            (sender as CreateTaskForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnTaskCreated(object sender, EventArgs e)

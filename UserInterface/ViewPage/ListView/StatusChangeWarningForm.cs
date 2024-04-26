@@ -11,10 +11,18 @@ namespace UserInterface.ViewPage.ListView
 {
     public partial class StatusChangeWarningForm : Form
     {
-        public delegate void WarningHandler(string status, bool value);
+        public delegate void WarningHandler(object sender, string status, bool value);
         public event WarningHandler WarningStatus;
 
         public string PrevStatus;
+
+        public new void Dispose()
+        {
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
+            noButton.Dispose(); yesButton.Dispose();
+            label1.Dispose();   label2.Dispose();   tableLayoutPanel1.Dispose();
+        }
+
         public StatusChangeWarningForm()
         {
             InitializeComponent();
@@ -22,14 +30,12 @@ namespace UserInterface.ViewPage.ListView
 
         private void OnYesClicked(object sender, EventArgs e)
         {
-            WarningStatus?.Invoke(PrevStatus, true);
-            this.Close();
+            WarningStatus?.Invoke(this, PrevStatus, true);
         }
 
         private void OnNoClicked(object sender, EventArgs e)
         {
-            WarningStatus?.Invoke(PrevStatus, false);
-            this.Close();
+            WarningStatus?.Invoke(this, PrevStatus, false);
         }
     }
 }

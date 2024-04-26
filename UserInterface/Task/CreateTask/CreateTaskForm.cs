@@ -15,8 +15,33 @@ namespace UserInterface.Task.CreateTask
 {
     public partial class CreateTaskForm : Form
     {
+        private TransparentForm transparentForm;
         public event EventHandler TaskCreate;
-        public event EventHandler Reset;
+        public event EventHandler TaskFormClose;
+
+        public new void Dispose()
+        {
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
+            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
+            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
+            if (pictureBoxFlag.Image != null) pictureBoxFlag.Image.Dispose();
+            if (BtnAssignTo.Image != null) BtnAssignTo.Image.Dispose();
+
+            pictureBox1.Dispose();  pictureBox2.Dispose();  pictureBox3.Dispose();
+
+            animatedLabelFilename.Dispose();
+            buttonCreate.Dispose(); buttonSetMilestone.Dispose();   employeeName.Dispose(); labelSetPriority.Dispose(); labelTitle.Dispose();
+            label1.Dispose(); label2.Dispose(); label3.Dispose(); label4.Dispose(); label5.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();
+            tableLayoutPanel5.Dispose();    tableLayoutPanel6.Dispose();    tableLayoutPanel7.Dispose();    tableLayoutPanel8.Dispose();
+            tableLayoutPanelFileName.Dispose();
+            textBoxDesc.Dispose();  textBoxTaskName.Dispose();
+            startDate.Dispose();    endDate.Dispose();
+            toolTip1.Dispose();
+        }
+
         public CreateTaskForm()
         {
             InitializeComponent();
@@ -94,7 +119,14 @@ namespace UserInterface.Task.CreateTask
             SetFlag(selectedTask.TaskPriority);
             selectedAttachment = DataHandler.GetTaskAttachment(selectedTask.TaskID);
             tableLayoutPanelFileName.Visible = true;
-            animatedLabelFilename.Text = selectedAttachment.DisplayName;
+            if (selectedAttachment != null)
+            {
+                animatedLabelFilename.Text = selectedAttachment.DisplayName;
+            }
+            else
+            {
+                tableLayoutPanelFileName.Visible = false;
+            }
             buttonCreate.Text = "Update";
         }
 
@@ -166,24 +198,19 @@ namespace UserInterface.Task.CreateTask
             Point formPoint = buttonSetMilestone.PointToScreen(new Point(buttonSetMilestone.Location.X, buttonSetMilestone.Location.Y));
 
             MilestoneDropForm = new MilestoneDropDownForm();
-            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.Show();
+            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(-10, buttonSetMilestone.Height + 2));
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width+20, MilestoneDropForm.Height);
-
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
         }
 
-        private void OnClickMilestoneBtn(object sender, EventArgs e)
+        private void OnClickMilestoneBtn(object sender, Milestone e)
         {
-            var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
-            foreach (var Iter in milestoneList)
+            if (e != null)
             {
-                if (Iter.MileStoneName == (sender as Label).Text)
-                {
-                    selectedMilestone = Iter;
-                    buttonSetMilestone.Text = Iter.MileStoneName;
-                }
+                selectedMilestone = e;
+                buttonSetMilestone.Text = e.MileStoneName;
             }
         }
 
@@ -248,7 +275,7 @@ namespace UserInterface.Task.CreateTask
                     DataHandler.AddNotification("Project Updated", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
                 TaskCreate?.Invoke(this, EventArgs.Empty);
-                this.Close();
+                TaskFormClose?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -258,7 +285,7 @@ namespace UserInterface.Task.CreateTask
 
         private void OnCloseClick(object sender, EventArgs e)
         {
-            this.Close();
+            TaskFormClose?.Invoke(this, EventArgs.Empty);
         }
 
         private BooleanMsg CheckConstraints()

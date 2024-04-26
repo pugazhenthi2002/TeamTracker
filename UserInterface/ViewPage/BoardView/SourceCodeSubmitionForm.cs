@@ -22,7 +22,6 @@ namespace TeamTracker
 
         public Task SourceCodeTask;
         public SourceCode TaskSourceCode;
-        public EventHandler CloseClick;
         public EventHandler<SourceCode> DoneClick;
         private string selectedFileName = "";
 
@@ -36,6 +35,19 @@ namespace TeamTracker
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
+
+        public new void Dispose()
+        {
+            if(pictureBox1.Image != null)   pictureBox1.Image.Dispose();
+            if(pictureBoxUpload.Image != null) pictureBoxUpload.Image.Dispose();
+
+            pictureBox1.Dispose();  pictureBoxUpload.Dispose();
+            label1.Dispose();   label2.Dispose();   label3.Dispose();
+            button1.Dispose();  button2.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
+            commitTextBox.Dispose();
+        }
 
         protected override void OnResize(EventArgs e)
         {
@@ -94,8 +106,7 @@ namespace TeamTracker
             {
                 TaskSourceCode.CommitName = commitTextBox.Text;
                 TaskSourceCode.CommitedBy = EmployeeManager.CurrentEmployee.EmployeeID;
-                DoneClick?.Invoke(sender, TaskSourceCode);
-                this.Close();
+                DoneClick?.Invoke(this, TaskSourceCode);
             }
             else
             {
@@ -127,12 +138,19 @@ namespace TeamTracker
 
         private void OnClose(object sender, EventArgs e)
         {
-            
-            CloseClick?.Invoke(this, EventArgs.Empty);
-            
-            this.Dispose();
-            
+            DoneClick?.Invoke(this, null);
+        }
 
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            pictureBox1.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            pictureBox1.Image = UserInterface.Properties.Resources.Close_30;
         }
     }
 }

@@ -11,12 +11,13 @@ using System.Runtime.InteropServices;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
+using UserInterface;
 
 namespace TeamTracker
 {
     public partial class UcDeploy : UserControl
     {
-
+        private TransparentForm transparentForm;
         private ProjectVersion version;
         private Projects proj;
         private VersionSourceCode versionSourceCode;
@@ -172,7 +173,18 @@ namespace TeamTracker
         {
             ProjectInfoForm form = new ProjectInfoForm();
             form.SelectedVersion = version;
-            form.Show();
+            form.InfoFormClose += OnInfoFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnInfoFormClosed(object sender, EventArgs e)
+        {
+            (sender as ProjectInfoForm).Dispose();
+            (sender as ProjectInfoForm).Close();
+            ParentForm.Show();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

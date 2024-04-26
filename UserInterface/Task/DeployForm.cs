@@ -37,6 +37,18 @@ namespace UserInterface.Task
             int nHeightEllipse // width of ellipse
         );
 
+        public new void Dispose()
+        {
+            if (pictureBoxUpload.Image != null) pictureBoxUpload.Image.Dispose();
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+
+            pictureBoxUpload.Dispose(); pictureBox1.Dispose();
+            clearButton.Dispose();  submitCodeButton.Dispose();
+            label1.Dispose();   label3.Dispose();
+            panel1.Dispose(); panel4.Dispose(); panel5.Dispose();
+            tableLayoutPanel2.Dispose();
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -60,8 +72,7 @@ namespace UserInterface.Task
             message = EligibleToUpload();
             if (message)
             {
-                DoneClick?.Invoke(sender, SelectedVersionSourceCode);
-                this.Close();
+                DoneClick?.Invoke(this, SelectedVersionSourceCode);
             }
             else
             {
@@ -71,7 +82,7 @@ namespace UserInterface.Task
 
         private void OnCloseClick(object sender, EventArgs e)
         {
-            this.Close();
+            DoneClick?.Invoke(this, null);
         }
 
         private void OnUploadSourceCode(object sender, EventArgs e)

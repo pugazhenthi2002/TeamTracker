@@ -130,7 +130,7 @@
             this.yesButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.yesButton.FlatAppearance.BorderSize = 0;
             this.yesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.yesButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yesButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.yesButton.Location = new System.Drawing.Point(138, 3);
             this.yesButton.Name = "yesButton";
@@ -147,7 +147,7 @@
             this.noButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.noButton.FlatAppearance.BorderSize = 0;
             this.noButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.noButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.noButton.Location = new System.Drawing.Point(19, 3);
             this.noButton.Name = "noButton";

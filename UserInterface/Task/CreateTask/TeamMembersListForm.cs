@@ -75,6 +75,8 @@ namespace TeamTracker
 
         private void InitializeTeamMembers()
         {
+            Focus();
+            var x = Focused;
             if (teamList.Count <= 4)
             {
                 this.Size = new Size(this.Width, 50 * (teamList.Count()));
@@ -117,6 +119,12 @@ namespace TeamTracker
         {
             base.OnLostFocus(e);
             this.Close();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Focus();
         }
     }
 }

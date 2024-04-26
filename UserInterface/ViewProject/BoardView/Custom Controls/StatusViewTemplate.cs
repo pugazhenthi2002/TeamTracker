@@ -71,8 +71,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 {
                     isDownEnable = false;
                 }
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
             }
         }
 
@@ -85,6 +85,30 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 startIdx--;
                 endIdx--;
                 ReorderVersions();
+            }
+        }
+
+        private void OnNavMouseEnter(object sender, EventArgs e)
+        {
+            if((sender as PictureBox).Name == "upPicBox")
+            {
+                (sender as PictureBox).Image = Properties.Resources.Up_Light_Blue_Hover;
+            }
+            else
+            {
+                (sender as PictureBox).Image = Properties.Resources.Down_Light_Blue_Hover;
+            }
+        }
+
+        private void OnNavMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Name == "upPicBox")
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            }
+            else
+            {
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
             }
         }
 
@@ -127,8 +151,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
         }
     }
 }

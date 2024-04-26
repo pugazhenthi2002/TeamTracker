@@ -13,6 +13,7 @@ namespace TeamTracker
 {
     public partial class TaskInfoForm : Form
     {
+        public event EventHandler InfoFormClose;
         public TaskInfoForm()
         {
             InitializeComponent();
@@ -20,7 +21,6 @@ namespace TeamTracker
             this.Location = new Point(700, 300);
             toolTip1.SetToolTip(pictureBoxFlag, "Priority");
             toolTip1.SetToolTip(animatedLabelMilestone, "Milestone");
-
         }
 
         public TeamTracker.Task selectedTask;
@@ -52,6 +52,19 @@ namespace TeamTracker
 
         private List<SourceCode> sourceCodeList;
 
+        public new void Dispose()
+        {
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+            if (pictureBoxFlag.Image != null) pictureBoxFlag.Image.Dispose();
+
+            pictureBox1.Dispose(); pictureBoxDownloadAttachment.Dispose(); pictureBoxFlag.Dispose();
+            label1.Dispose();   animatedLabelMilestone.Dispose();   animatedLabelStatus.Dispose();  labelTitle.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
+            startDate.Dispose();    endDate.Dispose();  ucTaskDescription1.Dispose();
+            profileAssignedBy.Dispose();    ucNotFound1.Dispose();
+        }
 
         protected override void OnResize(EventArgs e)
         {
@@ -107,7 +120,6 @@ namespace TeamTracker
                 head.CommitCount = commitCount;
                 head.CommitDate = entry.Key;
                 head.Dock = DockStyle.Top;
-                //head.BringToFront();
                 head.BackColor = Color.FromArgb(211, 220, 227);
                 panelCommits.Controls.Add(head);
 
@@ -119,11 +131,7 @@ namespace TeamTracker
                     
                     commit.Dock = DockStyle.Top;
                     panelCommits.Controls.Add(commit);
-
-                    //commit.BringToFront();
                 }
-
-
             }
 
             foreach (Control ctr in panelCommits.Controls)
@@ -141,8 +149,7 @@ namespace TeamTracker
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
         {
-            this.Close();
-            this.Dispose();
+            InfoFormClose?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnMouseEnterClose(object sender, EventArgs e)
@@ -153,20 +160,16 @@ namespace TeamTracker
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
-
         }
 
         private void OnPaintTotalCommitsPanel(object sender, PaintEventArgs e)
         {
-
-
             Point pt1 = new Point(4, 4);
             Point pt2 = new Point(panel2.Width - 6, 4);
             Point pt3 = new Point(panel2.Width - 6, panel2.Height - 6);
             Point pt4 = new Point(4, panel2.Height - 6);
             Pen border = new Pen(Color.Black, 2);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-
         }
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
@@ -232,12 +235,6 @@ namespace TeamTracker
             {
                 ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.DisplayName);
             }
-        }
-
-        protected override void OnLostFocus(EventArgs e)
-        {
-            base.OnLostFocus(e);
-            this.Close();
         }
     }
 }

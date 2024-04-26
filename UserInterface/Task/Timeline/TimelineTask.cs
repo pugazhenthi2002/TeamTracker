@@ -11,6 +11,7 @@ using System.Reflection;
 using UserInterface.Task.CreateTask;
 using UserInterface.Task.Timeline;
 using UserInterface.ViewPage;
+using UserInterface;
 
 namespace TeamTracker
 {
@@ -24,6 +25,7 @@ namespace TeamTracker
 
     public partial class TimelineTask : UserControl
     {
+        private TransparentForm transparentForm;
         public delegate bool TimelineDateHandler(TimelineTask control);
         public event TimelineDateHandler TaskTimelineCheck;
 
@@ -111,7 +113,7 @@ namespace TeamTracker
                 border.Width = 3;
 
             }
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(5,5,Width-10, Height-10), 10));
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(5, 5, Width - 10, Height - 10), 10));
             border.Dispose();
         }
 
@@ -138,7 +140,7 @@ namespace TeamTracker
 
         private void OnTaskMouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 TaskOperationForm form = new TaskOperationForm();
                 form.Location = PointToScreen(new Point(Width, 0));
@@ -149,20 +151,37 @@ namespace TeamTracker
 
         private void OnTaskOperation(object sender, OperateType e)
         {
-            if(e == OperateType.Update)
+            if (e == OperateType.Update)
             {
                 CreateTaskForm form1 = new CreateTaskForm();
                 form1.SelectedTask = selectedTask;
                 form1.TaskCreate += OnTaskUpdation;
-                form1.Show();
+                form1.TaskFormClose += OnTaskFormClose;
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form1);
             }
             else
             {
                 WarningForm form2 = new WarningForm();
                 form2.Content = "Are you sure, you want delete the task?";
                 form2.WarningStatus += OnWarningStatus;
-                form2.ShowDialog();
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form2);
             }
+        }
+
+        private void OnTaskFormClose(object sender, EventArgs e)
+        {
+            (sender as CreateTaskForm).Dispose();
+            (sender as CreateTaskForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnTaskUpdation(object sender, EventArgs e)
@@ -172,7 +191,7 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
-            if(e)
+            if (e)
             {
                 TaskManager.DeleteTask(selectedTask.TaskID);
                 Reset?.Invoke(this, EventArgs.Empty);
@@ -240,7 +259,7 @@ namespace TeamTracker
                 }
             }
 
-            if(isDragLeftEdged)
+            if (isDragLeftEdged)
             {
                 if (!Convert.ToBoolean(isStartDateReached))
                 {
@@ -275,6 +294,7 @@ namespace TeamTracker
                 Cursor = Cursors.SizeAll;
             }
 
+
             if (isRightSliderClicked)
             {
                 isEndDateReached = TaskTimelineCheck?.Invoke(this);
@@ -285,9 +305,9 @@ namespace TeamTracker
                 }
                 else
                 {
-                    if(isRightEdged)
+                    if (isRightEdged)
                     {
-                        isRightEdged = false;   edgeTimer.Stop();
+                        isRightEdged = false; edgeTimer.Stop();
                     }
 
                     if (e.X + rightOffSetX > StepWidth)
@@ -300,7 +320,6 @@ namespace TeamTracker
                 isStartDateReached = TaskTimelineCheck?.Invoke(this);
                 if (Location.X - (leftOffSetX - e.X) <= 0)
                 {
-
                     isLeftEdged = true;
                     edgeTimer.Start();
                 }
@@ -317,35 +336,43 @@ namespace TeamTracker
                     }
                 }
             }
-
+            //Point Pt1 = Parent.PointToClient(PointToScreen(e.Location));
             if (isDragging)
             {
-                isStartDateReached = TaskTimelineCheck?.Invoke(this);
-                isEndDateReached = TaskTimelineCheck?.Invoke(this);
-                if (Location.X + (e.X - offSet.X) <= 0)
+                Point Pt = Parent.PointToClient(PointToScreen(e.Location));
+                if (!(Pt.Y - offSet.Y < 0 || Pt.Y + Height - offSet.Y> Parent.Height))
                 {
-                    isDragLeftEdged = true;
-                    edgeTimer.Start();
-                }
-                else if (Location.X + (e.X - offSet.X) + Width >= Parent.Width)
-                {
-                    isDragRightEdged = true;
-                    edgeTimer.Start();
+                    isStartDateReached = TaskTimelineCheck?.Invoke(this);
+                    isEndDateReached = TaskTimelineCheck?.Invoke(this);
+                    if (Location.X + (e.X - offSet.X) <= 0)
+                    {
+                        isDragLeftEdged = true;
+                        edgeTimer.Start();
+                    }
+                    else if (Location.X + (e.X - offSet.X) + Width >= Parent.Width)
+                    {
+                        isDragRightEdged = true;
+                        edgeTimer.Start();
+                    }
+                    else
+                    {
+                        if (isDragRightEdged)
+                        {
+                            isDragRightEdged = false;
+                            edgeTimer.Stop();
+                        }
+                        if (isDragLeftEdged)
+                        {
+                            isDragLeftEdged = false;
+                            edgeTimer.Stop();
+                        }
+
+                        Location = new Point(Location.X + (e.X - offSet.X), Location.Y + (e.Y - offSet.Y));
+                    }
                 }
                 else
                 {
-                    if (isDragRightEdged)
-                    {
-                        isDragRightEdged = false;
-                        edgeTimer.Stop();
-                    }
-                    if (isDragLeftEdged)
-                    {
-                        isDragLeftEdged = false;
-                        edgeTimer.Stop();
-                    }
 
-                    Location = new Point(Location.X + (e.X - offSet.X), Location.Y + (e.Y - offSet.Y));
                 }
             }
 

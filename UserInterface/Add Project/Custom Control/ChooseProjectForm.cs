@@ -131,14 +131,11 @@ namespace UserInterface.Add_Project.Custom_Control
                 return;
             }
             ProjectSelect?.Invoke(this, prevControl.Project);
-            Dispose();
-            this.Close();
         }
 
         private void OnCancelClick(object sender, EventArgs e)
         {
-            Dispose();
-            this.Close();
+            ProjectSelect?.Invoke(this, null);
         }
 
         private void InitializeTemplates()
@@ -188,8 +185,11 @@ namespace UserInterface.Add_Project.Custom_Control
             isEntered = true;
             if ((sender as Button).Name == "selectButton")
             {
-                (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
-                (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
+                if (!ucNotFound1.Visible)
+                {
+                    (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
+                    (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
+                }
             }
             else
             {
@@ -205,8 +205,11 @@ namespace UserInterface.Add_Project.Custom_Control
             isEntered = false;
             if ((sender as Button).Name == "selectButton")
             {
-                (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
-                (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
+                if (!ucNotFound1.Visible)
+                {
+                    (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
+                    (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
+                }
             }
             else
             {

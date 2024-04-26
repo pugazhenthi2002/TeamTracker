@@ -38,15 +38,11 @@ namespace UserInterface.ViewPage
         private void OnYesClicked(object sender, EventArgs e)
         {
             WarningStatus?.Invoke(this, true);
-            Dispose();
-            this.Close();
         }
 
         private void OnNoClicked(object sender, EventArgs e)
         {
             WarningStatus?.Invoke(this, false);
-            Dispose();
-            this.Close();
         }
     }
 }

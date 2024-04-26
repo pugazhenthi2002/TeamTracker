@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Drawing.Drawing2D;
+using UserInterface;
 
 namespace TeamTracker
 {
     public partial class UCTaskBoard : UserControl
     {
+        private TransparentForm transparentForm;
         private Task TaskBoardData;
         private bool isDragging = false;
         private TaskInfoForm taskInfoForm;
@@ -125,25 +127,31 @@ namespace TeamTracker
             LabelTask.Text = TaskData.TaskName;
             ucDueDate1.DueDate = TaskData.EndDate;
             profilePictureBoxAssignedBy.ImageLocation = (EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy)).EmpProfileLocation;
-            //profilePictureBoxAssignedBy.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy).EmpProfileLocation);
-            
         }
 
         private void OnClickInfo(object sender, EventArgs e)
         {
             taskInfoForm = new TaskInfoForm();
             taskInfoForm.SelectedTask = TaskBoardData;
-            taskInfoForm.ShowDialog();
+            taskInfoForm.InfoFormClose += OnFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(taskInfoForm);
+        }
+
+        private void OnFormClosed(object sender, EventArgs e)
+        {
+            (sender as TaskInfoForm).Dispose();
+            (sender as TaskInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnResize(object sender, EventArgs e)
         {
             InitializeRoundedEdge();
-        }
-
-        private void OnClickTaskBoard(object sender, EventArgs e)
-        {
-
         }
 
         private void OnMouseEnterTaskBoard(object sender, EventArgs e)

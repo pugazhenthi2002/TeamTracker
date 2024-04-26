@@ -200,7 +200,7 @@ namespace TeamTracker
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn ;
         }
 
-        private void OnClickMilestoneBtn(object sender, EventArgs e)
+        private void OnClickMilestoneBtn(object sender, Milestone e)
         {
             Button clickedBtn = (sender as Button);
 

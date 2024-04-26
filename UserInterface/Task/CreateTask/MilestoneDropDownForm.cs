@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface;
 using UserInterface.Task.CreateTask;
 using UserInterface.ViewPage;
 
@@ -15,19 +16,18 @@ namespace TeamTracker
 {
     public partial class MilestoneDropDownForm : Form
     {
-
+        private TransparentForm transparentForm;
         private List<Milestone> milestoneList = new List<Milestone>();
         private const int CSDropShadow = 0x00020000;
-
+        private Milestone selectedMilestone;
 
         public MilestoneDropDownForm()
         {
             InitializeComponent();
             InitializeRoundedEdge();
-
         }
 
-        public EventHandler MilestoneClick;
+        public EventHandler<Milestone> MilestoneClick;
 
         public List<Milestone> MilestoneList
         {
@@ -69,6 +69,14 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
+        public new void Dispose()
+        {
+            for(int ctr=0; ctr < Controls.Count; ctr++)
+            {
+                Controls[ctr].Dispose();
+                ctr--;
+            }
+        }
 
         private void InitializeRoundedEdge()
         {
@@ -124,32 +132,49 @@ namespace TeamTracker
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
+            var x = Controls.GetChildIndex(sender as Control);
+            selectedMilestone = milestoneList[milestoneList.Count - Controls.GetChildIndex(sender as Control) - 1];
             if(IsMilestoneAlreadyCompleted((sender as Label).Text))
             {
                 WarningForm form = new WarningForm();
                 form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
                 form.WarningStatus += OnWarningStatus;
-                form.Show();
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show(ParentForm);
+                transparentForm.ShowForm(form);
             }
             else
             {
-                MilestoneClick?.Invoke(sender, e);
+                MilestoneClick?.Invoke(this, selectedMilestone);
+                var res = IsDisposed;
+                Dispose();
                 this.Close();
             }
         }
 
         private void OnWarningStatus(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
-                MilestoneClick?.Invoke(sender, EventArgs.Empty);
-                this.Close();
+                MilestoneClick?.Invoke(this, selectedMilestone);
+            }
+            else
+            {
+                MilestoneClick?.Invoke(this, null);
             }
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
+            Dispose();
             this.Close();
         }
 

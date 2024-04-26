@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using UserInterface.ViewPage.ListView;
+using UserInterface;
 
 namespace TeamTracker
 {
     public partial class UcTaskBoardBase : UserControl
     {
+        private TransparentForm transparentForm;
         private ProjectVersion currentProjectVersion;
         private SourceCodeSubmitionForm SubmitionForm;
         private bool toAdd = false, underReviewFlag = false;
@@ -195,7 +197,10 @@ namespace TeamTracker
                 {
                     underReviewFlag = true;
                     form.WarningStatus += OnWarningStatusClicked;
-                    form.Show();
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(form);
                 }
             }
             else
@@ -207,8 +212,14 @@ namespace TeamTracker
             
         }
 
-        private void OnWarningStatusClicked(string e, bool result)
+        private void OnWarningStatusClicked(object sender, string e, bool result)
         {
+            (sender as StatusChangeWarningForm).Dispose();
+            (sender as StatusChangeWarningForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (result)
             {
                 DataHandler.DeleteSourceCode(BoardToAdd.TaskData.TaskID);
@@ -243,8 +254,10 @@ namespace TeamTracker
                     SubmitionForm.SourceCodeTask = BoardToAdd.TaskData;
                     SubmitionForm.Owner = this.ParentForm;
                     SubmitionForm.DoneClick += OnClickDoneSubmitionForm;
-                    SubmitionForm.CloseClick += OnClickCloseSubmitionForm;
-                    SubmitionForm.ShowDialog(this);
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(SubmitionForm);
                     break;
             }
         }
@@ -264,17 +277,16 @@ namespace TeamTracker
 
         private void OnClickDoneSubmitionForm(object sender, SourceCode e)
         {
-            toAdd = true;
-            DataHandler.SubmitSourceCode(e);
-            AddBoard(BoardToAdd);
+            (sender as SourceCodeSubmitionForm).Dispose();
+            (sender as SourceCodeSubmitionForm).Close();
 
-        }
-        private void OnClickCloseSubmitionForm(object sender, EventArgs e)
-        {
-            toAdd = false;
-            AddBoard(BoardToAdd);
-            
+            if (ParentForm != null)
+                ParentForm.Show();
 
+            toAdd = e == null ? false : true;
+            if (toAdd)
+                DataHandler.SubmitSourceCode(e);
+            AddBoard(BoardToAdd);
         }
 
         private UCTaskStatusBase FindParentUserControl(Control control)

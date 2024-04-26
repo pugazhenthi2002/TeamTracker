@@ -16,6 +16,7 @@ namespace UserInterface.Task
 {
     public partial class ReviewTaskTemplate : UserControl
     {
+        private TransparentForm transparentForm;
         public event EventHandler TaskReviewed;
         public ReviewTaskTemplate()
         {
@@ -97,11 +98,21 @@ namespace UserInterface.Task
             WarningForm form = new WarningForm();
             form.Content = "Are you sure, you want move the Task to Done Status?";
             form.WarningStatus += OnDoneWarningStatus;
-            form.Show();
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
         }
 
         private void OnDoneWarningStatus(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 TaskManager.UpdateTask(selectedTask.TaskID, selectedTask.TaskName, selectedTask.TaskDesc, selectedTask.StartDate, selectedTask.EndDate, TeamTracker.TaskStatus.Done, selectedTask.MilestoneID, selectedTask.TaskPriority, selectedTask.AssignedTo, null);
@@ -114,18 +125,42 @@ namespace UserInterface.Task
             WarningForm form = new WarningForm();
             form.Content = "Are you sure, you want to Reassign the Task?";
             form.WarningStatus += OnReassignWarningStatus;
-            form.Show();
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
         }
 
         private void OnReassignWarningStatus(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 CreateTaskForm form = new CreateTaskForm();
                 form.SelectedTask = selectedTask;
                 form.TaskCreate += OnUpdated;
-                form.Show();
+                form.TaskFormClose += OnTaskFormClosed;
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form);
             }
+        }
+
+        private void OnTaskFormClosed(object sender, EventArgs e)
+        {
+            (sender as CreateTaskForm).Dispose();
+            (sender as CreateTaskForm).Close();
+            transparentForm.Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnUpdated(object sender, EventArgs e)

@@ -109,12 +109,14 @@ namespace TeamTracker
             // statusLabel
             // 
             this.statusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.statusLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.LabelCornerColor = System.Drawing.Color.Empty;
             this.statusLabel.Location = new System.Drawing.Point(478, 0);
             this.statusLabel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.statusLabel.Name = "statusLabel";
+            this.statusLabel.ParentColor = System.Drawing.Color.Empty;
             this.statusLabel.Size = new System.Drawing.Size(239, 57);
             this.statusLabel.TabIndex = 3;
             this.statusLabel.Text = "animatedLabel1";
@@ -130,6 +132,7 @@ namespace TeamTracker
             this.priorityLabel.Location = new System.Drawing.Point(956, 0);
             this.priorityLabel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.priorityLabel.Name = "priorityLabel";
+            this.priorityLabel.ParentColor = System.Drawing.Color.Empty;
             this.priorityLabel.Size = new System.Drawing.Size(239, 57);
             this.priorityLabel.TabIndex = 4;
             this.priorityLabel.Text = "animatedLabel2";
@@ -138,6 +141,7 @@ namespace TeamTracker
             // viewTask
             // 
             this.viewTask.BackColor = System.Drawing.Color.Transparent;
+            this.viewTask.Cursor = System.Windows.Forms.Cursors.Hand;
             this.viewTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewTask.Image = ((System.Drawing.Image)(resources.GetObject("viewTask.Image")));
             this.viewTask.Location = new System.Drawing.Point(1195, 0);

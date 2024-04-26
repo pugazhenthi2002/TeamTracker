@@ -30,7 +30,6 @@ namespace TeamTracker
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, panel2, new object[] { true });
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, panel3, new object[] { true });
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, panel4, new object[] { true });
-
         }
 
 
@@ -86,6 +85,11 @@ namespace TeamTracker
             }
         }
 
+        public new void Dispose()
+        {
+            labelDate.Dispose();    labelDue.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {

@@ -81,12 +81,12 @@ namespace UserInterface.ViewProject
             if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
                 form.TeamList = EmployeeManager.FetchTeamLeadersFromManagerID();
-                form.ShowDialog();
+                form.Show();
             }
             else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
                 form.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
-                form.ShowDialog();
+                form.Show();
             }
             
         }

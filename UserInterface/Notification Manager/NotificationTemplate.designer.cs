@@ -100,7 +100,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = global::UserInterface.Properties.Resources.close_Hover;
+            this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
             this.pictureBox1.Location = new System.Drawing.Point(361, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 34);
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.ClientSize = new System.Drawing.Size(400, 175);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.panel1);
@@ -125,6 +125,7 @@
             this.Text = "NotificationTemplate";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmFadeClose_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NotificationTemplate_FormClosed);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             this.Resize += new System.EventHandler(this.OnNotifyResize);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

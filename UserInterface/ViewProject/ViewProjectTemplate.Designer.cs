@@ -98,6 +98,7 @@
             // filterLabel
             // 
             this.filterLabel.AutoSize = true;
+            this.filterLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.filterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -111,6 +112,7 @@
             // 
             // filterPicBox
             // 
+            this.filterPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.filterPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterPicBox.Image = global::UserInterface.Properties.Resources.Filter_Normal;
             this.filterPicBox.Location = new System.Drawing.Point(3, 3);
@@ -139,6 +141,7 @@
             // timelineLabel
             // 
             this.timelineLabel.AutoSize = true;
+            this.timelineLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.timelineLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelineLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timelineLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -152,6 +155,7 @@
             // 
             // timelinePicBox
             // 
+            this.timelinePicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.timelinePicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelinePicBox.Image = global::UserInterface.Properties.Resources.Timeline_Normal;
             this.timelinePicBox.Location = new System.Drawing.Point(3, 3);
@@ -180,6 +184,7 @@
             // 
             // boardPicBox
             // 
+            this.boardPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board_Click;
             this.boardPicBox.Location = new System.Drawing.Point(3, 3);
@@ -193,6 +198,7 @@
             // boardLabel
             // 
             this.boardLabel.AutoSize = true;
+            this.boardLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boardLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));

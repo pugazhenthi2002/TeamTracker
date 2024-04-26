@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using UserInterface.Add_Project.Custom_Control;
+using UserInterface.ViewPage;
+using UserInterface;
 
 namespace TeamTracker
 {
     public partial class ProjectInitializationPage : UserControl
     {
+        private TransparentForm transparentForm;
         private Employee teamLeader;
 
         public ProjectInitializationPage()
@@ -191,9 +194,14 @@ namespace TeamTracker
                 List<VersionAttachment> attachments = FetchAttachmentFiles();
                 if (attachments.Count == 0)
                 {
-                    AttachmentWarningForm form = new AttachmentWarningForm();
+                    WarningForm form = new WarningForm();
+                    form.Content = "Are you sure, you want to Create a Project Without any Attachments?";
                     form.WarningStatus += OnWarningStatus;
-                    form.Show();
+
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show();
+                    transparentForm.ShowForm(form);
+                    //form.Show();
                 }
                 else
                 {
@@ -206,6 +214,12 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, null);

@@ -20,6 +20,7 @@ namespace UserInterface.ViewPage.ListView
 
     public partial class DoneCardTemplate : UserControl
     {
+        private TransparentForm transparentForm;
         public TeamTracker.Task SelectedTask
         {
             get
@@ -134,7 +135,20 @@ namespace UserInterface.ViewPage.ListView
         {
             TaskInfoForm form = new TaskInfoForm();
             form.SelectedTask = selectedTask;
-            form.Show();
+            form.InfoFormClose += OnFormClosed;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnFormClosed(object sender, EventArgs e)
+        {
+            (sender as TaskInfoForm).Dispose();
+            (sender as TaskInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

@@ -23,13 +23,13 @@ namespace TeamTracker
             outTimer.Tick += OutTick;
         }
 
+        public Color ParentColor { get; set; }
 
         public Color LabelCornerColor
         {
             get;
             set;
         }
-
 
         protected override void OnMouseEnter(EventArgs e)
         {
@@ -44,7 +44,6 @@ namespace TeamTracker
             base.OnMouseLeave(e);
             outTimer.Start();
         }
-
 
         protected override void OnPaint(PaintEventArgs e)
         {

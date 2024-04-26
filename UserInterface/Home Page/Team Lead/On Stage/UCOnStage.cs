@@ -169,9 +169,9 @@ namespace TeamTracker
             form.MilestoneCollection = MilestoneCollection;
             form.MilestoneExtract += OnMilestoneExtraction;
 
+            transparentForm = new TransparentForm();
             transparentForm.Show();
             transparentForm.ShowForm(form);
-            //form.ShowDialog(this);
         }
 
         private void OnMilestoneExtraction(object sender, List<Milestone> e)
@@ -179,7 +179,7 @@ namespace TeamTracker
             MilestoneCollection = e;
             (sender as AddMilestoneForm).Dispose();
             (sender as AddMilestoneForm).Close();
-            transparentForm.Close();
+            ParentForm.Show();
         }
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
