@@ -400,29 +400,11 @@
     <Compile Include="Issues\IssueInfoForm.Designer.cs">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Issues\My Issue Page\SolutionAttachmentTemplate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Issues\My Issue Page\SolutionAttachmentTemplate.Designer.cs">
-      <DependentUpon>SolutionAttachmentTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Issues\My Issue Page\SolutionButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Issues\My Issue Page\SolutionButton.Designer.cs">
-      <DependentUpon>SolutionButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Issues\My Issue Page\SolutionTemplate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Issues\My Issue Page\SolutionTemplate.Designer.cs">
-      <DependentUpon>SolutionTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Issues\My Issue Page\ViewSolutionForm.cs">
+    <Compile Include="Issues\My Issue Page\MenuFormMyIssue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Issues\My Issue Page\ViewSolutionForm.Designer.cs">
-      <DependentUpon>ViewSolutionForm.cs</DependentUpon>
+    <Compile Include="Issues\My Issue Page\MenuFormMyIssue.Designer.cs">
+      <DependentUpon>MenuFormMyIssue.cs</DependentUpon>
     </Compile>
     <Compile Include="Issues\UcFileName.cs">
       <SubType>UserControl</SubType>
@@ -620,12 +602,6 @@
     </Compile>
     <Compile Include="Task\Timeline\TimelineTask.designer.cs">
       <DependentUpon>TimelineTask.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TransparencyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TransparencyForm.Designer.cs">
-      <DependentUpon>TransparencyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UcNotFound.cs">
       <SubType>UserControl</SubType>
@@ -980,17 +956,8 @@
     <EmbeddedResource Include="Issues\IssueInfoForm.resx">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Issues\My Issue Page\SolutionAttachmentTemplate.resx">
-      <DependentUpon>SolutionAttachmentTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Issues\My Issue Page\SolutionButton.resx">
-      <DependentUpon>SolutionButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Issues\My Issue Page\SolutionTemplate.resx">
-      <DependentUpon>SolutionTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Issues\My Issue Page\ViewSolutionForm.resx">
-      <DependentUpon>ViewSolutionForm.cs</DependentUpon>
+    <EmbeddedResource Include="Issues\My Issue Page\MenuFormMyIssue.resx">
+      <DependentUpon>MenuFormMyIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\UcFileName.resx">
       <DependentUpon>UcFileName.cs</DependentUpon>
@@ -1098,9 +1065,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Task\Timeline\TimelineTask.resx">
       <DependentUpon>TimelineTask.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TransparencyForm.resx">
-      <DependentUpon>TransparencyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcNotFound.resx">
       <DependentUpon>UcNotFound.cs</DependentUpon>
@@ -1305,6 +1269,8 @@
     <None Include="Resources\calendar1.png" />
     <None Include="Resources\Bold.png" />
     <None Include="Resources\bullets.png" />
+    <None Include="Resources\bold-gray.png" />
+    <None Include="Resources\bullet-list-gray.png" />
     <Content Include="Resources\Close Black.png" />
     <Content Include="Resources\close Hover.png" />
     <Content Include="Resources\Close Red.png" />
@@ -1330,6 +1296,7 @@
     <None Include="Resources\Not found.png" />
     <None Include="Resources\Medium.png" />
     <None Include="Resources\italic.png" />
+    <None Include="Resources\Italic gray.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
@@ -1338,6 +1305,11 @@
     <None Include="Resources\vertical line.png" />
     <None Include="Resources\strikethrough.png" />
     <None Include="Resources\underline.png" />
+    <None Include="Resources\strikethrough-gray.png" />
+    <None Include="Resources\underline-gray.png" />
+    <None Include="Resources\tag gray.png" />
+    <None Include="Resources\tag silver.png" />
+    <None Include="Resources\tag black.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>

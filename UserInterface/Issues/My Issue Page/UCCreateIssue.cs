@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace TeamTracker 
 {
@@ -32,9 +34,11 @@ namespace TeamTracker
             toolTip1.SetToolTip( pictureBoxAttachments, "Add Attachments");
             toolTip1.SetToolTip( BtnSetPriority, "Issue Priority");
             toolTip1.SetToolTip( BtnSetType, "Issue type");
+            toolTip1.SetToolTip(labelAttachment, "Click to remove attachment");
             labelWarning.Hide();
-            
-            
+            labelAttachment.Hide();
+            profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
+
         }
 
 
@@ -51,7 +55,7 @@ namespace TeamTracker
             set
             {
                 issueData = value;
-                SetIssue();
+               // SetIssue();
             }
         }
 
@@ -72,11 +76,17 @@ namespace TeamTracker
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
-            panelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelAttachment.Width, panelAttachment.Height, 20, 20));
+            labelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachment.Width, labelAttachment.Height, labelAttachment.Width, labelAttachment.Width));
+            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
         }
 
         private void SetIssue()
         {
+
+            if(issueData==null)
+            {
+                return;
+            }
             IssueTitleTextBox.Text = issueData.IssueName;
             IssueDescTextBox.Text = issueData.IssueDesc;
             BtnSetPriority.Text = issueData.Priority+"";
@@ -85,10 +95,10 @@ namespace TeamTracker
             foreach(string tag in issueData.Tags)
             {
                 UCTags tagUc = new UCTags();
-                tagUc.Size = new Size(panelTags.Width - 20, panelTags.Height / 4 - 5);
+                tagUc.Size = new Size(panelTags.Width - 50, panelTags.Height / 4 - 5);
                 tagUc.Dock = DockStyle.Top;
 
-                tagUc.SetText(textBoxTags.Text);
+                tagUc.SetText(tag);
 
                 panelTags.Controls.Add(tagUc);
                 tagUc.BringToFront();
@@ -119,7 +129,7 @@ namespace TeamTracker
 
         private void OnClickSetPriority(object sender, EventArgs e)
         {
-            if(Application.OpenForms.OfType<PriorityDropDownForm>().Any())
+            if(Application.OpenForms.OfType<IssuePriorityDropDownForm>().Any())
             {
                 CloseForm();
                 return;
@@ -234,7 +244,7 @@ namespace TeamTracker
 
         private void OnClickPostIssue(object sender, EventArgs e)
         {
-            if(IssueTitleTextBox.Text==""|| IssueTitleTextBox.Text == "Enter Issue Name")
+            if(IssueTitleTextBox.Text==""|| IssueTitleTextBox.Text == "Enter Issue Name" ||  Regex.IsMatch(textBoxTags.Text, @"\d"))
             {
                 labelWarning.Show();
                 labelWarning.Text = "Set valid Title!";
@@ -317,11 +327,12 @@ namespace TeamTracker
             {
                 string selectedFilePath = openFileDialog.FileName;
                 string safeFile = openFileDialog.SafeFileName;
-                UcFileName file = new UcFileName();
 
-                file.FileName = safeFile;
-                file.Dock = DockStyle.Fill;
-                panelAttachment.Controls.Add(file);
+                //UcFileName file = new UcFileName();
+
+                //file.FileName = safeFile;
+                //file.Dock = DockStyle.Fill;
+                //panelAttachment.Controls.Add(file);
 
                 string extension = System.IO.Path.GetExtension(selectedFilePath);
 
@@ -332,8 +343,12 @@ namespace TeamTracker
                     IssueAttachmentLocation = selectedFilePath
                 };
 
-        
+                labelAttachment.Show();
 
+            }
+            else
+            {
+                labelAttachment.Hide();
             }
         }
 
@@ -345,6 +360,39 @@ namespace TeamTracker
         private void OnMouseLeaveAttachmentPicBox(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Attachment_black;
+        }
+
+
+        private void OnMouseEnterClose(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.close_Hover;
+        }
+
+        private void OnMouseLeaveClose(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Alice_Blue_30;
+
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(150, 170, 190),2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, labelAttachment.Width - 1, labelAttachment.Height -  1),labelAttachment.Width/2));
+
+            pen.Dispose();
+        }
+        private void OnClickAttachmentCount(object sender, EventArgs e)
+        {
+            labelAttachment.Hide();
+            Attachement = null;
+
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            SetIssue();
         }
     }
 }

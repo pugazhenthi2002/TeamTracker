@@ -51,10 +51,12 @@
             this.buttonCreateIssue = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelDatagridviewBase = new System.Windows.Forms.Panel();
             this.SidePanel.SuspendLayout();
             this.tableLayoutPanelSide.SuspendLayout();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelDatagridviewBase.SuspendLayout();
             this.SuspendLayout();
             // 
             // SidePanel
@@ -357,8 +359,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.dataGridView1.Location = new System.Drawing.Point(186, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -382,13 +385,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(974, 532);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnDoubleClickCell);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewCellMouseClick);
+            this.dataGridView1.Click += new System.EventHandler(this.OnClickDatagridview);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownDatagridview);
+            // 
+            // panelDatagridviewBase
+            // 
+            this.panelDatagridviewBase.Controls.Add(this.dataGridView1);
+            this.panelDatagridviewBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDatagridviewBase.Location = new System.Drawing.Point(186, 53);
+            this.panelDatagridviewBase.Name = "panelDatagridviewBase";
+            this.panelDatagridviewBase.Size = new System.Drawing.Size(974, 532);
+            this.panelDatagridviewBase.TabIndex = 4;
             // 
             // UcMyIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panelDatagridviewBase);
             this.Controls.Add(this.TopPanel);
             this.Controls.Add(this.SidePanel);
             this.Name = "UcMyIssue";
@@ -397,6 +411,7 @@
             this.tableLayoutPanelSide.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelDatagridviewBase.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -422,5 +437,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonCreateIssue;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Panel panelDatagridviewBase;
     }
 }

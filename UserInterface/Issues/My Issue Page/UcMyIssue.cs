@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UserInterface.Issues.My_Issue_Page;
 
 namespace TeamTracker
 {
@@ -17,6 +16,7 @@ namespace TeamTracker
         private Form CreateIssueForm;
         private UCCreateIssue ucCreate;
         private List<Issue> MyIssueList ;
+        private int ClickedRow = -1;
 
         public UcMyIssue()
         {
@@ -26,27 +26,7 @@ namespace TeamTracker
 
             SetData();
 
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.HeaderText = "Solution";
-            buttonColumn.Text = "Click To view Solutions";
-            buttonColumn.UseColumnTextForButtonValue = true;
-            buttonColumn.FlatStyle = FlatStyle.Flat;
-            buttonColumn.DefaultCellStyle.BackColor = Color.FromArgb(157, 178, 191);
 
-            dataGridView1.Columns.Add(buttonColumn);
-
-            dataGridView1.CellClick += DataGridViewCellClick;
-
-        }
-
-        private void DataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                int rowIndex = e.RowIndex;
-                string issueID = dataGridView1["IssueID", rowIndex].Value.ToString();
-                MessageBox.Show($"Button clicked for IssueID: {issueID}");
-            }
         }
 
         private void SetData()
@@ -57,18 +37,24 @@ namespace TeamTracker
             dt.Columns.Add("IssueID", typeof(int));
             dt.Columns.Add("IssueName", typeof(string));
             dt.Columns.Add("IssueDesc", typeof(string));
-            dt.Columns.Add("PostedBy", typeof(int));
+            dt.Columns.Add("PostedBy", typeof(string));
             dt.Columns.Add("Type", typeof(string));
             dt.Columns.Add("Priority", typeof(string));
             dt.Columns.Add("PostedDate", typeof(DateTime));
 
             foreach (var issue in MyIssueList)
             {
-                dt.Rows.Add(issue.IssueID, issue.IssueName, issue.IssueDesc, issue.PostedBy, issue.Type + "", issue.Priority + "", issue.PostedDate);
+                dt.Rows.Add(issue.IssueID, issue.IssueName, issue.IssueDesc, (EmployeeManager.FetchEmployeeFromID(issue.PostedBy)).EmployeeFirstName, issue.Type + "", issue.Priority + "", issue.PostedDate);
             }
 
             dataGridView1.DataSource = dt;
             dataGridView1.Columns["IssueID"].Visible = false;
+            dataGridView1.Columns[1].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[2].Width = panelDatagridviewBase.Width * 25/100;
+            dataGridView1.Columns[3].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[4].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15/100;
         }
 
         private void InitializeIssueManager()
@@ -115,13 +101,13 @@ namespace TeamTracker
                 if (checkBoxBug.Checked)
                     filters.Add("Type = 'Bug'");
                 if (checkBoxFeatureRequest.Checked)
-                    filters.Add("Type = 'Feature Request'");
+                    filters.Add("Type = 'FeatureRequest'");
                 if (checkBoxOptimization.Checked)
                     filters.Add("Type = 'Optimization'");
                 if (checkBoxSecurity.Checked)
                     filters.Add("Type = 'Security'");
                 if (checkBoxLogicalNeed.Checked)
-                    filters.Add("Type = 'Logical Need'");
+                    filters.Add("Type = 'LogicalNeed'");
                 if (checkBoxOther.Checked)
                     filters.Add("Type = 'Other'");
 
@@ -148,7 +134,7 @@ namespace TeamTracker
             CreateIssueForm = new Form();
             CreateIssueForm.StartPosition = FormStartPosition.CenterScreen;
             CreateIssueForm.FormBorderStyle = FormBorderStyle.None;
-            CreateIssueForm.Size = new Size(700, 600);
+            CreateIssueForm.Size = new Size(650, 450);
 
 
             ucCreate = new UCCreateIssue();
@@ -156,7 +142,10 @@ namespace TeamTracker
             ucCreate.DiscardClick += OnClickDiscardIssue;
             ucCreate.PostClick+= OnClickPostIssue;
             
-
+            if(sender is int)
+            {
+                ucCreate.IssueData = IssueManager.GetIssueById(Convert.ToInt32(sender));
+            }
 
             CreateIssueForm.Controls.Add(ucCreate);
             CreateIssueForm.ShowDialog();
@@ -203,16 +192,54 @@ namespace TeamTracker
             {
                 int issueID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["IssueID"].Value);
 
-                //OnClickCreateIssue(null, e);
+                OnClickCreateIssue(issueID, e);
                 //ucCreate.IssueData = IssueManager.GetIssueById(issueID);
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ViewSolutionForm form = new ViewSolutionForm();
-            form.IssueSolutionCollection = IssueManager.FetchSolutionForIssue(MyIssueList[e.RowIndex].IssueID);
-            form.Show();
+            CloseForm();
+            if (e.Button == MouseButtons.Right)
+            {
+                
+                MenuFormMyIssue menuForm = new MenuFormMyIssue();
+                menuForm.Location = Control.MousePosition;
+                menuForm.EditClick += OnClickEditIssue;
+                menuForm.ViewSolutionClick += OnClickviewSolution;
+                menuForm.Show();
+
+                ClickedRow = e.RowIndex;
+               
+            }
+        }
+
+        private void OnClickviewSolution(object sender, EventArgs e)
+        {
+
+            CloseForm();
+        }
+
+        private void OnClickEditIssue(object sender, EventArgs e)
+        {
+            CloseForm();
+            OnClickCreateIssue(Convert.ToInt32(dataGridView1.Rows[ClickedRow].Cells["IssueID"].Value), e);
+            
+        }
+
+        private void CloseForm()
+        {
+            var f1 = (Application.OpenForms.OfType<MenuFormMyIssue>().FirstOrDefault());
+
+            if (f1 != null)
+            {
+                f1.Close();
+            }
+        }
+
+        private void OnClickDatagridview(object sender, EventArgs e)
+        {
+            CloseForm();
         }
     }
 }

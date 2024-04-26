@@ -50,11 +50,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.panelDatagridviewBase = new System.Windows.Forms.Panel();
             this.SidePanel.SuspendLayout();
             this.tableLayoutPanelSide.SuspendLayout();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.TopPanel.SuspendLayout();
+            this.panelDatagridviewBase.SuspendLayout();
             this.SuspendLayout();
             // 
             // SidePanel
@@ -283,7 +285,7 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.dataGridView1);
+            this.MainPanel.Controls.Add(this.panelDatagridviewBase);
             this.MainPanel.Controls.Add(this.TopPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(186, 0);
@@ -314,8 +316,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.Silver;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -367,6 +370,15 @@
             this.label4.Text = "All Issues";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panelDatagridviewBase
+            // 
+            this.panelDatagridviewBase.Controls.Add(this.dataGridView1);
+            this.panelDatagridviewBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDatagridviewBase.Location = new System.Drawing.Point(0, 53);
+            this.panelDatagridviewBase.Name = "panelDatagridviewBase";
+            this.panelDatagridviewBase.Size = new System.Drawing.Size(1070, 562);
+            this.panelDatagridviewBase.TabIndex = 2;
+            // 
             // UCViewAllIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,6 +395,7 @@
             this.MainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.TopPanel.ResumeLayout(false);
+            this.panelDatagridviewBase.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -407,5 +420,6 @@
         private System.Windows.Forms.CheckBox checkBoxHigh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxOther;
+        private System.Windows.Forms.Panel panelDatagridviewBase;
     }
 }

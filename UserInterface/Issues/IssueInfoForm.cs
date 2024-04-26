@@ -132,7 +132,40 @@ namespace TeamTracker
 
         private void OnClickDownloadAttachment(object sender, EventArgs e)
         {
+            if(issueData== null)
+            {
+                return;
+            }
 
+            List<IssueAttachment> attachments = DataHandler.FetchIssueAttachementById(issueData.IssueID);
+
+            string savePath = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = @"C:\";
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.FilterIndex = 1;
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                savePath = saveFileDialog.FileName;
+            }
+
+            for (int ctr = 0; ctr < attachments.Count; ctr++)
+            {
+                string fileNetworkPath = attachments[ctr].IssueAttachmentLocation;
+                try
+                {
+                    string fileName = System.IO.Path.GetFileName(fileNetworkPath);
+                    string filePath = System.IO.Path.GetDirectoryName(savePath);
+                    filePath = System.IO.Path.Combine(filePath, attachments[ctr].DisplayName);
+                    System.IO.File.Copy(fileNetworkPath, filePath, true);
+                    ProjectManagerMainForm.notify.AddNotification("Download Completed", attachments[ctr].DisplayName);
+                }
+                catch
+                {
+                    ProjectManagerMainForm.notify.AddNotification("Download Failed", attachments[ctr].DisplayName);
+                }
+            }
         }
 
         private void OnClickAddSolution(object sender, EventArgs e)

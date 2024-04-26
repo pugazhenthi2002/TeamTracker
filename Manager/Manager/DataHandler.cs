@@ -817,6 +817,23 @@ namespace TeamTracker
             return IssueAttachmentCollection;
         }
 
+        public static List<IssueAttachment> FetchIssueAttachementById(int id)
+        {
+            List<IssueAttachment> IssueAttachmentCollection = StoreIssueAttachmentDetails();
+
+            List<IssueAttachment> result = new List<IssueAttachment>();
+
+            foreach(IssueAttachment attachment in IssueAttachmentCollection)
+            {
+                if(attachment.IssueID == id)
+                {
+                    result.Add(attachment);
+                }
+            }
+
+            return result;
+        }
+
         public static List<IssueSolution> StoreIssueSolutionDetails()
         {
             var result = manager.FetchData("issuesolution", "").Value;
