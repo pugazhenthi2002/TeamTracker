@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data Structure\Employee.cs" />
+    <Compile Include="Data Structure\Issue.cs" />
+    <Compile Include="Data Structure\IssueAttachment.cs" />
+    <Compile Include="Data Structure\IssueSolution.cs" />
+    <Compile Include="Data Structure\IssueSolutionAttachment.cs" />
     <Compile Include="Data Structure\ManagingEmployee.cs" />
     <Compile Include="Data Structure\Milestone.cs" />
     <Compile Include="Data Structure\Notification.cs" />

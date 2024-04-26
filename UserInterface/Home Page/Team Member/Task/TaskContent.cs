@@ -82,5 +82,7 @@ namespace TeamTracker
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             pen.Dispose();
         }
+
+        
     }
 }

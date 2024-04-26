@@ -524,6 +524,18 @@
             this.ucNotFound1.Size = new System.Drawing.Size(596, 418);
             this.ucNotFound1.TabIndex = 8;
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Current Version !!";
+            this.ucNotFound1.HeadTextSize = 10;
+            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(630, 272);
+            this.ucNotFound1.TabIndex = 8;
+            // 
             // TaskContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);

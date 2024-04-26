@@ -71,6 +71,7 @@
     <Compile Include="Manager\ColorManager.cs" />
     <Compile Include="Manager\DataHandler.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
+    <Compile Include="Manager\IssueManager.cs" />
     <Compile Include="Manager\MilestoneManager.cs" />
     <Compile Include="Manager\TaskManager.cs" />
     <Compile Include="Manager\VersionManager.cs" />

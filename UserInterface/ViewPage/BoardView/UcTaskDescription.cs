@@ -17,10 +17,25 @@ namespace TeamTracker
         private string centerLabelText;
         private Color borderColor = Color.Black;
         private Color topLabelColor = Color.White;
+        private Color topLabelForeColor = Color.White;
+        private bool enableEdit = true;
 
         public UcTaskDescription()
         {
             InitializeComponent();
+        }
+
+        public bool EnableEdit
+        {
+            get
+            {
+                return enableEdit;
+            }
+            set
+            {
+                enableEdit = value;
+                SetEditMode();
+            }
         }
 
         public Color BorderColor
@@ -42,6 +57,17 @@ namespace TeamTracker
                 SetTopText();
             }
         }
+
+        public Color TopLabelForeColor
+        {
+            get { return topLabelForeColor; }
+            set
+            {
+                topLabelForeColor = value;
+                SetTopLabelForeColor();
+            }
+        }
+
         public string TopLabelText
         {
             get { return topLabelText; }
@@ -80,6 +106,10 @@ namespace TeamTracker
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
+        private void SetTopLabelForeColor()
+        {
+            labelTop.ForeColor = topLabelForeColor;
+        }
 
         private void SetTopText()
         {
@@ -92,6 +122,19 @@ namespace TeamTracker
             labelCenter.Text = centerLabelText;
         }
 
-        
+        private void SetEditMode()
+        {
+            if(enableEdit)
+            {
+                labelCenter.ReadOnly = false;
+            }
+            else
+            {
+                labelCenter.ReadOnly = true;
+            }
+        }
+
+
+
     }
 }

@@ -12,7 +12,6 @@ namespace TeamTracker
 
         public static List<Task> TaskCollection;
 
-
         public static BooleanMsg StoreTaskCollection()
         {
             TaskCollection =  DataHandler.StoreTaskDetails();
