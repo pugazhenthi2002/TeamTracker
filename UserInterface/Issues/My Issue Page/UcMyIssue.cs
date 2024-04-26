@@ -49,6 +49,12 @@ namespace TeamTracker
 
             dataGridView1.DataSource = dt;
             dataGridView1.Columns["IssueID"].Visible = false;
+            dataGridView1.Columns[1].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[2].Width = panelDatagridviewBase.Width * 25/100;
+            dataGridView1.Columns[3].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[4].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15/100;
         }
 
         private void InitializeIssueManager()
