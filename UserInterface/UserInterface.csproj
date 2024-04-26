@@ -1307,6 +1307,9 @@
     <None Include="Resources\underline.png" />
     <None Include="Resources\strikethrough-gray.png" />
     <None Include="Resources\underline-gray.png" />
+    <None Include="Resources\tag gray.png" />
+    <None Include="Resources\tag silver.png" />
+    <None Include="Resources\tag black.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>
