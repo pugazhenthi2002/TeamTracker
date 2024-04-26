@@ -25,14 +25,7 @@ namespace UserInterface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TransparencyForm form = new TransparencyForm();
-            form.Show();
-            WarningForm form1 = new WarningForm()
-            {
-                Content = "Hello"
-            };
-            form1.WarningStatus += OnWarningStatus;
-            form.ShowForm(form1);
+            
         }
 
         private void OnWarningStatus(object sender, bool e)
