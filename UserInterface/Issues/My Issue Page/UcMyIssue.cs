@@ -101,13 +101,13 @@ namespace TeamTracker
                 if (checkBoxBug.Checked)
                     filters.Add("Type = 'Bug'");
                 if (checkBoxFeatureRequest.Checked)
-                    filters.Add("Type = 'Feature Request'");
+                    filters.Add("Type = 'FeatureRequest'");
                 if (checkBoxOptimization.Checked)
                     filters.Add("Type = 'Optimization'");
                 if (checkBoxSecurity.Checked)
                     filters.Add("Type = 'Security'");
                 if (checkBoxLogicalNeed.Checked)
-                    filters.Add("Type = 'Logical Need'");
+                    filters.Add("Type = 'LogicalNeed'");
                 if (checkBoxOther.Checked)
                     filters.Add("Type = 'Other'");
 
