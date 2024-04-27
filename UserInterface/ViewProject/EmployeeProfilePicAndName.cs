@@ -28,28 +28,46 @@ namespace UserInterface.ViewProject
             set
             {
                 profile = value;
-                profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
+                try
+                {
+                    profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                }
+                catch { }
                 label1.Text = value.EmployeeFirstName;
             }
         }
         public Color NormalColor { get; set; }
         public Color HoverColor { get; set; }
 
-        
+        public new void Dispose()
+        {
+            if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
+            profilePictureBox1.Dispose();
+
+            label1.Dispose();
+            tableLayoutPanel1.Dispose();
+        }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            BackColor = HoverColor;
+            profilePictureBox1.ParentColor = BackColor = HoverColor;
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            BackColor = NormalColor;
+            profilePictureBox1.ParentColor = BackColor = NormalColor;
         }
 
         private void OnClicked(object sender, EventArgs e)
         {
             EmployeeSelect?.Invoke(this, profile);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            profilePictureBox1.ParentColor = BackColor;
         }
     }
 }

@@ -176,6 +176,12 @@
     <Compile Include="Add Project\VersionUpgrade.designer.cs">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\All Issue Page\FilterPeople.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\FilterPeople.Designer.cs">
+      <DependentUpon>FilterPeople.cs</DependentUpon>
+    </Compile>
     <Compile Include="Issues\All Issue Page\SolveNotesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -393,6 +399,12 @@
     </Compile>
     <Compile Include="Home Page\Team Member\TeamMemberReportContent.Designer.cs">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\CustomCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\CustomCheckBox.Designer.cs">
+      <DependentUpon>CustomCheckBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Issues\IssueInfoForm.cs">
       <SubType>Form</SubType>
@@ -876,6 +888,9 @@
     <EmbeddedResource Include="Add Project\VersionUpgrade.resx">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Issues\All Issue Page\FilterPeople.resx">
+      <DependentUpon>FilterPeople.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Issues\All Issue Page\SolveNotesForm.resx">
       <DependentUpon>SolveNotesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -982,6 +997,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Member\TeamMemberReportContent.resx">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\CustomCheckBox.resx">
+      <DependentUpon>CustomCheckBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\IssueInfoForm.resx">
       <DependentUpon>IssueInfoForm.cs</DependentUpon>
@@ -1334,6 +1352,10 @@
     <None Include="Pugazh Images\Download Light Blue Hover.png" />
     <None Include="Pugazh Images\Download Light Blue.png" />
     <None Include="Pugazh Images\Download Medium Blue Color.png" />
+    <None Include="Pugazh Images\All Issue Hover.png" />
+    <None Include="Pugazh Images\All Issue Normal.png" />
+    <None Include="Pugazh Images\My Issue Hover.png" />
+    <None Include="Pugazh Images\My Issue Normal.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />
@@ -1344,6 +1366,10 @@
     <None Include="Resources\bullets.png" />
     <None Include="Resources\bold-gray.png" />
     <None Include="Resources\bullet-list-gray.png" />
+    <None Include="Resources\Bold1.png" />
+    <None Include="Resources\bold-gray1.png" />
+    <None Include="Resources\bullet-list-gray1.png" />
+    <None Include="Resources\bullets1.png" />
     <Content Include="Resources\Close Black.png" />
     <Content Include="Resources\close Hover.png" />
     <Content Include="Resources\Close Red.png" />
@@ -1370,6 +1396,8 @@
     <None Include="Resources\Medium.png" />
     <None Include="Resources\italic.png" />
     <None Include="Resources\Italic gray.png" />
+    <None Include="Resources\Italic gray1.png" />
+    <None Include="Resources\italic1.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
@@ -1383,6 +1411,13 @@
     <None Include="Resources\tag gray.png" />
     <None Include="Resources\tag silver.png" />
     <None Include="Resources\tag black.png" />
+    <None Include="Resources\strikethrough1.png" />
+    <None Include="Resources\strikethrough-gray1.png" />
+    <None Include="Resources\tag black1.png" />
+    <None Include="Resources\tag gray1.png" />
+    <None Include="Resources\tag silver1.png" />
+    <None Include="Resources\underline1.png" />
+    <None Include="Resources\underline-gray1.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>

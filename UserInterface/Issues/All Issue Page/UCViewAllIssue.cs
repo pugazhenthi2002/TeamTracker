@@ -7,15 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TeamTracker
 {
     public partial class UCViewAllIssue : UserControl
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
+
+
         private DataTable dataTable = new DataTable();
         private string SolutionFilePath="";
         private List<Issue> IssueList;
    
+        public void InitializePage()
+        {
+            filterPeople1.InitializeFilter();
+        }
 
         public UCViewAllIssue()
         {
@@ -23,36 +40,6 @@ namespace TeamTracker
             InitializeIssueManager();
             dataGridView1.AllowUserToAddRows = false;
             SetData();
-
-            //IssueManager.StoreIssueCollection();
-            //IssueList = IssueManager.IssueCollection;
-
-            //dataTable.Columns.Add("Title", typeof(string));
-            //dataTable.Columns.Add("Description", typeof(string));
-            //dataTable.Columns.Add("Priority", typeof(string));
-            //dataTable.Columns.Add("Type", typeof(string));
-            //dataTable.Columns.Add("Date", typeof(DateTime));
-            //dataTable.Columns.Add("Posted By", typeof(string));
-
-
-            //dataTable.Rows.Add("Title 1", "Description 1", "High", "Bug", DateTime.Now, "User A");
-            //dataTable.Rows.Add("Title 2", "Description 2", "Medium", "Feature Request", DateTime.Now.AddDays(-1), "User B");
-            //dataTable.Rows.Add("Title 3", "Description 3", "Low", "Optimization", DateTime.Now.AddDays(-2), "User C");
-            //dataTable.Rows.Add("Title 4", "Description 4", "High", "Security", DateTime.Now.AddDays(-2), "User D");
-            //dataTable.Rows.Add("Title 5", "Description 5", "Low", "Optimization", DateTime.Now.AddDays(-5), "User E");
-            //dataTable.Rows.Add("Title 6", "Description 6", "Medium", "Other", DateTime.Now.AddDays(-9), "User F");
-
-            //dataGridView1.DataSource = dataTable;
-
-            //DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            //buttonColumn.HeaderText = "Solve";
-            //buttonColumn.Name = "SolveButtonCol";
-            ////buttonColumn.Text = "Add solution";
-            //buttonColumn.FlatStyle = FlatStyle.Flat;
-            //dataGridView1.Columns.Add(buttonColumn);
-            //dataGridView1.AllowUserToAddRows = false;
-
-
         }
 
         private void InitializeIssueManager()
@@ -96,7 +83,8 @@ namespace TeamTracker
 
             foreach (var issue in IssueList)
             {
-                dt.Rows.Add(issue.IssueID,issue.IssueName, issue.IssueDesc, (EmployeeManager.FetchEmployeeFromID(issue.PostedBy)).EmployeeFirstName, issue.Type + "", issue.Priority + "", issue.PostedDate);
+                if (issue.PostedBy != EmployeeManager.CurrentEmployee.EmployeeID)
+                    dt.Rows.Add(issue.IssueID, issue.IssueName, issue.IssueDesc, (EmployeeManager.FetchEmployeeFromID(issue.PostedBy)).EmployeeFirstName + " " + (EmployeeManager.FetchEmployeeFromID(issue.PostedBy)).EmployeeLastName, issue.Type + "", issue.Priority + "", issue.PostedDate);
             }
 
             dataGridView1.DataSource = dt;
@@ -108,7 +96,8 @@ namespace TeamTracker
             dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15 / 100;
             dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15 / 100;
 
-
+            dataGridView1.Columns[1].AutoSizeMode = dataGridView1.Columns[2].AutoSizeMode = dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = dataGridView1.Columns[5].AutoSizeMode = dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
 
@@ -117,6 +106,12 @@ namespace TeamTracker
             if (dataGridView1.DataSource is DataTable dataTable)
             {
                 List<string> filters = new List<string>();
+                string filter1, filter2="";
+
+                if (selectedEmployee != null)
+                {
+                    filter2 = "PostedBy = '" + selectedEmployee.EmployeeFirstName + " " + selectedEmployee.EmployeeLastName + "'";
+                }
 
                 //for Priority
                 if (checkBoxHigh.Checked)
@@ -141,13 +136,25 @@ namespace TeamTracker
                 if (checkBoxOther.Checked)
                     filters.Add("Type = 'Other'");
 
-                string filter = string.Join(" OR ", filters);
 
-                if (!string.IsNullOrEmpty(filter))
-                    dataTable.DefaultView.RowFilter = filter;
+                if (filters.Count > 0)
+                {
+                    filter1 = "(";
+                    filter1 += string.Join(" OR ", filters);
+                    filter1 += ")";
+                    if (selectedEmployee != null)
+                        filter1 += " AND " + filter2;
+                }
+                else
+                {
+                    filter1 = filter2;
+                }
+                
+
+                if (!string.IsNullOrEmpty(filter1))
+                    dataTable.DefaultView.RowFilter = filter1;
                 else
                     dataTable.DefaultView.RowFilter = "";
-
             }
         }
 
@@ -193,11 +200,6 @@ namespace TeamTracker
             dataTable.Rows.Add(title,desc,priority,type,date, postedBy);
         }
 
-        private void OnLoad(object sender, EventArgs e)
-        {
-            
-        }
-
         private void OnDoubleClickCell(object sender, DataGridViewCellEventArgs e)
         {
             int columnIndex = -1;
@@ -218,7 +220,38 @@ namespace TeamTracker
 
                 issueInfoForm.Show();
             }
-            
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
+            filterPeople1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, filterPeople1.Width, filterPeople1.Height, 20, 20));
+        }
+
+        private void OnEmployeeSelected(object sender, Employee e)
+        {
+            selectedEmployee = e;
+            OnCheckBoxCheckedChanged(checkBoxBug, EventArgs.Empty);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
+            filterPeople1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, filterPeople1.Width, filterPeople1.Height, 20, 20));
+        }
+
+        private Employee selectedEmployee;
+
+        private void OnLineBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Label).Height - 1), new Point((sender as Label).Width, (sender as Label).Height - 1));
+            border.Dispose();
         }
     }
 }

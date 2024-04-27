@@ -23,11 +23,19 @@ namespace TeamTracker
         private void OnClickEdit(object sender, EventArgs e)
         {
             EditClick?.Invoke(sender, e);
+            Close();
         }
 
         private void OnClickViewSolution(object sender, EventArgs e)
         {
             ViewSolutionClick?.Invoke(sender, e);
+            Close();
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            Close();
         }
     }
 }

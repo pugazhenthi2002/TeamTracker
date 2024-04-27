@@ -295,7 +295,7 @@ namespace TeamTracker
 
             IssueManager.AddIssue(curIssue, Attachement);
 
-            PostClick?.Invoke(sender, e);
+            PostClick?.Invoke(ParentForm, e);
         }
 
         private bool PanelContainsUC()
@@ -312,7 +312,7 @@ namespace TeamTracker
 
         private void OnClickDiscard(object sender, EventArgs e)
         {
-            DiscardClick?.Invoke(sender, e);
+            DiscardClick?.Invoke(ParentForm, e);
         }
 
         private void OnClickAddAttachment(object sender, EventArgs e)

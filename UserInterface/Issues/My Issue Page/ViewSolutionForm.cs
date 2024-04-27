@@ -14,6 +14,7 @@ namespace UserInterface.Issues.My_Issue_Page
 {
     public partial class ViewSolutionForm : Form
     {
+        public event EventHandler SolutionFormClose;
         private bool isBackEnable, isNextEnable;
         private int startIdx, endIdx, selectedIdx = 0;
 
@@ -72,6 +73,17 @@ namespace UserInterface.Issues.My_Issue_Page
             solutionTemplate1.SelectedSolution = buttonCollection[0].SelectedSolution;
         }
 
+        public new void Dispose()
+        {
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
+            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
+            pictureBox1.Dispose();  pictureBox2.Dispose();  pictureBox3.Dispose();
+            label1.Dispose();   labelTitle.Dispose();
+            solutionTemplate1.Dispose();
+        }
+
         private void OnBackClick(object sender, EventArgs e)
         {
             if (isBackEnable)
@@ -105,7 +117,7 @@ namespace UserInterface.Issues.My_Issue_Page
 
         private void OnCloseClick(object sender, EventArgs e)
         {
-            this.Close();
+            SolutionFormClose?.Invoke(this, EventArgs.Empty);
         }
 
         public ViewSolutionForm()

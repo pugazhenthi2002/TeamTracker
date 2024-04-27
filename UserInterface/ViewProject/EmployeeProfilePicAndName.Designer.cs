@@ -42,6 +42,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Controls.Add(this.profilePictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
+            this.tableLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -56,8 +57,10 @@
             // profilePictureBox1
             // 
             this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.profilePictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profilePictureBox1.Location = new System.Drawing.Point(16, 3);
             this.profilePictureBox1.Name = "profilePictureBox1";
+            this.profilePictureBox1.ParentColor = System.Drawing.Color.Empty;
             this.profilePictureBox1.Size = new System.Drawing.Size(53, 53);
             this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox1.TabIndex = 0;
@@ -69,6 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));

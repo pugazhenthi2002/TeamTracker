@@ -7,15 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using UserInterface;
+using UserInterface.Issues.My_Issue_Page;
 
 namespace TeamTracker
 {
     public partial class UcMyIssue : UserControl
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+      (
+          int nLeftRect,     // x-coordinate of upper-left corner
+          int nTopRect,      // y-coordinate of upper-left corner
+          int nRightRect,    // x-coordinate of lower-right corner
+          int nBottomRect,   // y-coordinate of lower-right corner
+          int nWidthEllipse, // height of ellipse
+          int nHeightEllipse // width of ellipse
+      );
+
+        private TransparentForm transparentForm;
         private DataTable dataTable = new DataTable();
         private Form CreateIssueForm;
         private UCCreateIssue ucCreate;
-        private List<Issue> MyIssueList ;
+        private List<Issue> MyIssueList;
         private int ClickedRow = -1;
 
         public UcMyIssue()
@@ -23,10 +38,7 @@ namespace TeamTracker
             InitializeComponent();
             InitializeIssueManager();
             dataGridView1.AllowUserToAddRows = false;
-
             SetData();
-
-
         }
 
         private void SetData()
@@ -49,12 +61,12 @@ namespace TeamTracker
 
             dataGridView1.DataSource = dt;
             dataGridView1.Columns["IssueID"].Visible = false;
-            dataGridView1.Columns[1].Width = panelDatagridviewBase.Width * 15/100;
-            dataGridView1.Columns[2].Width = panelDatagridviewBase.Width * 25/100;
-            dataGridView1.Columns[3].Width = panelDatagridviewBase.Width * 15/100;
-            dataGridView1.Columns[4].Width = panelDatagridviewBase.Width * 15/100;
-            dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15/100;
-            dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15/100;
+            dataGridView1.Columns[1].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[2].Width = panelDatagridviewBase.Width * 25 / 100;
+            dataGridView1.Columns[3].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[4].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15 / 100;
         }
 
         private void InitializeIssueManager()
@@ -88,6 +100,7 @@ namespace TeamTracker
             {
                 List<string> filters = new List<string>();
 
+
                 //for Priority
                 if (checkBoxHigh.Checked)
                     filters.Add("Priority = 'High'");
@@ -117,7 +130,6 @@ namespace TeamTracker
                     dataTable.DefaultView.RowFilter = filter;
                 else
                     dataTable.DefaultView.RowFilter = "";
-
             }
         }
 
@@ -140,34 +152,41 @@ namespace TeamTracker
             ucCreate = new UCCreateIssue();
             ucCreate.Dock = DockStyle.Fill;
             ucCreate.DiscardClick += OnClickDiscardIssue;
-            ucCreate.PostClick+= OnClickPostIssue;
-            
-            if(sender is int)
+            ucCreate.PostClick += OnClickPostIssue;
+
+            if (sender is int)
             {
                 ucCreate.IssueData = IssueManager.GetIssueById(Convert.ToInt32(sender));
             }
 
             CreateIssueForm.Controls.Add(ucCreate);
-            CreateIssueForm.ShowDialog();
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(CreateIssueForm);
+
         }
 
         private void OnClickDiscardIssue(object sender, EventArgs e)
         {
-            //CreateIssueForm.Dispose();
-            CreateIssueForm.Close();
+            (sender as Form).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnClickPostIssue(object sender, EventArgs e)
         {
-            
-            //CreateIssueForm.Dispose();
-            CreateIssueForm.Close();
+            (sender as Form).Dispose();
+            (sender as Form).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnClickDeleteIssue(object sender, EventArgs e)
         {
-
-            List<int> rowsToRemove = new List<int> ();
+            List<int> rowsToRemove = new List<int>();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 if (!row.IsNewRow)
@@ -177,12 +196,11 @@ namespace TeamTracker
             }
 
 
-            for (int ctr = 0;ctr<rowsToRemove.Count;ctr++)
+            for (int ctr = 0; ctr < rowsToRemove.Count; ctr++)
             {
                 int row = rowsToRemove[ctr];
-                int issueID = Convert.ToInt32(dataGridView1["IssueID", row-ctr].Value);
+                int issueID = Convert.ToInt32(dataGridView1["IssueID", row - ctr].Value);
                 IssueManager.RemoveIssue(IssueManager.GetIssueById(issueID));
-                  
             }
         }
 
@@ -199,10 +217,8 @@ namespace TeamTracker
 
         private void DataGridViewCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            CloseForm();
             if (e.Button == MouseButtons.Right)
             {
-                
                 MenuFormMyIssue menuForm = new MenuFormMyIssue();
                 menuForm.Location = Control.MousePosition;
                 menuForm.EditClick += OnClickEditIssue;
@@ -210,36 +226,64 @@ namespace TeamTracker
                 menuForm.Show();
 
                 ClickedRow = e.RowIndex;
-               
             }
         }
 
         private void OnClickviewSolution(object sender, EventArgs e)
         {
+            ViewSolutionForm form = new ViewSolutionForm();
+            form.IssueSolutionCollection = IssueManager.FetchSolutionForIssue(Convert.ToInt32(dataGridView1.Rows[ClickedRow].Cells["IssueID"].Value));
+            form.SolutionFormClose += OnSolutionFormClosed;
 
-            CloseForm();
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnSolutionFormClosed(object sender, EventArgs e)
+        {
+            (sender as ViewSolutionForm).Dispose();
+            (sender as ViewSolutionForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnClickEditIssue(object sender, EventArgs e)
         {
-            CloseForm();
             OnClickCreateIssue(Convert.ToInt32(dataGridView1.Rows[ClickedRow].Cells["IssueID"].Value), e);
-            
         }
 
-        private void CloseForm()
+        private void OnLineBorderPaint(object sender, PaintEventArgs e)
         {
-            var f1 = (Application.OpenForms.OfType<MenuFormMyIssue>().FirstOrDefault());
-
-            if (f1 != null)
-            {
-                f1.Close();
-            }
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
+            border.Dispose();
         }
 
-        private void OnClickDatagridview(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            CloseForm();
+            base.OnLoad(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = Color.FromArgb(201, 210, 217);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = Color.FromArgb(221, 230, 237);
         }
     }
 }

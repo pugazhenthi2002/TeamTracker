@@ -17,7 +17,7 @@ namespace TeamTracker
     public partial class ProjectManagerMainForm : Form
     {
         static public NotificationManager notify;
-        private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false;
+        private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false, isMyIssueSelected = false, isAllIssueSelected = false;
         public ProjectManagerMainForm()
         {
             InitializeComponent();
@@ -26,6 +26,10 @@ namespace TeamTracker
 
         private void InitializePage()
         {
+            myIssueLabel.Click += HighlightSelected;
+            myIssuePicBox.Click += HighlightSelected;
+            allIssueLabel.Click += HighlightSelected;
+            allIssuePicBox.Click += HighlightSelected;
             myTaskPicBox.Click += HighlightSelected;
             myTaskLabel.Click += HighlightSelected;
             addTaskLabel.Click += HighlightSelected;
@@ -73,36 +77,6 @@ namespace TeamTracker
         }
 
         public event EventHandler ManagerClose;
-
-        protected override void OnLoad(EventArgs e)
-        {
-            //tabControl1.SuspendLayout();
-            //base.OnLoad(e);
-
-            //if (EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
-            //{
-            //    panel2.Visible = panel7.Visible = false;
-            //    tabControl1.SelectedIndex = 0;
-            //    projectManagerHome1.InitializeProjectManagerHome();
-            //}
-            //else if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
-            //{
-            //    panel5.Visible = false;
-            //    teamLeadHome1.InitializeHomePage();
-            //    tabControl1.SelectedIndex = 3;
-            //}
-            //else
-            //{
-            //    teamMemberHome1.InitializePage();
-            //    panel5.Visible = panel2.Visible = false;
-            //    addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
-            //    tabControl1.SelectedIndex = 4;
-            //}
-            ////projectManagerHome1.SuspendLayout();
-            ////tabPage1.Visible = true;
-            //tabControl1.ResumeLayout();
-        }
-
 
         protected override void OnResize(EventArgs e)
         {
@@ -160,6 +134,16 @@ namespace TeamTracker
                     myTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
                     picBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
                 }
+                else if (picBox.Name == "myIssuePicBox" && !isMyIssueSelected)
+                {
+                    myIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    picBox.Image = UserInterface.Properties.Resources.My_Issue_Hover;
+                }
+                else if (picBox.Name == "allIssuePicBox" && !isAllIssueSelected)
+                {
+                    allIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    picBox.Image = UserInterface.Properties.Resources.All_Issue_Hover;
+                }
             }
             else
             {
@@ -190,6 +174,16 @@ namespace TeamTracker
                 {
                     if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                     myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
+                }
+                else if(label.Name == "myIssueLabel" && !isMyIssueSelected)
+                {
+                    if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
+                    myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Hover;
+                }
+                else if (label.Name == "allIssueLabel" && !isAllIssueSelected)
+                {
+                    if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
+                    allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Hover;
                 }
             }
         }
@@ -225,6 +219,16 @@ namespace TeamTracker
                     myTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
                     picBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;
                 }
+                else if (picBox.Name == "myIssuePicBox" && !isMyIssueSelected)
+                {
+                    myIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    picBox.Image = UserInterface.Properties.Resources.My_Issue_Normal;
+                }
+                else if (picBox.Name == "allIssuePicBox" && !isAllIssueSelected)
+                {
+                    allIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    picBox.Image = UserInterface.Properties.Resources.All_Issue_Normal;
+                }
             }
             else
             {
@@ -259,6 +263,18 @@ namespace TeamTracker
                     if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                     myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;
                     myTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                }
+                else if (label.Name == "myIssueLabel" && !isMyIssueSelected)
+                {
+                    if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
+                    myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Normal;
+                    myIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                }
+                else if (label.Name == "allIssueLabel" && !isAllIssueSelected)
+                {
+                    if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
+                    allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Normal;
+                    allIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
                 }
             }
         }
@@ -307,6 +323,16 @@ namespace TeamTracker
             tabControl1.SelectedIndex = 1;
         }
 
+        private void OnMyIssueClicked(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 7;
+        }
+
+        private void OnAllIssueClicked(object sender, EventArgs e)
+        {
+            ucViewAllIssue1.InitializePage();
+            tabControl1.SelectedIndex = 8;
+        }
         private void OnViewProjectClicked(object sender, EventArgs e)
         {
             viewProjectTemplate1.InitializeViewProject();
@@ -338,14 +364,18 @@ namespace TeamTracker
             if (viewProjectPictureBox.Image != null) { viewProjectPictureBox.Image.Dispose(); }
             if (addTaskPicBox.Image != null) { addTaskPicBox.Image.Dispose(); }
             if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
+            if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
+            if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
 
             homePictureBox.Image = UserInterface.Properties.Resources.Home_Normal;
             addProjectPictureBox.Image = UserInterface.Properties.Resources.Add_Project;
             viewProjectPictureBox.Image = UserInterface.Properties.Resources.View_Project;
             addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Normal;
             myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;
+            myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Normal;
+            allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Normal;
 
-            homeLabel.ForeColor = addProjectLabel.ForeColor = viewProjectLabel.ForeColor = myTaskLabel.ForeColor = addTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
+            homeLabel.ForeColor = addProjectLabel.ForeColor = viewProjectLabel.ForeColor = myTaskLabel.ForeColor = addTaskLabel.ForeColor = myIssueLabel.ForeColor = allIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
             string text = (sender as Control).Name;
 
             if (text == "homeLabel" || text == "homePictureBox")
@@ -376,12 +406,26 @@ namespace TeamTracker
                 addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Hover;
                 addTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
             }
-            else
+            else if(text == "myTaskPicBox" || text == "myTaskLabel")
             {
                 isMyTaskSelected = true;
                 if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                 myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
                 myTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
+            }
+            else if(text == "myIssuePicBox" || text == "myIssueLabel")
+            {
+                isMyIssueSelected = true;
+                if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
+                myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Hover;
+                myIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+            }
+            else if(text == "allIssuePicBox" || text == "allIssueLabel")
+            {
+                isAllIssueSelected = true;
+                if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
+                allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Hover;
+                allIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
             }
         }
 
