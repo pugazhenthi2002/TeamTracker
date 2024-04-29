@@ -75,9 +75,11 @@ namespace TeamTracker
 
         private void SelectPageBasedOnRole()
         {
-            ProjectManagerMainForm managerForm = new ProjectManagerMainForm();
-            managerForm.ManagerClose += OnManagerFormClosed;
-            managerForm.Show();
+            //ProjectManagerMainForm managerForm = new ProjectManagerMainForm();
+            //managerForm.ManagerClose += OnManagerFormClosed;
+            //managerForm.Show();
+            UserInterface.Form1 form = new UserInterface.Form1();
+            form.Show();
         }
 
         private void OnCloseEnter(object sender, EventArgs e)

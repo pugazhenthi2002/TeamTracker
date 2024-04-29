@@ -190,6 +190,21 @@ namespace TeamTracker
             }
         }
 
+        public static List<IssueSolution> FetchSolutionForIssue(int id)
+        {
+            List<IssueSolution> result = new List<IssueSolution>();
+
+            foreach(var Iter in IssueSolutionCollection)
+            {
+                if(Iter.IssueID == id)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
         //removes a particular solutoion
         public static void RemoveSolution(IssueSolution issueSoln)
         {

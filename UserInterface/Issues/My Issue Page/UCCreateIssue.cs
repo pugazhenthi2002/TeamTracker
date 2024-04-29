@@ -334,10 +334,12 @@ namespace TeamTracker
                 //file.Dock = DockStyle.Fill;
                 //panelAttachment.Controls.Add(file);
 
+                string extension = System.IO.Path.GetExtension(selectedFilePath);
+
                 Attachement = new IssueAttachment()
                 {
                     DisplayName = safeFile,
-                    IssueAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    IssueAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + extension,
                     IssueAttachmentLocation = selectedFilePath
                 };
 

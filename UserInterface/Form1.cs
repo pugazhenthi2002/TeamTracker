@@ -12,17 +12,28 @@ using System.Windows.Forms.DataVisualization.Charting;
 using LiveCharts;
 using LiveCharts.Wpf;
 using TeamTracker;
-
-
+using UserInterface.ViewPage;
 
 namespace UserInterface
 {
     public partial class Form1 : Form
     {
-        private string prevString;
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void OnWarningStatus(object sender, bool e)
+        {
+            if (e)
+            {
+
+            }
         }
     }
 }
