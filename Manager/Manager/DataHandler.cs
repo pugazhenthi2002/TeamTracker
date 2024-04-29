@@ -966,7 +966,7 @@ namespace TeamTracker
 
         public static void UpdateIssueAttachment(int issueId,IssueAttachment attachment)
         {
-            
+            ;
         }
 
         public static IssueSolution AddIssueSolution(IssueSolution issueSoln)

@@ -144,7 +144,12 @@ namespace TeamTracker
             
             if(sender is int)
             {
+               
                 ucCreate.IssueData = IssueManager.GetIssueById(Convert.ToInt32(sender));
+                ucCreate.InitializeTag(ucCreate.IssueData.Tags);
+                ucCreate.IssueData.IssueID = Convert.ToInt32(sender);
+                
+                
             }
 
             CreateIssueForm.Controls.Add(ucCreate);
@@ -162,6 +167,7 @@ namespace TeamTracker
             
             //CreateIssueForm.Dispose();
             CreateIssueForm.Close();
+            IssueManagerIssueUpdated(sender, e);
         }
 
         private void OnClickDeleteIssue(object sender, EventArgs e)

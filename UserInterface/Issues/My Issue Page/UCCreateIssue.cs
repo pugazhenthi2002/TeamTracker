@@ -59,6 +59,10 @@ namespace TeamTracker
             }
         }
 
+        public void InitializeTag(List<string> tags)
+        {
+            TagList = tags;
+        }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -244,6 +248,7 @@ namespace TeamTracker
 
         private void OnClickPostIssue(object sender, EventArgs e)
         {
+
             if(IssueTitleTextBox.Text==""|| IssueTitleTextBox.Text == "Enter Issue Name" ||  Regex.IsMatch(textBoxTags.Text, @"\d"))
             {
                 labelWarning.Show();
@@ -282,18 +287,31 @@ namespace TeamTracker
             //public IssuePriority Priority { get; set; }
             //public DateTime PostedDate { get; set; }
             //public List<string> Tags { get; set; }
-            Issue curIssue = new Issue()
-            {
-                IssueName = IssueTitleTextBox.Text,
-                IssueDesc = IssueDescTextBox.Text,
-                PostedBy = EmployeeManager.CurrentEmployee.EmployeeID,
-                Type = (BtnSetType.Text == "Bug") ? Issue.IssueType.Bug : ((BtnSetType.Text == "Feature Request") ? Issue.IssueType.FeatureRequest : ((BtnSetType.Text == "Optimization") ? Issue.IssueType.Optimization : ((BtnSetType.Text == "Security") ? Issue.IssueType.Security : ((BtnSetType.Text == "Logical Need") ? Issue.IssueType.LogicalNeed : Issue.IssueType.Other)))),
-                Priority = (BtnSetPriority.Text == "High") ? Issue.IssuePriority.High : ((BtnSetPriority.Text == "Medium") ? Issue.IssuePriority.Medium : Issue.IssuePriority.Low),
-                PostedDate = DateTime.Today.Date,
-                Tags = TagList
-            };
 
-            IssueManager.AddIssue(curIssue, Attachement);
+            
+            
+
+                Issue curIssue = new Issue()
+                {
+                    IssueName = IssueTitleTextBox.Text,
+                    IssueDesc = IssueDescTextBox.Text,
+                    PostedBy = EmployeeManager.CurrentEmployee.EmployeeID,
+                    Type = (BtnSetType.Text == "Bug") ? Issue.IssueType.Bug : ((BtnSetType.Text == "Feature Request") ? Issue.IssueType.FeatureRequest : ((BtnSetType.Text == "Optimization") ? Issue.IssueType.Optimization : ((BtnSetType.Text == "Security") ? Issue.IssueType.Security : ((BtnSetType.Text == "Logical Need") ? Issue.IssueType.LogicalNeed : Issue.IssueType.Other)))),
+                    Priority = (BtnSetPriority.Text == "High") ? Issue.IssuePriority.High : ((BtnSetPriority.Text == "Medium") ? Issue.IssuePriority.Medium : Issue.IssuePriority.Low),
+                    PostedDate = DateTime.Today.Date,
+                    Tags = TagList
+                };
+
+            if (issueData != null && issueData.IssueID != null)
+            {
+                curIssue.IssueID = issueData.IssueID;
+                IssueManager.UpdateIssue(curIssue, Attachement);
+            }
+            else
+            {
+                IssueManager.AddIssue(curIssue, Attachement);
+            }
+            
 
             PostClick?.Invoke(sender, e);
         }

@@ -76,8 +76,7 @@ namespace TeamTracker
                 if (issue.IssueID == IssueCollection[ctr].IssueID)
                 {
                     DataHandler.UpdateIssue(issue);
-                    IssueCollection.Remove(issue);
-                    IssueCollection.Add(issue);
+                    IssueCollection[ctr] = issue;
                 }
             }
             if (attachment != null) DataHandler.UpdateIssueAttachment(issue.IssueID, attachment);
