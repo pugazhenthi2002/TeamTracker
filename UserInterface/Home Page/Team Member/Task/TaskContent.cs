@@ -40,11 +40,16 @@ namespace TeamTracker
             else
             {
                 List<int> result = TaskManager.FetchTaskCountByEmployee(VersionManager.CurrentVersion.VersionID);
-
                 taskCountLabel.Text = result[0].ToString();
                 completedTaskLabel.Text = result[1].ToString();
                 dueTaskLabel.Text = result[2].ToString();
                 incompleteTaskLabel.Text = result[3].ToString();
+                if (MilestoneManager.CurrentMilestone != null)
+                    currentMilestone1.MilestoneName = MilestoneManager.CurrentMilestone.MileStoneName;
+                else
+                {
+                    currentMilestone1.MilestoneName = "No Current Milestone";
+                }
             }
         }
 

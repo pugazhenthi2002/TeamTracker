@@ -96,7 +96,7 @@
             this.buttonSetMilestone.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.buttonSetMilestone.Location = new System.Drawing.Point(7, 7);
-            this.buttonSetMilestone.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.buttonSetMilestone.Margin = new System.Windows.Forms.Padding(7);
             this.buttonSetMilestone.Name = "buttonSetMilestone";
             this.buttonSetMilestone.Size = new System.Drawing.Size(151, 31);
             this.buttonSetMilestone.TabIndex = 6;
@@ -164,7 +164,7 @@
             this.labelSetPriority.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSetPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.labelSetPriority.Location = new System.Drawing.Point(46, 5);
-            this.labelSetPriority.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.labelSetPriority.Margin = new System.Windows.Forms.Padding(5);
             this.labelSetPriority.Name = "labelSetPriority";
             this.labelSetPriority.Size = new System.Drawing.Size(86, 35);
             this.labelSetPriority.TabIndex = 3;
@@ -285,7 +285,7 @@
             this.animatedLabelFilename.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.animatedLabelFilename.LabelCornerColor = System.Drawing.Color.Empty;
             this.animatedLabelFilename.Location = new System.Drawing.Point(3, 3);
-            this.animatedLabelFilename.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.animatedLabelFilename.Margin = new System.Windows.Forms.Padding(3);
             this.animatedLabelFilename.Name = "animatedLabelFilename";
             this.animatedLabelFilename.ParentColor = System.Drawing.Color.Empty;
             this.animatedLabelFilename.Size = new System.Drawing.Size(366, 28);
@@ -313,7 +313,7 @@
             this.textBoxTaskName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBoxTaskName.Interval = 15;
             this.textBoxTaskName.Location = new System.Drawing.Point(10, 10);
-            this.textBoxTaskName.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.textBoxTaskName.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxTaskName.Multiline = true;
             this.textBoxTaskName.Name = "textBoxTaskName";
             this.textBoxTaskName.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
@@ -338,7 +338,7 @@
             this.textBoxDesc.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBoxDesc.Interval = 15;
             this.textBoxDesc.Location = new System.Drawing.Point(10, 96);
-            this.textBoxDesc.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.textBoxDesc.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxDesc.Multiline = true;
             this.textBoxDesc.Name = "textBoxDesc";
             this.textBoxDesc.Padding = new System.Windows.Forms.Padding(18, 20, 8, 6);
@@ -384,7 +384,7 @@
             this.buttonCreate.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.buttonCreate.Location = new System.Drawing.Point(503, 5);
-            this.buttonCreate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonCreate.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(158, 32);
             this.buttonCreate.TabIndex = 2;
@@ -401,7 +401,7 @@
             this.buttonDiscard.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDiscard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.buttonDiscard.Location = new System.Drawing.Point(337, 5);
-            this.buttonDiscard.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonDiscard.Margin = new System.Windows.Forms.Padding(5);
             this.buttonDiscard.Name = "buttonDiscard";
             this.buttonDiscard.Size = new System.Drawing.Size(156, 32);
             this.buttonDiscard.TabIndex = 0;

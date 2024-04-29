@@ -124,7 +124,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(473, 68);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Team Tracker";
+            this.label1.Text = "Project Tracker";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // errorMessageLabel

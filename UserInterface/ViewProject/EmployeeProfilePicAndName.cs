@@ -28,7 +28,11 @@ namespace UserInterface.ViewProject
             set
             {
                 profile = value;
-                profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                try
+                {
+                    profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                }
+                catch { }
                 label1.Text = value.EmployeeFirstName;
             }
         }

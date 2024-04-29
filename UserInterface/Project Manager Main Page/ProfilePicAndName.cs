@@ -57,7 +57,11 @@ namespace TeamTracker
                 employeeProfile = value;
                 if (value != null)
                 {
-                    profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                    try
+                    {
+                        profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
+                    }
+                    catch { }
                     designationLabel.Text = value.EmpRoleName;
                     employeeNameLabel.Text = value.EmployeeFirstName;
                 }
