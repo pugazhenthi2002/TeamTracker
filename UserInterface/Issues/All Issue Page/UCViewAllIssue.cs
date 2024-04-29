@@ -216,7 +216,7 @@ namespace TeamTracker
                 IssueInfoForm issueInfoForm = new IssueInfoForm();
                 issueInfoForm.IssueData = IssueManager.GetIssueById(issueID);
 
-                issueInfoForm.Show();
+                issueInfoForm.ShowDialog();
             }
             
         }
