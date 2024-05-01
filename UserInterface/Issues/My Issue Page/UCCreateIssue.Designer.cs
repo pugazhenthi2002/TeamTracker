@@ -55,8 +55,8 @@
             this.buttonPost = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelTop = new System.Windows.Forms.Panel();
-            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -111,7 +111,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.tableLayoutPanelTags);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(367, 6);
@@ -119,10 +119,11 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(226, 221);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // tableLayoutPanelTags
             // 
-            this.tableLayoutPanelTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.tableLayoutPanelTags.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanelTags.ColumnCount = 1;
             this.tableLayoutPanelTags.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelTags.Controls.Add(this.tableLayoutPanel4, 0, 0);
@@ -139,7 +140,7 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -158,7 +159,7 @@
             // 
             // textBoxTags
             // 
-            this.textBoxTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.textBoxTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.textBoxTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTags.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -174,6 +175,7 @@
             // 
             // BtnAddTag
             // 
+            this.BtnAddTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.BtnAddTag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnAddTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAddTag.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,7 +186,7 @@
             this.BtnAddTag.Size = new System.Drawing.Size(81, 32);
             this.BtnAddTag.TabIndex = 1;
             this.BtnAddTag.Text = "Add Tag";
-            this.BtnAddTag.UseVisualStyleBackColor = true;
+            this.BtnAddTag.UseVisualStyleBackColor = false;
             this.BtnAddTag.Click += new System.EventHandler(this.OnClickAddTag);
             // 
             // panelTags
@@ -198,7 +200,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.ProjectEntryTablePanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(7, 6);
@@ -206,10 +208,11 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(346, 221);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // ProjectEntryTablePanel
             // 
-            this.ProjectEntryTablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.ProjectEntryTablePanel.BackColor = System.Drawing.Color.Transparent;
             this.ProjectEntryTablePanel.ColumnCount = 1;
             this.ProjectEntryTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ProjectEntryTablePanel.Controls.Add(this.IssueDescTextBox, 0, 3);
@@ -230,7 +233,7 @@
             // 
             // IssueDescTextBox
             // 
-            this.IssueDescTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.IssueDescTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.IssueDescTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.IssueDescTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IssueDescTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,7 +275,7 @@
             // 
             // IssueTitleTextBox
             // 
-            this.IssueTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.IssueTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.IssueTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.IssueTitleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IssueTitleTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,7 +291,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.tableLayoutPanel3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(7, 239);
@@ -299,7 +302,7 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -315,7 +318,7 @@
             // 
             // BtnSetPriority
             // 
-            this.BtnSetPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.BtnSetPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.BtnSetPriority.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnSetPriority.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSetPriority.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -331,7 +334,7 @@
             // 
             // BtnSetType
             // 
-            this.BtnSetType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.BtnSetType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.BtnSetType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnSetType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSetType.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -347,7 +350,7 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -365,8 +368,9 @@
             // 
             // labelWarning
             // 
+            this.labelWarning.BackColor = System.Drawing.Color.Transparent;
             this.labelWarning.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning.ForeColor = System.Drawing.Color.Firebrick;
             this.labelWarning.Location = new System.Drawing.Point(2, 0);
             this.labelWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -415,7 +419,7 @@
             // 
             // buttonPost
             // 
-            this.buttonPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.buttonPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.buttonPost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPost.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -439,20 +443,6 @@
             this.panelTop.Size = new System.Drawing.Size(600, 51);
             this.panelTop.TabIndex = 2;
             // 
-            // pictureBoxClose
-            // 
-            this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close_30;
-            this.pictureBoxClose.Location = new System.Drawing.Point(535, 0);
-            this.pictureBoxClose.Name = "pictureBoxClose";
-            this.pictureBoxClose.Size = new System.Drawing.Size(65, 51);
-            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxClose.TabIndex = 1;
-            this.pictureBoxClose.TabStop = false;
-            this.pictureBoxClose.Click += new System.EventHandler(this.OnClickDiscard);
-            this.pictureBoxClose.MouseEnter += new System.EventHandler(this.OnMouseEnterClose);
-            this.pictureBoxClose.MouseLeave += new System.EventHandler(this.OnMouseLeaveClose);
-            // 
             // profilePicAndName1
             // 
             this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
@@ -471,6 +461,20 @@
             this.profilePicAndName1.ProfileTextColor = System.Drawing.Color.Empty;
             this.profilePicAndName1.Size = new System.Drawing.Size(221, 50);
             this.profilePicAndName1.TabIndex = 2;
+            // 
+            // pictureBoxClose
+            // 
+            this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close_30;
+            this.pictureBoxClose.Location = new System.Drawing.Point(535, 0);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(65, 51);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxClose.TabIndex = 1;
+            this.pictureBoxClose.TabStop = false;
+            this.pictureBoxClose.Click += new System.EventHandler(this.OnClickDiscard);
+            this.pictureBoxClose.MouseEnter += new System.EventHandler(this.OnMouseEnterClose);
+            this.pictureBoxClose.MouseLeave += new System.EventHandler(this.OnMouseLeaveClose);
             // 
             // UCCreateIssue
             // 

@@ -32,19 +32,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.totalSolutionCOuntLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.nextPicBox = new System.Windows.Forms.PictureBox();
+            this.backPicBox = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.solutionTemplate1 = new UserInterface.Issues.My_Issue_Page.SolutionTemplate();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backPicBox)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +91,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.totalSolutionCOuntLabel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.ForeColor = System.Drawing.Color.DarkGray;
             this.panel2.Location = new System.Drawing.Point(0, 56);
@@ -101,24 +101,24 @@
             this.panel2.Size = new System.Drawing.Size(860, 28);
             this.panel2.TabIndex = 3;
             // 
-            // label1
+            // totalSolutionCOuntLabel
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Total Solution";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.totalSolutionCOuntLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.totalSolutionCOuntLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalSolutionCOuntLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.totalSolutionCOuntLabel.Location = new System.Drawing.Point(0, 0);
+            this.totalSolutionCOuntLabel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.totalSolutionCOuntLabel.Name = "totalSolutionCOuntLabel";
+            this.totalSolutionCOuntLabel.Size = new System.Drawing.Size(286, 25);
+            this.totalSolutionCOuntLabel.TabIndex = 4;
+            this.totalSolutionCOuntLabel.Text = "Total Solution";
+            this.totalSolutionCOuntLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.nextPicBox);
+            this.panel3.Controls.Add(this.backPicBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 84);
             this.panel3.Name = "panel3";
@@ -133,31 +133,35 @@
             this.panel4.Size = new System.Drawing.Size(800, 36);
             this.panel4.TabIndex = 2;
             // 
-            // pictureBox3
+            // nextPicBox
             // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox3.Image = global::UserInterface.Properties.Resources.Next;
-            this.pictureBox3.Location = new System.Drawing.Point(830, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 36);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.OnNextClicked);
+            this.nextPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextPicBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nextPicBox.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
+            this.nextPicBox.Location = new System.Drawing.Point(830, 0);
+            this.nextPicBox.Name = "nextPicBox";
+            this.nextPicBox.Size = new System.Drawing.Size(30, 36);
+            this.nextPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.nextPicBox.TabIndex = 1;
+            this.nextPicBox.TabStop = false;
+            this.nextPicBox.Click += new System.EventHandler(this.OnNextClicked);
+            this.nextPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.nextPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
-            // pictureBox2
+            // backPicBox
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Image = global::UserInterface.Properties.Resources.Back;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 36);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.OnBackClick);
+            this.backPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.backPicBox.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
+            this.backPicBox.Location = new System.Drawing.Point(0, 0);
+            this.backPicBox.Name = "backPicBox";
+            this.backPicBox.Size = new System.Drawing.Size(30, 36);
+            this.backPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.backPicBox.TabIndex = 0;
+            this.backPicBox.TabStop = false;
+            this.backPicBox.Click += new System.EventHandler(this.OnBackClick);
+            this.backPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.backPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // panel5
             // 
@@ -166,17 +170,17 @@
             this.panel5.Location = new System.Drawing.Point(0, 120);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(20);
-            this.panel5.Size = new System.Drawing.Size(860, 351);
+            this.panel5.Size = new System.Drawing.Size(860, 386);
             this.panel5.TabIndex = 5;
             // 
             // solutionTemplate1
             // 
             this.solutionTemplate1.AutoScroll = true;
             this.solutionTemplate1.BackColor = System.Drawing.Color.Transparent;
-            this.solutionTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.solutionTemplate1.Dock = System.Windows.Forms.DockStyle.Top;
             this.solutionTemplate1.Location = new System.Drawing.Point(20, 20);
             this.solutionTemplate1.Name = "solutionTemplate1";
-            this.solutionTemplate1.Size = new System.Drawing.Size(820, 311);
+            this.solutionTemplate1.Size = new System.Drawing.Size(820, 350);
             this.solutionTemplate1.TabIndex = 0;
             // 
             // ViewSolutionForm
@@ -184,7 +188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ClientSize = new System.Drawing.Size(860, 471);
+            this.ClientSize = new System.Drawing.Size(860, 506);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -196,8 +200,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backPicBox)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -209,11 +213,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label totalSolutionCOuntLabel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox nextPicBox;
+        private System.Windows.Forms.PictureBox backPicBox;
         private System.Windows.Forms.Panel panel5;
         private SolutionTemplate solutionTemplate1;
     }

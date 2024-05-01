@@ -37,7 +37,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -53,57 +53,66 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(250, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 122);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // BtnLow
             // 
+            this.BtnLow.BackColor = System.Drawing.Color.Transparent;
+            this.BtnLow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnLow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnLow.FlatAppearance.BorderSize = 0;
             this.BtnLow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLow.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLow.Location = new System.Drawing.Point(3, 69);
+            this.BtnLow.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnLow.Location = new System.Drawing.Point(3, 83);
             this.BtnLow.Name = "BtnLow";
-            this.BtnLow.Size = new System.Drawing.Size(244, 28);
+            this.BtnLow.Size = new System.Drawing.Size(194, 36);
             this.BtnLow.TabIndex = 5;
             this.BtnLow.Text = "Low";
-            this.BtnLow.UseVisualStyleBackColor = true;
+            this.BtnLow.UseVisualStyleBackColor = false;
             this.BtnLow.Click += new System.EventHandler(this.OnClickBtn);
             // 
             // BtnMedium
             // 
+            this.BtnMedium.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMedium.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnMedium.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnMedium.FlatAppearance.BorderSize = 0;
             this.BtnMedium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMedium.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMedium.Location = new System.Drawing.Point(3, 36);
+            this.BtnMedium.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnMedium.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnMedium.Location = new System.Drawing.Point(3, 43);
             this.BtnMedium.Name = "BtnMedium";
-            this.BtnMedium.Size = new System.Drawing.Size(244, 27);
+            this.BtnMedium.Size = new System.Drawing.Size(194, 34);
             this.BtnMedium.TabIndex = 4;
             this.BtnMedium.Text = "Medium";
-            this.BtnMedium.UseVisualStyleBackColor = true;
+            this.BtnMedium.UseVisualStyleBackColor = false;
             this.BtnMedium.Click += new System.EventHandler(this.OnClickBtn);
             // 
             // BtnHigh
             // 
+            this.BtnHigh.BackColor = System.Drawing.Color.Transparent;
+            this.BtnHigh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnHigh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnHigh.FlatAppearance.BorderSize = 0;
             this.BtnHigh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnHigh.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHigh.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHigh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.BtnHigh.Location = new System.Drawing.Point(3, 3);
             this.BtnHigh.Name = "BtnHigh";
-            this.BtnHigh.Size = new System.Drawing.Size(244, 27);
+            this.BtnHigh.Size = new System.Drawing.Size(194, 34);
             this.BtnHigh.TabIndex = 3;
             this.BtnHigh.Text = "High";
-            this.BtnHigh.UseVisualStyleBackColor = true;
+            this.BtnHigh.UseVisualStyleBackColor = false;
             this.BtnHigh.Click += new System.EventHandler(this.OnClickBtn);
             // 
             // IssuePriorityDropDownForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(250, 100);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.ClientSize = new System.Drawing.Size(200, 122);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IssuePriorityDropDownForm";

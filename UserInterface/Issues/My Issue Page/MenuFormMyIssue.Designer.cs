@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonEdit = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,26 +49,10 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(234, 99);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // buttonEdit
-            // 
-            this.buttonEdit.AutoSize = true;
-            this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
-            this.buttonEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEdit.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonEdit.Location = new System.Drawing.Point(3, 3);
-            this.buttonEdit.Margin = new System.Windows.Forms.Padding(3);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(228, 43);
-            this.buttonEdit.TabIndex = 2;
-            this.buttonEdit.Text = "Edit Issue";
-            this.buttonEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonEdit.Click += new System.EventHandler(this.OnClickEdit);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -80,6 +64,22 @@
             this.label1.Text = "View Solution";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.OnClickViewSolution);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.AutoSize = true;
+            this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.buttonEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonEdit.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonEdit.Location = new System.Drawing.Point(3, 3);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(3);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(228, 43);
+            this.buttonEdit.TabIndex = 2;
+            this.buttonEdit.Text = "Edit Issue";
+            this.buttonEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonEdit.Click += new System.EventHandler(this.OnClickEdit);
             // 
             // MenuFormMyIssue
             // 

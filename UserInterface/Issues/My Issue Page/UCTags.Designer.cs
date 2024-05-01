@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCTags));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.LabelTag = new System.Windows.Forms.Label();
             this.ClosePicBox = new System.Windows.Forms.PictureBox();
+            this.LabelTag = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClosePicBox)).BeginInit();
@@ -40,7 +40,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
@@ -58,22 +58,12 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(223, 51);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // LabelTag
-            // 
-            this.LabelTag.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelTag.Location = new System.Drawing.Point(41, 2);
-            this.LabelTag.Name = "LabelTag";
-            this.LabelTag.Size = new System.Drawing.Size(140, 47);
-            this.LabelTag.TabIndex = 0;
-            this.LabelTag.Text = "label1";
-            this.LabelTag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ClosePicBox
             // 
             this.ClosePicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ClosePicBox.Image = global::UserInterface.Properties.Resources.Close_Black;
             this.ClosePicBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("ClosePicBox.InitialImage")));
-            this.ClosePicBox.Location = new System.Drawing.Point(190, 9);
+            this.ClosePicBox.Location = new System.Drawing.Point(189, 9);
             this.ClosePicBox.Margin = new System.Windows.Forms.Padding(0);
             this.ClosePicBox.Name = "ClosePicBox";
             this.ClosePicBox.Size = new System.Drawing.Size(25, 33);
@@ -83,6 +73,18 @@
             this.ClosePicBox.Click += new System.EventHandler(this.OnClickCloseTag);
             this.ClosePicBox.MouseEnter += new System.EventHandler(this.OnMouseEnterClose);
             this.ClosePicBox.MouseLeave += new System.EventHandler(this.OnMouseLeaveClose);
+            // 
+            // LabelTag
+            // 
+            this.LabelTag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabelTag.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.LabelTag.Location = new System.Drawing.Point(41, 2);
+            this.LabelTag.Name = "LabelTag";
+            this.LabelTag.Size = new System.Drawing.Size(139, 47);
+            this.LabelTag.TabIndex = 0;
+            this.LabelTag.Text = "label1";
+            this.LabelTag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -100,12 +102,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.Controls.Add(this.tableLayoutPanel2);
             this.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.Name = "UCTags";
             this.Size = new System.Drawing.Size(223, 51);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ClosePicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

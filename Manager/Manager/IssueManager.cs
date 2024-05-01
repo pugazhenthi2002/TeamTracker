@@ -181,11 +181,11 @@ namespace TeamTracker
 
         public static void AddSolution(IssueSolution issueSoln, IssueSolutionAttachment attachment)
         {
-            DataHandler.AddIssueSolution(issueSoln);
-            IssueSolutionCollection.Add(issueSoln);
+            IssueSolution soln = DataHandler.AddIssueSolution(issueSoln);
+            IssueSolutionCollection.Add(soln);
             if (attachment != null)
             {
-                attachment.IssueSolutionID = issueSoln.IssueID;
+                attachment.IssueSolutionID = soln.IssueSolutionID;
                 DataHandler.AddIssueSolutionAttachment(attachment);
             }
         }

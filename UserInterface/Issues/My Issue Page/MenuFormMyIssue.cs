@@ -37,5 +37,11 @@ namespace TeamTracker
             base.OnLostFocus(e);
             Close();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Focus();
+        }
     }
 }

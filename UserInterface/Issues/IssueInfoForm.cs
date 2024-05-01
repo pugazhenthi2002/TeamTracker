@@ -93,7 +93,7 @@ namespace TeamTracker
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
         {
-            this.Close();
+            
         }
 
         private void OnMouseEnterClose(object sender, EventArgs e)
@@ -170,11 +170,22 @@ namespace TeamTracker
 
         private void OnClickAddSolution(object sender, EventArgs e)
         {
-            if (issueData != null)
+            if (solutionTextBox.Text == "")
             {
-                SolveNotesForm solutionForm = new SolveNotesForm(issueData);
-                solutionForm.Show();
+                labelWarning.Text = "Add Solution";
+                labelWarning.Show();
+                return;
             }
+
+            IssueSolution soln = new IssueSolution()
+            {
+                IssueID = currentIssue.IssueID,
+                Solution = NotesTextBox.Text,
+                SolvedByID = EmployeeManager.CurrentEmployee.EmployeeID
+            };
+
+
+            IssueManager.AddSolution(soln, solnAttachment);
         }
     }
 }

@@ -43,6 +43,7 @@ namespace UserInterface.Issues.My_Issue_Page
 
         private void InitializeForm()
         {
+            totalSolutionCOuntLabel.Text = "Total Solution" + issueSolutionCollection.Count.ToString();
             buttonCollection = new List<SolutionButton>();
             for(int ctr=0; ctr <= endIdx; ctr++)
             {
@@ -58,6 +59,7 @@ namespace UserInterface.Issues.My_Issue_Page
 
                 if (ctr == selectedIdx)
                 {
+                    prevButton = button;
                     button.IsClicked = true;
                 }
                 panel4.Controls.Add(button);
@@ -71,16 +73,25 @@ namespace UserInterface.Issues.My_Issue_Page
             }
 
             solutionTemplate1.SelectedSolution = buttonCollection[0].SelectedSolution;
+
+            isBackEnable = startIdx == 0 ? false : true;
+            isNextEnable = endIdx == issueSolutionCollection.Count - 1 ? false : true;
+
+            if (backPicBox.Image != null) backPicBox.Image.Dispose();
+            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+
+            backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
+            nextPicBox.Image = isBackEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
         }
 
         public new void Dispose()
         {
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
-            pictureBox1.Dispose();  pictureBox2.Dispose();  pictureBox3.Dispose();
-            label1.Dispose();   labelTitle.Dispose();
+            if (backPicBox.Image != null) backPicBox.Image.Dispose();
+            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+            pictureBox1.Dispose();  backPicBox.Dispose();  nextPicBox.Dispose();
+            totalSolutionCOuntLabel.Dispose();   labelTitle.Dispose();
             solutionTemplate1.Dispose();
         }
 
@@ -110,9 +121,22 @@ namespace UserInterface.Issues.My_Issue_Page
             {
                 prevButton.IsClicked = false;
             }
+            prevButton = (sender as SolutionButton);
+            prevButton.IsClicked = true;
             selectedIdx = issueSolutionCollection.FindIndex(t1 => t1.IssueSolutionID == e.IssueSolutionID);
             solutionTemplate1.Dispose();
             solutionTemplate1.SelectedSolution = e;
+            ResetControl();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+
         }
 
         private void OnCloseClick(object sender, EventArgs e)
@@ -129,19 +153,25 @@ namespace UserInterface.Issues.My_Issue_Page
 
         private void ResetControl()
         {
-            for (int ctr = startIdx, idx = 0; ctr <= endIdx; ctr++)
+            for (int ctr = startIdx, idx = 0; ctr <= endIdx; ctr++, idx++)
             {
                 if (ctr == selectedIdx)
                     buttonCollection[idx].IsClicked = true;
                 else
                     buttonCollection[idx].IsClicked = false;
 
-                buttonCollection[idx].LabelText = (ctr + 1).ToString();
+                buttonCollection[idx].LabelText = "Solution " + (ctr + 1).ToString();
                 buttonCollection[idx].SelectedSolution = issueSolutionCollection[ctr];
             }
 
             isBackEnable = startIdx == 0 ? false : true;
             isNextEnable = endIdx == issueSolutionCollection.Count - 1 ? false : true;
+
+            if (backPicBox.Image != null) backPicBox.Image.Dispose();
+            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+
+            backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
+            nextPicBox.Image = isNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
         }
     }
 }

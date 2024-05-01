@@ -29,401 +29,512 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
-            this.profilePostedBy = new TeamTracker.ProfilePicAndName();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.animatedLabelType = new TeamTracker.AnimatedLabel();
-            this.IssueDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
-            this.pictureBoxDownloadAttachment = new System.Windows.Forms.PictureBox();
-            this.animatedLabelPriority = new TeamTracker.AnimatedLabel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panelTags = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.ucIssueDescription1 = new TeamTracker.UcTaskDescription();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonAddSolution = new System.Windows.Forms.Button();
+            this.tableLayoutPanelTags = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlag)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownloadAttachment)).BeginInit();
+            this.textBoxTags = new System.Windows.Forms.TextBox();
+            this.BtnAddTag = new System.Windows.Forms.Button();
+            this.panelTags = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ProjectEntryTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.IssueDescTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IssueTitleTextBox = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.solutionTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonAddSolution = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnSetPriority = new System.Windows.Forms.Button();
+            this.BtnSetType = new System.Windows.Forms.Button();
+            this.startDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.tableLayoutPanelTags.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.ProjectEntryTablePanel.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // panelTop
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 3);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(773, 449);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.panelTop.Controls.Add(this.profilePicAndName1);
+            this.panelTop.Controls.Add(this.pictureBoxClose);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(939, 51);
+            this.panelTop.TabIndex = 4;
             // 
-            // panel1
+            // profilePicAndName1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.panel1.Controls.Add(this.pictureBoxFlag);
-            this.panel1.Controls.Add(this.profilePostedBy);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.ForeColor = System.Drawing.Color.DarkGray;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.panel1.Size = new System.Drawing.Size(773, 67);
-            this.panel1.TabIndex = 1;
+            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
+            this.profilePicAndName1.BorderColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.BorderRadius = 0;
+            this.profilePicAndName1.EmployeeProfile = null;
+            this.profilePicAndName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.profilePicAndName1.HoverColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.IsBorderNeeded = false;
+            this.profilePicAndName1.IsOperable = false;
+            this.profilePicAndName1.Location = new System.Drawing.Point(10, 1);
+            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(4);
+            this.profilePicAndName1.Name = "profilePicAndName1";
+            this.profilePicAndName1.NormalColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3);
+            this.profilePicAndName1.ProfileTextColor = System.Drawing.Color.Empty;
+            this.profilePicAndName1.Size = new System.Drawing.Size(221, 50);
+            this.profilePicAndName1.TabIndex = 2;
             // 
-            // pictureBoxFlag
+            // pictureBoxClose
             // 
-            this.pictureBoxFlag.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBoxFlag.Image = global::UserInterface.Properties.Resources.Critical;
-            this.pictureBoxFlag.Location = new System.Drawing.Point(639, 0);
-            this.pictureBoxFlag.Name = "pictureBoxFlag";
-            this.pictureBoxFlag.Size = new System.Drawing.Size(75, 64);
-            this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxFlag.TabIndex = 6;
-            this.pictureBoxFlag.TabStop = false;
-            // 
-            // profilePostedBy
-            // 
-            this.profilePostedBy.BackColor = System.Drawing.Color.Transparent;
-            this.profilePostedBy.BorderColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.BorderRadius = 0;
-            this.profilePostedBy.EmployeeProfile = null;
-            this.profilePostedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.profilePostedBy.HoverColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.IsBorderNeeded = false;
-            this.profilePostedBy.IsOperable = false;
-            this.profilePostedBy.Location = new System.Drawing.Point(9, 9);
-            this.profilePostedBy.Margin = new System.Windows.Forms.Padding(5);
-            this.profilePostedBy.Name = "profilePostedBy";
-            this.profilePostedBy.NormalColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.Padding = new System.Windows.Forms.Padding(3);
-            this.profilePostedBy.ProfileTextColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.Size = new System.Drawing.Size(302, 50);
-            this.profilePostedBy.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_Alice_Blue_30;
-            this.pictureBox1.Location = new System.Drawing.Point(714, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(59, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClickClose);
-            this.pictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnterClose);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeaveClose);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.Controls.Add(this.pictureBoxDownloadAttachment, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.IssueDate, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.animatedLabelPriority, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.animatedLabelType, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 313);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(773, 89);
-            this.tableLayoutPanel3.TabIndex = 3;
-            // 
-            // animatedLabelType
-            // 
-            this.animatedLabelType.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.animatedLabelType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.animatedLabelType.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.animatedLabelType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.animatedLabelType.LabelCornerColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
-            this.animatedLabelType.Location = new System.Drawing.Point(10, 27);
-            this.animatedLabelType.Margin = new System.Windows.Forms.Padding(5);
-            this.animatedLabelType.Name = "animatedLabelType";
-            this.animatedLabelType.Size = new System.Drawing.Size(211, 35);
-            this.animatedLabelType.TabIndex = 4;
-            this.animatedLabelType.Text = "Bug";
-            this.animatedLabelType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // IssueDate
-            // 
-            this.IssueDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.IssueDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.IssueDate.BorderSize = 0;
-            this.IssueDate.Enabled = false;
-            this.IssueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IssueDate.Location = new System.Drawing.Point(481, 27);
-            this.IssueDate.MinimumSize = new System.Drawing.Size(4, 35);
-            this.IssueDate.Name = "IssueDate";
-            this.IssueDate.Size = new System.Drawing.Size(155, 35);
-            this.IssueDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.IssueDate.TabIndex = 0;
-            this.IssueDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            // 
-            // pictureBoxDownloadAttachment
-            // 
-            this.pictureBoxDownloadAttachment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxDownloadAttachment.Image = global::UserInterface.Properties.Resources.download_Icon;
-            this.pictureBoxDownloadAttachment.Location = new System.Drawing.Point(680, 25);
-            this.pictureBoxDownloadAttachment.Margin = new System.Windows.Forms.Padding(25);
-            this.pictureBoxDownloadAttachment.Name = "pictureBoxDownloadAttachment";
-            this.pictureBoxDownloadAttachment.Size = new System.Drawing.Size(68, 39);
-            this.pictureBoxDownloadAttachment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxDownloadAttachment.TabIndex = 5;
-            this.pictureBoxDownloadAttachment.TabStop = false;
-            this.pictureBoxDownloadAttachment.Click += new System.EventHandler(this.OnClickDownloadAttachment);
-            this.pictureBoxDownloadAttachment.MouseEnter += new System.EventHandler(this.OnMouseEnterDownloadPicBox);
-            this.pictureBoxDownloadAttachment.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownloadPicBox);
-            // 
-            // animatedLabelPriority
-            // 
-            this.animatedLabelPriority.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.animatedLabelPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.animatedLabelPriority.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.animatedLabelPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.animatedLabelPriority.LabelCornerColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
-            this.animatedLabelPriority.Location = new System.Drawing.Point(241, 27);
-            this.animatedLabelPriority.Margin = new System.Windows.Forms.Padding(5);
-            this.animatedLabelPriority.Name = "animatedLabelPriority";
-            this.animatedLabelPriority.Size = new System.Drawing.Size(211, 35);
-            this.animatedLabelPriority.TabIndex = 0;
-            this.animatedLabelPriority.Text = "High";
-            this.animatedLabelPriority.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close_30;
+            this.pictureBoxClose.Location = new System.Drawing.Point(874, 0);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(65, 51);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxClose.TabIndex = 1;
+            this.pictureBoxClose.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ucIssueDescription1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 70);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 51);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(767, 240);
-            this.tableLayoutPanel2.TabIndex = 7;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(939, 277);
+            this.tableLayoutPanel2.TabIndex = 5;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panelTags);
-            this.panel2.Controls.Add(this.ucNotFound1);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Location = new System.Drawing.Point(470, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 3);
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.tableLayoutPanelTags);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(570, 6);
+            this.panel2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(287, 227);
-            this.panel2.TabIndex = 6;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaintTagsPanel);
+            this.panel2.Size = new System.Drawing.Size(362, 265);
+            this.panel2.TabIndex = 1;
+            // 
+            // tableLayoutPanelTags
+            // 
+            this.tableLayoutPanelTags.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelTags.ColumnCount = 1;
+            this.tableLayoutPanelTags.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelTags.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanelTags.Controls.Add(this.panelTags, 0, 1);
+            this.tableLayoutPanelTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelTags.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelTags.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelTags.Name = "tableLayoutPanelTags";
+            this.tableLayoutPanelTags.RowCount = 2;
+            this.tableLayoutPanelTags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelTags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelTags.Size = new System.Drawing.Size(362, 265);
+            this.tableLayoutPanelTags.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel4.Controls.Add(this.textBoxTags, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.BtnAddTag, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(5, 2, 5, 0);
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(362, 53);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // textBoxTags
+            // 
+            this.textBoxTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.textBoxTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxTags.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTags.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.textBoxTags.Location = new System.Drawing.Point(8, 9);
+            this.textBoxTags.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.textBoxTags.Multiline = true;
+            this.textBoxTags.Name = "textBoxTags";
+            this.textBoxTags.Size = new System.Drawing.Size(205, 37);
+            this.textBoxTags.TabIndex = 0;
+            this.textBoxTags.Text = "Enter Tags";
+            // 
+            // BtnAddTag
+            // 
+            this.BtnAddTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BtnAddTag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnAddTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAddTag.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAddTag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnAddTag.Location = new System.Drawing.Point(219, 7);
+            this.BtnAddTag.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.BtnAddTag.Name = "BtnAddTag";
+            this.BtnAddTag.Size = new System.Drawing.Size(135, 41);
+            this.BtnAddTag.TabIndex = 1;
+            this.BtnAddTag.Text = "Add Tag";
+            this.BtnAddTag.UseVisualStyleBackColor = false;
             // 
             // panelTags
             // 
             this.panelTags.AutoScroll = true;
-            this.panelTags.BackColor = System.Drawing.Color.Transparent;
             this.panelTags.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTags.Location = new System.Drawing.Point(20, 20);
-            this.panelTags.Margin = new System.Windows.Forms.Padding(10, 20, 20, 20);
+            this.panelTags.Location = new System.Drawing.Point(3, 56);
             this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(247, 187);
-            this.panelTags.TabIndex = 7;
+            this.panelTags.Size = new System.Drawing.Size(356, 206);
+            this.panelTags.TabIndex = 1;
             // 
-            // ucNotFound1
+            // panel1
             // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Commits Found !!";
-            this.ucNotFound1.HeadTextSize = 14;
-            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(247, 187);
-            this.ucNotFound1.TabIndex = 4;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.ProjectEntryTablePanel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(7, 6);
+            this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(549, 265);
+            this.panel1.TabIndex = 0;
             // 
-            // panel3
+            // ProjectEntryTablePanel
             // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(20, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(247, 20);
-            this.panel3.TabIndex = 0;
+            this.ProjectEntryTablePanel.BackColor = System.Drawing.Color.Transparent;
+            this.ProjectEntryTablePanel.ColumnCount = 1;
+            this.ProjectEntryTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ProjectEntryTablePanel.Controls.Add(this.IssueDescTextBox, 0, 3);
+            this.ProjectEntryTablePanel.Controls.Add(this.label1, 0, 0);
+            this.ProjectEntryTablePanel.Controls.Add(this.label2, 0, 2);
+            this.ProjectEntryTablePanel.Controls.Add(this.IssueTitleTextBox, 0, 1);
+            this.ProjectEntryTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProjectEntryTablePanel.Location = new System.Drawing.Point(0, 0);
+            this.ProjectEntryTablePanel.Margin = new System.Windows.Forms.Padding(0);
+            this.ProjectEntryTablePanel.Name = "ProjectEntryTablePanel";
+            this.ProjectEntryTablePanel.RowCount = 4;
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ProjectEntryTablePanel.Size = new System.Drawing.Size(549, 265);
+            this.ProjectEntryTablePanel.TabIndex = 0;
+            // 
+            // IssueDescTextBox
+            // 
+            this.IssueDescTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.IssueDescTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IssueDescTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IssueDescTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueDescTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.IssueDescTextBox.Location = new System.Drawing.Point(7, 90);
+            this.IssueDescTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 13);
+            this.IssueDescTextBox.Multiline = true;
+            this.IssueDescTextBox.Name = "IssueDescTextBox";
+            this.IssueDescTextBox.Size = new System.Drawing.Size(535, 162);
+            this.IssueDescTextBox.TabIndex = 3;
+            this.IssueDescTextBox.Text = "Enter Your Text";
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Size = new System.Drawing.Size(134, 20);
+            this.label1.Size = new System.Drawing.Size(545, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tags";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Text = "Issue Title*";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel6
+            // label2
             // 
-            this.panel6.BackColor = System.Drawing.Color.Transparent;
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(20, 207);
-            this.panel6.TabIndex = 3;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label2.Location = new System.Drawing.Point(2, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(545, 26);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Issue Description*";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel5
+            // IssueTitleTextBox
             // 
-            this.panel5.BackColor = System.Drawing.Color.Transparent;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(267, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(20, 207);
-            this.panel5.TabIndex = 2;
+            this.IssueTitleTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.IssueTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IssueTitleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IssueTitleTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueTitleTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.IssueTitleTextBox.Location = new System.Drawing.Point(7, 32);
+            this.IssueTitleTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.IssueTitleTextBox.Multiline = true;
+            this.IssueTitleTextBox.Name = "IssueTitleTextBox";
+            this.IssueTitleTextBox.Size = new System.Drawing.Size(535, 20);
+            this.IssueTitleTextBox.TabIndex = 2;
+            this.IssueTitleTextBox.Text = "Enter Issue Name";
             // 
-            // panel4
+            // panel3
             // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 207);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(287, 20);
-            this.panel4.TabIndex = 1;
+            this.panel3.Controls.Add(this.solutionTextBox);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 386);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
+            this.panel3.Size = new System.Drawing.Size(939, 238);
+            this.panel3.TabIndex = 12;
             // 
-            // ucIssueDescription1
+            // solutionTextBox
             // 
-            this.ucIssueDescription1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
-            this.ucIssueDescription1.BorderColor = System.Drawing.Color.Black;
-            this.ucIssueDescription1.CenterLabelText = "Issue Description...";
-            this.ucIssueDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucIssueDescription1.EnableEdit = true;
-            this.ucIssueDescription1.Location = new System.Drawing.Point(3, 10);
-            this.ucIssueDescription1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.ucIssueDescription1.Name = "ucIssueDescription1";
-            this.ucIssueDescription1.Size = new System.Drawing.Size(454, 227);
-            this.ucIssueDescription1.TabIndex = 2;
-            this.ucIssueDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucIssueDescription1.TopLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucIssueDescription1.TopLabelText = "Issue Title";
+            this.solutionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.solutionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.solutionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.solutionTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.solutionTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.solutionTextBox.Location = new System.Drawing.Point(10, 39);
+            this.solutionTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 13);
+            this.solutionTextBox.Multiline = true;
+            this.solutionTextBox.Name = "solutionTextBox";
+            this.solutionTextBox.Size = new System.Drawing.Size(919, 189);
+            this.solutionTextBox.TabIndex = 4;
+            this.solutionTextBox.Text = "Enter a Solution";
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label3.Location = new System.Drawing.Point(10, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(919, 39);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Solution";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.buttonAddSolution, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 624);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(939, 39);
+            this.tableLayoutPanel5.TabIndex = 11;
             // 
             // buttonAddSolution
             // 
             this.buttonAddSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.buttonAddSolution.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddSolution.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonAddSolution.FlatAppearance.BorderSize = 0;
             this.buttonAddSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddSolution.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddSolution.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.buttonAddSolution.Location = new System.Drawing.Point(623, 5);
+            this.buttonAddSolution.Location = new System.Drawing.Point(773, 5);
             this.buttonAddSolution.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.buttonAddSolution.Name = "buttonAddSolution";
-            this.buttonAddSolution.Size = new System.Drawing.Size(134, 31);
-            this.buttonAddSolution.TabIndex = 8;
+            this.buttonAddSolution.Size = new System.Drawing.Size(156, 29);
+            this.buttonAddSolution.TabIndex = 9;
             this.buttonAddSolution.Text = "Add Solution";
             this.buttonAddSolution.UseVisualStyleBackColor = false;
             this.buttonAddSolution.Click += new System.EventHandler(this.OnClickAddSolution);
             // 
-            // tableLayoutPanel4
+            // tableLayoutPanel3
             // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.buttonAddSolution, 2, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 405);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(767, 41);
-            this.tableLayoutPanel4.TabIndex = 8;
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Controls.Add(this.startDate, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.BtnSetPriority, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.BtnSetType, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel4, 3, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 328);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(939, 58);
+            this.tableLayoutPanel3.TabIndex = 9;
+            // 
+            // BtnSetPriority
+            // 
+            this.BtnSetPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BtnSetPriority.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnSetPriority.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSetPriority.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSetPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnSetPriority.Location = new System.Drawing.Point(8, 8);
+            this.BtnSetPriority.Margin = new System.Windows.Forms.Padding(8);
+            this.BtnSetPriority.Name = "BtnSetPriority";
+            this.BtnSetPriority.Size = new System.Drawing.Size(218, 42);
+            this.BtnSetPriority.TabIndex = 0;
+            this.BtnSetPriority.Text = "Set Priority";
+            this.BtnSetPriority.UseVisualStyleBackColor = false;
+            // 
+            // BtnSetType
+            // 
+            this.BtnSetType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BtnSetType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnSetType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSetType.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSetType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnSetType.Location = new System.Drawing.Point(242, 8);
+            this.BtnSetType.Margin = new System.Windows.Forms.Padding(8);
+            this.BtnSetType.Name = "BtnSetType";
+            this.BtnSetType.Size = new System.Drawing.Size(218, 42);
+            this.BtnSetType.TabIndex = 1;
+            this.BtnSetType.Text = "Set Type";
+            this.BtnSetType.UseVisualStyleBackColor = false;
+            // 
+            // startDate
+            // 
+            this.startDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.startDate.BorderSize = 2;
+            this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.startDate.Location = new System.Drawing.Point(479, 10);
+            this.startDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.startDate.MinimumSize = new System.Drawing.Size(4, 35);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(211, 35);
+            this.startDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.startDate.TabIndex = 6;
+            this.startDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Location = new System.Drawing.Point(710, 11);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(221, 35);
+            this.panel4.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Location = new System.Drawing.Point(187, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 35);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(187, 35);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Attachment";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // IssueInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ClientSize = new System.Drawing.Size(773, 449);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(939, 663);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.tableLayoutPanel5);
+            this.Controls.Add(this.tableLayoutPanel3);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IssueInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IssueInfoForm";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFlag)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownloadAttachment)).EndInit();
+            this.panelTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.tableLayoutPanelTags.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.ProjectEntryTablePanel.ResumeLayout(false);
+            this.ProjectEntryTablePanel.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panelTags;
-        private UserInterface.UcNotFound ucNotFound1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel1;
-        private ProfilePicAndName profilePostedBy;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private UcTaskDescription ucIssueDescription1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private AnimatedLabel animatedLabelType;
-        private AnimatedLabel animatedLabelPriority;
-        private System.Windows.Forms.PictureBox pictureBoxDownloadAttachment;
-        private UserInterface.Add_Project.Custom_Control.CustomDateTime IssueDate;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.PictureBox pictureBoxFlag;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panelTop;
+        private ProfilePicAndName profilePicAndName1;
+        private System.Windows.Forms.PictureBox pictureBoxClose;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTags;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox textBoxTags;
+        private System.Windows.Forms.Button BtnAddTag;
+        private System.Windows.Forms.Panel panelTags;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel ProjectEntryTablePanel;
+        private System.Windows.Forms.TextBox IssueDescTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox IssueTitleTextBox;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox solutionTextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button buttonAddSolution;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button BtnSetPriority;
+        private System.Windows.Forms.Button BtnSetType;
+        private UserInterface.Add_Project.Custom_Control.CustomDateTime startDate;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

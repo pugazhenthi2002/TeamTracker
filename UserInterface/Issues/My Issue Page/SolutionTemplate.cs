@@ -47,9 +47,9 @@ namespace UserInterface.Issues.My_Issue_Page
 
         public new void Dispose()
         {
-            for(int ctr=0; ctr < Controls.Count; ctr++)
+            for (int ctr = 0; ctr < Controls.Count; ctr++)
             {
-                if(Controls[ctr] is PictureBox)
+                if (Controls[ctr] is PictureBox)
                 {
                     if ((Controls[ctr] as PictureBox).Image != null) (Controls[ctr] as PictureBox).Image.Dispose();
                 }
@@ -62,14 +62,15 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             remainingHeight = 0;
             IssueSolutionAttachment attachment = DataHandler.FetchIssueSolutionAttachment(selectedSolution.IssueSolutionID);
-            string extension="";
+            string extension = "";
 
             if (attachment != null)
                 extension = System.IO.Path.GetExtension(attachment.IssueSolnAttachmentLocation);
             label1 = new Label()
             {
+                Name = "label1",
                 AutoSize = true,
-                Location = new Point(0, 0),
+                Dock = DockStyle.Top,
                 BackColor = Color.Transparent,
                 Font = new Font(new FontFamily("Ebrima"), 12, FontStyle.Regular),
                 ForeColor = Color.FromArgb(40, 50, 80),
@@ -87,6 +88,7 @@ namespace UserInterface.Issues.My_Issue_Page
             {
                 PictureBox picBox = new PictureBox()
                 {
+                    Dock = DockStyle.Top,
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Location = new Point(0, label1.Height),
                     Width = Width - 20,
@@ -108,11 +110,20 @@ namespace UserInterface.Issues.My_Issue_Page
                 rec.Width -= 5;
                 rec.Height -= 5;
                 typeof(PictureBox).InvokeMember("DoubleBuffered", BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.NonPublic, null, picBox, new object[] { true });
+                picBox.BringToFront();
             }
-            else if(extension!="")
+            else if (extension != "")
             {
+                Panel panel1 = new Panel()
+                {
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(50,0,50,0)
+                };
+
                 Label label2 = new Label()
                 {
+                    Name = "label2",
+                    Dock = DockStyle.Fill,
                     AutoSize = false,
                     Location = new Point(0, label1.Height),
                     Font = new Font(new FontFamily("Ebrima"), 14, FontStyle.Bold),
@@ -122,7 +133,8 @@ namespace UserInterface.Issues.My_Issue_Page
                     Width = Width,
                     Height = 30
                 };
-                Controls.Add(label2);
+                panel1.Controls.Add(label2);
+                Controls.Add(panel1);
                 remainingHeight += label2.Height;
                 SolutionAttachmentTemplate attachmentTemplate = new SolutionAttachmentTemplate()
                 {
@@ -132,15 +144,21 @@ namespace UserInterface.Issues.My_Issue_Page
                     Height = 40
                 };
                 Controls.Add(attachmentTemplate);
+                attachmentTemplate.SendToBack();
+                panel1.SendToBack();
             }
 
             ProfilePicAndName profile = new ProfilePicAndName()
             {
+                Dock = DockStyle.Top,
                 EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedSolution.SolvedByID),
                 Location = new Point(0, DisplayRectangle.Height)
             };
             remainingHeight += profile.Height;
             Controls.Add(profile);
+
+            profile.SendToBack();
+            label1.SendToBack();
             this.Invalidate();
         }
 
@@ -150,7 +168,7 @@ namespace UserInterface.Issues.My_Issue_Page
             rec.Width -= 5;
             rec.Height = rec.Height - 5 - remainingHeight;
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.Red, 2);
+            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border.Dispose();
         }

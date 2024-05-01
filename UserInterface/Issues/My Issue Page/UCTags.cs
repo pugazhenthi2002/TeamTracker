@@ -90,5 +90,13 @@ namespace TeamTracker
             base.OnResize(e);
             InitializeRoundedEdge();
         }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 5));
+            border.Dispose();
+        }
     }
 }

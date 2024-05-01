@@ -40,7 +40,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.BtnOther, 0, 5);
@@ -60,7 +60,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(234, 198);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 242);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // BtnOther
@@ -68,10 +68,11 @@
             this.BtnOther.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnOther.FlatAppearance.BorderSize = 0;
             this.BtnOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOther.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOther.Location = new System.Drawing.Point(3, 163);
+            this.BtnOther.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnOther.Location = new System.Drawing.Point(3, 203);
             this.BtnOther.Name = "BtnOther";
-            this.BtnOther.Size = new System.Drawing.Size(228, 32);
+            this.BtnOther.Size = new System.Drawing.Size(227, 36);
             this.BtnOther.TabIndex = 9;
             this.BtnOther.Text = "Other";
             this.BtnOther.UseVisualStyleBackColor = true;
@@ -82,10 +83,11 @@
             this.BtnLogicalNeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnLogicalNeed.FlatAppearance.BorderSize = 0;
             this.BtnLogicalNeed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLogicalNeed.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLogicalNeed.Location = new System.Drawing.Point(3, 131);
+            this.BtnLogicalNeed.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLogicalNeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnLogicalNeed.Location = new System.Drawing.Point(3, 163);
             this.BtnLogicalNeed.Name = "BtnLogicalNeed";
-            this.BtnLogicalNeed.Size = new System.Drawing.Size(228, 26);
+            this.BtnLogicalNeed.Size = new System.Drawing.Size(227, 34);
             this.BtnLogicalNeed.TabIndex = 8;
             this.BtnLogicalNeed.Text = "Logical Need";
             this.BtnLogicalNeed.UseVisualStyleBackColor = true;
@@ -96,10 +98,11 @@
             this.BtnSecurity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnSecurity.FlatAppearance.BorderSize = 0;
             this.BtnSecurity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSecurity.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSecurity.Location = new System.Drawing.Point(3, 99);
+            this.BtnSecurity.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSecurity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnSecurity.Location = new System.Drawing.Point(3, 123);
             this.BtnSecurity.Name = "BtnSecurity";
-            this.BtnSecurity.Size = new System.Drawing.Size(228, 26);
+            this.BtnSecurity.Size = new System.Drawing.Size(227, 34);
             this.BtnSecurity.TabIndex = 7;
             this.BtnSecurity.Text = "Security";
             this.BtnSecurity.UseVisualStyleBackColor = true;
@@ -110,10 +113,11 @@
             this.BtnOptimization.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnOptimization.FlatAppearance.BorderSize = 0;
             this.BtnOptimization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOptimization.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOptimization.Location = new System.Drawing.Point(3, 67);
+            this.BtnOptimization.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnOptimization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnOptimization.Location = new System.Drawing.Point(3, 83);
             this.BtnOptimization.Name = "BtnOptimization";
-            this.BtnOptimization.Size = new System.Drawing.Size(228, 26);
+            this.BtnOptimization.Size = new System.Drawing.Size(227, 34);
             this.BtnOptimization.TabIndex = 6;
             this.BtnOptimization.Text = "Optimization";
             this.BtnOptimization.UseVisualStyleBackColor = true;
@@ -124,10 +128,11 @@
             this.BtnFeatureReq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnFeatureReq.FlatAppearance.BorderSize = 0;
             this.BtnFeatureReq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnFeatureReq.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFeatureReq.Location = new System.Drawing.Point(3, 35);
+            this.BtnFeatureReq.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnFeatureReq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.BtnFeatureReq.Location = new System.Drawing.Point(3, 43);
             this.BtnFeatureReq.Name = "BtnFeatureReq";
-            this.BtnFeatureReq.Size = new System.Drawing.Size(228, 26);
+            this.BtnFeatureReq.Size = new System.Drawing.Size(227, 34);
             this.BtnFeatureReq.TabIndex = 5;
             this.BtnFeatureReq.Text = "Feature Request";
             this.BtnFeatureReq.UseVisualStyleBackColor = true;
@@ -138,10 +143,11 @@
             this.BtnBug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnBug.FlatAppearance.BorderSize = 0;
             this.BtnBug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBug.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBug.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.BtnBug.Location = new System.Drawing.Point(3, 3);
             this.BtnBug.Name = "BtnBug";
-            this.BtnBug.Size = new System.Drawing.Size(228, 26);
+            this.BtnBug.Size = new System.Drawing.Size(227, 34);
             this.BtnBug.TabIndex = 4;
             this.BtnBug.Text = "Bug";
             this.BtnBug.UseVisualStyleBackColor = true;
@@ -151,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 198);
+            this.ClientSize = new System.Drawing.Size(233, 242);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IssueTypeDropDownForm";

@@ -15,6 +15,17 @@ namespace TeamTracker
 {
     public partial class UCCreateIssue : UserControl
     {
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
         private IssuePriorityDropDownForm PriorityForm;
         private IssueTypeDropDownForm TypeForm;
         private Issue issueData;
@@ -73,6 +84,7 @@ namespace TeamTracker
 
         private void InitializeRoundedEdge()
         {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
@@ -129,24 +141,12 @@ namespace TeamTracker
 
         private void OnClickSetPriority(object sender, EventArgs e)
         {
-            if(Application.OpenForms.OfType<IssuePriorityDropDownForm>().Any())
-            {
-                CloseForm();
-                return;
-            }
-            else if (Application.OpenForms.OfType<IssueTypeDropDownForm>().Any())
-            {
-                CloseForm();
-            }
-
             Button PriorityBtn = sender as Button;
-            Point BtnPoint = PriorityBtn.PointToScreen(new Point(PriorityBtn.Location.X, PriorityBtn.Location.Y));
 
             PriorityForm = new IssuePriorityDropDownForm();
-            PriorityForm.Location = new Point(BtnPoint.X, BtnPoint.Y + PriorityBtn.Height);
-            PriorityForm.Size = new Size(PriorityBtn.Width-3, PriorityForm.Height);
+            PriorityForm.Location = PriorityBtn.PointToScreen(new Point(0, PriorityBtn.Height + 1));
+            PriorityForm.Width = PriorityBtn.Width;
             PriorityForm.PriorityClick = OnClickPriority;
-
             PriorityForm.Show();
 
         }
@@ -154,27 +154,16 @@ namespace TeamTracker
         private void OnClickPriority(object sender, EventArgs e)
         {
             BtnSetPriority.Text = (sender as Button).Text;
-            CloseForm();
         }
 
         private void OnClickSetType(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<IssueTypeDropDownForm>().Any())
-            {
-                CloseForm();
-                return;
-            }
-            else if (Application.OpenForms.OfType<IssuePriorityDropDownForm>().Any())
-            {
-                CloseForm();
-            }
-
             Button TypeBtn = sender as Button;
             Point BtnPoint = TypeBtn.PointToScreen(new Point(TypeBtn.Location.X, TypeBtn.Location.Y));
 
             TypeForm = new IssueTypeDropDownForm();
-            TypeForm.Location = new Point(BtnPoint.X-TypeBtn.Width-7, BtnPoint.Y + TypeBtn.Height);
-            TypeForm.Size = new Size(TypeBtn.Width - 3, TypeForm.Height);
+            TypeForm.Location = TypeBtn.PointToScreen(new Point(0, TypeBtn.Height + 1));
+            TypeForm.Width = TypeBtn.Width;
             TypeForm.TypeClick += OnClickType;
 
             TypeForm.Show();
@@ -183,23 +172,6 @@ namespace TeamTracker
         private void OnClickType(object sender, EventArgs e)
         {
             BtnSetType.Text = (sender as Button).Text;
-            CloseForm();
-        }
-
-        private void CloseForm()
-        {
-            var f1 = (Application.OpenForms.OfType<IssuePriorityDropDownForm>().FirstOrDefault());
-            var f2 = (Application.OpenForms.OfType<IssueTypeDropDownForm>().FirstOrDefault());
-
-            if (f1 != null)
-            {
-                f1.Close();
-            }
-            if (f2 != null)
-            {
-                f2.Close();
-            }
-
         }
 
         private void OnClickAddTag(object sender, EventArgs e)
@@ -221,14 +193,10 @@ namespace TeamTracker
             tag.Dock = DockStyle.Top;
 
             tag.SetText(textBoxTags.Text);
-
             panelTags.Controls.Add(tag);
             tag.BringToFront();
-
             TagList.Add(textBoxTags.Text);
-
             textBoxTags.Text = "";
-
         }
 
         private void OnClickTextBox(object sender, EventArgs e)
@@ -274,14 +242,7 @@ namespace TeamTracker
                 labelWarning.Text = "Add tags";
                 return;
             }
-            //public int IssueID { get; set; }
-            //public string IssueName { get; set; }
-            //public string IssueDesc { get; set; }
-            //public int PostedBy { get; set; }
-            //public IssueType Type { get; set; }
-            //public IssuePriority Priority { get; set; }
-            //public DateTime PostedDate { get; set; }
-            //public List<string> Tags { get; set; }
+
             Issue curIssue = new Issue()
             {
                 IssueName = IssueTitleTextBox.Text,
@@ -393,6 +354,14 @@ namespace TeamTracker
         {
             base.OnLoad(e);
             SetIssue();
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 15));
+            border.Dispose();
         }
     }
 }

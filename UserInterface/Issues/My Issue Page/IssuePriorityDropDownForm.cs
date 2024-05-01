@@ -22,6 +22,19 @@ namespace TeamTracker
         private void OnClickBtn(object sender, EventArgs e)
         {
             PriorityClick?.Invoke(sender, e);
+            Close();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Focus();
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            Close();
         }
     }
 }

@@ -980,16 +980,16 @@ namespace TeamTracker
 
         public static IssueSolution AddIssueSolution(IssueSolution issueSoln)
         {
-            var x = manager.InsertData("issuesolution", new ParameterData[]
+            var result = manager.InsertData("issuesolution", new ParameterData[]
             {
                 new ParameterData("IssueID", issueSoln.IssueID),
                 new ParameterData("Solution", issueSoln.Solution),
                 new ParameterData("SolvedBy", issueSoln.SolvedByID)
 
-            }).Result;
+            }).Value;
 
-            var result = manager.FetchData("issuesolution", $"IssueId='{issueSoln.IssueID}'").Value;
-            issueSoln.IssueSolutionID = Convert.ToInt32(result["IssueSolutionID"][0]);
+            issueSoln.IssueSolutionID = Convert.ToInt32(result);
+
             return issueSoln;
         }
 
@@ -1003,10 +1003,10 @@ namespace TeamTracker
 
                 manager.InsertData("issuesolutionattachment", new ParameterData[]
                 {
-                    new ParameterData("IssuesolutionID", attachment.IssueSolutionID),
+                    new ParameterData("IssueSolutionID", attachment.IssueSolutionID),
                     new ParameterData("DisplayName", attachment.DisplayName),
                     new ParameterData("AttachmentName", attachment.IssueSolnAttachmentName),
-                    new ParameterData("Location", filePath)
+                    new ParameterData("AttachmentLocation", filePath)
                 });
             }
             catch
