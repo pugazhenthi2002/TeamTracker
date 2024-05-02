@@ -966,7 +966,15 @@ namespace TeamTracker
 
         public static void UpdateIssueAttachment(int issueId,IssueAttachment attachment)
         {
-            ;
+            var x = manager.DeleteData("issueattachment", $"IssueID='{issueId}'");
+
+            manager.InsertData("issueattachment", new ParameterData[]
+            {
+                new ParameterData("IssueID",issueId),
+                new ParameterData("AttachmentName", attachment.IssueAttachmentName),
+                new ParameterData("DisplayName", attachment.DisplayName),
+                new ParameterData("Location", attachment.IssueAttachmentLocation)
+            });
         }
 
         public static IssueSolution AddIssueSolution(IssueSolution issueSoln)
