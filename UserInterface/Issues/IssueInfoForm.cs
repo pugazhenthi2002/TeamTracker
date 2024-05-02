@@ -18,12 +18,12 @@ namespace TeamTracker
         public IssueInfoForm()
         {
             InitializeComponent();
-            toolTip1.SetToolTip(pictureBoxFlag, "Priority");
-            toolTip1.SetToolTip(animatedLabelPriority, "Priority");
-            toolTip1.SetToolTip(animatedLabelType, "Issue Type");
-            toolTip1.SetToolTip(pictureBoxDownloadAttachment, "Download Attachment");
-            toolTip1.SetToolTip(profilePostedBy, "Posted By");
-            ucIssueDescription1.EnableEdit = false;
+            //toolTip1.SetToolTip(pictureBoxFlag, "Priority");
+            //toolTip1.SetToolTip(animatedLabelPriority, "Priority");
+            //toolTip1.SetToolTip(animatedLabelType, "Issue Type");
+            //toolTip1.SetToolTip(pictureBoxDownloadAttachment, "Download Attachment");
+            //toolTip1.SetToolTip(profilePostedBy, "Posted By");
+            //ucIssueDescription1.EnableEdit = false;
         }
 
         public Issue IssueData
@@ -52,14 +52,14 @@ namespace TeamTracker
 
         private void SetIssueData()
         {
-            profilePostedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(issueData.PostedBy);
-            ucIssueDescription1.TopLabelText = issueData.IssueName;
-            ucIssueDescription1.CenterLabelText = issueData.IssueDesc;
-            IssueDate.Value = issueData.PostedDate.Date;
-            animatedLabelPriority.Text = issueData.Priority + "";
-            animatedLabelType.Text = issueData.Type + "";
+            //profilePostedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(issueData.PostedBy);
+            //ucIssueDescription1.TopLabelText = issueData.IssueName;
+            //ucIssueDescription1.CenterLabelText = issueData.IssueDesc;
+            //IssueDate.Value = issueData.PostedDate.Date;
+            //animatedLabelPriority.Text = issueData.Priority + "";
+            //animatedLabelType.Text = issueData.Type + "";
 
-            pictureBoxFlag.Image = (issueData.Priority == Issue.IssuePriority.High) ? UserInterface.Properties.Resources.flag_stuck : (issueData.Priority == Issue.IssuePriority.Medium) ? UserInterface.Properties.Resources.flag_OnProcess : UserInterface.Properties.Resources.flag_done;
+            //pictureBoxFlag.Image = (issueData.Priority == Issue.IssuePriority.High) ? UserInterface.Properties.Resources.flag_stuck : (issueData.Priority == Issue.IssuePriority.Medium) ? UserInterface.Properties.Resources.flag_OnProcess : UserInterface.Properties.Resources.flag_done;
             SetTags();
 
         }
@@ -172,20 +172,20 @@ namespace TeamTracker
         {
             if (solutionTextBox.Text == "")
             {
-                labelWarning.Text = "Add Solution";
-                labelWarning.Show();
+                //labelWarning.Text = "Add Solution";
+                //labelWarning.Show();
                 return;
             }
 
             IssueSolution soln = new IssueSolution()
             {
-                IssueID = currentIssue.IssueID,
-                Solution = NotesTextBox.Text,
+                //IssueID = currentIssue.IssueID,
+                //Solution = NotesTextBox.Text,
                 SolvedByID = EmployeeManager.CurrentEmployee.EmployeeID
             };
 
 
-            IssueManager.AddSolution(soln, solnAttachment);
+            //IssueManager.AddSolution(soln, solnAttachment);
         }
     }
 }
