@@ -12,15 +12,6 @@ namespace TeamTracker
 {
     public partial class SelectedTeamLeader : UserControl
     {
-
-        private Employee employee;
-
-
-        public SelectedTeamLeader()
-        {
-            InitializeComponent();
-        }
-
         public event EventHandler OnChangeTeamLeader;
 
         public Employee EmployeeProfile
@@ -45,6 +36,20 @@ namespace TeamTracker
             }
         }
 
+        public SelectedTeamLeader()
+        {
+            InitializeComponent();
+        }
+
+        public new void Dispose()
+        {
+            if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
+
+            profilePictureBox1.Dispose();
+            label1.Dispose();   label2.Dispose();   panel3.Dispose();
+            tableLayoutPanel1.Dispose(); button1.Dispose();
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -55,7 +60,6 @@ namespace TeamTracker
         {
             OnChangeTeamLeader?.Invoke(this, new EventArgs());
         }
-
 
         private void OnResize(object sender, EventArgs e)
         {
@@ -77,9 +81,11 @@ namespace TeamTracker
         private void OnPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0, button1.Width - 1, button1.Height - 1));
             border.Dispose();
         }
+
+        private Employee employee;
     }
 }

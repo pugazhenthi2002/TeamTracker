@@ -185,7 +185,7 @@ namespace UserInterface.ViewProject.TimelineView
             Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
-            e.Graphics.DrawLine(pen, new Point(panel7.Width - 33, 0), new Point(panel7.Width - 33, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(dropDownPicBox.Location.X, 0), new Point(dropDownPicBox.Location.X, panel7.Height - 1));
             pen.Dispose();
         }
 

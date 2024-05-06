@@ -14,46 +14,7 @@ namespace UserInterface.Add_Project.Custom_Control
 {
     public partial class ChooseProjectForm : Form
     {
-
         public event EventHandler<Projects> ProjectSelect;
-        private bool isUpEnable = false, isDownEnable = false, isEntered;
-        private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
-        private List<Projects> availableProjects;
-        private List<Projects> duoProjects;
-        private SingleProjectSelectTemplate prevControl;
-        private List<SelectProjectTemplate> controlCollection = new List<SelectProjectTemplate>();
-        private const int CSDropShadow = 0x00020000;
-
-        public ChooseProjectForm()
-        {
-            InitializeComponent();
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
-            selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
-        }
-
-        public new void Dispose()
-        {
-            if(controlPanel.Controls != null)
-            {
-                for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
-                {
-                    (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
-                    controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
-                    ctr--;
-                }
-            }
-            downPicBox.Image.Dispose(); downPicBox.Dispose();
-            upPicBox.Image.Dispose();   upPicBox.Dispose();
-            label1.Dispose();
-            cancelButton.Dispose(); selectButton.Dispose();
-            tableLayoutPanel1.Dispose();
-            tableLayoutPanel2.Dispose();
-            panel1.Dispose();
-            panel2.Dispose();
-            controlPanel.Dispose();
-            ucNotFound1.Dispose();
-        }
 
         public List<Projects> AvailableProjects
         {
@@ -78,19 +39,44 @@ namespace UserInterface.Add_Project.Custom_Control
                 }
             }
         }
-
-
-        protected override CreateParams CreateParams
+        public ChooseProjectForm()
         {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
-            }
+            InitializeComponent();
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
+            selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
         }
 
+        public new void Dispose()
+        {
+            if(controlPanel.Controls != null)
+            {
+                for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
+                {
+                    (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
+                    controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
+                    ctr--;
+                }
+            }
+            if (downPicBox.Image != null)
+                downPicBox.Image.Dispose();
 
+            downPicBox.Dispose();
+            if (upPicBox.Image != null)
+                upPicBox.Image.Dispose();
+            
+            upPicBox.Dispose();
+            label1.Dispose();
+            cancelButton.Dispose(); selectButton.Dispose();
+            tableLayoutPanel1.Dispose();
+            tableLayoutPanel2.Dispose();
+            panel1.Dispose();
+            panel2.Dispose();
+            controlPanel.Dispose();
+            ucNotFound1.Dispose();
+        }
+
+        
         private void OnPaginateUpClick(object sender, EventArgs e)
         {
             if (prevControl != null)
@@ -222,6 +208,9 @@ namespace UserInterface.Add_Project.Custom_Control
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
+            if (sender is Button && (sender as Button).Name == "selectButton" && ucNotFound1.Visible)
+                return;
+
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border;
             Rectangle rec = new Rectangle(2,2,(sender as Button).Width -6, (sender as Button).Height-6);
@@ -287,6 +276,16 @@ namespace UserInterface.Add_Project.Custom_Control
             downPicBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -299,6 +298,12 @@ namespace UserInterface.Add_Project.Custom_Control
         );
 
 
-        
+        private bool isUpEnable = false, isDownEnable = false, isEntered;
+        private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
+        private List<Projects> availableProjects;
+        private List<Projects> duoProjects;
+        private SingleProjectSelectTemplate prevControl;
+        private List<SelectProjectTemplate> controlCollection = new List<SelectProjectTemplate>();
+        private const int CSDropShadow = 0x00020000;
     }
 }

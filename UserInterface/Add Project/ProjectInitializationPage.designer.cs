@@ -85,14 +85,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 733);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(988, 1128);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel4
@@ -100,10 +99,10 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panel4.Controls.Add(this.fileAttachment1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(7, 445);
-            this.panel4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panel4.Location = new System.Drawing.Point(10, 685);
+            this.panel4.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(645, 244);
+            this.panel4.Size = new System.Drawing.Size(968, 376);
             this.panel4.TabIndex = 2;
             // 
             // fileAttachment1
@@ -112,10 +111,10 @@
             this.fileAttachment1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.fileAttachment1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fileAttachment1.Location = new System.Drawing.Point(0, 0);
-            this.fileAttachment1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.fileAttachment1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.fileAttachment1.Name = "fileAttachment1";
-            this.fileAttachment1.Padding = new System.Windows.Forms.Padding(2);
-            this.fileAttachment1.Size = new System.Drawing.Size(645, 244);
+            this.fileAttachment1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.fileAttachment1.Size = new System.Drawing.Size(968, 376);
             this.fileAttachment1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -131,7 +130,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(659, 366);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(988, 564);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel2
@@ -141,11 +140,11 @@
             this.panel2.Controls.Add(this.selectedTeamLeader1);
             this.panel2.Controls.Add(this.availableTeamLeaders1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(402, 6);
-            this.panel2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panel2.Location = new System.Drawing.Point(602, 9);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(250, 354);
+            this.panel2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel2.Size = new System.Drawing.Size(376, 546);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
@@ -155,11 +154,11 @@
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "No Team Leader Found!!!";
             this.ucNotFound1.HeadTextSize = 10;
-            this.ucNotFound1.Location = new System.Drawing.Point(2, 2);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ucNotFound1.Location = new System.Drawing.Point(3, 3);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.ucNotFound1.Message = "Invalid date";
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(246, 350);
+            this.ucNotFound1.Size = new System.Drawing.Size(370, 540);
             this.ucNotFound1.TabIndex = 2;
             // 
             // selectedTeamLeader1
@@ -167,10 +166,10 @@
             this.selectedTeamLeader1.BackColor = System.Drawing.Color.Transparent;
             this.selectedTeamLeader1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedTeamLeader1.EmployeeProfile = null;
-            this.selectedTeamLeader1.Location = new System.Drawing.Point(2, 2);
-            this.selectedTeamLeader1.Margin = new System.Windows.Forms.Padding(1);
+            this.selectedTeamLeader1.Location = new System.Drawing.Point(3, 3);
+            this.selectedTeamLeader1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.selectedTeamLeader1.Name = "selectedTeamLeader1";
-            this.selectedTeamLeader1.Size = new System.Drawing.Size(246, 350);
+            this.selectedTeamLeader1.Size = new System.Drawing.Size(370, 540);
             this.selectedTeamLeader1.TabIndex = 1;
             this.selectedTeamLeader1.OnChangeTeamLeader += new System.EventHandler(this.SelectedTeamLeader_OnChangeTeamLeader);
             // 
@@ -178,10 +177,10 @@
             // 
             this.availableTeamLeaders1.BackColor = System.Drawing.Color.Transparent;
             this.availableTeamLeaders1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.availableTeamLeaders1.Location = new System.Drawing.Point(2, 2);
-            this.availableTeamLeaders1.Margin = new System.Windows.Forms.Padding(1);
+            this.availableTeamLeaders1.Location = new System.Drawing.Point(3, 3);
+            this.availableTeamLeaders1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.availableTeamLeaders1.Name = "availableTeamLeaders1";
-            this.availableTeamLeaders1.Size = new System.Drawing.Size(246, 350);
+            this.availableTeamLeaders1.Size = new System.Drawing.Size(370, 540);
             this.availableTeamLeaders1.TabIndex = 0;
             this.availableTeamLeaders1.TeamLeaders = null;
             this.availableTeamLeaders1.TeamLeaderClick += new TeamTracker.AvailableTeamLeaders.EmployeeHandler(this.OnTeamLeaderClick);
@@ -191,10 +190,10 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panel1.Controls.Add(this.ProjectEntryTablePanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(7, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panel1.Location = new System.Drawing.Point(10, 9);
+            this.panel1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(381, 354);
+            this.panel1.Size = new System.Drawing.Size(572, 546);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
@@ -212,11 +211,11 @@
             this.ProjectEntryTablePanel.Margin = new System.Windows.Forms.Padding(0);
             this.ProjectEntryTablePanel.Name = "ProjectEntryTablePanel";
             this.ProjectEntryTablePanel.RowCount = 4;
-            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.ProjectEntryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ProjectEntryTablePanel.Size = new System.Drawing.Size(381, 354);
+            this.ProjectEntryTablePanel.Size = new System.Drawing.Size(572, 546);
             this.ProjectEntryTablePanel.TabIndex = 0;
             this.ProjectEntryTablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TextBorderPanelPaint);
             // 
@@ -227,11 +226,11 @@
             this.projectDescTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectDescTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectDescTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.projectDescTextBox.Location = new System.Drawing.Point(7, 90);
-            this.projectDescTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 13);
+            this.projectDescTextBox.Location = new System.Drawing.Point(10, 138);
+            this.projectDescTextBox.Margin = new System.Windows.Forms.Padding(10, 9, 10, 20);
             this.projectDescTextBox.Multiline = true;
             this.projectDescTextBox.Name = "projectDescTextBox";
-            this.projectDescTextBox.Size = new System.Drawing.Size(367, 251);
+            this.projectDescTextBox.Size = new System.Drawing.Size(552, 388);
             this.projectDescTextBox.TabIndex = 3;
             this.projectDescTextBox.Text = "Enter your Desc...";
             // 
@@ -240,10 +239,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label1.Location = new System.Drawing.Point(2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(377, 26);
+            this.label1.Size = new System.Drawing.Size(566, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Project Title";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,10 +251,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Location = new System.Drawing.Point(2, 58);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(3, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(377, 26);
+            this.label2.Size = new System.Drawing.Size(566, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "Project Description";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -268,11 +265,11 @@
             this.projectTitleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectTitleTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectTitleTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.projectTitleTextBox.Location = new System.Drawing.Point(7, 32);
-            this.projectTitleTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.projectTitleTextBox.Location = new System.Drawing.Point(10, 49);
+            this.projectTitleTextBox.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.projectTitleTextBox.Multiline = true;
             this.projectTitleTextBox.Name = "projectTitleTextBox";
-            this.projectTitleTextBox.Size = new System.Drawing.Size(367, 20);
+            this.projectTitleTextBox.Size = new System.Drawing.Size(552, 31);
             this.projectTitleTextBox.TabIndex = 2;
             this.projectTitleTextBox.Text = "Project Name";
             // 
@@ -286,11 +283,12 @@
             this.tableLayoutPanel3.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 369);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 569);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(653, 67);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(980, 102);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // panel6
@@ -298,9 +296,10 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panel6.Controls.Add(this.tableLayoutPanel4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(492, 3);
+            this.panel6.Location = new System.Drawing.Point(739, 5);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(158, 61);
+            this.panel6.Size = new System.Drawing.Size(237, 92);
             this.panel6.TabIndex = 2;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
@@ -313,11 +312,12 @@
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(158, 61);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(237, 92);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // endDateTimePicker
@@ -326,11 +326,11 @@
             this.endDateTimePicker.BorderSize = 2;
             this.endDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.endDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDateTimePicker.Location = new System.Drawing.Point(10, 25);
-            this.endDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 1);
+            this.endDateTimePicker.Location = new System.Drawing.Point(15, 37);
+            this.endDateTimePicker.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.endDateTimePicker.MinimumSize = new System.Drawing.Size(4, 35);
             this.endDateTimePicker.Name = "endDateTimePicker";
-            this.endDateTimePicker.Size = new System.Drawing.Size(138, 35);
+            this.endDateTimePicker.Size = new System.Drawing.Size(207, 35);
             this.endDateTimePicker.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.endDateTimePicker.TabIndex = 2;
             this.endDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -341,9 +341,10 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Location = new System.Drawing.Point(4, 0);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 24);
+            this.label5.Size = new System.Drawing.Size(229, 35);
             this.label5.TabIndex = 1;
             this.label5.Text = "End Date";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -353,9 +354,10 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panel5.Controls.Add(this.tableLayoutPanel6);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(329, 3);
+            this.panel5.Location = new System.Drawing.Point(494, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(157, 61);
+            this.panel5.Size = new System.Drawing.Size(237, 92);
             this.panel5.TabIndex = 1;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
@@ -368,11 +370,12 @@
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(157, 61);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(237, 92);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // startDateTimePicker
@@ -381,11 +384,11 @@
             this.startDateTimePicker.BorderSize = 2;
             this.startDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.startDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDateTimePicker.Location = new System.Drawing.Point(10, 25);
-            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.startDateTimePicker.Location = new System.Drawing.Point(15, 37);
+            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(15, 2, 15, 3);
             this.startDateTimePicker.MinimumSize = new System.Drawing.Size(4, 35);
             this.startDateTimePicker.Name = "startDateTimePicker";
-            this.startDateTimePicker.Size = new System.Drawing.Size(137, 35);
+            this.startDateTimePicker.Size = new System.Drawing.Size(207, 35);
             this.startDateTimePicker.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.startDateTimePicker.TabIndex = 1;
             this.startDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -396,9 +399,10 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Location = new System.Drawing.Point(4, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(151, 24);
+            this.label3.Size = new System.Drawing.Size(229, 35);
             this.label3.TabIndex = 0;
             this.label3.Text = "Start Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -408,9 +412,10 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.panel3.Controls.Add(this.tableLayoutPanel5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Location = new System.Drawing.Point(4, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(320, 61);
+            this.panel3.Size = new System.Drawing.Size(482, 92);
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
@@ -423,11 +428,12 @@
             this.tableLayoutPanel5.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(320, 61);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(482, 92);
             this.tableLayoutPanel5.TabIndex = 1;
             this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.CLientTextBorderPanelPaint);
             // 
@@ -438,11 +444,11 @@
             this.clientTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clientTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.clientTextBox.Location = new System.Drawing.Point(7, 31);
-            this.clientTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.clientTextBox.Location = new System.Drawing.Point(10, 46);
+            this.clientTextBox.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.clientTextBox.Multiline = true;
             this.clientTextBox.Name = "clientTextBox";
-            this.clientTextBox.Size = new System.Drawing.Size(306, 24);
+            this.clientTextBox.Size = new System.Drawing.Size(462, 37);
             this.clientTextBox.TabIndex = 3;
             this.clientTextBox.Text = "Client Email";
             // 
@@ -451,9 +457,10 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Location = new System.Drawing.Point(4, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(314, 25);
+            this.label4.Size = new System.Drawing.Size(474, 37);
             this.label4.TabIndex = 1;
             this.label4.Text = "Client Email";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -462,16 +469,16 @@
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel7.Controls.Add(this.clearButton, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.CreateProject, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 695);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 1070);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(659, 38);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(988, 58);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // clearButton
@@ -483,9 +490,10 @@
             this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.clearButton.Location = new System.Drawing.Point(386, 3);
+            this.clearButton.Location = new System.Drawing.Point(579, 5);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(120, 32);
+            this.clearButton.Size = new System.Drawing.Size(180, 48);
             this.clearButton.TabIndex = 6;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
@@ -501,9 +509,10 @@
             this.CreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateProject.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.CreateProject.Location = new System.Drawing.Point(536, 3);
+            this.CreateProject.Location = new System.Drawing.Point(804, 5);
+            this.CreateProject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CreateProject.Name = "CreateProject";
-            this.CreateProject.Size = new System.Drawing.Size(120, 32);
+            this.CreateProject.Size = new System.Drawing.Size(180, 48);
             this.CreateProject.TabIndex = 5;
             this.CreateProject.Text = "Create";
             this.CreateProject.UseVisualStyleBackColor = false;
@@ -512,11 +521,12 @@
             // 
             // ProjectInitializationPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProjectInitializationPage";
-            this.Size = new System.Drawing.Size(659, 733);
+            this.Size = new System.Drawing.Size(988, 1128);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

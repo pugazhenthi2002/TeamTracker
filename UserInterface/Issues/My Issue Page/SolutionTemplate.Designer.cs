@@ -32,11 +32,12 @@
             // 
             // SolutionTemplate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SolutionTemplate";
-            this.Size = new System.Drawing.Size(584, 267);
+            this.Size = new System.Drawing.Size(893, 470);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnContentBorderPaint);
             this.ResumeLayout(false);
 

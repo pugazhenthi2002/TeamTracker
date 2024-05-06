@@ -22,6 +22,13 @@ namespace UserInterface.Home_Page.Project_Manager
             typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel2, new object[] { true });
         }
 
+        public new void Dispose()
+        {
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();
+            notificationContent1.Dispose(); overview1.Dispose();    deployContent1.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
+        }
+
         public void InitializeProjectManagerHome()
         {
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();

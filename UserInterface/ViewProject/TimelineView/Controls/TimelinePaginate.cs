@@ -123,8 +123,8 @@ namespace TeamTracker
             if (backPictureBox.Image != null) { backPictureBox.Image.Dispose(); }
             if (nextPictureBox.Image != null) { nextPictureBox.Image.Dispose(); }
 
-            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
 
         private void InitializeLabels()
@@ -200,6 +200,34 @@ namespace TeamTracker
                 };
                 timelineControlPanel.Controls.Add(taskTimeline);
                 ctr++;
+            }
+        }
+
+        private void OnPaginateMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+            (sender as PictureBox).BackColor = Color.FromArgb(201, 210, 217);
+            if ((sender as Control).Name == "nextPictureBox")
+            {
+                nextPictureBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+            }
+            else
+            {
+                backPictureBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+            }
+        }
+
+        private void OnPaginateMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
+            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
+            if ((sender as Control).Name == "nextPictureBox")
+            {
+                nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            }
+            else
+            {
+                backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
             }
         }
 

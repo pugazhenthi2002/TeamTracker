@@ -13,15 +13,6 @@ namespace TeamTracker
 {
     public partial class LatestUpgradedVersion : UserControl
     {
-
-
-        public LatestUpgradedVersion()
-        {
-            InitializeComponent();
-            InitializeBorders();
-        }
-
-
         public ProjectVersion LatestVersion
         {
             set
@@ -40,24 +31,25 @@ namespace TeamTracker
                 }
             }
         }
+        public LatestUpgradedVersion()
+        {
+            InitializeComponent();
+            InitializeBorders();
+        }
+
+        public new void Dispose()
+        {
+            label1.Dispose();   label2.Dispose();   label3.Dispose();   label6.Dispose(); label7.Dispose();
+            panel1.Dispose(); panel2.Dispose() ; panel3.Dispose(); panel4.Dispose();    panel7.Dispose();   panel8.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();
+            startDateLabel.Dispose(); endDateLabel.Dispose(); descTextBox.Dispose(); versionName.Dispose();
+        }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             InitializeBorders();
         }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
         
         private void InitializeBorders()
         {
@@ -84,5 +76,16 @@ namespace TeamTracker
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height -2), new Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
     }
 }

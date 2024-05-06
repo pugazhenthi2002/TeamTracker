@@ -21,10 +21,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         public event EventHandler FocusChanged;
         public event ContraintsHandler CheckConstraints;
 
-        public string placeHolderText;
-
-        private bool? isEligibleContraints;
-        private bool isFocused;
         public bool IsFocused
         {
             get
@@ -42,7 +38,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         public bool IsDownSwapEnable { get; set; }
         public bool IsUpSwapEnable { get; set; }
 
-        public int counter;
         public int Counter
         {
             get
@@ -56,7 +51,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             }
         }
 
-        public Milestone milestone;
         public Milestone SelectedMilestone
         {
             get
@@ -77,17 +71,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 10, 10));
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
         public MilestoneTemplate()
         {
             InitializeComponent();
@@ -101,8 +84,8 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            closeButton.Dispose();  upButton.Dispose(); downButton.Dispose();
-            panel1.Dispose();   panel2.Dispose();   counterLabel.Dispose();
+            closeButton.Dispose(); upButton.Dispose(); downButton.Dispose();
+            panel1.Dispose(); panel2.Dispose(); counterLabel.Dispose();
             tableLayoutPanel1.Dispose();
             milestoneDate.Dispose();
             milestoneName.Dispose();
@@ -150,7 +133,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
         private void OnValueChanged(object sender, EventArgs e)
         {
-            if (isEligibleContraints!=null && isEligibleContraints==true)
+            if (isEligibleContraints != null && isEligibleContraints == true)
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
@@ -239,9 +222,9 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
         private void CheckDuplication(object sender, KeyEventArgs e)
         {
-            if(e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter)
             {
-                isEligibleContraints =  CheckConstraints?.Invoke(this, new MilestoneEventArgs()
+                isEligibleContraints = CheckConstraints?.Invoke(this, new MilestoneEventArgs()
                 {
                     MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
@@ -280,7 +263,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
-            border.Dispose(); 
+            border.Dispose();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -317,7 +300,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
-            if(closeButton.Image != null)   closeButton.Image.Dispose();
+            if (closeButton.Image != null) closeButton.Image.Dispose();
 
             closeButton.Image = Properties.Resources.Close_Light_Blue_Hover;
         }
@@ -328,5 +311,22 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
             closeButton.Image = Properties.Resources.Close_30;
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        public Milestone milestone;
+        public string placeHolderText;
+        public int counter;
+        private bool? isEligibleContraints;
+        private bool isFocused;
     }
 }

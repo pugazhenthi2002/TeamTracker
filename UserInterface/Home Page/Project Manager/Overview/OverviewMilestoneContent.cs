@@ -17,18 +17,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class OverviewMilestoneContent : UserControl
     {
-
-        private ProjectVersion version;
-        private bool IsBackEnable = false, IsNextEnable = true;
-        private int flag;
-
-        public OverviewMilestoneContent()
-        {
-            InitializeComponent();
-            InitializeRoundedEdge();
-        }
-
-
         public ProjectVersion Version
         {
             get
@@ -37,8 +25,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
             set
             {
-                //tableLayoutPanel2.SuspendLayout();// tableLayoutPanel3.SuspendLayout(); tableLayoutPanel4.SuspendLayout(); tableLayoutPanel5.SuspendLayout(); tableLayoutPanel6.SuspendLayout();
-                //SuspendLayout();
                 version = value;
                 if (value != null)
                     InitializeOverview();
@@ -50,9 +36,34 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
                 backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
                 nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
-                //ResumeLayout();
-                //tableLayoutPanel2.ResumeLayout(); //tableLayoutPanel3.ResumeLayout(); tableLayoutPanel4.ResumeLayout(); tableLayoutPanel5.ResumeLayout(); tableLayoutPanel6.ResumeLayout();
             }
+        }
+        
+        public OverviewMilestoneContent()
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+        }
+
+        public new void Dispose()
+        {
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
+            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
+            if (pictureBox4.Image != null) pictureBox4.Image.Dispose();
+            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
+            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+
+            completedTaskLabel.Dispose();   donePanel.Dispose();    currentPanel.Dispose(); delayPanel.Dispose();
+            dueTaskLabel.Dispose(); dueTaskTitleLabel.Dispose();    incompleteTaskLabel.Dispose();  milestonePanel.Dispose();   milestoneView1.Dispose();
+            notstartedPanel.Dispose();  pieChart1.Dispose();    taskCountLabel.Dispose();   pictureBox1.Dispose();  pictureBox2.Dispose();
+            pictureBox3.Dispose();  pictureBox4.Dispose();  backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();
+
+            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    
+            tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose();   label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose(); label5.Dispose(); label6.Dispose();
+            label7.Dispose();   label8.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
+            panel6.Dispose();   panel7.Dispose();   panel8.Dispose();   panel9.Dispose();   panel10.Dispose();
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -65,17 +76,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             tableLayoutPanel6.Invalidate();
             InitializeRoundedEdge();
         }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-          (
-              int nLeftRect,     // x-coordinate of upper-left corner
-              int nTopRect,      // y-coordinate of upper-left corner
-              int nRightRect,    // x-coordinate of lower-right corner
-              int nBottomRect,   // y-coordinate of lower-right corner
-              int nWidthEllipse, // height of ellipse
-              int nHeightEllipse // width of ellipse
-          );
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
@@ -212,5 +212,20 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+          (
+              int nLeftRect,     // x-coordinate of upper-left corner
+              int nTopRect,      // y-coordinate of upper-left corner
+              int nRightRect,    // x-coordinate of lower-right corner
+              int nBottomRect,   // y-coordinate of lower-right corner
+              int nWidthEllipse, // height of ellipse
+              int nHeightEllipse // width of ellipse
+          );
+
+        private ProjectVersion version;
+        private bool IsBackEnable = false, IsNextEnable = true;
+        private int flag;
     }
 }

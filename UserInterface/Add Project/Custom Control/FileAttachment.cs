@@ -12,17 +12,6 @@ namespace TeamTracker
 {
     public partial class FileAttachment : UserControl
     {
-
-        public Dictionary<string, VersionAttachment> attachmentCollection;
-        private PDFAttachment pdfAttachment;
-
-
-        public FileAttachment()
-        {
-            InitializeComponent();
-            AttachmentCollection = new Dictionary<string, VersionAttachment>();
-        }
-
         public bool ClearAttachments
         {
             set
@@ -44,6 +33,12 @@ namespace TeamTracker
                     attachmentCollection = null;
                 }
             }
+        }
+
+        public FileAttachment()
+        {
+            InitializeComponent();
+            AttachmentCollection = new Dictionary<string, VersionAttachment>();
         }
 
         public new void Dispose()
@@ -130,5 +125,8 @@ namespace TeamTracker
             e.Graphics.DrawLine(border, new Point(Width - 349, 0), new Point(Width - 349, tableLayoutPanel1.Height));
             border.Dispose();
         }
+
+        public Dictionary<string, VersionAttachment> attachmentCollection;
+        private PDFAttachment pdfAttachment;
     }
 }

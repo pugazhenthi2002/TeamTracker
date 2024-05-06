@@ -12,15 +12,42 @@ namespace TeamTracker
 {
     public partial class NotificationContent : UserControl
     {
+        public List<Notification> NotifyList
+        {
+            set
+            {
+                SuspendLayout();
+                if (value != null && value.Count > 0)
+                {
+                    Dispose();
+                    ucNotFound1.Visible = false;
+                    nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = true;
+                    notifyList = value;
+                    notifyList.Reverse();
+                    currentIndex = 0;
+                    notifyCount = value.Count;
+                    MaxUserControls = (notifyCount >= 2) ? 2 : notifyCount;
+                    endIndex = MaxUserControls - 1;
+                    InitializeNotifications();
+                }
+                else
+                {
+                    ucNotFound1.Visible = true;
+                    nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
+                }
+                ResumeLayout();
+            }
+        }
 
-        private bool IsBackEnable = false, IsNextEnable = true, IsClearAllEntered = false;
-        private int currentIndex = 0, endIndex, notifyCount;
-        private int MaxUserControls = 4;//alter this value for required usercontrols
-        private List<Notification> notifyList = new List<Notification>();
-        private List<UcNotification> UcNotiList = new List<UcNotification>();
-        private Color borderColor = Color.Blue;
-
-
+        public Color BorderColor
+        {
+            get { return borderColor; }
+            set
+            {
+                borderColor = value;
+                this.Invalidate();
+            }
+        }
         public NotificationContent()
         {
             InitializeComponent();
@@ -38,41 +65,6 @@ namespace TeamTracker
                 }
             }
         }
-
-        public List<Notification> NotifyList
-        {
-            set
-            {
-                SuspendLayout();
-                if (value != null && value.Count > 0)
-                {
-                    Dispose();
-                    notifyList = value;
-                    notifyList.Reverse();
-                    currentIndex = 0;
-                    notifyCount = value.Count;
-                    MaxUserControls = (notifyCount >= 2) ? 2 : notifyCount;
-                    endIndex = MaxUserControls - 1;
-                    InitializeNotifications();
-                }
-                else
-                {
-                    nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
-                }
-                ResumeLayout();
-            }
-        }
-
-        public Color BorderColor
-        {
-            get { return borderColor; }
-            set
-            {
-                borderColor = value;
-                this.Invalidate();
-            }
-        }
-
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -148,6 +140,12 @@ namespace TeamTracker
             {
                 nextBtn.Visible = backBtn.Visible = clearAllButton.Visible = false;
             }
+
+            if (UcNotiList.Count == 0)
+            {
+                ucNotFound1.Visible = true;
+                nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
+            }
         }
 
         private void ClearAllButtonClicked(object sender, EventArgs e)
@@ -155,6 +153,8 @@ namespace TeamTracker
             panelBase.Controls.Clear();
             UcNotiList.Clear();
             DataHandler.DeleteAllNotification();
+            ucNotFound1.Visible = true;
+            nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -257,5 +257,12 @@ namespace TeamTracker
                 NotificationPagination();
             }
         }
+
+        private bool IsBackEnable = false, IsNextEnable = true, IsClearAllEntered = false;
+        private int currentIndex = 0, endIndex, notifyCount;
+        private int MaxUserControls = 4;//alter this value for required usercontrols
+        private List<Notification> notifyList = new List<Notification>();
+        private List<UcNotification> UcNotiList = new List<UcNotification>();
+        private Color borderColor = Color.Blue;
     }
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using UserInterface;
+using UserInterface.Add_Project.Custom_Control;
 
 namespace TeamTracker
 {
@@ -25,6 +27,7 @@ namespace TeamTracker
        );
 
 
+        private TransparentForm transparentForm;
         private DataTable dataTable = new DataTable();
         private string SolutionFilePath="";
         private List<Issue> IssueList;
@@ -217,9 +220,20 @@ namespace TeamTracker
 
                 IssueInfoForm issueInfoForm = new IssueInfoForm();
                 issueInfoForm.IssueData = IssueManager.GetIssueById(issueID);
-
-                issueInfoForm.Show();
+                issueInfoForm.IssueInfoFormClose += OnFormClosed;
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(issueInfoForm);
             }
+        }
+
+        private void OnFormClosed(object sender, EventArgs e)
+        {
+            (sender as IssueInfoForm).Dispose();
+            (sender as IssueInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         protected override void OnResize(EventArgs e)

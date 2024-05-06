@@ -17,20 +17,6 @@ namespace TeamTracker
 {
     public partial class UcDeploy : UserControl
     {
-        private TransparentForm transparentForm;
-        private ProjectVersion version;
-        private Projects proj;
-        private VersionSourceCode versionSourceCode;
-
-
-        public UcDeploy()
-        {
-            InitializeComponent();
-            InitializeRoundedEdge();
-        }
-
-        
-
         public delegate void DeployHandler(string name, ProjectVersion project);
         public event DeployHandler Deployment;
 
@@ -38,7 +24,6 @@ namespace TeamTracker
         {
             set
             {
-                //SuspendLayout();
                 if (value != null)
                 {
                     version = value;
@@ -49,8 +34,24 @@ namespace TeamTracker
                     }
                     InitializePage();
                 }
-                //ResumeLayout();
             }
+        }
+
+        public UcDeploy()
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+        }
+
+        public new void Dispose()
+        {
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
+            buttonDeploy.Dispose(); pictureBox1.Dispose();  pieChart1.Dispose();    profilePictureBox1.Dispose();
+            labelProjNameandVersion.Dispose();  submissionDateLabel.Dispose(); teamLeaderName.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
+            label3.Dispose();   label4.Dispose();   label5.Dispose();   label7.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();
         }
 
         private void InitializePage()
@@ -90,7 +91,6 @@ namespace TeamTracker
             InitializeRoundedEdge();
         }
 
-
         private void InitializeRoundedEdge()
         {
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
@@ -99,18 +99,7 @@ namespace TeamTracker
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
         }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
+        
         private void OnDownloaded(object sender, EventArgs e)
         {
             Projects proj = VersionManager.FetchProjectFromID(version.VersionID);
@@ -206,5 +195,21 @@ namespace TeamTracker
 
             border1.Dispose();
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private TransparentForm transparentForm;
+        private ProjectVersion version;
+        private Projects proj;
+        private VersionSourceCode versionSourceCode;
     }
 }

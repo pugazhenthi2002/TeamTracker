@@ -14,15 +14,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class Overview : UserControl
     {
-
-        private Dictionary<string, ProjectVersion> collection = new Dictionary<string, ProjectVersion>();
-        private Color borderColor = Color.Blue;
-
-        public Overview()
-        {
-            InitializeComponent();
-        }
-
         public Dictionary<string, ProjectVersion> OverviewCollection
         {
             set
@@ -50,8 +41,20 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 this.Invalidate();
             }
         }
+        public Overview()
+        {
+            InitializeComponent();
+        }
 
-        
+        public new void Dispose()
+        {
+            if(dropDownPicBox.Image != null) { dropDownPicBox.Image.Dispose(); }
+
+            label1.Dispose();   label2.Dispose();
+            dropDownPicBox.Dispose(); projectNameLabel.Dispose();
+            panel1.Dispose(); panel2.Dispose(); panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
+            overviewMilestoneContent1.Dispose();    ucNotFound1.Dispose();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -82,24 +85,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             overviewMilestoneContent1.Version = version;
             projectNameLabel.Text = name;
         }
-        private void OnMouseEnter(object sender, EventArgs e)
-        {
-            projectNameLabel.BackColor = Color.FromArgb(39, 55, 77);
-            projectNameLabel.ForeColor = Color.FromArgb(221, 230, 237);
-        }
-
-        private void OnMouseLeave(object sender, EventArgs e)
-        {
-            projectNameLabel.BackColor = Color.FromArgb(157, 178, 191);
-            projectNameLabel.ForeColor = Color.Black;
-        }
-
+        
         private void OnVersionSwitchPanelPaint(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
-            e.Graphics.DrawLine(pen, new Point(panel7.Width - 33, 0), new Point(panel7.Width - 33, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(dropDownPicBox.Location.X, 0), new Point(dropDownPicBox.Location.X, panel7.Height - 1));
             pen.Dispose();
         }
 
@@ -120,5 +112,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             dropDownPicBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
             panel7.Invalidate();
         }
+
+        private Dictionary<string, ProjectVersion> collection = new Dictionary<string, ProjectVersion>();
+        private Color borderColor = Color.Blue;
     }
 }

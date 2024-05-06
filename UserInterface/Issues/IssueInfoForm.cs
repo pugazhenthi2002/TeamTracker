@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,18 +13,19 @@ namespace TeamTracker
 {
     public partial class IssueInfoForm : Form
     {
+        public event EventHandler IssueInfoFormClose;
 
         private Issue issueData;
+        private IssueSolutionAttachment issueSolutionAttachment;
 
         public IssueInfoForm()
         {
             InitializeComponent();
-            //toolTip1.SetToolTip(pictureBoxFlag, "Priority");
-            //toolTip1.SetToolTip(animatedLabelPriority, "Priority");
-            //toolTip1.SetToolTip(animatedLabelType, "Issue Type");
-            //toolTip1.SetToolTip(pictureBoxDownloadAttachment, "Download Attachment");
-            //toolTip1.SetToolTip(profilePostedBy, "Posted By");
-            //ucIssueDescription1.EnableEdit = false;
+        }
+
+        public new void Dispose()
+        {
+            ;
         }
 
         public Issue IssueData
@@ -52,14 +54,18 @@ namespace TeamTracker
 
         private void SetIssueData()
         {
-            //profilePostedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(issueData.PostedBy);
-            //ucIssueDescription1.TopLabelText = issueData.IssueName;
-            //ucIssueDescription1.CenterLabelText = issueData.IssueDesc;
-            //IssueDate.Value = issueData.PostedDate.Date;
-            //animatedLabelPriority.Text = issueData.Priority + "";
-            //animatedLabelType.Text = issueData.Type + "";
-
-            //pictureBoxFlag.Image = (issueData.Priority == Issue.IssuePriority.High) ? UserInterface.Properties.Resources.flag_stuck : (issueData.Priority == Issue.IssuePriority.Medium) ? UserInterface.Properties.Resources.flag_OnProcess : UserInterface.Properties.Resources.flag_done;
+            profilePostedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(issueData.PostedBy);
+            ucIssueDescription1.Text = issueData.IssueDesc;
+            IssueTitleTextBox.Text = issueData.IssueName;
+            IssueDate.Value = issueData.PostedDate.Date;
+            BtnSetPriority.Text = issueData.Priority + "";
+            BtnSetType.Text = issueData.Type + "";
+            var result = DataHandler.FetchIssueAttachementById(issueData.IssueID);
+            if (result == null || result.Count == 0)
+            {
+                label4.Visible = pictureBox1.Visible = false;
+                ucNotFound1.Visible = true;
+            }
             SetTags();
 
         }
@@ -93,7 +99,7 @@ namespace TeamTracker
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
         {
-            
+            IssueInfoFormClose?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnMouseEnterClose(object sender, EventArgs e)
@@ -172,20 +178,58 @@ namespace TeamTracker
         {
             if (solutionTextBox.Text == "")
             {
-                //labelWarning.Text = "Add Solution";
-                //labelWarning.Show();
+                ProjectManagerMainForm.notify.AddNotification("Warning", "Invalid Solution Input\nPlease enter some Solutions");
                 return;
             }
 
             IssueSolution soln = new IssueSolution()
             {
-                //IssueID = currentIssue.IssueID,
-                //Solution = NotesTextBox.Text,
+                IssueID = issueData.IssueID,
+                Solution = solutionTextBox.Text,
                 SolvedByID = EmployeeManager.CurrentEmployee.EmployeeID
             };
 
 
-            //IssueManager.AddSolution(soln, solnAttachment);
+            IssueManager.AddSolution(soln, issueSolutionAttachment);
+
+            IssueInfoFormClose?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnAddAttachment(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Title = "Open File";
+            openFileDialog.InitialDirectory = @"C:\";
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                string safeFile = openFileDialog.SafeFileName;
+
+                string extension = System.IO.Path.GetExtension(selectedFilePath);
+
+                issueSolutionAttachment = new IssueSolutionAttachment()
+                {
+                    IssueSolutionID = issueData.IssueID,
+                    DisplayName = safeFile,
+                    IssueSolnAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + extension,
+                    IssueSolnAttachmentLocation = selectedFilePath
+                };
+
+                labelAttachment.Show();
+
+            }
+            else
+            {
+                labelAttachment.Hide();
+            }
+        }
+        private void OnClickAttachmentCount(object sender, EventArgs e)
+        {
+            labelAttachment.Hide();
+            issueSolutionAttachment = null;
         }
     }
 }
