@@ -34,6 +34,11 @@ namespace UserInterface.Task
                 panel1.Visible = false;
                 return;
             }
+            else
+            {
+                panel1.Visible = true;
+                ucNotFound1.Visible = false;
+            }
             InitializeReviewPage();
 
             if (MilestoneManager.CurrentMilestone == null)
@@ -64,7 +69,6 @@ namespace UserInterface.Task
         {
             (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();

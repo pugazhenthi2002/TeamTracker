@@ -156,13 +156,28 @@ namespace TeamTracker
 
         private void OnMouseEnterTaskBoard(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(39, 55, 77);
+            this.BackColor = Color.FromArgb(161, 168, 174);
+            ucDueDate1.BackColor = Color.FromArgb(161, 168, 174);
+            //labelProjectName.ForeColor = Color.FromArgb(201, 210, 217);
+            //labelVersion.ForeColor = Color.FromArgb(201, 210, 217);
+            //LabelTask.ForeColor = Color.FromArgb(201, 210, 217);
+            //ucDueDate1.ForeColor = Color.FromArgb(201, 210, 217);
+            //ucDueDate1.BorderColor = Color.FromArgb(201, 210, 217);
+            //ucDueDate1.DueLabelcolor = Color.FromArgb(201, 210, 217);
+
             this.Cursor = Cursors.Hand;
         }
 
         private void OnMouseLeaveTaskBoard(object sender, EventArgs e)
         {
-            this.BackColor = Color.Transparent;
+            this.BackColor = Color.FromArgb(201, 210, 217);
+            ucDueDate1.BackColor = Color.FromArgb(201, 210, 217);
+            //labelProjectName.ForeColor = Color.FromArgb(39, 55, 77);
+            //labelVersion.ForeColor = Color.FromArgb(39, 55, 77);
+            //LabelTask.ForeColor = Color.FromArgb(39, 55, 77);
+            //ucDueDate1.ForeColor = Color.FromArgb(39, 55, 77);
+            //ucDueDate1.BorderColor = Color.FromArgb(39, 55, 77);
+            //ucDueDate1.DueLabelcolor = Color.FromArgb(39, 55, 77);
             this.Cursor = Cursors.Default;
         }
 

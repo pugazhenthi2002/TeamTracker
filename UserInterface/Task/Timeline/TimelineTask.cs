@@ -186,8 +186,8 @@ namespace TeamTracker
 
         private void OnInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as CreateTaskForm).Dispose();
-            (sender as CreateTaskForm).Close();
+            (sender as TaskInfoForm).Dispose();
+            (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)
                 ParentForm.Show();

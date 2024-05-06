@@ -290,7 +290,8 @@ namespace TeamTracker
             }
             else
             {
-                labelAttachment.Hide();
+                if (Attachement == null)
+                    labelAttachment.Hide();
             }
         }
 

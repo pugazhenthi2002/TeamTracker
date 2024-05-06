@@ -33,7 +33,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.labelCenter = new System.Windows.Forms.TextBox();
+            this.labelCenter = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,13 +98,13 @@
             this.labelCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.labelCenter.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.labelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCenter.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCenter.Font = new System.Drawing.Font("Ebrima", 11.25F);
             this.labelCenter.Location = new System.Drawing.Point(20, 20);
-            this.labelCenter.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.labelCenter.Multiline = true;
             this.labelCenter.Name = "labelCenter";
+            this.labelCenter.ReadOnly = true;
             this.labelCenter.Size = new System.Drawing.Size(265, 97);
             this.labelCenter.TabIndex = 10;
+            this.labelCenter.Text = "";
             // 
             // UcTaskDescription
             // 
@@ -120,7 +120,6 @@
             this.Size = new System.Drawing.Size(305, 137);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -131,6 +130,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox labelCenter;
+        private System.Windows.Forms.RichTextBox labelCenter;
     }
 }

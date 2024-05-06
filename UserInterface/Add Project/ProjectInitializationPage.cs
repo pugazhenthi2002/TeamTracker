@@ -40,6 +40,7 @@ namespace TeamTracker
             clientTextBox.Text = "Client Email";
             startDateTimePicker.Value = DateTime.Now;
             endDateTimePicker.Value = DateTime.Now;
+            fileAttachment1.AttachmentCollection = null;
             fileAttachment1.Dispose();
             ucNotFound1.Visible = true;
             availableTeamLeaders1.Visible = false;

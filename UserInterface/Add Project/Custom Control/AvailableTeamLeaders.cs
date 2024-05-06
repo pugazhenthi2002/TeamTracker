@@ -47,7 +47,7 @@ namespace TeamTracker
                     ctr--;
                 }
             }
-            label1?.Dispose();
+            //label1?.Dispose();
         }
         private void InitializeProfiles()
         {
