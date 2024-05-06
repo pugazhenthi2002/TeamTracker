@@ -52,7 +52,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Padding = new System.Windows.Forms.Padding(2);
             this.panel1.Size = new System.Drawing.Size(569, 46);
             this.panel1.TabIndex = 0;
             // 
@@ -86,7 +86,7 @@
             this.closeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.closeButton.Image = global::UserInterface.Properties.Resources.Close_30;
             this.closeButton.Location = new System.Drawing.Point(515, 1);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(1);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(49, 40);
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -102,7 +102,7 @@
             this.downButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.downButton.Image = global::UserInterface.Properties.Resources.Down_Light_Blue;
             this.downButton.Location = new System.Drawing.Point(480, 1);
-            this.downButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.downButton.Margin = new System.Windows.Forms.Padding(1);
             this.downButton.Name = "downButton";
             this.downButton.Size = new System.Drawing.Size(33, 40);
             this.downButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -143,7 +143,7 @@
             this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upButton.Image = global::UserInterface.Properties.Resources.Up_Light_Blue;
             this.upButton.Location = new System.Drawing.Point(445, 1);
-            this.upButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.upButton.Margin = new System.Windows.Forms.Padding(1);
             this.upButton.Name = "upButton";
             this.upButton.Size = new System.Drawing.Size(33, 40);
             this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -157,7 +157,7 @@
             this.panel2.Controls.Add(this.milestoneName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(37, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel2.Size = new System.Drawing.Size(262, 38);

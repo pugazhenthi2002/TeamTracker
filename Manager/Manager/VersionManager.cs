@@ -127,7 +127,8 @@ namespace TeamTracker
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = newProject.ProjectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing,
+                IsDelayed = false
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
@@ -149,7 +150,8 @@ namespace TeamTracker
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = projectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing,
+                IsDelayed = false
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
@@ -177,6 +179,7 @@ namespace TeamTracker
                     Iter.EndDate = endDate;
                     Iter.StatusOfVersion = status;
                     Iter.ClientEmail = clientEmail;
+                    Iter.IsDelayed = false;
                     DataHandler.UpdateVersion(Iter);
                     if (versionAttachments != null)
                         DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
@@ -201,11 +204,6 @@ namespace TeamTracker
         public static void VersionCompletion(ProjectVersion version)
         {
             UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, DateTime.Today.Date, version.ClientEmail, null);
-        }
-
-        public static void SelectedEmployeeInvolvedVersions(Employee emp)
-        {
-
         }
 
         public static int FetchTeamLeadFromVersionID(int versionID)
@@ -320,11 +318,12 @@ namespace TeamTracker
         //Checks and Sets Project Version's Deadline on everyTick
         public static void CheckVersionDeadline()
         {
-            foreach(var Iter in VersionCollection)
+
+            foreach (var Iter in VersionCollection)
             {
-                if(Iter.StatusOfVersion == ProjectStatus.OnProcess && Iter.EndDate > DateTime.Today)
+                if (Iter.StatusOfVersion != ProjectStatus.Completed && Iter.IsDelayed == false && Iter.EndDate <= DateTime.Now.Date)
                 {
-                    DataHandler.AddNotify("Task Deadline", GetProjectName(Iter.ProjectID) + Iter.VersionName + Iter.EndDate.ToShortDateString(), GetManagerIDFromProjectID(Iter.ProjectID));
+                    DataHandler.AddNotify("Project Version Deadline", GetProjectName(Iter.ProjectID) + Iter.EndDate.ToShortDateString(), FetchProjectFromID(Iter.ProjectID).ManagerID);
                 }
             }
         }

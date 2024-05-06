@@ -17,6 +17,7 @@ namespace TeamTracker
     public partial class ProjectManagerMainForm : Form
     {
         static public NotificationManager notify;
+        private Timer deadlineChecker;
         private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false, isMyIssueSelected = false, isAllIssueSelected = false;
         public ProjectManagerMainForm()
         {
@@ -47,6 +48,10 @@ namespace TeamTracker
             notify.NotificationAlignment = FromNotificationAlignment.RightDown;
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
 
+            deadlineChecker = new Timer();
+            deadlineChecker.Interval = 1000;
+            deadlineChecker.Tick += OnDeadlineTicked;
+
             tabPage1.Visible = true;
             tabPage2.Visible = true;
             tabPage3.Visible = true;
@@ -76,6 +81,13 @@ namespace TeamTracker
             }
         }
 
+        private void OnDeadlineTicked(object sender, EventArgs e)
+        {
+            TaskManager.CheckTaskDeadline();
+            MilestoneManager.CheckMilestoneDeadline();
+            VersionManager.CheckVersionDeadline();
+        }
+
         public event EventHandler ManagerClose;
 
         protected override void OnResize(EventArgs e)
@@ -83,7 +95,6 @@ namespace TeamTracker
             base.OnResize(e);
             profilePicAndName1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, profilePicAndName1.Width, profilePicAndName1.Height, profilePicAndName1.Height, profilePicAndName1.Height));
             profilePicAndName1.BorderRadius = profilePicAndName1.Height / 2;
-            //panel8.Invalidate();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -357,7 +368,7 @@ namespace TeamTracker
 
         private void HighlightSelected(object sender, EventArgs e)
         {
-            isHomeSelected = isAddTaskSelected = isAddProjSelected = isViewProjSelected = isMyTaskSelected = false;
+            isHomeSelected = isAddTaskSelected = isAddProjSelected = isViewProjSelected = isMyTaskSelected = isAllIssueSelected = isMyIssueSelected = false;
 
             if (homePictureBox.Image != null) { homePictureBox.Image.Dispose(); }
             if (addProjectPictureBox.Image != null) { addProjectPictureBox.Image.Dispose(); }

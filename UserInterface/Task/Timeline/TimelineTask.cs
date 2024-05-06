@@ -162,7 +162,7 @@ namespace TeamTracker
                 transparentForm.Show();
                 transparentForm.ShowForm(form1);
             }
-            else
+            else if(e == OperateType.Delete)
             {
                 WarningForm form2 = new WarningForm();
                 form2.Content = "Are you sure, you want delete the task?";
@@ -172,13 +172,31 @@ namespace TeamTracker
                 transparentForm.Show();
                 transparentForm.ShowForm(form2);
             }
+            else
+            {
+                TaskInfoForm form3 = new TaskInfoForm();
+                form3.SelectedTask = selectedTask;
+                form3.InfoFormClose += OnInfoFormClosed;
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form3);
+            }
+        }
+
+        private void OnInfoFormClosed(object sender, EventArgs e)
+        {
+            (sender as CreateTaskForm).Dispose();
+            (sender as CreateTaskForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnTaskFormClose(object sender, EventArgs e)
         {
             (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -191,6 +209,12 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
+            (sender as CreateTaskForm).Dispose();
+            (sender as CreateTaskForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 TaskManager.DeleteTask(selectedTask.TaskID);

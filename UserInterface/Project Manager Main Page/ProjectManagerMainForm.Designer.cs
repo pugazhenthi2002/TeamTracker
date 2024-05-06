@@ -472,7 +472,7 @@
             this.headerPanel.Location = new System.Drawing.Point(250, 0);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.headerPanel.Size = new System.Drawing.Size(1012, 51);
+            this.headerPanel.Size = new System.Drawing.Size(1023, 51);
             this.headerPanel.TabIndex = 1;
             this.headerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnHeaderPanelPaint);
             // 
@@ -480,7 +480,7 @@
             // 
             this.panel8.Controls.Add(this.profilePicAndName1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(717, 0);
+            this.panel8.Location = new System.Drawing.Point(728, 0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(1);
             this.panel8.Size = new System.Drawing.Size(239, 48);
@@ -511,7 +511,7 @@
             this.closePicBox.BackColor = System.Drawing.Color.Transparent;
             this.closePicBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.closePicBox.Image = global::UserInterface.Properties.Resources.Close;
-            this.closePicBox.Location = new System.Drawing.Point(956, 0);
+            this.closePicBox.Location = new System.Drawing.Point(967, 0);
             this.closePicBox.Name = "closePicBox";
             this.closePicBox.Size = new System.Drawing.Size(56, 48);
             this.closePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -527,7 +527,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(250, 51);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1012, 594);
+            this.panel3.Size = new System.Drawing.Size(1023, 594);
             this.panel3.TabIndex = 2;
             // 
             // tabControl1
@@ -548,7 +548,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1012, 594);
+            this.tabControl1.Size = new System.Drawing.Size(1023, 594);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 2;
             // 
@@ -692,17 +692,18 @@
             this.tabPage8.Controls.Add(this.ucMyIssue1);
             this.tabPage8.Location = new System.Drawing.Point(4, 5);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1004, 585);
+            this.tabPage8.Size = new System.Drawing.Size(1015, 585);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // ucMyIssue1
             // 
+            this.ucMyIssue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucMyIssue1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucMyIssue1.Location = new System.Drawing.Point(0, 0);
             this.ucMyIssue1.Name = "ucMyIssue1";
-            this.ucMyIssue1.Size = new System.Drawing.Size(1004, 585);
+            this.ucMyIssue1.Size = new System.Drawing.Size(1015, 585);
             this.ucMyIssue1.TabIndex = 0;
             // 
             // tabPage9
@@ -728,7 +729,7 @@
             // ProjectManagerMainForm
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1262, 645);
+            this.ClientSize = new System.Drawing.Size(1273, 645);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.headerPanel);
             this.Controls.Add(this.panel1);
@@ -817,9 +818,9 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label myIssueLabel;
         private System.Windows.Forms.PictureBox myIssuePicBox;
-        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TabPage tabPage9;
-        private UcMyIssue ucMyIssue1;
         private UCViewAllIssue ucViewAllIssue1;
+        private System.Windows.Forms.TabPage tabPage8;
+        private UcMyIssue ucMyIssue1;
     }
 }

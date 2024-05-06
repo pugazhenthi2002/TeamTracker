@@ -31,14 +31,6 @@ namespace TeamTracker
             return false;
         }
 
-        //Submit Task
-        public static void SubmitTask(Task task, List<SourceCode> sourceCodeCollection)
-        {
-            task.StatusOfTask = TaskStatus.UnderReview;
-
-            DataHandler.AddSourceCode(sourceCodeCollection);
-        }
-
         public static Dictionary<string, int> FilterTeamMemberTaskCountByMilestone(int id)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -85,12 +77,6 @@ namespace TeamTracker
 
         }
 
-        //Move to Done Status
-        public static void MoveToDone(Task task)
-        {
-            task.StatusOfTask = TaskStatus.Done;
-        }
-
         //Created a new Task
         public static void AddTask(string taskName, string taskDescription, DateTime startDate, DateTime endDate, int milestoneID, Priority priority, int assignedTo, TaskAttachment taskAttachment)
         {
@@ -106,6 +92,7 @@ namespace TeamTracker
                 MilestoneID = milestoneID,
                 AssignedBy = EmployeeManager.CurrentEmployee.EmployeeID,
                 AssignedTo = assignedTo,
+                IsDelayed = false
             };
 
             task = DataHandler.AddTask(task);
@@ -127,6 +114,7 @@ namespace TeamTracker
                     Iter.TaskPriority = priority;   Iter.AssignedTo = assignedTo;
                     Iter.StatusOfTask = status;
                     Iter.MilestoneID = milestoneID;
+                    Iter.IsDelayed = false;
                     DataHandler.UpdateTask(Iter);
                 }
             }
@@ -351,10 +339,9 @@ namespace TeamTracker
         //Checks and Notify Every Active Version's Task Deadline
         public static void CheckTaskDeadline()
         {
-            List<int> activeVersion = VersionManager.ActiveVersionID();
             foreach(var Iter in TaskCollection)
             {
-                if(activeVersion.Contains(Iter.VersionID) && Iter.EndDate > DateTime.Today)
+                if (Iter.StatusOfTask != TaskStatus.Done && Iter.IsDelayed == false && Iter.EndDate <= DateTime.Now.Date)
                 {
                     DataHandler.AddNotify("Task Deadline", Iter.TaskName + Iter.EndDate.ToShortDateString(), Iter.AssignedBy);
                 }

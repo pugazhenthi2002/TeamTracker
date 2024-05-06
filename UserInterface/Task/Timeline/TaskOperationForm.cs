@@ -12,6 +12,7 @@ namespace UserInterface.Task.Timeline
 {
     public enum OperateType
     {
+        View,
         Update,
         Delete
     }
@@ -39,6 +40,12 @@ namespace UserInterface.Task.Timeline
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
+            this.Close();
+        }
+
+        private void OnViewClick(object sender, EventArgs e)
+        {
+            Operate?.Invoke(this, OperateType.View);
             this.Close();
         }
     }

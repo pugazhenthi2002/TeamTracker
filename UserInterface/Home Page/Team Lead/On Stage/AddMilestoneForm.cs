@@ -102,6 +102,7 @@ namespace TeamTracker
                     EndDate = milestoneDateTime.Value.Date,
                     Status = MilestoneStatus.Upcoming,
                     VersionID = selectedVersion.VersionID,
+                    IsDelayed = false
                 });
                 prevEndDate = milestoneDateTime.Value;
                 milestoneTextBox.Text = "";

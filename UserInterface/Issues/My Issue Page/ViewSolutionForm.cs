@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +29,8 @@ namespace UserInterface.Issues.My_Issue_Page
             {
                 if(value!=null && value.Count > 0)
                 {
+                    ucNotFound1.Visible = false;
+                    panel2.Visible = panel3.Visible = panel5.Visible = true;
                     issueSolutionCollection = value;
                     startIdx = 0;   endIdx = value.Count >= 4 ? 3 : value.Count - 1;
                     isBackEnable = false;
@@ -36,7 +39,8 @@ namespace UserInterface.Issues.My_Issue_Page
                 }
                 else
                 {
-
+                    ucNotFound1.Visible = true;
+                    panel2.Visible = panel3.Visible = panel5.Visible = false;
                 }
             }
         }
@@ -131,12 +135,20 @@ namespace UserInterface.Issues.My_Issue_Page
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
 
+            if ((sender as Control).Name == "nextPicBox") nextPicBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+            else if ((sender as Control).Name == "backPicBox") backPicBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+            else pictureBox1.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
 
+            if ((sender as Control).Name == "nextPicBox") nextPicBox.Image = isBackEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
+            else if ((sender as Control).Name == "backPicBox") backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
+            else pictureBox1.Image = UserInterface.Properties.Resources.Close_30;
         }
 
         private void OnCloseClick(object sender, EventArgs e)
@@ -173,5 +185,39 @@ namespace UserInterface.Issues.My_Issue_Page
             backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
             nextPicBox.Image = isNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
         }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
     }
 }

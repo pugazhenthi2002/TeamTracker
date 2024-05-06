@@ -49,7 +49,8 @@ namespace TeamTracker
                 new ParameterData("ClientEmail", version.ClientEmail),
                 new ParameterData("StartDate", version.StartDate),
                 new ParameterData("EndDate", version.EndDate),
-                new ParameterData("StatusOfProject", version.StatusOfVersion.ToString())
+                new ParameterData("StatusOfProject", version.StatusOfVersion.ToString()),
+                new ParameterData("IsDelayed", version.IsDelayed.ToString())
             });
 
             var result = manager.FetchData("projectversion", $"VersionName='{version.VersionName}' AND ProjectID='{version.ProjectID}'").Value;
@@ -88,7 +89,8 @@ namespace TeamTracker
                 new ParameterData("StatusOfTask", task.StatusOfTask.ToString()),
                 new ParameterData("PriorityOfTask", task.TaskPriority.ToString()),
                 new ParameterData("AssignedBy", task.AssignedBy),
-                new ParameterData("AssignedTo", task.AssignedTo)
+                new ParameterData("AssignedTo", task.AssignedTo),
+                new ParameterData("IsDelayed", task.IsDelayed.ToString()),
             });
 
             var result = manager.FetchData("task", $"TaskName='{task.TaskName}' AND VersionID='{task.VersionID}'").Value;
@@ -108,7 +110,8 @@ namespace TeamTracker
                     new ParameterData("VersionID", versionID),
                     new ParameterData("StartDate", Iter.StartDate),
                     new ParameterData("EndDate", Iter.EndDate),
-                    new ParameterData("Status", Iter.Status.ToString())
+                    new ParameterData("Status", Iter.Status.ToString()),
+                    new ParameterData("IsDelayed", Iter.IsDelayed.ToString())
                 });
             }
 
@@ -217,7 +220,8 @@ namespace TeamTracker
                 new ParameterData("ClientEmail", version.ClientEmail),
                 new ParameterData("StartDate", version.StartDate),
                 new ParameterData("EndDate", version.EndDate),
-                new ParameterData("StatusOfProject", version.StatusOfVersion.ToString())
+                new ParameterData("StatusOfProject", version.StatusOfVersion.ToString()),
+                new ParameterData("IsDelayed", version.IsDelayed.ToString()),
             });
         }
 
@@ -234,7 +238,8 @@ namespace TeamTracker
                 new ParameterData("StatusOfTask", task.StatusOfTask.ToString()),
                 new ParameterData("PriorityOfTask", task.TaskPriority.ToString()),
                 new ParameterData("AssignedBy", task.AssignedBy),
-                new ParameterData("AssignedTo", task.AssignedTo)
+                new ParameterData("AssignedTo", task.AssignedTo),
+                new ParameterData("IsDelayed", task.IsDelayed),
             });
         }
 
@@ -247,6 +252,7 @@ namespace TeamTracker
                 new ParameterData("StartDate", milestone.StartDate),
                 new ParameterData("EndDate", milestone.EndDate),
                 new ParameterData("Status", milestone.Status.ToString()),
+                new ParameterData("IsDelayed", milestone.IsDelayed.ToString()),
             });
         }
 
@@ -686,7 +692,8 @@ namespace TeamTracker
                     StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
                     EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
                     StatusOfVersion = status,
-                    ProjectID = Convert.ToInt32(result["ProjectID"][ctr])
+                    ProjectID = Convert.ToInt32(result["ProjectID"][ctr]),
+                    IsDelayed = Convert.ToString(result["IsDelayed"][ctr]) == "true" ? true : false
                 });
             }
 
@@ -716,7 +723,8 @@ namespace TeamTracker
                     StatusOfTask = (status == "NotYetStarted") ? TaskStatus.NotYetStarted : (status == "Stuck" ? TaskStatus.Stuck : (status == "OnProcess" ? TaskStatus.OnProcess : (status == "UnderReview" ? TaskStatus.UnderReview : TaskStatus.Done))),
                     TaskPriority = (priority == "Critical") ? Priority.Critical : (priority == "Hard" ? Priority.Hard : (priority == "Medium" ? Priority.Medium : Priority.Easy)),
                     VersionID = Convert.ToInt32(result["VersionID"][ctr]),
-                    MilestoneID = Convert.ToInt32(result["MilestoneID"][ctr])
+                    MilestoneID = Convert.ToInt32(result["MilestoneID"][ctr]),
+                    IsDelayed = Convert.ToString(result["IsDelayed"][ctr]) == "true" ? true : false
                 });
             }
 
@@ -741,7 +749,8 @@ namespace TeamTracker
                     StartDate = Convert.ToDateTime(result["StartDate"][ctr]),
                     EndDate = Convert.ToDateTime(result["EndDate"][ctr]),
                     VersionID = Convert.ToInt32(result["VersionID"][ctr]),
-                    Status = (status == "Completed") ? MilestoneStatus.Completed : ((status == "OnProcess") ? MilestoneStatus.OnProcess : ((status == "Upcoming") ? MilestoneStatus.Upcoming : MilestoneStatus.Delay))
+                    Status = (status == "Completed") ? MilestoneStatus.Completed : ((status == "OnProcess") ? MilestoneStatus.OnProcess : ((status == "Upcoming") ? MilestoneStatus.Upcoming : MilestoneStatus.Delay)),
+                    IsDelayed = Convert.ToString(result["IsDelayed"][ctr]) == "true" ? true : false
                 });
             }
 
@@ -826,21 +835,19 @@ namespace TeamTracker
             return IssueAttachmentCollection;
         }
 
-        public static List<IssueAttachment> FetchIssueAttachementById(int id)
+        public static IssueAttachment FetchIssueAttachementById(int id)
         {
             List<IssueAttachment> IssueAttachmentCollection = StoreIssueAttachmentDetails();
-
-            List<IssueAttachment> result = new List<IssueAttachment>();
 
             foreach (IssueAttachment attachment in IssueAttachmentCollection)
             {
                 if (attachment.IssueID == id)
                 {
-                    result.Add(attachment);
+                    return attachment;
                 }
             }
 
-            return result;
+            return null;
         }
 
         public static List<IssueSolution> StoreIssueSolutionDetails()

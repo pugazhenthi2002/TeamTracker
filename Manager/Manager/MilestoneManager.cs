@@ -117,6 +117,17 @@ namespace TeamTracker
             return -1;
         }
 
+        public static void CheckMilestoneDeadline()
+        {
+            foreach (var Iter in MilestoneCollection)
+            {
+                if (Iter.Status != MilestoneStatus.Completed && Iter.IsDelayed == false && Iter.EndDate <= DateTime.Now.Date)
+                {
+                    DataHandler.AddNotify("Milestone Deadline", Iter.MileStoneName + Iter.EndDate.ToShortDateString(), EmployeeManager.FetchManagerFromTeamLeadID(VersionManager.FetchTeamLeadFromVersionID(Iter.VersionID)).EmployeeID);
+                }
+            }
+        }
+
         public static List<Milestone> FetchMilestones(int versionID)
         {
             List<Milestone> result = new List<Milestone>();

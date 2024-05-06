@@ -25,5 +25,6 @@ namespace TeamTracker
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public ProjectStatus StatusOfVersion { get; set; }
+        public bool IsDelayed { get; set; }
     }
 }

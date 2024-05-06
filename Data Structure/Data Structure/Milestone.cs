@@ -22,5 +22,6 @@ namespace TeamTracker
         public DateTime StartDate;
         public DateTime EndDate;
         public MilestoneStatus Status;
+        public bool IsDelayed;
     }
 }

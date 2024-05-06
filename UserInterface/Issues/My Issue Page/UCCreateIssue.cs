@@ -37,7 +37,6 @@ namespace TeamTracker
         public UCCreateIssue()
         {
             InitializeComponent();
-            InitializeRoundedEdge();
 
             panelTags.HorizontalScroll.Enabled = false;
             panelTags.HorizontalScroll.Visible = false;
@@ -49,10 +48,7 @@ namespace TeamTracker
             labelWarning.Hide();
             labelAttachment.Hide();
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
-
         }
-
-
 
         public EventHandler DiscardClick;
         public EventHandler PostClick;
@@ -66,35 +62,13 @@ namespace TeamTracker
             set
             {
                 issueData = value;
-               // SetIssue();
+                SetIssue();
             }
         }
-
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
-        private void InitializeRoundedEdge()
-        {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
-            panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 20, 20));
-            panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
-            panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
-            labelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachment.Width, labelAttachment.Height, labelAttachment.Width, labelAttachment.Width));
-            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
-        }
+        
 
         private void SetIssue()
         {
-
             if(issueData==null)
             {
                 return;
@@ -103,7 +77,11 @@ namespace TeamTracker
             IssueDescTextBox.Text = issueData.IssueDesc;
             BtnSetPriority.Text = issueData.Priority+"";
             BtnSetType.Text = issueData.Type+"";
-            
+            Attachement = DataHandler.FetchIssueAttachementById(issueData.IssueID);
+
+            labelAttachment.Visible = Attachement == null ? false : true;
+
+            TagList = issueData.Tags;
             foreach(string tag in issueData.Tags)
             {
                 UCTags tagUc = new UCTags();
@@ -115,15 +93,12 @@ namespace TeamTracker
                 panelTags.Controls.Add(tagUc);
                 tagUc.BringToFront();
             }
-
-            
-            
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            InitializeRoundedEdge();
+            labelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachment.Width, labelAttachment.Height, labelAttachment.Width, labelAttachment.Height));
         }
 
         private void ProjectEntryTablePanel_Paint(object sender, PaintEventArgs e)
@@ -142,13 +117,11 @@ namespace TeamTracker
         private void OnClickSetPriority(object sender, EventArgs e)
         {
             Button PriorityBtn = sender as Button;
-
             PriorityForm = new IssuePriorityDropDownForm();
             PriorityForm.Location = PriorityBtn.PointToScreen(new Point(0, PriorityBtn.Height + 1));
             PriorityForm.Width = PriorityBtn.Width;
             PriorityForm.PriorityClick = OnClickPriority;
             PriorityForm.Show();
-
         }
 
         private void OnClickPriority(object sender, EventArgs e)
@@ -254,7 +227,15 @@ namespace TeamTracker
                 Tags = TagList
             };
 
-            IssueManager.AddIssue(curIssue, Attachement);
+            if (issueData != null)
+            {
+                curIssue.IssueID = issueData.IssueID;
+                IssueManager.UpdateIssue(curIssue, Attachement);
+            }
+            else
+            {
+                IssueManager.AddIssue(curIssue, Attachement);
+            }
 
             PostClick?.Invoke(ParentForm, e);
         }
@@ -353,6 +334,7 @@ namespace TeamTracker
         {
             base.OnLoad(e);
             SetIssue();
+            labelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachment.Width, labelAttachment.Height, labelAttachment.Width, labelAttachment.Height));
         }
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
@@ -362,5 +344,16 @@ namespace TeamTracker
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 15));
             border.Dispose();
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+      (
+          int nLeftRect,     // x-coordinate of upper-left corner
+          int nTopRect,      // y-coordinate of upper-left corner
+          int nRightRect,    // x-coordinate of lower-right corner
+          int nBottomRect,   // y-coordinate of lower-right corner
+          int nWidthEllipse, // height of ellipse
+          int nHeightEllipse // width of ellipse
+      );
     }
 }

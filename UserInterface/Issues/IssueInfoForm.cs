@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,22 @@ namespace TeamTracker
         public IssueInfoForm()
         {
             InitializeComponent();
+            solutionTextBox.GotFocus += RemoveSolutionPlaceHolders;
+            solutionTextBox.LostFocus += AddSolutionPlaceHolders;
+        }
+
+        private void AddSolutionPlaceHolders(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(solutionTextBox.Text))
+                solutionTextBox.Text = "Enter a Solution";
+        }
+
+        private void RemoveSolutionPlaceHolders(object sender, EventArgs e)
+        {
+            if (solutionTextBox.Text == "Enter a Solution")
+            {
+                solutionTextBox.Text = "";
+            }
         }
 
         public new void Dispose()
@@ -61,7 +78,7 @@ namespace TeamTracker
             BtnSetPriority.Text = issueData.Priority + "";
             BtnSetType.Text = issueData.Type + "";
             var result = DataHandler.FetchIssueAttachementById(issueData.IssueID);
-            if (result == null || result.Count == 0)
+            if (result == null)
             {
                 label4.Visible = pictureBox1.Visible = false;
                 ucNotFound1.Visible = true;
@@ -72,7 +89,7 @@ namespace TeamTracker
 
         private void SetTags()
         {
-            foreach(string tg in issueData.Tags)
+            foreach (string tg in issueData.Tags)
             {
                 Panel spacePanel = new Panel()
                 {
@@ -90,7 +107,7 @@ namespace TeamTracker
                     Height = panelTags.Height / 5
 
                 };
-                
+
                 panelTags.Controls.Add(tags);
                 panelTags.Controls.Add(spacePanel);
 
@@ -110,13 +127,10 @@ namespace TeamTracker
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Alice_Blue_30;
-
         }
 
         private void OnPaintTagsPanel(object sender, PaintEventArgs e)
         {
-
-
             Point pt1 = new Point(4, 4);
             Point pt2 = new Point(panel2.Width - 6, 4);
             Point pt3 = new Point(panel2.Width - 6, panel2.Height - 6);
@@ -138,12 +152,12 @@ namespace TeamTracker
 
         private void OnClickDownloadAttachment(object sender, EventArgs e)
         {
-            if(issueData== null)
+            if (issueData == null)
             {
                 return;
             }
 
-            List<IssueAttachment> attachments = DataHandler.FetchIssueAttachementById(issueData.IssueID);
+            IssueAttachment attachment = DataHandler.FetchIssueAttachementById(issueData.IssueID);
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -155,22 +169,18 @@ namespace TeamTracker
             {
                 savePath = saveFileDialog.FileName;
             }
-
-            for (int ctr = 0; ctr < attachments.Count; ctr++)
+            string fileNetworkPath = attachment.IssueAttachmentLocation;
+            try
             {
-                string fileNetworkPath = attachments[ctr].IssueAttachmentLocation;
-                try
-                {
-                    string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                    string filePath = System.IO.Path.GetDirectoryName(savePath);
-                    filePath = System.IO.Path.Combine(filePath, attachments[ctr].DisplayName);
-                    System.IO.File.Copy(fileNetworkPath, filePath, true);
-                    ProjectManagerMainForm.notify.AddNotification("Download Completed", attachments[ctr].DisplayName);
-                }
-                catch
-                {
-                    ProjectManagerMainForm.notify.AddNotification("Download Failed", attachments[ctr].DisplayName);
-                }
+                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
+                string filePath = System.IO.Path.GetDirectoryName(savePath);
+                filePath = System.IO.Path.Combine(filePath, attachment.DisplayName);
+                System.IO.File.Copy(fileNetworkPath, filePath, true);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.DisplayName);
+            }
+            catch
+            {
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.DisplayName);
             }
         }
 
@@ -231,5 +241,28 @@ namespace TeamTracker
             labelAttachment.Hide();
             issueSolutionAttachment = null;
         }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
     }
 }

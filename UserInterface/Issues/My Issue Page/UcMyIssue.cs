@@ -7,25 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using UserInterface;
 using UserInterface.Issues.My_Issue_Page;
+using UserInterface;
+using System.Runtime.InteropServices;
 
 namespace TeamTracker
 {
     public partial class UcMyIssue : UserControl
     {
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-      (
-          int nLeftRect,     // x-coordinate of upper-left corner
-          int nTopRect,      // y-coordinate of upper-left corner
-          int nRightRect,    // x-coordinate of lower-right corner
-          int nBottomRect,   // y-coordinate of lower-right corner
-          int nWidthEllipse, // height of ellipse
-          int nHeightEllipse // width of ellipse
-      );
-
         private TransparentForm transparentForm;
         private DataTable dataTable = new DataTable();
         private Form CreateIssueForm;
@@ -38,7 +27,35 @@ namespace TeamTracker
             InitializeComponent();
             InitializeIssueManager();
             dataGridView1.AllowUserToAddRows = false;
+
             SetData();
+
+
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (dataGridView1.Columns.Count == 0)
+            {
+                return;
+            }
+            dataGridView1.Columns[1].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[2].Width = panelDatagridviewBase.Width * 25 / 100;
+            dataGridView1.Columns[3].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[4].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15 / 100;
+            dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15 / 100;
+
+            dataGridView1.CurrentCell = null;
+
+            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
         }
 
         private void SetData()
@@ -60,13 +77,16 @@ namespace TeamTracker
             }
 
             dataGridView1.DataSource = dt;
-            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns["IssueID"].Visible = false;
             dataGridView1.Columns[1].Width = panelDatagridviewBase.Width * 15 / 100;
             dataGridView1.Columns[2].Width = panelDatagridviewBase.Width * 25 / 100;
             dataGridView1.Columns[3].Width = panelDatagridviewBase.Width * 15 / 100;
             dataGridView1.Columns[4].Width = panelDatagridviewBase.Width * 15 / 100;
             dataGridView1.Columns[5].Width = panelDatagridviewBase.Width * 15 / 100;
             dataGridView1.Columns[6].Width = panelDatagridviewBase.Width * 15 / 100;
+
+            dataGridView1.Columns[1].AutoSizeMode = dataGridView1.Columns[2].AutoSizeMode = dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = dataGridView1.Columns[5].AutoSizeMode = dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void InitializeIssueManager()
@@ -100,7 +120,6 @@ namespace TeamTracker
             {
                 List<string> filters = new List<string>();
 
-
                 //for Priority
                 if (checkBoxHigh.Checked)
                     filters.Add("Priority = 'High'");
@@ -130,6 +149,7 @@ namespace TeamTracker
                     dataTable.DefaultView.RowFilter = filter;
                 else
                     dataTable.DefaultView.RowFilter = "";
+
             }
         }
 
@@ -147,7 +167,7 @@ namespace TeamTracker
             CreateIssueForm.StartPosition = FormStartPosition.CenterScreen;
             CreateIssueForm.FormBorderStyle = FormBorderStyle.None;
             CreateIssueForm.Size = new Size(650, 450);
-
+            CreateIssueForm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, CreateIssueForm.Width, CreateIssueForm.Height, 20, 20));
 
             ucCreate = new UCCreateIssue();
             ucCreate.Dock = DockStyle.Fill;
@@ -157,35 +177,29 @@ namespace TeamTracker
             if (sender is int)
             {
                 ucCreate.IssueData = IssueManager.GetIssueById(Convert.ToInt32(sender));
+                ucCreate.IssueData.IssueID = Convert.ToInt32(sender);
             }
 
             CreateIssueForm.Controls.Add(ucCreate);
-
             transparentForm = new TransparentForm();
             transparentForm.Show();
             transparentForm.ShowForm(CreateIssueForm);
-
         }
 
         private void OnClickDiscardIssue(object sender, EventArgs e)
         {
-            (sender as Form).Close();
-
-            if (ParentForm != null)
-                ParentForm.Show();
+            CreateIssueForm.Close();
         }
 
         private void OnClickPostIssue(object sender, EventArgs e)
         {
-            (sender as Form).Dispose();
-            (sender as Form).Close();
-
-            if (ParentForm != null)
-                ParentForm.Show();
+            CreateIssueForm.Close();
+            IssueManagerIssueUpdated(sender, e);
         }
 
         private void OnClickDeleteIssue(object sender, EventArgs e)
         {
+
             List<int> rowsToRemove = new List<int>();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
@@ -201,6 +215,7 @@ namespace TeamTracker
                 int row = rowsToRemove[ctr];
                 int issueID = Convert.ToInt32(dataGridView1["IssueID", row - ctr].Value);
                 IssueManager.RemoveIssue(IssueManager.GetIssueById(issueID));
+
             }
         }
 
@@ -226,6 +241,7 @@ namespace TeamTracker
                 menuForm.Show();
 
                 ClickedRow = e.RowIndex;
+
             }
         }
 
@@ -244,9 +260,6 @@ namespace TeamTracker
         {
             (sender as ViewSolutionForm).Dispose();
             (sender as ViewSolutionForm).Close();
-
-            if (ParentForm != null)
-                ParentForm.Show();
         }
 
         private void OnClickEditIssue(object sender, EventArgs e)
@@ -262,20 +275,6 @@ namespace TeamTracker
             border.Dispose();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
-            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
-            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 20, 20));
-        }
-
         private void OnMouseEnter(object sender, EventArgs e)
         {
             (sender as Control).BackColor = Color.FromArgb(201, 210, 217);
@@ -285,5 +284,17 @@ namespace TeamTracker
         {
             (sender as Control).BackColor = Color.FromArgb(221, 230, 237);
         }
+
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+      (
+          int nLeftRect,     // x-coordinate of upper-left corner
+          int nTopRect,      // y-coordinate of upper-left corner
+          int nRightRect,    // x-coordinate of lower-right corner
+          int nBottomRect,   // y-coordinate of lower-right corner
+          int nWidthEllipse, // height of ellipse
+          int nHeightEllipse // width of ellipse
+      );
     }
 }

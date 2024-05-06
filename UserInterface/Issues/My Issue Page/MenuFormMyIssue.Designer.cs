@@ -46,7 +46,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(234, 99);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(181, 66);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -56,10 +56,10 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label1.Location = new System.Drawing.Point(3, 52);
+            this.label1.Location = new System.Drawing.Point(3, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 44);
+            this.label1.Size = new System.Drawing.Size(175, 27);
             this.label1.TabIndex = 3;
             this.label1.Text = "View Solution";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,7 +75,7 @@
             this.buttonEdit.Location = new System.Drawing.Point(3, 3);
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(3);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(228, 43);
+            this.buttonEdit.Size = new System.Drawing.Size(175, 27);
             this.buttonEdit.TabIndex = 2;
             this.buttonEdit.Text = "Edit Issue";
             this.buttonEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(234, 99);
+            this.ClientSize = new System.Drawing.Size(181, 66);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MenuFormMyIssue";
