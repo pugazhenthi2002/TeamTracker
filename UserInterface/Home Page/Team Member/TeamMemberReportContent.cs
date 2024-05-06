@@ -148,7 +148,7 @@ namespace UserInterface.Home_Page.Team_Member
             {
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
                 totalmilestoneCount.Text = MilestoneManager.FilterMilestoneCount(month, year).ToString();
-                //commitCount.Text = TaskManager.TotalCommits(month, year, priority).ToString();
+                commitCount.Text = TaskManager.TotalCommits(month, year, priority).ToString();
                 Dictionary<string, SortedDictionary<DateTime, int>> result = TaskManager.FilterTaskCountByDate(month, year);
 
                 cartesianChart1.Series.Clear();

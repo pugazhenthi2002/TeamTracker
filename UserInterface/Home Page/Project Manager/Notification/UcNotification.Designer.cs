@@ -48,13 +48,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panelContent, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 8);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(583, 134);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 206);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -74,7 +74,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(583, 40);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(874, 62);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnEdgePaint);
             // 
@@ -84,10 +84,10 @@
             this.labelDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelDateTime.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDateTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelDateTime.Location = new System.Drawing.Point(349, 0);
+            this.labelDateTime.Location = new System.Drawing.Point(524, 0);
             this.labelDateTime.Margin = new System.Windows.Forms.Padding(0);
             this.labelDateTime.Name = "labelDateTime";
-            this.labelDateTime.Size = new System.Drawing.Size(174, 40);
+            this.labelDateTime.Size = new System.Drawing.Size(262, 62);
             this.labelDateTime.TabIndex = 2;
             this.labelDateTime.Text = "hh:mm:ss";
             this.labelDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -97,10 +97,10 @@
             this.pictureBoxClose.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxClose.Image = global::UserInterface.Properties.Resources.Close_Dark_Blue;
-            this.pictureBoxClose.Location = new System.Drawing.Point(523, 0);
+            this.pictureBoxClose.Location = new System.Drawing.Point(786, 0);
             this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxClose.Name = "pictureBoxClose";
-            this.pictureBoxClose.Size = new System.Drawing.Size(60, 40);
+            this.pictureBoxClose.Size = new System.Drawing.Size(88, 62);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxClose.TabIndex = 0;
             this.pictureBoxClose.TabStop = false;
@@ -117,7 +117,7 @@
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Margin = new System.Windows.Forms.Padding(0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(349, 40);
+            this.labelHeader.Size = new System.Drawing.Size(524, 62);
             this.labelHeader.TabIndex = 1;
             this.labelHeader.Text = "Header";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -128,11 +128,11 @@
             this.panelContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(208)))), ((int)(((byte)(211)))));
             this.panelContent.Controls.Add(this.textBoxContent);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(0, 40);
+            this.panelContent.Location = new System.Drawing.Point(0, 62);
             this.panelContent.Margin = new System.Windows.Forms.Padding(0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.panelContent.Size = new System.Drawing.Size(583, 94);
+            this.panelContent.Padding = new System.Windows.Forms.Padding(4, 0, 4, 5);
+            this.panelContent.Size = new System.Drawing.Size(874, 144);
             this.panelContent.TabIndex = 1;
             this.panelContent.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPanelPaint);
             // 
@@ -141,25 +141,27 @@
             this.textBoxContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(208)))), ((int)(((byte)(211)))));
             this.textBoxContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxContent.Enabled = false;
             this.textBoxContent.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.textBoxContent.Location = new System.Drawing.Point(3, 0);
+            this.textBoxContent.Location = new System.Drawing.Point(4, 0);
+            this.textBoxContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxContent.Name = "textBoxContent";
             this.textBoxContent.ReadOnly = true;
-            this.textBoxContent.Size = new System.Drawing.Size(577, 91);
+            this.textBoxContent.Size = new System.Drawing.Size(866, 139);
             this.textBoxContent.TabIndex = 0;
             this.textBoxContent.Text = "";
             // 
             // UcNotification
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UcNotification";
-            this.Padding = new System.Windows.Forms.Padding(5);
-            this.Size = new System.Drawing.Size(593, 144);
-            this.Resize += new System.EventHandler(this.OnResizeUserControl);
+            this.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.Size = new System.Drawing.Size(890, 222);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

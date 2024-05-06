@@ -12,28 +12,8 @@ namespace TeamTracker
 {
     public partial class AvailableTeamLeaders : UserControl, IDisposable
     {
-
         public delegate void EmployeeHandler(Employee employee);
         public event EmployeeHandler TeamLeaderClick;
-        private List<Employee> teamLeaders;
-
-        public AvailableTeamLeaders()
-        {
-            InitializeComponent();
-        }
-
-        public new void Dispose()
-        {
-            if (profilePanel.Controls != null)
-            {
-                for(int ctr=0; ctr<profilePanel.Controls.Count; ctr++)
-                {
-                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
-                    profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
-                    ctr--;
-                }
-            }
-        }
 
         public List<Employee> TeamLeaders
         {
@@ -51,7 +31,24 @@ namespace TeamTracker
                 }
             }
         }
+        public AvailableTeamLeaders()
+        {
+            InitializeComponent();
+        }
 
+        public new void Dispose()
+        {
+            if (profilePanel.Controls != null)
+            {
+                for(int ctr=0; ctr<profilePanel.Controls.Count; ctr++)
+                {
+                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
+                    profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
+                    ctr--;
+                }
+            }
+            label1?.Dispose();
+        }
         private void InitializeProfiles()
         {
             TeamLeaderPicAndName uc;
@@ -79,5 +76,7 @@ namespace TeamTracker
             e.Graphics.DrawLine(border, new Point(0,label1.Height), new Point(Width, label1.Height));
             border.Dispose();
         }
+
+        private List<Employee> teamLeaders;
     }
 }

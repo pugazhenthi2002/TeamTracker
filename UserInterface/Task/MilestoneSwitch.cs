@@ -12,6 +12,7 @@ using LiveCharts.Wpf;
 using LiveCharts;
 using System.Windows.Media;
 using UserInterface.ViewPage;
+using System.Runtime.ConstrainedExecution;
 
 namespace UserInterface.Task
 {
@@ -166,6 +167,8 @@ namespace UserInterface.Task
 
             if (e != null)
             {
+                MilestoneManager.ModifyTaskDateBasedOnMilestone(MilestoneManager.CurrentMilestone.MileStoneID);
+                MilestoneManager.CurrentMilestone.EndDate = DateTime.Now.Date;
                 MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
                 MilestoneManager.CurrentMilestone = null;
                 VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);

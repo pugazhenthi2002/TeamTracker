@@ -17,19 +17,22 @@ namespace TeamTracker
 {
     public partial class VersionUpgrade : UserControl
     {
-        private TransparentForm transparentForm;
-        private Projects project;
-
         public VersionUpgrade()
         {
             InitializeComponent();
             InitializeBorder();
-            versionNameTextBox.LostFocus += AddVersionNamePlaceHolders;
-            versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
-            descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
-            descTextBox.LostFocus += AddVersionDescPlaceHolders;
-            clientTextBox.GotFocus += RemoveClientPlaceHolders;
-            clientTextBox.LostFocus += AddClientPlaceHolders;
+            InitializePlaceHolders();
+        }
+
+        public new void Dispose()
+        {
+            button1.Dispose();  clientTextBox.Dispose();    descTextBox.Dispose(); fileAttachment1.Dispose();
+            endDateLabel.Dispose(); endDatePanel.Dispose(); endDateTimePicker.Dispose();    label1.Dispose();   label3.Dispose();   label5.Dispose();
+            latestUpgradedVersion1.Dispose();   profilePicAndName1.Dispose();   upgradeButton.Dispose();    ucNotFound1.Dispose();  ucNotFound2.Dispose();  versionNameTextBox.Dispose();
+            startDateLabel.Dispose(); startDatePanel.Dispose(); startDateTimePicker.Dispose();
+            tableLayoutPanel1.Dispose(); tableLayoutPanel2.Dispose(); tableLayoutPanel3.Dispose();  tableLayoutPanel4.Dispose(); tableLayoutPanel5.Dispose(); tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose(); tableLayoutPanel8.Dispose();    tableLayoutPanel9.Dispose();
+            panel1.Dispose();   panel2.Dispose(); panel3.Dispose(); panel4.Dispose(); panel5.Dispose();
+            panel6.Dispose();   panel7.Dispose(); panel8.Dispose(); panel9.Dispose(); panel10.Dispose();
         }
 
         public void InitializePage()
@@ -43,6 +46,16 @@ namespace TeamTracker
             latestUpgradedVersion1.LatestVersion = null;
             fileAttachment1.AttachmentCollection = null;
             profilePicAndName1.EmployeeProfile = null;
+        }
+
+        private void InitializePlaceHolders()
+        {
+            versionNameTextBox.LostFocus += AddVersionNamePlaceHolders;
+            versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
+            descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
+            descTextBox.LostFocus += AddVersionDescPlaceHolders;
+            clientTextBox.GotFocus += RemoveClientPlaceHolders;
+            clientTextBox.LostFocus += AddClientPlaceHolders;
         }
 
         private void AddVersionNamePlaceHolders(object sender, EventArgs e)
@@ -87,16 +100,7 @@ namespace TeamTracker
                 clientTextBox.Text = "Enter Client Email";
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
+        
 
         private void InitializeBorder()
         {
@@ -338,5 +342,19 @@ namespace TeamTracker
 
             border1.Dispose();
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private TransparentForm transparentForm;
+        private Projects project;
     }
 }

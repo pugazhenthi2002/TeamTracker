@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UserInterface</RootNamespace>
     <AssemblyName>UserInterface</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -77,23 +77,11 @@
     <Compile Include="Add Project\AddProject.designer.cs">
       <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Add Project\Custom Control\AttachmentWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\AttachmentWarningForm.Designer.cs">
-      <DependentUpon>AttachmentWarningForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Add Project\Custom Control\AvailableTeamLeaders.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Add Project\Custom Control\AvailableTeamLeaders.designer.cs">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\ChooseProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\ChooseProject.designer.cs">
-      <DependentUpon>ChooseProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Add Project\Custom Control\ChooseProjectForm.cs">
       <SubType>Form</SubType>
@@ -115,12 +103,6 @@
     </Compile>
     <Compile Include="Add Project\Custom Control\LatestUpgradedVersion.designer.cs">
       <DependentUpon>LatestUpgradedVersion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\NoResultFound.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\NoResultFound.designer.cs">
-      <DependentUpon>NoResultFound.cs</DependentUpon>
     </Compile>
     <Compile Include="Add Project\Custom Control\PDFAttachment.cs">
       <SubType>UserControl</SubType>
@@ -207,15 +189,6 @@
     <Compile Include="Home Page\Project Manager\Deploy\DeployContent.Designer.cs">
       <DependentUpon>DeployContent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\DownloadBtn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.Designer.cs">
-      <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -234,23 +207,11 @@
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.Designer.cs">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.Designer.cs">
-      <DependentUpon>MilestoneAndDateTemplate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneDetailsForm.Designer.cs">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneLabel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneLabel.Designer.cs">
-      <DependentUpon>MilestoneLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneView.cs">
       <SubType>UserControl</SubType>
@@ -263,12 +224,6 @@
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\Overview.Designer.cs">
       <DependentUpon>Overview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\OverviewContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\OverviewContent.Designer.cs">
-      <DependentUpon>OverviewContent.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\OverviewDropDownForm.cs">
       <SubType>Form</SubType>
@@ -287,12 +242,6 @@
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\StartPathAndDate.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.Designer.cs">
-      <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\ProjectManagerHome.cs">
       <SubType>UserControl</SubType>
@@ -327,12 +276,6 @@
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\UCOnStage.Designer.cs">
       <DependentUpon>UCOnStage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\UcMilestone.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\UcMilestone.Designer.cs">
-      <DependentUpon>UcMilestone.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Team Lead\Report\FilterForm.cs">
       <SubType>Form</SubType>
@@ -843,14 +786,8 @@
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\AttachmentWarningForm.resx">
-      <DependentUpon>AttachmentWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\AvailableTeamLeaders.resx">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\ChooseProject.resx">
-      <DependentUpon>ChooseProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\ChooseProjectForm.resx">
       <DependentUpon>ChooseProjectForm.cs</DependentUpon>
@@ -860,9 +797,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\LatestUpgradedVersion.resx">
       <DependentUpon>LatestUpgradedVersion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\NoResultFound.resx">
-      <DependentUpon>NoResultFound.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\PDFAttachment.resx">
       <DependentUpon>PDFAttachment.cs</DependentUpon>
@@ -903,12 +837,6 @@
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\DeployContent.resx">
       <DependentUpon>DeployContent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\DownloadBtn.resx">
-      <DependentUpon>DownloadBtn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.resx">
-      <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcDeploy.resx">
       <DependentUpon>UcDeploy.cs</DependentUpon>
     </EmbeddedResource>
@@ -919,14 +847,8 @@
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.resx">
-      <DependentUpon>MilestoneAndDateTemplate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneDetailsForm.resx">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneLabel.resx">
-      <DependentUpon>MilestoneLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneView.resx">
       <DependentUpon>MilestoneView.cs</DependentUpon>
@@ -934,17 +856,11 @@
     <EmbeddedResource Include="Home Page\Project Manager\Overview\Overview.resx">
       <DependentUpon>Overview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewContent.resx">
-      <DependentUpon>OverviewContent.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewDropDownForm.resx">
       <DependentUpon>OverviewDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewMilestoneContent.resx">
       <DependentUpon>OverviewMilestoneContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.resx">
-      <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\ProjectManagerHome.resx">
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
@@ -961,9 +877,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\On Stage\UCOnStage.resx">
       <DependentUpon>UCOnStage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Team Lead\On Stage\UcMilestone.resx">
-      <DependentUpon>UcMilestone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\Report\FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>

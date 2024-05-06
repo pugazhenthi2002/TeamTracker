@@ -347,7 +347,6 @@ namespace TeamTracker
         {
             labelAttachment.Hide();
             Attachement = null;
-
         }
 
         protected override void OnLoad(EventArgs e)

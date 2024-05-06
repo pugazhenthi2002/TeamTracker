@@ -12,25 +12,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class MonthForm : Form
     {
-        private const int CSDropShadow = 0x00020000;
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
-            }
-        }
-
-        private int month;
-        private Label prevLabel;
-
-        public MonthForm()
-        {
-            InitializeComponent();
-        }
-
         public event EventHandler<int> MonthSelect;
 
         public int Month
@@ -50,8 +31,17 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 }
             }
         }
+        public MonthForm()
+        {
+            InitializeComponent();
+        }
 
-
+        public new void Dispose()
+        {
+            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   label6.Dispose();
+            label7.Dispose();   label8.Dispose();   label9.Dispose();   label10.Dispose();   label11.Dispose();   label12.Dispose();
+            tableLayoutPanel1.Dispose();
+        }
         private void OnMonthClick(object sender, EventArgs e)
         {
             if(prevLabel != null)
@@ -70,7 +60,22 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
+            Dispose();
             this.Close();
         }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
+        private const int CSDropShadow = 0x00020000;
+        private int month;
+        private Label prevLabel;
     }
 }

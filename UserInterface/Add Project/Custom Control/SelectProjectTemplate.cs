@@ -14,23 +14,8 @@ namespace UserInterface.Add_Project.Custom_Control
 {
     public partial class SelectProjectTemplate : UserControl
     {
-
-        private Projects project1, project2;
-
-        public SelectProjectTemplate()
-        {
-            InitializeComponent();
-        }
-
         public delegate void ProjectHandler(Projects project, SingleProjectSelectTemplate control);
         public event ProjectHandler ProjectSelect;
-
-        public new void Dispose()
-        {
-            singleProjectSelectTemplate1.Dispose();
-            singleProjectSelectTemplate2.Dispose();
-            tableLayoutPanel1.Dispose();
-        }
 
         public List<Projects> DuoProject
         {
@@ -41,6 +26,18 @@ namespace UserInterface.Add_Project.Custom_Control
                 if (value.Count > 0)
                     InitializeTemplate();
             }
+        }
+
+        public SelectProjectTemplate()
+        {
+            InitializeComponent();
+        }
+
+        public new void Dispose()
+        {
+            singleProjectSelectTemplate1.Dispose();
+            singleProjectSelectTemplate2.Dispose();
+            tableLayoutPanel1.Dispose();
         }
 
         private void OnProjectSelected(object sender, Projects project)
@@ -71,5 +68,7 @@ namespace UserInterface.Add_Project.Custom_Control
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
+
+        private Projects project1, project2;
     }
 }

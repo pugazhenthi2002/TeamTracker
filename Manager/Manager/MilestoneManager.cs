@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -184,6 +185,8 @@ namespace TeamTracker
             {
                 if(milestoneList[ctr].Status == MilestoneStatus.OnProcess)
                 {
+                    milestoneList[ctr].EndDate = DateTime.Now.Date;
+                    ModifyTaskDateBasedOnMilestone(milestoneList[ctr].MileStoneID);
                     UpdateMilestone(milestoneList[ctr], MilestoneStatus.Completed);
                     if (ctr < milestoneList.Count - 1)
                     {
@@ -191,6 +194,18 @@ namespace TeamTracker
                         CurrentMilestone = milestoneList[ctr + 1];
                     }
                     break;
+                }
+            }
+        }
+
+        public static void ModifyTaskDateBasedOnMilestone(int milestoneID)
+        {
+            foreach (var Iter in TaskManager.TaskCollection)
+            {
+                if (Iter.MilestoneID == milestoneID)
+                {
+                    if (Iter.StartDate >= DateTime.Now.Date) Iter.StartDate = DateTime.Now.Date;
+                    if (Iter.EndDate >= DateTime.Now.Date) Iter.EndDate = DateTime.Now.Date;
                 }
             }
         }

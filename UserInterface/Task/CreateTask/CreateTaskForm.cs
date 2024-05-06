@@ -211,6 +211,7 @@ namespace UserInterface.Task.CreateTask
             {
                 selectedMilestone = e;
                 buttonSetMilestone.Text = e.MileStoneName;
+                ProjectManagerMainForm.notify.AddNotification("Milestone Date", "For the selected Milestone - " + e.MileStoneName + "\nThe Milestone Start Date is Between " + e.StartDate.ToShortDateString() + " and " + e.EndDate.ToShortDateString());
             }
         }
 

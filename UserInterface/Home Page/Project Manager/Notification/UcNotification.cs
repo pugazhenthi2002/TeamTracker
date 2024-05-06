@@ -13,16 +13,7 @@ namespace TeamTracker
 {
     public partial class UcNotification : UserControl
     {
-        private Notification notify;
-
-        public UcNotification()
-        {
-            InitializeComponent();
-            //InitializeRoundedEdge();
-        }
-
         public EventHandler<Notification> CloseClick;
-
         public Notification NotficationData
         {
             get
@@ -36,15 +27,12 @@ namespace TeamTracker
                 labelHeader.Text = value.NotificationHeader;
                 textBoxContent.Text = value.NotificationContent;
                 labelDateTime.Text = value.NotificationDateTime.ToShortDateString();
-                //if (textBoxContent.GetLineFromCharIndex(textBoxContent.Text.Length) > textBoxContent.ClientSize.Height / textBoxContent.Font.Height)
-                //{
-                //    textBoxContent.ScrollBars = ScrollBars.Vertical;
-                //}
-                //else
-                //{
-                //    textBoxContent.ScrollBars = ScrollBars.None;
-                //}
             }
+        }
+
+        public UcNotification()
+        {
+            InitializeComponent();
         }
 
         public new void Dispose()
@@ -54,22 +42,14 @@ namespace TeamTracker
             panelContent.Dispose();
             tableLayoutPanel1.Dispose();
             tableLayoutPanel2.Dispose();
-            pictureBoxClose.Image.Dispose();
+            if (pictureBoxClose.Image != null)
+                pictureBoxClose.Image.Dispose(); 
             pictureBoxClose.Dispose();
             textBoxContent.Dispose();
         }
 
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
+       
 
         private void InitializeRoundedEdge()
         {
@@ -86,11 +66,6 @@ namespace TeamTracker
         {
             Cursor = Cursors.Default;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Dark_Blue;
-        }
-
-        private void OnResizeUserControl(object sender, EventArgs e)
-        {
-            //InitializeRoundedEdge();
         }
 
         private void OnClickClose(object sender, EventArgs e)
@@ -113,5 +88,18 @@ namespace TeamTracker
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height), new Point((sender as Control).Width, (sender as Control).Height));
             border.Dispose();
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
+
+        private Notification notify;
     }
 }

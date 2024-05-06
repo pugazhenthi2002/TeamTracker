@@ -13,17 +13,6 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 {
     public partial class DeployContent : UserControl
     {
-        private bool isSourceCodeDownloaded = false;
-        private int counter = 0;
-        private bool isBackEnable = false, isNextEnable = false;
-        private List<ProjectVersion> deployVersions;
-        private Color borderColor = Color.Blue;
-
-        public DeployContent()
-        {
-            InitializeComponent();
-        }
-
         public List<ProjectVersion> DeployVersions
         {
             set
@@ -61,8 +50,22 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             }
         }
 
-        
+        public DeployContent()
+        {
+            InitializeComponent();
+        }
 
+        public new void Dispose()
+        {
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+
+            ucDeploy1.Dispose();    backBtn.Dispose();  nextBtn.Dispose();
+            label1.Dispose();   ucNotFound1.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose(); panel4.Dispose(); panel5.Dispose();
+            nextBtn.Dispose();  backBtn.Dispose();
+        }
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -128,7 +131,6 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
                 string filePath = System.IO.Path.Combine(savePath, sourceCode.DisplayName);
                 System.IO.File.Copy(sourceCode.VersionLocation, filePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + deployVersions[counter].VersionName);
-                isSourceCodeDownloaded = true;
             }
             catch
             {
@@ -183,5 +185,10 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
             backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
         }
+
+        private int counter = 0;
+        private bool isBackEnable = false, isNextEnable = false;
+        private List<ProjectVersion> deployVersions;
+        private Color borderColor = Color.Blue;
     }
 }

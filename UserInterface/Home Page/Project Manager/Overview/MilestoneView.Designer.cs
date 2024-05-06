@@ -183,7 +183,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MilestoneView";
             this.Size = new System.Drawing.Size(2211, 231);
-            this.Resize += new System.EventHandler(this.OnMilestoneViewResize);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

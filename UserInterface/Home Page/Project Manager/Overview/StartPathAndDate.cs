@@ -17,12 +17,6 @@ namespace TeamTracker
     }
     public class StartPathAndDate: Panel
     {
-
-
-        private PathStyle style;
-        private Color milestoneColor;
-        private DateTime milestoneDate;
-
         public DateTime MilestoneDate
         {
             get { return milestoneDate; }
@@ -57,8 +51,7 @@ namespace TeamTracker
                 this.Invalidate();
             }
         }
-
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -96,5 +89,8 @@ namespace TeamTracker
             e.Graphics.DrawString(milestoneDate.ToShortDateString(), headerFont, textBrush, rec, SFormat);
         }
 
+        private PathStyle style;
+        private Color milestoneColor;
+        private DateTime milestoneDate;
     }
 }

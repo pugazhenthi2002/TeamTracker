@@ -16,16 +16,7 @@ namespace TeamTracker
 {
     public partial class AddMilestoneForm : Form
     {
-        private bool isUpEnable, isDownEnable;
-        private int startIdx, endIdx, focusIdx=0;
-
-        private MilestoneTemplate Template;
-        private List<MilestoneTemplate> TemplateCollection;
-        public List<Milestone> milestoneCollection;
-        private DateTime prevEndDate, startDate, endDate;
         public event EventHandler<List<Milestone>> MilestoneExtract;
-
-        private ProjectVersion selectedVersion;
         public ProjectVersion SelectedVersion
         {
             set
@@ -557,7 +548,21 @@ namespace TeamTracker
             border.Dispose();
         }
 
-        private const int CSDropShadow = 0x00020000;
+        private void InitializeRoundEdges()
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 30, 30));
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 30, 30));
+            pictureBox2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox2.Width, pictureBox2.Height, 10, 10));
+            pictureBox3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox3.Width, pictureBox3.Height, 10, 10));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundEdges();
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -579,19 +584,13 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        private void InitializeRoundEdges()
-        {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
-            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 30, 30));
-            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 30, 30));
-            pictureBox2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox2.Width, pictureBox2.Height, 10, 10));
-            pictureBox3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox3.Width, pictureBox3.Height, 10, 10));
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundEdges();
-        }
+        private bool isUpEnable, isDownEnable;
+        private int startIdx, endIdx, focusIdx = 0;
+        private const int CSDropShadow = 0x00020000;
+        private MilestoneTemplate Template;
+        private List<MilestoneTemplate> TemplateCollection;
+        public List<Milestone> milestoneCollection;
+        private DateTime prevEndDate, startDate, endDate;
+        private ProjectVersion selectedVersion;
     }
 }

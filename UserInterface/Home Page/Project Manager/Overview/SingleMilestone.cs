@@ -11,18 +11,6 @@ namespace TeamTracker
 {
     public class SingleMilestone: Panel
     {
-
-        private string name;
-        private MilestoneDetailsForm form;
-        private Milestone milestone;
-        private Color milestoneColor;
-
-        public SingleMilestone()
-        {
-            DoubleBuffered = true;
-            Width = Height;
-        }
-
         public Milestone MilestoneContent
         {
             get
@@ -51,6 +39,11 @@ namespace TeamTracker
             }
         }
 
+        public SingleMilestone()
+        {
+            DoubleBuffered = true;
+            Width = Height;
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -92,9 +85,13 @@ namespace TeamTracker
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
+            form.Dispose();
             form.Close();
         }
 
-        
+        private string name;
+        private MilestoneDetailsForm form;
+        private Milestone milestone;
+        private Color milestoneColor;
     }
 }

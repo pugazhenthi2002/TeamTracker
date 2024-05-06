@@ -16,7 +16,13 @@ namespace TeamTracker
         {
             InitializeComponent();
         }
-
+        public new void Dispose()
+        {
+            initializeButton.Dispose(); versionUpgradeButton.Dispose();
+            panel1.Dispose();  panel2.Dispose();    tableLayoutPanel1.Dispose();
+            versionUpgrade1.Dispose();  projectInitializationPage1.Dispose();
+            tabPage1.Dispose(); tabPage2.Dispose(); tabControl1.Dispose();
+        }
         public void InitializePage()
         {
             tabControl1.SuspendLayout();

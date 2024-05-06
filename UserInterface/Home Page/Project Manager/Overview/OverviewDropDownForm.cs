@@ -13,29 +13,23 @@ namespace TeamTracker
 {
     public partial class OverviewDropDownForm : Form
     {
-        private const int CSDropShadow = 0x00020000;
-        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
+        public delegate void OverviewHandler(string name, ProjectVersion version);
+        public event OverviewHandler OverviewSelected;
 
         public OverviewDropDownForm()
         {
             InitializeComponent();
         }
 
-
-        public delegate void OverviewHandler(string name, ProjectVersion version);
-        public event OverviewHandler OverviewSelected;
-
-
-        protected override CreateParams CreateParams
+        public new void Dispose()
         {
-            get
+             for(int ctr=0; ctr< Controls.Count; ctr++)
             {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
+                (Controls[ctr] as Label).Dispose();
+                ctr--;
             }
         }
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -53,6 +47,7 @@ namespace TeamTracker
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
+            Dispose();
             this.Close();
         }
 
@@ -63,16 +58,7 @@ namespace TeamTracker
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-       (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // height of ellipse
-           int nHeightEllipse // width of ellipse
-       );
+        
 
         private void InitializeDropDownForm()
         {
@@ -133,6 +119,28 @@ namespace TeamTracker
             }
         }
 
-        
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
+
+        private const int CSDropShadow = 0x00020000;
+        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
     }
 }

@@ -12,22 +12,9 @@ namespace TeamTracker
 {
     public partial class MilestoneView : UserControl
     {
-
-        private List<Milestone> milestoneCollection { get; set; }
-        private List<StartPathAndDate> pathAndDateCollection { get; set; }
-        private List<SingleMilestone> singleMilestoneCollection { get; set; }
-        private int startCount, endCount;
-
-        public MilestoneView()
-        {
-            InitializeComponent();
-            pathAndDateCollection = new List<StartPathAndDate>() { startPathAndDate1, startPathAndDate2, startPathAndDate3, startPathAndDate4, startPathAndDate5 };
-            singleMilestoneCollection = new List<SingleMilestone>() { singleMilestone1, singleMilestone2, singleMilestone3, singleMilestone4 };
-        }
-
         public List<Milestone> MilestoneCollection
         {
-            get { return milestoneCollection;}
+            get { return milestoneCollection; }
             set
             {
                 milestoneCollection = value;
@@ -35,7 +22,19 @@ namespace TeamTracker
                 endCount = 2;
             }
         }
-        
+        public MilestoneView()
+        {
+            InitializeComponent();
+            pathAndDateCollection = new List<StartPathAndDate>() { startPathAndDate1, startPathAndDate2, startPathAndDate3, startPathAndDate4, startPathAndDate5 };
+            singleMilestoneCollection = new List<SingleMilestone>() { singleMilestone1, singleMilestone2, singleMilestone3, singleMilestone4 };
+        }
+
+        public new void Dispose()
+        {
+            tableLayoutPanel2.Dispose();
+            singleMilestone1.Dispose(); singleMilestone2.Dispose(); singleMilestone3.Dispose(); singleMilestone4.Dispose();
+            startPathAndDate1.Dispose(); startPathAndDate2.Dispose(); startPathAndDate3.Dispose(); startPathAndDate4.Dispose(); startPathAndDate5.Dispose();
+        }
 
         public int ChangeMilestoneUI(bool flag)
         {
@@ -79,11 +78,6 @@ namespace TeamTracker
             //ResumeLayout();
         }
 
-        private void OnMilestoneViewResize(object sender, EventArgs e)
-        {
-
-        }
-
         private Color SetColor(MilestoneStatus status)
         {
             if (status == MilestoneStatus.Upcoming)
@@ -103,5 +97,10 @@ namespace TeamTracker
                 return Color.FromArgb(3, 4, 94);
             }
         }
+
+        private List<Milestone> milestoneCollection { get; set; }
+        private List<StartPathAndDate> pathAndDateCollection { get; set; }
+        private List<SingleMilestone> singleMilestoneCollection { get; set; }
+        private int startCount, endCount;
     }
 }

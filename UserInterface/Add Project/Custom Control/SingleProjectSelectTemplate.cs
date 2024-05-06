@@ -8,36 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
+using UserInterface.Home_Page.Project_Manager;
 
 namespace UserInterface.Add_Project.Custom_Control
 {
     public partial class SingleProjectSelectTemplate : UserControl
     {
-
-        private bool isHovered = false;
-        private bool isClicked = false;
-        private Projects project;
-
-        public SingleProjectSelectTemplate()
-        {
-            DoubleBuffered = true;
-            InitializeComponent();
-        }
-
-        public new void Dispose()
-        {
-            if(profilePictureBox1.Image != null)
-            {
-                profilePictureBox1.Image.Dispose();
-            }
-            profilePictureBox1.Dispose();
-            panel1.Dispose();
-            tableLayoutPanel1.Dispose();
-            projectLabel.Dispose();
-            teamLeadLabel.Dispose();
-            versionLabel.Dispose();
-        }
-
         public event EventHandler<Projects> ProjectClick;
 
         public Projects Project
@@ -63,6 +39,28 @@ namespace UserInterface.Add_Project.Custom_Control
             }
         }
 
+
+        public SingleProjectSelectTemplate()
+        {
+            DoubleBuffered = true;
+            InitializeComponent();
+        }
+
+        public new void Dispose()
+        {
+            if(profilePictureBox1.Image != null)
+            {
+                profilePictureBox1.Image.Dispose();
+            }
+            profilePictureBox1.Dispose();
+            panel1.Dispose();
+            tableLayoutPanel1.Dispose();
+            projectLabel.Dispose();
+            teamLeadLabel.Dispose();
+            versionLabel.Dispose();
+        }
+       
+
         private void InitializeTemplate()
         {
             projectLabel.Text = project.ProjectName;
@@ -74,7 +72,14 @@ namespace UserInterface.Add_Project.Custom_Control
             {
                 profilePictureBox1.Image.Dispose();
             }
-            profilePictureBox1.Image = Image.FromFile(emp.EmpProfileLocation);
+            try
+            {
+                profilePictureBox1.Image = Image.FromFile(emp.EmpProfileLocation);
+            }
+            catch
+            {
+                ProjectManagerMainForm.notify.AddNotification("Error", "Couldn't able to load the Profile Image");
+            }
         }
 
         private void OnClicked(object sender, EventArgs e)
@@ -132,5 +137,9 @@ namespace UserInterface.Add_Project.Custom_Control
             }
             border.Dispose();
         }
+
+        private bool isHovered = false;
+        private bool isClicked = false;
+        private Projects project;
     }
 }
