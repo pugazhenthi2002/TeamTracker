@@ -346,6 +346,7 @@
             this.profilePictureBox1.Name = "profilePictureBox1";
             this.profilePictureBox1.ParentColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.profilePictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.profilePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox1.TabIndex = 2;
             this.profilePictureBox1.TabStop = false;
             // 

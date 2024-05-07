@@ -334,7 +334,7 @@
             this.pictureBoxFlag.Margin = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.pictureBoxFlag.Name = "pictureBoxFlag";
             this.pictureBoxFlag.Size = new System.Drawing.Size(26, 56);
-            this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFlag.TabIndex = 0;
             this.pictureBoxFlag.TabStop = false;
             // 

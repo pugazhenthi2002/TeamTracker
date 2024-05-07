@@ -200,8 +200,8 @@ namespace UserInterface.Task.CreateTask
             MilestoneDropForm = new MilestoneDropDownForm();
             MilestoneDropForm.Show();
             MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
-            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(-10, buttonSetMilestone.Height + 2));
-            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width+20, MilestoneDropForm.Height);
+            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
+            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
         }
 

@@ -31,7 +31,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             set
             {
                 isFocused = value;
-                Invalidate();
+                tableLayoutPanel1.BackColor = value ? Color.FromArgb(127, 158, 171) : Color.FromArgb(157, 178, 191);
             }
         }
 
@@ -127,8 +127,8 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Dark_Blue;
-            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Dark_Blue;
+            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Light_Blue;
+            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Light_Blue;
         }
 
         private void OnValueChanged(object sender, EventArgs e)
@@ -235,18 +235,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             }
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            if (isFocused)
-            {
-                Pen border = new Pen(Color.Red, 2);
-                e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 1, Height - 1), 5));
-                border.Dispose();
-            }
-        }
-
         private void OnClicked(object sender, EventArgs e)
         {
             FocusChanged?.Invoke(this, EventArgs.Empty);
@@ -274,11 +262,11 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             Cursor = Cursors.Hand;
             if (picBox.Name == "upButton")
             {
-                picBox.Image = Properties.Resources.Up_Dark_Blue_Hover;
+                picBox.Image = Properties.Resources.Up_Light_Blue_Hover;
             }
             else
             {
-                picBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
+                picBox.Image = Properties.Resources.Down_Light_Blue_Hover;
             }
         }
 
@@ -290,11 +278,11 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             Cursor = Cursors.Default;
             if (picBox.Name == "upButton")
             {
-                picBox.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Dark_Blue;
+                picBox.Image = IsUpSwapEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Light_Blue;
             }
             else
             {
-                picBox.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Dark_Blue;
+                picBox.Image = IsDownSwapEnable ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Light_Blue;
             }
         }
 
@@ -309,7 +297,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = Properties.Resources.Close_30;
+            closeButton.Image = Properties.Resources.Close_Dark_Blue;
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

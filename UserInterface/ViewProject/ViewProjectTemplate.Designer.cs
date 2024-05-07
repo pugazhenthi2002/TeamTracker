@@ -260,6 +260,7 @@
             // 
             this.timelineView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.timelineView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timelineView1.FilteredEmployee = null;
             this.timelineView1.Location = new System.Drawing.Point(3, 3);
             this.timelineView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.timelineView1.Name = "timelineView1";
