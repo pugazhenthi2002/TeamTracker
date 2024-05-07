@@ -40,13 +40,13 @@ namespace TeamTracker
             if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
             if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
 
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
-            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   label6.Dispose();   label7.Dispose();
-            backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();    pictureBoxClose.Dispose();  pictureBoxSoureCode.Dispose();  pictureBoxAttachment.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel7.Dispose();
-            ucTaskDescription1.Dispose();   milestoneView1.Dispose();   startDate.Dispose();    endDate.Dispose();
-            donePanel.Dispose();    notstartedPanel.Dispose();  delayPanel.Dispose();   currentPanel.Dispose();
-            labelTaskCount.Dispose();   profileAssignedTo.Dispose();    labelTitle.Dispose();
+            panel1.Dispose(); panel2.Dispose(); panel3.Dispose(); panel4.Dispose(); panel5.Dispose(); panel6.Dispose(); panel7.Dispose();
+            label1.Dispose(); label2.Dispose(); label3.Dispose(); label4.Dispose(); label5.Dispose(); label6.Dispose(); label7.Dispose();
+            backNavigatePicBox.Dispose(); nextNavPicBox.Dispose(); pictureBoxClose.Dispose(); pictureBoxSoureCode.Dispose(); pictureBoxAttachment.Dispose();
+            tableLayoutPanel1.Dispose(); tableLayoutPanel3.Dispose(); tableLayoutPanel4.Dispose(); tableLayoutPanel5.Dispose(); tableLayoutPanel7.Dispose();
+            ucTaskDescription1.Dispose(); milestoneView1.Dispose(); startDate.Dispose(); endDate.Dispose();
+            donePanel.Dispose(); notstartedPanel.Dispose(); delayPanel.Dispose(); currentPanel.Dispose();
+            labelTaskCount.Dispose(); profileAssignedTo.Dispose(); labelTitle.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -81,7 +81,7 @@ namespace TeamTracker
 
         private void OnMouseClickClose(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void OnMouseEnterClose(object sender, EventArgs e)
@@ -243,17 +243,17 @@ namespace TeamTracker
         private void OnDownloadMouseEnter(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null)
-                (sender as PictureBox).Dispose();
+                //(sender as PictureBox).Dispose();
 
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
+                (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
         }
 
         private void OnDownloadMouseLeave(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null)
-                (sender as PictureBox).Dispose();
+                // (sender as PictureBox).Dispose();
 
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Dark_Blue;
+                (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Dark_Blue;
         }
 
         private void OnDownloadEdgePaint(object sender, PaintEventArgs e)
