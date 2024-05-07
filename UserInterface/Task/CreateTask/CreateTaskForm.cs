@@ -121,7 +121,7 @@ namespace UserInterface.Task.CreateTask
             tableLayoutPanelFileName.Visible = true;
             if (selectedAttachment != null)
             {
-                animatedLabelFilename.Text = selectedAttachment.DisplayName;
+                animatedLabelFilename.Text = selectedAttachment.TaskAttachmentName;
             }
             else
             {

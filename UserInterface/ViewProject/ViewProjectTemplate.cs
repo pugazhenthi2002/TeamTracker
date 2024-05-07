@@ -104,11 +104,12 @@ namespace UserInterface.ViewProject
             SelectedEmployee = e;
             filteredUser.Image = Image.FromFile(e.EmpProfileLocation);
             filteredUser.Visible = true;
-
+            if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead") timelineView1.FilteredEmployee = e;
             if (PrevSelectedEmployee != null)
             {
                 if (PrevSelectedEmployee.EmployeeID == e.EmployeeID)
                 {
+                    timelineView1.FilteredEmployee = null;
                     SelectedEmployee = EmployeeManager.CurrentEmployee;
                     filteredUser.Visible = false;
                 }

@@ -25,6 +25,7 @@ namespace UserInterface.ViewProject.TimelineView
         private List<Milestone> milestoneCollection;
         private List<Color> colorCollection;
         private int projectViewCount = 0;
+        private Employee filteredEmployee;
 
         public TimelineView()
         {
@@ -69,7 +70,19 @@ namespace UserInterface.ViewProject.TimelineView
             }
         }
 
-        
+        public Employee FilteredEmployee
+        {
+            get
+            {
+                return filteredEmployee;
+            }
+            set
+            {
+                filteredEmployee = value;
+
+            }
+        }
+
 
         private void InitializeProjectsForTimeline()
         {
@@ -94,6 +107,7 @@ namespace UserInterface.ViewProject.TimelineView
                     StoreColor();
                     InitializeMilestoneLegendCollection();
                     timelinePaginate1.Colors = colorCollection;
+                    timelinePaginate1.FilteredEmployee = filteredEmployee;
                     timelinePaginate1.Version = currentVersion;
                     versionNames.Text = currentVersion.VersionName;
                     prevControl = control;
@@ -205,7 +219,7 @@ namespace UserInterface.ViewProject.TimelineView
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
 
-            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            if ((sender as PictureBox).Name == "projectUpBox")
             {
                 projectUpBox.Image = UserInterface.Properties.Resources.Up_Dark_Blue_Hover;
             }
@@ -219,7 +233,7 @@ namespace UserInterface.ViewProject.TimelineView
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
 
-            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            if ((sender as Control).Name == "projectUpBox")
             {
                 projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
             }
@@ -250,8 +264,8 @@ namespace UserInterface.ViewProject.TimelineView
             if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
             if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
 
-            projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-            projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
+            projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
         }
 
         private void StoreColor()

@@ -54,17 +54,18 @@ namespace TeamTracker
             return result;
         }
 
-        public static Dictionary<string, int> FilterTeamMemberTaskCountByVersionID(int versionId)
+        public static Dictionary<string, int> FilterTeamMemberTaskCountByVersionID(ProjectVersion version)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
             int count = 0;
 
-            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
+            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders(VersionManager.FetchTeamLeadFromVersionID(version.VersionID));
+            employeeCollection.Add(EmployeeManager.FetchEmployeeFromEmpID(VersionManager.FetchTeamLeadFromVersionID(version.VersionID)));
             foreach (var Iter in employeeCollection)
             {
                 foreach (var TaskIter in TaskCollection)
                 {
-                    if (TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.VersionID == versionId)
+                    if (TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.VersionID == version.VersionID)
                     {
                         count++;   
                     }
@@ -120,6 +121,22 @@ namespace TeamTracker
             }
 
             if(taskAttachment!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
+        }
+
+        public static List<Task> FetchTaskByEmployee(Employee emp, int versionId)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.VersionID == versionId && Iter.AssignedTo == emp.EmployeeID)
+                {
+                    result.Add(Iter.ShallowCopy());
+                }
+            }
+
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
         }
 
         public static List<Task> FetchUnderReviewTask()

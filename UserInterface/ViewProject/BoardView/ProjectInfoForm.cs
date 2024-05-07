@@ -155,12 +155,10 @@ namespace TeamTracker
                 savePath = saveFileDialog.FileName;
             }
 
-            string fileNetworkPath = sourceCode.VersionLocation + "\\" + sourceCode.SourceCodeName;
+            string fileNetworkPath = sourceCode.VersionLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.Combine(savePath, savePath);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
+                System.IO.File.Copy(fileNetworkPath, savePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.DisplayName);
             }
             catch

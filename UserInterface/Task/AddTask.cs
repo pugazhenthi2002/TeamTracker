@@ -249,6 +249,11 @@ namespace UserInterface.Task
             int nHeightEllipse // width of ellipse
         );
 
+        private void OnResetForm(object sender, EventArgs e)
+        {
+            InitializePage();
+        }
+
         private void InitializeRoundedEdge()
         {
             milestoneSwitch1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, milestoneSwitch1.Width, milestoneSwitch1.Height, 20, 20));

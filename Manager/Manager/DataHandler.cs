@@ -62,7 +62,8 @@ namespace TeamTracker
         public static SourceCode GetTaskSourceBySourceCodeID(int sourceCodeID)
         {
             SourceCode result = new SourceCode();
-            var attachments = manager.FetchData("sourcecode", $"SourceCodeID='{sourceCodeID}", orderBy: "SubmittedDate", limitCount: 1).Value;
+            var attachments = manager.FetchData("sourcecode", $"SourceCodeID={sourceCodeID}", orderBy: "SubmittedDate", limitCount: 1).Value;
+
 
             result = new SourceCode()
             {
@@ -506,7 +507,6 @@ namespace TeamTracker
                 DisplayName = Convert.ToString(result["DisplayName"][0]),
                 SourceCodeName = Convert.ToString(result["SourceCodeName"][0]),
                 VersionLocation = Convert.ToString(result["SourceCodeLocation"][0]),
-                SubmissionDate = Convert.ToDateTime(result["SubmissionDate"][0])
             };
 
             return sourceCode;
@@ -557,7 +557,7 @@ namespace TeamTracker
                 CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
                 CommitName = Convert.ToString(attachments["CommitName"][0]),
                 SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0]),
-                SourceCodeName = Convert.ToString(attachments["SourceCodeName"][0]),
+                SubmittedDate = Convert.ToDateTime(attachments["SubmittedDate"][0]),
             };
 
             return result;

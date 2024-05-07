@@ -199,7 +199,7 @@
             // 
             this.taskCountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.taskCountLabel.BackColor = System.Drawing.Color.Transparent;
-            this.taskCountLabel.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.taskCountLabel.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.taskCountLabel.ForeColor = System.Drawing.Color.Black;
             this.taskCountLabel.Location = new System.Drawing.Point(43, 19);
             this.taskCountLabel.Margin = new System.Windows.Forms.Padding(0);

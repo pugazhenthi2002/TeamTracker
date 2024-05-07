@@ -128,7 +128,7 @@ namespace TeamTracker
                     UcTaskCommits commit = new UcTaskCommits();
                     commit.CommitName = srcCode.CommitName;
                     commit.CommitOwner = EmployeeManager.FetchEmployeeFromID(srcCode.CommitedBy);
-                    
+                    commit.SourceCodeId = srcCode.SourceCodeID;
                     commit.Dock = DockStyle.Top;
                     panelCommits.Controls.Add(commit);
                 }
@@ -189,7 +189,7 @@ namespace TeamTracker
         private void InitializePage()
         {
             labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromTaskID(selectedTask.VersionID).VersionName;
-            profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy);
+            profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
             ucTaskDescription1.TopLabelText = selectedTask.TaskName;
             ucTaskDescription1.CenterLabelText = selectedTask.TaskDesc;
             animatedLabelMilestone.Text = MilestoneManager.FetchMilestoneFromID(selectedTask.MilestoneID).MileStoneName;

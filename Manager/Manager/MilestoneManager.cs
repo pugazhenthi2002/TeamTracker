@@ -218,6 +218,8 @@ namespace TeamTracker
                 {
                     if (Iter.StartDate >= DateTime.Now.Date) Iter.StartDate = DateTime.Now.Date;
                     if (Iter.EndDate >= DateTime.Now.Date) Iter.EndDate = DateTime.Now.Date;
+
+                    DataHandler.UpdateTask(Iter);
                 }
             }
         }

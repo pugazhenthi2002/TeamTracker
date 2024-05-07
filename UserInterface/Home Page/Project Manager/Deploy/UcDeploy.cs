@@ -59,8 +59,8 @@ namespace TeamTracker
             profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromProjectID(proj.ProjectID).EmpProfileLocation);
             teamLeaderName.Text = EmployeeManager.FetchEmployeeFromProjectID(proj.ProjectID).EmployeeFirstName;
             versionSourceCode = DataHandler.FetchVersionSourceCodeByVersionID(version.VersionID);
-            submissionDateLabel.Text = versionSourceCode.SubmissionDate.ToShortDateString();
-            Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCountByVersionID(version.VersionID);
+            submissionDateLabel.Text = version.EndDate.ToShortDateString();
+            Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCountByVersionID(version);
 
             int total = 0;
             foreach (var Iter in result1) total += Iter.Value;
@@ -117,8 +117,7 @@ namespace TeamTracker
 
             try
             {
-                string filePath = System.IO.Path.Combine(savePath, sourceCode.DisplayName);
-                System.IO.File.Copy(sourceCode.VersionLocation, filePath, true);
+                System.IO.File.Copy(sourceCode.VersionLocation, savePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + version.VersionName);
             }
             catch

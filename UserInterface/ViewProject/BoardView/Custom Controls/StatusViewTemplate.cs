@@ -92,11 +92,11 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             if((sender as PictureBox).Name == "upPicBox")
             {
-                (sender as PictureBox).Image = Properties.Resources.Up_Light_Blue_Hover;
+                (sender as PictureBox).Image = Properties.Resources.Up_Dark_Blue_Hover;
             }
             else
             {
-                (sender as PictureBox).Image = Properties.Resources.Down_Light_Blue_Hover;
+                (sender as PictureBox).Image = Properties.Resources.Down_Dark_Blue_Hover;
             }
         }
 
