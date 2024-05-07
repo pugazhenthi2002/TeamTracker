@@ -36,7 +36,7 @@ namespace TeamTracker
         private void StatusDropDownPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            Brush b = new SolidBrush(Color.FromArgb(245, 232, 221));
+            Brush b = new SolidBrush(Color.FromArgb(221, 230, 237));
             Rectangle rectangle = new Rectangle(1, 1, this.Width - 2, this.Height - 2);
             FillRoundRectangle(e.Graphics, rectangle, b, 5);
             b.Dispose();

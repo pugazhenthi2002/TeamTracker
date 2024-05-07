@@ -84,7 +84,7 @@ namespace TeamTracker
         {
             set
             {
-                time = value.ToString();
+                time = value.ToShortTimeString();
             }
         }
         
@@ -340,8 +340,8 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77));
-            e.Graphics.DrawRectangle(border, new Rectangle(0, 0, Width, Height));
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 3);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 2, Height - 2), borderRadius/2));
             border.Dispose();
         }
 

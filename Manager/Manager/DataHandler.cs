@@ -300,8 +300,7 @@ namespace TeamTracker
                 manager.InsertData("taskattachment", new ParameterData[]
                 {
                     new ParameterData("TaskID", taskAttachment.TaskID),
-                    new ParameterData("DisplayName", taskAttachment.DisplayName),
-                    new ParameterData("TaskAttachmentName", taskAttachment.TaskAttachmentName),
+                    new ParameterData("TaskAttachmentName", taskAttachment.DisplayName),
                     new ParameterData("TaskAttachmentLocation", filePath)
                 });
             }
@@ -538,7 +537,6 @@ namespace TeamTracker
                 TaskID = Convert.ToInt32(attachments["TaskID"][0]),
                 TaskAttachmentName = Convert.ToString(attachments["TaskAttachmentName"][0]),
                 TaskAttachmentLocation = Convert.ToString(attachments["TaskAttachmentLocation"][0]),
-                DisplayName = Convert.ToString(attachments["DisplayName"][0])
             };
 
             return result;

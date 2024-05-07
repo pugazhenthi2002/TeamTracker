@@ -316,7 +316,7 @@ namespace UserInterface.Task.CreateTask
                 return "Priority Has Not been Selected";
             }
 
-            if (startDate.Value > endDate.Value)
+            if (startDate.Value.Date > endDate.Value.Date)
             {
                 return "Task Due Date is is Beyond Today's Date";
             }

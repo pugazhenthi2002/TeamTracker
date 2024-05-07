@@ -174,12 +174,16 @@ namespace TeamTracker
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.CenterImage;
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+
+            pictureBoxDownloadAttachment.Image = UserInterface.Properties.Resources.Download_Dark_Blue;
         }
 
         private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.Zoom;
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+
+            pictureBoxDownloadAttachment.Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
         }
 
         private void InitializePage()
@@ -227,13 +231,13 @@ namespace TeamTracker
             {
                 string fileName = System.IO.Path.GetFileName(fileNetworkPath);
                 string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, attachment.DisplayName);
+                filePath = System.IO.Path.Combine(filePath, attachment.TaskAttachmentName);
                 System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.DisplayName);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.TaskAttachmentName);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.DisplayName);
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.TaskAttachmentName);
             }
         }
     }

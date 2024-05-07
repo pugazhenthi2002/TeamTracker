@@ -36,11 +36,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
             this.pictureBoxInfo = new System.Windows.Forms.PictureBox();
-            this.ucDueDate1 = new TeamTracker.UcDueDate();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelTask = new System.Windows.Forms.Label();
-            this.profilePictureBoxAssignedBy = new TeamTracker.ProfilePictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ucDueDate1 = new TeamTracker.UcDueDate();
+            this.profilePictureBoxAssignedBy = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -52,7 +52,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
@@ -69,9 +69,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(363, 172);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderRadiusPaint);
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -85,10 +87,11 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(363, 49);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // labelVersion
             // 
-            this.labelVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelVersion.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -107,7 +110,7 @@
             // 
             // labelProjectName
             // 
-            this.labelProjectName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.labelProjectName.BackColor = System.Drawing.Color.Transparent;
             this.labelProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelProjectName.Font = new System.Drawing.Font("Ebrima", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -126,7 +129,7 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -151,7 +154,7 @@
             // 
             // pictureBoxFlag
             // 
-            this.pictureBoxFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.pictureBoxFlag.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxFlag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxFlag.Image = global::UserInterface.Properties.Resources.flag_UnderReview;
             this.pictureBoxFlag.Location = new System.Drawing.Point(145, 0);
@@ -169,7 +172,7 @@
             // 
             // pictureBoxInfo
             // 
-            this.pictureBoxInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.pictureBoxInfo.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxInfo.Image = global::UserInterface.Properties.Resources.info_black;
             this.pictureBoxInfo.Location = new System.Drawing.Point(289, 0);
@@ -183,27 +186,9 @@
             this.pictureBoxInfo.MouseEnter += new System.EventHandler(this.OnMouseEnterInfo);
             this.pictureBoxInfo.MouseLeave += new System.EventHandler(this.OnMouseLeaveInfo);
             // 
-            // ucDueDate1
-            // 
-            this.ucDueDate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.CenterLabelText = null;
-            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
-            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucDueDate1.LabelText = "Due";
-            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
-            this.ucDueDate1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.ucDueDate1.Name = "ucDueDate1";
-            this.ucDueDate1.Size = new System.Drawing.Size(139, 49);
-            this.ucDueDate1.TabIndex = 3;
-            this.ucDueDate1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
-            this.ucDueDate1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
-            // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -225,7 +210,7 @@
             // 
             // LabelTask
             // 
-            this.LabelTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.LabelTask.BackColor = System.Drawing.Color.Transparent;
             this.LabelTask.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelTask.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelTask.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -242,10 +227,27 @@
             this.LabelTask.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMoveTaskBoard);
             this.LabelTask.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUpTaskBoard);
             // 
+            // ucDueDate1
+            // 
+            this.ucDueDate1.BackColor = System.Drawing.Color.Transparent;
+            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.CenterLabelText = null;
+            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
+            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucDueDate1.LabelText = "Due";
+            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
+            this.ucDueDate1.Name = "ucDueDate1";
+            this.ucDueDate1.Size = new System.Drawing.Size(139, 47);
+            this.ucDueDate1.TabIndex = 3;
+            this.ucDueDate1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
+            this.ucDueDate1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
+            // 
             // profilePictureBoxAssignedBy
             // 
             this.profilePictureBoxAssignedBy.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.profilePictureBoxAssignedBy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.profilePictureBoxAssignedBy.BackColor = System.Drawing.Color.Transparent;
             this.profilePictureBoxAssignedBy.Location = new System.Drawing.Point(279, 5);
             this.profilePictureBoxAssignedBy.Name = "profilePictureBoxAssignedBy";
             this.profilePictureBoxAssignedBy.ParentColor = System.Drawing.Color.Empty;

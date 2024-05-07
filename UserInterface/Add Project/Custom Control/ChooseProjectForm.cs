@@ -167,57 +167,62 @@ namespace UserInterface.Add_Project.Custom_Control
 
         private void OnButtonMouseEnter(object sender, EventArgs e)
         {
+            if (ucNotFound1.Visible && (sender as Label).Name == "selectButton")
+            {
+                return;
+            }
+
             Cursor = Cursors.Hand;
             isEntered = true;
-            if ((sender as Button).Name == "selectButton")
+            if ((sender as Label).Name == "selectButton")
             {
-                if (!ucNotFound1.Visible)
-                {
-                    (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
-                    (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
-                }
+
+                (sender as Label).BackColor = Color.FromArgb(40, 50, 80);
+                (sender as Label).ForeColor = Color.FromArgb(221, 230, 237);
             }
             else
             {
-                (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
-                (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).ForeColor = Color.FromArgb(40, 50, 80);
+                (sender as Label).BackColor = Color.FromArgb(221, 230, 237);
             }
-            (sender as Button).Invalidate();
+            (sender as Label).Invalidate();
         }
 
         private void OnButtonMouseLeave(object sender, EventArgs e)
         {
+            if (ucNotFound1.Visible && (sender as Label).Name == "selectButton")
+            {
+                return;
+            }
+
             Cursor = Cursors.Default;
             isEntered = false;
-            if ((sender as Button).Name == "selectButton")
+            if ((sender as Label).Name == "selectButton")
             {
-                if (!ucNotFound1.Visible)
-                {
-                    (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
-                    (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
-                }
+                (sender as Label).ForeColor = Color.FromArgb(40, 50, 80);
+                (sender as Label).BackColor = Color.FromArgb(221, 230, 237);
             }
             else
             {
-                (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
-                (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = Color.FromArgb(40, 50, 80);
+                (sender as Label).ForeColor = Color.FromArgb(221, 230, 237);
             }
-            (sender as Button).Invalidate();
+            (sender as Label).Invalidate();
         }
 
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            if (sender is Button && (sender as Button).Name == "selectButton" && ucNotFound1.Visible)
+            if (sender is Label && (sender as Label).Name == "selectButton" && ucNotFound1.Visible)
                 return;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border;
-            Rectangle rec = new Rectangle(2,2,(sender as Button).Width -6, (sender as Button).Height-6);
-            border = isEntered ? new Pen((sender as Button).ForeColor, 2) : new Pen((sender as Button).BackColor, 2);
+            Rectangle rec = new Rectangle(2,2,(sender as Label).Width -6, (sender as Label).Height-6);
+            border = isEntered ? new Pen((sender as Label).ForeColor, 2) : new Pen((sender as Label).BackColor, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 2));
             border.Dispose();
-            rec = new Rectangle(0, 0, (sender as Button).Width - 2, (sender as Button).Height - 2);
+            rec = new Rectangle(0, 0, (sender as Label).Width - 2, (sender as Label).Height - 2);
             border = new Pen(Color.FromArgb(157, 178, 191), 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 5));
             border.Dispose();
