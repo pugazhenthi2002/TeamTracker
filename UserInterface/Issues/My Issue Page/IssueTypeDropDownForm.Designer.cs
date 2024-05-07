@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.BtnOther = new System.Windows.Forms.Button();
-            this.BtnLogicalNeed = new System.Windows.Forms.Button();
-            this.BtnSecurity = new System.Windows.Forms.Button();
-            this.BtnOptimization = new System.Windows.Forms.Button();
-            this.BtnFeatureReq = new System.Windows.Forms.Button();
-            this.BtnBug = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,12 +43,12 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.BtnOther, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.BtnLogicalNeed, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.BtnSecurity, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.BtnOptimization, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.BtnFeatureReq, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.BtnBug, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -60,98 +60,99 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 242);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // BtnOther
+            // label1
             // 
-            this.BtnOther.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnOther.FlatAppearance.BorderSize = 0;
-            this.BtnOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOther.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.BtnOther.Location = new System.Drawing.Point(3, 203);
-            this.BtnOther.Name = "BtnOther";
-            this.BtnOther.Size = new System.Drawing.Size(227, 36);
-            this.BtnOther.TabIndex = 9;
-            this.BtnOther.Text = "Other";
-            this.BtnOther.UseVisualStyleBackColor = true;
-            this.BtnOther.Click += new System.EventHandler(this.OnClickBtn);
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(227, 40);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Bug";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.OnClickBtn);
             // 
-            // BtnLogicalNeed
+            // label2
             // 
-            this.BtnLogicalNeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnLogicalNeed.FlatAppearance.BorderSize = 0;
-            this.BtnLogicalNeed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLogicalNeed.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLogicalNeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.BtnLogicalNeed.Location = new System.Drawing.Point(3, 163);
-            this.BtnLogicalNeed.Name = "BtnLogicalNeed";
-            this.BtnLogicalNeed.Size = new System.Drawing.Size(227, 34);
-            this.BtnLogicalNeed.TabIndex = 8;
-            this.BtnLogicalNeed.Text = "Logical Need";
-            this.BtnLogicalNeed.UseVisualStyleBackColor = true;
-            this.BtnLogicalNeed.Click += new System.EventHandler(this.OnClickBtn);
+            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label2.Location = new System.Drawing.Point(3, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(227, 40);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Feature Request";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.OnClickBtn);
             // 
-            // BtnSecurity
+            // label3
             // 
-            this.BtnSecurity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnSecurity.FlatAppearance.BorderSize = 0;
-            this.BtnSecurity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSecurity.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSecurity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.BtnSecurity.Location = new System.Drawing.Point(3, 123);
-            this.BtnSecurity.Name = "BtnSecurity";
-            this.BtnSecurity.Size = new System.Drawing.Size(227, 34);
-            this.BtnSecurity.TabIndex = 7;
-            this.BtnSecurity.Text = "Security";
-            this.BtnSecurity.UseVisualStyleBackColor = true;
-            this.BtnSecurity.Click += new System.EventHandler(this.OnClickBtn);
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label3.Location = new System.Drawing.Point(3, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(227, 40);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Optimization";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.OnClickBtn);
             // 
-            // BtnOptimization
+            // label4
             // 
-            this.BtnOptimization.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnOptimization.FlatAppearance.BorderSize = 0;
-            this.BtnOptimization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOptimization.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOptimization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.BtnOptimization.Location = new System.Drawing.Point(3, 83);
-            this.BtnOptimization.Name = "BtnOptimization";
-            this.BtnOptimization.Size = new System.Drawing.Size(227, 34);
-            this.BtnOptimization.TabIndex = 6;
-            this.BtnOptimization.Text = "Optimization";
-            this.BtnOptimization.UseVisualStyleBackColor = true;
-            this.BtnOptimization.Click += new System.EventHandler(this.OnClickBtn);
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label4.Location = new System.Drawing.Point(3, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(227, 40);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Security";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.OnClickBtn);
             // 
-            // BtnFeatureReq
+            // label5
             // 
-            this.BtnFeatureReq.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnFeatureReq.FlatAppearance.BorderSize = 0;
-            this.BtnFeatureReq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnFeatureReq.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFeatureReq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.BtnFeatureReq.Location = new System.Drawing.Point(3, 43);
-            this.BtnFeatureReq.Name = "BtnFeatureReq";
-            this.BtnFeatureReq.Size = new System.Drawing.Size(227, 34);
-            this.BtnFeatureReq.TabIndex = 5;
-            this.BtnFeatureReq.Text = "Feature Request";
-            this.BtnFeatureReq.UseVisualStyleBackColor = true;
-            this.BtnFeatureReq.Click += new System.EventHandler(this.OnClickBtn);
+            this.label5.AutoSize = true;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label5.Location = new System.Drawing.Point(3, 160);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(227, 40);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Logical Need";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Click += new System.EventHandler(this.OnClickBtn);
             // 
-            // BtnBug
+            // label6
             // 
-            this.BtnBug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnBug.FlatAppearance.BorderSize = 0;
-            this.BtnBug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBug.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.BtnBug.Location = new System.Drawing.Point(3, 3);
-            this.BtnBug.Name = "BtnBug";
-            this.BtnBug.Size = new System.Drawing.Size(227, 34);
-            this.BtnBug.TabIndex = 4;
-            this.BtnBug.Text = "Bug";
-            this.BtnBug.UseVisualStyleBackColor = true;
-            this.BtnBug.Click += new System.EventHandler(this.OnClickBtn);
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label6.Location = new System.Drawing.Point(3, 200);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(227, 42);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Other";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.Click += new System.EventHandler(this.OnClickBtn);
             // 
             // IssueTypeDropDownForm
             // 
@@ -164,6 +165,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TypeDropDownForm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -171,11 +173,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button BtnLogicalNeed;
-        private System.Windows.Forms.Button BtnSecurity;
-        private System.Windows.Forms.Button BtnOptimization;
-        private System.Windows.Forms.Button BtnFeatureReq;
-        private System.Windows.Forms.Button BtnBug;
-        private System.Windows.Forms.Button BtnOther;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

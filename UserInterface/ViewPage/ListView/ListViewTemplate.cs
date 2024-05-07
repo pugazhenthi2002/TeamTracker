@@ -241,6 +241,9 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            if (sender is Label)
+                rec = new Rectangle(0, 0, panel3.Width - 2, panel2.Height - 2);
+
             Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 20));

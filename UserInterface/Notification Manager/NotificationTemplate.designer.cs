@@ -99,6 +99,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
             this.pictureBox1.Location = new System.Drawing.Point(361, 0);

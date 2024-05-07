@@ -131,19 +131,6 @@ namespace TeamTracker
             }
         }
 
-        private void OnPaint(object sender, PaintEventArgs e)
-        {
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            Rectangle rec = new Rectangle(0, 0, (Width / 6)-1, Height - 1);
-            
-            for(int ctr=0; ctr < 6; ctr++)
-            {
-                e.Graphics.DrawRectangle(border, rec);
-                rec.X = rec.X + (Width / 6);
-            }
-            border.Dispose();
-        }
-
         private void ViewTaskClick(object sender, EventArgs e)
         {
             TaskInfoForm form = new TaskInfoForm();
@@ -162,6 +149,14 @@ namespace TeamTracker
 
             if (ParentForm != null)
                 ParentForm.Show();
+        }
+
+        private void EdgePaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0,(sender as Control).Width-1, (sender as Control).Height-1));
+            border.Dispose();
         }
     }
 }

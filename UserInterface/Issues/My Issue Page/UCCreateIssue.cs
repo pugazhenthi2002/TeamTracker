@@ -126,7 +126,7 @@ namespace TeamTracker
 
         private void OnClickPriority(object sender, EventArgs e)
         {
-            BtnSetPriority.Text = (sender as Button).Text;
+            BtnSetPriority.Text = (sender as Label).Text;
         }
 
         private void OnClickSetType(object sender, EventArgs e)
@@ -144,7 +144,7 @@ namespace TeamTracker
 
         private void OnClickType(object sender, EventArgs e)
         {
-            BtnSetType.Text = (sender as Button).Text;
+            BtnSetType.Text = (sender as Label).Text;
         }
 
         private void OnClickAddTag(object sender, EventArgs e)
@@ -290,7 +290,8 @@ namespace TeamTracker
             }
             else
             {
-                labelAttachment.Hide();
+                if (Attachement == null)
+                    labelAttachment.Hide();
             }
         }
 

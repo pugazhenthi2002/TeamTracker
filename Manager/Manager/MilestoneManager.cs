@@ -201,6 +201,7 @@ namespace TeamTracker
                     UpdateMilestone(milestoneList[ctr], MilestoneStatus.Completed);
                     if (ctr < milestoneList.Count - 1)
                     {
+                        milestoneList[ctr + 1].StartDate = DateTime.Now.Date;
                         UpdateMilestone(milestoneList[ctr + 1], MilestoneStatus.OnProcess);
                         CurrentMilestone = milestoneList[ctr + 1];
                     }
@@ -217,6 +218,8 @@ namespace TeamTracker
                 {
                     if (Iter.StartDate >= DateTime.Now.Date) Iter.StartDate = DateTime.Now.Date;
                     if (Iter.EndDate >= DateTime.Now.Date) Iter.EndDate = DateTime.Now.Date;
+
+                    DataHandler.UpdateTask(Iter);
                 }
             }
         }

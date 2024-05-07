@@ -50,6 +50,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.pieChart2 = new LiveCharts.WinForms.PieChart();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -59,12 +65,6 @@
             this.doneTaskPageNext = new System.Windows.Forms.PictureBox();
             this.doneTaskPageBack = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.pieChart2 = new LiveCharts.WinForms.PieChart();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -77,13 +77,13 @@
             this.taskTableLayoutPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageBack)).BeginInit();
-            this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -227,6 +227,7 @@
             this.singleListControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.singleListControlPanel.Location = new System.Drawing.Point(0, 50);
             this.singleListControlPanel.Name = "singleListControlPanel";
+            this.singleListControlPanel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.singleListControlPanel.Size = new System.Drawing.Size(1241, 321);
             this.singleListControlPanel.TabIndex = 9;
             // 
@@ -280,10 +281,10 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(224)))), ((int)(((byte)(239)))));
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1030, 0);
-            this.label9.Margin = new System.Windows.Forms.Padding(0);
+            this.label9.Location = new System.Drawing.Point(1030, 1);
+            this.label9.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(211, 50);
+            this.label9.Size = new System.Drawing.Size(211, 49);
             this.label9.TabIndex = 6;
             this.label9.Text = "View";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -293,10 +294,10 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(216)))));
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(824, 0);
-            this.label7.Margin = new System.Windows.Forms.Padding(0);
+            this.label7.Location = new System.Drawing.Point(824, 1);
+            this.label7.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(206, 50);
+            this.label7.Size = new System.Drawing.Size(206, 49);
             this.label7.TabIndex = 4;
             this.label7.Text = "Priority";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,10 +307,10 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(199)))));
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(618, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(0);
+            this.label6.Location = new System.Drawing.Point(618, 1);
+            this.label6.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(206, 50);
+            this.label6.Size = new System.Drawing.Size(206, 49);
             this.label6.TabIndex = 3;
             this.label6.Text = "Due Date";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -320,10 +321,10 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label5.Location = new System.Drawing.Point(412, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
+            this.label5.Location = new System.Drawing.Point(412, 1);
+            this.label5.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(206, 50);
+            this.label5.Size = new System.Drawing.Size(206, 49);
             this.label5.TabIndex = 2;
             this.label5.Text = "Status";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -334,10 +335,10 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label4.Location = new System.Drawing.Point(206, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Location = new System.Drawing.Point(206, 1);
+            this.label4.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(206, 50);
+            this.label4.Size = new System.Drawing.Size(206, 49);
             this.label4.TabIndex = 1;
             this.label4.Text = "Assigned By";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -355,6 +356,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Task Name";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // panel4
             // 
@@ -382,6 +384,70 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(367, 371);
             this.tableLayoutPanel4.TabIndex = 0;
             this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnEdgePaint);
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.pieChart2);
+            this.panel11.Controls.Add(this.label8);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(3, 188);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(361, 180);
+            this.panel11.TabIndex = 5;
+            // 
+            // pieChart2
+            // 
+            this.pieChart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart2.Location = new System.Drawing.Point(0, 37);
+            this.pieChart2.Margin = new System.Windows.Forms.Padding(10);
+            this.pieChart2.Name = "pieChart2";
+            this.pieChart2.Size = new System.Drawing.Size(361, 143);
+            this.pieChart2.TabIndex = 3;
+            this.pieChart2.Text = "pieChart2";
+            // 
+            // label8
+            // 
+            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label8.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label8.Location = new System.Drawing.Point(0, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(361, 37);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Overall Priority View";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.pieChart1);
+            this.panel10.Controls.Add(this.label2);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(361, 179);
+            this.panel10.TabIndex = 4;
+            // 
+            // pieChart1
+            // 
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart1.Location = new System.Drawing.Point(0, 47);
+            this.pieChart1.Margin = new System.Windows.Forms.Padding(10);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(361, 132);
+            this.pieChart1.TabIndex = 3;
+            this.pieChart1.Text = "pieChart1";
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(361, 47);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Overall Status View";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel6
             // 
@@ -483,70 +549,6 @@
             this.label1.Text = "Done Task";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.pieChart1);
-            this.panel10.Controls.Add(this.label2);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(3, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(361, 179);
-            this.panel10.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(361, 37);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Overall Status View";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 37);
-            this.pieChart1.Margin = new System.Windows.Forms.Padding(10);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(361, 142);
-            this.pieChart1.TabIndex = 3;
-            this.pieChart1.Text = "pieChart1";
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.pieChart2);
-            this.panel11.Controls.Add(this.label8);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(3, 188);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(361, 180);
-            this.panel11.TabIndex = 5;
-            // 
-            // pieChart2
-            // 
-            this.pieChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart2.Location = new System.Drawing.Point(0, 37);
-            this.pieChart2.Margin = new System.Windows.Forms.Padding(10);
-            this.pieChart2.Name = "pieChart2";
-            this.pieChart2.Size = new System.Drawing.Size(361, 143);
-            this.pieChart2.TabIndex = 3;
-            this.pieChart2.Text = "pieChart2";
-            // 
-            // label8
-            // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label8.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label8.Location = new System.Drawing.Point(0, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(361, 37);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Overall Priority View";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ListViewTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,13 +571,13 @@
             this.taskTableLayoutPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doneTaskPageBack)).EndInit();
-            this.panel10.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -62,7 +62,8 @@ namespace TeamTracker
         public static SourceCode GetTaskSourceBySourceCodeID(int sourceCodeID)
         {
             SourceCode result = new SourceCode();
-            var attachments = manager.FetchData("sourcecode", $"SourceCodeID='{sourceCodeID}", orderBy: "SubmittedDate", limitCount: 1).Value;
+            var attachments = manager.FetchData("sourcecode", $"SourceCodeID={sourceCodeID}", orderBy: "SubmittedDate", limitCount: 1).Value;
+
 
             result = new SourceCode()
             {
@@ -138,7 +139,6 @@ namespace TeamTracker
                     new ParameterData("TaskID", sourceCode.TaskID),
                     new ParameterData("CommitName", sourceCode.CommitName),
                     new ParameterData("CommitedBy", sourceCode.CommitedBy),
-                    new ParameterData("SourceCodeName", sourceCode.SourceCodeName),
                     new ParameterData("SubmittedDate", sourceCode.SubmittedDate),
                     new ParameterData("SourceCodeLocation", filePath),
                 });
@@ -163,7 +163,7 @@ namespace TeamTracker
                     TaskID = Convert.ToInt32(attachments["TaskID"][ctr]),
                     CommitName = Convert.ToString(attachments["CommitName"][ctr]),
                     SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][ctr]),
-                    SourceCodeName = Convert.ToString(attachments["SourceCodeName"][ctr]),
+                    SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][ctr]),
                     SubmittedDate = Convert.ToDateTime(attachments["SubmittedDate"][ctr]),
                 });
             }
@@ -301,8 +301,7 @@ namespace TeamTracker
                 manager.InsertData("taskattachment", new ParameterData[]
                 {
                     new ParameterData("TaskID", taskAttachment.TaskID),
-                    new ParameterData("DisplayName", taskAttachment.DisplayName),
-                    new ParameterData("TaskAttachmentName", taskAttachment.TaskAttachmentName),
+                    new ParameterData("TaskAttachmentName", taskAttachment.DisplayName),
                     new ParameterData("TaskAttachmentLocation", filePath)
                 });
             }
@@ -508,7 +507,6 @@ namespace TeamTracker
                 DisplayName = Convert.ToString(result["DisplayName"][0]),
                 SourceCodeName = Convert.ToString(result["SourceCodeName"][0]),
                 VersionLocation = Convert.ToString(result["SourceCodeLocation"][0]),
-                SubmissionDate = Convert.ToDateTime(result["SubmissionDate"][0])
             };
 
             return sourceCode;
@@ -539,7 +537,6 @@ namespace TeamTracker
                 TaskID = Convert.ToInt32(attachments["TaskID"][0]),
                 TaskAttachmentName = Convert.ToString(attachments["TaskAttachmentName"][0]),
                 TaskAttachmentLocation = Convert.ToString(attachments["TaskAttachmentLocation"][0]),
-                DisplayName = Convert.ToString(attachments["DisplayName"][0])
             };
 
             return result;
@@ -550,6 +547,9 @@ namespace TeamTracker
             SourceCode result = new SourceCode();
             var attachments = manager.FetchData("sourcecode", $"TaskID={taskID}", orderBy: "SubmittedDate", limitCount: 1).Value;
 
+            if (attachments.Count == 0)
+                return null;
+
             result = new SourceCode()
             {
                 SourceCodeID = Convert.ToInt32(attachments["SourceCodeID"][0]),
@@ -557,7 +557,7 @@ namespace TeamTracker
                 CommitedBy = Convert.ToInt32(attachments["CommitedBy"][0]),
                 CommitName = Convert.ToString(attachments["CommitName"][0]),
                 SourceCodeLocation = Convert.ToString(attachments["SourceCodeLocation"][0]),
-                SourceCodeName = Convert.ToString(attachments["SourceCodeName"][0]),
+                SubmittedDate = Convert.ToDateTime(attachments["SubmittedDate"][0]),
             };
 
             return result;

@@ -123,8 +123,18 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             else { IsNextEnable = IsBackEnable = true; }
 
             var colorList = ColorManager.ColorFadingOut;
-            int colorIndex = 0;
+            int colorIndex = 0, total = 0;
             Dictionary<TeamTracker.TaskStatus, int> result1 = TaskManager.FetchTaskCountByStatus(VersionManager.CurrentVersion.VersionID);
+
+            foreach (var Iter in result1)
+            {
+                total+=Iter.Value;
+            }
+
+            if(total == 0)
+            {
+                pieChart1.Visible = false;
+            }
 
             SeriesCollection seriesCollection = new SeriesCollection();
             foreach (var Iter in result1)

@@ -40,13 +40,13 @@ namespace TeamTracker
             if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
             if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
 
-            panel1.Dispose(); panel2.Dispose(); panel3.Dispose(); panel4.Dispose(); panel5.Dispose(); panel6.Dispose(); panel7.Dispose();
-            label1.Dispose(); label2.Dispose(); label3.Dispose(); label4.Dispose(); label5.Dispose(); label6.Dispose(); label7.Dispose();
-            backNavigatePicBox.Dispose(); nextNavPicBox.Dispose(); pictureBoxClose.Dispose(); pictureBoxSoureCode.Dispose(); pictureBoxAttachment.Dispose();
-            tableLayoutPanel1.Dispose(); tableLayoutPanel3.Dispose(); tableLayoutPanel4.Dispose(); tableLayoutPanel5.Dispose(); tableLayoutPanel7.Dispose();
-            ucTaskDescription1.Dispose(); milestoneView1.Dispose(); startDate.Dispose(); endDate.Dispose();
-            donePanel.Dispose(); notstartedPanel.Dispose(); delayPanel.Dispose(); currentPanel.Dispose();
-            labelTaskCount.Dispose(); profileAssignedTo.Dispose(); labelTitle.Dispose();
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
+            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   label6.Dispose();   label7.Dispose();
+            backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();    pictureBoxClose.Dispose();  pictureBoxSoureCode.Dispose();  pictureBoxAttachment.Dispose();
+            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel7.Dispose();
+            ucTaskDescription1.Dispose();   milestoneView1.Dispose();   startDate.Dispose();    endDate.Dispose();
+            donePanel.Dispose();    notstartedPanel.Dispose();  delayPanel.Dispose();   currentPanel.Dispose();
+            labelTaskCount.Dispose();   profileAssignedTo.Dispose();    labelTitle.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -77,39 +77,12 @@ namespace TeamTracker
             panelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelAttachment.Width, panelAttachment.Height, 20, 20));
         }
 
-
-
-        private void OnMouseClickClose(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void OnMouseEnterClose(object sender, EventArgs e)
-        {
-
-        }
-
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
 
         }
-
-        private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
-        {
-            //(sender as Control).BackColor
-        }
-
-        private void OnClickDownloadPicBox(object sender, MouseEventArgs e)
-        {
-
-        }
-
+        
         private void OnPaintMilestoneBasePanel(object sender, PaintEventArgs e)
         {
             Point pt1 = new Point(4, 4);
@@ -141,6 +114,9 @@ namespace TeamTracker
 
             milestoneView1.MilestoneCollection = MilestoneManager.FetchMilestones(selectedVersion.VersionID);
             flag = milestoneView1.ChangeMilestoneUI(true);
+
+            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
+            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
         }
 
         private void BackMilestoneClick(object sender, EventArgs e)
@@ -155,8 +131,8 @@ namespace TeamTracker
             if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
             if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_LightBlue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_LightBlue;
+            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
+            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
         }
 
         private void OnClose(object sender, EventArgs e)
@@ -179,12 +155,10 @@ namespace TeamTracker
                 savePath = saveFileDialog.FileName;
             }
 
-            string fileNetworkPath = sourceCode.VersionLocation + "\\" + sourceCode.SourceCodeName;
+            string fileNetworkPath = sourceCode.VersionLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.Combine(savePath, savePath);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
+                System.IO.File.Copy(fileNetworkPath, savePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.DisplayName);
             }
             catch
@@ -236,43 +210,48 @@ namespace TeamTracker
             else brush = new SolidBrush(Color.FromArgb(144, 224, 239));
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width, (sender as Panel).Height));
+            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width - 1, (sender as Panel).Height - 1));
             brush.Dispose();
         }
 
         private void OnDownloadMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null)
-                //(sender as PictureBox).Dispose();
+            if (pictureBoxAttachment.Image != null)
+                pictureBoxAttachment.Image.Dispose();
 
-                (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
+            pictureBoxAttachment.Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
         }
 
         private void OnDownloadMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null)
-                // (sender as PictureBox).Dispose();
+            if (pictureBoxAttachment.Image != null)
+                pictureBoxAttachment.Image.Dispose();
 
-                (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Dark_Blue;
+            pictureBoxAttachment.Image = UserInterface.Properties.Resources.Download_Dark_Blue;
         }
 
         private void OnDownloadEdgePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(40, 50, 80));
-            e.Graphics.DrawRectangle(border, 0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            e.Graphics.DrawLine(border, 128, 0, 128, (sender as Control).Height);
+            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 10));
             border.Dispose();
         }
 
         private void OnMilestoneNavMouseEnter(object sender, EventArgs e)
         {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
 
+            if ((sender as PictureBox).Name == "nextNavPicBox") nextNavPicBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+            else if ((sender as PictureBox).Name == "backNavigatePicBox") backNavigatePicBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
         }
 
         private void OnMilestoneNavMouseLeave(object sender, EventArgs e)
         {
+            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
 
+            if ((sender as PictureBox).Name == "nextNavPicBox") nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
+            else if ((sender as PictureBox).Name == "backNavigatePicBox") backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
@@ -284,10 +263,19 @@ namespace TeamTracker
             else { frontEnable = true; }
             backEnable = true;
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_LightBlue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_LightBlue;
+            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
+            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
         }
 
-
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
     }
 }

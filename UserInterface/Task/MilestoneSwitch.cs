@@ -18,6 +18,7 @@ namespace UserInterface.Task
 {
     public partial class MilestoneSwitch : UserControl
     {
+        public event EventHandler ResetForm;
         private TransparentForm transparentForm;
         public MilestoneSwitch()
         {
@@ -122,7 +123,6 @@ namespace UserInterface.Task
         {
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -132,7 +132,9 @@ namespace UserInterface.Task
                 MilestoneManager.SwitchToNextMilestone();
                 if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
                     switchMilestoneButton.Text = "Deploy";
-                InitializePage();
+
+                ResetForm?.Invoke(this, EventArgs.Empty);
+                //InitializePage();
             }
         }
 
@@ -140,7 +142,6 @@ namespace UserInterface.Task
         {
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -171,6 +172,7 @@ namespace UserInterface.Task
                 MilestoneManager.CurrentMilestone.EndDate = DateTime.Now.Date;
                 MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
                 MilestoneManager.CurrentMilestone = null;
+                VersionManager.CurrentVersion = null;
                 VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
                 DataHandler.AddVersionSourceCode(e);
                 Visible = false;

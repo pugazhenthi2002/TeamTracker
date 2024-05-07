@@ -86,16 +86,22 @@ namespace TeamTracker
 
         private void OnMouseEnterInfo(object sender, EventArgs e)
         {
+            isEntered = true;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_hover;
-            this.BackColor = Color.FromArgb(39, 55, 77);
+            tableLayoutPanel1.BackColor = Color.FromArgb(39, 55, 77);
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = Color.FromArgb(221, 230, 237);
             this.Cursor = Cursors.Hand;
+            tableLayoutPanel1.Invalidate();
         }
 
         private void OnMouseLeaveInfo(object sender, EventArgs e)
         {
+            isEntered = false;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
-            this.BackColor = Color.Transparent;
+            tableLayoutPanel1.BackColor = Color.FromArgb(201, 210, 217);
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = Color.FromArgb(39, 55, 77);
             this.Cursor = Cursors.Default;
+            tableLayoutPanel1.Invalidate();
         }
 
         private void FlagChange()
@@ -156,13 +162,17 @@ namespace TeamTracker
 
         private void OnMouseEnterTaskBoard(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(39, 55, 77);
-            this.Cursor = Cursors.Hand;
+            isSemiEntered = true;
+            tableLayoutPanel1.BackColor = Color.FromArgb(161, 168, 174);
+            ucDueDate1.BackColor = Color.FromArgb(161, 168, 174);
+            this.Cursor = Cursors.SizeAll;
         }
 
         private void OnMouseLeaveTaskBoard(object sender, EventArgs e)
         {
-            this.BackColor = Color.Transparent;
+            isSemiEntered = false;
+            tableLayoutPanel1.BackColor = Color.FromArgb(201, 210, 217);
+            ucDueDate1.BackColor = Color.FromArgb(201, 210, 217);
             this.Cursor = Cursors.Default;
         }
 
@@ -193,6 +203,33 @@ namespace TeamTracker
             }
         }
 
-        
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            Pen border;
+            if (isEntered)
+                border = new Pen(Color.FromArgb(201, 210, 217), 2);
+            else
+                border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
+            border.Dispose();
+        }
+
+        private void OnBorderRadiusPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            Pen border;
+            if (isEntered)
+                border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            else if(isSemiEntered)
+                border = new Pen(Color.FromArgb(161, 168, 174), 2);
+            else
+                border = new Pen(Color.FromArgb(201, 210, 217), 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0,0,tableLayoutPanel1.Width-1, tableLayoutPanel1.Height-1), 10));
+            border.Dispose();
+        }
+
+        private bool isEntered, isSemiEntered;
+
     }
 }

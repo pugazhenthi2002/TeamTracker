@@ -13,6 +13,7 @@ namespace UserInterface.ViewProject
 {
     public partial class ViewProjectTemplate : UserControl
     {
+        private TransparentForm transparentForm;
         private Employee PrevSelectedEmployee;
         private Employee SelectedEmployee;
 
@@ -81,29 +82,34 @@ namespace UserInterface.ViewProject
             if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
                 form.TeamList = EmployeeManager.FetchTeamLeadersFromManagerID();
-                form.Show();
             }
             else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
                 form.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
-                form.Show();
             }
-            
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
         }
 
         private void OnTeamMemberSelected(object sender, Employee e)
         {
+            (sender as TeamMembersListForm).Dispose();
+            (sender as TeamMembersListForm).Close();
+
             if (filteredUser.Image != null)
                 filteredUser.Image.Dispose();
 
             SelectedEmployee = e;
             filteredUser.Image = Image.FromFile(e.EmpProfileLocation);
             filteredUser.Visible = true;
-
+            if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead") timelineView1.FilteredEmployee = e;
             if (PrevSelectedEmployee != null)
             {
                 if (PrevSelectedEmployee.EmployeeID == e.EmployeeID)
                 {
+                    timelineView1.FilteredEmployee = null;
                     SelectedEmployee = EmployeeManager.CurrentEmployee;
                     filteredUser.Visible = false;
                 }

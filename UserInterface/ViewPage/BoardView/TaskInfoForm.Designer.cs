@@ -238,6 +238,7 @@
             this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
             this.ucTaskDescription1.CenterLabelText = "Task Description...";
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTaskDescription1.EnableEdit = true;
             this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucTaskDescription1.Location = new System.Drawing.Point(20, 66);
             this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
@@ -245,6 +246,7 @@
             this.ucTaskDescription1.Size = new System.Drawing.Size(767, 150);
             this.ucTaskDescription1.TabIndex = 2;
             this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.ucTaskDescription1.TopLabelForeColor = System.Drawing.Color.White;
             this.ucTaskDescription1.TopLabelText = "Task Name";
             // 
             // tableLayoutPanel3
@@ -317,7 +319,7 @@
             // pictureBoxDownloadAttachment
             // 
             this.pictureBoxDownloadAttachment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxDownloadAttachment.Image = global::UserInterface.Properties.Resources.download_Icon;
+            this.pictureBoxDownloadAttachment.Image = global::UserInterface.Properties.Resources.Download_Dark_Blue;
             this.pictureBoxDownloadAttachment.Location = new System.Drawing.Point(727, 3);
             this.pictureBoxDownloadAttachment.Name = "pictureBoxDownloadAttachment";
             this.pictureBoxDownloadAttachment.Size = new System.Drawing.Size(77, 50);

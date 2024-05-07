@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTask));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.currentTimelineContent1 = new UserInterface.Task.Timeline.CurrentTimelineContent();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panelBase = new System.Windows.Forms.Panel();
@@ -46,10 +49,8 @@
             this.addTaskButton = new System.Windows.Forms.Button();
             this.projectNameLabel = new System.Windows.Forms.Label();
             this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.currentTimelineContent1 = new UserInterface.Task.Timeline.CurrentTimelineContent();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -57,7 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.backPicBox)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -72,6 +72,39 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1201, 621);
             this.panel1.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.currentTimelineContent1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 370);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.panel3.Size = new System.Drawing.Size(1201, 232);
+            this.panel3.TabIndex = 7;
+            // 
+            // currentTimelineContent1
+            // 
+            this.currentTimelineContent1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentTimelineContent1.Location = new System.Drawing.Point(0, 10);
+            this.currentTimelineContent1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.currentTimelineContent1.Name = "currentTimelineContent1";
+            this.currentTimelineContent1.Size = new System.Drawing.Size(1201, 222);
+            this.currentTimelineContent1.TabIndex = 0;
+            this.currentTimelineContent1.Reset += new System.EventHandler(this.OnReset);
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.label2.Location = new System.Drawing.Point(0, 326);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label2.Size = new System.Drawing.Size(1201, 44);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Timeline";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel5
             // 
@@ -198,6 +231,7 @@
             this.milestoneSwitch1.Name = "milestoneSwitch1";
             this.milestoneSwitch1.Size = new System.Drawing.Size(423, 249);
             this.milestoneSwitch1.TabIndex = 1;
+            this.milestoneSwitch1.ResetForm += new System.EventHandler(this.OnResetForm);
             this.milestoneSwitch1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // ucNotFound3
@@ -273,38 +307,6 @@
             this.ucNotFound1.Size = new System.Drawing.Size(1201, 621);
             this.ucNotFound1.TabIndex = 2;
             // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.label2.Location = new System.Drawing.Point(0, 326);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label2.Size = new System.Drawing.Size(1201, 44);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Timeline";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.currentTimelineContent1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 370);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.panel3.Size = new System.Drawing.Size(1201, 232);
-            this.panel3.TabIndex = 7;
-            // 
-            // currentTimelineContent1
-            // 
-            this.currentTimelineContent1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentTimelineContent1.Location = new System.Drawing.Point(0, 10);
-            this.currentTimelineContent1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.currentTimelineContent1.Name = "currentTimelineContent1";
-            this.currentTimelineContent1.Size = new System.Drawing.Size(1201, 222);
-            this.currentTimelineContent1.TabIndex = 0;
-            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +317,7 @@
             this.Name = "AddTask";
             this.Size = new System.Drawing.Size(1201, 621);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -322,7 +325,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.backPicBox)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

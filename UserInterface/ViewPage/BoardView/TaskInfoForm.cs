@@ -128,7 +128,7 @@ namespace TeamTracker
                     UcTaskCommits commit = new UcTaskCommits();
                     commit.CommitName = srcCode.CommitName;
                     commit.CommitOwner = EmployeeManager.FetchEmployeeFromID(srcCode.CommitedBy);
-                    
+                    commit.SourceCodeId = srcCode.SourceCodeID;
                     commit.Dock = DockStyle.Top;
                     panelCommits.Controls.Add(commit);
                 }
@@ -174,18 +174,22 @@ namespace TeamTracker
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.CenterImage;
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+
+            pictureBoxDownloadAttachment.Image = UserInterface.Properties.Resources.Download_Dark_Blue;
         }
 
         private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.Zoom;
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+
+            pictureBoxDownloadAttachment.Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
         }
 
         private void InitializePage()
         {
             labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromTaskID(selectedTask.VersionID).VersionName;
-            profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy);
+            profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
             ucTaskDescription1.TopLabelText = selectedTask.TaskName;
             ucTaskDescription1.CenterLabelText = selectedTask.TaskDesc;
             animatedLabelMilestone.Text = MilestoneManager.FetchMilestoneFromID(selectedTask.MilestoneID).MileStoneName;
@@ -227,13 +231,13 @@ namespace TeamTracker
             {
                 string fileName = System.IO.Path.GetFileName(fileNetworkPath);
                 string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, attachment.DisplayName);
+                filePath = System.IO.Path.Combine(filePath, attachment.TaskAttachmentName);
                 System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.DisplayName);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.TaskAttachmentName);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.DisplayName);
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.TaskAttachmentName);
             }
         }
     }

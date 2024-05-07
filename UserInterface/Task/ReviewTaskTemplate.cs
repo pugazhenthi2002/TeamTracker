@@ -108,7 +108,6 @@ namespace UserInterface.Task
         {
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -135,7 +134,6 @@ namespace UserInterface.Task
         {
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -157,7 +155,6 @@ namespace UserInterface.Task
         {
             (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();

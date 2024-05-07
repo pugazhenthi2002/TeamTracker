@@ -166,14 +166,16 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             isHovered = true;
             Cursor = Cursors.Hand;
-            tableLayoutPanel1.Invalidate();
+            tableLayoutPanel1.BackColor = Color.FromArgb(161, 168, 174);
+            //tableLayoutPanel1.Invalidate();
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
             isHovered = false;
             Cursor = Cursors.Default;
-            tableLayoutPanel1.Invalidate();
+            tableLayoutPanel1.BackColor = Color.FromArgb(201, 210, 217);
+            //tableLayoutPanel1.Invalidate();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace TeamTracker
         private DateTime startViewDate, endViewDate, iterDate;
         private ProjectVersion version;
         private TaskTimelineTemplate taskTimeline;
-
+        private Employee filteredEmployee;
 
         public TimelinePaginate()
         {
@@ -53,8 +53,12 @@ namespace TeamTracker
                 isBackEnable = false;
                 isNextEnable = true;
                 endViewDate = startViewDate.AddDays(20);
-                taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
-                if(taskCollection!=null && taskCollection.Count > 0)
+                if (filteredEmployee == null) taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
+                else
+                {
+                    taskCollection = TaskManager.FetchTaskByEmployee(filteredEmployee, version.VersionID);
+                }
+                if (taskCollection != null && taskCollection.Count > 0)
                 {
                     ucNotFound1.Visible = false;
                     panel1.Visible = true;
@@ -70,7 +74,20 @@ namespace TeamTracker
             }
         }
 
-        
+
+        public Employee FilteredEmployee
+        {
+            get
+            {
+                return filteredEmployee;
+            }
+            set
+            {
+                filteredEmployee = value;
+
+            }
+        }
+
 
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
