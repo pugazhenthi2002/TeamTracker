@@ -60,6 +60,7 @@ namespace TeamTracker
         private void OnTeamUpClick(object sender, EventArgs e)
         {
             errorMessageLabel.Text = "";
+            ThemeManager.CurrentThemeMode = ThemeMode.Cold;
             message = EmployeeManager.LogInEmployee(username.TextBoxtext, password.TextBoxtext);
 
             if (!message.Result) { errorMessageLabel.Text = message; }

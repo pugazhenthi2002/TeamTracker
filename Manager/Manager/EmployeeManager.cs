@@ -243,7 +243,6 @@ namespace TeamTracker
             if (!(message = VersionManager.StoreVersionCollection()).Result) return message;
             if (!(message = TaskManager.StoreTaskCollection()).Result) return message;
             if (!(message = MilestoneManager.StoreMilestoneCollection()).Result) return message;
-
             return true;
         }
 

@@ -35,6 +35,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeBorders();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -43,6 +44,14 @@ namespace TeamTracker
             panel1.Dispose(); panel2.Dispose() ; panel3.Dispose(); panel4.Dispose();    panel7.Dispose();   panel8.Dispose();
             tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();
             startDateLabel.Dispose(); endDateLabel.Dispose(); descTextBox.Dispose(); versionName.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            label6.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label6.ForeColor = ThemeManager.GetTextColor(label6.BackColor);
+            panel2.BackColor = panel3.BackColor = panel4.BackColor = panel7.BackColor = descTextBox.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = startDateLabel.ForeColor = endDateLabel.ForeColor = versionName.ForeColor = label7.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
         }
 
         protected override void OnResize(EventArgs e)
@@ -61,8 +70,8 @@ namespace TeamTracker
 
         private void BorderPaint(object sender, PaintEventArgs e)
         {
-            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
 
@@ -72,7 +81,7 @@ namespace TeamTracker
         private void OnPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77));
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI);
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height -2), new Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }

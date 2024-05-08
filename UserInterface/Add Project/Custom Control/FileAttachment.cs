@@ -38,6 +38,7 @@ namespace TeamTracker
         public FileAttachment()
         {
             InitializeComponent();
+            InitializePageColor();
             AttachmentCollection = new Dictionary<string, VersionAttachment>();
         }
 
@@ -49,6 +50,13 @@ namespace TeamTracker
                 attachmentDisplayPanel.Controls.Remove(attachmentDisplayPanel.Controls[ctr]);
                 ctr--;
             }
+        }
+
+        private void InitializePageColor()
+        {
+            browseLabel.BackColor = label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            browseLabel.ForeColor = label1.BackColor = ThemeManager.GetTextColor(browseLabel.BackColor);
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -109,19 +117,21 @@ namespace TeamTracker
         private void OnBrowseMouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
-            (sender as Label).BackColor = Color.FromArgb(82, 109, 130);
+            (sender as Label).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+            (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
         }
 
         private void OnBrowseMouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            (sender as Label).BackColor = Color.FromArgb(39, 55, 77);
+            (sender as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
         }
 
         private void OnTablePanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(Width - 349, 0), new Point(Width - 349, tableLayoutPanel1.Height));
             border.Dispose();
         }

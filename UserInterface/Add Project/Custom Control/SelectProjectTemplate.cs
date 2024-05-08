@@ -31,6 +31,7 @@ namespace UserInterface.Add_Project.Custom_Control
         public SelectProjectTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -38,6 +39,11 @@ namespace UserInterface.Add_Project.Custom_Control
             singleProjectSelectTemplate1.Dispose();
             singleProjectSelectTemplate2.Dispose();
             tableLayoutPanel1.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            singleProjectSelectTemplate1.BackColor = singleProjectSelectTemplate2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void OnProjectSelected(object sender, Projects project)
@@ -54,20 +60,7 @@ namespace UserInterface.Add_Project.Custom_Control
                 singleProjectSelectTemplate2.Project = project2;
             }
             else singleProjectSelectTemplate2.Visible = false;
-
-            singleProjectSelectTemplate1.Region = singleProjectSelectTemplate2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, singleProjectSelectTemplate1.Width, singleProjectSelectTemplate1.Height, 20, 20));
         }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
 
         private Projects project1, project2;
     }

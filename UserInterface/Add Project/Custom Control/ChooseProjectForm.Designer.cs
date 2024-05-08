@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cancelButton = new System.Windows.Forms.Label();
+            this.selectButton = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.downPicBox = new System.Windows.Forms.PictureBox();
@@ -38,8 +40,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.selectButton = new System.Windows.Forms.Label();
-            this.cancelButton = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -75,6 +75,42 @@
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.cancelButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.cancelButton.Location = new System.Drawing.Point(379, 8);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(119, 33);
+            this.cancelButton.TabIndex = 1;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cancelButton.Click += new System.EventHandler(this.OnCancelClick);
+            this.cancelButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            this.cancelButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.cancelButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
+            // 
+            // selectButton
+            // 
+            this.selectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.selectButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.selectButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
+            this.selectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.selectButton.Location = new System.Drawing.Point(242, 8);
+            this.selectButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(119, 33);
+            this.selectButton.TabIndex = 0;
+            this.selectButton.Text = "Select";
+            this.selectButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.selectButton.Click += new System.EventHandler(this.OnSelectClick);
+            this.selectButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            this.selectButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.selectButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
@@ -88,6 +124,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.downPicBox, 0, 1);
@@ -135,6 +172,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -175,47 +213,11 @@
             this.ucNotFound1.Size = new System.Drawing.Size(514, 402);
             this.ucNotFound1.TabIndex = 2;
             // 
-            // selectButton
-            // 
-            this.selectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.selectButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.selectButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
-            this.selectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
-            this.selectButton.Location = new System.Drawing.Point(242, 8);
-            this.selectButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(119, 33);
-            this.selectButton.TabIndex = 0;
-            this.selectButton.Text = "Select";
-            this.selectButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.selectButton.Click += new System.EventHandler(this.OnSelectClick);
-            this.selectButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
-            this.selectButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
-            this.selectButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.cancelButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold);
-            this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.cancelButton.Location = new System.Drawing.Point(379, 8);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(119, 33);
-            this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cancelButton.Click += new System.EventHandler(this.OnCancelClick);
-            this.cancelButton.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
-            this.cancelButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
-            this.cancelButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
-            // 
             // ChooseProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
             this.ClientSize = new System.Drawing.Size(514, 498);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

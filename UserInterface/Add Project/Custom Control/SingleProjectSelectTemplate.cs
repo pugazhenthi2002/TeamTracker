@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
 using UserInterface.Home_Page.Project_Manager;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Add_Project.Custom_Control
 {
@@ -35,6 +36,17 @@ namespace UserInterface.Add_Project.Custom_Control
             set
             {
                 isClicked = value;
+                if (value)
+                {
+                    BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                    projectLabel.ForeColor = versionLabel.ForeColor = teamLeadLabel.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
+                }
+                else
+                {
+                    BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                    projectLabel.ForeColor = versionLabel.ForeColor = teamLeadLabel.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+                }
+                profilePictureBox1.ParentColor = BackColor;
                 this.Invalidate();
             }
         }
@@ -44,6 +56,7 @@ namespace UserInterface.Add_Project.Custom_Control
         {
             DoubleBuffered = true;
             InitializeComponent();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -59,7 +72,11 @@ namespace UserInterface.Add_Project.Custom_Control
             teamLeadLabel.Dispose();
             versionLabel.Dispose();
         }
-       
+
+        private void InitializePageColor()
+        {
+            projectLabel.ForeColor = versionLabel.ForeColor = teamLeadLabel.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
+        }
 
         private void InitializeTemplate()
         {
@@ -94,7 +111,7 @@ namespace UserInterface.Add_Project.Custom_Control
             isHovered = true;
             if (!isClicked)
             {
-                profilePictureBox1.ParentColor = Color.FromArgb(201, 210, 217);
+                profilePictureBox1.ParentColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
             }
             Invalidate();
         }
@@ -105,7 +122,7 @@ namespace UserInterface.Add_Project.Custom_Control
             isHovered = false;
             if (!isClicked)
             {
-                profilePictureBox1.ParentColor = Color.FromArgb(221, 230, 237);
+                profilePictureBox1.ParentColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             Invalidate();
         }
@@ -113,7 +130,7 @@ namespace UserInterface.Add_Project.Custom_Control
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 2, Height - 2), 10));
             border.Dispose();
@@ -121,25 +138,44 @@ namespace UserInterface.Add_Project.Custom_Control
             {
                 if (isHovered)
                 {
-                    border = new Pen(Color.FromArgb(39, 55, 77), 2);
+                    border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
                     e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
                 }
                 else
                 {
-                    border = new Pen(Color.FromArgb(157, 178, 191), 2);
+                    border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
                     e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
                 }
-            }
-            else
-            {
-                border = new Pen(Color.Red, 2);
-                e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, Width - 4, Height - 4), 10));
             }
             border.Dispose();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
         private bool isHovered = false;
         private bool isClicked = false;
         private Projects project;
+
     }
 }

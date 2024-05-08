@@ -57,6 +57,7 @@
             this.singleProjectSelectTemplate2.Location = new System.Drawing.Point(191, 7);
             this.singleProjectSelectTemplate2.Margin = new System.Windows.Forms.Padding(7);
             this.singleProjectSelectTemplate2.Name = "singleProjectSelectTemplate2";
+            this.singleProjectSelectTemplate2.Padding = new System.Windows.Forms.Padding(5);
             this.singleProjectSelectTemplate2.Project = null;
             this.singleProjectSelectTemplate2.Size = new System.Drawing.Size(171, 114);
             this.singleProjectSelectTemplate2.TabIndex = 1;
@@ -70,6 +71,7 @@
             this.singleProjectSelectTemplate1.Location = new System.Drawing.Point(7, 7);
             this.singleProjectSelectTemplate1.Margin = new System.Windows.Forms.Padding(7);
             this.singleProjectSelectTemplate1.Name = "singleProjectSelectTemplate1";
+            this.singleProjectSelectTemplate1.Padding = new System.Windows.Forms.Padding(5);
             this.singleProjectSelectTemplate1.Project = null;
             this.singleProjectSelectTemplate1.Size = new System.Drawing.Size(170, 114);
             this.singleProjectSelectTemplate1.TabIndex = 0;

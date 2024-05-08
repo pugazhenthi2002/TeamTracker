@@ -15,7 +15,9 @@ namespace TeamTracker
         public AddProject()
         {
             InitializeComponent();
+            InitializePageColor();
         }
+
         public new void Dispose()
         {
             initializeButton.Dispose(); versionUpgradeButton.Dispose();
@@ -23,12 +25,20 @@ namespace TeamTracker
             versionUpgrade1.Dispose();  projectInitializationPage1.Dispose();
             tabPage1.Dispose(); tabPage2.Dispose(); tabControl1.Dispose();
         }
+
+        private void InitializePageColor()
+        {
+            tabPage1.BackColor = tabPage2.BackColor = initializeButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            versionUpgradeButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            initializeButton.ForeColor = ThemeManager.GetTextColor(initializeButton.BackColor);
+            versionUpgradeButton.ForeColor = ThemeManager.GetTextColor(versionUpgradeButton.BackColor);
+        }
+
         public void InitializePage()
         {
             tabControl1.SuspendLayout();
             projectInitializationPage1.SuspendLayout();
-            initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(221, 230, 237);
-            versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(39, 55, 77);
+            InitializePageColor();
             tabControl1.SelectedIndex = 0;
             projectInitializationPage1.InitializePage();
             tabControl1.ResumeLayout();
@@ -39,8 +49,10 @@ namespace TeamTracker
         {
             tabPage1.SuspendLayout();
             projectInitializationPage1.SuspendLayout();
-            initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(221, 230, 237);
-            versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(39, 55, 77);
+            initializeButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            initializeButton.ForeColor = ThemeManager.GetTextColor(initializeButton.BackColor);
+            versionUpgradeButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            versionUpgradeButton.ForeColor = ThemeManager.GetTextColor(initializeButton.BackColor);
             tabControl1.SelectedIndex = 0;
             projectInitializationPage1.InitializePage();
             tabPage1.ResumeLayout();

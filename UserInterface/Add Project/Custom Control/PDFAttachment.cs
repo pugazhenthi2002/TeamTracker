@@ -29,6 +29,7 @@ namespace TeamTracker
         public PDFAttachment()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -40,6 +41,12 @@ namespace TeamTracker
             label1.Dispose();
             tableLayoutPanel1.Dispose();
             panel1.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
         }
 
         private void OnCloseCLick(object sender, EventArgs e)

@@ -140,12 +140,6 @@
     <Compile Include="Add Project\Custom Control\TeamLeaderPicAndName.designer.cs">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Add Project\Custom Control\TeamLeaderPicAndNameVertical.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\TeamLeaderPicAndNameVertical.designer.cs">
-      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
-    </Compile>
     <Compile Include="Add Project\ProjectInitializationPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -158,6 +152,8 @@
     <Compile Include="Add Project\VersionUpgrade.designer.cs">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Color Manager\ColorPalattes.cs" />
+    <Compile Include="Color Manager\ThemeManager.cs" />
     <Compile Include="Issues\All Issue Page\FilterPeople.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -812,9 +808,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\TeamLeaderPicAndName.resx">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\TeamLeaderPicAndNameVertical.resx">
-      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\ProjectInitializationPage.resx">
       <DependentUpon>ProjectInitializationPage.cs</DependentUpon>

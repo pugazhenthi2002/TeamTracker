@@ -35,13 +35,15 @@ namespace UserInterface.Add_Project.Custom_Control
                 {
                     ucNotFound1.Visible = true;
                     controlPanel.Visible = upPicBox.Visible = downPicBox.Visible = false;
-                    selectButton.BackColor = selectButton.ForeColor = Color.FromArgb(157, 178, 191);
+                    selectButton.BackColor = selectButton.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                 }
             }
         }
+
         public ChooseProjectForm()
         {
             InitializeComponent();
+            InitializePageColor();
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
             selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
@@ -76,7 +78,14 @@ namespace UserInterface.Add_Project.Custom_Control
             ucNotFound1.Dispose();
         }
 
-        
+        private void InitializePageColor()
+        {
+            panel2.BackColor = cancelButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = BackColor = selectButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = cancelButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
+            selectButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+        }
+
         private void OnPaginateUpClick(object sender, EventArgs e)
         {
             if (prevControl != null)
@@ -160,7 +169,7 @@ namespace UserInterface.Add_Project.Custom_Control
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0,0), new Point(Width, 0));
             border.Dispose();
         }
@@ -176,14 +185,13 @@ namespace UserInterface.Add_Project.Custom_Control
             isEntered = true;
             if ((sender as Label).Name == "selectButton")
             {
-
-                (sender as Label).BackColor = Color.FromArgb(40, 50, 80);
-                (sender as Label).ForeColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             else
             {
-                (sender as Label).ForeColor = Color.FromArgb(40, 50, 80);
-                (sender as Label).BackColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             (sender as Label).Invalidate();
         }
@@ -199,33 +207,15 @@ namespace UserInterface.Add_Project.Custom_Control
             isEntered = false;
             if ((sender as Label).Name == "selectButton")
             {
-                (sender as Label).ForeColor = Color.FromArgb(40, 50, 80);
-                (sender as Label).BackColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             else
             {
-                (sender as Label).BackColor = Color.FromArgb(40, 50, 80);
-                (sender as Label).ForeColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             (sender as Label).Invalidate();
-        }
-
-
-        private void OnPaint(object sender, PaintEventArgs e)
-        {
-            if (sender is Label && (sender as Label).Name == "selectButton" && ucNotFound1.Visible)
-                return;
-
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border;
-            Rectangle rec = new Rectangle(2,2,(sender as Label).Width -6, (sender as Label).Height-6);
-            border = isEntered ? new Pen((sender as Label).ForeColor, 2) : new Pen((sender as Label).BackColor, 2);
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 2));
-            border.Dispose();
-            rec = new Rectangle(0, 0, (sender as Label).Width - 2, (sender as Label).Height - 2);
-            border = new Pen(Color.FromArgb(157, 178, 191), 2);
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 5));
-            border.Dispose();
         }
 
         private void OnPaginateMouseEnter(object sender, EventArgs e)
@@ -305,6 +295,15 @@ namespace UserInterface.Add_Project.Custom_Control
 
         private bool isUpEnable = false, isDownEnable = false, isEntered;
         private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 5));
+                
+        }
+
         private List<Projects> availableProjects;
         private List<Projects> duoProjects;
         private SingleProjectSelectTemplate prevControl;

@@ -65,6 +65,7 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
             this.panel1.Size = new System.Drawing.Size(323, 56);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnRoundBorderPaint);
             // 
             // teamLeaderName
             // 

@@ -34,6 +34,7 @@ namespace TeamTracker
         public AvailableTeamLeaders()
         {
             InitializeComponent();
+            label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         public new void Dispose()
@@ -72,7 +73,7 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0,label1.Height), new Point(Width, label1.Height));
             border.Dispose();
         }

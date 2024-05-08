@@ -39,6 +39,7 @@ namespace TeamTracker
         public SelectedTeamLeader()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -48,6 +49,14 @@ namespace TeamTracker
             profilePictureBox1.Dispose();
             label1.Dispose();   label2.Dispose();   panel3.Dispose();
             tableLayoutPanel1.Dispose(); button1.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            button1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            profilePictureBox1.ParentColor = ThemeManager.CurrentTheme.SecondaryII;
+            button1.ForeColor = ThemeManager.GetTextColor(button1.BackColor);
+            label1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -68,20 +77,20 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            button1.BackColor = Color.FromArgb(221, 230, 237);
-            button1.ForeColor = Color.FromArgb(39, 55, 77);
+            button1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            button1.ForeColor = ThemeManager.GetTextColor(button1.BackColor);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            button1.BackColor = Color.FromArgb(39, 55, 77);
-            button1.ForeColor = Color.FromArgb(221, 230, 237);
+            button1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            button1.ForeColor = ThemeManager.GetTextColor(button1.BackColor);
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0, button1.Width - 1, button1.Height - 1));
             border.Dispose();
         }

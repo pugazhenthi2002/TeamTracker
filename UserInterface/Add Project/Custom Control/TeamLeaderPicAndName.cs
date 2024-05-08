@@ -45,7 +45,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
-
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -60,6 +60,12 @@ namespace TeamTracker
             tableLayoutPanel1.Dispose();
         }
 
+        private void InitializePageColor()
+        {
+            panel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            teamLeaderName.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -69,7 +75,6 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, panel1.Height, panel1.Height));
-
         }
 
         private void OnProfileClicked(object sender, EventArgs e)
@@ -80,14 +85,16 @@ namespace TeamTracker
         private void OnMouseEnter(object sender, EventArgs e)
         {
             IsEntered = true;
-            teamLeaderName.ForeColor = Color.FromArgb(39, 55, 77);
+            panel1.BackColor = ThemeManager.GetHoverColor(panel1.BackColor);
+            teamLeaderName.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
             panel1.Invalidate();
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
             IsEntered = false;
-            teamLeaderName.ForeColor = Color.FromArgb(82, 109, 130);
+            panel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            teamLeaderName.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -100,6 +107,14 @@ namespace TeamTracker
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
+
+        private void OnRoundBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, panel1.Width - 1, panel1.Height - 1), panel1.Height / 2));
+            border.Dispose();
+        }
 
         private bool IsEntered;
         private Employee employee;
