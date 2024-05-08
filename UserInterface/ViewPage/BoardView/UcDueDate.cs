@@ -55,6 +55,18 @@ namespace TeamTracker
             }
         }
 
+        public Color HeaderForecolor
+        {
+            get
+            {
+                return labelDue.ForeColor;
+            }
+            set
+            {
+                labelDue.ForeColor = value;
+            }
+        }
+
         public DateTime DueDate
         {
             get { return date; }

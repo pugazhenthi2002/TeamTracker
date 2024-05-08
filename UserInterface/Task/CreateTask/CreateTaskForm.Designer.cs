@@ -54,10 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.BtnAssignTo = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.endDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.startDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.buttonSetMilestone = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxTaskName = new System.Windows.Forms.TextBox();
@@ -65,6 +63,8 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.endDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
+            this.startDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -438,21 +438,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(276, 110);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
-            // endDate
-            // 
-            this.endDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.endDate.BorderSize = 2;
-            this.endDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.endDate.Location = new System.Drawing.Point(141, 55);
-            this.endDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.endDate.MinimumSize = new System.Drawing.Size(4, 35);
-            this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(132, 35);
-            this.endDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.endDate.TabIndex = 6;
-            this.endDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -482,21 +467,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Start Date";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // startDate
-            // 
-            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.startDate.BorderSize = 2;
-            this.startDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.startDate.Location = new System.Drawing.Point(3, 55);
-            this.startDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.startDate.MinimumSize = new System.Drawing.Size(4, 35);
-            this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(132, 35);
-            this.startDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.startDate.TabIndex = 5;
-            this.startDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             // 
             // buttonSetMilestone
             // 
@@ -603,6 +573,36 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Task Description";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // endDate
+            // 
+            this.endDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.endDate.BorderSize = 2;
+            this.endDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.endDate.Location = new System.Drawing.Point(141, 55);
+            this.endDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.endDate.MinimumSize = new System.Drawing.Size(4, 35);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(132, 35);
+            this.endDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.endDate.TabIndex = 6;
+            this.endDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            // 
+            // startDate
+            // 
+            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.startDate.BorderSize = 2;
+            this.startDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.startDate.Location = new System.Drawing.Point(3, 55);
+            this.startDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.startDate.MinimumSize = new System.Drawing.Size(4, 35);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(132, 35);
+            this.startDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.startDate.TabIndex = 5;
+            this.startDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             // 
             // CreateTaskForm
             // 

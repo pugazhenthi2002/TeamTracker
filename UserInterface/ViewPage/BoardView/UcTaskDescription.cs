@@ -18,7 +18,6 @@ namespace TeamTracker
         private Color borderColor = Color.Black;
         private Color topLabelColor = Color.White;
         private Color topLabelForeColor = Color.White;
-        private bool enableEdit = true;
 
         public UcTaskDescription()
         {
@@ -29,12 +28,11 @@ namespace TeamTracker
         {
             get
             {
-                return enableEdit;
+                return labelCenter.ReadOnly;
             }
             set
             {
-                enableEdit = value;
-                SetEditMode();
+                labelCenter.ReadOnly = value;
             }
         }
 
@@ -121,20 +119,5 @@ namespace TeamTracker
         {
             labelCenter.Text = centerLabelText;
         }
-
-        private void SetEditMode()
-        {
-            if(enableEdit)
-            {
-                labelCenter.ReadOnly = false;
-            }
-            else
-            {
-                labelCenter.ReadOnly = true;
-            }
-        }
-
-
-
     }
 }

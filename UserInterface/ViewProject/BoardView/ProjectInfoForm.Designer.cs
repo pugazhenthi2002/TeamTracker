@@ -48,6 +48,7 @@
             this.ucTaskDescription1 = new TeamTracker.UcTaskDescription();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.labelTaskCount = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -59,16 +60,15 @@
             this.donePanel = new System.Windows.Forms.Panel();
             this.delayPanel = new System.Windows.Forms.Panel();
             this.currentPanel = new System.Windows.Forms.Panel();
-            this.notstartedPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.notstartedPanel = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.backNavigatePicBox = new System.Windows.Forms.PictureBox();
             this.nextNavPicBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.labelTaskCount = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
@@ -350,7 +350,7 @@
             this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
             this.ucTaskDescription1.CenterLabelText = "Task Description...";
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskDescription1.EnableEdit = true;
+            this.ucTaskDescription1.EnableEdit = false;
             this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucTaskDescription1.Location = new System.Drawing.Point(3, 10);
             this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
@@ -393,6 +393,21 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Task Count";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelTaskCount
+            // 
+            this.labelTaskCount.BackColor = System.Drawing.Color.Transparent;
+            this.labelTaskCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTaskCount.Font = new System.Drawing.Font("Ebrima", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTaskCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.labelTaskCount.Location = new System.Drawing.Point(5, 0);
+            this.labelTaskCount.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelTaskCount.Name = "labelTaskCount";
+            this.labelTaskCount.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelTaskCount.Size = new System.Drawing.Size(393, 104);
+            this.labelTaskCount.TabIndex = 1;
+            this.labelTaskCount.Text = "6";
+            this.labelTaskCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -500,7 +515,7 @@
             // 
             this.donePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.donePanel.BackColor = System.Drawing.Color.Transparent;
-            this.donePanel.Location = new System.Drawing.Point(3, 3);
+            this.donePanel.Location = new System.Drawing.Point(3, 5);
             this.donePanel.Margin = new System.Windows.Forms.Padding(0);
             this.donePanel.Name = "donePanel";
             this.donePanel.Size = new System.Drawing.Size(20, 20);
@@ -511,7 +526,7 @@
             // 
             this.delayPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.delayPanel.BackColor = System.Drawing.Color.Transparent;
-            this.delayPanel.Location = new System.Drawing.Point(79, 3);
+            this.delayPanel.Location = new System.Drawing.Point(79, 5);
             this.delayPanel.Margin = new System.Windows.Forms.Padding(0);
             this.delayPanel.Name = "delayPanel";
             this.delayPanel.Size = new System.Drawing.Size(20, 20);
@@ -522,23 +537,12 @@
             // 
             this.currentPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.currentPanel.BackColor = System.Drawing.Color.Transparent;
-            this.currentPanel.Location = new System.Drawing.Point(155, 3);
+            this.currentPanel.Location = new System.Drawing.Point(155, 5);
             this.currentPanel.Margin = new System.Windows.Forms.Padding(0);
             this.currentPanel.Name = "currentPanel";
             this.currentPanel.Size = new System.Drawing.Size(20, 20);
             this.currentPanel.TabIndex = 2;
             this.currentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
-            // 
-            // notstartedPanel
-            // 
-            this.notstartedPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.notstartedPanel.BackColor = System.Drawing.Color.Transparent;
-            this.notstartedPanel.Location = new System.Drawing.Point(261, 3);
-            this.notstartedPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.notstartedPanel.Name = "notstartedPanel";
-            this.notstartedPanel.Size = new System.Drawing.Size(20, 20);
-            this.notstartedPanel.TabIndex = 2;
-            this.notstartedPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
             // 
             // label4
             // 
@@ -565,6 +569,17 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Delay";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // notstartedPanel
+            // 
+            this.notstartedPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.notstartedPanel.BackColor = System.Drawing.Color.Transparent;
+            this.notstartedPanel.Location = new System.Drawing.Point(261, 5);
+            this.notstartedPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.notstartedPanel.Name = "notstartedPanel";
+            this.notstartedPanel.Size = new System.Drawing.Size(20, 20);
+            this.notstartedPanel.TabIndex = 2;
+            this.notstartedPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLegendPaint);
             // 
             // panel6
             // 
@@ -641,21 +656,6 @@
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(1081, 274);
             this.ucNotFound1.TabIndex = 0;
-            // 
-            // labelTaskCount
-            // 
-            this.labelTaskCount.BackColor = System.Drawing.Color.Transparent;
-            this.labelTaskCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTaskCount.Font = new System.Drawing.Font("Ebrima", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTaskCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.labelTaskCount.Location = new System.Drawing.Point(5, 0);
-            this.labelTaskCount.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.labelTaskCount.Name = "labelTaskCount";
-            this.labelTaskCount.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.labelTaskCount.Size = new System.Drawing.Size(393, 104);
-            this.labelTaskCount.TabIndex = 1;
-            this.labelTaskCount.Text = "6";
-            this.labelTaskCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProjectInfoForm
             // 

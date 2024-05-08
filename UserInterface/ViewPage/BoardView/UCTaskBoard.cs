@@ -88,8 +88,8 @@ namespace TeamTracker
         {
             isEntered = true;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_hover;
-            tableLayoutPanel1.BackColor = Color.FromArgb(39, 55, 77);
-            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = Color.FromArgb(221, 230, 237);
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = Color.FromArgb(39, 55, 77);
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = Color.FromArgb(221, 230, 237);
             this.Cursor = Cursors.Hand;
             tableLayoutPanel1.Invalidate();
         }
@@ -98,8 +98,8 @@ namespace TeamTracker
         {
             isEntered = false;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
-            tableLayoutPanel1.BackColor = Color.FromArgb(201, 210, 217);
-            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = Color.FromArgb(39, 55, 77);
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = Color.FromArgb(201, 210, 217);
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = Color.FromArgb(39, 55, 77);
             this.Cursor = Cursors.Default;
             tableLayoutPanel1.Invalidate();
         }

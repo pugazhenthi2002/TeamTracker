@@ -161,7 +161,6 @@ namespace UserInterface.Task
         {
             (sender as DeployForm).Dispose();
             (sender as DeployForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -172,8 +171,9 @@ namespace UserInterface.Task
                 MilestoneManager.CurrentMilestone.EndDate = DateTime.Now.Date;
                 MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
                 MilestoneManager.CurrentMilestone = null;
-                VersionManager.CurrentVersion = null;
+                VersionManager.CurrentVersion.EndDate = DateTime.Now.Date;
                 VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
+                VersionManager.CurrentVersion = null;
                 DataHandler.AddVersionSourceCode(e);
                 Visible = false;
             }

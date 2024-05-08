@@ -31,6 +31,7 @@ namespace UserInterface.Task
         {
             if(VersionManager.CurrentVersion == null)
             {
+                ucNotFound1.Visible = true;
                 panel1.Visible = false;
                 return;
             }

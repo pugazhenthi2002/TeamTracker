@@ -15,8 +15,7 @@ namespace TeamTracker
 
         public static BooleanMsg ConnectDatabase()
         {
-            //manager = new MySqlHandler("192.168.3.55", "Ilam", "Lucid123", "teamtracker");
-            manager = new MySqlHandler("localhost", "root", "", "teamtracker");
+            manager = new MySqlHandler("localhost", "root", "Lucid123", "teamtracker");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -39,7 +38,6 @@ namespace TeamTracker
 
         public static ProjectVersion AddVersion(ProjectVersion version)
         {
-            //version.VersionDescription = "A";
             var y = manager.ColumnExist("projectversion", "EndDate");
             var x = manager.InsertData("projectversion", new ParameterData[]
             {
@@ -377,7 +375,6 @@ namespace TeamTracker
             manager.InsertData("taskattachment", new ParameterData[]
             {
                 new ParameterData("TaskID", taskAttachments.TaskID),
-                new ParameterData("DisplayName", taskAttachments.DisplayName),
                 new ParameterData("TaskAttachmentName", taskAttachments.TaskAttachmentName),
                 new ParameterData("TaskAttachmentLocation", taskAttachments.TaskAttachmentLocation)
             });

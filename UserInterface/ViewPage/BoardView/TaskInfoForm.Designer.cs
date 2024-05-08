@@ -238,7 +238,7 @@
             this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
             this.ucTaskDescription1.CenterLabelText = "Task Description...";
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskDescription1.EnableEdit = true;
+            this.ucTaskDescription1.EnableEdit = false;
             this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucTaskDescription1.Location = new System.Drawing.Point(20, 66);
             this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
