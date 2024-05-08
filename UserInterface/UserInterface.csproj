@@ -1159,9 +1159,9 @@
     <None Include="Images\Search File.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data Structure\Data Structure.csproj">
-      <Project>{015ae303-5687-43df-a04b-1096ff57f937}</Project>
-      <Name>Data Structure</Name>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{eca6a2de-b061-4a22-85aa-fd0e5bdb14e8}</Project>
+      <Name>Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manager\Manager.csproj">
       <Project>{852f176d-8e38-4852-b2f9-7bed686da285}</Project>
