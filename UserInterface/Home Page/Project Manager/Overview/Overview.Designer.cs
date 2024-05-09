@@ -112,7 +112,7 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -153,11 +153,11 @@
             // 
             this.dropDownPicBox.BackColor = System.Drawing.Color.Transparent;
             this.dropDownPicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dropDownPicBox.Image = global::UserInterface.Properties.Resources.Down_Dark_Blue;
+            this.dropDownPicBox.Image = global::UserInterface.Properties.Resources.Down_Light_Blue;
             this.dropDownPicBox.Location = new System.Drawing.Point(200, 2);
             this.dropDownPicBox.Name = "dropDownPicBox";
             this.dropDownPicBox.Size = new System.Drawing.Size(22, 25);
-            this.dropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.dropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.dropDownPicBox.TabIndex = 0;
             this.dropDownPicBox.TabStop = false;
             this.dropDownPicBox.Click += new System.EventHandler(this.OnOverviewClick);

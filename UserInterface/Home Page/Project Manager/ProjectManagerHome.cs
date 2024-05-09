@@ -18,6 +18,7 @@ namespace UserInterface.Home_Page.Project_Manager
         public ProjectManagerHome()
         {
             InitializeComponent();
+            InitializePageColor();
             typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel1, new object[] { true });
             typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel2, new object[] { true });
         }
@@ -37,6 +38,7 @@ namespace UserInterface.Home_Page.Project_Manager
 
         public void InitializeProjectManagerHome()
         {
+            InitializePageColor();
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();
             notificationContent1.NotifyList = DataHandler.FetchNotification();
             deployContent1.DeployVersions = VersionManager.FetchDeploymentsProjectVersion();

@@ -84,6 +84,7 @@
             // 
             // closeButton
             // 
+            this.closeButton.BackColor = System.Drawing.Color.Transparent;
             this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.closeButton.Image = global::UserInterface.Properties.Resources.Close_30;
@@ -99,6 +100,7 @@
             // 
             // downPicBox
             // 
+            this.downPicBox.BackColor = System.Drawing.Color.Transparent;
             this.downPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.downPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.downPicBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
@@ -114,6 +116,7 @@
             // 
             // upPicBox
             // 
+            this.upPicBox.BackColor = System.Drawing.Color.Transparent;
             this.upPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.upPicBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
@@ -129,6 +132,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -395,6 +399,7 @@
             // 
             // basePanel
             // 
+            this.basePanel.BackColor = System.Drawing.Color.Transparent;
             this.basePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.basePanel.Location = new System.Drawing.Point(0, 220);
             this.basePanel.Name = "basePanel";

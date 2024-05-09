@@ -18,6 +18,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             set
             {
+                InitializePageColor();
                 if (value != null && value.Count > 0)
                 {
                     panel5.Visible = true;
@@ -61,7 +62,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
             BackColor = panel6.BackColor = overviewMilestoneContent1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            label2.BackColor = ThemeManager.GetTextColor(BackColor);
+            label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             panel7.BackColor = ThemeManager.CurrentTheme.PrimaryII;
             projectNameLabel.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
         }
@@ -81,7 +82,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnOverviewClick(object sender, EventArgs e)
         {
             OverviewDropDownForm form = new OverviewDropDownForm();
-            form.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            form.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
             form.Location = panel7.PointToScreen(new Point(0, panel7.Height));
             form.Size = new Size(panel7.Width, 50);
             form.CurrentVersionCollection = collection;

@@ -88,6 +88,13 @@ namespace TeamTracker
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    
         }
 
+        private void InitializePage()
+        {
+            panel2.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label4.ForeColor = label5.ForeColor = startDateLabel.ForeColor = endDateLabel.ForeColor = ThemeManager.GetTextColor(BackColor);
+        }
+
         private void addMilestoneButton_Click(object sender, EventArgs e)
         {
             BooleanMsg message = new BooleanMsg();
