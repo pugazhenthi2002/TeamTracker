@@ -218,8 +218,7 @@ namespace TeamTracker
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "All files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -229,15 +228,13 @@ namespace TeamTracker
             string fileNetworkPath = attachment.TaskAttachmentLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, attachment.TaskAttachmentName);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.TaskAttachmentName);
+                string extension = System.IO.Path.GetExtension(fileNetworkPath);
+                System.IO.File.Copy(fileNetworkPath, savePath+extension, true);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", System.IO.Path.GetFileName(savePath)+extension);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.TaskAttachmentName);
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", savePath);
             }
         }
     }

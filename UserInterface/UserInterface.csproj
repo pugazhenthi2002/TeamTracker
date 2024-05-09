@@ -55,6 +55,11 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -524,12 +529,6 @@
     <Compile Include="Task\CreateTask\TeamMembersListForm.Designer.cs">
       <DependentUpon>TeamMembersListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\CreateTask\UcCreateTask.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
-      <DependentUpon>UcCreateTask.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task\DeployForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -595,12 +594,6 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\CircleDownloadBtn.Designer.cs">
       <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\ProjectBoard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\ProjectBoard.designer.cs">
-      <DependentUpon>ProjectBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\SourceCodeSubmitionForm.cs">
       <SubType>Form</SubType>
@@ -1005,9 +998,6 @@
     <EmbeddedResource Include="Task\CreateTask\TeamMembersListForm.resx">
       <DependentUpon>TeamMembersListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
-      <DependentUpon>UcCreateTask.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Task\DeployForm.resx">
       <DependentUpon>DeployForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1040,9 +1030,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
       <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
-      <DependentUpon>ProjectBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\SourceCodeSubmitionForm.resx">
       <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>

@@ -43,6 +43,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -64,6 +65,14 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             label7.Dispose();   label8.Dispose();
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
             panel6.Dispose();   panel7.Dispose();   panel8.Dispose();   panel9.Dispose();   panel10.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            ucNotFound1.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = panel8.BackColor = panel9.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label2.ForeColor = label3.ForeColor = label8.ForeColor = dueTaskTitleLabel.ForeColor = ThemeManager.GetTextColor(panel5.BackColor);
+            taskCountLabel.ForeColor = dueTaskLabel.ForeColor = completedTaskLabel.ForeColor = incompleteTaskLabel.ForeColor = ThemeManager.GetTextColor(panel5.BackColor);
+            label1.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -122,7 +131,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (flag > 0) IsNextEnable = false;
             else { IsNextEnable = IsBackEnable = true; }
 
-            var colorList = ColorManager.ColorFadingOut;
+            var colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             int colorIndex = 0, total = 0;
             Dictionary<TeamTracker.TaskStatus, int> result1 = TaskManager.FetchTaskCountByStatus(VersionManager.CurrentVersion.VersionID);
 
@@ -179,7 +188,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnTablePanelPaint(object sender, PaintEventArgs e)
         {
-            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237), 2);
+            System.Drawing.Pen pen = new System.Drawing.Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawLine(pen, new Point(15, panel1.Height), new Point((sender as TableLayoutPanel).Width - 15, panel1.Height));
             pen.Dispose();
@@ -188,10 +197,10 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnLegendPaint(object sender, PaintEventArgs e)
         {
             System.Drawing.Brush brush;
-            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(System.Drawing.Color.FromArgb(3, 4, 94));
-            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(System.Drawing.Color.FromArgb(0, 119, 182));
-            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(System.Drawing.Color.FromArgb(0, 180, 216));
-            else brush = new SolidBrush(System.Drawing.Color.FromArgb(144, 224, 239));
+            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Completed]);
+            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Delay]);
+            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.OnProcess]);
+            else brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Upcoming]);
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width-2, (sender as Panel).Height-2));
@@ -200,7 +209,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
-            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
+            System.Drawing.Pen pen = new System.Drawing.Pen(ThemeManager.CurrentTheme.SecondaryIII);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
@@ -209,7 +218,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void MilestoneDividerPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            System.Drawing.Pen border = new System.Drawing.Pen(System.Drawing.Color.FromArgb(39, 55, 77), 2);
+            System.Drawing.Pen border = new System.Drawing.Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, 0), new Point((sender as Control).Width, 0));
             border.Dispose();
         }

@@ -952,7 +952,7 @@ namespace TeamTracker
 
         public static void AddIssueAttachment(IssueAttachment attachment)
         {
-            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Task Attachment\\"; // Change this to your desired save path
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Issue\\Issue Attachment\\"; // Change this to your desired save path
             try
             {
                 string filePath = System.IO.Path.Combine(savePath, attachment.IssueAttachmentName);
@@ -999,7 +999,7 @@ namespace TeamTracker
 
         public static void AddIssueSolutionAttachment(IssueSolutionAttachment attachment)
         {
-            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Task Attachment\\"; // Change this to your desired save path
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Issue\\Issue Solution Attachment\\"; // Change this to your desired save path
             try
             {
                 string filePath = System.IO.Path.Combine(savePath, attachment.IssueSolnAttachmentName);

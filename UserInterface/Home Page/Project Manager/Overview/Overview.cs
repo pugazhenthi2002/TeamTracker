@@ -56,6 +56,16 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             overviewMilestoneContent1.Dispose();    ucNotFound1.Dispose();
         }
 
+        private void InitializePageColor()
+        {
+            label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+            BackColor = panel6.BackColor = overviewMilestoneContent1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label2.BackColor = ThemeManager.GetTextColor(BackColor);
+            panel7.BackColor = ThemeManager.CurrentTheme.PrimaryII;
+            projectNameLabel.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -71,7 +81,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnOverviewClick(object sender, EventArgs e)
         {
             OverviewDropDownForm form = new OverviewDropDownForm();
-            form.BackColor = Color.FromArgb(231, 240, 250);
+            form.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             form.Location = panel7.PointToScreen(new Point(0, panel7.Height));
             form.Size = new Size(panel7.Width, 50);
             form.CurrentVersionCollection = collection;
@@ -81,14 +91,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnVersionSelected(string name, ProjectVersion version)
         {
-            //FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)FromArgb(221, 230, 237)
             overviewMilestoneContent1.Version = version;
             projectNameLabel.Text = name;
         }
         
         private void OnVersionSwitchPanelPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
             e.Graphics.DrawLine(pen, new Point(dropDownPicBox.Location.X, 0), new Point(dropDownPicBox.Location.X, panel7.Height - 1));

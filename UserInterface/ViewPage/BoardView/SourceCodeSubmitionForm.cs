@@ -65,7 +65,7 @@ namespace TeamTracker
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.Title = "Source Code Name";
-            openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf";
+            openFileDialog1.Filter = "ZIP Folders(.ZIP)| *.zip";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -74,22 +74,12 @@ namespace TeamTracker
                 TaskSourceCode = new SourceCode()
                 {
                     TaskID = SourceCodeTask.TaskID,
-                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".zip",
                     SourceCodeLocation = selectedFilePath,
                     SubmittedDate = DateTime.Now.Date
                 };
                 label3.Text = safeFile;
             }
-        }
-
-        private void OnClickClose(object sender, MouseEventArgs e)
-        {
-            //CloseClick?.Invoke(sender, e);
-            //this.Dispose();
-            //if (this.Owner != null)
-            //{
-                //this.Owner.Focus();
-            //}
         }
 
         private void OnClickClear(object sender, EventArgs e)

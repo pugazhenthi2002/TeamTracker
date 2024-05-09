@@ -89,8 +89,8 @@ namespace UserInterface.Task
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.Title = "Source Code Name";
-            openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf";
+            openFileDialog1.Title = "Version Source Code Name";
+            openFileDialog1.Filter = "ZIP Folders (.ZIP)|*.zip";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -99,7 +99,7 @@ namespace UserInterface.Task
                 SelectedVersionSourceCode = new VersionSourceCode()
                 {
                     VersionID = VersionManager.CurrentVersion.VersionID,
-                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".zip",
                     VersionLocation = selectedFilePath,
                     DisplayName = safeFile
                 };

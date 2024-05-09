@@ -69,6 +69,7 @@
             // 
             // teamLeaderName
             // 
+            this.teamLeaderName.BackColor = System.Drawing.Color.Transparent;
             this.teamLeaderName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.teamLeaderName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.teamLeaderName.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,6 +86,7 @@
             // 
             // profilePictureBox2
             // 
+            this.profilePictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.profilePictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profilePictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.profilePictureBox2.Location = new System.Drawing.Point(2, 2);

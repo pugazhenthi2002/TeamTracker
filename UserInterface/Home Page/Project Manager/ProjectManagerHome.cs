@@ -29,6 +29,12 @@ namespace UserInterface.Home_Page.Project_Manager
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
         }
 
+        private void InitializePageColor()
+        {
+            overview1.BorderColor = notificationContent1.BorderColor = deployContent1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = overview1.BackColor = notificationContent1.BackColor = deployContent1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
         public void InitializeProjectManagerHome()
         {
             overview1.OverviewCollection = VersionManager.FetchOnProcessProjectVersion();

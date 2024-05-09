@@ -69,8 +69,7 @@ namespace UserInterface.Task
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders(.ZIP)| *.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -81,15 +80,12 @@ namespace UserInterface.Task
             string fileNetworkPath = sourceCode.SourceCodeLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, sourceCode.CommitName+".pdf");
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.CommitName);
+                System.IO.File.Copy(fileNetworkPath, savePath, true);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", savePath);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", sourceCode.CommitName);
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", savePath);
             }
         }
 

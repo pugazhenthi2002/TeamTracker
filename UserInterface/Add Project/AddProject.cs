@@ -52,7 +52,7 @@ namespace TeamTracker
             initializeButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             initializeButton.ForeColor = ThemeManager.GetTextColor(initializeButton.BackColor);
             versionUpgradeButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            versionUpgradeButton.ForeColor = ThemeManager.GetTextColor(initializeButton.BackColor);
+            versionUpgradeButton.ForeColor = ThemeManager.GetTextColor(versionUpgradeButton.BackColor);
             tabControl1.SelectedIndex = 0;
             projectInitializationPage1.InitializePage();
             tabPage1.ResumeLayout();
@@ -63,8 +63,10 @@ namespace TeamTracker
         {
             tabPage2.SuspendLayout();
             versionUpgrade1.SuspendLayout();
-            initializeButton.BackColor = versionUpgradeButton.ForeColor = Color.FromArgb(39, 55, 77);
-            versionUpgradeButton.BackColor = initializeButton.ForeColor = Color.FromArgb(221, 230, 237);
+            versionUpgradeButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            versionUpgradeButton.ForeColor = ThemeManager.GetTextColor(versionUpgradeButton.BackColor);
+            initializeButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            initializeButton.ForeColor = ThemeManager.GetTextColor(initializeButton.BackColor);
             tabControl1.SelectedIndex = 1;
             versionUpgrade1.InitializePage();
             tabPage1.ResumeLayout();

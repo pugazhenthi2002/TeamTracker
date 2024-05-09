@@ -34,7 +34,7 @@ namespace TeamTracker
         {
             base.OnPaint(e);
             int drawHeight = 50;
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
 
             while (drawHeight < Height)
             {
@@ -84,7 +84,7 @@ namespace TeamTracker
                     Name = Iter.Key,
                     Text = Iter.Key + "\n" + Iter.Value.VersionName,
                     Font = new Font(new FontFamily("Ebrima"), 10, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(39, 55, 77),
+                    ForeColor = ThemeManager.CurrentTheme.PrimaryI,
                     BackColor = Color.Transparent
                 };
                 label.MouseEnter += OnLabelMouseEnter;
@@ -96,13 +96,13 @@ namespace TeamTracker
 
         private void OnLabelMouseLeave(object sender, EventArgs e)
         {
-            (sender as Label).ForeColor = Color.FromArgb(39, 55, 77);
+            (sender as Label).ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             this.Invalidate();
         }
 
         private void OnLabelMouseEnter(object sender, EventArgs e)
         {
-            (sender as Label).ForeColor = Color.FromArgb(82, 109, 130);
+            (sender as Label).ForeColor = ThemeManager.CurrentTheme.PrimaryII;
             this.Invalidate();
         }
 

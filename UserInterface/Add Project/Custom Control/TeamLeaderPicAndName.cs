@@ -28,7 +28,7 @@ namespace TeamTracker
                 employee = value;
                 if (value != null)
                 {
-                    teamLeaderName.Text = value.EmployeeFirstName;
+                    teamLeaderName.Text = value.EmployeeFirstName + " " + value.EmployeeLastName;
                     try
                     {
                         profilePictureBox2.Image = Image.FromFile(value.EmpProfileLocation);
@@ -84,17 +84,18 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            IsEntered = true;
             panel1.BackColor = ThemeManager.GetHoverColor(panel1.BackColor);
             teamLeaderName.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            profilePictureBox2.ParentColor = panel1.BackColor;
             panel1.Invalidate();
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            IsEntered = false;
             panel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
             teamLeaderName.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            profilePictureBox2.ParentColor = panel1.BackColor;
+            panel1.Invalidate();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -112,11 +113,10 @@ namespace TeamTracker
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, panel1.Width - 1, panel1.Height - 1), panel1.Height / 2));
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, panel1.Width - 1, panel1.Height - 1), panel1.Height/2));
             border.Dispose();
         }
 
-        private bool IsEntered;
         private Employee employee;
     }
 }

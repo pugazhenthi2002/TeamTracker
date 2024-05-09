@@ -57,7 +57,7 @@ namespace TeamTracker
             for(int ctr=0, iter = startCount; ctr<4 && iter<=endCount; ctr++, iter++)
             {
                 singleMilestoneCollection[ctr].MilestoneContent = MilestoneCollection[iter];
-                pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = SetColor(MilestoneCollection[iter].Status);
+                pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneCollection[iter].Status];
                 pathAndDateCollection[ctr + 1].MilestoneDate = MilestoneCollection[iter].EndDate;
             }
             int size = pathAndDateCollection.Count;
@@ -76,26 +76,6 @@ namespace TeamTracker
                 return 0;
             }
             //ResumeLayout();
-        }
-
-        private Color SetColor(MilestoneStatus status)
-        {
-            if (status == MilestoneStatus.Upcoming)
-            {
-                return Color.FromArgb(72, 202, 228);
-            }
-            else if(status == MilestoneStatus.OnProcess)
-            {
-                return Color.FromArgb(0, 180, 216);
-            }
-            else if(status == MilestoneStatus.Delay)
-            {
-                return Color.FromArgb(0, 119, 182);
-            }
-            else
-            {
-                return Color.FromArgb(3, 4, 94);
-            }
         }
 
         private List<Milestone> milestoneCollection { get; set; }

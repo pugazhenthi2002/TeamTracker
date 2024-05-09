@@ -59,7 +59,7 @@ namespace TeamTracker
 
             Rectangle rec = new Rectangle(0, 0, Width, Height * 45 / 100);
             Brush brush = new SolidBrush(MilestoneColor);
-            Brush textBrush = new SolidBrush(Color.Black);
+            Brush textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
             GraphicsPath path = new GraphicsPath();
             StringFormat SFormat = new StringFormat
             {

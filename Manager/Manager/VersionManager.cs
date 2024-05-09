@@ -25,7 +25,7 @@ namespace TeamTracker
         public static BooleanMsg StoreVersionCollection()
         {
             VersionCollection = DataHandler.StoreProjectVersionDetails();
-
+            bool flag = false;
             if (VersionCollection == null) return "Couldn't Able to connect Employee Table";
             else
             {
@@ -33,10 +33,13 @@ namespace TeamTracker
                 {
                     if(Iter.StatusOfVersion == ProjectStatus.OnProcess && ((FetchTeamLeadIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID) || (IsCurrentEmployeeInvolvedInVersion(FetchTeamLeadIDFromProjectID(Iter.ProjectID))) || (FetchManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)))
                     {
+                        flag = true;
                         CurrentVersion = Iter;
                         break;
                     }
                 }
+
+                if (!flag) CurrentVersion = null;
                 return true;
             }
         }

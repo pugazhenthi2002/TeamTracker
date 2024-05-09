@@ -17,6 +17,7 @@ namespace TeamTracker
             set
             {
                 SuspendLayout();
+                InitializePageColor();
                 if (value != null && value.Count > 0)
                 {
                     Dispose();
@@ -64,6 +65,13 @@ namespace TeamTracker
                     ctr--;
                 }
             }
+        }
+
+        private void InitializePageColor()
+        {
+            backBtn.BackColor = nextBtn.BackColor = label1.BackColor = clearAllButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            clearAllButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(backBtn.BackColor);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -195,8 +203,8 @@ namespace TeamTracker
         {
             Cursor = Cursors.Hand;
             IsClearAllEntered = true;
-            clearAllButton.BackColor = Color.FromArgb(221, 230, 237);
-            clearAllButton.ForeColor = Color.FromArgb(39, 55, 77);
+            clearAllButton.BackColor = ThemeManager.GetHoverColor(clearAllButton.BackColor);
+            clearAllButton.ForeColor = ThemeManager.GetTextColor(clearAllButton.BackColor);
             (sender as Control).Invalidate();
         }
 
@@ -214,8 +222,8 @@ namespace TeamTracker
         private void OnClearAllMouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            clearAllButton.ForeColor = Color.FromArgb(221, 230, 237);
-            clearAllButton.BackColor = Color.FromArgb(39, 55, 77);
+            clearAllButton.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+            clearAllButton.ForeColor = ThemeManager.GetTextColor(clearAllButton.BackColor);
             IsClearAllEntered = false;
             (sender as Control).Invalidate();
         }

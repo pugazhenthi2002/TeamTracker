@@ -33,6 +33,7 @@ namespace TeamTracker
         public UcNotification()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -48,7 +49,13 @@ namespace TeamTracker
             textBoxContent.Dispose();
         }
 
-
+        private void InitializePageColor()
+        {
+            tableLayoutPanel2.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            panelContent.BackColor = textBoxContent.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            labelHeader.ForeColor = labelDateTime.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel2.BackColor);
+            textBoxContent.ForeColor = ThemeManager.GetTextColor(textBoxContent.BackColor);
+        }
        
 
         private void InitializeRoundedEdge()
@@ -76,7 +83,7 @@ namespace TeamTracker
         private void OnPanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(187, 208, 211), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Panel).Width - 3, (sender as Panel).Height - 3));
             border.Dispose();
         }
@@ -84,8 +91,8 @@ namespace TeamTracker
         private void OnEdgePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height), new Point((sender as Control).Width, (sender as Control).Height));
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
         }
 

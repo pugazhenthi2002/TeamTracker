@@ -37,7 +37,9 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            colorList = ColorManager.ColorFadingOut;
+            ucNotFound1.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            label1.ForeColor = labelActualEndDate.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
         }
 
         public new void Dispose()

@@ -174,18 +174,18 @@ namespace UserInterface.Task.CreateTask
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Title = "Open File";
-            openFileDialog.InitialDirectory = @"C:\";
-            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            openFileDialog.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedFilePath = openFileDialog.FileName;
                 string safeFile = openFileDialog.SafeFileName;
+                string extension = Path.GetExtension(openFileDialog.SafeFileName);
 
                 selectedAttachment = new TaskAttachment()
                 {
                     DisplayName = safeFile,
-                    TaskAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    TaskAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + extension,
                     TaskAttachmentLocation = selectedFilePath
                 };
                 tableLayoutPanelFileName.Show();

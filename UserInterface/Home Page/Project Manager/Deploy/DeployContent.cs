@@ -18,6 +18,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             set
             {
                 ucDeploy1.SuspendLayout();
+                InitializePageColor();
                 if (value != null && value.Count > 0)
                 {
                     counter = 0;
@@ -53,6 +54,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
         public DeployContent()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -65,7 +67,14 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose(); panel4.Dispose(); panel5.Dispose();
             nextBtn.Dispose();  backBtn.Dispose();
         }
-        
+
+        private void InitializePageColor()
+        {
+            ucDeploy1.BackColor = ucNotFound1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.BackColor = backBtn.BackColor = nextBtn.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

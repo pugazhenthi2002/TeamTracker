@@ -33,13 +33,13 @@
             this.labelCommitName = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelEmpName = new System.Windows.Forms.Label();
-            this.pictureBoxDownload = new System.Windows.Forms.PictureBox();
             this.EmpProfilePictureBox = new TeamTracker.ProfilePictureBox();
+            this.pictureBoxDownload = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmpProfilePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -118,21 +118,6 @@
             this.labelEmpName.Text = "Emp Name";
             this.labelEmpName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pictureBoxDownload
-            // 
-            this.pictureBoxDownload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxDownload.Image = global::UserInterface.Properties.Resources.download_Icon;
-            this.pictureBoxDownload.Location = new System.Drawing.Point(249, 15);
-            this.pictureBoxDownload.Margin = new System.Windows.Forms.Padding(15);
-            this.pictureBoxDownload.Name = "pictureBoxDownload";
-            this.pictureBoxDownload.Size = new System.Drawing.Size(49, 26);
-            this.pictureBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxDownload.TabIndex = 3;
-            this.pictureBoxDownload.TabStop = false;
-            this.pictureBoxDownload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickDownloadSourceCode);
-            this.pictureBoxDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownloadPicBox);
-            this.pictureBoxDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownloadPicBox);
-            // 
             // EmpProfilePictureBox
             // 
             this.EmpProfilePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
@@ -143,6 +128,21 @@
             this.EmpProfilePictureBox.Size = new System.Drawing.Size(22, 22);
             this.EmpProfilePictureBox.TabIndex = 0;
             this.EmpProfilePictureBox.TabStop = false;
+            // 
+            // pictureBoxDownload
+            // 
+            this.pictureBoxDownload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxDownload.Image = global::UserInterface.Properties.Resources.Download_Dark_Blue;
+            this.pictureBoxDownload.Location = new System.Drawing.Point(249, 15);
+            this.pictureBoxDownload.Margin = new System.Windows.Forms.Padding(15);
+            this.pictureBoxDownload.Name = "pictureBoxDownload";
+            this.pictureBoxDownload.Size = new System.Drawing.Size(49, 26);
+            this.pictureBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxDownload.TabIndex = 3;
+            this.pictureBoxDownload.TabStop = false;
+            this.pictureBoxDownload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickDownloadSourceCode);
+            this.pictureBoxDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownloadPicBox);
+            this.pictureBoxDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownloadPicBox);
             // 
             // UcTaskCommits
             // 
@@ -158,8 +158,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmpProfilePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
             this.ResumeLayout(false);
 
         }

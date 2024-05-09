@@ -55,7 +55,7 @@ namespace TeamTracker
         private void InitializePageColor()
         {
             browseLabel.BackColor = label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            browseLabel.ForeColor = label1.BackColor = ThemeManager.GetTextColor(browseLabel.BackColor);
+            browseLabel.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(browseLabel.BackColor);
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
@@ -71,21 +71,22 @@ namespace TeamTracker
 
             openFileDialog = new OpenFileDialog
             {
-                Title = "Open PDF File",
-                Filter = "PDF Files (*.pdf)|*.pdf"
+                Title = "Choose Your File",
+                Filter = "All files (*.*)|*.*"
             };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedFilePath = openFileDialog.FileName;
                 string safeFile = openFileDialog.SafeFileName;
+                string extension = System.IO.Path.GetExtension(openFileDialog.SafeFileName);
 
                 if (!AttachmentCollection.ContainsKey(safeFile))
                 {
                     AttachmentCollection.Add(safeFile, new VersionAttachment()
                     {
                         DisplayName = safeFile,
-                        AttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                        AttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + extension,
                         AttachmentLocation = selectedFilePath
                     });
                     AddAttachmentUI(safeFile);

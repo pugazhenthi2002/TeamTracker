@@ -22,11 +22,12 @@ namespace TeamTracker
             InitializeComponent();
             InitializeBorder();
             InitializePlaceHolders();
+            InitializePageColor();
         }
 
         public new void Dispose()
         {
-            button1.Dispose();  clientTextBox.Dispose();    descTextBox.Dispose(); fileAttachment1.Dispose();
+            clearButton.Dispose();  clientTextBox.Dispose();    descTextBox.Dispose(); fileAttachment1.Dispose();
             endDateLabel.Dispose(); endDatePanel.Dispose(); endDateTimePicker.Dispose();    label1.Dispose();   label3.Dispose();   label5.Dispose();
             latestUpgradedVersion1.Dispose();   profilePicAndName1.Dispose();   upgradeButton.Dispose();    ucNotFound1.Dispose();  ucNotFound2.Dispose();  versionNameTextBox.Dispose();
             startDateLabel.Dispose(); startDatePanel.Dispose(); startDateTimePicker.Dispose();
@@ -35,8 +36,20 @@ namespace TeamTracker
             panel6.Dispose();   panel7.Dispose(); panel8.Dispose(); panel9.Dispose(); panel10.Dispose();
         }
 
+        private void InitializePageColor()
+        {
+            clearButton.BackColor = chooseProjectLabel.BackColor = panel2.BackColor = panel3.BackColor = panel5.BackColor = startDatePanel.BackColor = endDatePanel.BackColor = panel6.BackColor = panel8.BackColor = fileAttachment1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = label3.ForeColor = label5.ForeColor = endDateLabel.ForeColor = startDateLabel.ForeColor = chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            upgradeButton.BackColor = startDateTimePicker.BorderColor = startDateTimePicker.TextColor = endDateTimePicker.BorderColor = endDateTimePicker.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = descTextBox.BackColor = startDateTimePicker.SkinColor = endDateTimePicker.SkinColor = ThemeManager.CurrentTheme.SecondaryIII;
+            upgradeButton.ForeColor = ThemeManager.GetTextColor(upgradeButton.BackColor);
+            clearButton.ForeColor = ThemeManager.GetTextColor(clearButton.BackColor);
+            versionNameTextBox.ForeColor = clientTextBox.ForeColor = descTextBox.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
         public void InitializePage()
         {
+            InitializePageColor();
             chooseProjectLabel.Text = "Choose Project";
             versionNameTextBox.Text = "Enter Version";
             descTextBox.Text = "Enter Version Description";
@@ -114,7 +127,7 @@ namespace TeamTracker
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             upgradeButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, upgradeButton.Width, upgradeButton.Height, 10, 10));
-            button1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
+            clearButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, clearButton.Width, clearButton.Height, 10, 10));
         }
 
         private void OnChooseProject(object sender, EventArgs e)
@@ -254,44 +267,14 @@ namespace TeamTracker
 
         private void OnChooseProjectLabelEnter(object sender, EventArgs e)
         {
-            chooseProjectLabel.BackColor = Color.FromArgb(157, 178, 191);
-            chooseProjectLabel.ForeColor = Color.Black;
+            chooseProjectLabel.BackColor = ThemeManager.GetHoverColor(chooseProjectLabel.BackColor);
+            chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(chooseProjectLabel.BackColor);
         }
 
         private void OnChooseProjectLabelLeave(object sender, EventArgs e)
         {
-            chooseProjectLabel.BackColor = Color.FromArgb(201, 210, 217);
-            chooseProjectLabel.ForeColor = Color.FromArgb(39, 55, 77);
-        }
-
-        private void DateMouseEnter(object sender, EventArgs e)
-        {
-            string name = (sender as Control).Name;
-            if (name == "startDateTimePicker" || name == "startDateLabel" || name == "tableLayoutPanel6")
-            {
-                startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(157, 178, 191);
-                startDateLabel.ForeColor = Color.Black;
-            }
-            else
-            {
-                endDatePanel.BackColor = endDateLabel.BackColor = Color.FromArgb(157, 178, 191);
-                endDateLabel.ForeColor = Color.Black;
-            }
-        }
-
-        private void DateMouseLeave(object sender, EventArgs e)
-        {
-            string name = (sender as Control).Name;
-            if (name == "startDateTimePicker" || name == "startDateLabel" || name == "tableLayoutPanel6")
-            {
-                startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(201, 210, 217);
-                startDateLabel.ForeColor = Color.FromArgb(39, 55, 77);
-            }
-            else
-            {
-                endDatePanel.BackColor = endDateLabel.BackColor = Color.FromArgb(201, 210, 217);
-                endDateLabel.ForeColor = Color.FromArgb(39, 55, 77);
-            }
+            chooseProjectLabel.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(chooseProjectLabel.BackColor);
         }
 
         private void ClearClick(object sender, EventArgs e)
@@ -325,7 +308,7 @@ namespace TeamTracker
         private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(5, (sender as Control).Height - 7), new Point((sender as Control).Width - 5, (sender as Control).Height - 7));
             border.Dispose();
         }
@@ -333,7 +316,7 @@ namespace TeamTracker
         private void BorderDrawPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (sender is Button)
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
@@ -341,6 +324,26 @@ namespace TeamTracker
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
 
             border1.Dispose();
+        }
+
+        private void OnButtonMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name == "clearButton")
+                clearButton.BackColor = ThemeManager.GetHoverColor(clearButton.BackColor);
+            else
+                upgradeButton.BackColor = ThemeManager.GetHoverColor(upgradeButton.BackColor);
+
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
+        }
+
+        private void OnButtonMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name == "clearButton")
+                clearButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            else
+                upgradeButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -356,5 +359,6 @@ namespace TeamTracker
 
         private TransparentForm transparentForm;
         private Projects project;
+
     }
 }

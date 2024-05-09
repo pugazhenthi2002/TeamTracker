@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Compression;
+using System.IO;
 
 namespace TeamTracker
 {
@@ -146,8 +148,7 @@ namespace TeamTracker
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders(.ZIP)| *.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -170,34 +171,33 @@ namespace TeamTracker
         private void AttachmentDownload(object sender, EventArgs e)
         {
             List<VersionAttachment> attachments = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
-
-            string savePath = "";
+            string zipFilePath = "", fileNetworkPath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders(.ZIP)| *.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                savePath = saveFileDialog.FileName;
+                zipFilePath = saveFileDialog.FileName;
             }
 
-            for (int ctr = 0; ctr < attachments.Count; ctr++)
+            using (var zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
             {
-                string fileNetworkPath = attachments[ctr].AttachmentLocation;
-                try
+                foreach (var fileToZip in attachments)
                 {
-                    string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                    string filePath = System.IO.Path.GetDirectoryName(savePath);
-                    filePath = System.IO.Path.Combine(filePath, attachments[ctr].DisplayName);
-                    System.IO.File.Copy(fileNetworkPath, filePath, true);
-                    ProjectManagerMainForm.notify.AddNotification("Download Completed", attachments[ctr].DisplayName);
-                }
-                catch
-                {
-                    ProjectManagerMainForm.notify.AddNotification("Download Failed", attachments[ctr].DisplayName);
+                    fileNetworkPath = fileToZip.AttachmentLocation;
+                    if (File.Exists(fileNetworkPath))
+                    {
+                        zipArchive.CreateEntryFromFile(fileNetworkPath, Path.GetFileName(fileToZip.DisplayName));
+                    }
+                    else
+                    {
+                        ProjectManagerMainForm.notify.AddNotification("File not found", fileNetworkPath);
+                    }
                 }
             }
+
+            ProjectManagerMainForm.notify.AddNotification("Download Completed", Path.GetFileName(zipFilePath));
         }
 
         private void OnLegendPaint(object sender, PaintEventArgs e)

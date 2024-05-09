@@ -160,6 +160,11 @@ namespace TeamTracker
             return GetBrightness(color) ? CurrentTheme.SecondaryIII : CurrentTheme.PrimaryI;
         }
 
+        static public Color GetMilestoneStatusColor(MilestoneStatus status)
+        {
+            return CurrentTheme.MilestoneStatusColorCollection[status];
+        }
+
         static private List<ColorPalattes> themes;
     }
 }

@@ -41,6 +41,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -54,6 +55,15 @@ namespace TeamTracker
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();
         }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            profilePictureBox1.ParentColor = panel3.BackColor = panel4.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            buttonDeploy.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+            buttonDeploy.ForeColor = ThemeManager.GetTextColor(buttonDeploy.BackColor);
+            teamLeaderName.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label7.ForeColor = labelProjNameandVersion.ForeColor = submissionDateLabel.ForeColor = ThemeManager.GetTextColor(panel4.BackColor);
+        }
+
         private void InitializePage()
         {
             profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromProjectID(proj.ProjectID).EmpProfileLocation);
@@ -65,7 +75,7 @@ namespace TeamTracker
             int total = 0;
             foreach (var Iter in result1) total += Iter.Value;
 
-            var colorList = ColorManager.ColorFadingOut;
+            var colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             int colorIndex = 0;
 
             if (total > 0)
@@ -98,6 +108,7 @@ namespace TeamTracker
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
+            buttonDeploy.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDeploy.Width, buttonDeploy.Height, 20, 20));
         }
         
         private void OnDownloaded(object sender, EventArgs e)
@@ -106,8 +117,7 @@ namespace TeamTracker
             VersionSourceCode sourceCode = DataHandler.FetchVersionSourceCodeByVersionID(version.VersionID);
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders (.ZIP)|*.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -131,17 +141,6 @@ namespace TeamTracker
             VersionManager.VersionCompletion(version);
             Deployment?.Invoke(proj.ProjectName, version);
         }
-
-        private void OnPaintTlBase(object sender, PaintEventArgs e)
-        {
-            Point pt1 = new Point(4, 4);
-            Point pt2 = new Point((sender as Panel).Width - 6, 4);
-            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
-            Point pt4 = new Point(4, (sender as Panel).Height - 6);
-            System.Drawing.Pen border = new System.Drawing.Pen(System.Drawing.Color.Black, 2);
-            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
-
 
         private void OnDownloadMouseEnter(object sender, EventArgs e)
         {
@@ -177,21 +176,34 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as Control).ForeColor = System.Drawing.Color.FromArgb(241, 250, 255);
+            (sender as Control).BackColor = ThemeManager.GetHoverColor((sender as Control).BackColor);
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            (sender as Control).ForeColor = System.Drawing.Color.FromArgb(211, 220, 227);
+            if ((sender as Control).Name == "label5")
+                (sender as Control).BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            else
+                (sender as Control).BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            System.Drawing.Pen border1 = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237), 2);
+            System.Drawing.Pen border1 = new System.Drawing.Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+            border1.Dispose();
+        }
 
+        private void OnLinePaint(object sender, PaintEventArgs e)
+        {
+            System.Drawing.Pen border1 = new System.Drawing.Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border1, 0, (sender as Control).Height - 1, (sender as Control).Width - 2, (sender as Control).Height - 1);
             border1.Dispose();
         }
 
@@ -210,5 +222,7 @@ namespace TeamTracker
         private ProjectVersion version;
         private Projects proj;
         private VersionSourceCode versionSourceCode;
+
+        
     }
 }

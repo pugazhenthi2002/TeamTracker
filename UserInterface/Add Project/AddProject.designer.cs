@@ -35,9 +35,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.projectInitializationPage1 = new TeamTracker.ProjectInitializationPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.versionUpgrade1 = new TeamTracker.VersionUpgrade();
+            this.projectInitializationPage1 = new TeamTracker.ProjectInitializationPage();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -52,7 +52,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1177, 50);
+            this.panel1.Size = new System.Drawing.Size(1202, 50);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1177, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1202, 50);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // initializeButton
@@ -82,7 +82,7 @@
             this.initializeButton.Location = new System.Drawing.Point(0, 0);
             this.initializeButton.Margin = new System.Windows.Forms.Padding(0);
             this.initializeButton.Name = "initializeButton";
-            this.initializeButton.Size = new System.Drawing.Size(588, 50);
+            this.initializeButton.Size = new System.Drawing.Size(601, 50);
             this.initializeButton.TabIndex = 0;
             this.initializeButton.Text = "Initialize";
             this.initializeButton.UseVisualStyleBackColor = false;
@@ -97,10 +97,10 @@
             this.versionUpgradeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.versionUpgradeButton.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionUpgradeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.versionUpgradeButton.Location = new System.Drawing.Point(588, 0);
+            this.versionUpgradeButton.Location = new System.Drawing.Point(601, 0);
             this.versionUpgradeButton.Margin = new System.Windows.Forms.Padding(0);
             this.versionUpgradeButton.Name = "versionUpgradeButton";
-            this.versionUpgradeButton.Size = new System.Drawing.Size(589, 50);
+            this.versionUpgradeButton.Size = new System.Drawing.Size(601, 50);
             this.versionUpgradeButton.TabIndex = 1;
             this.versionUpgradeButton.Text = "Version Upgrade";
             this.versionUpgradeButton.UseVisualStyleBackColor = false;
@@ -112,7 +112,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1177, 668);
+            this.panel2.Size = new System.Drawing.Size(1202, 748);
             this.panel2.TabIndex = 1;
             // 
             // tabControl1
@@ -125,7 +125,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1177, 668);
+            this.tabControl1.Size = new System.Drawing.Size(1202, 748);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
@@ -136,17 +136,9 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(100, 50, 100, 50);
-            this.tabPage1.Size = new System.Drawing.Size(1169, 659);
+            this.tabPage1.Size = new System.Drawing.Size(1194, 739);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
-            // 
-            // projectInitializationPage1
-            // 
-            this.projectInitializationPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectInitializationPage1.Location = new System.Drawing.Point(100, 50);
-            this.projectInitializationPage1.Name = "projectInitializationPage1";
-            this.projectInitializationPage1.Size = new System.Drawing.Size(969, 559);
-            this.projectInitializationPage1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -155,7 +147,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(100, 50, 100, 50);
-            this.tabPage2.Size = new System.Drawing.Size(1169, 659);
+            this.tabPage2.Size = new System.Drawing.Size(1183, 739);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -165,8 +157,17 @@
             this.versionUpgrade1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.versionUpgrade1.Location = new System.Drawing.Point(100, 50);
             this.versionUpgrade1.Name = "versionUpgrade1";
-            this.versionUpgrade1.Size = new System.Drawing.Size(969, 559);
+            this.versionUpgrade1.Size = new System.Drawing.Size(983, 639);
             this.versionUpgrade1.TabIndex = 0;
+            // 
+            // projectInitializationPage1
+            // 
+            this.projectInitializationPage1.BackColor = System.Drawing.Color.Transparent;
+            this.projectInitializationPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectInitializationPage1.Location = new System.Drawing.Point(100, 50);
+            this.projectInitializationPage1.Name = "projectInitializationPage1";
+            this.projectInitializationPage1.Size = new System.Drawing.Size(994, 639);
+            this.projectInitializationPage1.TabIndex = 0;
             // 
             // AddProject
             // 
@@ -175,7 +176,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "AddProject";
-            this.Size = new System.Drawing.Size(1177, 718);
+            this.Size = new System.Drawing.Size(1202, 798);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -195,8 +196,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
-        private VersionUpgrade versionUpgrade1;
         private System.Windows.Forms.TabPage tabPage1;
+        private VersionUpgrade versionUpgrade1;
         private ProjectInitializationPage projectInitializationPage1;
     }
 }
