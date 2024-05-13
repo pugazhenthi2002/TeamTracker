@@ -62,6 +62,7 @@ namespace TeamTracker
         public AddMilestoneForm()
         {
             InitializeComponent();
+            InitializePage();
             TemplateCollection = new List<MilestoneTemplate>();
             milestoneCollection = new List<Milestone>();
         }
@@ -90,9 +91,13 @@ namespace TeamTracker
 
         private void InitializePage()
         {
-            panel2.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            milestoneTextBox.ForeColor = panel2.BackColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label4.ForeColor = label5.ForeColor = startDateLabel.ForeColor = endDateLabel.ForeColor = ThemeManager.GetTextColor(BackColor);
+            tableLayoutPanel2.BackColor = tableLayoutPanel3.BackColor = pictureBox2.BackColor = pictureBox3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel3.BackColor);
+            milestoneTextBox.BackColor = milestoneDateTime.SkinColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
         }
 
         private void addMilestoneButton_Click(object sender, EventArgs e)
@@ -307,7 +312,7 @@ namespace TeamTracker
         private void OnLineSeperatePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             //e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height/2), new Point((sender as Control).Width, (sender as Control).Height/2));
             e.Graphics.DrawLine(border, new Point((sender as Control).Width / 2, 0), new Point((sender as Control).Width / 2, (sender as Control).Height));
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 2), new Point((sender as Control).Width, (sender as Control).Height - 2));
@@ -522,7 +527,7 @@ namespace TeamTracker
         private void OnCurveBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (sender is PictureBox)
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
@@ -551,7 +556,7 @@ namespace TeamTracker
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 2), new Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }

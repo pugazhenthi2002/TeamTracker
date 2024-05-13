@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.Home_Page.Team_Lead.Report
 {
@@ -70,6 +71,16 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
             label1.Dispose();   label2.Dispose();
             textBox1.Dispose(); monthDropDownPicBox.Dispose();  priorityDropDownPicBox.Dispose();   setLabel.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            tableLayoutPanel2.BackColor = textBox1.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+            textBox1.ForeColor = ThemeManager.GetTextColor(textBox1.BackColor);
+            setLabel.BackColor = ThemeManager.CurrentTheme.PrimaryII;
+            setLabel.ForeColor = ThemeManager.GetTextColor(setLabel.BackColor);
+            label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 
         private void OnMonthDropDownClick(object sender, EventArgs e)
@@ -187,7 +198,27 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             base.OnLoad(e);
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
         }
-        
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = ThemeManager.GetHoverColor((sender as Control).BackColor);
+            if (sender is Label)
+                (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Label)
+            {
+                (sender as Control).BackColor = ThemeManager.CurrentTheme.PrimaryII;
+                (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
+            }
+            else
+            {
+                (sender as Control).BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            }
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -214,5 +245,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         private string prevString;
         private PriorityDropDownForm priorityForm;
         private MonthForm monthForm;
+
+        
     }
 }

@@ -39,6 +39,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             transparentForm = new TransparentForm();
             toolTip1.SetToolTip(pictureBoxDownload, "Download Attachements");
         }
@@ -53,6 +54,16 @@ namespace TeamTracker
             pictureBoxDownload.Dispose();   startDate.Dispose();    setMilestoneButton.Dispose();
 
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            descTextBox.BackColor = tableLayoutPanel3.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label4.ForeColor = label5.ForeColor = labelProjNameandVersion.ForeColor = clientLabel.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            descTextBox.ForeColor = startDate.ForeColor = endDate.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            panelDownloadAttachement.BackColor = setMilestoneButton.BackColor = buttonOnStage.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            labelDownload.ForeColor = setMilestoneButton.ForeColor = buttonOnStage.ForeColor = ThemeManager.GetTextColor(buttonOnStage.BackColor);
         }
 
         protected override void OnResize(EventArgs e)
@@ -103,7 +114,8 @@ namespace TeamTracker
 
         private void OnMouseEnterDownload(object sender, EventArgs e)
         {
-            pictureBoxDownload.BackColor = labelDownload.BackColor = Color.FromArgb(62, 89, 110);
+            panelDownloadAttachement.BackColor = ThemeManager.GetHoverColor(panelDownloadAttachement.BackColor);
+            labelDownload.BackColor = ThemeManager.GetTextColor(panelDownloadAttachement.BackColor);
 
             if (pictureBoxDownload.Image != null) pictureBoxDownload.Image.Dispose();
 
@@ -112,7 +124,8 @@ namespace TeamTracker
 
         private void OnMouseLeaveDownload(object sender, EventArgs e)
         {
-            pictureBoxDownload.BackColor = labelDownload.BackColor = Color.FromArgb(82, 109, 130);
+            panelDownloadAttachement.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            labelDownload.BackColor = ThemeManager.GetTextColor(panelDownloadAttachement.BackColor);
 
             if (pictureBoxDownload.Image != null) pictureBoxDownload.Image.Dispose();
 
@@ -132,7 +145,7 @@ namespace TeamTracker
                 VersionManager.CurrentVersion = selectedVersion;
                 MilestoneManager.AddMilestones(selectedVersion.VersionID, MilestoneCollection);
                 ResetHomePage?.Invoke(this, EventArgs.Empty);
-                DataHandler.AddNotification("Project Processed", VersionManager.FetchProjectName(selectedVersion.VersionID) + "  " + selectedVersion.VersionName + "has been started by" + EmployeeManager.FetchEmployeeFromProjectID(selectedVersion.ProjectID), DateTime.Now, EmployeeManager.FetchManagerFromTeamLeadID().EmployeeID);
+                DataHandler.AddNotification("Milestone Alert: New Project Milestone Set by Team Leader!", "Hello [Project Manager's Name],\r\n\r\nWe're thrilled to inform you that a new milestone has been set for the project" + VersionManager.FetchProjectName(selectedVersion.VersionID) + "by your team leader" + EmployeeManager.FetchEmployeeFromProjectID(selectedVersion.ProjectID).EmployeeFirstName + ". As the project manager, staying informed about key developments is crucial for effective project oversight and coordination.", DateTime.Now, EmployeeManager.FetchManagerFromTeamLeadID().EmployeeID);
             }
             else
             {
@@ -150,12 +163,14 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = Color.FromArgb(62, 89, 110);
+            (sender as Control).BackColor = ThemeManager.GetHoverColor((sender as Control).BackColor);
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = Color.FromArgb(82, 109, 130);
+            (sender as Control).BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         private void OnSetMilestoneFormClicked(object sender, EventArgs e)
@@ -182,16 +197,7 @@ namespace TeamTracker
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
-            border.Dispose();
-        }
-
-        private void BorderPaint(object sender, PaintEventArgs e)
-        {
-            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border.Dispose();
         }
@@ -199,7 +205,7 @@ namespace TeamTracker
         private void OnDescriptionPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.DrawLine(border, new System.Drawing.Point(0,(sender as Control).Height - 2), new System.Drawing.Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }

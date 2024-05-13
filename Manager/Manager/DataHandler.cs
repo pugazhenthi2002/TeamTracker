@@ -92,7 +92,7 @@ namespace TeamTracker
                 new ParameterData("IsDelayed", task.IsDelayed.ToString()),
             });
 
-            var result = manager.FetchData("task", $"TaskName='{task.TaskName}' AND VersionID='{task.VersionID}'").Value;
+            var result = manager.FetchData("task", "", orderBy: "TaskID desc", limitCount: 1).Value;
 
             task.TaskID = Convert.ToInt32(result["TaskID"][0]);
 

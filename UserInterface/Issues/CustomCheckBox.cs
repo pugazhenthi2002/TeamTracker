@@ -47,7 +47,7 @@ namespace UserInterface.Issues
 
         private void CheckPaint(object sender, PaintEventArgs e)
         {
-            Rectangle rec = new Rectangle(panel1.Width / 10, panel1.Height / 10, panel1.Width * 8 / 10, panel1.Height * 8 / 10);
+            Rectangle rec = new Rectangle(panel1.Width * 2 / 10, panel1.Height * 2 / 10, panel1.Width * 6 / 10, panel1.Height * 6 / 10);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             int R, G, B;

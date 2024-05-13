@@ -31,7 +31,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             set
             {
                 isFocused = value;
-                tableLayoutPanel1.BackColor = value ? Color.FromArgb(127, 158, 171) : Color.FromArgb(157, 178, 191);
+                tableLayoutPanel1.BackColor = value ? ThemeManager.CurrentTheme.SecondaryI : ThemeManager.CurrentTheme.SecondaryII;
             }
         }
 
@@ -76,6 +76,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             InitializeComponent();
             InitializeRoundedEdge();
             SubscribeEvents();
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -89,6 +90,13 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             tableLayoutPanel1.Dispose();
             milestoneDate.Dispose();
             milestoneName.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            milestoneName.BackColor = milestoneDate.SkinColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+            milestoneName.ForeColor = milestoneDate.BorderColor = milestoneDate.TextColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         private void SubscribeEvents()
@@ -249,7 +257,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
             border.Dispose();
         }

@@ -49,6 +49,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
@@ -67,6 +68,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.priorityDropDownPicBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -78,6 +80,7 @@
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -91,6 +94,7 @@
             // 
             // priorityDropDownPicBox
             // 
+            this.priorityDropDownPicBox.BackColor = System.Drawing.Color.Transparent;
             this.priorityDropDownPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.priorityDropDownPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.priorityDropDownPicBox.Image = ((System.Drawing.Image)(resources.GetObject("priorityDropDownPicBox.Image")));
@@ -102,9 +106,12 @@
             this.priorityDropDownPicBox.TabIndex = 1;
             this.priorityDropDownPicBox.TabStop = false;
             this.priorityDropDownPicBox.Click += new System.EventHandler(this.OnPriorityDropDownClick);
+            this.priorityDropDownPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.priorityDropDownPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.monthDropDownPicBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -116,6 +123,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -129,6 +137,7 @@
             // 
             // monthDropDownPicBox
             // 
+            this.monthDropDownPicBox.BackColor = System.Drawing.Color.Transparent;
             this.monthDropDownPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.monthDropDownPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.monthDropDownPicBox.Image = ((System.Drawing.Image)(resources.GetObject("monthDropDownPicBox.Image")));
@@ -140,6 +149,8 @@
             this.monthDropDownPicBox.TabIndex = 0;
             this.monthDropDownPicBox.TabStop = false;
             this.monthDropDownPicBox.Click += new System.EventHandler(this.OnMonthDropDownClick);
+            this.monthDropDownPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.monthDropDownPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // tableLayoutPanel2
             // 
@@ -177,6 +188,7 @@
             // 
             // setLabel
             // 
+            this.setLabel.BackColor = System.Drawing.Color.Transparent;
             this.setLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.setLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.setLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -189,6 +201,8 @@
             this.setLabel.Text = "Set";
             this.setLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.setLabel.Click += new System.EventHandler(this.YearSetClick);
+            this.setLabel.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.setLabel.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // FilterForm
             // 
