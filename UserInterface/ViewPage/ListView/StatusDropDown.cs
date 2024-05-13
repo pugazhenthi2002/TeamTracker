@@ -21,6 +21,15 @@ namespace TeamTracker
             InitializeComponent();
         }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.UnderReview);
+            label2.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.OnProcess);
+            label3.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.Stuck);
+            label4.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.NotYetStarted);
+        }
+
         public event EventHandler<string> StatusChanged;
 
         private void StatusFormLoad(object sender, EventArgs e)
@@ -36,8 +45,8 @@ namespace TeamTracker
         private void StatusDropDownPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            Brush b = new SolidBrush(Color.FromArgb(221, 230, 237));
-            Rectangle rectangle = new Rectangle(1, 1, this.Width - 2, this.Height - 2);
+            Brush b = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
+            Rectangle rectangle = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
             FillRoundRectangle(e.Graphics, rectangle, b, 5);
             b.Dispose();
         }
@@ -65,10 +74,6 @@ namespace TeamTracker
         {
             rectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
             g.FillPath(b, GetRoundRectangle(rectangle, r));
-            Pen p = new Pen(Color.Black, 3);
-            p.DashStyle = DashStyle.Solid;
-            //g.DrawPath(p, GetRoundRectangle(rectangle, r));
-            p.Dispose();
         }
 
         private void label1_Click(object sender, EventArgs e)

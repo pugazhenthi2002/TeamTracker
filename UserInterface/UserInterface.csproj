@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UserInterface</RootNamespace>
     <AssemblyName>UserInterface</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -465,12 +465,6 @@
       <DependentUpon>NotificationTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Project Manager Main Page\PageButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Project Manager Main Page\PageButton.Designer.cs">
-      <DependentUpon>PageButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="Project Manager Main Page\ProfilePicAndName.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -511,12 +505,6 @@
     <Compile Include="Task\CreateTask\MilestoneDropDownForm.Designer.cs">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\CreateTask\MilestoneWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Task\CreateTask\MilestoneWarningForm.Designer.cs">
-      <DependentUpon>MilestoneWarningForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task\CreateTask\PriorityDropDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -535,12 +523,6 @@
     <Compile Include="Task\DeployForm.Designer.cs">
       <DependentUpon>DeployForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\DeployWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Task\DeployWarningForm.Designer.cs">
-      <DependentUpon>DeployWarningForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task\MilestoneSwitch.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -552,12 +534,6 @@
     </Compile>
     <Compile Include="Task\ReviewTaskTemplate.Designer.cs">
       <DependentUpon>ReviewTaskTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Task\SwitchMilestoneWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Task\SwitchMilestoneWarningForm.Designer.cs">
-      <DependentUpon>SwitchMilestoneWarningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Task\Timeline\CurrentTimelineContent.cs">
       <SubType>UserControl</SubType>
@@ -588,12 +564,6 @@
     </Compile>
     <Compile Include="UcNotFound.Designer.cs">
       <DependentUpon>UcNotFound.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\CircleDownloadBtn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\CircleDownloadBtn.Designer.cs">
-      <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\SourceCodeSubmitionForm.cs">
       <SubType>Form</SubType>
@@ -654,9 +624,6 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\UcTaskStatusHead.Designer.cs">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\ListView\CustomDonutChart.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ViewPage\ListView\DoneCardTemplate.cs">
       <SubType>UserControl</SubType>
@@ -957,9 +924,6 @@
     <EmbeddedResource Include="Notification Manager\NotificationTemplate.resx">
       <DependentUpon>NotificationTemplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Project Manager Main Page\PageButton.resx">
-      <DependentUpon>PageButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Project Manager Main Page\ProfilePicAndName.resx">
       <DependentUpon>ProfilePicAndName.cs</DependentUpon>
     </EmbeddedResource>
@@ -989,9 +953,6 @@
     <EmbeddedResource Include="Task\CreateTask\MilestoneDropDownForm.resx">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\CreateTask\MilestoneWarningForm.resx">
-      <DependentUpon>MilestoneWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
       <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1001,17 +962,11 @@
     <EmbeddedResource Include="Task\DeployForm.resx">
       <DependentUpon>DeployForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\DeployWarningForm.resx">
-      <DependentUpon>DeployWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Task\MilestoneSwitch.resx">
       <DependentUpon>MilestoneSwitch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\ReviewTaskTemplate.resx">
       <DependentUpon>ReviewTaskTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Task\SwitchMilestoneWarningForm.resx">
-      <DependentUpon>SwitchMilestoneWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\Timeline\CurrentTimelineContent.resx">
       <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
@@ -1027,9 +982,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UcNotFound.resx">
       <DependentUpon>UcNotFound.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
-      <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\SourceCodeSubmitionForm.resx">
       <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>

@@ -104,7 +104,7 @@ namespace TeamTracker
             labelTaskCount.Text = TaskManager.FetchTaskCount(selectedVersion.VersionID)[0].ToString();
             var attachments = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
 
-            if(attachments == null || attachements.Count == 0)
+            if(attachments == null || attachments.Count == 0)
             {
                 labelAttachment.Visible = pictureBoxAttachment.Visible = false;
             }

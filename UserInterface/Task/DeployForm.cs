@@ -19,6 +19,7 @@ namespace UserInterface.Task
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             this.Location = new Point(700, 300);
         }
 
@@ -58,6 +59,14 @@ namespace UserInterface.Task
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            clearButton.BackColor = submitCodeButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            clearButton.ForeColor = submitCodeButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            label3.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 
         private void OnClickClear(object sender, EventArgs e)

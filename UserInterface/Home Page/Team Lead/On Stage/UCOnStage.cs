@@ -195,9 +195,14 @@ namespace TeamTracker
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
+            Pen border;
+            string name = (sender as Control).Name;
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            if (name == "panel1" || name == "tableLayoutPanel3")
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            else
+                border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border.Dispose();
         }
@@ -205,7 +210,7 @@ namespace TeamTracker
         private void OnDescriptionPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new System.Drawing.Point(0,(sender as Control).Height - 2), new System.Drawing.Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }

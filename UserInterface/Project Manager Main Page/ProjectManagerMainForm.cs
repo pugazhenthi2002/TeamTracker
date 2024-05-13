@@ -16,13 +16,11 @@ namespace TeamTracker
 {
     public partial class ProjectManagerMainForm : Form
     {
-        static public NotificationManager notify;
-        private Timer deadlineChecker;
-        private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false, isMyIssueSelected = false, isAllIssueSelected = false;
         public ProjectManagerMainForm()
         {
             InitializeComponent();
             InitializePage();
+            InitializePageColor();
         }
 
         private void InitializePage()
@@ -81,6 +79,16 @@ namespace TeamTracker
             }
         }
 
+        private void InitializePageColor()
+        {
+            panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            homeLabel.ForeColor = addProjectLabel.ForeColor = viewProjectLabel.ForeColor = addTaskLabel.ForeColor = myTaskLabel.ForeColor = myIssueLabel.ForeColor = allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
+            headerPanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            profilePicAndName1.BorderColor = profilePicAndName1.NormalColor = ThemeManager.CurrentTheme.SecondaryIII;
+            profilePicAndName1.HoverColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
+            profilePicAndName1.ProfileTextColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
         private void OnDeadlineTicked(object sender, EventArgs e)
         {
             TaskManager.CheckTaskDeadline();
@@ -109,7 +117,7 @@ namespace TeamTracker
         );
         private void OnHeaderPanelPaint(object sender, PaintEventArgs e)
         {
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, headerPanel.Height), new Point(headerPanel.Width, headerPanel.Height));
             border.Dispose();
         }
@@ -122,79 +130,85 @@ namespace TeamTracker
 
                 if (picBox.Name == "homePictureBox" && !isHomeSelected)
                 {
-                    homeLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    homeLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.Home_Hover;
                 }
                 else if (picBox.Name == "addProjectPictureBox" && !isAddProjSelected)
                 {
-                    addProjectLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    addProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.Add_Project_Hover;
                 }
                 else if(picBox.Name == "viewProjectPictureBox" && !isViewProjSelected)
                 {
-                    viewProjectLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    viewProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.View_Project_Hover;
                 }
                 else if(picBox.Name == "addTaskPicBox" && !isAddTaskSelected)
                 {
-                    addTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    addTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.Add_Task_30_Hover;
                 }
                 else if (picBox.Name == "myTaskPicBox" && !isMyTaskSelected)
                 {
-                    myTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
                 }
                 else if (picBox.Name == "myIssuePicBox" && !isMyIssueSelected)
                 {
-                    myIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    myIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.My_Issue_Hover;
                 }
                 else if (picBox.Name == "allIssuePicBox" && !isAllIssueSelected)
                 {
-                    allIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                    allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                     picBox.Image = UserInterface.Properties.Resources.All_Issue_Hover;
                 }
             }
             else
             {
                 Label label = (Label)sender;
-                label.ForeColor = Color.FromArgb(221, 230, 237);
 
                 if (label.Name == "homeLabel" && !isHomeSelected)
                 {
                     if (homePictureBox.Image != null) { homePictureBox.Image.Dispose(); }
                     homePictureBox.Image = UserInterface.Properties.Resources.Home_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
                 else if (label.Name == "addProjectLabel" && !isAddProjSelected)
                 {
                     if (addProjectPictureBox.Image != null) { addProjectPictureBox.Image.Dispose(); }
                     addProjectPictureBox.Image = UserInterface.Properties.Resources.Add_Project_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
                 else if(label.Name == "viewProjectLabel" && !isViewProjSelected)
                 {
                     if (viewProjectPictureBox.Image != null) { viewProjectPictureBox.Image.Dispose(); }
                     viewProjectPictureBox.Image = UserInterface.Properties.Resources.View_Project_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
                 else if(label.Name == "addTaskLabel" && !isAddTaskSelected)
                 {
                     if (addTaskPicBox.Image != null) { addTaskPicBox.Image.Dispose(); }
                     addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
                 else if (label.Name == "myTaskLabel" && !isMyTaskSelected)
                 {
                     if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                     myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
                 else if(label.Name == "myIssueLabel" && !isMyIssueSelected)
                 {
                     if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
                     myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
                 else if (label.Name == "allIssueLabel" && !isAllIssueSelected)
                 {
                     if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
                     allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Hover;
+                    label.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 }
             }
         }
@@ -207,85 +221,84 @@ namespace TeamTracker
 
                 if (picBox.Name == "homePictureBox" && !isHomeSelected)
                 {
-                    homeLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    homeLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.Home_Normal;
                 }
                 else if (picBox.Name == "addProjectPictureBox" && !isAddProjSelected)
                 {
-                    addProjectLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    addProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.Add_Project;
                 }
                 else if (picBox.Name == "viewProjectPictureBox" && !isViewProjSelected)
                 {
-                    viewProjectLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    viewProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.View_Project;
                 }
                 else if (picBox.Name == "addTaskPicBox" && !isAddTaskSelected)
                 {
-                    addTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    addTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.Add_Task_30_Normal;
                 }
                 else if (picBox.Name == "myTaskPicBox" && !isMyTaskSelected)
                 {
-                    myTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;
                 }
                 else if (picBox.Name == "myIssuePicBox" && !isMyIssueSelected)
                 {
-                    myIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    myIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.My_Issue_Normal;
                 }
                 else if (picBox.Name == "allIssuePicBox" && !isAllIssueSelected)
                 {
-                    allIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                     picBox.Image = UserInterface.Properties.Resources.All_Issue_Normal;
                 }
             }
             else
             {
                 Label label = (Label)sender;
-
                 if (label.Name == "homeLabel" && !isHomeSelected)
                 {
                     if (homePictureBox.Image != null) { homePictureBox.Image.Dispose(); }
                     homePictureBox.Image = UserInterface.Properties.Resources.Home_Normal;
-                    homeLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    homeLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
                 else if (label.Name == "addProjectLabel" && !isAddProjSelected)
                 {
                     if (addProjectPictureBox.Image != null) { addProjectPictureBox.Image.Dispose(); }
                     addProjectPictureBox.Image = UserInterface.Properties.Resources.Add_Project;
-                    addProjectLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    addProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
                 else if (label.Name == "viewProjectLabel" && !isViewProjSelected)
                 {
                     if (viewProjectPictureBox.Image != null) { viewProjectPictureBox.Image.Dispose(); }
                     viewProjectPictureBox.Image = UserInterface.Properties.Resources.View_Project;
-                    viewProjectLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    viewProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
                 else if (label.Name == "addTaskLabel" && !isAddTaskSelected)
                 {
                     if (addTaskPicBox.Image != null) { addTaskPicBox.Image.Dispose(); }
                     addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Normal;
-                    addTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    addTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
                 else if (label.Name == "myTaskLabel" && !isMyTaskSelected)
                 {
                     if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                     myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Normal;
-                    myTaskLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
                 else if (label.Name == "myIssueLabel" && !isMyIssueSelected)
                 {
                     if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
                     myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Normal;
-                    myIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    myIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
                 else if (label.Name == "allIssueLabel" && !isAllIssueSelected)
                 {
                     if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
                     allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Normal;
-                    allIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+                    allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
                 }
             }
         }
@@ -386,7 +399,7 @@ namespace TeamTracker
             myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Normal;
             allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Normal;
 
-            homeLabel.ForeColor = addProjectLabel.ForeColor = viewProjectLabel.ForeColor = myTaskLabel.ForeColor = addTaskLabel.ForeColor = myIssueLabel.ForeColor = allIssueLabel.ForeColor = Color.FromArgb(157, 178, 191);
+            homeLabel.ForeColor = addProjectLabel.ForeColor = viewProjectLabel.ForeColor = myTaskLabel.ForeColor = addTaskLabel.ForeColor = myIssueLabel.ForeColor = allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
             string text = (sender as Control).Name;
 
             if (text == "homeLabel" || text == "homePictureBox")
@@ -394,49 +407,49 @@ namespace TeamTracker
                 isHomeSelected = true;
                 if (homePictureBox.Image != null) { homePictureBox.Image.Dispose(); }
                 homePictureBox.Image = UserInterface.Properties.Resources.Home_Hover;
-                homeLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                homeLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else if(text == "addProjectPictureBox" || text == "addProjectLabel")
             {
                 isAddProjSelected = true;
                 if (addProjectPictureBox.Image != null) { addProjectPictureBox.Image.Dispose(); }
                 addProjectPictureBox.Image = UserInterface.Properties.Resources.Add_Project_Hover;
-                addProjectLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                addProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else if(text == "viewProjectLabel" || text == "viewProjectPictureBox")
             {
                 isViewProjSelected = true;
                 if (viewProjectPictureBox.Image != null) { viewProjectPictureBox.Image.Dispose(); }
                 viewProjectPictureBox.Image = UserInterface.Properties.Resources.View_Project_Hover;
-                viewProjectLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                viewProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else if(text == "addTaskLabel" || text == "addTaskPicBox")
             {
                 isAddTaskSelected = true;
                 if (addTaskPicBox.Image != null) { addTaskPicBox.Image.Dispose(); }
                 addTaskPicBox.Image = UserInterface.Properties.Resources.Add_Task_30_Hover;
-                addTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                addTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else if(text == "myTaskPicBox" || text == "myTaskLabel")
             {
                 isMyTaskSelected = true;
                 if (myTaskPicBox.Image != null) { myTaskPicBox.Image.Dispose(); }
                 myTaskPicBox.Image = UserInterface.Properties.Resources.View_Task_30_Hover;
-                myTaskLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else if(text == "myIssuePicBox" || text == "myIssueLabel")
             {
                 isMyIssueSelected = true;
                 if (myIssuePicBox.Image != null) { myIssuePicBox.Image.Dispose(); }
                 myIssuePicBox.Image = UserInterface.Properties.Resources.My_Issue_Hover;
-                myIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                myIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else if(text == "allIssuePicBox" || text == "allIssueLabel")
             {
                 isAllIssueSelected = true;
                 if (allIssuePicBox.Image != null) { allIssuePicBox.Image.Dispose(); }
                 allIssuePicBox.Image = UserInterface.Properties.Resources.All_Issue_Hover;
-                allIssueLabel.ForeColor = Color.FromArgb(221, 230, 237);
+                allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
         }
 
@@ -451,5 +464,9 @@ namespace TeamTracker
             addTask1.InitializePage();
             tabControl1.SelectedIndex = 5;
         }
+
+        static public NotificationManager notify;
+        private Timer deadlineChecker;
+        private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false, isMyIssueSelected = false, isAllIssueSelected = false;
     }
 }

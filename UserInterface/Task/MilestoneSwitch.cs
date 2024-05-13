@@ -31,8 +31,9 @@ namespace UserInterface.Task
 
         public void InitializePage()
         {
-            colorList = ColorManager.ColorFadingOut;
-            colorIndex = 2;
+            InitializePageColor();
+            colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+            colorIndex = 0;
             if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
                 switchMilestoneButton.Text = "Deploy";
 
@@ -50,10 +51,12 @@ namespace UserInterface.Task
             {
                 pieChart1.Visible = true;
                 SeriesCollection seriesCollection = new SeriesCollection();
+                System.Windows.Media.Brush brush;
                 foreach (var Iter in result1)
                 {
-                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                    colorIndex = (colorIndex + 2) % colorList.Count;
+                    brush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B));
+                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = brush });
+                    colorIndex = (colorIndex + 1) % colorList.Count;
                 }
                 pieChart1.Series = seriesCollection;
             }
@@ -64,6 +67,14 @@ namespace UserInterface.Task
             panelBase.Invalidate();
         }
 
+        private void InitializePageColor()
+        {
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
+            switchMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            switchMilestoneButton.ForeColor = ThemeManager.GetTextColor(switchMilestoneButton.BackColor);
+        }
+
         private void OnMilestonePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -71,17 +82,18 @@ namespace UserInterface.Task
             Point[] points =
             {
                 new Point(20, 20),
-                new Point( 50,panelBase.Height/2),
+                new Point(50, panelBase.Height/2),
                 new Point(20,panelBase.Height-20),
                 new Point(panelBase.Width-50, panelBase.Height-20),
                 new Point(panelBase.Width-10, panelBase.Height/2),
                 new Point(panelBase.Width-50, 20)
             };
 
-            e.Graphics.FillPolygon(new SolidBrush(System.Drawing.Color.FromArgb(39, 55, 77)), points);
+            System.Drawing.Brush brush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
+            e.Graphics.FillPolygon(brush, points);  brush.Dispose();
             StringFormat SFormat = new StringFormat();
             SFormat.Alignment = SFormat.LineAlignment = StringAlignment.Center;
-            System.Drawing.Brush brush = new SolidBrush(System.Drawing.Color.FromArgb(221, 230, 237));
+            brush = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
             Font f = new Font(new System.Drawing.FontFamily("Ebrima"), 12, FontStyle.Bold);
             e.Graphics.DrawString(milestoneName, f, brush, panelBase.ClientRectangle, SFormat);
             brush.Dispose();
@@ -134,7 +146,6 @@ namespace UserInterface.Task
                     switchMilestoneButton.Text = "Deploy";
 
                 ResetForm?.Invoke(this, EventArgs.Empty);
-                //InitializePage();
             }
         }
 

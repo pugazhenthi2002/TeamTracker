@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.ViewPage
 {
@@ -15,6 +16,7 @@ namespace UserInterface.ViewPage
         public WarningForm()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public string Content
@@ -33,6 +35,14 @@ namespace UserInterface.ViewPage
             yesButton.Dispose(); noButton.Dispose();
             panel1.Dispose(); panel2.Dispose(); panel3.Dispose(); panel4.Dispose();
             tableLayoutPanel1.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            noButton.BackColor = yesButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label2.ForeColor = ThemeManager.GetTextColor(BackColor);
+            label1.ForeColor = noButton.ForeColor = yesButton.ForeColor = ThemeManager.GetTextColor(noButton.BackColor);
         }
 
         private void OnYesClicked(object sender, EventArgs e)

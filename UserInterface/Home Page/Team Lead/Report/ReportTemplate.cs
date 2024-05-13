@@ -12,13 +12,6 @@ namespace TeamTracker
 {
     public partial class ReportTemplate : UserControl
     {
-        private Color borderColor = Color.Blue;
-
-        public ReportTemplate()
-        {
-            InitializeComponent();
-        }
-
         public Color BorderColor
         {
             get { return borderColor; }
@@ -27,6 +20,18 @@ namespace TeamTracker
                 borderColor = value;
                 this.Invalidate();
             }
+        }
+
+        public ReportTemplate()
+        {
+            InitializeComponent();
+        }
+
+        private void InitializePageColor()
+        {
+            label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -52,5 +57,7 @@ namespace TeamTracker
             reportContent1.isOpened = true;
             reportContent1.Month = DateTime.Today.Month; reportContent1.Year = DateTime.Today.Year; reportContent1.Priority = -1;
         }
+
+        private Color borderColor = Color.Blue;
     }
 }

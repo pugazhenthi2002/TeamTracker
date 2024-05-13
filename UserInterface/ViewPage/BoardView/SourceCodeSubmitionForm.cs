@@ -17,6 +17,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             this.Location = new Point(700, 300);
         }
 
@@ -47,6 +48,15 @@ namespace TeamTracker
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
             commitTextBox.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            commitTextBox.ForeColor = button1.BackColor = button2.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            button1.ForeColor = button2.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
+            commitTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 
         protected override void OnResize(EventArgs e)

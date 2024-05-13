@@ -33,11 +33,11 @@
             this.panelBase = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.ucNotFound1 = new UserInterface.UcNotFound();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.switchMilestoneButton = new System.Windows.Forms.Button();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -108,9 +108,19 @@
             this.panel2.Size = new System.Drawing.Size(211, 207);
             this.panel2.TabIndex = 0;
             // 
+            // pieChart1
+            // 
+            this.pieChart1.BackColor = System.Drawing.Color.Transparent;
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart1.Location = new System.Drawing.Point(0, 38);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(211, 169);
+            this.pieChart1.TabIndex = 2;
+            this.pieChart1.Text = "pieChart1";
+            // 
             // ucNotFound1
             // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.BackColor = System.Drawing.Color.Transparent;
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "Zero Task Count !!";
             this.ucNotFound1.HeadTextSize = 12;
@@ -161,16 +171,6 @@
             this.switchMilestoneButton.Text = "Start Next Milestone";
             this.switchMilestoneButton.UseVisualStyleBackColor = false;
             this.switchMilestoneButton.Click += new System.EventHandler(this.OnSwitchMilestone);
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.BackColor = System.Drawing.Color.Transparent;
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 38);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(211, 169);
-            this.pieChart1.TabIndex = 2;
-            this.pieChart1.Text = "pieChart1";
             // 
             // MilestoneSwitch
             // 

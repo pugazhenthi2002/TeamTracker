@@ -88,6 +88,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -97,6 +98,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.projectDateLabel, 0, 1);
@@ -126,6 +128,7 @@
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.projectNameLabel);
             this.panel5.Controls.Add(this.tableLayoutPanel3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -166,6 +169,7 @@
             // 
             // remainingTaskpaginateUp
             // 
+            this.remainingTaskpaginateUp.BackColor = System.Drawing.Color.Transparent;
             this.remainingTaskpaginateUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.remainingTaskpaginateUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.remainingTaskpaginateUp.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
@@ -182,6 +186,7 @@
             // 
             // remainingTaskpaginateDown
             // 
+            this.remainingTaskpaginateDown.BackColor = System.Drawing.Color.Transparent;
             this.remainingTaskpaginateDown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.remainingTaskpaginateDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.remainingTaskpaginateDown.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
@@ -198,7 +203,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 70);
@@ -451,6 +456,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Location = new System.Drawing.Point(0, 461);

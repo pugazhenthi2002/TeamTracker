@@ -37,8 +37,17 @@ namespace UserInterface.Task
             }
         }
 
+        private void InitializePageColor()
+        {
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
+            downloadSourceCodeButton.BackColor = reassignButton.BackColor = doneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            downloadSourceCodeButton.ForeColor = reassignButton.ForeColor = doneButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
+        }
+
         private void SetReviewUI()
         {
+            InitializePageColor();
             projectName.Text = VersionManager.FetchProjectName(selectedTask.VersionID);
             taskNameLabel.Text = selectedTask.TaskName;
             dueDate.Text = selectedTask.EndDate.ToShortDateString();
@@ -187,7 +196,7 @@ namespace UserInterface.Task
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border1.Dispose();

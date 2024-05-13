@@ -52,12 +52,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanelUpDown, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelTaskCount, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 6);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 10);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 49);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 45);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // labelStatus
@@ -66,7 +66,7 @@
             this.labelStatus.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.Location = new System.Drawing.Point(3, 0);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(237, 49);
+            this.labelStatus.Size = new System.Drawing.Size(237, 45);
             this.labelStatus.TabIndex = 0;
             this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -83,7 +83,7 @@
             this.tableLayoutPanelUpDown.RowCount = 2;
             this.tableLayoutPanelUpDown.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelUpDown.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelUpDown.Size = new System.Drawing.Size(61, 49);
+            this.tableLayoutPanelUpDown.Size = new System.Drawing.Size(61, 45);
             this.tableLayoutPanelUpDown.TabIndex = 1;
             // 
             // pictureBoxUp
@@ -93,7 +93,7 @@
             this.pictureBoxUp.Location = new System.Drawing.Point(0, 5);
             this.pictureBoxUp.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pictureBoxUp.Name = "pictureBoxUp";
-            this.pictureBoxUp.Size = new System.Drawing.Size(61, 19);
+            this.pictureBoxUp.Size = new System.Drawing.Size(61, 17);
             this.pictureBoxUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxUp.TabIndex = 0;
             this.pictureBoxUp.TabStop = false;
@@ -105,10 +105,10 @@
             // 
             this.pictureBoxDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxDown.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDown.Image")));
-            this.pictureBoxDown.Location = new System.Drawing.Point(0, 24);
+            this.pictureBoxDown.Location = new System.Drawing.Point(0, 22);
             this.pictureBoxDown.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.pictureBoxDown.Name = "pictureBoxDown";
-            this.pictureBoxDown.Size = new System.Drawing.Size(61, 20);
+            this.pictureBoxDown.Size = new System.Drawing.Size(61, 18);
             this.pictureBoxDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxDown.TabIndex = 0;
             this.pictureBoxDown.TabStop = false;
@@ -125,18 +125,20 @@
             this.labelTaskCount.Location = new System.Drawing.Point(250, 7);
             this.labelTaskCount.Margin = new System.Windows.Forms.Padding(7);
             this.labelTaskCount.Name = "labelTaskCount";
-            this.labelTaskCount.Size = new System.Drawing.Size(33, 35);
+            this.labelTaskCount.Size = new System.Drawing.Size(33, 31);
             this.labelTaskCount.TabIndex = 2;
             this.labelTaskCount.Text = "4";
             this.labelTaskCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTaskCount.Paint += new System.Windows.Forms.PaintEventHandler(this.OnCountLabelBorderPaint);
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 6);
+            this.panel1.Size = new System.Drawing.Size(405, 10);
             this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // UcTaskStatusHead
             // 
@@ -147,6 +149,7 @@
             this.Name = "UcTaskStatusHead";
             this.Size = new System.Drawing.Size(405, 55);
             this.Load += new System.EventHandler(this.OnLoad);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanelUpDown.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUp)).EndInit();

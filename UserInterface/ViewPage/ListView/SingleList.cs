@@ -38,8 +38,16 @@ namespace TeamTracker
             statusLabel.Text = task.StatusOfTask.ToString();
             priorityLabel.Text = task.TaskPriority.ToString();
             dueDateLabel.Text = task.EndDate.ToShortDateString();
-            statusLabel.BackColor = ColorManager.FetchTaskStatusColor(task.StatusOfTask);
-            priorityLabel.BackColor = ColorManager.FetchTaskPriorityColor(task.TaskPriority);
+            
+        }
+
+        public void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            statusLabel.BackColor = ThemeManager.GetTaskStatusColor(task.StatusOfTask);
+            priorityLabel.BackColor = ThemeManager.GetTaskPriorityColor(task.TaskPriority);
+            statusLabel.ForeColor = ThemeManager.GetTextColor(statusLabel.BackColor);
+            priorityLabel.ForeColor = ThemeManager.GetTextColor(priorityLabel.BackColor);
         }
 
         private void OnStatusClicked(object sender, EventArgs e)
@@ -94,7 +102,6 @@ namespace TeamTracker
         {
             (sender as SourceCodeSubmitionForm).Dispose();
             (sender as SourceCodeSubmitionForm).Close();
-            //transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -154,7 +161,7 @@ namespace TeamTracker
         private void EdgePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0,(sender as Control).Width-1, (sender as Control).Height-1));
             border.Dispose();
         }

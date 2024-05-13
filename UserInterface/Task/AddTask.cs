@@ -29,7 +29,8 @@ namespace UserInterface.Task
 
         public void InitializePage()
         {
-            if(VersionManager.CurrentVersion == null)
+            InitializePageColor();
+            if (VersionManager.CurrentVersion == null)
             {
                 ucNotFound1.Visible = true;
                 panel1.Visible = false;
@@ -53,6 +54,15 @@ namespace UserInterface.Task
             currentTimelineContent1.MilestoneCollection = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             currentTimelineContent1.Version = VersionManager.CurrentVersion;
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            ucNotFound2.BackColor = ucNotFound3.BackColor = panel7.BackColor = milestoneSwitch1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            addTaskButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            projectNameLabel.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
+            label1.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
         }
 
         private void AddTaskClick(object sender, EventArgs e)
@@ -193,8 +203,8 @@ namespace UserInterface.Task
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
-            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border1.Dispose();
@@ -253,6 +263,14 @@ namespace UserInterface.Task
         private void OnResetForm(object sender, EventArgs e)
         {
             InitializePage();
+        }
+
+        private void OnReviewLineSplitPaint(object sender, PaintEventArgs e)
+        {
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border1, 0, (sender as Control).Height - 1, (sender as Control).Width, (sender as Control).Height - 1);
+            border1.Dispose();
         }
 
         private void InitializeRoundedEdge()

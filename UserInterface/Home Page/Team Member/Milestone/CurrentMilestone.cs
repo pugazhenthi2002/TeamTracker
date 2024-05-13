@@ -12,35 +12,36 @@ namespace TeamTracker
 {
     public partial class CurrentMilestone : UserControl
     {
-
-        private string milestoneName;
-
-        public CurrentMilestone()
-        {
-            InitializeComponent();
-            labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
-        }
-
         public string MilestoneName
         {
             get
             {
-                return milestoneName;
+                return labelMilestonename.Text;
             }
             set
             {
-                milestoneName = value;
-                SetMilestoneName();
+                labelMilestonename.Text = value;
+                InitializePageColor();
             }
         }
 
-        
+        public CurrentMilestone()
+        {
+            InitializeComponent();
+            InitializePageColor();
+            labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
+        }
+
+        private void InitializePageColor()
+        {
+            label1.BackColor = labelMilestonename.ForeColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
-
+            //labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
         }
 
 
@@ -52,13 +53,9 @@ namespace TeamTracker
             Point pt2 = new Point(Width - 11, 9);
             Point pt3 = new Point(Width - 11, Height - 11);
             Point pt4 = new Point(9, Height - 11);
-            Pen border = new Pen(Color.Black, 3);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 3);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
-
-        private void SetMilestoneName()
-        {
-            labelMilestonename.Text = milestoneName;
+            border.Dispose();
         }
 
         private void OnPaintBasePanel(object sender, PaintEventArgs e)
@@ -74,8 +71,9 @@ namespace TeamTracker
                 new Point(panelBase.Width-10, panelBase.Height/2),
                 new Point(panelBase.Width-50, 20)
             };
-
-            e.Graphics.FillPolygon(new SolidBrush(Color.FromArgb(39, 55, 77)), points);
+            Brush brush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
+            e.Graphics.FillPolygon(brush, points);
+            brush.Dispose();
         }
     }
 }

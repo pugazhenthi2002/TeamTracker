@@ -17,41 +17,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 {
     public partial class ReportContent : UserControl
     {
-        private TransparentForm transparentForm;
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
-        private void InitializeRoundedEdge()
-        {
-            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
-            tableLayoutPanel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel4.Width, tableLayoutPanel4.Height, 20, 20));
-            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
-        }
-
-        public bool isOpened = false;
-        private int month, year, priority;
-        private List<System.Drawing.Color> colorList;
-        private int colorIndex = 0;
-        private FilterForm form;
-        private Random rnd = new Random();
-
-        public ReportContent()
-        {
-            InitializeComponent();
-            InitializeRoundedEdge();
-            colorList = ColorManager.ColorFadingOut;
-            cartesianChart1.AxisX.Add(new Axis { Title = "Date" });
-            cartesianChart1.AxisY.Add(new Axis { Title = "Task Solved" });
-        }
-
         public int Month
         {
             get { return month; }
@@ -64,6 +29,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 }
             }
         }
+
         public int Year
         {
             get { return year; }
@@ -86,6 +52,30 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
 
+        public ReportContent()
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+            cartesianChart1.AxisX.Add(new Axis { Title = "Date" });
+            cartesianChart1.AxisY.Add(new Axis { Title = "Task Solved" });
+        }
+
+        private void InitializePage()
+        {
+            tableLayoutPanel3.BackColor = tableLayoutPanel4.BackColor = tableLayoutPanel5.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucNotFound1.BackColor = ucNotFound2.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = teammatesTaskCount.ForeColor = totalmilestoneCount.ForeColor = totalTaskCount.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
+            label4.ForeColor = label5.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+            colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+        }
+
+        private void InitializeRoundedEdge()
+        {
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
+            tableLayoutPanel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel4.Width, tableLayoutPanel4.Height, 20, 20));
+            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -100,9 +90,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         private void TablePanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
+            System.Drawing.Pen pen = new System.Drawing.Pen(ThemeManager.CurrentTheme.PrimaryI);
             e.Graphics.DrawLine(pen, new Point(tableLayoutPanel4.Width / 20, tableLayoutPanel4.Height / 2), new Point(tableLayoutPanel4.Width * 19 / 20, tableLayoutPanel4.Height / 2));
             System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            pen.Dispose();
+            pen = new System.Drawing.Pen(ThemeManager.CurrentTheme.SecondaryIII);
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             pen.Dispose();
         }
@@ -139,7 +131,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 filterPicBox.Image.Dispose();
 
             filterPicBox.Image = Properties.Resources.Filter_Click;
-            filterPicBox.BackColor = System.Drawing.Color.FromArgb(40, 50, 80);
+            filterPicBox.BackColor = ThemeManager.GetHoverColor(BackColor);
         }
 
         private void OnFilterMouseLeave(object sender, EventArgs e)
@@ -148,11 +140,12 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                 filterPicBox.Image.Dispose();
 
             filterPicBox.Image = Properties.Resources.Filter_Normal;
-            filterPicBox.BackColor = System.Drawing.Color.FromArgb(221, 230, 237);
+            filterPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void SetReport()
         {
+            InitializePage();
             if (isOpened)
             {
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();
@@ -171,7 +164,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                     foreach (var Iter in result1)
                     {
                         seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                        colorIndex = (colorIndex + 3) % colorList.Count;
+                        colorIndex = (colorIndex + 1) % colorList.Count;
                     }
                     pieChart1.Series = seriesCollection;
                 }
@@ -241,10 +234,8 @@ namespace UserInterface.Home_Page.Team_Lead.Report
                             Title = employeeData.Key,
                             Values = new ChartValues<int>(values),
                             Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                            //Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 157, 178, 191)),
-                            
                         };
-                        colorIndex+=4;
+                        colorIndex = (colorIndex + 1) % colorList.Count;
                         cartesianChart1.Series.Add(lineSeries);
                     }
 
@@ -264,5 +255,24 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
         }
+        
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        public bool isOpened = false;
+        private TransparentForm transparentForm;
+        private int month, year, priority;
+        private List<System.Drawing.Color> colorList;
+        private int colorIndex = 0;
+        private FilterForm form;
+        private Random rnd = new Random();
     }
 }

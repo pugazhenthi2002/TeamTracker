@@ -56,7 +56,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         private void InitializePageColor()
         {
             label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            label1.BackColor = ThemeManager.GetTextColor(label1.BackColor);
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
             ucNotFound1.BackColor = ucOnStage1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 

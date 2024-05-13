@@ -46,10 +46,23 @@ namespace UserInterface.Task.CreateTask
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             InitializePlaceHolders();
             toolTip1.SetToolTip(pictureBoxAttachment, "Click to Add attachment");
             toolTip1.SetToolTip(buttonSetMilestone, "Milestone");
             tableLayoutPanelFileName.Hide();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            buttonCreate.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            buttonCreate.ForeColor = labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            label4.ForeColor = label5.ForeColor = ThemeManager.GetTextColor(BackColor);
+            textBoxDesc.BackColor = textBoxTaskName.BackColor = buttonSetMilestone.BackColor = employeeName.BackColor = label1.BackColor = label3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            startDate.SkinColor = endDate.SkinColor = tableLayoutPanel5.BackColor = tableLayoutPanelFileName.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            textBoxDesc.ForeColor = textBoxTaskName.ForeColor = buttonSetMilestone.ForeColor = employeeName.ForeColor = label1.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label2.ForeColor = startDate.TextColor = endDate.TextColor = startDate.BorderColor = endDate.BorderColor = animatedLabelFilename.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         private void InitializePlaceHolders()
@@ -198,10 +211,10 @@ namespace UserInterface.Task.CreateTask
             Point formPoint = buttonSetMilestone.PointToScreen(new Point(buttonSetMilestone.Location.X, buttonSetMilestone.Location.Y));
 
             MilestoneDropForm = new MilestoneDropDownForm();
-            MilestoneDropForm.Show();
-            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
+            MilestoneDropForm.Show();
+            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
         }
 
@@ -222,10 +235,10 @@ namespace UserInterface.Task.CreateTask
 
             Point formPoint = label2.PointToScreen(new Point(0,label2.Height));
             TeamMembersDropForm = new TeamMembersListForm();
-            TeamMembersDropForm.TeamList = taskAssigneeList;
-            TeamMembersDropForm.Show();
             TeamMembersDropForm.Location = panel2.PointToScreen(new Point(-10, panel2.Height + 2));
-            TeamMembersDropForm.Size = new Size(panel2.Width+20, TeamMembersDropForm.Height);
+            TeamMembersDropForm.Size = new Size(panel2.Width + 20, TeamMembersDropForm.Height);
+            TeamMembersDropForm.Show();
+            TeamMembersDropForm.TeamList = taskAssigneeList;
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
         }
 
@@ -362,7 +375,7 @@ namespace UserInterface.Task.CreateTask
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawRectangle(border, rec);
             e.Graphics.DrawLine(border, 245, 0, 245, 285);
             border.Dispose();
@@ -403,6 +416,17 @@ namespace UserInterface.Task.CreateTask
         private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
         }
     }
 }

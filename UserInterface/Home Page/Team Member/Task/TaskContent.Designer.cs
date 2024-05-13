@@ -35,6 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
+            this.currentMilestone1 = new TeamTracker.CurrentMilestone();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -60,7 +61,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.currentMilestone1 = new TeamTracker.CurrentMilestone();
             this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel3.SuspendLayout();
             this.tableLayoutPanelBase.SuspendLayout();
@@ -87,10 +87,9 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(30, 449);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(20, 343);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(596, 31);
+            this.panel4.Size = new System.Drawing.Size(639, 20);
             this.panel4.TabIndex = 7;
             // 
             // panel3
@@ -98,10 +97,9 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(30, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(20, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(596, 31);
+            this.panel3.Size = new System.Drawing.Size(639, 20);
             this.panel3.TabIndex = 6;
             // 
             // label1
@@ -111,9 +109,8 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 31);
+            this.label1.Size = new System.Drawing.Size(155, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Task Report";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -122,10 +119,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(626, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(659, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(30, 480);
+            this.panel2.Size = new System.Drawing.Size(20, 363);
             this.panel2.TabIndex = 5;
             // 
             // panel1
@@ -133,9 +129,8 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 480);
+            this.panel1.Size = new System.Drawing.Size(20, 363);
             this.panel1.TabIndex = 4;
             // 
             // tableLayoutPanelBase
@@ -145,14 +140,24 @@
             this.tableLayoutPanelBase.Controls.Add(this.currentMilestone1, 0, 1);
             this.tableLayoutPanelBase.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelBase.Location = new System.Drawing.Point(30, 31);
-            this.tableLayoutPanelBase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanelBase.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanelBase.Name = "tableLayoutPanelBase";
             this.tableLayoutPanelBase.RowCount = 2;
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tableLayoutPanelBase.Size = new System.Drawing.Size(596, 418);
+            this.tableLayoutPanelBase.Size = new System.Drawing.Size(639, 323);
             this.tableLayoutPanelBase.TabIndex = 9;
+            // 
+            // currentMilestone1
+            // 
+            this.currentMilestone1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.currentMilestone1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
+            this.currentMilestone1.Location = new System.Drawing.Point(166, 158);
+            this.currentMilestone1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.currentMilestone1.MilestoneName = "Milestone Name";
+            this.currentMilestone1.Name = "currentMilestone1";
+            this.currentMilestone1.Size = new System.Drawing.Size(306, 152);
+            this.currentMilestone1.TabIndex = 10;
             // 
             // tableLayoutPanel1
             // 
@@ -166,12 +171,11 @@
             this.tableLayoutPanel1.Controls.Add(this.panel9, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 5);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(588, 178);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(633, 139);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panel11
@@ -179,10 +183,10 @@
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel11.Controls.Add(this.tableLayoutPanel4);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(309, 8);
-            this.panel11.Margin = new System.Windows.Forms.Padding(15, 8, 15, 8);
+            this.panel11.Location = new System.Drawing.Point(326, 5);
+            this.panel11.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(117, 162);
+            this.panel11.Size = new System.Drawing.Size(138, 129);
             this.panel11.TabIndex = 8;
             this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
@@ -195,12 +199,11 @@
             this.tableLayoutPanel4.Controls.Add(this.panel12, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(117, 162);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(138, 129);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // incompleteTaskLabel
@@ -209,10 +212,10 @@
             this.incompleteTaskLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.incompleteTaskLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.incompleteTaskLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.incompleteTaskLabel.Location = new System.Drawing.Point(4, 81);
-            this.incompleteTaskLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 5);
+            this.incompleteTaskLabel.Location = new System.Drawing.Point(3, 64);
+            this.incompleteTaskLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.incompleteTaskLabel.Name = "incompleteTaskLabel";
-            this.incompleteTaskLabel.Size = new System.Drawing.Size(109, 76);
+            this.incompleteTaskLabel.Size = new System.Drawing.Size(132, 62);
             this.incompleteTaskLabel.TabIndex = 2;
             this.incompleteTaskLabel.Text = "incomplete task";
             this.incompleteTaskLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -225,7 +228,7 @@
             this.panel12.Location = new System.Drawing.Point(0, 0);
             this.panel12.Margin = new System.Windows.Forms.Padding(0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(117, 81);
+            this.panel12.Size = new System.Drawing.Size(138, 64);
             this.panel12.TabIndex = 3;
             // 
             // label8
@@ -234,10 +237,9 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label8.Location = new System.Drawing.Point(82, 0);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(55, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 81);
+            this.label8.Size = new System.Drawing.Size(83, 64);
             this.label8.TabIndex = 2;
             this.label8.Text = "InComplete Task";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -248,9 +250,8 @@
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(82, 81);
+            this.pictureBox4.Size = new System.Drawing.Size(55, 64);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
@@ -260,11 +261,11 @@
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel8.Controls.Add(this.tableLayoutPanel3);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(456, 8);
-            this.panel8.Margin = new System.Windows.Forms.Padding(15, 8, 15, 8);
+            this.panel8.Location = new System.Drawing.Point(484, 5);
+            this.panel8.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.panel8.Size = new System.Drawing.Size(117, 162);
+            this.panel8.Padding = new System.Windows.Forms.Padding(1);
+            this.panel8.Size = new System.Drawing.Size(139, 129);
             this.panel8.TabIndex = 7;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
@@ -276,13 +277,12 @@
             this.tableLayoutPanel3.Controls.Add(this.dueTaskLabel, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel10, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(113, 158);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(137, 127);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // dueTaskLabel
@@ -291,10 +291,10 @@
             this.dueTaskLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dueTaskLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dueTaskLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.dueTaskLabel.Location = new System.Drawing.Point(4, 79);
-            this.dueTaskLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 5);
+            this.dueTaskLabel.Location = new System.Drawing.Point(3, 63);
+            this.dueTaskLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.dueTaskLabel.Name = "dueTaskLabel";
-            this.dueTaskLabel.Size = new System.Drawing.Size(105, 74);
+            this.dueTaskLabel.Size = new System.Drawing.Size(131, 61);
             this.dueTaskLabel.TabIndex = 2;
             this.dueTaskLabel.Text = "due task";
             this.dueTaskLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -307,7 +307,7 @@
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(113, 79);
+            this.panel10.Size = new System.Drawing.Size(137, 63);
             this.panel10.TabIndex = 3;
             // 
             // dueTaskTitleLabel
@@ -316,10 +316,9 @@
             this.dueTaskTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dueTaskTitleLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dueTaskTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.dueTaskTitleLabel.Location = new System.Drawing.Point(82, 0);
-            this.dueTaskTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dueTaskTitleLabel.Location = new System.Drawing.Point(55, 0);
             this.dueTaskTitleLabel.Name = "dueTaskTitleLabel";
-            this.dueTaskTitleLabel.Size = new System.Drawing.Size(31, 79);
+            this.dueTaskTitleLabel.Size = new System.Drawing.Size(82, 63);
             this.dueTaskTitleLabel.TabIndex = 2;
             this.dueTaskTitleLabel.Text = "Due Task";
             this.dueTaskTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -330,9 +329,8 @@
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(82, 79);
+            this.pictureBox3.Size = new System.Drawing.Size(55, 63);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -342,10 +340,10 @@
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel9.Controls.Add(this.tableLayoutPanel6);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(15, 8);
-            this.panel9.Margin = new System.Windows.Forms.Padding(15, 8, 15, 8);
+            this.panel9.Location = new System.Drawing.Point(10, 5);
+            this.panel9.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(117, 162);
+            this.panel9.Size = new System.Drawing.Size(138, 129);
             this.panel9.TabIndex = 6;
             this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
@@ -358,13 +356,12 @@
             this.tableLayoutPanel6.Controls.Add(this.panel7, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(117, 162);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(138, 129);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // completedTaskLabel
@@ -373,10 +370,10 @@
             this.completedTaskLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.completedTaskLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.completedTaskLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.completedTaskLabel.Location = new System.Drawing.Point(4, 81);
-            this.completedTaskLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 5);
+            this.completedTaskLabel.Location = new System.Drawing.Point(3, 64);
+            this.completedTaskLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.completedTaskLabel.Name = "completedTaskLabel";
-            this.completedTaskLabel.Size = new System.Drawing.Size(109, 76);
+            this.completedTaskLabel.Size = new System.Drawing.Size(132, 62);
             this.completedTaskLabel.TabIndex = 2;
             this.completedTaskLabel.Text = "complete task";
             this.completedTaskLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -389,7 +386,7 @@
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(117, 81);
+            this.panel7.Size = new System.Drawing.Size(138, 64);
             this.panel7.TabIndex = 3;
             // 
             // label3
@@ -398,10 +395,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label3.Location = new System.Drawing.Point(82, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(55, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 81);
+            this.label3.Size = new System.Drawing.Size(83, 64);
             this.label3.TabIndex = 2;
             this.label3.Text = "Completed Count";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -412,9 +408,8 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 81);
+            this.pictureBox2.Size = new System.Drawing.Size(55, 64);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -424,10 +419,10 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panel5.Controls.Add(this.tableLayoutPanel5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(162, 8);
-            this.panel5.Margin = new System.Windows.Forms.Padding(15, 8, 15, 8);
+            this.panel5.Location = new System.Drawing.Point(168, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(117, 162);
+            this.panel5.Size = new System.Drawing.Size(138, 129);
             this.panel5.TabIndex = 1;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
             // 
@@ -440,12 +435,11 @@
             this.tableLayoutPanel5.Controls.Add(this.panel6, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(117, 162);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(138, 129);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // taskCountLabel
@@ -454,10 +448,10 @@
             this.taskCountLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.taskCountLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.taskCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.taskCountLabel.Location = new System.Drawing.Point(4, 81);
-            this.taskCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 5);
+            this.taskCountLabel.Location = new System.Drawing.Point(3, 64);
+            this.taskCountLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.taskCountLabel.Name = "taskCountLabel";
-            this.taskCountLabel.Size = new System.Drawing.Size(109, 76);
+            this.taskCountLabel.Size = new System.Drawing.Size(132, 62);
             this.taskCountLabel.TabIndex = 1;
             this.taskCountLabel.Text = "task count";
             this.taskCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -470,7 +464,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(117, 81);
+            this.panel6.Size = new System.Drawing.Size(138, 64);
             this.panel6.TabIndex = 2;
             // 
             // label2
@@ -479,10 +473,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.label2.Location = new System.Drawing.Point(82, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(55, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 81);
+            this.label2.Size = new System.Drawing.Size(83, 64);
             this.label2.TabIndex = 1;
             this.label2.Text = "Task Count";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -493,52 +486,28 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 81);
+            this.pictureBox1.Size = new System.Drawing.Size(55, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // currentMilestone1
-            // 
-            this.currentMilestone1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.currentMilestone1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
-            this.currentMilestone1.Location = new System.Drawing.Point(123, 201);
-            this.currentMilestone1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.currentMilestone1.MilestoneName = "Milestone Name";
-            this.currentMilestone1.Name = "currentMilestone1";
-            this.currentMilestone1.Size = new System.Drawing.Size(349, 204);
-            this.currentMilestone1.TabIndex = 10;
-            // 
             // ucNotFound1
             // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Current Version !!";
-            this.ucNotFound1.HeadTextSize = 10;
-            this.ucNotFound1.Location = new System.Drawing.Point(30, 31);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(596, 418);
-            this.ucNotFound1.TabIndex = 8;
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.BackColor = System.Drawing.Color.Transparent;
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "No Current Version !!";
             this.ucNotFound1.HeadTextSize = 10;
             this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(630, 272);
+            this.ucNotFound1.Size = new System.Drawing.Size(639, 323);
             this.ucNotFound1.TabIndex = 8;
             // 
             // TaskContent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanelBase);
             this.Controls.Add(this.ucNotFound1);
@@ -546,9 +515,8 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TaskContent";
-            this.Size = new System.Drawing.Size(656, 480);
+            this.Size = new System.Drawing.Size(679, 363);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanelBase.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

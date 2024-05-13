@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.Task.Timeline
 {
@@ -23,6 +24,14 @@ namespace UserInterface.Task.Timeline
         public TaskOperationForm()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.BackColor = label2.BackColor = label3.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
         }
 
         private void OnUpdateClick(object sender, EventArgs e)
@@ -47,6 +56,18 @@ namespace UserInterface.Task.Timeline
         {
             Operate?.Invoke(this, OperateType.View);
             this.Close();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Label).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryI);
+            (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Label).BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            (sender as Label).ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
         }
     }
 }

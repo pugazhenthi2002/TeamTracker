@@ -36,6 +36,7 @@ namespace UserInterface.Task.Timeline
         {
             set
             {
+                InitializePageColor();
                 if (value != null)
                 {
                     version = value;
@@ -53,11 +54,21 @@ namespace UserInterface.Task.Timeline
 
         public List<Milestone> MilestoneCollection { get; internal set; }
 
+        private void InitializePageColor()
+        {
+            for (int ctr = 0; ctr < 20; ctr++)
+            {
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
             int width, x, y, stepWidth;
             width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryI, 2);
             border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             while (x < width)
             {
@@ -96,6 +107,7 @@ namespace UserInterface.Task.Timeline
             for (int ctr = 0; ctr < labelCollections.Count; ctr++)
             {
                 labelCollections[ctr].BackColor = GetColorForLabel(iterDate);
+                labelCollections[ctr].ForeColor = ThemeManager.GetTextColor(labelCollections[ctr].BackColor);
                 labelCollections[ctr].Text = monthCollections[iterDate.Month - 1] + "\n" + iterDate.Day;
                 iterDate = iterDate.AddDays(1);
             }
@@ -116,12 +128,13 @@ namespace UserInterface.Task.Timeline
             {
                 if(Iter.StartDate<=iterDate && iterDate <= Iter.EndDate)
                 {
-                    return ColorManager.MilestoneColorFadingOut[ctr];
+                    return ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[ctr];
+                    //return ColorManager.MilestoneColorFadingOut[ctr];
                 }
                 ctr++;
             }
 
-            return ColorManager.MilestoneColorFadingOut[0];
+            return ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[0];
         }
 
         private void InitializeLabels()
@@ -203,7 +216,8 @@ namespace UserInterface.Task.Timeline
                         Height = height,
                         Width = controlWidth,
                         SelectedTask = Iter,
-                        StatusColor = ColorManager.FetchTaskStatusColor(Iter.StatusOfTask),
+                        StatusColor = ThemeManager.GetTaskStatusColor(Iter.StatusOfTask),
+                        //StatusColor = ColorManager.FetchTaskStatusColor(Iter.StatusOfTask),
                         StepWidth = tableLayoutPanel1.Width / 20,
                         DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate)
                     };
@@ -274,7 +288,7 @@ namespace UserInterface.Task.Timeline
         private void OnMouseEnter(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = Color.FromArgb(201, 210, 217);
+            (sender as PictureBox).BackColor = ThemeManager.GetHoverColor(BackColor);
             if((sender as Control).Name == "nextPictureBox")
             {
                 nextPictureBox.Image = Properties.Resources.Right_Dark_Blue_Hover;
@@ -288,7 +302,7 @@ namespace UserInterface.Task.Timeline
         private void OnMouseLeave(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
+            (sender as PictureBox).BackColor = BackColor;
             if ((sender as Control).Name == "nextPictureBox")
             {
                 nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;

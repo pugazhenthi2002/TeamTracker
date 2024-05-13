@@ -13,7 +13,6 @@ namespace TeamTracker
 {
     public partial class UcTaskCommits : UserControl
     {
-
         private string commitName;
         private Employee commitOwner ;
         private int sourceCodeId;
@@ -21,8 +20,8 @@ namespace TeamTracker
         public UcTaskCommits()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeRoundedEdge();
-
         }
 
 
@@ -71,6 +70,12 @@ namespace TeamTracker
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            labelCommitName.ForeColor = labelEmpName.ForeColor = ThemeManager.GetTextColor(BackColor);
+        }
 
         private void InitializeRoundedEdge()
         {

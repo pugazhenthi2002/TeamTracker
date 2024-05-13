@@ -14,7 +14,7 @@ namespace TeamTracker
 {
     public partial class UcTaskStatusHead : UserControl
     {
-        private TaskStatus Tstatus;
+        private TaskStatus Tstatus = TaskStatus.Done;
         private Color TopPanelColor;
         private string StatusLabelText;
 
@@ -33,8 +33,8 @@ namespace TeamTracker
             get { return Tstatus; }
             set
             {
+                InitializePageColor();
                 Tstatus = value;
-                ColorChange();
             }
         }
 
@@ -56,16 +56,23 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
+        private void InitializePageColor()
+        {
+            labelStatus.ForeColor = labelTaskCount.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            labelTaskCount.ForeColor = ThemeManager.GetTextColor(labelTaskCount.BackColor);
+            panel1.BackColor = ThemeManager.GetTaskStatusColor(Tstatus);
+            labelStatus.Text = Tstatus.ToString();
+        }
+
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
-            labelTaskCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelTaskCount.Width, labelTaskCount.Height, 7, 7));
-
+            labelTaskCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelTaskCount.Width, labelTaskCount.Height, 8, 8));
         }
         private void OnLoad(object sender, EventArgs e)
         {
-            ColorChange();
             InitializeRoundedEdge();
+            InitializePageColor();
         }
 
         private void OnMouseEnterArrow(object sender, EventArgs e)
@@ -94,36 +101,6 @@ namespace TeamTracker
             }
         }
 
-        private void ColorChange()
-        {
-            switch (Tstatus)
-            {
-                case TaskStatus.Done:
-                    TopPanelColor = Color.FromArgb(0, 180, 216);
-                    StatusLabelText = TaskStatus.Done + "";
-                    break;
-                case TaskStatus.UnderReview:
-                    TopPanelColor = Color.FromArgb(0, 150, 199);
-                    StatusLabelText = TaskStatus.UnderReview + "";
-                    break;
-                case TaskStatus.OnProcess:
-                    TopPanelColor = Color.FromArgb(2, 62, 138);
-                    StatusLabelText = TaskStatus.OnProcess + "";
-                    break;
-                case TaskStatus.Stuck:
-                    TopPanelColor = Color.FromArgb(0, 119, 182);
-                    StatusLabelText = TaskStatus.Stuck + "";
-                    break;
-                case TaskStatus.NotYetStarted:
-                    TopPanelColor = Color.FromArgb(3, 4, 94);
-                    StatusLabelText = TaskStatus.NotYetStarted + "";
-                    break;
-            }
-
-            panel1.BackColor = TopPanelColor;
-            labelStatus.Text = StatusLabelText;
-        }
-
         private void OnClickBack(object sender, EventArgs e)
         {
             ClickBack?.Invoke(sender,e);
@@ -132,6 +109,22 @@ namespace TeamTracker
         private void OnClickNext(object sender, EventArgs e)
         {
             ClickNext?.Invoke(sender, e);
+        }
+
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 1, Height - 1), 10));
+            border.Dispose();
+        }
+
+        private void OnCountLabelBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 4));
+            border.Dispose();
         }
     }
 }

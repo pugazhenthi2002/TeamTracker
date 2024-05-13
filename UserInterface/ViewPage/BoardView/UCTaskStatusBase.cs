@@ -37,6 +37,7 @@ namespace TeamTracker
         public UCTaskStatusBase()
         {
             InitializeComponent();
+            InitializePageColor();
             ucTaskStatusHead1.Status = Tstatus;
             ucTaskStatusHead1.ClickBack += OnClickBackPage;
             ucTaskStatusHead1.ClickNext += OnClickNextPage;
@@ -52,6 +53,7 @@ namespace TeamTracker
             get { return Tstatus; }
             set
             {
+                InitializePageColor();
                 ucTaskStatusHead1.Status = value;
                 Tstatus = value;
             }
@@ -86,9 +88,11 @@ namespace TeamTracker
         //    }
         //}
 
-
-
-
+        private void InitializePageColor()
+        {
+            ucTaskStatusHead1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucTaskStatusHead1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
 
         public void RemoveTaskBoard(UCTaskBoard tBoard)
         {

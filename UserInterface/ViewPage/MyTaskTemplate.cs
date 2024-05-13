@@ -32,6 +32,15 @@ namespace UserInterface.ViewPage
             OnBoardClick(boardPicBox, EventArgs.Empty);
         }
 
+        private void InitializePageColor()
+        {
+            ucTaskBoardBase1.BackColor = listViewTemplate1.BackColor = listPanel.BackColor = panel2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            BackColor = tabPage1.BackColor = tabPage2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            listLabel.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
+            boardLabel.ForeColor = ThemeManager.GetTextColor(boardPanel.BackColor);
+        }
+
         private void OnBoardClick(object sender, EventArgs e)
         {
             ucTaskBoardBase1.CurrentProjVersion = VersionManager.CurrentVersion;

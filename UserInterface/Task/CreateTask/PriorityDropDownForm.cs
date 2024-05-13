@@ -20,7 +20,12 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+        }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            BtnCritical.ForeColor = label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         protected override CreateParams CreateParams
@@ -79,7 +84,7 @@ namespace TeamTracker
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             for (int i = 50; i < 200; i += 50)
             {
                 e.Graphics.DrawLine(border, 3, i, Width - 3, i);

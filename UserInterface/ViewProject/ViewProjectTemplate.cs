@@ -78,6 +78,7 @@ namespace UserInterface.ViewProject
             TeamMembersListForm form = new TeamMembersListForm();
             form.Location = filterPanel.PointToScreen(new Point(0, filterPanel.Height + 1));
             form.Width = filterPanel.Width;
+            form.Show();
             form.TeamMemberClick += OnTeamMemberSelected;
             if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
@@ -87,20 +88,10 @@ namespace UserInterface.ViewProject
             {
                 form.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
             }
-
-            transparentForm = new TransparentForm();
-            transparentForm.Show();
-            transparentForm.ShowForm(form);
         }
 
         private void OnTeamMemberSelected(object sender, Employee e)
         {
-            (sender as TeamMembersListForm).Dispose();
-            (sender as TeamMembersListForm).Close();
-
-            if (filteredUser.Image != null)
-                filteredUser.Image.Dispose();
-
             SelectedEmployee = e;
             filteredUser.Image = Image.FromFile(e.EmpProfileLocation);
             filteredUser.Visible = true;

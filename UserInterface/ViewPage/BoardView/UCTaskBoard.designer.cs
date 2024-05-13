@@ -36,11 +36,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxFlag = new System.Windows.Forms.PictureBox();
             this.pictureBoxInfo = new System.Windows.Forms.PictureBox();
+            this.ucDueDate1 = new TeamTracker.UcDueDate();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelTask = new System.Windows.Forms.Label();
             this.profilePictureBoxAssignedBy = new TeamTracker.ProfilePictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ucDueDate1 = new TeamTracker.UcDueDate();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -186,6 +186,24 @@
             this.pictureBoxInfo.MouseEnter += new System.EventHandler(this.OnMouseEnterInfo);
             this.pictureBoxInfo.MouseLeave += new System.EventHandler(this.OnMouseLeaveInfo);
             // 
+            // ucDueDate1
+            // 
+            this.ucDueDate1.BackColor = System.Drawing.Color.Transparent;
+            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.CenterLabelText = null;
+            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
+            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucDueDate1.HeaderForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucDueDate1.LabelText = "Due";
+            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
+            this.ucDueDate1.Name = "ucDueDate1";
+            this.ucDueDate1.Size = new System.Drawing.Size(139, 47);
+            this.ucDueDate1.TabIndex = 3;
+            this.ucDueDate1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
+            this.ucDueDate1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
@@ -240,24 +258,6 @@
             this.profilePictureBoxAssignedBy.TabStop = false;
             this.profilePictureBoxAssignedBy.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
             this.profilePictureBoxAssignedBy.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
-            // 
-            // ucDueDate1
-            // 
-            this.ucDueDate1.BackColor = System.Drawing.Color.Transparent;
-            this.ucDueDate1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.CenterLabelText = null;
-            this.ucDueDate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDueDate1.DueDate = new System.DateTime(2024, 3, 7, 0, 0, 0, 0);
-            this.ucDueDate1.DueLabelcolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.ucDueDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucDueDate1.HeaderForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucDueDate1.LabelText = "Due";
-            this.ucDueDate1.Location = new System.Drawing.Point(3, 3);
-            this.ucDueDate1.Name = "ucDueDate1";
-            this.ucDueDate1.Size = new System.Drawing.Size(139, 47);
-            this.ucDueDate1.TabIndex = 3;
-            this.ucDueDate1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
-            this.ucDueDate1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
             // 
             // UCTaskBoard
             // 

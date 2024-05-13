@@ -28,18 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucNotification1 = new TeamTracker.UcNotification();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // ucNotification1
+            // panel1
             // 
-            this.ucNotification1.BackColor = System.Drawing.Color.Transparent;
-            this.ucNotification1.Location = new System.Drawing.Point(86, 198);
-            this.ucNotification1.Name = "ucNotification1";
-            this.ucNotification1.NotficationData = null;
-            this.ucNotification1.Padding = new System.Windows.Forms.Padding(5);
-            this.ucNotification1.Size = new System.Drawing.Size(576, 191);
-            this.ucNotification1.TabIndex = 0;
+            this.panel1.Location = new System.Drawing.Point(534, 160);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(277, 87);
+            this.panel1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -47,7 +44,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
             this.ClientSize = new System.Drawing.Size(888, 678);
-            this.Controls.Add(this.ucNotification1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "e";
@@ -60,7 +57,7 @@
 
         private TeamTracker.RippleButton rippleButton1;
         private ViewPage.ListView.DoneCardTemplate doneCardTemplate1;
-        private TeamTracker.UcNotification ucNotification1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

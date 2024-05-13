@@ -63,6 +63,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 3);
@@ -209,6 +210,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
             this.pictureBox1.Location = new System.Drawing.Point(748, 0);
@@ -221,6 +223,7 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTitle.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -333,8 +336,8 @@
             // startDate
             // 
             this.startDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.startDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.startDate.BorderSize = 0;
+            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.startDate.BorderSize = 2;
             this.startDate.Enabled = false;
             this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDate.Location = new System.Drawing.Point(164, 10);
@@ -348,8 +351,8 @@
             // endDate
             // 
             this.endDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.endDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.endDate.BorderSize = 0;
+            this.endDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.endDate.BorderSize = 2;
             this.endDate.Enabled = false;
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDate.Location = new System.Drawing.Point(325, 10);

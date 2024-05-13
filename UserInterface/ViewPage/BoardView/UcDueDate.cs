@@ -38,7 +38,7 @@ namespace TeamTracker
             get { return borderColor; }
             set
             {
-                borderColor = value;
+                labelDate.ForeColor = borderColor = value;
                 this.Invalidate();
             }
         }

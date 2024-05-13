@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.Home_Page.Team_Member
 {
@@ -51,6 +52,14 @@ namespace UserInterface.Home_Page.Team_Member
         {
             teamMemberReportContent1.isOpened = true;
             teamMemberReportContent1.Month = DateTime.Today.Month; teamMemberReportContent1.Year = DateTime.Today.Year; teamMemberReportContent1.Priority = -1;
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
     }
 }

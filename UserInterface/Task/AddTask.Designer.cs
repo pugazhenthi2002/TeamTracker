@@ -126,6 +126,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(10, 10);
             this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.panel7.Size = new System.Drawing.Size(738, 249);
             this.panel7.TabIndex = 1;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
@@ -134,10 +135,10 @@
             // 
             this.panelBase.BackColor = System.Drawing.Color.Transparent;
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBase.Location = new System.Drawing.Point(0, 52);
+            this.panelBase.Location = new System.Drawing.Point(2, 52);
             this.panelBase.Name = "panelBase";
             this.panelBase.Padding = new System.Windows.Forms.Padding(5);
-            this.panelBase.Size = new System.Drawing.Size(738, 197);
+            this.panelBase.Size = new System.Drawing.Size(734, 197);
             this.panelBase.TabIndex = 3;
             // 
             // ucNotFound2
@@ -146,11 +147,11 @@
             this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound2.HeadText = "No Under-Review Task !!";
             this.ucNotFound2.HeadTextSize = 14;
-            this.ucNotFound2.Location = new System.Drawing.Point(0, 52);
+            this.ucNotFound2.Location = new System.Drawing.Point(2, 52);
             this.ucNotFound2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ucNotFound2.Message = null;
             this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(738, 197);
+            this.ucNotFound2.Size = new System.Drawing.Size(734, 197);
             this.ucNotFound2.TabIndex = 2;
             // 
             // panel8
@@ -160,10 +161,11 @@
             this.panel8.Controls.Add(this.backPicBox);
             this.panel8.Controls.Add(this.label1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Location = new System.Drawing.Point(2, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(738, 52);
+            this.panel8.Size = new System.Drawing.Size(734, 52);
             this.panel8.TabIndex = 1;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.OnReviewLineSplitPaint);
             // 
             // nextPicBox
             // 
@@ -213,6 +215,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Controls.Add(this.milestoneSwitch1);
             this.panel6.Controls.Add(this.ucNotFound3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;

@@ -131,7 +131,7 @@ namespace TeamTracker
                 SeriesCollection seriesCollection = new SeriesCollection();
                 foreach (var Iter in result1)
                 {
-                    seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ColorManager.FetchTaskStatusColor(Iter.Key).A, ColorManager.FetchTaskStatusColor(Iter.Key).R, ColorManager.FetchTaskStatusColor(Iter.Key).G, ColorManager.FetchTaskStatusColor(Iter.Key).B)) });
+                    seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ThemeManager.GetTaskStatusColor(Iter.Key).A, ThemeManager.GetTaskStatusColor(Iter.Key).R, ThemeManager.GetTaskStatusColor(Iter.Key).G, ThemeManager.GetTaskStatusColor(Iter.Key).B)) });
                 }
                 pieChart1.InnerRadius = 60;
                 pieChart1.Series = seriesCollection;
@@ -140,7 +140,7 @@ namespace TeamTracker
                 seriesCollection = new SeriesCollection();
                 foreach (var Iter in result2)
                 {
-                    seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ColorManager.FetchTaskPriorityColor(Iter.Key).A, ColorManager.FetchTaskPriorityColor(Iter.Key).R, ColorManager.FetchTaskPriorityColor(Iter.Key).G, ColorManager.FetchTaskPriorityColor(Iter.Key).B)) });
+                    seriesCollection.Add(new LiveCharts.Wpf.PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(ThemeManager.GetTaskPriorityColor(Iter.Key).A, ThemeManager.GetTaskPriorityColor(Iter.Key).R, ThemeManager.GetTaskPriorityColor(Iter.Key).G, ThemeManager.GetTaskPriorityColor(Iter.Key).B)) });
                 }
                 pieChart2.InnerRadius = 60;
                 pieChart2.Series = seriesCollection;
@@ -148,6 +148,20 @@ namespace TeamTracker
             else
             {
                 pieChart1.Visible = pieChart2.Visible = false;
+            }
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            projectNameLabel.ForeColor = projectDateLabel.ForeColor = ThemeManager.GetTextColor(BackColor);
+            panel3.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = label2.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(panel3.BackColor);
+
+            for (int ctr=0; ctr < 6; ctr++)
+            {
+                (taskTableLayoutPanel.GetControlFromPosition(ctr, 0) as Control).BackColor = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[ctr];
+                (taskTableLayoutPanel.GetControlFromPosition(ctr, 0) as Control).ForeColor = ThemeManager.GetTextColor((taskTableLayoutPanel.GetControlFromPosition(ctr, 0) as Control).BackColor);
             }
         }
 
@@ -232,7 +246,7 @@ namespace TeamTracker
         private void OnEdgePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, 0), new Point(0, (sender as Control).Height));
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height/2), new Point((sender as Control).Width, (sender as Control).Height/2));
             border.Dispose();
@@ -244,7 +258,7 @@ namespace TeamTracker
             if (sender is Label)
                 rec = new Rectangle(0, 0, panel3.Width - 2, panel2.Height - 2);
 
-            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 20));
             border1.Dispose();
@@ -372,16 +386,16 @@ namespace TeamTracker
         private Dictionary<Color, int> FetchTaskCountsByStatus()
         {
             Dictionary<Color, int> result = new Dictionary<Color, int>();
-            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.Done), doneCollection.Count);
-            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.NotYetStarted), 0);
-            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.OnProcess), 0);
-            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.UnderReview), 0);
-            result.Add(ColorManager.FetchTaskStatusColor(TaskStatus.Stuck), 0);
+            result.Add(ThemeManager.GetTaskStatusColor(TaskStatus.Done), doneCollection.Count);
+            result.Add(ThemeManager.GetTaskStatusColor(TaskStatus.NotYetStarted), 0);
+            result.Add(ThemeManager.GetTaskStatusColor(TaskStatus.OnProcess), 0);
+            result.Add(ThemeManager.GetTaskStatusColor(TaskStatus.UnderReview), 0);
+            result.Add(ThemeManager.GetTaskStatusColor(TaskStatus.Stuck), 0);
             if (taskCollection != null)
             {
                 foreach (var Iter in taskCollection)
                 {
-                    result[ColorManager.FetchTaskStatusColor(Iter.StatusOfTask)]++;
+                    result[ThemeManager.GetTaskStatusColor(Iter.StatusOfTask)]++;
                 }
             }
             return result;
@@ -390,16 +404,16 @@ namespace TeamTracker
         private Dictionary<Color, int> FetchTaskCountsByPriority()
         {
             Dictionary<Color, int> result = new Dictionary<Color, int>();
-            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Critical), 0);
-            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Hard), 0);
-            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Medium), 0);
-            result.Add(ColorManager.FetchTaskPriorityColor(Priority.Easy), 0);
+            result.Add(ThemeManager.GetTaskPriorityColor(Priority.Critical), 0);
+            result.Add(ThemeManager.GetTaskPriorityColor(Priority.Hard), 0);
+            result.Add(ThemeManager.GetTaskPriorityColor(Priority.Medium), 0);
+            result.Add(ThemeManager.GetTaskPriorityColor(Priority.Easy), 0);
 
             if (taskCollection != null)
             {
                 foreach (var Iter in taskCollection)
                 {
-                    result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+                    result[ThemeManager.GetTaskPriorityColor(Iter.TaskPriority)]++;
                 }
             }
 
@@ -407,7 +421,7 @@ namespace TeamTracker
             {
                 foreach (var Iter in doneCollection)
                 {
-                    result[ColorManager.FetchTaskPriorityColor(Iter.TaskPriority)]++;
+                    result[ThemeManager.GetTaskPriorityColor(Iter.TaskPriority)]++;
                 }
             }
 

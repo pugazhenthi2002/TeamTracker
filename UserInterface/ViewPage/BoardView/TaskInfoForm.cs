@@ -66,6 +66,15 @@ namespace TeamTracker
             profileAssignedBy.Dispose();    ucNotFound1.Dispose();
         }
 
+        private void InitializePageColor()
+        {
+            ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = panel1.BackColor = animatedLabelMilestone.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor =  startDate.BorderColor = endDate.BorderColor = startDate.TextColor = endDate.TextColor = animatedLabelStatus.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            animatedLabelMilestone.BackColor = animatedLabelStatus.BackColor = ucTaskDescription1.TopLabelForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelTitle.ForeColor = profileAssignedBy.ForeColor = startDate.SkinColor = endDate.SkinColor = label1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -120,7 +129,7 @@ namespace TeamTracker
                 head.CommitCount = commitCount;
                 head.CommitDate = entry.Key;
                 head.Dock = DockStyle.Top;
-                head.BackColor = Color.FromArgb(211, 220, 227);
+                head.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 panelCommits.Controls.Add(head);
 
                 foreach (SourceCode srcCode in dateWiseDict[entry.Key])
@@ -168,7 +177,7 @@ namespace TeamTracker
             Point pt2 = new Point(panel2.Width - 6, 4);
             Point pt3 = new Point(panel2.Width - 6, panel2.Height - 6);
             Point pt4 = new Point(4, panel2.Height - 6);
-            Pen border = new Pen(Color.Black, 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
@@ -204,7 +213,7 @@ namespace TeamTracker
                 default: pictureBoxFlag.Image = UserInterface.Properties.Resources.Easy; break;
             }
             animatedLabelStatus.Text = selectedTask.StatusOfTask.ToString();
-            animatedLabelStatus.BackColor = ColorManager.FetchTaskStatusColor(selectedTask.StatusOfTask);
+            animatedLabelStatus.BackColor = ThemeManager.GetTaskStatusColor(selectedTask.StatusOfTask);
         }
 
         private void AttachmentDownloadClick(object sender, EventArgs e)

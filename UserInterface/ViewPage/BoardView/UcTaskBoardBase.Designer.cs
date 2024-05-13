@@ -38,6 +38,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -59,7 +60,7 @@
             // 
             // ucTaskStatusBaseNotYetStarted
             // 
-            this.ucTaskStatusBaseNotYetStarted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskStatusBaseNotYetStarted.BackColor = System.Drawing.Color.Transparent;
             this.ucTaskStatusBaseNotYetStarted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTaskStatusBaseNotYetStarted.Location = new System.Drawing.Point(0, 0);
             this.ucTaskStatusBaseNotYetStarted.Margin = new System.Windows.Forms.Padding(0);
@@ -71,7 +72,7 @@
             // 
             // ucTaskStatusBaseOnProcess
             // 
-            this.ucTaskStatusBaseOnProcess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskStatusBaseOnProcess.BackColor = System.Drawing.Color.Transparent;
             this.ucTaskStatusBaseOnProcess.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTaskStatusBaseOnProcess.Location = new System.Drawing.Point(272, 0);
             this.ucTaskStatusBaseOnProcess.Margin = new System.Windows.Forms.Padding(0);
@@ -83,7 +84,7 @@
             // 
             // ucTaskStatusBaseStuck
             // 
-            this.ucTaskStatusBaseStuck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskStatusBaseStuck.BackColor = System.Drawing.Color.Transparent;
             this.ucTaskStatusBaseStuck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTaskStatusBaseStuck.Location = new System.Drawing.Point(544, 0);
             this.ucTaskStatusBaseStuck.Margin = new System.Windows.Forms.Padding(0);
@@ -95,7 +96,7 @@
             // 
             // ucTaskStatusBaseUnderReview
             // 
-            this.ucTaskStatusBaseUnderReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskStatusBaseUnderReview.BackColor = System.Drawing.Color.Transparent;
             this.ucTaskStatusBaseUnderReview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTaskStatusBaseUnderReview.Location = new System.Drawing.Point(816, 0);
             this.ucTaskStatusBaseUnderReview.Margin = new System.Windows.Forms.Padding(0);

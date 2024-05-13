@@ -48,21 +48,19 @@ namespace TeamTracker
 
         public Color TopLabelColor
         {
-            get { return topLabelColor; }
+            get { return labelTop.BackColor; }
             set
             {
-                topLabelColor = value;
-                SetTopText();
+                labelCenter.ForeColor = labelTop.BackColor = value;
             }
         }
 
         public Color TopLabelForeColor
         {
-            get { return topLabelForeColor; }
+            get { return labelTop.ForeColor; }
             set
             {
-                topLabelForeColor = value;
-                SetTopLabelForeColor();
+                BackColor = labelCenter.BackColor = labelTop.ForeColor = value;
             }
         }
 
@@ -71,18 +69,16 @@ namespace TeamTracker
             get { return topLabelText; }
             set
             {
-                topLabelText = value;
-                SetTopText();
+                labelTop.Text = value;
             }
         }
 
         public string CenterLabelText
         {
-            get { return centerLabelText; }
+            get { return labelCenter.Text; }
             set
             {
-                centerLabelText = value;
-                SetCenterText();
+                labelCenter.Text = value;
             }
         }
 
@@ -102,22 +98,6 @@ namespace TeamTracker
             Point pt4 = new Point(4, Height - 6);
             Pen border = new Pen(borderColor, 2);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
-
-        private void SetTopLabelForeColor()
-        {
-            labelTop.ForeColor = topLabelForeColor;
-        }
-
-        private void SetTopText()
-        {
-            labelTop.BackColor = TopLabelColor;
-            labelTop.Text = topLabelText;
-
-        }
-        private void SetCenterText()
-        {
-            labelCenter.Text = centerLabelText;
         }
     }
 }

@@ -49,6 +49,12 @@ namespace UserInterface.ViewPage.ListView
             InitializeDoubleBuffer();
         }
 
+        private void InitializePageColor()
+        {
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            dueDate.ForeColor = projectName.ForeColor = taskNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+        }
+
         private void InitializeDoubleBuffer()
         {
             DoubleBuffered = true;
@@ -64,6 +70,7 @@ namespace UserInterface.ViewPage.ListView
 
         private void SetDoneTaskUI()
         {
+            InitializePageColor();
             if (ModeOfView == CardMode.TeamLead)
             {
                 profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy).EmpProfileLocation);
@@ -111,8 +118,8 @@ namespace UserInterface.ViewPage.ListView
         {
             Rectangle rec1 = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
             Rectangle rec2 = new Rectangle(2, 2, (sender as Control).Width - 5, (sender as Control).Height - 5);
-            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
-            Pen border2 = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            Pen border2 = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec1, 10));
             e.Graphics.DrawPath(border2, BorderGraphicsPath.GetRoundRectangle(rec2, 10));
@@ -153,14 +160,14 @@ namespace UserInterface.ViewPage.ListView
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = Color.FromArgb(39, 55, 77);
-            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = Color.FromArgb(181, 190, 197);
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = Color.FromArgb(181, 190, 197);
-            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = Color.FromArgb(39, 55, 77);
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
     }
 }

@@ -496,7 +496,7 @@
             // timelineControlPanel
             // 
             this.timelineControlPanel.AutoScroll = true;
-            this.timelineControlPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.timelineControlPanel.BackColor = System.Drawing.Color.Transparent;
             this.timelineControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.timelineControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelineControlPanel.Location = new System.Drawing.Point(30, 46);

@@ -80,8 +80,6 @@ namespace TeamTracker
 
         private void InitializeTeamMembers()
         {
-            Focus();
-            var x = Focused;
             if (teamList.Count <= 4)
             {
                 this.Size = new Size(this.Width, 50 * (teamList.Count()));
@@ -90,8 +88,8 @@ namespace TeamTracker
             {
                 this.Size = new Size(this.Width, 50 * 4);
             }
-
             EmployeeProfilePicAndName control;
+            int ctr = 0;
             foreach (Employee emp in teamList)
             {
                 control = new EmployeeProfilePicAndName()
@@ -102,8 +100,11 @@ namespace TeamTracker
                     NormalColor = Color.FromArgb(201, 210, 217),
                     HoverColor = Color.FromArgb(191, 200, 207)
                 };
+
+                control.Focus();
                 control.EmployeeSelect += OnEmployeeSelect;
                 Controls.Add(control);
+                ctr++;
             }
 
             foreach(Control Iter in Controls)
@@ -116,6 +117,7 @@ namespace TeamTracker
 
         private void OnEmployeeSelect(object sender, Employee e)
         {
+            var x = Focused;
             TeamMemberClick?.Invoke(this, e);
             this.Close();
         }

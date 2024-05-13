@@ -56,6 +56,7 @@ namespace TeamTracker
             set
             {
                 this.SuspendLayout();
+                InitializePageColor();
                 if (value != null)
                 {
                     currentProjectVersion = value;
@@ -80,6 +81,11 @@ namespace TeamTracker
         private void InitializeRoundedEdge()
         {
             DragForm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, DragForm.Width, DragForm.Height, 20, 20));
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void SetVersion()

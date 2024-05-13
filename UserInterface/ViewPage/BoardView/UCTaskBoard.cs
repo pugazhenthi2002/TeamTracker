@@ -24,6 +24,7 @@ namespace TeamTracker
         public UCTaskBoard()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeRoundedEdge();
             DoubleBuffered = true;
             typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel1, new object[] { true });
@@ -49,6 +50,7 @@ namespace TeamTracker
             set
             {
                 this.SuspendLayout();
+                InitializePageColor();
                 if (value != null)
                 {
                     TaskBoardData = value;
@@ -70,6 +72,14 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
+        private void InitializePageColor()
+        {
+            tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            labelVersion.ForeColor = LabelTask.ForeColor = labelProjectName.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+            ucDueDate1.DueLabelcolor = ucDueDate1.ForeColor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
@@ -88,8 +98,8 @@ namespace TeamTracker
         {
             isEntered = true;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_hover;
-            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = Color.FromArgb(39, 55, 77);
-            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = Color.FromArgb(221, 230, 237);
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.PrimaryI;
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.SecondaryIII;
             this.Cursor = Cursors.Hand;
             tableLayoutPanel1.Invalidate();
         }
@@ -98,8 +108,8 @@ namespace TeamTracker
         {
             isEntered = false;
             (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
-            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = Color.FromArgb(201, 210, 217);
-            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = Color.FromArgb(39, 55, 77);
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryI;
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
             this.Cursor = Cursors.Default;
             tableLayoutPanel1.Invalidate();
         }
@@ -163,16 +173,14 @@ namespace TeamTracker
         private void OnMouseEnterTaskBoard(object sender, EventArgs e)
         {
             isSemiEntered = true;
-            tableLayoutPanel1.BackColor = Color.FromArgb(161, 168, 174);
-            ucDueDate1.BackColor = Color.FromArgb(161, 168, 174);
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
             this.Cursor = Cursors.SizeAll;
         }
 
         private void OnMouseLeaveTaskBoard(object sender, EventArgs e)
         {
             isSemiEntered = false;
-            tableLayoutPanel1.BackColor = Color.FromArgb(201, 210, 217);
-            ucDueDate1.BackColor = Color.FromArgb(201, 210, 217);
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             this.Cursor = Cursors.Default;
         }
 
@@ -208,9 +216,9 @@ namespace TeamTracker
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             Pen border;
             if (isEntered)
-                border = new Pen(Color.FromArgb(201, 210, 217), 2);
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             else
-                border = new Pen(Color.FromArgb(39, 55, 77), 2);
+                border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
         }
@@ -220,11 +228,11 @@ namespace TeamTracker
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             Pen border;
             if (isEntered)
-                border = new Pen(Color.FromArgb(39, 55, 77), 2);
+                border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             else if(isSemiEntered)
-                border = new Pen(Color.FromArgb(161, 168, 174), 2);
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryI, 2);
             else
-                border = new Pen(Color.FromArgb(201, 210, 217), 2);
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0,0,tableLayoutPanel1.Width-1, tableLayoutPanel1.Height-1), 10));
             border.Dispose();
         }

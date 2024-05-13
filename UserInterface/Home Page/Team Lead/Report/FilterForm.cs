@@ -45,6 +45,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         public FilterForm()
         {
             InitializeComponent();
+            InitializePageColor();
             textBox1.GotFocus += OnTextBoxGotFocus;
 
         }
@@ -201,9 +202,15 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = ThemeManager.GetHoverColor((sender as Control).BackColor);
             if (sender is Label)
+            {
+                (sender as Control).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryII);
                 (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
+            }
+            else
+            {
+                (sender as Control).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryI);
+            }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)

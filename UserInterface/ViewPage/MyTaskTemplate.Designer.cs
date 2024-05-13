@@ -37,7 +37,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listViewTemplate1 = new TeamTracker.ListViewTemplate();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.timelinePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.listPanel = new System.Windows.Forms.TableLayoutPanel();
             this.listLabel = new System.Windows.Forms.Label();
             this.listPicBox = new System.Windows.Forms.PictureBox();
             this.boardPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -49,7 +49,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.timelinePanel.SuspendLayout();
+            this.listPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listPicBox)).BeginInit();
             this.boardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boardPicBox)).BeginInit();
@@ -113,7 +113,7 @@
             // 
             // ucTaskBoardBase1
             // 
-            this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
             this.ucTaskBoardBase1.CurrentProjVersion = null;
             this.ucTaskBoardBase1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTaskBoardBase1.Location = new System.Drawing.Point(3, 3);
@@ -143,7 +143,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.timelinePanel);
+            this.panel2.Controls.Add(this.listPanel);
             this.panel2.Controls.Add(this.boardPanel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -151,20 +151,20 @@
             this.panel2.Size = new System.Drawing.Size(1066, 54);
             this.panel2.TabIndex = 2;
             // 
-            // timelinePanel
+            // listPanel
             // 
-            this.timelinePanel.ColumnCount = 2;
-            this.timelinePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.timelinePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.timelinePanel.Controls.Add(this.listLabel, 1, 0);
-            this.timelinePanel.Controls.Add(this.listPicBox, 0, 0);
-            this.timelinePanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.timelinePanel.Location = new System.Drawing.Point(214, 0);
-            this.timelinePanel.Name = "timelinePanel";
-            this.timelinePanel.RowCount = 1;
-            this.timelinePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.timelinePanel.Size = new System.Drawing.Size(214, 54);
-            this.timelinePanel.TabIndex = 2;
+            this.listPanel.ColumnCount = 2;
+            this.listPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.listPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.listPanel.Controls.Add(this.listLabel, 1, 0);
+            this.listPanel.Controls.Add(this.listPicBox, 0, 0);
+            this.listPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listPanel.Location = new System.Drawing.Point(214, 0);
+            this.listPanel.Name = "listPanel";
+            this.listPanel.RowCount = 1;
+            this.listPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.listPanel.Size = new System.Drawing.Size(214, 54);
+            this.listPanel.TabIndex = 2;
             // 
             // listLabel
             // 
@@ -258,8 +258,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.timelinePanel.ResumeLayout(false);
-            this.timelinePanel.PerformLayout();
+            this.listPanel.ResumeLayout(false);
+            this.listPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listPicBox)).EndInit();
             this.boardPanel.ResumeLayout(false);
             this.boardPanel.PerformLayout();
@@ -273,7 +273,7 @@
         private UcNotFound ucNotFound1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel timelinePanel;
+        private System.Windows.Forms.TableLayoutPanel listPanel;
         private System.Windows.Forms.Label listLabel;
         private System.Windows.Forms.PictureBox listPicBox;
         private System.Windows.Forms.TableLayoutPanel boardPanel;

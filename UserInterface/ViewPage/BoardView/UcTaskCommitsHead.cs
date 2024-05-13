@@ -18,6 +18,8 @@ namespace TeamTracker
         public UcTaskCommitsHead()
         {
             InitializeComponent();
+            BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            labelText.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 
         public int CommitCount
@@ -26,7 +28,9 @@ namespace TeamTracker
             set
             {
                 commitCount = value;
-                SetText();
+                BackColor = ThemeManager.CurrentTheme.SecondaryI;
+                labelText.ForeColor = ThemeManager.GetTextColor(BackColor);
+                labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
             }
         }
 
@@ -36,14 +40,10 @@ namespace TeamTracker
             set
             {
                 commitDate = value;
-                SetText();
+                BackColor = ThemeManager.CurrentTheme.SecondaryI;
+                labelText.ForeColor = ThemeManager.GetTextColor(BackColor);
+                labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
             }
-        }
-
-
-        private void SetText()
-        {
-            labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
         }
     }
 }

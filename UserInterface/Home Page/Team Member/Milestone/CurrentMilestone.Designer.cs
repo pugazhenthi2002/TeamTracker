@@ -43,9 +43,9 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(15, 183);
+            this.panel4.Location = new System.Drawing.Point(15, 170);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(324, 15);
+            this.panel4.Size = new System.Drawing.Size(458, 15);
             this.panel4.TabIndex = 11;
             // 
             // panel3
@@ -55,14 +55,14 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(15, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(324, 15);
+            this.panel3.Size = new System.Drawing.Size(458, 15);
             this.panel3.TabIndex = 10;
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -75,9 +75,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(339, 0);
+            this.panel2.Location = new System.Drawing.Point(473, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(15, 198);
+            this.panel2.Size = new System.Drawing.Size(15, 185);
             this.panel2.TabIndex = 9;
             // 
             // panel1
@@ -86,26 +86,28 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(15, 198);
+            this.panel1.Size = new System.Drawing.Size(15, 185);
             this.panel1.TabIndex = 8;
             // 
             // panelBase
             // 
+            this.panelBase.BackColor = System.Drawing.Color.Transparent;
             this.panelBase.Controls.Add(this.labelMilestonename);
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBase.Location = new System.Drawing.Point(15, 15);
             this.panelBase.Name = "panelBase";
-            this.panelBase.Size = new System.Drawing.Size(324, 168);
+            this.panelBase.Size = new System.Drawing.Size(458, 155);
             this.panelBase.TabIndex = 12;
             this.panelBase.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaintBasePanel);
             // 
             // labelMilestonename
             // 
+            this.labelMilestonename.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelMilestonename.AutoSize = true;
             this.labelMilestonename.BackColor = System.Drawing.Color.Transparent;
             this.labelMilestonename.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMilestonename.ForeColor = System.Drawing.Color.Silver;
-            this.labelMilestonename.Location = new System.Drawing.Point(137, 75);
+            this.labelMilestonename.Location = new System.Drawing.Point(204, 68);
             this.labelMilestonename.Name = "labelMilestonename";
             this.labelMilestonename.Size = new System.Drawing.Size(51, 20);
             this.labelMilestonename.TabIndex = 0;
@@ -122,7 +124,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "CurrentMilestone";
-            this.Size = new System.Drawing.Size(354, 198);
+            this.Size = new System.Drawing.Size(488, 185);
             this.panel3.ResumeLayout(false);
             this.panelBase.ResumeLayout(false);
             this.panelBase.PerformLayout();

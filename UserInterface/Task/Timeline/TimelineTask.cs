@@ -60,6 +60,7 @@ namespace TeamTracker
                 {
                     selectedTask = value;
                     label1.Text = selectedTask.TaskName;
+                    InitializePageColor();
                 }
             }
         }
@@ -77,6 +78,11 @@ namespace TeamTracker
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, label1, new object[] { true });
             DoubleBuffered = true;
             Height = 30;
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void SliderPanelPaint(object sender, PaintEventArgs e)

@@ -124,9 +124,61 @@ namespace TeamTracker
                     {Priority.Easy, ColorTranslator.FromHtml("#FFDDA1") }
                 }
             });
+            themes.Add(new ColorPalattes()
+            {
+                PalatteModeName = ThemeMode.Heat,
+                PrimaryI = ColorTranslator.FromHtml("#21231b"),
+                PrimaryII = ColorTranslator.FromHtml("#414635"),
+                PrimaryIII = ColorTranslator.FromHtml("#626950"),
+                SecondaryI = ColorTranslator.FromHtml("#828b6a"),
+                SecondaryII = ColorTranslator.FromHtml("#b3bb9d"),
+                SecondaryIII = ColorTranslator.FromHtml("#e4eacf"),
+                MilestoneFadingOutColorCollection = new List<Color>()
+                {
+                    ColorTranslator.FromHtml("#21231b"),
+                    ColorTranslator.FromHtml("#414635"),
+                    ColorTranslator.FromHtml("#626950"),
+                    ColorTranslator.FromHtml("#828b6a"),
+                    ColorTranslator.FromHtml("#9ba384"),
+                    ColorTranslator.FromHtml("#b3bb9d"),
+                    ColorTranslator.FromHtml("#ccd3b6"),
+                    ColorTranslator.FromHtml("#e4eacf")
+                },
+                MilestoneStatusColorCollection = new Dictionary<MilestoneStatus, Color>()
+                {
+                    { MilestoneStatus.Completed,  ColorTranslator.FromHtml("#21231b")},
+                    { MilestoneStatus.OnProcess,  ColorTranslator.FromHtml("#626950")},
+                    { MilestoneStatus.Upcoming,  ColorTranslator.FromHtml("#9ba384")},
+                    { MilestoneStatus.Delay,  ColorTranslator.FromHtml("#ccd3b6")}
+                },
+                TaskStatusColorCollection = new Dictionary<TaskStatus, Color>()
+                {
+                    {TaskStatus.NotYetStarted, ColorTranslator.FromHtml("#21231b") },
+                    {TaskStatus.OnProcess, ColorTranslator.FromHtml("#414635") },
+                    {TaskStatus.Stuck, ColorTranslator.FromHtml("#626950") },
+                    {TaskStatus.UnderReview, ColorTranslator.FromHtml("#9ba384") },
+                    {TaskStatus.Done, ColorTranslator.FromHtml("#ccd3b6") },
+                },
+                VersionStatusColorCollection = new Dictionary<ProjectStatus, Color>()
+                {
+                    {ProjectStatus.Completed, ColorTranslator.FromHtml("#21231b") },
+                    {ProjectStatus.Deployment, ColorTranslator.FromHtml("#414635") },
+                    {ProjectStatus.OnProcess, ColorTranslator.FromHtml("#626950") },
+                    {ProjectStatus.OnStage, ColorTranslator.FromHtml("#9ba384") },
+                    {ProjectStatus.UpComing, ColorTranslator.FromHtml("#ccd3b6") },
+                },
+                TaskPriorityColorCollection = new Dictionary<Priority, Color>()
+                {
+                    
+                    {Priority.Critical, ColorTranslator.FromHtml("#21231b") },
+                    {Priority.Hard, ColorTranslator.FromHtml("#626950") },
+                    {Priority.Medium, ColorTranslator.FromHtml("#9ba384") },
+                    {Priority.Easy, ColorTranslator.FromHtml("#ccd3b6") }
+                }
+            });
 
             CurrentTheme = themes[0];
-            CurrentThemeMode = ThemeMode.Cold;
+            CurrentThemeMode = ThemeMode.Heat;
         }
 
         static public Color GetHoverColor(Color color)
@@ -164,6 +216,16 @@ namespace TeamTracker
         static public Color GetMilestoneStatusColor(MilestoneStatus status)
         {
             return CurrentTheme.MilestoneStatusColorCollection[status];
+        }
+
+        static public Color GetTaskStatusColor(TaskStatus status)
+        {
+            return CurrentTheme.TaskStatusColorCollection[status];
+        }
+
+        static public Color GetTaskPriorityColor(Priority priority)
+        {
+            return CurrentTheme.TaskPriorityColorCollection[priority];
         }
 
         static private List<ColorPalattes> themes;
