@@ -73,6 +73,8 @@
             this.label3.Text = "Easy";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.label3.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label3.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label2
             // 
@@ -89,6 +91,8 @@
             this.label2.Text = "Medium";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.label2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 
@@ -105,6 +109,8 @@
             this.label1.Text = "Hard";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.label1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // BtnCritical
             // 
@@ -121,6 +127,8 @@
             this.BtnCritical.Text = "Critical";
             this.BtnCritical.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BtnCritical.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.BtnCritical.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.BtnCritical.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // PriorityDropDownForm
             // 

@@ -25,6 +25,7 @@ namespace TeamTracker
         public ReportTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         private void InitializePageColor()

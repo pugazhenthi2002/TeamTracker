@@ -16,6 +16,7 @@ namespace UserInterface.ViewPage
         public MyTaskTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         public void InitializePage()
@@ -35,7 +36,7 @@ namespace UserInterface.ViewPage
         private void InitializePageColor()
         {
             ucTaskBoardBase1.BackColor = listViewTemplate1.BackColor = listPanel.BackColor = panel2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            BackColor = tabPage1.BackColor = tabPage2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            ucNotFound1.BackColor = BackColor = tabPage1.BackColor = tabPage2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             listLabel.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
             boardLabel.ForeColor = ThemeManager.GetTextColor(boardPanel.BackColor);
@@ -45,8 +46,8 @@ namespace UserInterface.ViewPage
         {
             ucTaskBoardBase1.CurrentProjVersion = VersionManager.CurrentVersion;
             tabControl1.SelectedIndex = 0;
-            boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = Color.FromArgb(221, 230, 237);
-            listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = Color.FromArgb(39, 55, 77);
+            boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
 
             if (listPicBox.Image != null) { listPicBox.Image.Dispose(); }
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
@@ -61,8 +62,8 @@ namespace UserInterface.ViewPage
             listViewTemplate1.RemainingTaskCollection = TaskManager.FetchRemainingTasks(VersionManager.CurrentVersion.VersionID, TeamTracker.TaskStatus.Done);
             listViewTemplate1.InitializePage();
             tabControl1.SelectedIndex = 1;
-            boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = Color.FromArgb(39, 55, 77);
-            listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = Color.FromArgb(221, 230, 237);
+            boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             if (listPicBox.Image != null) { listPicBox.Image.Dispose(); }
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }

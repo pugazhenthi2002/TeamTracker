@@ -33,13 +33,13 @@
             this.labelCommitName = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelEmpName = new System.Windows.Forms.Label();
-            this.EmpProfilePictureBox = new TeamTracker.ProfilePictureBox();
             this.pictureBoxDownload = new System.Windows.Forms.PictureBox();
+            this.EmpProfilePictureBox = new TeamTracker.ProfilePictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EmpProfilePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmpProfilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -57,7 +57,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(313, 56);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(313, 48);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -74,7 +74,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(234, 56);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(234, 48);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // labelCommitName
@@ -85,7 +85,7 @@
             this.labelCommitName.Location = new System.Drawing.Point(110, 0);
             this.labelCommitName.Margin = new System.Windows.Forms.Padding(110, 0, 0, 0);
             this.labelCommitName.Name = "labelCommitName";
-            this.labelCommitName.Size = new System.Drawing.Size(124, 28);
+            this.labelCommitName.Size = new System.Drawing.Size(124, 24);
             this.labelCommitName.TabIndex = 4;
             this.labelCommitName.Text = "commit Name";
             this.labelCommitName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -98,11 +98,11 @@
             this.tableLayoutPanel3.Controls.Add(this.labelEmpName, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.EmpProfilePictureBox, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 31);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 27);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(228, 22);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(228, 18);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // labelEmpName
@@ -113,21 +113,10 @@
             this.labelEmpName.Location = new System.Drawing.Point(57, 0);
             this.labelEmpName.Margin = new System.Windows.Forms.Padding(0);
             this.labelEmpName.Name = "labelEmpName";
-            this.labelEmpName.Size = new System.Drawing.Size(171, 22);
+            this.labelEmpName.Size = new System.Drawing.Size(171, 18);
             this.labelEmpName.TabIndex = 5;
             this.labelEmpName.Text = "Emp Name";
             this.labelEmpName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // EmpProfilePictureBox
-            // 
-            this.EmpProfilePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.EmpProfilePictureBox.Location = new System.Drawing.Point(35, 0);
-            this.EmpProfilePictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.EmpProfilePictureBox.Name = "EmpProfilePictureBox";
-            this.EmpProfilePictureBox.ParentColor = System.Drawing.Color.Empty;
-            this.EmpProfilePictureBox.Size = new System.Drawing.Size(22, 22);
-            this.EmpProfilePictureBox.TabIndex = 0;
-            this.EmpProfilePictureBox.TabStop = false;
             // 
             // pictureBoxDownload
             // 
@@ -137,13 +126,24 @@
             this.pictureBoxDownload.Location = new System.Drawing.Point(249, 15);
             this.pictureBoxDownload.Margin = new System.Windows.Forms.Padding(15);
             this.pictureBoxDownload.Name = "pictureBoxDownload";
-            this.pictureBoxDownload.Size = new System.Drawing.Size(49, 26);
+            this.pictureBoxDownload.Size = new System.Drawing.Size(49, 18);
             this.pictureBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxDownload.TabIndex = 3;
             this.pictureBoxDownload.TabStop = false;
             this.pictureBoxDownload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickDownloadSourceCode);
             this.pictureBoxDownload.MouseEnter += new System.EventHandler(this.OnMouseEnterDownloadPicBox);
             this.pictureBoxDownload.MouseLeave += new System.EventHandler(this.OnMouseLeaveDownloadPicBox);
+            // 
+            // EmpProfilePictureBox
+            // 
+            this.EmpProfilePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.EmpProfilePictureBox.Location = new System.Drawing.Point(35, 0);
+            this.EmpProfilePictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.EmpProfilePictureBox.Name = "EmpProfilePictureBox";
+            this.EmpProfilePictureBox.ParentColor = System.Drawing.Color.Empty;
+            this.EmpProfilePictureBox.Size = new System.Drawing.Size(18, 18);
+            this.EmpProfilePictureBox.TabIndex = 0;
+            this.EmpProfilePictureBox.TabStop = false;
             // 
             // UcTaskCommits
             // 
@@ -155,12 +155,12 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UcTaskCommits";
             this.Padding = new System.Windows.Forms.Padding(1);
-            this.Size = new System.Drawing.Size(315, 58);
+            this.Size = new System.Drawing.Size(315, 50);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.EmpProfilePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmpProfilePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

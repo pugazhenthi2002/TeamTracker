@@ -13,13 +13,20 @@ namespace UserInterface.ViewProject
 {
     public partial class ViewProjectTemplate : UserControl
     {
-        private TransparentForm transparentForm;
         private Employee PrevSelectedEmployee;
         private Employee SelectedEmployee;
 
         public ViewProjectTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            boardViewContent1.BackColor = timelineView1.BackColor = filterPanel.BackColor = timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII; 
+            BackColor = tabPage1.BackColor = tabPage2.BackColor = ThemeManager.CurrentTheme.SecondaryIII; 
         }
 
         public void InitializeViewProject()
@@ -33,10 +40,10 @@ namespace UserInterface.ViewProject
             PrevSelectedEmployee = null;
             tabControl1.SelectedIndex = 0;
             boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
-            boardPanel.BackColor = Color.FromArgb(39, 55, 77);
-            timelinePanel.BackColor = Color.FromArgb(221, 230, 237);
-            boardLabel.ForeColor = Color.FromArgb(221, 230, 237);
-            timelineLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            boardLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            timelineLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         private void OnBoardClicked(object sender, EventArgs e)
@@ -44,10 +51,10 @@ namespace UserInterface.ViewProject
             if(timelinePicBox.Image != null) { timelinePicBox.Image.Dispose(); }
             if(boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
 
-            boardPanel.BackColor = Color.FromArgb(39, 55, 77);
-            timelinePanel.BackColor = Color.FromArgb(221, 230, 237);
-            boardLabel.ForeColor = Color.FromArgb(221, 230, 237);
-            timelineLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            boardLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            timelineLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
 
             boardPicBox.Image = UserInterface.Properties.Resources.Board_Click;
             timelinePicBox.Image = UserInterface.Properties.Resources.Timeline_Normal;
@@ -61,10 +68,10 @@ namespace UserInterface.ViewProject
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
 
-            timelinePanel.BackColor = Color.FromArgb(39, 55, 77);
-            boardPanel.BackColor = Color.FromArgb(221, 230, 237);
-            timelineLabel.ForeColor = Color.FromArgb(221, 230, 237);
-            boardLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            boardPanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            timelinePanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            boardLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            timelineLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             boardPicBox.Image = UserInterface.Properties.Resources.Board_Normal;
             timelinePicBox.Image = UserInterface.Properties.Resources.Timeline_Click;

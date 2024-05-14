@@ -40,6 +40,13 @@ namespace UserInterface.Issues.My_Issue_Page
         public SolutionAttachmentTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void OnDownloadClick(object sender, EventArgs e)

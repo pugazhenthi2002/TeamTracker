@@ -18,6 +18,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             this.Location = new Point(700, 300);
             toolTip1.SetToolTip(pictureBoxFlag, "Priority");
             toolTip1.SetToolTip(animatedLabelMilestone, "Milestone");
@@ -68,11 +69,13 @@ namespace TeamTracker
 
         private void InitializePageColor()
         {
-            ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = panel1.BackColor = animatedLabelMilestone.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = panel1.BackColor = animatedLabelStatus.ForeColor = animatedLabelMilestone.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor =  startDate.BorderColor = endDate.BorderColor = startDate.TextColor = endDate.TextColor = animatedLabelStatus.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
             animatedLabelMilestone.BackColor = animatedLabelStatus.BackColor = ucTaskDescription1.TopLabelForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             labelTitle.ForeColor = profileAssignedBy.ForeColor = startDate.SkinColor = endDate.SkinColor = label1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            animatedLabelStatus.LabelCornerColor = animatedLabelMilestone.LabelCornerColor = BackColor;
+            animatedLabelMilestone.ParentColor = animatedLabelStatus.ParentColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         protected override void OnResize(EventArgs e)
@@ -121,7 +124,7 @@ namespace TeamTracker
             }
 
             Dictionary<DateTime, List<SourceCode>> dateWiseDict = sourceCodeList.GroupBy(s => s.SubmittedDate).ToDictionary(g => g.Key, g => g.ToList());
-
+            Panel panel;
             foreach (var entry in dateWiseDict)
             {
                 int commitCount = dateWiseDict[entry.Key].Count;
@@ -129,18 +132,26 @@ namespace TeamTracker
                 head.CommitCount = commitCount;
                 head.CommitDate = entry.Key;
                 head.Dock = DockStyle.Top;
-                head.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                head.BackColor = ThemeManager.CurrentTheme.SecondaryII;
                 panelCommits.Controls.Add(head);
 
+                panel = new Panel()
+                {
+                    Dock = DockStyle.Top
+                };
+                panel.Paint += OnDatewiseSourceCodePaint;
                 foreach (SourceCode srcCode in dateWiseDict[entry.Key])
                 {
                     UcTaskCommits commit = new UcTaskCommits();
                     commit.CommitName = srcCode.CommitName;
                     commit.CommitOwner = EmployeeManager.FetchEmployeeFromID(srcCode.CommitedBy);
                     commit.SourceCodeId = srcCode.SourceCodeID;
+                    commit.BackColor = Color.Transparent;
                     commit.Dock = DockStyle.Top;
-                    panelCommits.Controls.Add(commit);
+                    panel.Controls.Add(commit);
                 }
+                panel.Height = dateWiseDict[entry.Key].Count * 50;
+                panelCommits.Controls.Add(panel);
             }
 
             foreach (Control ctr in panelCommits.Controls)
@@ -149,6 +160,14 @@ namespace TeamTracker
             }
 
 
+        }
+
+        private void OnDatewiseSourceCodePaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Panel).Width - 1, (sender as Panel).Height - 1), 10));
+            border.Dispose();
         }
 
         private void InitializeRoundedEdge()
@@ -213,7 +232,6 @@ namespace TeamTracker
                 default: pictureBoxFlag.Image = UserInterface.Properties.Resources.Easy; break;
             }
             animatedLabelStatus.Text = selectedTask.StatusOfTask.ToString();
-            animatedLabelStatus.BackColor = ThemeManager.GetTaskStatusColor(selectedTask.StatusOfTask);
         }
 
         private void AttachmentDownloadClick(object sender, EventArgs e)

@@ -16,12 +16,18 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         private bool isClicked = true;
         private string text;
         private Font textFont = new Font(new FontFamily("Ebrima"), 12, FontStyle.Bold);
-        private Color textColor = Color.FromArgb(39, 55, 77);
+        private Color textColor;
         private Projects project;
 
         public VerticalLabel()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            textColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         public event EventHandler<Projects> ProjectSelected;
@@ -47,7 +53,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             set
             {
                 isClicked = value;
-                panel2.BackColor = isClicked ? textColor: Color.FromArgb(221, 230, 237);
+                panel2.BackColor = isClicked ? textColor: ThemeManager.CurrentTheme.SecondaryIII;
                 panel2.Invalidate();
             }
         }
@@ -90,7 +96,7 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             if (!isClicked)
                 b = new SolidBrush(textColor);
             else
-                b = new SolidBrush(Color.FromArgb(221, 230, 237));
+                b = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
 
             StringFormat format = new StringFormat();
             format.Alignment = format.LineAlignment =  StringAlignment.Center;

@@ -15,6 +15,13 @@ namespace TeamTracker
         public MenuFormMyIssue()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            buttonEdit.ForeColor = label1.ForeColor = BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            buttonEdit.BackColor = label1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         public EventHandler EditClick;
@@ -42,6 +49,16 @@ namespace TeamTracker
         {
             base.OnLoad(e);
             Focus();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = ThemeManager.GetHoverColor((sender as Control).BackColor);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = ThemeManager.CurrentTheme.SecondaryIII; ;
         }
     }
 }

@@ -40,6 +40,12 @@ namespace UserInterface.ViewProject
         public Color NormalColor { get; set; }
         public Color HoverColor { get; set; }
 
+        public override Color ForeColor
+        {
+            get { return label1.ForeColor; }
+            set { label1.ForeColor = value; }
+        }
+
         public new void Dispose()
         {
             if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();

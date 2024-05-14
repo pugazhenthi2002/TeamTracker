@@ -56,12 +56,14 @@ namespace UserInterface.Task.CreateTask
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            panel3.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            label2.ForeColor = ThemeManager.GetTextColor(panel3.BackColor);
             buttonCreate.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             buttonCreate.ForeColor = labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
             label4.ForeColor = label5.ForeColor = ThemeManager.GetTextColor(BackColor);
-            textBoxDesc.BackColor = textBoxTaskName.BackColor = buttonSetMilestone.BackColor = employeeName.BackColor = label1.BackColor = label3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelSetPriority.BackColor = textBoxDesc.BackColor = textBoxTaskName.BackColor = buttonSetMilestone.BackColor = employeeName.BackColor = label1.BackColor = label3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             startDate.SkinColor = endDate.SkinColor = tableLayoutPanel5.BackColor = tableLayoutPanelFileName.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            textBoxDesc.ForeColor = textBoxTaskName.ForeColor = buttonSetMilestone.ForeColor = employeeName.ForeColor = label1.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            labelSetPriority.ForeColor = textBoxDesc.ForeColor = textBoxTaskName.ForeColor = buttonSetMilestone.ForeColor = employeeName.ForeColor = label1.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             label2.ForeColor = startDate.TextColor = endDate.TextColor = startDate.BorderColor = endDate.BorderColor = animatedLabelFilename.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
@@ -427,6 +429,16 @@ namespace UserInterface.Task.CreateTask
                 cp.ClassStyle |= CSDropShadow;
                 return cp;
             }
+        }
+
+        private void OnCreateMouseEnter(object sender, EventArgs e)
+        {
+            buttonCreate.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+        }
+
+        private void OnCreateMouseLeave(object sender, EventArgs e)
+        {
+            buttonCreate.BackColor = ThemeManager.CurrentTheme.PrimaryI;
         }
     }
 }

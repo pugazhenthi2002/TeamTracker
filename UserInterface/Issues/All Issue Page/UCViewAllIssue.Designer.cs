@@ -37,23 +37,23 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.filterPeople1 = new UserInterface.Issues.All_Issue_Page.FilterPeople();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBoxOther = new UserInterface.Issues.CustomCheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.filterPeople1 = new UserInterface.Issues.All_Issue_Page.FilterPeople();
+            this.checkBoxOther = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxBug = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxFeatureRequest = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxOptimization = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxSecurity = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxLogicalNeed = new UserInterface.Issues.CustomCheckBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
             this.checkBoxHigh = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxMedium = new UserInterface.Issues.CustomCheckBox();
             this.checkBoxLow = new UserInterface.Issues.CustomCheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.panelDatagridviewBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -97,7 +97,8 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 40;
+            this.dataGridView1.ColumnHeadersHeight = 60;
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -159,16 +160,6 @@
             this.panel4.Size = new System.Drawing.Size(326, 501);
             this.panel4.TabIndex = 6;
             // 
-            // filterPeople1
-            // 
-            this.filterPeople1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.filterPeople1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filterPeople1.Location = new System.Drawing.Point(10, 10);
-            this.filterPeople1.Name = "filterPeople1";
-            this.filterPeople1.Size = new System.Drawing.Size(306, 481);
-            this.filterPeople1.TabIndex = 0;
-            this.filterPeople1.EmployeeSelect += new System.EventHandler<TeamTracker.Employee>(this.OnEmployeeSelected);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.tableLayoutPanel2);
@@ -206,20 +197,9 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(316, 386);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // checkBoxOther
-            // 
-            this.checkBoxOther.CheckBoxText = "Other";
-            this.checkBoxOther.Checked = false;
-            this.checkBoxOther.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxOther.Location = new System.Drawing.Point(3, 333);
-            this.checkBoxOther.Name = "checkBoxOther";
-            this.checkBoxOther.Size = new System.Drawing.Size(310, 50);
-            this.checkBoxOther.TabIndex = 7;
-            this.checkBoxOther.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -231,66 +211,6 @@
             this.label3.Text = "Type";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLineBorderPaint);
-            // 
-            // checkBoxBug
-            // 
-            this.checkBoxBug.CheckBoxText = "Bug";
-            this.checkBoxBug.Checked = false;
-            this.checkBoxBug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxBug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxBug.Location = new System.Drawing.Point(3, 58);
-            this.checkBoxBug.Name = "checkBoxBug";
-            this.checkBoxBug.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxBug.TabIndex = 0;
-            this.checkBoxBug.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
-            // checkBoxFeatureRequest
-            // 
-            this.checkBoxFeatureRequest.CheckBoxText = "FeatureRequest";
-            this.checkBoxFeatureRequest.Checked = false;
-            this.checkBoxFeatureRequest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxFeatureRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxFeatureRequest.Location = new System.Drawing.Point(3, 113);
-            this.checkBoxFeatureRequest.Name = "checkBoxFeatureRequest";
-            this.checkBoxFeatureRequest.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxFeatureRequest.TabIndex = 1;
-            this.checkBoxFeatureRequest.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
-            // checkBoxOptimization
-            // 
-            this.checkBoxOptimization.CheckBoxText = "Optimization";
-            this.checkBoxOptimization.Checked = false;
-            this.checkBoxOptimization.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxOptimization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxOptimization.Location = new System.Drawing.Point(3, 168);
-            this.checkBoxOptimization.Name = "checkBoxOptimization";
-            this.checkBoxOptimization.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxOptimization.TabIndex = 2;
-            this.checkBoxOptimization.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
-            // checkBoxSecurity
-            // 
-            this.checkBoxSecurity.CheckBoxText = "Security";
-            this.checkBoxSecurity.Checked = false;
-            this.checkBoxSecurity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxSecurity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxSecurity.Location = new System.Drawing.Point(3, 223);
-            this.checkBoxSecurity.Name = "checkBoxSecurity";
-            this.checkBoxSecurity.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxSecurity.TabIndex = 5;
-            this.checkBoxSecurity.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
-            // checkBoxLogicalNeed
-            // 
-            this.checkBoxLogicalNeed.CheckBoxText = "LogicalNeed";
-            this.checkBoxLogicalNeed.Checked = false;
-            this.checkBoxLogicalNeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxLogicalNeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxLogicalNeed.Location = new System.Drawing.Point(3, 278);
-            this.checkBoxLogicalNeed.Name = "checkBoxLogicalNeed";
-            this.checkBoxLogicalNeed.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxLogicalNeed.TabIndex = 6;
-            this.checkBoxLogicalNeed.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
             // 
             // panel2
             // 
@@ -324,6 +244,7 @@
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -335,42 +256,6 @@
             this.label2.Text = "Priority";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLineBorderPaint);
-            // 
-            // checkBoxHigh
-            // 
-            this.checkBoxHigh.CheckBoxText = "High";
-            this.checkBoxHigh.Checked = false;
-            this.checkBoxHigh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxHigh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxHigh.Location = new System.Drawing.Point(3, 58);
-            this.checkBoxHigh.Name = "checkBoxHigh";
-            this.checkBoxHigh.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxHigh.TabIndex = 0;
-            this.checkBoxHigh.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
-            // checkBoxMedium
-            // 
-            this.checkBoxMedium.CheckBoxText = "Medium";
-            this.checkBoxMedium.Checked = false;
-            this.checkBoxMedium.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxMedium.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxMedium.Location = new System.Drawing.Point(3, 113);
-            this.checkBoxMedium.Name = "checkBoxMedium";
-            this.checkBoxMedium.Size = new System.Drawing.Size(310, 49);
-            this.checkBoxMedium.TabIndex = 1;
-            this.checkBoxMedium.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
-            // 
-            // checkBoxLow
-            // 
-            this.checkBoxLow.CheckBoxText = "Low";
-            this.checkBoxLow.Checked = false;
-            this.checkBoxLow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxLow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.checkBoxLow.Location = new System.Drawing.Point(3, 168);
-            this.checkBoxLow.Name = "checkBoxLow";
-            this.checkBoxLow.Size = new System.Drawing.Size(310, 50);
-            this.checkBoxLow.TabIndex = 2;
-            this.checkBoxLow.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
             // 
             // label1
             // 
@@ -384,6 +269,133 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Filter";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // filterPeople1
+            // 
+            this.filterPeople1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.filterPeople1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterPeople1.Location = new System.Drawing.Point(10, 10);
+            this.filterPeople1.Name = "filterPeople1";
+            this.filterPeople1.Size = new System.Drawing.Size(306, 481);
+            this.filterPeople1.TabIndex = 0;
+            this.filterPeople1.EmployeeSelect += new System.EventHandler<TeamTracker.Employee>(this.OnEmployeeSelected);
+            // 
+            // checkBoxOther
+            // 
+            this.checkBoxOther.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxOther.CheckBoxText = "Other";
+            this.checkBoxOther.Checked = false;
+            this.checkBoxOther.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxOther.Location = new System.Drawing.Point(3, 333);
+            this.checkBoxOther.Name = "checkBoxOther";
+            this.checkBoxOther.Size = new System.Drawing.Size(310, 50);
+            this.checkBoxOther.TabIndex = 7;
+            this.checkBoxOther.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxBug
+            // 
+            this.checkBoxBug.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxBug.CheckBoxText = "Bug";
+            this.checkBoxBug.Checked = false;
+            this.checkBoxBug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxBug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxBug.Location = new System.Drawing.Point(3, 58);
+            this.checkBoxBug.Name = "checkBoxBug";
+            this.checkBoxBug.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxBug.TabIndex = 0;
+            this.checkBoxBug.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxFeatureRequest
+            // 
+            this.checkBoxFeatureRequest.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxFeatureRequest.CheckBoxText = "FeatureRequest";
+            this.checkBoxFeatureRequest.Checked = false;
+            this.checkBoxFeatureRequest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxFeatureRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxFeatureRequest.Location = new System.Drawing.Point(3, 113);
+            this.checkBoxFeatureRequest.Name = "checkBoxFeatureRequest";
+            this.checkBoxFeatureRequest.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxFeatureRequest.TabIndex = 1;
+            this.checkBoxFeatureRequest.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxOptimization
+            // 
+            this.checkBoxOptimization.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxOptimization.CheckBoxText = "Optimization";
+            this.checkBoxOptimization.Checked = false;
+            this.checkBoxOptimization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxOptimization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxOptimization.Location = new System.Drawing.Point(3, 168);
+            this.checkBoxOptimization.Name = "checkBoxOptimization";
+            this.checkBoxOptimization.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxOptimization.TabIndex = 2;
+            this.checkBoxOptimization.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxSecurity
+            // 
+            this.checkBoxSecurity.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxSecurity.CheckBoxText = "Security";
+            this.checkBoxSecurity.Checked = false;
+            this.checkBoxSecurity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxSecurity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxSecurity.Location = new System.Drawing.Point(3, 223);
+            this.checkBoxSecurity.Name = "checkBoxSecurity";
+            this.checkBoxSecurity.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxSecurity.TabIndex = 5;
+            this.checkBoxSecurity.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxLogicalNeed
+            // 
+            this.checkBoxLogicalNeed.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxLogicalNeed.CheckBoxText = "LogicalNeed";
+            this.checkBoxLogicalNeed.Checked = false;
+            this.checkBoxLogicalNeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxLogicalNeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxLogicalNeed.Location = new System.Drawing.Point(3, 278);
+            this.checkBoxLogicalNeed.Name = "checkBoxLogicalNeed";
+            this.checkBoxLogicalNeed.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxLogicalNeed.TabIndex = 6;
+            this.checkBoxLogicalNeed.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxHigh
+            // 
+            this.checkBoxHigh.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxHigh.CheckBoxText = "High";
+            this.checkBoxHigh.Checked = false;
+            this.checkBoxHigh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxHigh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxHigh.Location = new System.Drawing.Point(3, 58);
+            this.checkBoxHigh.Name = "checkBoxHigh";
+            this.checkBoxHigh.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxHigh.TabIndex = 0;
+            this.checkBoxHigh.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxMedium
+            // 
+            this.checkBoxMedium.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxMedium.CheckBoxText = "Medium";
+            this.checkBoxMedium.Checked = false;
+            this.checkBoxMedium.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxMedium.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxMedium.Location = new System.Drawing.Point(3, 113);
+            this.checkBoxMedium.Name = "checkBoxMedium";
+            this.checkBoxMedium.Size = new System.Drawing.Size(310, 49);
+            this.checkBoxMedium.TabIndex = 1;
+            this.checkBoxMedium.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
+            // 
+            // checkBoxLow
+            // 
+            this.checkBoxLow.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxLow.CheckBoxText = "Low";
+            this.checkBoxLow.Checked = false;
+            this.checkBoxLow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxLow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.checkBoxLow.Location = new System.Drawing.Point(3, 168);
+            this.checkBoxLow.Name = "checkBoxLow";
+            this.checkBoxLow.Size = new System.Drawing.Size(310, 50);
+            this.checkBoxLow.TabIndex = 2;
+            this.checkBoxLow.CheckBoxValueChanged += new System.EventHandler(this.OnCheckBoxCheckedChanged);
             // 
             // UCViewAllIssue
             // 

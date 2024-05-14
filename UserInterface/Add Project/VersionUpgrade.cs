@@ -44,7 +44,8 @@ namespace TeamTracker
             BackColor = descTextBox.BackColor = startDateTimePicker.SkinColor = endDateTimePicker.SkinColor = ThemeManager.CurrentTheme.SecondaryIII;
             upgradeButton.ForeColor = ThemeManager.GetTextColor(upgradeButton.BackColor);
             clearButton.ForeColor = ThemeManager.GetTextColor(clearButton.BackColor);
-            versionNameTextBox.ForeColor = clientTextBox.ForeColor = descTextBox.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            clientTextBox.BackColor = versionNameTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            versionNameTextBox.ForeColor = clientTextBox.ForeColor = descTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         public void InitializePage()

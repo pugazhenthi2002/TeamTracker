@@ -16,7 +16,7 @@ namespace TeamTracker
         public UCTags()
         {
             InitializeComponent();
-
+            InitializePageColor();
         }
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -33,7 +33,12 @@ namespace TeamTracker
         {
             base.OnLoad(e);
             InitializeRoundedEdge();
+        }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            LabelTag.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 
         private void InitializeRoundedEdge()
@@ -94,7 +99,7 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 5));
             border.Dispose();
         }

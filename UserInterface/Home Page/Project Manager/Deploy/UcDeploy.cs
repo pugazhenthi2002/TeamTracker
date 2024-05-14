@@ -12,6 +12,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
 using UserInterface;
+using System.Net.Mail;
 
 namespace TeamTracker
 {
@@ -140,6 +141,26 @@ namespace TeamTracker
         {
             VersionManager.VersionCompletion(version);
             Deployment?.Invoke(proj.ProjectName, version);
+            MailAddress from = new MailAddress(EmployeeManager.CurrentEmployee.EmpEmail, EmployeeManager.CurrentEmployee.EmployeeFirstName + " " + EmployeeManager.CurrentEmployee.EmployeeLastName);
+            MailAddress to = new MailAddress(version.ClientEmail);
+            SendEmail("Want to test this damn thing", from, to);
+        }
+
+        protected void SendEmail(string _subject, MailAddress _from, MailAddress _to)
+        {
+            string Text = "";
+            SmtpClient mailClient = new SmtpClient("Mailhost");
+            MailMessage msgMail;
+            Text = "Stuff";
+            msgMail = new MailMessage();
+            msgMail.From = _from;
+            msgMail.To.Add(_to);
+
+            msgMail.Subject = _subject;
+            msgMail.Body = Text;
+            msgMail.IsBodyHtml = true;
+            mailClient.Send(msgMail);
+            msgMail.Dispose();
         }
 
         private void OnDownloadMouseEnter(object sender, EventArgs e)

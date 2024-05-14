@@ -97,8 +97,9 @@ namespace TeamTracker
                     Profile = emp,
                     Dock = DockStyle.Top,
                     Height = 50,
-                    NormalColor = Color.FromArgb(201, 210, 217),
-                    HoverColor = Color.FromArgb(191, 200, 207)
+                    NormalColor = ThemeManager.CurrentTheme.SecondaryIII,
+                    HoverColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII),
+                    ForeColor = ThemeManager.CurrentTheme.PrimaryI
                 };
 
                 control.Focus();
@@ -113,6 +114,7 @@ namespace TeamTracker
             }
 
             Focus();
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void OnEmployeeSelect(object sender, Employee e)

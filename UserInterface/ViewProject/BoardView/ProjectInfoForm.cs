@@ -19,7 +19,21 @@ namespace TeamTracker
         public ProjectInfoForm()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeBorder();
+        }
+
+        private void InitializePageColor()
+        {
+            startDate.BorderColor = startDate.DueLabelcolor = startDate.ForeColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            endDate.BorderColor = endDate.DueLabelcolor = endDate.ForeColor = ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+            startDate.HeaderForecolor = startDate.BackColor = endDate.HeaderForecolor = endDate.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            tableLayoutPanel5.BackColor = panelAttachment.BackColor = panelSourceCode.BackColor = label3.BackColor = label8.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelTaskCount.ForeColor = labelSourceCode.ForeColor = labelAttachment.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(BackColor);
+            labelTitle.ForeColor = profileAssignedTo.ProfileTextColor = ThemeManager.GetTextColor(panel1.BackColor);
+            label3.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
         }
 
         private bool backEnable = false, frontEnable = true;
@@ -83,16 +97,6 @@ namespace TeamTracker
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
 
-        }
-        
-        private void OnPaintMilestoneBasePanel(object sender, PaintEventArgs e)
-        {
-            Point pt1 = new Point(4, 4);
-            Point pt2 = new Point((sender as Panel).Width - 6, 4);
-            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
-            Point pt4 = new Point(4, (sender as Panel).Height - 6);
-            Pen border = new Pen(Color.Black, 2);
-            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
         private void InitializeForm()
@@ -208,15 +212,14 @@ namespace TeamTracker
 
         private void OnLegendPaint(object sender, PaintEventArgs e)
         {
-            Brush brush;
-
-            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(Color.FromArgb(3, 4, 94));
-            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(Color.FromArgb(0, 119, 182));
-            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(Color.FromArgb(0, 180, 216));
-            else brush = new SolidBrush(Color.FromArgb(144, 224, 239));
+            System.Drawing.Brush brush;
+            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Completed]);
+            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Delay]);
+            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.OnProcess]);
+            else brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Upcoming]);
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width - 1, (sender as Panel).Height - 1));
+            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width - 2, (sender as Panel).Height - 2));
             brush.Dispose();
         }
 
@@ -239,7 +242,7 @@ namespace TeamTracker
         private void OnDownloadEdgePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 10));
             border.Dispose();
         }

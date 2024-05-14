@@ -57,6 +57,7 @@
             // 
             // statusLabel
             // 
+            this.statusLabel.BackColor = System.Drawing.Color.Transparent;
             this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusLabel.Font = new System.Drawing.Font("Ebrima", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.Location = new System.Drawing.Point(0, 18);
@@ -95,6 +96,7 @@
             // 
             // downPicBox
             // 
+            this.downPicBox.BackColor = System.Drawing.Color.Transparent;
             this.downPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.downPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.downPicBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
@@ -111,6 +113,7 @@
             // 
             // upPicBox
             // 
+            this.upPicBox.BackColor = System.Drawing.Color.Transparent;
             this.upPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upPicBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
@@ -136,6 +139,7 @@
             // 
             // boardBasePanel
             // 
+            this.boardBasePanel.BackColor = System.Drawing.Color.Transparent;
             this.boardBasePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardBasePanel.Location = new System.Drawing.Point(0, 54);
             this.boardBasePanel.Margin = new System.Windows.Forms.Padding(2);

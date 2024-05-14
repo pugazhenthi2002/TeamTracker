@@ -52,6 +52,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -74,6 +75,7 @@
             // completedTemplate
             // 
             this.completedTemplate.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.completedTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
             this.completedTemplate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
             this.completedTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.completedTemplate.Location = new System.Drawing.Point(2, 2);
@@ -85,6 +87,7 @@
             // 
             // upcomingTemplates
             // 
+            this.upcomingTemplates.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
             this.upcomingTemplates.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(180)))), ((int)(((byte)(216)))));
             this.upcomingTemplates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upcomingTemplates.Location = new System.Drawing.Point(930, 2);
@@ -96,6 +99,7 @@
             // 
             // onStageTemplate
             // 
+            this.onStageTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
             this.onStageTemplate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(199)))));
             this.onStageTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.onStageTemplate.Location = new System.Drawing.Point(698, 2);
@@ -107,6 +111,7 @@
             // 
             // onProcessTemplate
             // 
+            this.onProcessTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
             this.onProcessTemplate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(182)))));
             this.onProcessTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.onProcessTemplate.Location = new System.Drawing.Point(466, 2);
@@ -118,6 +123,7 @@
             // 
             // deploymentTemplate
             // 
+            this.deploymentTemplate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
             this.deploymentTemplate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.deploymentTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deploymentTemplate.Location = new System.Drawing.Point(234, 2);

@@ -22,6 +22,15 @@ namespace UserInterface.Issues.All_Issue_Page
         public FilterPeople()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            richTextBox1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label3.ForeColor = richTextBox1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            deleteFilterPicBox.BackColor = profilePicAndName1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            profilePicAndName1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
         }
 
         public new void Dispose()
@@ -80,8 +89,8 @@ namespace UserInterface.Issues.All_Issue_Page
                 {
                     Profile = filteredEmployeeCollection[ctr],
                     Dock = DockStyle.Top,
-                    NormalColor = Color.FromArgb(201, 210, 217),
-                    HoverColor = Color.FromArgb(221, 230, 237),
+                    NormalColor = ThemeManager.CurrentTheme.SecondaryII,
+                    HoverColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII),
                     Height = 50
                 };
                 profilePicAndNameTemplate.EmployeeSelect += OnEmployeeSelected;
@@ -184,7 +193,7 @@ namespace UserInterface.Issues.All_Issue_Page
         private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             Rectangle rec = new Rectangle(richTextBox1.Location.X - 1, richTextBox1.Location.Y - 1, richTextBox1.Width + 1, richTextBox1.Height + 1);
             e.Graphics.DrawRectangle(border, rec);
             border.Dispose();
@@ -193,7 +202,7 @@ namespace UserInterface.Issues.All_Issue_Page
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0,(sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
         }

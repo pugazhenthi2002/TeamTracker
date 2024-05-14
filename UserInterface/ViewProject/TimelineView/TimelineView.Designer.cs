@@ -63,64 +63,67 @@ namespace UserInterface.ViewProject.TimelineView
             this.ucNotFound1.HeadText = "No Project Found !!";
             this.ucNotFound1.HeadTextSize = 20;
             this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(2055, 808);
+            this.ucNotFound1.Size = new System.Drawing.Size(1370, 525);
             this.ucNotFound1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.milestoneLabelPanel);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2055, 808);
+            this.panel1.Size = new System.Drawing.Size(1370, 525);
             this.panel1.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.timelinePaginate1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(78, 66);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel5.Location = new System.Drawing.Point(52, 43);
             this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.panel5.Size = new System.Drawing.Size(1977, 665);
+            this.panel5.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.panel5.Size = new System.Drawing.Size(1318, 432);
             this.panel5.TabIndex = 5;
             // 
             // timelinePaginate1
             // 
+            this.timelinePaginate1.BackColor = System.Drawing.Color.Transparent;
             this.timelinePaginate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timelinePaginate1.Location = new System.Drawing.Point(22, 0);
-            this.timelinePaginate1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.timelinePaginate1.FilteredEmployee = null;
+            this.timelinePaginate1.Location = new System.Drawing.Point(15, 0);
+            this.timelinePaginate1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.timelinePaginate1.Name = "timelinePaginate1";
-            this.timelinePaginate1.Size = new System.Drawing.Size(1955, 665);
+            this.timelinePaginate1.Size = new System.Drawing.Size(1303, 432);
             this.timelinePaginate1.TabIndex = 4;
             // 
             // milestoneLabelPanel
             // 
             this.milestoneLabelPanel.AutoScroll = true;
+            this.milestoneLabelPanel.BackColor = System.Drawing.Color.Transparent;
             this.milestoneLabelPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.milestoneLabelPanel.Location = new System.Drawing.Point(78, 731);
+            this.milestoneLabelPanel.Location = new System.Drawing.Point(52, 475);
+            this.milestoneLabelPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.milestoneLabelPanel.Name = "milestoneLabelPanel";
-            this.milestoneLabelPanel.Padding = new System.Windows.Forms.Padding(68, 35, 0, 3);
-            this.milestoneLabelPanel.Size = new System.Drawing.Size(1977, 77);
+            this.milestoneLabelPanel.Padding = new System.Windows.Forms.Padding(45, 23, 0, 2);
+            this.milestoneLabelPanel.Size = new System.Drawing.Size(1318, 50);
             this.milestoneLabelPanel.TabIndex = 4;
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(78, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(52, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(0, 0, 45, 0);
-            this.panel3.Size = new System.Drawing.Size(1977, 66);
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.panel3.Size = new System.Drawing.Size(1318, 43);
             this.panel3.TabIndex = 3;
             // 
             // panel4
@@ -129,20 +132,19 @@ namespace UserInterface.ViewProject.TimelineView
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.panel4.Size = new System.Drawing.Size(658, 66);
+            this.panel4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Size = new System.Drawing.Size(439, 43);
             this.panel4.TabIndex = 2;
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(2, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 60);
+            this.label1.Size = new System.Drawing.Size(211, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "Version Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -153,11 +155,10 @@ namespace UserInterface.ViewProject.TimelineView
             this.panel7.Controls.Add(this.versionNames);
             this.panel7.Controls.Add(this.dropDownPicBox);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(319, 3);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel7.Location = new System.Drawing.Point(213, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.panel7.Size = new System.Drawing.Size(336, 60);
+            this.panel7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Size = new System.Drawing.Size(224, 39);
             this.panel7.TabIndex = 3;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnVersionSwitchPanelPaint);
             // 
@@ -167,10 +168,9 @@ namespace UserInterface.ViewProject.TimelineView
             this.versionNames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.versionNames.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.versionNames.Location = new System.Drawing.Point(3, 3);
-            this.versionNames.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.versionNames.Location = new System.Drawing.Point(2, 2);
             this.versionNames.Name = "versionNames";
-            this.versionNames.Size = new System.Drawing.Size(297, 54);
+            this.versionNames.Size = new System.Drawing.Size(198, 35);
             this.versionNames.TabIndex = 3;
             this.versionNames.Text = "On Process Version";
             this.versionNames.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,10 +181,9 @@ namespace UserInterface.ViewProject.TimelineView
             this.dropDownPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dropDownPicBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.dropDownPicBox.Image = global::UserInterface.Properties.Resources.Down_Dark_Blue;
-            this.dropDownPicBox.Location = new System.Drawing.Point(300, 3);
-            this.dropDownPicBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dropDownPicBox.Location = new System.Drawing.Point(200, 2);
             this.dropDownPicBox.Name = "dropDownPicBox";
-            this.dropDownPicBox.Size = new System.Drawing.Size(33, 54);
+            this.dropDownPicBox.Size = new System.Drawing.Size(22, 35);
             this.dropDownPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.dropDownPicBox.TabIndex = 0;
             this.dropDownPicBox.TabStop = false;
@@ -192,37 +191,35 @@ namespace UserInterface.ViewProject.TimelineView
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.projectDisplayPanel);
             this.panel2.Controls.Add(this.projectDownBox);
             this.panel2.Controls.Add(this.projectUpBox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 66, 0, 77);
-            this.panel2.Size = new System.Drawing.Size(78, 808);
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 43, 0, 50);
+            this.panel2.Size = new System.Drawing.Size(52, 525);
             this.panel2.TabIndex = 2;
             // 
             // projectDisplayPanel
             // 
-            this.projectDisplayPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.projectDisplayPanel.BackColor = System.Drawing.Color.Transparent;
             this.projectDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectDisplayPanel.Location = new System.Drawing.Point(0, 97);
-            this.projectDisplayPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectDisplayPanel.Location = new System.Drawing.Point(0, 63);
             this.projectDisplayPanel.Name = "projectDisplayPanel";
-            this.projectDisplayPanel.Size = new System.Drawing.Size(78, 603);
+            this.projectDisplayPanel.Size = new System.Drawing.Size(52, 392);
             this.projectDisplayPanel.TabIndex = 2;
             // 
             // projectDownBox
             // 
+            this.projectDownBox.BackColor = System.Drawing.Color.Transparent;
             this.projectDownBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.projectDownBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.projectDownBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
-            this.projectDownBox.Location = new System.Drawing.Point(0, 700);
-            this.projectDownBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectDownBox.Location = new System.Drawing.Point(0, 455);
             this.projectDownBox.Name = "projectDownBox";
-            this.projectDownBox.Size = new System.Drawing.Size(78, 31);
+            this.projectDownBox.Size = new System.Drawing.Size(52, 20);
             this.projectDownBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.projectDownBox.TabIndex = 1;
             this.projectDownBox.TabStop = false;
@@ -232,13 +229,13 @@ namespace UserInterface.ViewProject.TimelineView
             // 
             // projectUpBox
             // 
+            this.projectUpBox.BackColor = System.Drawing.Color.Transparent;
             this.projectUpBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.projectUpBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.projectUpBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
-            this.projectUpBox.Location = new System.Drawing.Point(0, 66);
-            this.projectUpBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.projectUpBox.Location = new System.Drawing.Point(0, 43);
             this.projectUpBox.Name = "projectUpBox";
-            this.projectUpBox.Size = new System.Drawing.Size(78, 31);
+            this.projectUpBox.Size = new System.Drawing.Size(52, 20);
             this.projectUpBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.projectUpBox.TabIndex = 0;
             this.projectUpBox.TabStop = false;
@@ -248,14 +245,13 @@ namespace UserInterface.ViewProject.TimelineView
             // 
             // TimelineView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ucNotFound1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TimelineView";
-            this.Size = new System.Drawing.Size(2055, 808);
+            this.Size = new System.Drawing.Size(1370, 525);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

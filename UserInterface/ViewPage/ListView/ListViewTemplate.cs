@@ -155,7 +155,7 @@ namespace TeamTracker
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             projectNameLabel.ForeColor = projectDateLabel.ForeColor = ThemeManager.GetTextColor(BackColor);
-            panel3.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucNotFound1.BackColor = ucNotFound2.BackColor = panel3.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label1.ForeColor = label2.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(panel3.BackColor);
 
             for (int ctr=0; ctr < 6; ctr++)
@@ -199,6 +199,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
         }
 
         private void OnPaginateUp(object sender, EventArgs e)

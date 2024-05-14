@@ -25,6 +25,14 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         public StatusViewTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            statusLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
 

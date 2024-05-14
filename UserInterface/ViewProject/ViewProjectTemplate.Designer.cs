@@ -59,6 +59,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.filteredUser);
             this.panel1.Controls.Add(this.filterPanel);
             this.panel1.Controls.Add(this.timelinePanel);
@@ -82,6 +83,7 @@
             // 
             // filterPanel
             // 
+            this.filterPanel.BackColor = System.Drawing.Color.Transparent;
             this.filterPanel.ColumnCount = 2;
             this.filterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.filterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -98,6 +100,7 @@
             // filterLabel
             // 
             this.filterLabel.AutoSize = true;
+            this.filterLabel.BackColor = System.Drawing.Color.Transparent;
             this.filterLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.filterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,6 +115,7 @@
             // 
             // filterPicBox
             // 
+            this.filterPicBox.BackColor = System.Drawing.Color.Transparent;
             this.filterPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.filterPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterPicBox.Image = global::UserInterface.Properties.Resources.Filter_Normal;
@@ -125,6 +129,7 @@
             // 
             // timelinePanel
             // 
+            this.timelinePanel.BackColor = System.Drawing.Color.Transparent;
             this.timelinePanel.ColumnCount = 2;
             this.timelinePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.timelinePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -141,6 +146,7 @@
             // timelineLabel
             // 
             this.timelineLabel.AutoSize = true;
+            this.timelineLabel.BackColor = System.Drawing.Color.Transparent;
             this.timelineLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.timelineLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelineLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -155,6 +161,7 @@
             // 
             // timelinePicBox
             // 
+            this.timelinePicBox.BackColor = System.Drawing.Color.Transparent;
             this.timelinePicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.timelinePicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timelinePicBox.Image = global::UserInterface.Properties.Resources.Timeline_Normal;
@@ -168,7 +175,7 @@
             // 
             // boardPanel
             // 
-            this.boardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.boardPanel.BackColor = System.Drawing.Color.Transparent;
             this.boardPanel.ColumnCount = 2;
             this.boardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.boardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -184,6 +191,7 @@
             // 
             // boardPicBox
             // 
+            this.boardPicBox.BackColor = System.Drawing.Color.Transparent;
             this.boardPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board_Click;
@@ -198,6 +206,7 @@
             // boardLabel
             // 
             this.boardLabel.AutoSize = true;
+            this.boardLabel.BackColor = System.Drawing.Color.Transparent;
             this.boardLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

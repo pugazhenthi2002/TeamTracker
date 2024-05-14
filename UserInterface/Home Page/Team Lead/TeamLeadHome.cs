@@ -16,11 +16,12 @@ namespace UserInterface.Home_Page.Team_Lead
         public TeamLeadHome()
         {
             InitializeComponent();
+            InitializePageColor();
         }
 
         private void InitializePageColor()
         {
-            BackColor = reportTemplate1.BackColor = overview1.BackColor = notificationContent1.BackColor = onStageTemplate1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            tableLayoutPanel1.BackColor = BackColor = reportTemplate1.BackColor = overview1.BackColor = notificationContent1.BackColor = onStageTemplate1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             reportTemplate1.BorderColor = overview1.BorderColor = notificationContent1.BorderColor = onStageTemplate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 

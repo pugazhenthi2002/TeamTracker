@@ -113,8 +113,8 @@ namespace TeamTracker
                 mileStoneBtn.Size = new Size(this.Width, 50);
                 mileStoneBtn.Dock = DockStyle.Top;
                 mileStoneBtn.Click += OnClickMilestoneBtn;
-                mileStoneBtn.MouseEnter += OnMilestoneMouseEntered;
-                mileStoneBtn.MouseLeave += OnMilestoneMouseLeft;
+                mileStoneBtn.MouseEnter += OnMouseEnter;
+                mileStoneBtn.MouseLeave += OnMouseLeave;
                 this.Controls.Add(mileStoneBtn);
             }
 
@@ -125,16 +125,6 @@ namespace TeamTracker
             this.Invalidate();
             var x = Focused;
             Focus();
-        }
-
-        private void OnMilestoneMouseLeft(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void OnMilestoneMouseEntered(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Hand;
         }
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
@@ -207,6 +197,18 @@ namespace TeamTracker
                 e.Graphics.DrawLine(border, 3, i, Width - 3, i);
             }
             border.Dispose();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryIII;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryI; 
         }
     }
 }

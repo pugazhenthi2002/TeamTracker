@@ -36,7 +36,15 @@ namespace TeamTracker
         {
             DoubleBuffered = true;
             InitializeComponent();
+            InitializePageColor();
         }
+
+        private void InitializePageColor()
+        {
+            panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
         public event EventHandler NotificationClosed;
 
         public string NotificationHeader
@@ -157,7 +165,7 @@ namespace TeamTracker
             };
 
             headerFont = new Font(new FontFamily("Ebrima"), 14, FontStyle.Bold);
-            textBrush = new SolidBrush(Color.FromArgb(221, 230, 237));
+            textBrush = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
             stringRectangle = new Rectangle(0, 0, headerPanel.Width, headerPanel.Height);
 
             e.Graphics.DrawString(header, headerFont, textBrush, stringRectangle, SFormat);
@@ -172,7 +180,7 @@ namespace TeamTracker
             };
 
             contentFont = new Font(new FontFamily("Ebrima"), 12, FontStyle.Italic);
-            textBrush = new SolidBrush(Color.FromArgb(52, 104, 192));
+            textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryIII);
             stringRectangle = new Rectangle(0, 0, timePanel.Width, timePanel.Height);
 
             e.Graphics.DrawString(time, contentFont, textBrush, stringRectangle, SFormat);
@@ -187,7 +195,7 @@ namespace TeamTracker
             };
 
             contentFont = new Font(new FontFamily("Microsoft PhagsPa"), 12);
-            textBrush = new SolidBrush(Color.FromArgb(39, 55, 77));
+            textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
             stringRectangle = new Rectangle(0, 0, contentPanel.Width, contentPanel.Height);
 
             contentMessage = GenerateContent(e.Graphics);
@@ -282,7 +290,7 @@ namespace TeamTracker
         {
             if(isContentOutOfHeight)
             {
-                textBrush = new SolidBrush(Color.Blue);
+                textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
             }
         }
 
@@ -290,7 +298,7 @@ namespace TeamTracker
         {
             if (isContentOutOfHeight)
             {
-                textBrush = new SolidBrush(Color.Blue);
+                textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
                 seeMorePanel.Invalidate();
             }
         }
@@ -299,7 +307,7 @@ namespace TeamTracker
         {
             if (isContentOutOfHeight)
             {
-                textBrush = new SolidBrush(Color.FromArgb(52, 104, 192));
+                textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryIII);
                 seeMorePanel.Invalidate();
             }
         }
@@ -340,7 +348,7 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 3);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 3);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 2, Height - 2), borderRadius/2));
             border.Dispose();
         }

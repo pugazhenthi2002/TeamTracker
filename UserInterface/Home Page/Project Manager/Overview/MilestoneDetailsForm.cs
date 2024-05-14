@@ -37,8 +37,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            ucNotFound1.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
-            label1.ForeColor = labelActualEndDate.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            ucNotFound1.BackColor = panel1.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            label1.ForeColor = labelActualEndDate.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
         }
 

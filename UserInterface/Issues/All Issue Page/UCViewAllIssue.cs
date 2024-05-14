@@ -35,6 +35,34 @@ namespace TeamTracker
         public void InitializePage()
         {
             filterPeople1.InitializeFilter();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            filterPeople1.BackColor = tableLayoutPanel1.BackColor = tableLayoutPanel2.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            dataGridView1.BackgroundColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            checkBoxBug.ForeColor = checkBoxFeatureRequest.ForeColor = checkBoxHigh.ForeColor = checkBoxLogicalNeed.ForeColor = checkBoxLow.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            checkBoxMedium.ForeColor = checkBoxOptimization.ForeColor = checkBoxOther.ForeColor = checkBoxSecurity.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            dataGridView1.RowTemplate.Height = 40;
+            dataGridView1.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle()
+            {
+                BackColor = ThemeManager.CurrentTheme.PrimaryI,
+                ForeColor = ThemeManager.CurrentTheme.SecondaryIII,
+                Font = new Font(new FontFamily("Ebrima"), 14, FontStyle.Bold),
+                Alignment = DataGridViewContentAlignment.MiddleCenter
+            };
+            dataGridView1.RowsDefaultCellStyle = new DataGridViewCellStyle()
+            {
+                ForeColor = ThemeManager.CurrentTheme.PrimaryI,
+                BackColor = ThemeManager.CurrentTheme.SecondaryIII,
+                Font = new Font(new FontFamily("Ebrima"), 12),
+                SelectionBackColor = ThemeManager.CurrentTheme.SecondaryII,
+                SelectionForeColor = ThemeManager.CurrentTheme.PrimaryI,
+                Alignment = DataGridViewContentAlignment.MiddleCenter
+            };
         }
 
         public UCViewAllIssue()
@@ -177,15 +205,6 @@ namespace TeamTracker
                     SolutionFilePath = openFileDialog.FileName;
 
                     string[] seperatedPath = SolutionFilePath.Split('\\');
-
-
-                    if(dataGridView1.CurrentCell is DataGridViewButtonCell)
-                    {
-                        (dataGridView1.CurrentCell as DataGridViewButtonCell).Style.BackColor = Color.Green;
-                        (dataGridView1.CurrentCell as DataGridViewButtonCell).Value = "Solved";
-                    }
-                    //dataGridView1.Columns[e.ColumnIndex]
-
                 }
             }
         }
@@ -263,7 +282,7 @@ namespace TeamTracker
         private void OnLineBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, (sender as Label).Height - 1), new Point((sender as Label).Width, (sender as Label).Height - 1));
             border.Dispose();
         }

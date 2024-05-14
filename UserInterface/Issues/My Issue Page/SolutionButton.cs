@@ -29,13 +29,13 @@ namespace UserInterface.Issues.My_Issue_Page
             {
                 if (value)
                 {
-                    BackColor = Color.FromArgb(39, 55, 77);
-                    label1.ForeColor = Color.FromArgb(221, 230, 237);
+                    BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                    textColor = label1.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                 }
                 else
                 {
-                    label1.ForeColor = Color.FromArgb(39, 55, 77);
-                    BackColor = Color.FromArgb(221, 230, 237);
+                    textColor = label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                    BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 }
             }
         }
@@ -59,5 +59,17 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             SolutionSelect?.Invoke(this, SelectedSolution);
         }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            label1.ForeColor = ThemeManager.GetHoverColor(label1.ForeColor);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            label1.ForeColor = textColor;
+        }
+
+        private Color textColor;
     }
 }

@@ -58,7 +58,7 @@ namespace UserInterface.Task
 
         private void InitializePageColor()
         {
-            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             ucNotFound2.BackColor = ucNotFound3.BackColor = panel7.BackColor = milestoneSwitch1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             addTaskButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             projectNameLabel.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);

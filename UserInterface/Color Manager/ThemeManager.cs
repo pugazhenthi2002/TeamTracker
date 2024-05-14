@@ -75,109 +75,56 @@ namespace TeamTracker
             themes.Add(new ColorPalattes()
             {
                 PalatteModeName = ThemeMode.Heat,
-                PrimaryI = ColorTranslator.FromHtml("#CC5803"),
-                PrimaryII = ColorTranslator.FromHtml("#d76510"),
-                PrimaryIII = ColorTranslator.FromHtml("#ed8a26"),
-                SecondaryI = ColorTranslator.FromHtml("#FF9505"),
-                SecondaryII = ColorTranslator.FromHtml("#ffbd42"),
-                SecondaryIII = ColorTranslator.FromHtml("#fcc874"),
+                PrimaryI = ColorTranslator.FromHtml("#933A09"),
+                PrimaryII = ColorTranslator.FromHtml("#B85B1A"),
+                PrimaryIII = ColorTranslator.FromHtml("#E1934D"),
+                SecondaryI = ColorTranslator.FromHtml("#F6C286"),
+                SecondaryII = ColorTranslator.FromHtml("#FEE4BE"),
+                SecondaryIII = Color.FromArgb(255, 251, 252),
                 MilestoneFadingOutColorCollection = new List<Color>()
                 {
-                    ColorTranslator.FromHtml("#bd0000"),
-                    ColorTranslator.FromHtml("#ce3b00"),
-                    ColorTranslator.FromHtml("#d65800"),
-                    ColorTranslator.FromHtml("#de7500"),
-                    ColorTranslator.FromHtml("#e79300"),
-                    ColorTranslator.FromHtml("#efb000"),
-                    ColorTranslator.FromHtml("#f7cd00"),
-                    ColorTranslator.FromHtml("#ffea00")
+                    ColorTranslator.FromHtml("#4b1200"),
+                    ColorTranslator.FromHtml("#6f2302"),
+                    ColorTranslator.FromHtml("#933A09"),
+                    ColorTranslator.FromHtml("#934a26"),
+                    ColorTranslator.FromHtml("#a56e54"),
+                    ColorTranslator.FromHtml("#b79181"),
+                    ColorTranslator.FromHtml("#d2bbb1"),
+                    ColorTranslator.FromHtml("#ede4e0")
                 },
                 MilestoneStatusColorCollection = new Dictionary<MilestoneStatus, Color>()
                 {
-                    { MilestoneStatus.Completed,  ColorTranslator.FromHtml("#bd0000")},
-                    { MilestoneStatus.OnProcess,  ColorTranslator.FromHtml("#d65800")},
-                    { MilestoneStatus.Upcoming,  ColorTranslator.FromHtml("#e79300")},
-                    { MilestoneStatus.Delay,  ColorTranslator.FromHtml("#f7cd00")}
+                    { MilestoneStatus.Completed,  ColorTranslator.FromHtml("#4b1200")},
+                    { MilestoneStatus.OnProcess,  ColorTranslator.FromHtml("#933A09")},
+                    { MilestoneStatus.Upcoming,  ColorTranslator.FromHtml("#a56e54")},
+                    { MilestoneStatus.Delay,  ColorTranslator.FromHtml("#d2bbb1")}
                 },
                 TaskStatusColorCollection = new Dictionary<TaskStatus, Color>()
                 {
-                    {TaskStatus.NotYetStarted, ColorTranslator.FromHtml("#bd0000") },
-                    {TaskStatus.OnProcess, ColorTranslator.FromHtml("#d65800") },
-                    {TaskStatus.Stuck, ColorTranslator.FromHtml("#e79300") },
-                    {TaskStatus.UnderReview, ColorTranslator.FromHtml("#f7cd00") },
-                    {TaskStatus.Done, ColorTranslator.FromHtml("#CC5803") },
+                    {TaskStatus.NotYetStarted, ColorTranslator.FromHtml("#4B1200") },
+                    {TaskStatus.OnProcess, ColorTranslator.FromHtml("#933A09") },
+                    {TaskStatus.Stuck, ColorTranslator.FromHtml("#B85B1A") },
+                    {TaskStatus.UnderReview, ColorTranslator.FromHtml("#F6C286") },
+                    {TaskStatus.Done, ColorTranslator.FromHtml("#6F2302") },
                 },
                 VersionStatusColorCollection = new Dictionary<ProjectStatus, Color>()
                 {
-                    {ProjectStatus.Completed, ColorTranslator.FromHtml("#bd0000") },
-                    {ProjectStatus.Deployment, ColorTranslator.FromHtml("#d65800") },
-                    {ProjectStatus.OnProcess, ColorTranslator.FromHtml("#e79300") },
-                    {ProjectStatus.OnStage, ColorTranslator.FromHtml("#f7cd00") },
-                    {ProjectStatus.UpComing, ColorTranslator.FromHtml("#CC5803") },
+                    {ProjectStatus.Completed, ColorTranslator.FromHtml("#4b1200") },
+                    {ProjectStatus.Deployment, ColorTranslator.FromHtml("#6f2302") },
+                    {ProjectStatus.OnProcess, ColorTranslator.FromHtml("#933A09") },
+                    {ProjectStatus.OnStage, ColorTranslator.FromHtml("#a56e54") },
+                    {ProjectStatus.UpComing, ColorTranslator.FromHtml("#b79181") },
                 },
                 TaskPriorityColorCollection = new Dictionary<Priority, Color>()
                 {
-                    
-                    {Priority.Critical, ColorTranslator.FromHtml("#E77728") },
-                    {Priority.Hard, ColorTranslator.FromHtml("#EDB230") },
-                    {Priority.Medium, ColorTranslator.FromHtml("#FFD151") },
-                    {Priority.Easy, ColorTranslator.FromHtml("#FFDDA1") }
-                }
-            });
-            themes.Add(new ColorPalattes()
-            {
-                PalatteModeName = ThemeMode.Heat,
-                PrimaryI = ColorTranslator.FromHtml("#21231b"),
-                PrimaryII = ColorTranslator.FromHtml("#414635"),
-                PrimaryIII = ColorTranslator.FromHtml("#626950"),
-                SecondaryI = ColorTranslator.FromHtml("#828b6a"),
-                SecondaryII = ColorTranslator.FromHtml("#b3bb9d"),
-                SecondaryIII = ColorTranslator.FromHtml("#e4eacf"),
-                MilestoneFadingOutColorCollection = new List<Color>()
-                {
-                    ColorTranslator.FromHtml("#21231b"),
-                    ColorTranslator.FromHtml("#414635"),
-                    ColorTranslator.FromHtml("#626950"),
-                    ColorTranslator.FromHtml("#828b6a"),
-                    ColorTranslator.FromHtml("#9ba384"),
-                    ColorTranslator.FromHtml("#b3bb9d"),
-                    ColorTranslator.FromHtml("#ccd3b6"),
-                    ColorTranslator.FromHtml("#e4eacf")
-                },
-                MilestoneStatusColorCollection = new Dictionary<MilestoneStatus, Color>()
-                {
-                    { MilestoneStatus.Completed,  ColorTranslator.FromHtml("#21231b")},
-                    { MilestoneStatus.OnProcess,  ColorTranslator.FromHtml("#626950")},
-                    { MilestoneStatus.Upcoming,  ColorTranslator.FromHtml("#9ba384")},
-                    { MilestoneStatus.Delay,  ColorTranslator.FromHtml("#ccd3b6")}
-                },
-                TaskStatusColorCollection = new Dictionary<TaskStatus, Color>()
-                {
-                    {TaskStatus.NotYetStarted, ColorTranslator.FromHtml("#21231b") },
-                    {TaskStatus.OnProcess, ColorTranslator.FromHtml("#414635") },
-                    {TaskStatus.Stuck, ColorTranslator.FromHtml("#626950") },
-                    {TaskStatus.UnderReview, ColorTranslator.FromHtml("#9ba384") },
-                    {TaskStatus.Done, ColorTranslator.FromHtml("#ccd3b6") },
-                },
-                VersionStatusColorCollection = new Dictionary<ProjectStatus, Color>()
-                {
-                    {ProjectStatus.Completed, ColorTranslator.FromHtml("#21231b") },
-                    {ProjectStatus.Deployment, ColorTranslator.FromHtml("#414635") },
-                    {ProjectStatus.OnProcess, ColorTranslator.FromHtml("#626950") },
-                    {ProjectStatus.OnStage, ColorTranslator.FromHtml("#9ba384") },
-                    {ProjectStatus.UpComing, ColorTranslator.FromHtml("#ccd3b6") },
-                },
-                TaskPriorityColorCollection = new Dictionary<Priority, Color>()
-                {
-                    
-                    {Priority.Critical, ColorTranslator.FromHtml("#21231b") },
-                    {Priority.Hard, ColorTranslator.FromHtml("#626950") },
-                    {Priority.Medium, ColorTranslator.FromHtml("#9ba384") },
-                    {Priority.Easy, ColorTranslator.FromHtml("#ccd3b6") }
+                    {Priority.Critical, ColorTranslator.FromHtml("#4b1200") },
+                    {Priority.Hard, ColorTranslator.FromHtml("#933A09") },
+                    {Priority.Medium, ColorTranslator.FromHtml("#a56e54") },
+                    {Priority.Easy, ColorTranslator.FromHtml("#d2bbb1") }
                 }
             });
 
-            CurrentTheme = themes[0];
+            CurrentTheme = themes[1];
             CurrentThemeMode = ThemeMode.Heat;
         }
 
@@ -226,6 +173,11 @@ namespace TeamTracker
         static public Color GetTaskPriorityColor(Priority priority)
         {
             return CurrentTheme.TaskPriorityColorCollection[priority];
+        }
+
+        static public Color GetProjectStatusColor(ProjectStatus status)
+        {
+            return CurrentTheme.VersionStatusColorCollection[status];
         }
 
         static private List<ColorPalattes> themes;

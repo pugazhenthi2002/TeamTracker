@@ -36,6 +36,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
@@ -64,6 +65,8 @@
             this.label1.Text = "View Solution";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.OnClickViewSolution);
+            this.label1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // buttonEdit
             // 
@@ -80,6 +83,8 @@
             this.buttonEdit.Text = "Edit Issue";
             this.buttonEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonEdit.Click += new System.EventHandler(this.OnClickEdit);
+            this.buttonEdit.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.buttonEdit.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // MenuFormMyIssue
             // 

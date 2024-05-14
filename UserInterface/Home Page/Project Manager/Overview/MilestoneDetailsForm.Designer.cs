@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.labelActualEndDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Task Assigned !!";
-            this.ucNotFound1.HeadTextSize = 12;
-            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(261, 224);
-            this.ucNotFound1.TabIndex = 0;
             // 
             // labelActualEndDate
             // 
@@ -94,6 +82,18 @@
             this.pieChart1.Size = new System.Drawing.Size(261, 152);
             this.pieChart1.TabIndex = 4;
             this.pieChart1.Text = "pieChart1";
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Task Assigned !!";
+            this.ucNotFound1.HeadTextSize = 12;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(261, 224);
+            this.ucNotFound1.TabIndex = 0;
             // 
             // MilestoneDetailsForm
             // 

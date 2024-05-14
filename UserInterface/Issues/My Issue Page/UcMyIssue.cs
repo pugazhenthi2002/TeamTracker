@@ -26,12 +26,38 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeIssueManager();
+            InitializePageColor();
             dataGridView1.AllowUserToAddRows = false;
-
             SetData();
-
-
         }
+
+        private void InitializePageColor()
+        {
+            label1.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            tableLayoutPanel1.BackColor = tableLayoutPanel2.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            dataGridView1.BackgroundColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            checkBoxBug.ForeColor = checkBoxFeatureRequest.ForeColor = checkBoxHigh.ForeColor = checkBoxLogicalNeed.ForeColor = checkBoxLow.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            checkBoxMedium.ForeColor = checkBoxOptimization.ForeColor = checkBoxOther.ForeColor = checkBoxSecurity.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            dataGridView1.RowTemplate.Height = 40;
+            dataGridView1.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle()
+            {
+                BackColor = ThemeManager.CurrentTheme.PrimaryI,
+                ForeColor = ThemeManager.CurrentTheme.SecondaryIII,
+                Font = new Font(new FontFamily("Ebrima"), 14, FontStyle.Bold),
+                Alignment = DataGridViewContentAlignment.MiddleCenter
+            };
+            dataGridView1.RowsDefaultCellStyle = new DataGridViewCellStyle()
+            {
+                ForeColor = ThemeManager.CurrentTheme.PrimaryI,
+                BackColor = ThemeManager.CurrentTheme.SecondaryIII,
+                Font = new Font(new FontFamily("Ebrima"), 12),
+                SelectionBackColor = ThemeManager.CurrentTheme.SecondaryII,
+                SelectionForeColor = ThemeManager.CurrentTheme.PrimaryI,
+                Alignment = DataGridViewContentAlignment.MiddleCenter
+            };
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -270,19 +296,19 @@ namespace TeamTracker
         private void OnLineBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = Color.FromArgb(201, 210, 217);
+            (sender as Control).BackColor = ThemeManager.GetHoverColor(BackColor);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = Color.FromArgb(221, 230, 237);
+            (sender as Control).BackColor = BackColor;
         }
 
 

@@ -65,6 +65,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
@@ -80,6 +81,7 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTitle.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -105,6 +107,7 @@
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.solutionTemplate1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 120);
@@ -126,6 +129,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.nextPicBox);
             this.panel3.Controls.Add(this.backPicBox);
@@ -137,6 +141,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(30, 0);
             this.panel4.Name = "panel4";
@@ -145,6 +150,7 @@
             // 
             // nextPicBox
             // 
+            this.nextPicBox.BackColor = System.Drawing.Color.Transparent;
             this.nextPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextPicBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.nextPicBox.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
@@ -160,6 +166,7 @@
             // 
             // backPicBox
             // 
+            this.backPicBox.BackColor = System.Drawing.Color.Transparent;
             this.backPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backPicBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.backPicBox.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
@@ -188,6 +195,7 @@
             // 
             // totalSolutionCOuntLabel
             // 
+            this.totalSolutionCOuntLabel.BackColor = System.Drawing.Color.Transparent;
             this.totalSolutionCOuntLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.totalSolutionCOuntLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalSolutionCOuntLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));

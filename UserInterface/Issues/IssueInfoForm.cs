@@ -22,8 +22,20 @@ namespace TeamTracker
         public IssueInfoForm()
         {
             InitializeComponent();
+            InitializePageColor();
             solutionTextBox.GotFocus += RemoveSolutionPlaceHolders;
             solutionTextBox.LostFocus += AddSolutionPlaceHolders;
+        }
+
+        private void InitializePageColor()
+        {
+            label4.ForeColor = BtnAddTag.ForeColor = BtnSetPriority.ForeColor = BtnSetType.ForeColor = panelTop.BackColor = buttonAddSolution.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            IssueDate.BorderColor = IssueDate.TextColor =  labelAttachment.BackColor = solutionTextBox.ForeColor = descTextBox.ForeColor = IssueTitleTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            labelAttachment.ForeColor = descTextBox.BackColor = IssueTitleTextBox.BackColor = BtnAddTag.BackColor = BtnSetPriority.BackColor = BtnSetType.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            panel6.BackColor = solutionTextBox.BackColor = IssueDate.SkinColor = profilePostedBy.ForeColor = buttonAddSolution.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(BackColor);
+            ucNotFound1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void AddSolutionPlaceHolders(object sender, EventArgs e)
@@ -72,11 +84,12 @@ namespace TeamTracker
         private void SetIssueData()
         {
             profilePostedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(issueData.PostedBy);
-            ucIssueDescription1.Text = issueData.IssueDesc;
+            descTextBox.Text = issueData.IssueDesc;
             IssueTitleTextBox.Text = issueData.IssueName;
             IssueDate.Value = issueData.PostedDate.Date;
             BtnSetPriority.Text = issueData.Priority + "";
             BtnSetType.Text = issueData.Type + "";
+            labelAttachment.Visible = false;
             var result = DataHandler.FetchIssueAttachementById(issueData.IssueID);
             if (result == null)
             {
@@ -100,8 +113,10 @@ namespace TeamTracker
                 AnimatedLabel tags = new AnimatedLabel()
                 {
                     Text = tg,
-                    BackColor = Color.FromArgb(82, 109, 130),
-                    ForeColor = Color.FromArgb(211, 220, 227),
+                    BackColor = ThemeManager.CurrentTheme.SecondaryI,
+                    ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI),
+                    ParentColor = ThemeManager.CurrentTheme.PrimaryI,
+                    LabelCornerColor = ThemeManager.CurrentTheme.SecondaryII,
                     Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Height = panelTags.Height / 5

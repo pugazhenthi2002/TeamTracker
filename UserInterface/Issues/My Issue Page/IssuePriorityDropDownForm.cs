@@ -15,6 +15,13 @@ namespace TeamTracker
         public IssuePriorityDropDownForm()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         public EventHandler PriorityClick;
@@ -35,6 +42,16 @@ namespace TeamTracker
         {
             base.OnLostFocus(e);
             Close();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = ThemeManager.GetHoverColor(BackColor);
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Control).BackColor = BackColor;
         }
     }
 }

@@ -32,8 +32,18 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeLabels();
+            InitializePageColor();
         }
 
+        private void InitializePageColor()
+        {
+            for (int ctr = 0; ctr < 20; ctr++)
+            {
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
 
         public List<Color> Colors
         {
@@ -93,7 +103,7 @@ namespace TeamTracker
         {
             int width, x, y, stepWidth;
             width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryI, 2);
             border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             while (x < width)
             {
@@ -223,7 +233,7 @@ namespace TeamTracker
         private void OnPaginateMouseEnter(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = Color.FromArgb(201, 210, 217);
+            (sender as PictureBox).BackColor = ThemeManager.GetHoverColor(BackColor);
             if ((sender as Control).Name == "nextPictureBox")
             {
                 nextPictureBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
@@ -237,7 +247,7 @@ namespace TeamTracker
         private void OnPaginateMouseLeave(object sender, EventArgs e)
         {
             if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
+            (sender as PictureBox).BackColor = BackColor;
             if ((sender as Control).Name == "nextPictureBox")
             {
                 nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
@@ -291,7 +301,7 @@ namespace TeamTracker
                 ctr++;
             }
 
-            return Color.White;
+            return ThemeManager.CurrentTheme.PrimaryI;
         }
     }
 }

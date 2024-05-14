@@ -70,6 +70,8 @@
             this.label3.Text = "Low";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.OnClickBtn);
+            this.label3.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label3.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label2
             // 
@@ -85,6 +87,8 @@
             this.label2.Text = "Medium";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.OnClickBtn);
+            this.label2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 
@@ -100,6 +104,8 @@
             this.label1.Text = "High";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.OnClickBtn);
+            this.label1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // IssuePriorityDropDownForm
             // 

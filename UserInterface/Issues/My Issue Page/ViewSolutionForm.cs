@@ -47,7 +47,7 @@ namespace UserInterface.Issues.My_Issue_Page
 
         private void InitializeForm()
         {
-            totalSolutionCOuntLabel.Text = "Total Solution" + issueSolutionCollection.Count.ToString();
+            totalSolutionCOuntLabel.Text = "Total Solution: " + issueSolutionCollection.Count.ToString();
             buttonCollection = new List<SolutionButton>();
             for(int ctr=0; ctr <= endIdx; ctr++)
             {
@@ -86,6 +86,15 @@ namespace UserInterface.Issues.My_Issue_Page
 
             backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
             nextPicBox.Image = isBackEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
+        }
+
+        private void InitializePageColor()
+        {
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel2.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            totalSolutionCOuntLabel.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
+            labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
         }
 
         public new void Dispose()
@@ -128,7 +137,6 @@ namespace UserInterface.Issues.My_Issue_Page
             prevButton = (sender as SolutionButton);
             prevButton.IsClicked = true;
             selectedIdx = issueSolutionCollection.FindIndex(t1 => t1.IssueSolutionID == e.IssueSolutionID);
-            solutionTemplate1.Dispose();
             solutionTemplate1.SelectedSolution = e;
             ResetControl();
         }
@@ -160,6 +168,7 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             DoubleBuffered = true;
             InitializeComponent();
+            InitializePageColor();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.NonPublic, null, panel1, new object[] { true });
         }
 

@@ -49,6 +49,7 @@ namespace TeamTracker
 
             set
             {
+                BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 timelineTask = value;
                 taskLabel.Text = value.TaskName;
             }

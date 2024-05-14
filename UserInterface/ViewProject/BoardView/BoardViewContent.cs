@@ -18,6 +18,17 @@ namespace UserInterface.ViewProject.BoardView
         public BoardViewContent()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            completedTemplate.BorderColor = ThemeManager.GetProjectStatusColor(ProjectStatus.Completed);
+            deploymentTemplate.BorderColor = ThemeManager.GetProjectStatusColor(ProjectStatus.Deployment);
+            onProcessTemplate.BorderColor = ThemeManager.GetProjectStatusColor(ProjectStatus.OnProcess);
+            onStageTemplate.BorderColor = ThemeManager.GetProjectStatusColor(ProjectStatus.OnStage);
+            upcomingTemplates.BorderColor = ThemeManager.GetProjectStatusColor(ProjectStatus.UpComing);
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         public List<ProjectVersion> VersionCollection

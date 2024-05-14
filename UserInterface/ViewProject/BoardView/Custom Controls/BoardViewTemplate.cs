@@ -23,8 +23,15 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             InitializeComponent();
             InitializeBorder();
+            InitializePageColor();
         }
 
+        private void InitializePageColor()
+        {
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+            milestoneStatusPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
                
         public ProjectVersion BoardVersion
         {
@@ -73,8 +80,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         private void OnMilestoneLabelPaint(object sender, PaintEventArgs e)
         {
             int width = (sender as Label).Width, height = (sender as Label).Height;
-            Brush brush1 = new SolidBrush(Color.Gold);
-            Brush brush2 = new SolidBrush(Color.White);
+            Brush brush1 = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
+            Brush brush2 = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
             StringFormat sFormat = new StringFormat();
             sFormat.Alignment = sFormat.LineAlignment = StringAlignment.Center;
             Font font = new Font(new FontFamily("Ebrima"), 10, FontStyle.Bold);
@@ -87,8 +94,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         private void OnTaskLabelPaint(object sender, PaintEventArgs e)
         {
             int width = (sender as Label).Width, height = (sender as Label).Height;
-            Brush brush1 = new SolidBrush(Color.FromArgb(32, 201, 151));
-            Brush brush2 = new SolidBrush(Color.White);
+            Brush brush1 = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
+            Brush brush2 = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
             StringFormat sFormat = new StringFormat();
             sFormat.Alignment = sFormat.LineAlignment = StringAlignment.Center;
             Font font = new Font(new FontFamily("Ebrima"), 10, FontStyle.Bold);
@@ -110,19 +117,16 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 if(milestone.StartDate > DateTime.Today)
                 {
                     toolTipMessage = "Beyond the Milestone Deadline";
-                    milestoneStatusPicBox.BackColor = Color.Green;
                     milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Up;
                 }
                 else if(milestone.EndDate < DateTime.Today)
                 {
                     toolTipMessage = "Behind the Milestone Deadline";
-                    milestoneStatusPicBox.BackColor = Color.Red;
                     milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Down;
                 }
                 else
                 {
                     toolTipMessage = "Steady State";
-                    milestoneStatusPicBox.BackColor = Color.Blue;
                     milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Equal;
                 }
             }
@@ -150,13 +154,13 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnUserControlPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0,0, (sender as TableLayoutPanel).Width - 1, (sender as TableLayoutPanel).Height - 1), 10));
             if(isHovered)
             {
                 pen.Dispose();
-                pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+                pen = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
                 e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(2, 2, (sender as TableLayoutPanel).Width - 5, (sender as TableLayoutPanel).Height - 5), 10));
             }
             pen.Dispose();
@@ -166,7 +170,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             isHovered = true;
             Cursor = Cursors.Hand;
-            tableLayoutPanel1.BackColor = Color.FromArgb(161, 168, 174);
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+            milestoneStatusPicBox.BackColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
             //tableLayoutPanel1.Invalidate();
         }
 
@@ -174,7 +179,9 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             isHovered = false;
             Cursor = Cursors.Default;
-            tableLayoutPanel1.BackColor = Color.FromArgb(201, 210, 217);
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+            milestoneStatusPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             //tableLayoutPanel1.Invalidate();
         }
     }

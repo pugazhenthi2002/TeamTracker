@@ -187,7 +187,6 @@
             this.buttonCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCreate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonCreate.FlatAppearance.BorderSize = 0;
-            this.buttonCreate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreate.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -199,6 +198,8 @@
             this.buttonCreate.Text = "Create";
             this.buttonCreate.UseVisualStyleBackColor = false;
             this.buttonCreate.Click += new System.EventHandler(this.OnCreateClick);
+            this.buttonCreate.MouseEnter += new System.EventHandler(this.OnCreateMouseEnter);
+            this.buttonCreate.MouseLeave += new System.EventHandler(this.OnCreateMouseLeave);
             // 
             // pictureBoxAttachment
             // 
@@ -237,7 +238,7 @@
             // animatedLabelFilename
             // 
             this.animatedLabelFilename.AutoSize = true;
-            this.animatedLabelFilename.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.animatedLabelFilename.BackColor = System.Drawing.Color.Transparent;
             this.animatedLabelFilename.Dock = System.Windows.Forms.DockStyle.Fill;
             this.animatedLabelFilename.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animatedLabelFilename.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));

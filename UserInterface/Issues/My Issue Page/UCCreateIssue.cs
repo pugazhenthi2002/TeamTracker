@@ -37,7 +37,7 @@ namespace TeamTracker
         public UCCreateIssue()
         {
             InitializeComponent();
-
+            InitializePageColor();
             panelTags.HorizontalScroll.Enabled = false;
             panelTags.HorizontalScroll.Visible = false;
 
@@ -48,6 +48,16 @@ namespace TeamTracker
             labelWarning.Hide();
             labelAttachment.Hide();
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
+        }
+
+        private void InitializePageColor()
+        {
+            BtnAddTag.ForeColor = BtnSetPriority.ForeColor = BtnSetType.ForeColor = buttonPost.ForeColor = panelTop.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            labelAttachment.BackColor = labelWarning.ForeColor = textBoxTags.ForeColor = IssueTitleTextBox.ForeColor = IssueDescTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            profilePicAndName1.ForeColor = textBoxTags.BackColor = IssueDescTextBox.BackColor = IssueDescTextBox.BackColor = BtnAddTag.BackColor = BtnSetPriority.BackColor = BtnSetType.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
+            IssueTitleTextBox.BackColor = buttonPost.BackColor = labelAttachment.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         public EventHandler DiscardClick;
@@ -103,7 +113,7 @@ namespace TeamTracker
 
         private void ProjectEntryTablePanel_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77));
+            Pen pen = new Pen(ThemeManager.CurrentTheme.PrimaryI);
             e.Graphics.DrawLine(pen, new Point(10, IssueTitleTextBox.Location.Y + IssueTitleTextBox.Height + 1), new Point(ProjectEntryTablePanel.Width - 10, IssueTitleTextBox.Location.Y + IssueTitleTextBox.Height + 1));
             e.Graphics.DrawLine(pen, new Point(10, IssueDescTextBox.Location.Y + IssueDescTextBox.Height + 1), new Point(ProjectEntryTablePanel.Width - 10, IssueDescTextBox.Location.Y + IssueDescTextBox.Height + 1));
             pen.Dispose();
@@ -319,10 +329,9 @@ namespace TeamTracker
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(150, 170, 190),2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryII,2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, labelAttachment.Width - 1, labelAttachment.Height -  1),labelAttachment.Width/2));
-
             pen.Dispose();
         }
         private void OnClickAttachmentCount(object sender, EventArgs e)
@@ -341,7 +350,7 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 15));
             border.Dispose();
         }

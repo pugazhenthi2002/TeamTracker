@@ -83,8 +83,10 @@ namespace TeamTracker
         {
             panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             homeLabel.ForeColor = addProjectLabel.ForeColor = viewProjectLabel.ForeColor = addTaskLabel.ForeColor = myTaskLabel.ForeColor = myIssueLabel.ForeColor = allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
+            teamLeadHome1.BackColor = projectManagerHome1.BackColor = teamMemberHome1.BackColor = addProject1.BackColor = viewProjectTemplate1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            myTaskTemplate1.BackColor = addTask1.BackColor = ucMyIssue1.BackColor = ucViewAllIssue1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             headerPanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            profilePicAndName1.BorderColor = profilePicAndName1.NormalColor = ThemeManager.CurrentTheme.SecondaryIII;
+            logo1.LogoColor = profilePicAndName1.BorderColor = profilePicAndName1.NormalColor = ThemeManager.CurrentTheme.SecondaryIII;
             profilePicAndName1.HoverColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
             profilePicAndName1.ProfileTextColor = ThemeManager.CurrentTheme.PrimaryI;
         }

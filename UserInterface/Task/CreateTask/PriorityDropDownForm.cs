@@ -19,6 +19,7 @@ namespace TeamTracker
         public PriorityDropDownForm()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeRoundedEdge();
         }
 
@@ -90,6 +91,16 @@ namespace TeamTracker
                 e.Graphics.DrawLine(border, 3, i, Width - 3, i);
             }
             border.Dispose();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryIII;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
     }
 }

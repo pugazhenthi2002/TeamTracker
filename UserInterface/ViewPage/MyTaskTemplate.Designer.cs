@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.listViewTemplate1 = new TeamTracker.ListViewTemplate();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listPanel = new System.Windows.Forms.TableLayoutPanel();
             this.listLabel = new System.Windows.Forms.Label();
@@ -43,6 +40,9 @@
             this.boardPanel = new System.Windows.Forms.TableLayoutPanel();
             this.boardPicBox = new System.Windows.Forms.PictureBox();
             this.boardLabel = new System.Windows.Forms.Label();
+            this.ucTaskBoardBase1 = new TeamTracker.UcTaskBoardBase();
+            this.listViewTemplate1 = new TeamTracker.ListViewTemplate();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -54,18 +54,6 @@
             this.boardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boardPicBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Current Version Available !!";
-            this.ucNotFound1.HeadTextSize = 16;
-            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(1066, 572);
-            this.ucNotFound1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -111,16 +99,6 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // ucTaskBoardBase1
-            // 
-            this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
-            this.ucTaskBoardBase1.CurrentProjVersion = null;
-            this.ucTaskBoardBase1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskBoardBase1.Location = new System.Drawing.Point(3, 3);
-            this.ucTaskBoardBase1.Name = "ucTaskBoardBase1";
-            this.ucTaskBoardBase1.Size = new System.Drawing.Size(1052, 503);
-            this.ucTaskBoardBase1.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.listViewTemplate1);
@@ -131,15 +109,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // listViewTemplate1
-            // 
-            this.listViewTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.listViewTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewTemplate1.Location = new System.Drawing.Point(3, 3);
-            this.listViewTemplate1.Name = "listViewTemplate1";
-            this.listViewTemplate1.Size = new System.Drawing.Size(1052, 503);
-            this.listViewTemplate1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -169,6 +138,7 @@
             // listLabel
             // 
             this.listLabel.AutoSize = true;
+            this.listLabel.BackColor = System.Drawing.Color.Transparent;
             this.listLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,6 +154,7 @@
             // 
             // listPicBox
             // 
+            this.listPicBox.BackColor = System.Drawing.Color.Transparent;
             this.listPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listPicBox.Image = global::UserInterface.Properties.Resources.List_Normal;
@@ -213,7 +184,7 @@
             // 
             // boardPicBox
             // 
-            this.boardPicBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.boardPicBox.BackColor = System.Drawing.Color.Transparent;
             this.boardPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardPicBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardPicBox.Image = global::UserInterface.Properties.Resources.Board_Click;
@@ -229,7 +200,7 @@
             // boardLabel
             // 
             this.boardLabel.AutoSize = true;
-            this.boardLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.boardLabel.BackColor = System.Drawing.Color.Transparent;
             this.boardLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boardLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardLabel.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -242,6 +213,37 @@
             this.boardLabel.Text = "Board";
             this.boardLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.boardLabel.Click += new System.EventHandler(this.OnBoardClick);
+            // 
+            // ucTaskBoardBase1
+            // 
+            this.ucTaskBoardBase1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
+            this.ucTaskBoardBase1.CurrentProjVersion = null;
+            this.ucTaskBoardBase1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTaskBoardBase1.Location = new System.Drawing.Point(3, 3);
+            this.ucTaskBoardBase1.Name = "ucTaskBoardBase1";
+            this.ucTaskBoardBase1.Size = new System.Drawing.Size(1052, 503);
+            this.ucTaskBoardBase1.TabIndex = 0;
+            // 
+            // listViewTemplate1
+            // 
+            this.listViewTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.listViewTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewTemplate1.Location = new System.Drawing.Point(3, 3);
+            this.listViewTemplate1.Name = "listViewTemplate1";
+            this.listViewTemplate1.Size = new System.Drawing.Size(1052, 503);
+            this.listViewTemplate1.TabIndex = 0;
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Current Version Available !!";
+            this.ucNotFound1.HeadTextSize = 16;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(1066, 572);
+            this.ucNotFound1.TabIndex = 0;
             // 
             // MyTaskTemplate
             // 

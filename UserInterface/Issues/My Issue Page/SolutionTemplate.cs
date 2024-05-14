@@ -15,7 +15,6 @@ namespace UserInterface.Issues.My_Issue_Page
     public partial class SolutionTemplate : UserControl
     {
         private int remainingHeight = 0;
-        private Label label1 = new Label();
         private Rectangle rec = new Rectangle();
         private IssueSolution selectedSolution;
         public IssueSolution SelectedSolution
@@ -34,6 +33,15 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             DoubleBuffered = true;
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            solutionAttachmentTemplate1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            solvedByLabel.BackColor = richTextBox1.BackColor = employeeProfilePicAndName1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            solvedByLabel.ForeColor = richTextBox1.ForeColor = employeeProfilePicAndName1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
         }
 
         private void SolutionTemplate_MouseWheel(object sender, MouseEventArgs e)

@@ -159,17 +159,35 @@
     </Compile>
     <Compile Include="Color Manager\ColorPalattes.cs" />
     <Compile Include="Color Manager\ThemeManager.cs" />
+    <Compile Include="Edit Project\Controls\EditVersion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditVersion.Designer.cs">
+      <DependentUpon>EditVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\ProjectBoardTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\ProjectBoardTemplate.Designer.cs">
+      <DependentUpon>ProjectBoardTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchVersion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchVersion.Designer.cs">
+      <DependentUpon>SearchVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Issues\All Issue Page\FilterPeople.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Issues\All Issue Page\FilterPeople.Designer.cs">
       <DependentUpon>FilterPeople.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Issues\All Issue Page\SolveNotesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Issues\All Issue Page\SolveNotesForm.designer.cs">
-      <DependentUpon>SolveNotesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Issues\All Issue Page\UCViewAllIssue.cs">
       <SubType>UserControl</SubType>
@@ -775,11 +793,17 @@
     <EmbeddedResource Include="Add Project\VersionUpgrade.resx">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\EditVersion.resx">
+      <DependentUpon>EditVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\ProjectBoardTemplate.resx">
+      <DependentUpon>ProjectBoardTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\SearchVersion.resx">
+      <DependentUpon>SearchVersion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Issues\All Issue Page\FilterPeople.resx">
       <DependentUpon>FilterPeople.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Issues\All Issue Page\SolveNotesForm.resx">
-      <DependentUpon>SolveNotesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\All Issue Page\UCViewAllIssue.resx">
       <DependentUpon>UCViewAllIssue.cs</DependentUpon>

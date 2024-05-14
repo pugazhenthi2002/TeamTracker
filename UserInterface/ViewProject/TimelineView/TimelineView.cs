@@ -30,6 +30,15 @@ namespace UserInterface.ViewProject.TimelineView
         public TimelineView()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = ThemeManager.GetTextColor(BackColor);
+            panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            versionNames.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
         }
 
         public List<Projects> ProjectCollection
@@ -95,7 +104,7 @@ namespace UserInterface.ViewProject.TimelineView
                     Dock = DockStyle.Top,
                     Height = 175,
                     Project = projectCollection[ctr],
-                    TextColor = ColorManager.ColorFadingOut[idx % 20]
+                    TextColor = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[ctr]
                 };
                 idx = idx + 4;
                 control.IsClicked = false;
@@ -104,7 +113,7 @@ namespace UserInterface.ViewProject.TimelineView
                     currentProject = projectCollection[ctr];
                     currentVersion = VersionManager.FetchProjectLatestVersion(projectCollection[ctr].ProjectID);
                     milestoneCollection = MilestoneManager.FetchMilestones(currentVersion.VersionID);
-                    StoreColor();
+                    colorCollection = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
                     InitializeMilestoneLegendCollection();
                     timelinePaginate1.Colors = colorCollection;
                     timelinePaginate1.FilteredEmployee = filteredEmployee;
@@ -138,6 +147,7 @@ namespace UserInterface.ViewProject.TimelineView
         {
             VersionViewForm form = new VersionViewForm();
             form.Location = versionNames.PointToScreen(new Point(0, versionNames.Height));
+            form.Width = panel7.Width;
             form.VersionCollection = VersionManager.FetchInvolvedVersion(currentProject, EmployeeManager.CurrentEmployee);
             form.VersionSelected += OnVersionSelected;
             form.Show();
@@ -152,7 +162,7 @@ namespace UserInterface.ViewProject.TimelineView
                 milestoneLabelPanel.Controls.Clear();
 
             milestoneCollection = MilestoneManager.FetchMilestones(currentVersion.VersionID);
-            StoreColor();
+            colorCollection = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             InitializeMilestoneLegendCollection();
             timelinePaginate1.Colors = colorCollection;
             timelinePaginate1.Version = currentVersion;
@@ -183,7 +193,7 @@ namespace UserInterface.ViewProject.TimelineView
                 milestoneLabelPanel.Controls.Clear();
 
             milestoneCollection = MilestoneManager.FetchMilestones(currentVersion.VersionID);
-            StoreColor();
+            colorCollection = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             InitializeMilestoneLegendCollection();
             timelinePaginate1.Colors = colorCollection;
             timelinePaginate1.Version = currentVersion;
@@ -196,7 +206,7 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnVersionSwitchPanelPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
             e.Graphics.DrawLine(pen, new Point(dropDownPicBox.Location.X, 0), new Point(dropDownPicBox.Location.X, panel7.Height - 1));
@@ -205,13 +215,13 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnVersionMouseEnter(object sender, EventArgs e)
         {
-            versionNames.BackColor = Color.FromArgb(221, 230, 237);
+            panel7.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
             panel4.Invalidate();
         }
 
         private void OnVersionMouseLeave(object sender, EventArgs e)
         {
-            versionNames.BackColor = Color.FromArgb(231, 240, 250);
+            panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             panel4.Invalidate();
         }
 
@@ -266,17 +276,6 @@ namespace UserInterface.ViewProject.TimelineView
 
             projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
             projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
-        }
-
-        private void StoreColor()
-        {
-            colorCollection = new List<Color>();
-            int ctr = 0;
-            foreach (var Iter in milestoneCollection)
-            {
-                colorCollection.Add(ColorManager.MilestoneColorFadingOut[ctr%20]);
-                ctr++;
-            }
         }
 
         private void InitializeMilestoneLegendCollection()

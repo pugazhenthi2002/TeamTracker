@@ -33,21 +33,23 @@ namespace TeamTracker
 
         public void SetTaskUI()
         {
+            InitializePageColor();
             taskName.Text = task.TaskName;
             assignedBy.Profile = EmployeeManager.FetchEmployeeFromID(task.AssignedBy);
             statusLabel.Text = task.StatusOfTask.ToString();
             priorityLabel.Text = task.TaskPriority.ToString();
             dueDateLabel.Text = task.EndDate.ToShortDateString();
-            
         }
 
         public void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             statusLabel.BackColor = ThemeManager.GetTaskStatusColor(task.StatusOfTask);
+            statusLabel.LabelCornerColor = priorityLabel.LabelCornerColor = BackColor;
             priorityLabel.BackColor = ThemeManager.GetTaskPriorityColor(task.TaskPriority);
             statusLabel.ForeColor = ThemeManager.GetTextColor(statusLabel.BackColor);
             priorityLabel.ForeColor = ThemeManager.GetTextColor(priorityLabel.BackColor);
+            priorityLabel.ParentColor = statusLabel.ParentColor = assignedBy.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         private void OnStatusClicked(object sender, EventArgs e)
