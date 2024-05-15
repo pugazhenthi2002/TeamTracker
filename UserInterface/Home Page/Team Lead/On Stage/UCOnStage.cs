@@ -139,7 +139,7 @@ namespace TeamTracker
 
         private void OnClickStageProject(object sender, EventArgs e)
         {
-            if (MilestoneCollection != null && MilestoneCollection.Count >= 5 && MilestoneCollection.Count <= 20)
+            if (MilestoneCollection != null && MilestoneCollection.Count >= 5 && MilestoneCollection.Count <= 8)
             {
                 VersionManager.UpdateVersion(selectedVersion.VersionID,selectedVersion.VersionName, selectedVersion.VersionDescription, ProjectStatus.OnProcess, selectedVersion.StartDate, selectedVersion.EndDate, selectedVersion.ClientEmail, null);
                 VersionManager.CurrentVersion = selectedVersion;
@@ -149,7 +149,7 @@ namespace TeamTracker
             }
             else
             {
-                ProjectManagerMainForm.notify.AddNotification("Warning", "Milestone Limit Should be within 5 and 20.\nPlease Add Milestones");
+                ProjectManagerMainForm.notify.AddNotification("Warning", "Milestone Limit Should be within 5 and 8.\nPlease Add Milestones");
             }
         }
 

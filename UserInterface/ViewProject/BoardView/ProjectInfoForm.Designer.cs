@@ -138,10 +138,10 @@
             this.profileAssignedTo.IsBorderNeeded = false;
             this.profileAssignedTo.IsOperable = false;
             this.profileAssignedTo.Location = new System.Drawing.Point(792, 0);
-            this.profileAssignedTo.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.profileAssignedTo.Margin = new System.Windows.Forms.Padding(1);
             this.profileAssignedTo.Name = "profileAssignedTo";
             this.profileAssignedTo.NormalColor = System.Drawing.Color.Empty;
-            this.profileAssignedTo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.profileAssignedTo.Padding = new System.Windows.Forms.Padding(3);
             this.profileAssignedTo.ProfileTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.profileAssignedTo.Size = new System.Drawing.Size(240, 58);
             this.profileAssignedTo.TabIndex = 2;
@@ -331,6 +331,7 @@
             this.pictureBoxAttachment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxAttachment.TabIndex = 9;
             this.pictureBoxAttachment.TabStop = false;
+            this.pictureBoxAttachment.Click += new System.EventHandler(this.AttachmentDownload);
             // 
             // label8
             // 
@@ -387,7 +388,7 @@
             this.tableLayoutPanel5.Controls.Add(this.labelTaskCount, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(663, 15);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(15);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));

@@ -365,8 +365,6 @@ namespace TeamTracker
             tabControl1.SelectedIndex = 2;
         }
 
-        
-
         private void OnSignOut(object sender, EventArgs e)
         {
             SignOutForm form = new SignOutForm();
@@ -465,6 +463,12 @@ namespace TeamTracker
         {
             addTask1.InitializePage();
             tabControl1.SelectedIndex = 5;
+        }
+
+        private void OnEditPageClicked(object sender, EventArgs e)
+        {
+            edit1.InitializePage();
+            tabControl1.SelectedIndex = 9;
         }
 
         static public NotificationManager notify;

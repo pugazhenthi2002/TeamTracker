@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamTracker;
+using UserInterface.ViewProject;
+using UserInterface.ViewPage;
+using GoLibrary;
+using System.Runtime.InteropServices;
 
 namespace UserInterface.Edit_Project.Controls
 {
@@ -18,6 +22,21 @@ namespace UserInterface.Edit_Project.Controls
         public EditVersion()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = ThemeManager.GetTextColor(BackColor);
+            fileAttachment1.BackColor = panel8.BackColor = startDatePanel.BackColor = endDatePanel.BackColor = chooseVersionLabel.BackColor = panel13.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            descTextBox.BackColor = clientTextBox.BackColor = startDateTimePicker.SkinColor = endDateTimePicker.SkinColor = ThemeManager.CurrentTheme.SecondaryIII;
+            descTextBox.ForeColor = clientTextBox.ForeColor = startDateTimePicker.BorderColor = endDateTimePicker.BorderColor = startDateTimePicker.TextColor = endDateTimePicker.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            chooseVersionLabel.ForeColor = label2.ForeColor = label5.ForeColor = startDateLabel.ForeColor = endDateLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            updateButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel4.BackColor = DeleteButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            updateButton.ForeColor = ThemeManager.GetTextColor(updateButton.BackColor);
+            DeleteButton.ForeColor = ThemeManager.GetTextColor(DeleteButton.BackColor);
         }
 
         public void InitializePage()
@@ -27,6 +46,8 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnProjectNameChanged(object sender, string e)
         {
+            boardBasePanel.SuspendLayout();
+            selectedProject = null; selectedVersion = null;
             filteredProjectCollection = new List<Projects>();
             
             foreach(var Iter in ProjectCollection)
@@ -38,6 +59,7 @@ namespace UserInterface.Edit_Project.Controls
             }
 
             InitializeControl();
+            boardBasePanel.ResumeLayout();
         }
 
         private void InitializeControl()
@@ -45,6 +67,8 @@ namespace UserInterface.Edit_Project.Controls
             startIdx = 0;   isBackEnable = false;
             endIdx = filteredProjectCollection.Count >= 5 ? 4 : filteredProjectCollection.Count - 1;
             isNextEnable = filteredProjectCollection.Count > 5 ? true : false;
+
+            boardBasePanel.Controls.Clear();
 
             for(int ctr=0; ctr <= endIdx; ctr++)
             {
@@ -54,17 +78,260 @@ namespace UserInterface.Edit_Project.Controls
                     Project = filteredProjectCollection[ctr]
                 };
                 template.ProjectSelection += OnProjectSelected;
+                boardBasePanel.Controls.Add(template);
+            }
+
+            foreach(Control Iter in boardBasePanel.Controls)
+            {
+                Iter.BringToFront();
             }
         }
 
         private void OnProjectSelected(object sender, Projects e)
         {
-            ;
+            selectedVersionCollection = VersionManager.FetchAllVersionFromProject(e.ProjectID);
+            selectedProject = e;
+            selectedVersion = selectedVersionCollection[0];
+            fileAttachment1.Clear = true;
+            chooseVersionLabel.Text = selectedVersion.VersionName;
+            startDateTimePicker.Value = selectedVersion.StartDate;
+            endDateTimePicker.Value = selectedVersion.EndDate;
+            descTextBox.Text = selectedVersion.VersionDescription;
+            clientTextBox.Text = selectedVersion.ClientEmail;
+            Dictionary<string, VersionAttachment> attachments = new Dictionary<string, VersionAttachment>();
+
+            var result = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
+
+            foreach(var Iter in result)
+            {
+                attachments.Add(Iter.DisplayName, Iter);
+            }
+
+            fileAttachment1.AttachmentCollection = attachments;
         }
+
+        private void OnNextBtnClicked(object sender, EventArgs e)
+        {
+            if(isNextEnable)
+            {
+                startIdx++; endIdx++;
+                ResetControls();
+            }
+        }
+
+        private void OnBackBtnClicked(object sender, EventArgs e)
+        {
+            if (isBackEnable)
+            {
+                startIdx--; endIdx--;
+                ResetControls();
+            }
+        }
+
+        private void ResetControls()
+        {
+            for(int ctr=startIdx, idx = 0; ctr <= endIdx; ctr++, idx++)
+            {
+                (boardBasePanel.Controls[idx] as ProjectBoardTemplate).Project = filteredProjectCollection[ctr];
+            }
+
+            isBackEnable = startIdx == 0 ? false : true;
+            isNextEnable = endIdx == filteredProjectCollection.Count - 1 ? false : true;
+        }
+
+        private void OnChooseVersionClicked(object sender, EventArgs e)
+        {
+            if (selectedProject != null)
+            {
+                VersionViewForm form = new VersionViewForm()
+                {
+                    VersionCollection = selectedVersionCollection,
+                    Location = chooseVersionLabel.PointToScreen(new Point(0, chooseVersionLabel.Height + 5)),
+                    Width = chooseVersionLabel.Width,
+                    BackColor = ThemeManager.CurrentTheme.SecondaryI
+                };
+                form.VersionSelected += OnVersionSelected;
+                form.Show();
+            }
+        }
+
+        private void OnVersionSelected(object sender, ProjectVersion e)
+        {
+            selectedVersion = e;
+            fileAttachment1.Clear = true;
+            chooseVersionLabel.Text = selectedVersion.VersionName;
+            startDateTimePicker.Value = selectedVersion.StartDate;
+            endDateTimePicker.Value = selectedVersion.EndDate;
+            descTextBox.Text = selectedVersion.VersionDescription;
+            clientTextBox.Text = selectedVersion.ClientEmail;
+            Dictionary<string, VersionAttachment> attachments = new Dictionary<string, VersionAttachment>();
+
+            var result = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
+
+            foreach (var Iter in result)
+            {
+                attachments.Add(Iter.DisplayName, Iter);
+            }
+
+            fileAttachment1.AttachmentCollection = attachments;
+        }
+
+        private void OnUpdateClicked(object sender, EventArgs e)
+        {
+            var result = isEligibleForVersionUpgrade();
+
+            if (result)
+            {
+                WarningForm form = new WarningForm();
+                form.Content = "Are you sure, you want to update the Project Version? This will affect the milestone and task duration";
+                form.WarningStatus += OnUpdateStatus;
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form);
+            }
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", result.Message);
+            }
+        }
+
+        private void OnUpdateStatus(object sender, bool e)
+        {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (e)
+            {
+                VersionManager.UpdateVersion(selectedVersion.VersionID, selectedVersion.VersionName, descTextBox.Text, selectedVersion.StatusOfVersion, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, FetchAttachmentFiles());
+            }
+        }
+
+        private BooleanMsg isEligibleForVersionUpgrade()
+        {
+            if (selectedVersion == null) return "No Version Selected for Version Edition";
+
+            if (startDateTimePicker.Value.Date == endDateTimePicker.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
+
+            if (descTextBox.Text == "" || descTextBox.Text == "Enter Version Description") return "Version Description Not in Valid Format";
+
+            if (clientTextBox.Text == "" || !clientTextBox.Text.Contains("@gmail.com") || clientTextBox.Text == "Client Email")
+            {
+                return "Enter Proper EmailID";
+            }
+
+            if ((endDateTimePicker.Value.Date - startDateTimePicker.Value.Date).Days < 19)
+            {
+                return "Project Duration Should be Atleast 20 Days";
+            }
+
+            return true;
+        }
+
+        private List<VersionAttachment> FetchAttachmentFiles()
+        {
+            List<VersionAttachment> attachments = new List<VersionAttachment>();
+
+            if (fileAttachment1.AttachmentCollection == null || fileAttachment1.AttachmentCollection.Count == 0)
+                return null;
+
+            foreach (var Iter in fileAttachment1.AttachmentCollection)
+            {
+                attachments.Add(Iter.Value);
+            }
+
+            return attachments;
+        }
+
+        private TransparentForm transparentForm;
+
+        private void OnDeleteClicked(object sender, EventArgs e)
+        {
+            WarningForm form = new WarningForm();
+
+            if(selectedVersion.StatusOfVersion == ProjectStatus.OnProcess || selectedVersion.StatusOfVersion == ProjectStatus.OnStage || selectedVersion.StatusOfVersion == ProjectStatus.Deployment)
+            {
+                form.Content = "Are you sure, you want to delete the Project Version? This Version is Already in Development Stage. This will also delete the task, milestone, task source code and Complete Source Code related to it.";
+            }
+            else
+            {
+                form.Content = "Are you sure, you want to delete the Project Version? This will also delete the task, milestone, task source code and Complete Source Code related to it.";
+            }
+            
+            form.WarningStatus += OnDeleteStatus;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnDeleteStatus(object sender, bool e)
+        {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (e)
+            {
+                VersionManager.DeleteVersion(selectedVersion);
+            }
+        }
+
+        private void BorderDrawPaint(object sender, PaintEventArgs e)
+        {
+            Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            if (sender is Button)
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
+            else
+                e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
+
+            border1.Dispose();
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeBorder();
+        }
+
+        private void InitializeBorder()
+        {
+            panel13.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel13.Width, panel13.Height, 20, 20));
+            endDatePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, endDatePanel.Width, endDatePanel.Height, 20, 20));
+            startDatePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, startDatePanel.Width, startDatePanel.Height, 20, 20));
+            panel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel4.Width, panel4.Height, 20, 20));
+            panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
+            panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
+            updateButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, updateButton.Width, updateButton.Height, 10, 10));
+            DeleteButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, DeleteButton.Width, DeleteButton.Height, 10, 10));
+        }
+
+        private void OnLineSeperatePaint(object sender, PaintEventArgs e)
+        {
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border, 0, (sender as Control).Height - 1, (sender as Control).Width, (sender as Control).Height - 1);
+            border.Dispose();
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
         private ProjectBoardTemplate template;
         private bool isBackEnable, isNextEnable;
         private int startIdx, endIdx;
+        private Projects selectedProject;
         private List<Projects> filteredProjectCollection;
+        private ProjectVersion selectedVersion;
+        private List<ProjectVersion> selectedVersionCollection;
     }
 }

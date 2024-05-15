@@ -109,7 +109,7 @@ namespace UserInterface.ViewProject.TimelineView
             this.milestoneLabelPanel.BackColor = System.Drawing.Color.Transparent;
             this.milestoneLabelPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.milestoneLabelPanel.Location = new System.Drawing.Point(52, 475);
-            this.milestoneLabelPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.milestoneLabelPanel.Margin = new System.Windows.Forms.Padding(2);
             this.milestoneLabelPanel.Name = "milestoneLabelPanel";
             this.milestoneLabelPanel.Padding = new System.Windows.Forms.Padding(45, 23, 0, 2);
             this.milestoneLabelPanel.Size = new System.Drawing.Size(1318, 50);
@@ -133,8 +133,8 @@ namespace UserInterface.ViewProject.TimelineView
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel4.Size = new System.Drawing.Size(439, 43);
+            this.panel4.Padding = new System.Windows.Forms.Padding(2);
+            this.panel4.Size = new System.Drawing.Size(441, 43);
             this.panel4.TabIndex = 2;
             // 
             // label1
@@ -144,7 +144,7 @@ namespace UserInterface.ViewProject.TimelineView
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(2, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 39);
+            this.label1.Size = new System.Drawing.Size(213, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "Version Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,9 +155,9 @@ namespace UserInterface.ViewProject.TimelineView
             this.panel7.Controls.Add(this.versionNames);
             this.panel7.Controls.Add(this.dropDownPicBox);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(213, 2);
+            this.panel7.Location = new System.Drawing.Point(215, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Padding = new System.Windows.Forms.Padding(2);
             this.panel7.Size = new System.Drawing.Size(224, 39);
             this.panel7.TabIndex = 3;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnVersionSwitchPanelPaint);

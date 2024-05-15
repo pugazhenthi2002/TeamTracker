@@ -159,6 +159,18 @@
     </Compile>
     <Compile Include="Color Manager\ColorPalattes.cs" />
     <Compile Include="Color Manager\ThemeManager.cs" />
+    <Compile Include="Edit Project\Controls\EditMilestone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditMilestone.Designer.cs">
+      <DependentUpon>EditMilestone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditTask.Designer.cs">
+      <DependentUpon>EditTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit Project\Controls\EditVersion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,11 +183,23 @@
     <Compile Include="Edit Project\Controls\ProjectBoardTemplate.Designer.cs">
       <DependentUpon>ProjectBoardTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Edit Project\Controls\SearchTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchTask.Designer.cs">
+      <DependentUpon>SearchTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit Project\Controls\SearchVersion.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Edit Project\Controls\SearchVersion.Designer.cs">
       <DependentUpon>SearchVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <Compile Include="Edit Project\Edit.cs">
       <SubType>UserControl</SubType>
@@ -501,6 +525,12 @@
     <Compile Include="Project Manager Main Page\SignOutForm.Designer.cs">
       <DependentUpon>SignOutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Project Manager Main Page\ThemeToggle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Manager Main Page\ThemeToggle.Designer.cs">
+      <DependentUpon>ThemeToggle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task\AddTask.cs">
       <SubType>UserControl</SubType>
@@ -793,14 +823,26 @@
     <EmbeddedResource Include="Add Project\VersionUpgrade.resx">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\EditMilestone.resx">
+      <DependentUpon>EditMilestone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\EditTask.resx">
+      <DependentUpon>EditTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edit Project\Controls\EditVersion.resx">
       <DependentUpon>EditVersion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edit Project\Controls\ProjectBoardTemplate.resx">
       <DependentUpon>ProjectBoardTemplate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\SearchTask.resx">
+      <DependentUpon>SearchTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edit Project\Controls\SearchVersion.resx">
       <DependentUpon>SearchVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\All Issue Page\FilterPeople.resx">
       <DependentUpon>FilterPeople.cs</DependentUpon>
@@ -957,6 +999,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Project Manager Main Page\SignOutForm.resx">
       <DependentUpon>SignOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Manager Main Page\ThemeToggle.resx">
+      <DependentUpon>ThemeToggle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

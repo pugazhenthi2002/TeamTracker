@@ -37,6 +37,7 @@
             this.myIssueLabel = new System.Windows.Forms.Label();
             this.myIssuePicBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.logo1 = new TeamTracker.Logo();
             this.panel7 = new System.Windows.Forms.Panel();
             this.myTaskLabel = new System.Windows.Forms.Label();
             this.myTaskPicBox = new System.Windows.Forms.PictureBox();
@@ -55,29 +56,33 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.headerPanel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
             this.closePicBox = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.projectManagerHome1 = new UserInterface.Home_Page.Project_Manager.ProjectManagerHome();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.addProject1 = new TeamTracker.AddProject();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.viewProjectTemplate1 = new UserInterface.ViewProject.ViewProjectTemplate();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.teamLeadHome1 = new UserInterface.Home_Page.Team_Lead.TeamLeadHome();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.teamMemberHome1 = new UserInterface.Home_Page.Team_Member.TeamMemberHome();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.addTask1 = new UserInterface.Task.AddTask();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.myTaskTemplate1 = new UserInterface.ViewPage.MyTaskTemplate();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.ucMyIssue1 = new TeamTracker.UcMyIssue();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.ucViewAllIssue1 = new TeamTracker.UCViewAllIssue();
-            this.profilePicAndName1 = new TeamTracker.ProfilePicAndName();
-            this.logo1 = new TeamTracker.Logo();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.edit1 = new UserInterface.Edit_Project.Edit();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.editLabel = new System.Windows.Forms.Label();
+            this.editPicBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allIssuePicBox)).BeginInit();
@@ -109,11 +114,15 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.panel1.Controls.Add(this.panel11);
             this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
@@ -232,6 +241,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(250, 88);
             this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // logo1
+            // 
+            this.logo1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.logo1.BackColor = System.Drawing.Color.Transparent;
+            this.logo1.Location = new System.Drawing.Point(94, 13);
+            this.logo1.LogoColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.logo1.Name = "logo1";
+            this.logo1.Size = new System.Drawing.Size(61, 61);
+            this.logo1.TabIndex = 8;
             // 
             // panel7
             // 
@@ -494,6 +513,26 @@
             this.panel8.Size = new System.Drawing.Size(239, 48);
             this.panel8.TabIndex = 1;
             // 
+            // profilePicAndName1
+            // 
+            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
+            this.profilePicAndName1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.profilePicAndName1.BorderRadius = 10;
+            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profilePicAndName1.EmployeeProfile = null;
+            this.profilePicAndName1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.profilePicAndName1.IsBorderNeeded = true;
+            this.profilePicAndName1.IsOperable = true;
+            this.profilePicAndName1.Location = new System.Drawing.Point(1, 1);
+            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2);
+            this.profilePicAndName1.Name = "profilePicAndName1";
+            this.profilePicAndName1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3);
+            this.profilePicAndName1.ProfileTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.profilePicAndName1.Size = new System.Drawing.Size(237, 46);
+            this.profilePicAndName1.TabIndex = 2;
+            this.profilePicAndName1.SignOut += new System.EventHandler(this.OnSignOut);
+            // 
             // closePicBox
             // 
             this.closePicBox.BackColor = System.Drawing.Color.Transparent;
@@ -529,6 +568,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
@@ -551,6 +591,15 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // projectManagerHome1
+            // 
+            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
+            this.projectManagerHome1.Name = "projectManagerHome1";
+            this.projectManagerHome1.Size = new System.Drawing.Size(1009, 579);
+            this.projectManagerHome1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.addProject1);
@@ -562,6 +611,14 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // addProject1
+            // 
+            this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addProject1.Location = new System.Drawing.Point(3, 3);
+            this.addProject1.Name = "addProject1";
+            this.addProject1.Size = new System.Drawing.Size(1009, 579);
+            this.addProject1.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.viewProjectTemplate1);
@@ -571,6 +628,15 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // viewProjectTemplate1
+            // 
+            this.viewProjectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.viewProjectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewProjectTemplate1.Location = new System.Drawing.Point(0, 0);
+            this.viewProjectTemplate1.Name = "viewProjectTemplate1";
+            this.viewProjectTemplate1.Size = new System.Drawing.Size(1015, 585);
+            this.viewProjectTemplate1.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -582,6 +648,16 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // teamLeadHome1
+            // 
+            this.teamLeadHome1.AutoScroll = true;
+            this.teamLeadHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.teamLeadHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teamLeadHome1.Location = new System.Drawing.Point(0, 0);
+            this.teamLeadHome1.Name = "teamLeadHome1";
+            this.teamLeadHome1.Size = new System.Drawing.Size(1015, 585);
+            this.teamLeadHome1.TabIndex = 0;
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.teamMemberHome1);
@@ -591,6 +667,15 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // teamMemberHome1
+            // 
+            this.teamMemberHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.teamMemberHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teamMemberHome1.Location = new System.Drawing.Point(0, 0);
+            this.teamMemberHome1.Name = "teamMemberHome1";
+            this.teamMemberHome1.Size = new System.Drawing.Size(1015, 585);
+            this.teamMemberHome1.TabIndex = 0;
             // 
             // tabPage6
             // 
@@ -602,6 +687,15 @@
             this.tabPage6.Text = "tabPage6";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // addTask1
+            // 
+            this.addTask1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.addTask1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addTask1.Location = new System.Drawing.Point(0, 0);
+            this.addTask1.Name = "addTask1";
+            this.addTask1.Size = new System.Drawing.Size(1015, 585);
+            this.addTask1.TabIndex = 0;
+            // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.myTaskTemplate1);
@@ -611,6 +705,15 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // myTaskTemplate1
+            // 
+            this.myTaskTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.myTaskTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myTaskTemplate1.Location = new System.Drawing.Point(0, 0);
+            this.myTaskTemplate1.Name = "myTaskTemplate1";
+            this.myTaskTemplate1.Size = new System.Drawing.Size(1015, 585);
+            this.myTaskTemplate1.TabIndex = 0;
             // 
             // tabPage8
             // 
@@ -622,6 +725,15 @@
             this.tabPage8.Text = "tabPage8";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // ucMyIssue1
+            // 
+            this.ucMyIssue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucMyIssue1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucMyIssue1.Location = new System.Drawing.Point(0, 0);
+            this.ucMyIssue1.Name = "ucMyIssue1";
+            this.ucMyIssue1.Size = new System.Drawing.Size(1015, 585);
+            this.ucMyIssue1.TabIndex = 0;
+            // 
             // tabPage9
             // 
             this.tabPage9.Controls.Add(this.ucViewAllIssue1);
@@ -631,78 +743,6 @@
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "tabPage9";
             this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // projectManagerHome1
-            // 
-            this.projectManagerHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.projectManagerHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectManagerHome1.Location = new System.Drawing.Point(3, 3);
-            this.projectManagerHome1.Name = "projectManagerHome1";
-            this.projectManagerHome1.Size = new System.Drawing.Size(1009, 579);
-            this.projectManagerHome1.TabIndex = 0;
-            // 
-            // addProject1
-            // 
-            this.addProject1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addProject1.Location = new System.Drawing.Point(3, 3);
-            this.addProject1.Name = "addProject1";
-            this.addProject1.Size = new System.Drawing.Size(1009, 579);
-            this.addProject1.TabIndex = 0;
-            // 
-            // viewProjectTemplate1
-            // 
-            this.viewProjectTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.viewProjectTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewProjectTemplate1.Location = new System.Drawing.Point(0, 0);
-            this.viewProjectTemplate1.Name = "viewProjectTemplate1";
-            this.viewProjectTemplate1.Size = new System.Drawing.Size(1015, 585);
-            this.viewProjectTemplate1.TabIndex = 0;
-            // 
-            // teamLeadHome1
-            // 
-            this.teamLeadHome1.AutoScroll = true;
-            this.teamLeadHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.teamLeadHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.teamLeadHome1.Location = new System.Drawing.Point(0, 0);
-            this.teamLeadHome1.Name = "teamLeadHome1";
-            this.teamLeadHome1.Size = new System.Drawing.Size(1015, 585);
-            this.teamLeadHome1.TabIndex = 0;
-            // 
-            // teamMemberHome1
-            // 
-            this.teamMemberHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.teamMemberHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.teamMemberHome1.Location = new System.Drawing.Point(0, 0);
-            this.teamMemberHome1.Name = "teamMemberHome1";
-            this.teamMemberHome1.Size = new System.Drawing.Size(1015, 585);
-            this.teamMemberHome1.TabIndex = 0;
-            // 
-            // addTask1
-            // 
-            this.addTask1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.addTask1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addTask1.Location = new System.Drawing.Point(0, 0);
-            this.addTask1.Name = "addTask1";
-            this.addTask1.Size = new System.Drawing.Size(1015, 585);
-            this.addTask1.TabIndex = 0;
-            // 
-            // myTaskTemplate1
-            // 
-            this.myTaskTemplate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.myTaskTemplate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myTaskTemplate1.Location = new System.Drawing.Point(0, 0);
-            this.myTaskTemplate1.Name = "myTaskTemplate1";
-            this.myTaskTemplate1.Size = new System.Drawing.Size(1015, 585);
-            this.myTaskTemplate1.TabIndex = 0;
-            // 
-            // ucMyIssue1
-            // 
-            this.ucMyIssue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucMyIssue1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucMyIssue1.Location = new System.Drawing.Point(0, 0);
-            this.ucMyIssue1.Name = "ucMyIssue1";
-            this.ucMyIssue1.Size = new System.Drawing.Size(1015, 585);
-            this.ucMyIssue1.TabIndex = 0;
             // 
             // ucViewAllIssue1
             // 
@@ -714,35 +754,64 @@
             this.ucViewAllIssue1.Size = new System.Drawing.Size(1015, 585);
             this.ucViewAllIssue1.TabIndex = 0;
             // 
-            // profilePicAndName1
+            // tabPage10
             // 
-            this.profilePicAndName1.BackColor = System.Drawing.Color.Transparent;
-            this.profilePicAndName1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.profilePicAndName1.BorderRadius = 10;
-            this.profilePicAndName1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profilePicAndName1.EmployeeProfile = null;
-            this.profilePicAndName1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.profilePicAndName1.IsBorderNeeded = true;
-            this.profilePicAndName1.IsOperable = true;
-            this.profilePicAndName1.Location = new System.Drawing.Point(1, 1);
-            this.profilePicAndName1.Margin = new System.Windows.Forms.Padding(2);
-            this.profilePicAndName1.Name = "profilePicAndName1";
-            this.profilePicAndName1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.profilePicAndName1.Padding = new System.Windows.Forms.Padding(3);
-            this.profilePicAndName1.ProfileTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.profilePicAndName1.Size = new System.Drawing.Size(237, 46);
-            this.profilePicAndName1.TabIndex = 2;
-            this.profilePicAndName1.SignOut += new System.EventHandler(this.OnSignOut);
+            this.tabPage10.Controls.Add(this.edit1);
+            this.tabPage10.Location = new System.Drawing.Point(4, 5);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(1015, 585);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "tabPage10";
+            this.tabPage10.UseVisualStyleBackColor = true;
             // 
-            // logo1
+            // edit1
             // 
-            this.logo1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.logo1.BackColor = System.Drawing.Color.Transparent;
-            this.logo1.Location = new System.Drawing.Point(94, 13);
-            this.logo1.LogoColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.logo1.Name = "logo1";
-            this.logo1.Size = new System.Drawing.Size(61, 61);
-            this.logo1.TabIndex = 8;
+            this.edit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edit1.Location = new System.Drawing.Point(0, 0);
+            this.edit1.Name = "edit1";
+            this.edit1.Size = new System.Drawing.Size(1015, 585);
+            this.edit1.TabIndex = 0;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.editLabel);
+            this.panel11.Controls.Add(this.editPicBox);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 400);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(250, 50);
+            this.panel11.TabIndex = 10;
+            // 
+            // editLabel
+            // 
+            this.editLabel.BackColor = System.Drawing.Color.Transparent;
+            this.editLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.editLabel.Location = new System.Drawing.Point(67, 0);
+            this.editLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.editLabel.Name = "editLabel";
+            this.editLabel.Size = new System.Drawing.Size(183, 50);
+            this.editLabel.TabIndex = 2;
+            this.editLabel.Text = "Edit";
+            this.editLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.editLabel.Click += new System.EventHandler(this.OnEditPageClicked);
+            // 
+            // editPicBox
+            // 
+            this.editPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.editPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.editPicBox.Image = global::UserInterface.Properties.Resources.All_Issue_Normal;
+            this.editPicBox.Location = new System.Drawing.Point(0, 0);
+            this.editPicBox.Name = "editPicBox";
+            this.editPicBox.Size = new System.Drawing.Size(67, 50);
+            this.editPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.editPicBox.TabIndex = 1;
+            this.editPicBox.TabStop = false;
+            this.editPicBox.Click += new System.EventHandler(this.OnEditPageClicked);
             // 
             // ProjectManagerMainForm
             // 
@@ -785,6 +854,9 @@
             this.tabPage7.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.editPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -840,5 +912,10 @@
         private UCViewAllIssue ucViewAllIssue1;
         private System.Windows.Forms.TabPage tabPage8;
         private UcMyIssue ucMyIssue1;
+        private System.Windows.Forms.TabPage tabPage10;
+        private UserInterface.Edit_Project.Edit edit1;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label editLabel;
+        private System.Windows.Forms.PictureBox editPicBox;
     }
 }

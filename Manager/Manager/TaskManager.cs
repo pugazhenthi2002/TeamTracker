@@ -19,6 +19,20 @@ namespace TeamTracker
             else return true;
         }
 
+        public static List<Task> FetchEditTask()
+        {
+            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Version);
+            List<Task> result = new List<Task>();
+
+            foreach(var Iter in edits)
+            {
+                if (VersionManager.FetchTeamLeadFromVersionID(Iter.EditModeID) == EmployeeManager.CurrentEmployee.EmployeeID)
+                    result.AddRange(FetchTasksByVersionID(Iter.EditModeID));
+            }
+
+            return result;
+        }
+
         public static bool IsEmployeeInvolvedInVersions(int versionID, int empID)
         {
             foreach(var Iter in TaskCollection)
@@ -248,6 +262,8 @@ namespace TeamTracker
                 if(Iter.TaskID == taskID)
                 {
                     DataHandler.DeleteTask(taskID);
+                    DataHandler.DeleteTaskAttachment(taskID);
+                    DataHandler.DeleteAllSourceCode(taskID);
                     TaskCollection.Remove(Iter);
                     break;
                 }
@@ -273,6 +289,21 @@ namespace TeamTracker
             }
 
             return count;
+        }
+
+        public static void DeleteAllVersionTask(int versionID)
+        {
+            for(int ctr=0; ctr < TaskCollection.Count; ctr++)
+            {
+                if(TaskCollection[ctr].VersionID == versionID)
+                {
+                    DataHandler.DeleteTask(TaskCollection[ctr].TaskID);
+                    DataHandler.DeleteTaskAttachment(TaskCollection[ctr].TaskID);
+                    DataHandler.DeleteAllSourceCode(TaskCollection[ctr].TaskID);
+                    TaskCollection.RemoveAt(ctr);
+                    ctr--;
+                }
+            }
         }
 
         public static Task FetchTaskByTaskID(int taskID)

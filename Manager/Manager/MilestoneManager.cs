@@ -245,5 +245,18 @@ namespace TeamTracker
 
             return true;
         }
+
+        public static void DeleteAllMilestoneFromVersion(int versionID)
+        {
+            for(int ctr=0; ctr < MilestoneCollection.Count; ctr++)
+            {
+                if(MilestoneCollection[ctr].VersionID == versionID)
+                {
+                    DataHandler.DeleteMilestone(MilestoneCollection[ctr].MileStoneID);
+                    MilestoneCollection.RemoveAt(ctr);
+                    ctr--;
+                }
+            }
+        }
     }
 }

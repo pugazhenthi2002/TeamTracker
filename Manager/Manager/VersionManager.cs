@@ -22,6 +22,20 @@ namespace TeamTracker
             else return true;
         }
 
+        public static List<Projects> FetchAllProjects()
+        {
+            List<Projects> result = new List<Projects>();
+            foreach(var Iter in ProjectCollection)
+            {
+                if(Iter.ManagerID == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
         public static BooleanMsg StoreVersionCollection()
         {
             VersionCollection = DataHandler.StoreProjectVersionDetails();
@@ -184,8 +198,12 @@ namespace TeamTracker
                     Iter.ClientEmail = clientEmail;
                     Iter.IsDelayed = false;
                     DataHandler.UpdateVersion(Iter);
-                    if (versionAttachments != null)
-                        DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    DataHandler.AddEdit(new Edit()
+                    {
+                        EditModeID = Iter.VersionID,
+                        ModeOfEdit = EditMode.Version
+                    });
                     return;
                 }
             }
@@ -261,6 +279,23 @@ namespace TeamTracker
             }
 
             return result;
+        }
+
+        public static void DeleteVersion(ProjectVersion selectedVersion)
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.VersionID == selectedVersion.VersionID)
+                {
+                    DataHandler.DeleteVersionAttachment(Iter);
+                    DataHandler.DeleteVersion(Iter);
+                    DataHandler.DeleteVersionSourceCode(Iter);
+                    MilestoneManager.DeleteAllMilestoneFromVersion(Iter.VersionID);
+                    TaskManager.DeleteAllVersionTask(Iter.VersionID);
+                    VersionCollection.Remove(Iter);
+                    break;
+                }
+            }
         }
 
         public static void ChangeToCompleteVersionStatus(ProjectVersion version)

@@ -36,6 +36,25 @@ namespace TeamTracker
             return project;
         }
 
+        public static List<Edit> FetchEditByMode(EditMode version)
+        {
+            var edit = manager.FetchData("edit", $"ModeOfEdit='{version.ToString()}'").Value;
+            List<Edit> result = new List<Edit>();
+
+            for (int ctr = 0; edit.Count > 0 && ctr < edit["TaskID"].Count; ctr++)
+            {
+                string mode = Convert.ToString(edit["ModeOfEdit"][ctr]);
+                result.Add(new Edit()
+                {
+                    EditID = Convert.ToInt32(edit["EditID"][ctr]),
+                    EditModeID = Convert.ToInt32(edit["EditModeID"][ctr]),
+                    ModeOfEdit = mode == "Version" ? EditMode.Version : EditMode.Milestone
+                });
+            }
+
+            return result;
+        }
+
         public static ProjectVersion AddVersion(ProjectVersion version)
         {
             var y = manager.ColumnExist("projectversion", "EndDate");
@@ -203,6 +222,11 @@ namespace TeamTracker
 
         }
 
+        public static void DeleteMilestone(int mileStoneID)
+        {
+            var x = manager.DeleteData("milestone", $"MilestoneID='{mileStoneID}'");
+        }
+
         public static void DeleteTask(int taskID)
         {
             var x = manager.DeleteData("task", $"TaskID='{taskID}'");
@@ -223,6 +247,26 @@ namespace TeamTracker
             });
         }
 
+        internal static void DeleteVersionSourceCode(ProjectVersion iter)
+        {
+            var x = manager.DeleteData("versionsourcecode", $"versionsourcecode='{iter.VersionID}'");
+        }
+
+        internal static void DeleteAllSourceCode(int taskID)
+        {
+            var x = manager.DeleteData("sourcecode", $"TaskID='{taskID}'");
+        }
+
+        public static void DeleteTaskAttachment(int taskID)
+        {
+            var x = manager.DeleteData("taskattachment", $"TaskID='{taskID}'");
+        }
+
+        public static void DeleteVersionAttachment(ProjectVersion iter)
+        {
+            var x = manager.DeleteData("versionattachment", $"VersionID='{iter.VersionID}'");
+        }
+
         public static void UpdateTask(Task task)
         {
             var x = manager.UpdateData("task", $"TaskID='{task.TaskID}'", new ParameterData[]
@@ -239,6 +283,11 @@ namespace TeamTracker
                 new ParameterData("AssignedTo", task.AssignedTo),
                 new ParameterData("IsDelayed", task.IsDelayed),
             });
+        }
+
+        internal static void DeleteVersion(ProjectVersion iter)
+        {
+            throw new NotImplementedException();
         }
 
         public static void UpdateMilestone(Milestone milestone)
@@ -355,16 +404,28 @@ namespace TeamTracker
 
         public static void UpdateVersionAttachments(int versionID, List<VersionAttachment> versionAttachments)
         {
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Version Attachment\\"; // Change this to your desired save path
+            string filePath;
             var x = manager.DeleteData("versionattachment", $"VersionID='{versionID}'");
 
-            foreach (var Iter in versionAttachments)
+            if (versionAttachments != null)
             {
-                manager.InsertData("versionattachment", new ParameterData[]
+                foreach (var Iter in versionAttachments)
                 {
-                    new ParameterData("VersionID", Iter.VersionID),
-                    new ParameterData("AttachmentName", Iter.AttachmentName),
-                    new ParameterData("AttachmentLocation", Iter.AttachmentLocation)
-                });
+                    filePath = System.IO.Path.Combine(savePath, Iter.AttachmentName);
+                    
+                    if (!Iter.AttachmentLocation.Contains("SPARE-2709DFQ"))
+                    {
+                        System.IO.File.Copy(Iter.AttachmentLocation, filePath, true);
+                    }
+                    manager.InsertData("versionattachment", new ParameterData[]
+                    {
+                        new ParameterData("VersionID", versionID),
+                        new ParameterData("DisplayName", Iter.DisplayName),
+                        new ParameterData("AttachmentName", Iter.AttachmentName),
+                        new ParameterData("AttachmentLocation", filePath)
+                    });
+                }
             }
         }
 
@@ -1034,6 +1095,21 @@ namespace TeamTracker
         public static void RemoveAllSolutionOfIssue(Issue issue)
         {
             var x = manager.DeleteData("issuesolution", $"IssueID='{issue.IssueID}'");
+        }
+
+        public static void AddEdit(Edit edit)
+        {
+            var x = manager.DeleteData("edit", $"EditModeID='{edit.EditModeID}' && ModeOfEdit='{edit.ModeOfEdit}'");
+            manager.InsertData("edit", new ParameterData[]
+            {
+                new ParameterData("EditModeID", edit.EditModeID),
+                new ParameterData("ModeOfEdit", edit.ModeOfEdit.ToString()),
+            });
+        }
+
+        public static void DeleteEdit(Edit edit)
+        {
+            var x = manager.DeleteData("edit", $"EditID='{edit.EditID}'");
         }
     }
 }

@@ -12,13 +12,13 @@ namespace TeamTracker
 {
     public partial class FileAttachment : UserControl
     {
-        public bool ClearAttachments
+        public bool Clear
         {
             set
             {
                 if (value == true)
                 {
-                    attachmentDisplayPanel.Controls.Clear();
+                    ClearAttachments();
                 }
             }
         }
@@ -28,9 +28,13 @@ namespace TeamTracker
             get { return attachmentCollection; }
             set
             {
-                if(value == null)
+                attachmentCollection = value;
+                if(value != null)
                 {
-                    attachmentCollection = null;
+                    foreach(var Iter in value)
+                    {
+                        AddAttachmentUI(Iter.Key);
+                    }
                 }
             }
         }
@@ -44,10 +48,15 @@ namespace TeamTracker
 
         public new void Dispose()
         {
-            for(int ctr=0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
+            ;
+        }
+
+        private void ClearAttachments()
+        {
+            for (int ctr = 0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
             {
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
-                attachmentDisplayPanel.Controls.Remove(attachmentDisplayPanel.Controls[ctr]);
+                attachmentDisplayPanel.Controls.RemoveAt(ctr);
                 ctr--;
             }
         }
@@ -102,9 +111,12 @@ namespace TeamTracker
                 Height = 50,
                 FileName = safeFile
             };
-            pdfAttachment.BringToFront();
             pdfAttachment.AttachmentRemove += OnAttachmentRemoved;
             attachmentDisplayPanel.Controls.Add(pdfAttachment);
+            foreach(Control Iter in attachmentDisplayPanel.Controls)
+            {
+                Iter.BringToFront();
+            }
         }
 
         private void OnAttachmentRemoved(object sender, EventArgs e)

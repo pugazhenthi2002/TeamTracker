@@ -44,7 +44,10 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnTextChanged(object sender, EventArgs e)
         {
-
+            if (versionSearchTextBox.Text == "Search Project Name..")
+                ProjectNameChange?.Invoke(this, "");
+            else
+                ProjectNameChange?.Invoke(this, versionSearchTextBox.Text);
         }
     }
 }
