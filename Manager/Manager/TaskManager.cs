@@ -21,15 +21,28 @@ namespace TeamTracker
 
         public static List<Task> FetchEditTask()
         {
-            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Version);
+            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Milestone);
             List<Task> result = new List<Task>();
-
+            int id = 0;
             foreach(var Iter in edits)
             {
-                if (VersionManager.FetchTeamLeadFromVersionID(Iter.EditModeID) == EmployeeManager.CurrentEmployee.EmployeeID)
-                    result.AddRange(FetchTasksByVersionID(Iter.EditModeID));
+                id = MilestoneManager.FetchMilestoneFromID(Iter.EditModeID).MileStoneID;
+                if (VersionManager.FetchTeamLeadFromVersionID(id) == EmployeeManager.CurrentEmployee.EmployeeID)
+                    result.AddRange(FetchTaskFromMilestoneID(Iter.EditModeID));
             }
+            return result;
+        }
 
+        private static List<Task> FetchTaskFromMilestoneID(int editModeID)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if(Iter.MilestoneID == editModeID)
+                {
+                    result.Add(Iter);
+                }
+            }
             return result;
         }
 

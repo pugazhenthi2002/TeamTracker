@@ -45,7 +45,7 @@
             this.requiredEdit = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.pictureBoxAttachment = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelFileName = new System.Windows.Forms.TableLayoutPanel();
             this.animatedLabelFilename = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -277,8 +277,8 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Controls.Add(this.buttonCreate, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonUpdate, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.buttonDelete, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.pictureBoxAttachment, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 521);
@@ -289,22 +289,23 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1057, 51);
             this.tableLayoutPanel6.TabIndex = 6;
             // 
-            // buttonCreate
+            // buttonUpdate
             // 
-            this.buttonCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonCreate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCreate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCreate.FlatAppearance.BorderSize = 0;
-            this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCreate.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.buttonCreate.Location = new System.Drawing.Point(796, 5);
-            this.buttonCreate.Margin = new System.Windows.Forms.Padding(5);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(256, 41);
-            this.buttonCreate.TabIndex = 2;
-            this.buttonCreate.Text = "Update";
-            this.buttonCreate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUpdate.FlatAppearance.BorderSize = 0;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.buttonUpdate.Location = new System.Drawing.Point(796, 5);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(256, 41);
+            this.buttonUpdate.TabIndex = 2;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.OnTaskUpdate);
             // 
             // pictureBoxAttachment
             // 
@@ -612,10 +613,10 @@
             this.buttonSetMilestone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSetMilestone.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.buttonSetMilestone.Location = new System.Drawing.Point(36, 25);
+            this.buttonSetMilestone.Location = new System.Drawing.Point(19, 27);
             this.buttonSetMilestone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.buttonSetMilestone.Name = "buttonSetMilestone";
-            this.buttonSetMilestone.Size = new System.Drawing.Size(137, 57);
+            this.buttonSetMilestone.Size = new System.Drawing.Size(172, 52);
             this.buttonSetMilestone.TabIndex = 9;
             this.buttonSetMilestone.Text = "Set Milestone";
             this.buttonSetMilestone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -710,22 +711,23 @@
             this.label5.Text = "Task Description";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // buttonDelete
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.button1.Location = new System.Drawing.Point(532, 5);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(254, 41);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDelete.FlatAppearance.BorderSize = 0;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.buttonDelete.Location = new System.Drawing.Point(532, 5);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(254, 41);
+            this.buttonDelete.TabIndex = 4;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.OnTaskDelete);
             // 
             // EditTask
             // 
@@ -786,7 +788,7 @@
         private System.Windows.Forms.Label requiredEdit;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.PictureBox pictureBoxAttachment;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFileName;
         private System.Windows.Forms.Label animatedLabelFilename;
@@ -814,6 +816,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TextBox textBoxDesc;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

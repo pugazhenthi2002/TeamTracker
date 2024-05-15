@@ -16,6 +16,7 @@ namespace TeamTracker
 {
     public partial class MilestoneDropDownForm : Form
     {
+        public bool IsEditModeOn { get; set; }
         private TransparentForm transparentForm;
         private List<Milestone> milestoneList = new List<Milestone>();
         private const int CSDropShadow = 0x00020000;
@@ -131,20 +132,28 @@ namespace TeamTracker
         {
             var x = Controls.GetChildIndex(sender as Control);
             selectedMilestone = milestoneList[milestoneList.Count - Controls.GetChildIndex(sender as Control) - 1];
-            if(IsMilestoneAlreadyCompleted((sender as Label).Text))
+            if (IsEditModeOn)
             {
-                WarningForm form = new WarningForm();
-                form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
-                form.WarningStatus += OnWarningStatus;
+                if (IsMilestoneAlreadyCompleted((sender as Label).Text))
+                {
+                    WarningForm form = new WarningForm();
+                    form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
+                    form.WarningStatus += OnWarningStatus;
 
-                transparentForm = new TransparentForm();
-                transparentForm.Show(ParentForm);
-                transparentForm.ShowForm(form);
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show(ParentForm);
+                    transparentForm.ShowForm(form);
+                }
+                else
+                {
+                    MilestoneClick?.Invoke(this, selectedMilestone);
+                    Dispose();
+                    this.Close();
+                }
             }
             else
             {
                 MilestoneClick?.Invoke(this, selectedMilestone);
-                var res = IsDisposed;
                 Dispose();
                 this.Close();
             }

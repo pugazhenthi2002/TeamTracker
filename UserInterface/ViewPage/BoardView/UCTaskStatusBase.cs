@@ -102,6 +102,7 @@ namespace TeamTracker
             if (taskList.Count > MaxUserControls)
             {
                 UCTaskBoard taskBoard = new UCTaskBoard();
+                taskBoard.IsMovable = true;
                 taskBoard.Dock = DockStyle.Top;
 
                 taskBoard.MouseDownTaskBoard += OnMouseDownTaskBoard;
@@ -170,6 +171,7 @@ namespace TeamTracker
                     if (i < taskList.Count)
                     {
                         UCTaskBoard tBoard = new UCTaskBoard();
+                        tBoard.IsMovable = true;
                         tBoard.TaskData = taskList[i];
                         tBoard.Dock = DockStyle.Top;
 

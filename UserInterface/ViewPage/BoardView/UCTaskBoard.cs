@@ -16,6 +16,9 @@ namespace TeamTracker
 {
     public partial class UCTaskBoard : UserControl
     {
+        public event EventHandler<Task> TaskSelect;
+
+        public bool IsMovable { get; set; }
         private TransparentForm transparentForm;
         private Task TaskBoardData;
         private bool isDragging = false;
@@ -147,13 +150,16 @@ namespace TeamTracker
 
         private void OnClickInfo(object sender, EventArgs e)
         {
-            taskInfoForm = new TaskInfoForm();
-            taskInfoForm.SelectedTask = TaskBoardData;
-            taskInfoForm.InfoFormClose += OnFormClosed;
+            if (IsMovable)
+            {
+                taskInfoForm = new TaskInfoForm();
+                taskInfoForm.SelectedTask = TaskBoardData;
+                taskInfoForm.InfoFormClose += OnFormClosed;
 
-            transparentForm = new TransparentForm();
-            transparentForm.Show();
-            transparentForm.ShowForm(taskInfoForm);
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(taskInfoForm);
+            }
         }
 
         private void OnFormClosed(object sender, EventArgs e)
@@ -187,27 +193,36 @@ namespace TeamTracker
 
         private void OnMouseDownTaskBoard(object sender, MouseEventArgs e)
         {
-            Point pt = (sender as Control).PointToScreen(e.Location);
-            pt = this.PointToClient(pt);
-            MouseDownTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
-            isDragging = true;
+            if (IsMovable)
+            {
+                Point pt = (sender as Control).PointToScreen(e.Location);
+                pt = this.PointToClient(pt);
+                MouseDownTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                isDragging = true;
+            }
         }
 
         private void OnMouseUpTaskBoard(object sender, MouseEventArgs e)
         {
-            Point pt = (sender as Control).PointToScreen(e.Location);
-            pt = this.PointToClient(pt);
-            MouseUpTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
-            isDragging = false;
+            if (IsMovable)
+            {
+                Point pt = (sender as Control).PointToScreen(e.Location);
+                pt = this.PointToClient(pt);
+                MouseUpTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                isDragging = false;
+            }
         }
 
         private void OnMouseMoveTaskBoard(object sender, MouseEventArgs e)
         {
-            if (isDragging)
+            if (IsMovable)
             {
-                Point pt = (sender as Control).PointToScreen(e.Location);
-                pt = this.PointToClient(pt);
-                MouseMoveTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                if (isDragging)
+                {
+                    Point pt = (sender as Control).PointToScreen(e.Location);
+                    pt = this.PointToClient(pt);
+                    MouseMoveTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                }
             }
         }
 
@@ -239,5 +254,12 @@ namespace TeamTracker
 
         private bool isEntered, isSemiEntered;
 
+        private void OnBoardClicked(object sender, EventArgs e)
+        {
+            if (!IsMovable)
+            {
+                TaskSelect?.Invoke(this, TaskBoardData);
+            }
+        }
     }
 }
