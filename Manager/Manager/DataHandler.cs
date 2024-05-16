@@ -41,14 +41,14 @@ namespace TeamTracker
             var edit = manager.FetchData("edit", $"ModeOfEdit='{version.ToString()}'").Value;
             List<Edit> result = new List<Edit>();
 
-            for (int ctr = 0; edit.Count > 0 && ctr < edit["TaskID"].Count; ctr++)
+            for (int ctr = 0; edit.Count > 0 && ctr < edit["EditID"].Count; ctr++)
             {
                 string mode = Convert.ToString(edit["ModeOfEdit"][ctr]);
                 result.Add(new Edit()
                 {
                     EditID = Convert.ToInt32(edit["EditID"][ctr]),
                     EditModeID = Convert.ToInt32(edit["EditModeID"][ctr]),
-                    ModeOfEdit = mode == "Version" ? EditMode.Version : EditMode.Milestone
+                    ModeOfEdit = mode == "Task" ? EditMode.Task : EditMode.Version
                 });
             }
 
@@ -247,12 +247,12 @@ namespace TeamTracker
             });
         }
 
-        internal static void DeleteVersionSourceCode(ProjectVersion iter)
+        public static void DeleteVersionSourceCode(ProjectVersion iter)
         {
             var x = manager.DeleteData("versionsourcecode", $"versionsourcecode='{iter.VersionID}'");
         }
 
-        internal static void DeleteAllSourceCode(int taskID)
+        public static void DeleteAllSourceCode(int taskID)
         {
             var x = manager.DeleteData("sourcecode", $"TaskID='{taskID}'");
         }
@@ -285,9 +285,14 @@ namespace TeamTracker
             });
         }
 
-        internal static void DeleteVersion(ProjectVersion iter)
+        public static void RemoveEdit(int editModeID, EditMode mode)
         {
-            throw new NotImplementedException();
+            var x = manager.DeleteData("edit", $"EditModeID='{editModeID}' && ModeOfEdit='{mode.ToString()}'");
+        }
+
+        public static void DeleteVersion(ProjectVersion iter)
+        {
+            var x = manager.DeleteData("projectversion", $"VersionID ='{iter.VersionID}'");
         }
 
         public static void UpdateMilestone(Milestone milestone)
@@ -429,16 +434,28 @@ namespace TeamTracker
             }
         }
 
-        public static void UpdateTaskAttachment(int taskID, TaskAttachment taskAttachments)
+        public static void UpdateTaskAttachment(int taskID, TaskAttachment taskAttachment)
         {
+            if (taskAttachment == null) return;
+            if (taskAttachment.TaskAttachmentLocation.Contains("SPARE-2709DFQ") && System.IO.File.Exists(taskAttachment.TaskAttachmentLocation))
+                return;
+
+            string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Task Attachment\\";
             var x = manager.DeleteData("taskattachment", $"TaskID='{taskID}'");
 
-            manager.InsertData("taskattachment", new ParameterData[]
+            if (taskAttachment != null)
             {
-                new ParameterData("TaskID", taskAttachments.TaskID),
-                new ParameterData("TaskAttachmentName", taskAttachments.TaskAttachmentName),
-                new ParameterData("TaskAttachmentLocation", taskAttachments.TaskAttachmentLocation)
-            });
+                string filePath = System.IO.Path.Combine(savePath, taskAttachment.TaskAttachmentName);
+
+                System.IO.File.Copy(taskAttachment.TaskAttachmentLocation, filePath, true);
+
+                manager.InsertData("taskattachment", new ParameterData[]
+                {
+                    new ParameterData("TaskID", taskID),
+                    new ParameterData("TaskAttachmentName", taskAttachment.DisplayName),
+                    new ParameterData("TaskAttachmentLocation", filePath)
+                });
+            }
         }
 
         public static void DeleteNotification(int notifyID)

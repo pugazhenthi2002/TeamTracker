@@ -21,14 +21,16 @@ namespace TeamTracker
 
         public static List<Task> FetchEditTask()
         {
-            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Milestone);
+            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Task);
             List<Task> result = new List<Task>();
             int id = 0;
             foreach(var Iter in edits)
             {
-                id = MilestoneManager.FetchMilestoneFromID(Iter.EditModeID).MileStoneID;
-                if (VersionManager.FetchTeamLeadFromVersionID(id) == EmployeeManager.CurrentEmployee.EmployeeID)
-                    result.AddRange(FetchTaskFromMilestoneID(Iter.EditModeID));
+                id = FetchTaskFromTaskID(Iter.EditModeID).AssignedBy;
+                if(id == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchTaskFromTaskID(Iter.EditModeID));
+                }
             }
             return result;
         }
@@ -147,7 +149,7 @@ namespace TeamTracker
                 }
             }
 
-            if(taskAttachment!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
+            DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
         }
 
         public static List<Task> FetchTaskByEmployee(Employee emp, int versionId)
@@ -156,6 +158,22 @@ namespace TeamTracker
             foreach (var Iter in TaskCollection)
             {
                 if (Iter.VersionID == versionId && Iter.AssignedTo == emp.EmployeeID)
+                {
+                    result.Add(Iter.ShallowCopy());
+                }
+            }
+
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
+        }
+
+        public static List<Task> FetchTaskByEmployee(Employee emp)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.AssignedBy == emp.EmployeeID)
                 {
                     result.Add(Iter.ShallowCopy());
                 }

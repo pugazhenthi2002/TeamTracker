@@ -34,15 +34,15 @@
             this.downButton = new System.Windows.Forms.PictureBox();
             this.counterLabel = new System.Windows.Forms.Label();
             this.milestoneDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
-            this.upButton = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.milestoneName = new System.Windows.Forms.TextBox();
+            this.upButton = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upButton)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upButton)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -137,21 +137,6 @@
             this.milestoneDate.TabIndex = 2;
             this.milestoneDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             // 
-            // upButton
-            // 
-            this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upButton.Image = global::UserInterface.Properties.Resources.Up_Light_Blue;
-            this.upButton.Location = new System.Drawing.Point(445, 1);
-            this.upButton.Margin = new System.Windows.Forms.Padding(1);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(33, 46);
-            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.upButton.TabIndex = 3;
-            this.upButton.TabStop = false;
-            this.upButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.upButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.milestoneName);
@@ -178,6 +163,21 @@
             this.milestoneName.TabIndex = 2;
             this.milestoneName.Text = "Hello";
             // 
+            // upButton
+            // 
+            this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upButton.Image = global::UserInterface.Properties.Resources.Up_Light_Blue;
+            this.upButton.Location = new System.Drawing.Point(445, 1);
+            this.upButton.Margin = new System.Windows.Forms.Padding(1);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(33, 46);
+            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.upButton.TabIndex = 3;
+            this.upButton.TabStop = false;
+            this.upButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.upButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            // 
             // MilestoneTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,9 +190,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,8 +205,8 @@
         private System.Windows.Forms.PictureBox closeButton;
         private System.Windows.Forms.PictureBox downButton;
         private Add_Project.Custom_Control.CustomDateTime milestoneDate;
-        private System.Windows.Forms.PictureBox upButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox milestoneName;
+        private System.Windows.Forms.PictureBox upButton;
     }
 }

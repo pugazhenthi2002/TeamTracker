@@ -13,6 +13,10 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 {
     public partial class BoardViewTemplate : UserControl
     {
+        public event EventHandler<ProjectVersion> VersionSelect;
+
+        public bool IsEditable { get; set; }
+
         private TransparentForm transparentForm;
         private bool isHovered = false;
         private ProjectVersion boardVersion;
@@ -134,13 +138,20 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnBoardClick(object sender, EventArgs e)
         {
-            ProjectInfoForm form = new ProjectInfoForm();
-            form.SelectedVersion = BoardVersion;
-            form.InfoFormClose += OnInfoFormClosed;
+            if (IsEditable)
+            {
+                VersionSelect?.Invoke(this, boardVersion);
+            }
+            else
+            {
+                ProjectInfoForm form = new ProjectInfoForm();
+                form.SelectedVersion = BoardVersion;
+                form.InfoFormClose += OnInfoFormClosed;
 
-            transparentForm = new TransparentForm();
-            transparentForm.Show();
-            transparentForm.ShowForm(form);
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form);
+            }
         }
 
         private void OnInfoFormClosed(object sender, EventArgs e)

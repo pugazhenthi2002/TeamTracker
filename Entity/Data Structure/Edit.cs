@@ -8,8 +8,8 @@ namespace TeamTracker
 {
     public enum EditMode
     {
-        Version,
-        Milestone
+        Task,
+        Version
     }
     public class Edit
     {

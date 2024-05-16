@@ -15,6 +15,8 @@ namespace TeamTracker
 
     public static class ThemeManager
     {
+        static public event EventHandler ThemeChange;
+
         static public ColorPalattes CurrentTheme{ get; set; }
         static public ThemeMode CurrentThemeMode{ get; set; }
 
@@ -178,6 +180,12 @@ namespace TeamTracker
         static public Color GetProjectStatusColor(ProjectStatus status)
         {
             return CurrentTheme.VersionStatusColorCollection[status];
+        }
+
+        static public void OnThemeChanged()
+        {
+            CurrentThemeMode = CurrentThemeMode == ThemeMode.Cold ? ThemeMode.Heat : ThemeMode.Cold;
+            ThemeChange?.Invoke(new object(), EventArgs.Empty);
         }
 
         static private List<ColorPalattes> themes;

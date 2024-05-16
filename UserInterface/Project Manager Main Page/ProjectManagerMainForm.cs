@@ -21,6 +21,12 @@ namespace TeamTracker
             InitializeComponent();
             InitializePage();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePage()

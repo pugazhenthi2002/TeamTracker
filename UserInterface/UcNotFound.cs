@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using TeamTracker;
 
 namespace UserInterface
 {
@@ -22,6 +23,12 @@ namespace UserInterface
         {
             InitializeComponent();
             InitializeRoundedEdge();
+        }
+
+        public void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelHead.ForeColor = labelMessage.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         public new void Dispose()

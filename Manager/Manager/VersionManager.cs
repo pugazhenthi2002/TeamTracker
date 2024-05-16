@@ -36,6 +36,36 @@ namespace TeamTracker
             return result;
         }
 
+        public static List<Projects> FetchAllProjectsForTeamLeader()
+        {
+            List<Projects> result = new List<Projects>();
+            foreach (var Iter in ProjectCollection)
+            {
+                if (Iter.TeamLeadID == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<ProjectVersion> FetchEditVersions()
+        {
+            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Version);
+            List<ProjectVersion> result = new List<ProjectVersion>();
+            int id = 0;
+            foreach (var Iter in edits)
+            {
+                id = FetchProjectFromID(FetchVersionFromVersionID(Iter.EditModeID).ProjectID).TeamLeadID;
+                if (id == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchVersionFromVersionID(Iter.EditModeID));
+                }
+            }
+            return result;
+        }
+
         public static BooleanMsg StoreVersionCollection()
         {
             VersionCollection = DataHandler.StoreProjectVersionDetails();
@@ -113,7 +143,7 @@ namespace TeamTracker
             return null;
         }
 
-        public static ProjectVersion FetchVersionFromTaskID(int id)
+        public static ProjectVersion FetchVersionFromVersionID(int id)
         {
             foreach(var Iter in VersionCollection)
             {
@@ -199,11 +229,17 @@ namespace TeamTracker
                     Iter.IsDelayed = false;
                     DataHandler.UpdateVersion(Iter);
                     DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
-                    DataHandler.AddEdit(new Edit()
+                    foreach (var ctr in MilestoneManager.MilestoneCollection)
                     {
-                        EditModeID = Iter.VersionID,
-                        ModeOfEdit = EditMode.Version
-                    });
+                        if (ctr.VersionID == Iter.VersionID)
+                        {
+                            DataHandler.AddEdit(new Edit()
+                            {
+                                EditModeID = ctr.MileStoneID,
+                                ModeOfEdit = EditMode.Version
+                            });
+                        }
+                    }
                     return;
                 }
             }

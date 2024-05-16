@@ -132,7 +132,7 @@ namespace TeamTracker
         {
             var x = Controls.GetChildIndex(sender as Control);
             selectedMilestone = milestoneList[milestoneList.Count - Controls.GetChildIndex(sender as Control) - 1];
-            if (IsEditModeOn)
+            if (!IsEditModeOn)
             {
                 if (IsMilestoneAlreadyCompleted((sender as Label).Text))
                 {

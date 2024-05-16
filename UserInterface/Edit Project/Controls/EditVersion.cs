@@ -243,7 +243,7 @@ namespace UserInterface.Edit_Project.Controls
             return attachments;
         }
 
-        private TransparentForm transparentForm;
+        
 
         private void OnDeleteClicked(object sender, EventArgs e)
         {
@@ -326,6 +326,7 @@ namespace UserInterface.Edit_Project.Controls
             int nHeightEllipse // width of ellipse
         );
 
+        private TransparentForm transparentForm;
         private ProjectBoardTemplate template;
         private bool isBackEnable, isNextEnable;
         private int startIdx, endIdx;

@@ -27,26 +27,26 @@ namespace UserInterface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    MailMessage message = new MailMessage();
-            //    SmtpClient smtp = new SmtpClient();
-            //    message.From = new MailAddress("pugazhenthiir2002@gmail.com");
-            //    message.To.Add(new MailAddress("pugazhenthiir@gmail.com"));
-            //    message.Subject = "Test";
-            //    message.IsBodyHtml = true; //to make message body as html
-            //    smtp.Port = 587;
-            //    smtp.Host = "smtp.gmail.com"; //for gmail host
-            //    smtp.EnableSsl = true;
-            //    smtp.UseDefaultCredentials = false;
-            //    smtp.Credentials = new NetworkCredential("pugazhenthiir2002@gmail.com", "IrptIrpt@1110");
-            //    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //    smtp.Send(message);
-            //}
-            //catch (Exception exp)
-            //{
-            //    MessageBox.Show(exp.ToString());
-            //}
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+                message.From = new MailAddress("pugazhenthiir2002@gmail.com");
+                message.To.Add(new MailAddress("pugazhenthiir@gmail.com"));
+                message.Subject = "Test";
+                message.IsBodyHtml = true; //to make message body as html
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com"; //for gmail host
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("pugazhenthiir2002@gmail.com", "rewc jrha npss hrev");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
         }
     }
 }

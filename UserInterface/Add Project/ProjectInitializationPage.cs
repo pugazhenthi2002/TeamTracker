@@ -28,7 +28,7 @@ namespace TeamTracker
             label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose();
-            availableTeamLeaders1.Dispose();    clearButton.Dispose();  clientTextBox.Dispose();    CreateProject.Dispose(); endDateTimePicker.Dispose();
+            availableTeamLeaders1.ClearAllEmployees();    clearButton.Dispose();  clientTextBox.Dispose();    CreateProject.Dispose(); endDateTimePicker.Dispose();
             fileAttachment1.Dispose(); projectDescTextBox.Dispose(); ProjectEntryTablePanel.Dispose(); projectTitleTextBox.Dispose();   selectedTeamLeader1.Dispose();
             startDateTimePicker.Dispose(); ucNotFound1.Dispose();
         }
@@ -181,7 +181,7 @@ namespace TeamTracker
                 else
                 {
                     teamLeader = null;
-                    availableTeamLeaders1.Dispose();
+                    availableTeamLeaders1.ClearAllEmployees();
                     availableTeamLeaders1.TeamLeaders = availableTL;
                     availableTeamLeaders1.Visible = true;
                     selectedTeamLeader1.Visible = false;

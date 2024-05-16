@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.boardBasePanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.NextBtn = new System.Windows.Forms.PictureBox();
+            this.BackBtn = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -60,13 +66,11 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.searchVersion1 = new UserInterface.Edit_Project.Controls.SearchVersion();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BackBtn = new System.Windows.Forms.PictureBox();
-            this.NextBtn = new System.Windows.Forms.PictureBox();
-            this.boardBasePanel = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NextBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -85,10 +89,6 @@
             this.panel14.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NextBtn)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -101,6 +101,72 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(10);
             this.panel2.Size = new System.Drawing.Size(1326, 225);
             this.panel2.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.boardBasePanel);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(10, 10);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1306, 205);
+            this.panel4.TabIndex = 4;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            // 
+            // boardBasePanel
+            // 
+            this.boardBasePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boardBasePanel.Location = new System.Drawing.Point(0, 40);
+            this.boardBasePanel.Name = "boardBasePanel";
+            this.boardBasePanel.Padding = new System.Windows.Forms.Padding(5);
+            this.boardBasePanel.Size = new System.Drawing.Size(1306, 165);
+            this.boardBasePanel.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.NextBtn);
+            this.panel5.Controls.Add(this.BackBtn);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.panel5.Size = new System.Drawing.Size(1306, 40);
+            this.panel5.TabIndex = 1;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLineSeperatePaint);
+            // 
+            // NextBtn
+            // 
+            this.NextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NextBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.NextBtn.Location = new System.Drawing.Point(200, 0);
+            this.NextBtn.Name = "NextBtn";
+            this.NextBtn.Size = new System.Drawing.Size(42, 38);
+            this.NextBtn.TabIndex = 2;
+            this.NextBtn.TabStop = false;
+            this.NextBtn.Click += new System.EventHandler(this.OnNextBtnClicked);
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BackBtn.Location = new System.Drawing.Point(158, 0);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(42, 38);
+            this.BackBtn.TabIndex = 1;
+            this.BackBtn.TabStop = false;
+            this.BackBtn.Click += new System.EventHandler(this.OnBackBtnClicked);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Edit Version";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -529,70 +595,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLineSeperatePaint);
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.NextBtn);
-            this.panel5.Controls.Add(this.BackBtn);
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.panel5.Size = new System.Drawing.Size(1306, 40);
-            this.panel5.TabIndex = 1;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLineSeperatePaint);
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Edit Version";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BackBtn
-            // 
-            this.BackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BackBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.BackBtn.Location = new System.Drawing.Point(158, 0);
-            this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(42, 38);
-            this.BackBtn.TabIndex = 1;
-            this.BackBtn.TabStop = false;
-            // 
-            // NextBtn
-            // 
-            this.NextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NextBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.NextBtn.Location = new System.Drawing.Point(200, 0);
-            this.NextBtn.Name = "NextBtn";
-            this.NextBtn.Size = new System.Drawing.Size(42, 38);
-            this.NextBtn.TabIndex = 2;
-            this.NextBtn.TabStop = false;
-            // 
-            // boardBasePanel
-            // 
-            this.boardBasePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boardBasePanel.Location = new System.Drawing.Point(0, 40);
-            this.boardBasePanel.Name = "boardBasePanel";
-            this.boardBasePanel.Padding = new System.Windows.Forms.Padding(5);
-            this.boardBasePanel.Size = new System.Drawing.Size(1306, 165);
-            this.boardBasePanel.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.boardBasePanel);
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(10, 10);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1306, 205);
-            this.panel4.TabIndex = 4;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
-            // 
             // EditVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,6 +605,10 @@
             this.Name = "EditVersion";
             this.Size = new System.Drawing.Size(1326, 881);
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NextBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).EndInit();
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -623,10 +629,6 @@
             this.panel14.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NextBtn)).EndInit();
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

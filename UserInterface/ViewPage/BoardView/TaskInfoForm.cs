@@ -216,7 +216,7 @@ namespace TeamTracker
 
         private void InitializePage()
         {
-            labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromTaskID(selectedTask.VersionID).VersionName;
+            labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromVersionID(selectedTask.VersionID).VersionName;
             profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
             ucTaskDescription1.TopLabelText = selectedTask.TaskName;
             ucTaskDescription1.CenterLabelText = selectedTask.TaskDesc;

@@ -70,6 +70,8 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(363, 172);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderRadiusPaint);
+            this.tableLayoutPanel1.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
+            this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
             // 
             // tableLayoutPanel2
             // 
@@ -88,6 +90,8 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(363, 49);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
+            this.tableLayoutPanel2.MouseEnter += new System.EventHandler(this.OnMouseEnterTaskBoard);
+            this.tableLayoutPanel2.MouseLeave += new System.EventHandler(this.OnMouseLeaveTaskBoard);
             // 
             // labelVersion
             // 

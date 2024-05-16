@@ -56,6 +56,7 @@
             this.taskSearchTextBox.Size = new System.Drawing.Size(289, 31);
             this.taskSearchTextBox.TabIndex = 1;
             this.taskSearchTextBox.Text = "Search Task Name..";
+            this.taskSearchTextBox.TextChanged += new System.EventHandler(this.OnTextChanged);
             // 
             // pictureBox1
             // 

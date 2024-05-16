@@ -62,7 +62,7 @@ namespace TeamTracker
         public AddMilestoneForm()
         {
             InitializeComponent();
-            InitializePage();
+            InitializePageColor();
             TemplateCollection = new List<MilestoneTemplate>();
             milestoneCollection = new List<Milestone>();
         }
@@ -89,7 +89,7 @@ namespace TeamTracker
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    
         }
 
-        private void InitializePage()
+        private void InitializePageColor()
         {
             milestoneTextBox.ForeColor = panel2.BackColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
@@ -192,22 +192,6 @@ namespace TeamTracker
                 startIdx--;
                 endIdx--;
                 InitializeControl();
-            }
-        }
-
-        private MilestoneStatus SetMilestoneStatus(DateTime startDate, DateTime endDate)
-        {
-            if(endDate < DateTime.Now)
-            {
-                return MilestoneStatus.Completed;
-            }
-            else if(startDate <= DateTime.Now && DateTime.Now <= endDate)
-            {
-                return MilestoneStatus.OnProcess;
-            }
-            else
-            {
-                return MilestoneStatus.Upcoming;
             }
         }
 

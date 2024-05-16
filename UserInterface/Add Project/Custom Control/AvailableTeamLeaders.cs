@@ -34,6 +34,17 @@ namespace TeamTracker
         public AvailableTeamLeaders()
         {
             InitializeComponent();
+            InitializePageColor();
+            //ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        public void InitializePageColor()
+        {
             label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
@@ -48,8 +59,19 @@ namespace TeamTracker
                     ctr--;
                 }
             }
-            //label1?.Dispose();
+            label1?.Dispose();
         }
+
+        public void ClearAllEmployees()
+        {
+            for (int ctr = 0; ctr < profilePanel.Controls.Count; ctr++)
+            {
+                (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
+                profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
+                ctr--;
+            }
+        }
+
         private void InitializeProfiles()
         {
             TeamLeaderPicAndName uc;

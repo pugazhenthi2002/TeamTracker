@@ -14,7 +14,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 {
     public partial class MilestoneTemplate : UserControl
     {
-
         public delegate void MilestoneHandler(object sender, MilestoneEventArgs m);
         public delegate bool ContraintsHandler(object sender, MilestoneEventArgs m);
         public event MilestoneHandler MilestoneOperate;
@@ -60,9 +59,12 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
             set
             {
-                milestone = value;
-                placeHolderText = value.MileStoneName;
-                InitializeControl();
+                if (value != null)
+                {
+                    milestone = value;
+                    placeHolderText = value.MileStoneName;
+                    InitializeControl();
+                }
             }
         }
 
@@ -95,8 +97,8 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         private void InitializePageColor()
         {
             tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
-            milestoneName.BackColor = milestoneDate.SkinColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
-            milestoneName.ForeColor = milestoneDate.BorderColor = milestoneDate.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            milestoneName.BackColor = milestoneDate.SkinColor = ThemeManager.CurrentTheme.PrimaryI;
+            milestoneName.ForeColor = milestoneDate.BorderColor = milestoneDate.TextColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void SubscribeEvents()

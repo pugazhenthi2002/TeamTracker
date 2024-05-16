@@ -10,35 +10,82 @@ using System.Windows.Forms;
 using TeamTracker;
 using GoLibrary;
 using System.IO;
+using UserInterface.ViewPage;
 
 namespace UserInterface.Edit_Project.Controls
 {
     public partial class EditTask : UserControl
     {
+        public List<TeamTracker.Task> TaskCollection { get; set; }
         public EditTask()
         {
             InitializeComponent();
+            InitializePageColor();
+        }
+
+        public void InitializePageColor()
+        {
+            requiredEdit.ForeColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            textBoxDesc.BackColor = textBoxTaskName.BackColor = buttonSetMilestone.BackColor = tableLayoutPanel5.BackColor = employeeName.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.BackColor = label3.BackColor = tableLayoutPanelFileName.BackColor = boardBasePanel.BackColor = boardBaseManualPanel.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            startDate.SkinColor = endDate.SkinColor = ThemeManager.CurrentTheme.SecondaryII;
+            panel6.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            label4.ForeColor = label5.ForeColor = animatedLabelFilename.ForeColor = textBoxDesc.ForeColor = textBoxTaskName.ForeColor = manualEdit.ForeColor = buttonSetMilestone.ForeColor = labelSetPriority.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = label3.ForeColor = employeeName.ForeColor = startDate.TextColor = startDate.BorderColor = endDate.TextColor = endDate.BorderColor = requiredEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label2.ForeColor = buttonUpdate.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = ucNotFound2.BackColor = buttonDelete.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            buttonUpdate.ForeColor = ThemeManager.GetTextColor(buttonUpdate.BackColor);
+            buttonDelete.ForeColor = ThemeManager.GetTextColor(buttonDelete.BackColor);
         }
 
         public void InitializePage()
         {
-            requiredTaskCollection = TaskManager.FetchEditTask();
-            InitializeRequiredControl();
+            SuspendLayout();
+            if (tabControl1.SelectedIndex == 0)
+            {
+                requiredTaskCollection = TaskManager.FetchEditTask();
+                InitializeRequiredControl();
+            }
+            else
+            {
+                taskCollection = TaskCollection;
+                InitializeManualControl();
+            }
+            ResumeLayout();
         }
 
         private void OnTaskNameChanged(object sender, string e)
         {
-
+            SuspendLayout();
+            taskCollection = new List<TeamTracker.Task>();
+            foreach(var Iter in TaskCollection)
+            {
+                if (Iter.TaskName.Contains(e))
+                {
+                    taskCollection.Add(Iter);
+                }
+            }
+            InitializeManualControl();
+            ResumeLayout();
         }
 
         private void InitializeRequiredControl()
         {
-            if (tabControl1.SelectedIndex == 0)
-                taskCollection = requiredTaskCollection;
+            taskCollection = requiredTaskCollection;
 
             startIdx = 0; isBackEnable = false;
             endIdx = taskCollection.Count >= 5 ? 4 : taskCollection.Count - 1;
             isNextEnable = taskCollection.Count > 5 ? true : false;
+
+            if (taskCollection.Count == 0)
+            {
+                ucNotFound1.Visible = true; boardBasePanel.Visible = false;
+                return;
+            }
+            else
+            {
+                ucNotFound1.Visible = false;    boardBasePanel.Visible = true;
+            }
 
             boardBasePanel.Controls.Clear();
 
@@ -54,6 +101,41 @@ namespace UserInterface.Edit_Project.Controls
             }
 
             foreach (Control Iter in boardBasePanel.Controls)
+            {
+                Iter.BringToFront();
+            }
+        }
+
+        private void InitializeManualControl()
+        {
+            startIdx = 0; isBackEnable = false;
+            endIdx = taskCollection.Count >= 5 ? 4 : taskCollection.Count - 1;
+            isNextEnable = taskCollection.Count > 5 ? true : false;
+
+            if (taskCollection.Count == 0)
+            {
+                ucNotFound2.Visible = true; boardBaseManualPanel.Visible = false; panel1.Visible = false;
+                return;
+            }
+            else
+            {
+                ucNotFound2.Visible = false; boardBaseManualPanel.Visible = true; panel1.Visible = true;
+            }
+
+            boardBaseManualPanel.Controls.Clear();
+
+            for (int ctr = 0; ctr <= endIdx; ctr++)
+            {
+                template = new UCTaskBoard()
+                {
+                    Dock = DockStyle.Left,
+                    TaskData = taskCollection[ctr]
+                };
+                template.TaskSelect += OnTaskSelected;
+                boardBaseManualPanel.Controls.Add(template);
+            }
+
+            foreach (Control Iter in boardBaseManualPanel.Controls)
             {
                 Iter.BringToFront();
             }
@@ -109,7 +191,8 @@ namespace UserInterface.Edit_Project.Controls
             Point formPoint = buttonSetMilestone.PointToScreen(new Point(buttonSetMilestone.Location.X, buttonSetMilestone.Location.Y));
 
             MilestoneDropForm = new MilestoneDropDownForm();
-            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
+            MilestoneDropForm.IsEditModeOn = true;
+            MilestoneDropForm.StartPosition = FormStartPosition.CenterScreen;
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
             MilestoneDropForm.Show();
             MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(selectedTask.VersionID);
@@ -132,7 +215,7 @@ namespace UserInterface.Edit_Project.Controls
 
             PriortyDropForm = new PriorityDropDownForm();
             PriortyDropForm.Show();
-            PriortyDropForm.Location = tableLayoutPanel5.PointToScreen(new Point(-10, tableLayoutPanel5.Height + 2));
+            PriortyDropForm.StartPosition = FormStartPosition.CenterScreen;
             PriortyDropForm.Size = new Size(tableLayoutPanel5.Width + 20, PriortyDropForm.Height);
             PriortyDropForm.PrioritySelect += OnClickPriorityBtn;
         }
@@ -151,7 +234,7 @@ namespace UserInterface.Edit_Project.Controls
 
             Point formPoint = label2.PointToScreen(new Point(0, label2.Height));
             TeamMembersDropForm = new TeamMembersListForm();
-            TeamMembersDropForm.Location = panel2.PointToScreen(new Point(-10, panel2.Height + 2));
+            TeamMembersDropForm.StartPosition = FormStartPosition.CenterScreen;
             TeamMembersDropForm.Size = new Size(panel2.Width + 20, TeamMembersDropForm.Height);
             TeamMembersDropForm.Show();
             TeamMembersDropForm.TeamList = taskAssigneeList;
@@ -228,9 +311,7 @@ namespace UserInterface.Edit_Project.Controls
                 return "Task Due Date is is Beyond Today's Date";
             }
 
-            var x = endDate.Value.Date - startDate.Value.Date;
-
-            if (!(VersionManager.CurrentVersion.StartDate <= startDate.Value.Date && endDate.Value.Date <= VersionManager.CurrentVersion.EndDate))
+            if (!(VersionManager.FetchVersionFromVersionID(selectedTask.VersionID).StartDate <= startDate.Value.Date && endDate.Value.Date <= VersionManager.FetchVersionFromVersionID(selectedTask.VersionID).EndDate))
             {
                 return "Task Due Date is Not Within the Projects End Date and StartDate";
             }
@@ -253,6 +334,115 @@ namespace UserInterface.Edit_Project.Controls
             return true;
         }
 
+        private void OnTaskUpdate(object sender, EventArgs e)
+        {
+            BooleanMsg message = CheckConstraints();
+            if (message)
+            {
+                WarningForm form = new WarningForm();
+                form.Content = "Are you sure, you want to update the Task?";
+                form.WarningStatus += OnUpdateStatus;
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form);
+            }
+            else
+            {
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", message.Message);
+            }
+        }
+
+        private void OnUpdateStatus(object sender, bool e)
+        {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (e)
+            {
+                TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
+                DataHandler.RemoveEdit(selectedTask.TaskID, EditMode.Task);
+                foreach(var Iter in TaskCollection)
+                {
+                    if(Iter.TaskID == selectedTask.TaskID)
+                    {
+                        Iter.TaskName = textBoxTaskName.Text; Iter.TaskDesc = textBoxDesc.Text;
+                        Iter.StartDate = startDate.Value.Date; Iter.EndDate = endDate.Value.Date;
+                        Iter.TaskPriority = selectedPriority; Iter.AssignedTo = selectedTeamMember.EmployeeID;
+                        Iter.StatusOfTask = selectedTask.StatusOfTask;
+                        Iter.MilestoneID = selectedMilestone.MileStoneID;
+                        Iter.IsDelayed = true;
+                    }
+                }
+                InitializePage();
+            }
+        }
+
+        private void OnTaskDelete(object sender, EventArgs e)
+        {
+            WarningForm form = new WarningForm();
+            form.Content = "Are you sure, you want to update the Task?";
+            form.WarningStatus += OnDeleteStatus;
+
+            transparentForm = new TransparentForm();
+            transparentForm.Show();
+            transparentForm.ShowForm(form);
+        }
+
+        private void OnDeleteStatus(object sender, bool e)
+        {
+            (sender as WarningForm).Dispose();
+            (sender as WarningForm).Close();
+
+            if (e)
+            {
+                TaskManager.DeleteTask(selectedTask.TaskID);
+                DataHandler.RemoveEdit(selectedTask.MilestoneID, EditMode.Task);
+                foreach (var Iter in TaskCollection)
+                {
+                    if (Iter.TaskID == selectedTask.TaskID)
+                    {
+                        TaskCollection.Remove(Iter);
+                        return;
+                    }
+                }
+                InitializePage();
+            }
+        }
+
+        private void OnNextClick(object sender, EventArgs e)
+        {
+            if(isNextEnable)
+            {
+                startIdx++; endIdx++;
+                ReorderControl();
+            }
+        }
+
+        private void OnBackClick(object sender, EventArgs e)
+        {
+            if (isBackEnable)
+            {
+                startIdx--; endIdx--;
+                ReorderControl();
+            }
+        }
+
+        private void ReorderControl()
+        {
+            if(tabControl1.SelectedIndex == 0)
+            {
+                for (int ctr = startIdx, idx = 0; ctr <= endIdx; ctr++, idx++)
+                {
+                    (boardBasePanel.Controls[idx] as UCTaskBoard).TaskData = taskCollection[ctr];
+                }
+
+                isBackEnable = startIdx == 0 ? false : true;
+                isNextEnable = endIdx == taskCollection.Count - 1 ? false : true;
+            }
+        }
+
+        private TransparentForm transparentForm;
         private Priority selectedPriority;
         private UCTaskBoard template;
         private PriorityDropDownForm PriortyDropForm;
@@ -266,21 +456,28 @@ namespace UserInterface.Edit_Project.Controls
         private TeamTracker.Task selectedTask;
         private bool isBackEnable, isNextEnable;
 
-        private void OnTaskUpdate(object sender, EventArgs e)
+        private void OnManualClick(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedIndex == 0)
-            {
-                TaskManager.UpdateTask()
-                requiredTaskCollection.RemoveAll(t1 => t1.TaskID == selectedTask.TaskID);
-            }
+            requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            tabControl1.SelectedIndex = 1;
+            InitializePage();
         }
 
-        private void OnTaskDelete(object sender, EventArgs e)
+        private void OnRequiredClick(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
-            {
+            requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            tabControl1.SelectedIndex = 0;
+            InitializePage();
+        }
 
-            }
+        private void OnLineSeperatePaint(object sender, PaintEventArgs e)
+        {
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border, 0, (sender as Control).Height - 1, (sender as Control).Width, (sender as Control).Height - 1);
+            border.Dispose();
         }
 
         private int startIdx, endIdx;
