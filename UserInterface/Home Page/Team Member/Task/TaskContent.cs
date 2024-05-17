@@ -18,6 +18,12 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             InitializeRoundedEdge();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         protected override void OnPaint(PaintEventArgs e)

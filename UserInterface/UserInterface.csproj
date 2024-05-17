@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UserInterface</RootNamespace>
     <AssemblyName>UserInterface</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -195,12 +195,6 @@
     <Compile Include="Edit Project\Controls\SearchVersion.Designer.cs">
       <DependentUpon>SearchVersion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Edit Project\Controls\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Edit Project\Controls\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Edit Project\Edit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -297,9 +291,6 @@
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\AddMilestoneForm.Designer.cs">
       <DependentUpon>AddMilestoneForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\CustomDatetimePicker.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\MilestoneHandler.cs" />
     <Compile Include="Home Page\Team Lead\On Stage\MilestoneTemplate.cs">

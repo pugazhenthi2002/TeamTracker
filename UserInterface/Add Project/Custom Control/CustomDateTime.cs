@@ -32,11 +32,16 @@ namespace UserInterface.Add_Project.Custom_Control
             set
             {
                 skinColor = value;
-                if (skinColor.GetBrightness() >= 0.6F)
-                    calendarIcon = Properties.Resources.Calendar_30;
-                else calendarIcon = Properties.Resources.Calendar_30;
+                InitializePageColor();
                 this.Invalidate();
             }
+        }
+
+        public void InitializePageColor()
+        {
+            if (skinColor.GetBrightness() >= 0.6F)
+                calendarIcon = Properties.Resources.Calendar_30;
+            else calendarIcon = Properties.Resources.Calendar_30;
         }
 
         public Color TextColor

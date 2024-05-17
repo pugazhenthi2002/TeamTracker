@@ -21,7 +21,6 @@ namespace TeamTracker
             set
             {
                 labelMilestonename.Text = value;
-                InitializePageColor();
             }
         }
 
@@ -29,7 +28,13 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

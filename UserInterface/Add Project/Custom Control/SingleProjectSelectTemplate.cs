@@ -57,6 +57,12 @@ namespace UserInterface.Add_Project.Custom_Control
             DoubleBuffered = true;
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

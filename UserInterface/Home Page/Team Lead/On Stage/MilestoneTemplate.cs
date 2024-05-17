@@ -79,7 +79,14 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             InitializeRoundedEdge();
             SubscribeEvents();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
 
         public new void Dispose()
         {

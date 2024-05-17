@@ -17,10 +17,10 @@ namespace TeamTracker
             set
             {
                 SuspendLayout();
-                InitializePageColor();
+                
                 if (value != null && value.Count > 0)
                 {
-                    Dispose();
+                    ClearNotify();
                     ucNotFound1.Visible = false;
                     nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = true;
                     notifyList = value;
@@ -52,6 +52,13 @@ namespace TeamTracker
         public NotificationContent()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -64,6 +71,16 @@ namespace TeamTracker
                     panelBase.Controls.RemoveAt(ctr);
                     ctr--;
                 }
+            }
+        }
+
+        private void ClearNotify()
+        {
+            for (int ctr = 0; ctr < panelBase.Controls.Count; ctr++)
+            {
+                (panelBase.Controls[ctr] as UcNotification).Dispose();
+                panelBase.Controls.RemoveAt(ctr);
+                ctr--;
             }
         }
 

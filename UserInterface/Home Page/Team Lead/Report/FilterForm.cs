@@ -46,8 +46,13 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             textBox1.GotFocus += OnTextBoxGotFocus;
+        }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void OnTextBoxGotFocus(object sender, EventArgs e)

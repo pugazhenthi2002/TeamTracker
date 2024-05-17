@@ -35,15 +35,17 @@
             this.totalVersionsLabel = new System.Windows.Forms.Label();
             this.employeeProfilePicAndName1 = new UserInterface.ViewProject.EmployeeProfilePicAndName();
             this.projectNameLabel = new System.Windows.Forms.Label();
+            this.selectProjectTemplate1 = new UserInterface.Add_Project.Custom_Control.SelectProjectTemplate();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(431, 154);
+            this.button1.Location = new System.Drawing.Point(646, 237);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 54);
+            this.button1.Size = new System.Drawing.Size(194, 83);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -54,9 +56,10 @@
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.employeeProfilePicAndName1);
             this.panel1.Controls.Add(this.projectNameLabel);
-            this.panel1.Location = new System.Drawing.Point(540, 340);
+            this.panel1.Location = new System.Drawing.Point(810, 523);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 159);
+            this.panel1.Size = new System.Drawing.Size(471, 245);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -68,11 +71,12 @@
             this.tableLayoutPanel1.Controls.Add(this.lastVersionLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.totalVersionsLabel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 105);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 161);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(314, 54);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(471, 84);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // lastVersionLabel
@@ -81,10 +85,10 @@
             this.lastVersionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastVersionLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastVersionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
-            this.lastVersionLabel.Location = new System.Drawing.Point(157, 0);
+            this.lastVersionLabel.Location = new System.Drawing.Point(235, 0);
             this.lastVersionLabel.Margin = new System.Windows.Forms.Padding(0);
             this.lastVersionLabel.Name = "lastVersionLabel";
-            this.lastVersionLabel.Size = new System.Drawing.Size(157, 54);
+            this.lastVersionLabel.Size = new System.Drawing.Size(236, 84);
             this.lastVersionLabel.TabIndex = 3;
             this.lastVersionLabel.Text = "Last Version: 1.0";
             this.lastVersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -98,7 +102,7 @@
             this.totalVersionsLabel.Location = new System.Drawing.Point(0, 0);
             this.totalVersionsLabel.Margin = new System.Windows.Forms.Padding(0);
             this.totalVersionsLabel.Name = "totalVersionsLabel";
-            this.totalVersionsLabel.Size = new System.Drawing.Size(157, 54);
+            this.totalVersionsLabel.Size = new System.Drawing.Size(235, 84);
             this.totalVersionsLabel.TabIndex = 2;
             this.totalVersionsLabel.Text = "Total Versions: 10";
             this.totalVersionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -108,10 +112,11 @@
             this.employeeProfilePicAndName1.BackColor = System.Drawing.Color.Transparent;
             this.employeeProfilePicAndName1.Dock = System.Windows.Forms.DockStyle.Top;
             this.employeeProfilePicAndName1.HoverColor = System.Drawing.Color.Empty;
-            this.employeeProfilePicAndName1.Location = new System.Drawing.Point(0, 64);
+            this.employeeProfilePicAndName1.Location = new System.Drawing.Point(0, 98);
+            this.employeeProfilePicAndName1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.employeeProfilePicAndName1.Name = "employeeProfilePicAndName1";
             this.employeeProfilePicAndName1.NormalColor = System.Drawing.Color.Empty;
-            this.employeeProfilePicAndName1.Size = new System.Drawing.Size(314, 41);
+            this.employeeProfilePicAndName1.Size = new System.Drawing.Size(471, 63);
             this.employeeProfilePicAndName1.TabIndex = 5;
             // 
             // projectNameLabel
@@ -123,20 +128,30 @@
             this.projectNameLabel.Location = new System.Drawing.Point(0, 0);
             this.projectNameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.projectNameLabel.Name = "projectNameLabel";
-            this.projectNameLabel.Size = new System.Drawing.Size(314, 64);
+            this.projectNameLabel.Size = new System.Drawing.Size(471, 98);
             this.projectNameLabel.TabIndex = 4;
             this.projectNameLabel.Text = "Project Name";
             this.projectNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // selectProjectTemplate1
+            // 
+            this.selectProjectTemplate1.Location = new System.Drawing.Point(808, 80);
+            this.selectProjectTemplate1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.selectProjectTemplate1.Name = "selectProjectTemplate1";
+            this.selectProjectTemplate1.Size = new System.Drawing.Size(554, 197);
+            this.selectProjectTemplate1.TabIndex = 2;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
-            this.ClientSize = new System.Drawing.Size(888, 678);
+            this.ClientSize = new System.Drawing.Size(1332, 1043);
+            this.Controls.Add(this.selectProjectTemplate1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "e";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -157,6 +172,7 @@
         private System.Windows.Forms.Label totalVersionsLabel;
         private ViewProject.EmployeeProfilePicAndName employeeProfilePicAndName1;
         private System.Windows.Forms.Label projectNameLabel;
+        private Add_Project.Custom_Control.SelectProjectTemplate selectProjectTemplate1;
     }
 }
 

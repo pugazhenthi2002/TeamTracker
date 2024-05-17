@@ -53,6 +53,12 @@ namespace UserInterface.Home_Page.Team_Member
             teamMemberReportContent1.isOpened = true;
             teamMemberReportContent1.Month = DateTime.Today.Month; teamMemberReportContent1.Year = DateTime.Today.Year; teamMemberReportContent1.Priority = -1;
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

@@ -21,8 +21,13 @@ namespace UserInterface.Edit_Project.Controls
             InitializePageColor();
             taskSearchTextBox.GotFocus += RemoveSearchPlaceHolders;
             taskSearchTextBox.LostFocus += AddSearchPlaceHolders;
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
 
         private void AddSearchPlaceHolders(object sender, EventArgs e)
         {

@@ -37,6 +37,12 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

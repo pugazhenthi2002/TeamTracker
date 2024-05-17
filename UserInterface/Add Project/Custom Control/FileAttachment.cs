@@ -44,6 +44,12 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             AttachmentCollection = new Dictionary<string, VersionAttachment>();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

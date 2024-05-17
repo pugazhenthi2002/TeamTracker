@@ -40,8 +40,14 @@ namespace TeamTracker
             InitializeComponent();
             InitializeRoundedEdge();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             transparentForm = new TransparentForm();
             toolTip1.SetToolTip(pictureBoxDownload, "Download Attachements");
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

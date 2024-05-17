@@ -63,8 +63,14 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             TemplateCollection = new List<MilestoneTemplate>();
             milestoneCollection = new List<Milestone>();
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

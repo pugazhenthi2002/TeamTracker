@@ -59,7 +59,13 @@ namespace UserInterface.Home_Page.Team_Member
         {
             InitializeComponent();
             InitializeRoundedEdge();
-            InitializePage();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializeRoundedEdge()
@@ -69,7 +75,7 @@ namespace UserInterface.Home_Page.Team_Member
             tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
         }
 
-        private void InitializePage()
+        private void InitializePageColor()
         {
             tableLayoutPanel3.BackColor = tableLayoutPanel4.BackColor = tableLayoutPanel5.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             ucNotFound2.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;

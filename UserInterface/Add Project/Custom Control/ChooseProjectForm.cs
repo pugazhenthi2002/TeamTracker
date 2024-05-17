@@ -47,6 +47,13 @@ namespace UserInterface.Add_Project.Custom_Control
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
             selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            //ucNotFound1.InitializePageColor();
         }
 
         public new void Dispose()

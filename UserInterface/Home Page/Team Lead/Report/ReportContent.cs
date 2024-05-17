@@ -56,11 +56,18 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             cartesianChart1.AxisX.Add(new Axis { Title = "Date" });
             cartesianChart1.AxisY.Add(new Axis { Title = "Task Solved" });
         }
 
-        private void InitializePage()
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
         {
             tableLayoutPanel3.BackColor = tableLayoutPanel4.BackColor = tableLayoutPanel5.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             ucNotFound1.BackColor = ucNotFound2.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
@@ -145,7 +152,6 @@ namespace UserInterface.Home_Page.Team_Lead.Report
 
         private void SetReport()
         {
-            InitializePage();
             if (isOpened)
             {
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();

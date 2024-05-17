@@ -18,7 +18,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             set
             {
-                InitializePageColor();
                 if (value != null && value.Count > 0)
                 {
                     panel5.Visible = true;
@@ -45,6 +44,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         public Overview()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()
