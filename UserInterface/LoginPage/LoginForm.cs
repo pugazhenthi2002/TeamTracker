@@ -19,14 +19,29 @@ namespace TeamTracker
         public LoginForm()
         {
             InitializeComponent();
+            ThemeManager.CurrentThemeMode = ThemeMode.Cold;
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+
             message = DataHandler.ConnectDatabase();
-
             if (!message.Result) { errorMessageLabel.Text = "* Unable to Connect Database"; return; }
-
             message = EmployeeManager.StoreEmployeeToCollection();
             if (!message.Result) { errorMessageLabel.Text = message; }
         }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            letsTeamUpButton.BackColor  = pictureBox1.BackColor = label1.ForeColor = logo1.LogoColor = ThemeManager.CurrentTheme.PrimaryI;
+            letsTeamUpButton.ForeColor = username.BackColor = username.TextBoxColor = password.BackColor = password.TextBoxColor = ThemeManager.CurrentTheme.SecondaryIII;
+            username.ForeColor = username.TextForeColor = username.PlaceholderLabelAtCenterColor = username.PlaceholderLabelAtTopColor = ThemeManager.CurrentTheme.PrimaryI;
+            password.ForeColor = password.TextForeColor = password.PlaceholderLabelAtCenterColor = password.PlaceholderLabelAtTopColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
 
         protected override void OnResize(EventArgs e)
         {
@@ -37,7 +52,6 @@ namespace TeamTracker
         private void OnTeamUpClick(object sender, EventArgs e)
         {
             errorMessageLabel.Text = "";
-            ThemeManager.CurrentThemeMode = ThemeMode.Cold;
             message = EmployeeManager.LogInEmployee(username.TextBoxtext, password.TextBoxtext);
 
             if (!message.Result) { errorMessageLabel.Text = message; }

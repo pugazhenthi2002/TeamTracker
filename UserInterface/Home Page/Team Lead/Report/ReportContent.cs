@@ -65,12 +65,13 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+            SetReport();
         }
 
         private void InitializePageColor()
         {
             tableLayoutPanel3.BackColor = tableLayoutPanel4.BackColor = tableLayoutPanel5.BackColor = ThemeManager.CurrentTheme.SecondaryII;
-            ucNotFound1.BackColor = ucNotFound2.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            pieChart1.BackColor = cartesianChart1.BackColor = ucNotFound1.BackColor = ucNotFound2.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label1.ForeColor = label2.ForeColor = label3.ForeColor = teammatesTaskCount.ForeColor = totalmilestoneCount.ForeColor = totalTaskCount.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
             label4.ForeColor = label5.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
             colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;

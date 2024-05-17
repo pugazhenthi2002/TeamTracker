@@ -62,6 +62,7 @@ namespace UserInterface.Add_Project.Custom_Control
             {
                 for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
                 {
+                    //(controlPanel.Controls[ctr] as SelectProjectTemplate).ProjectSelect -= OnProjectSelected;
                     (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
                     controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
                     ctr--;

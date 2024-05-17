@@ -23,11 +23,17 @@ namespace UserInterface.ViewProject.TimelineView.Controls
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
         {
             textColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public event EventHandler<Projects> ProjectSelected;

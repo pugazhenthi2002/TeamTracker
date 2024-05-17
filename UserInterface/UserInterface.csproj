@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UserInterface</RootNamespace>
     <AssemblyName>UserInterface</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -418,12 +418,6 @@
     </Compile>
     <Compile Include="Issues\My Issue Page\ViewSolutionForm.Designer.cs">
       <DependentUpon>ViewSolutionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Issues\UcFileName.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Issues\UcFileName.Designer.cs">
-      <DependentUpon>UcFileName.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
@@ -941,9 +935,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Issues\My Issue Page\ViewSolutionForm.resx">
       <DependentUpon>ViewSolutionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Issues\UcFileName.resx">
-      <DependentUpon>UcFileName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

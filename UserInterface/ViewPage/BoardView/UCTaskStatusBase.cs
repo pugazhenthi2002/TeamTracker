@@ -43,6 +43,7 @@ namespace TeamTracker
             ucTaskStatusHead1.ClickNext += OnClickNextPage;
             InitializeBoard();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, panelBase, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public delegate void TaskBoardMouseEventHandler(UCTaskBoard sender, MouseEventArgs e);
@@ -92,6 +93,11 @@ namespace TeamTracker
         {
             ucTaskStatusHead1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             ucTaskStatusHead1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public void RemoveTaskBoard(UCTaskBoard tBoard)

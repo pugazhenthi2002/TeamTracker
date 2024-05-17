@@ -27,8 +27,14 @@ namespace TeamTracker
             InitializeComponent();
             InitializeIssueManager();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             dataGridView1.AllowUserToAddRows = false;
             SetData();
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

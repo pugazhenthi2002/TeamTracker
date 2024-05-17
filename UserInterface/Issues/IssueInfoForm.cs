@@ -23,8 +23,14 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             solutionTextBox.GotFocus += RemoveSolutionPlaceHolders;
             solutionTextBox.LostFocus += AddSolutionPlaceHolders;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

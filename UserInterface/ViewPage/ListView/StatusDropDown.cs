@@ -19,6 +19,8 @@ namespace TeamTracker
         public StatusDropDown()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -28,6 +30,11 @@ namespace TeamTracker
             label2.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.OnProcess);
             label3.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.Stuck);
             label4.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.NotYetStarted);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public event EventHandler<string> StatusChanged;

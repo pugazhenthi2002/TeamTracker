@@ -33,6 +33,12 @@ namespace TeamTracker
         {
             base.OnLoad(e);
             InitializeRoundedEdge();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

@@ -29,14 +29,15 @@ namespace UserInterface.Task.Timeline
         {
             InitializeComponent();
             InitializeLabels();
+            InitializePageColor();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, timelineControlPanel, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public ProjectVersion Version
         {
             set
             {
-                InitializePageColor();
                 if (value != null)
                 {
                     version = value;
@@ -61,7 +62,16 @@ namespace UserInterface.Task.Timeline
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
-            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            backPictureBox.BackColor = nextPictureBox.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            if(version != null)
+            {
+                SetViewTaskCollection();
+            }
         }
 
         private void TimelineControlPaint(object sender, PaintEventArgs e)
@@ -217,7 +227,6 @@ namespace UserInterface.Task.Timeline
                         Width = controlWidth,
                         SelectedTask = Iter,
                         StatusColor = ThemeManager.GetTaskStatusColor(Iter.StatusOfTask),
-                        //StatusColor = ColorManager.FetchTaskStatusColor(Iter.StatusOfTask),
                         StepWidth = tableLayoutPanel1.Width / 20,
                         DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate)
                     };

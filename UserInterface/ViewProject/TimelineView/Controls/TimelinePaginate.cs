@@ -33,6 +33,7 @@ namespace TeamTracker
             InitializeComponent();
             InitializeLabels();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -42,7 +43,12 @@ namespace TeamTracker
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
-            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            backPictureBox.BackColor = nextPictureBox.BackColor =  BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public List<Color> Colors
@@ -58,28 +64,31 @@ namespace TeamTracker
             set
             {
                 version = value;
-                iterDate = startViewDate = value.StartDate;
-                dateDifference = value.EndDate - value.StartDate;
-                isBackEnable = false;
-                isNextEnable = true;
-                endViewDate = startViewDate.AddDays(20);
-                if (filteredEmployee == null) taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
-                else
+                if (version != null)
                 {
-                    taskCollection = TaskManager.FetchTaskByEmployee(filteredEmployee, version.VersionID);
-                }
-                if (taskCollection != null && taskCollection.Count > 0)
-                {
-                    ucNotFound1.Visible = false;
-                    panel1.Visible = true;
-                    milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
-                    InitializeTimeline();
-                    SetViewTaskCollection();
-                }
-                else
-                {
-                    panel1.Visible = false;
-                    ucNotFound1.Visible = true;
+                    iterDate = startViewDate = value.StartDate;
+                    dateDifference = value.EndDate - value.StartDate;
+                    isBackEnable = false;
+                    isNextEnable = true;
+                    endViewDate = startViewDate.AddDays(20);
+                    if (filteredEmployee == null) taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
+                    else
+                    {
+                        taskCollection = TaskManager.FetchTaskByEmployee(filteredEmployee, version.VersionID);
+                    }
+                    if (taskCollection != null && taskCollection.Count > 0)
+                    {
+                        ucNotFound1.Visible = false;
+                        panel1.Visible = true;
+                        milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
+                        InitializeTimeline();
+                        SetViewTaskCollection();
+                    }
+                    else
+                    {
+                        panel1.Visible = false;
+                        ucNotFound1.Visible = true;
+                    }
                 }
             }
         }

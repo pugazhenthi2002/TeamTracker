@@ -92,6 +92,7 @@ namespace TeamTracker
 
         public void InitializePage()
         {
+            SuspendLayout();
             projectDateLabel.Text = VersionManager.CurrentVersion.StartDate.ToShortDateString() + "  -  " + VersionManager.CurrentVersion.EndDate.ToShortDateString();
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
             
@@ -149,13 +150,14 @@ namespace TeamTracker
             {
                 pieChart1.Visible = pieChart2.Visible = false;
             }
+            ResumeLayout();
         }
 
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             projectNameLabel.ForeColor = projectDateLabel.ForeColor = ThemeManager.GetTextColor(BackColor);
-            ucNotFound1.BackColor = ucNotFound2.BackColor = panel3.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            pieChart1.BackColor = pieChart2.BackColor = ucNotFound1.BackColor = ucNotFound2.BackColor = panel3.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label1.ForeColor = label2.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(panel3.BackColor);
 
             for (int ctr=0; ctr < 6; ctr++)
@@ -200,6 +202,17 @@ namespace TeamTracker
             InitializeComponent();
             InitializeRoundedEdge();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+
+            if(doneCollection != null && doneCollection.Count > 0)
+            {
+                InitializePage();
+            }
         }
 
         private void OnPaginateUp(object sender, EventArgs e)

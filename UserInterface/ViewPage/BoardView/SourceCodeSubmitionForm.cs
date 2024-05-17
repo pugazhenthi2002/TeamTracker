@@ -19,6 +19,7 @@ namespace TeamTracker
             InitializeRoundedEdge();
             InitializePageColor();
             this.Location = new Point(700, 300);
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public Task SourceCodeTask;
@@ -57,6 +58,11 @@ namespace TeamTracker
             button1.ForeColor = button2.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
             commitTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         protected override void OnResize(EventArgs e)

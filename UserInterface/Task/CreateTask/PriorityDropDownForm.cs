@@ -21,12 +21,18 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             InitializeRoundedEdge();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             BtnCritical.ForeColor = label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         protected override CreateParams CreateParams

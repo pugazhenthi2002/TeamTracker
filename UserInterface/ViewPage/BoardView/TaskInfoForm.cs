@@ -22,6 +22,7 @@ namespace TeamTracker
             this.Location = new Point(700, 300);
             toolTip1.SetToolTip(pictureBoxFlag, "Priority");
             toolTip1.SetToolTip(animatedLabelMilestone, "Milestone");
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public TeamTracker.Task selectedTask;
@@ -71,11 +72,16 @@ namespace TeamTracker
         {
             ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = panel1.BackColor = animatedLabelStatus.ForeColor = animatedLabelMilestone.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor =  startDate.BorderColor = endDate.BorderColor = startDate.TextColor = endDate.TextColor = animatedLabelStatus.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
-            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
             animatedLabelMilestone.BackColor = animatedLabelStatus.BackColor = ucTaskDescription1.TopLabelForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             labelTitle.ForeColor = profileAssignedBy.ForeColor = startDate.SkinColor = endDate.SkinColor = label1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             animatedLabelStatus.LabelCornerColor = animatedLabelMilestone.LabelCornerColor = BackColor;
             animatedLabelMilestone.ParentColor = animatedLabelStatus.ParentColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         protected override void OnResize(EventArgs e)

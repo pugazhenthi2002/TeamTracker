@@ -60,7 +60,6 @@ namespace TeamTracker
                 {
                     selectedTask = value;
                     label1.Text = selectedTask.TaskName;
-                    InitializePageColor();
                 }
             }
         }
@@ -75,14 +74,21 @@ namespace TeamTracker
         public TimelineTask()
         {
             InitializeComponent();
+            InitializePageColor();
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, label1, new object[] { true });
             DoubleBuffered = true;
             Height = 30;
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void SliderPanelPaint(object sender, PaintEventArgs e)

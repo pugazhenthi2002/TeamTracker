@@ -31,6 +31,7 @@ namespace UserInterface.ViewProject.TimelineView
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -39,6 +40,20 @@ namespace UserInterface.ViewProject.TimelineView
             label1.ForeColor = ThemeManager.GetTextColor(BackColor);
             panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             versionNames.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            if (projectCollection != null && projectCollection.Count > 0)
+            {
+                if (projectDisplayPanel.Controls != null)
+                    projectDisplayPanel.Controls.Clear();
+
+                if (milestoneLabelPanel.Controls != null)
+                    milestoneLabelPanel.Controls.Clear();
+                InitializeProjectsForTimeline();
+            }
         }
 
         public List<Projects> ProjectCollection

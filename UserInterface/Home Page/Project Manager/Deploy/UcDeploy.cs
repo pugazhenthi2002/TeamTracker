@@ -49,6 +49,8 @@ namespace TeamTracker
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+            if (version != null)
+                InitializePage();
         }
 
         public new void Dispose()
@@ -65,7 +67,7 @@ namespace TeamTracker
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            profilePictureBox1.ParentColor = panel3.BackColor = panel4.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            pieChart1.BackColor = profilePictureBox1.ParentColor = panel3.BackColor = panel4.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             buttonDeploy.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
             buttonDeploy.ForeColor = ThemeManager.GetTextColor(buttonDeploy.BackColor);
             teamLeaderName.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label7.ForeColor = labelProjNameandVersion.ForeColor = submissionDateLabel.ForeColor = ThemeManager.GetTextColor(panel4.BackColor);

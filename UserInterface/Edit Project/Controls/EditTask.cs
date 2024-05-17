@@ -42,6 +42,17 @@ namespace UserInterface.Edit_Project.Controls
             ucNotFound1.BackColor = ucNotFound2.BackColor = buttonDelete.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             buttonUpdate.ForeColor = ThemeManager.GetTextColor(buttonUpdate.BackColor);
             buttonDelete.ForeColor = ThemeManager.GetTextColor(buttonDelete.BackColor);
+
+            if(tabControl1.SelectedIndex == 0)
+            {
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            }
+            else
+            {
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
         }
 
         public void InitializePage()

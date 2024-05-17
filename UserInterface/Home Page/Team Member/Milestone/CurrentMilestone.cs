@@ -14,14 +14,8 @@ namespace TeamTracker
     {
         public string MilestoneName
         {
-            get
-            {
-                return labelMilestonename.Text;
-            }
-            set
-            {
-                labelMilestonename.Text = value;
-            }
+            get { return labelMilestone.Text; }
+            set { labelMilestone.Text = value; }
         }
 
         public CurrentMilestone()
@@ -29,7 +23,7 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             ThemeManager.ThemeChange += OnThemeChanged;
-            labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
+            //labelMilestonename.Location = new Point(65, panelBase.Height / 2-13);
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -39,8 +33,9 @@ namespace TeamTracker
 
         private void InitializePageColor()
         {
-            label1.BackColor = labelMilestonename.ForeColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = labelMilestone.ForeColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            panelBase.Invalidate();
         }
 
         protected override void OnResize(EventArgs e)
@@ -59,7 +54,15 @@ namespace TeamTracker
             Point pt3 = new Point(Width - 11, Height - 11);
             Point pt4 = new Point(9, Height - 11);
             Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 3);
+            Brush brush = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
+            StringFormat SFormat = new StringFormat()
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+            Font font = new Font(new FontFamily("Ebrima"), 12, FontStyle.Bold);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
+            //e.Graphics.DrawString(MilestoneName, font, brush, new Rectangle(0, 0, Width, Height));
             border.Dispose();
         }
 

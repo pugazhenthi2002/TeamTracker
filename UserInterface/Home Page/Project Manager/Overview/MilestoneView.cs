@@ -25,8 +25,27 @@ namespace TeamTracker
         public MilestoneView()
         {
             InitializeComponent();
+            ThemeManager.ThemeChange += OnThemeChanged;
             pathAndDateCollection = new List<StartPathAndDate>() { startPathAndDate1, startPathAndDate2, startPathAndDate3, startPathAndDate4, startPathAndDate5 };
             singleMilestoneCollection = new List<SingleMilestone>() { singleMilestone1, singleMilestone2, singleMilestone3, singleMilestone4 };
+        }
+
+        public void InitializePageColor()
+        {
+            if (milestoneCollection != null)
+            {
+                for (int ctr = 0, iter = startCount; ctr < 4 && iter <= endCount; ctr++, iter++)
+                {
+                    pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneCollection[iter].Status];
+                }
+                int size = pathAndDateCollection.Count;
+                pathAndDateCollection[size - 1].MilestoneColor = singleMilestoneCollection[size - 2].MilestoneColor;
+            }
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

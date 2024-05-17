@@ -23,12 +23,19 @@ namespace UserInterface
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             labelHead.ForeColor = labelMessage.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()

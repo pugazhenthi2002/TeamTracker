@@ -25,11 +25,12 @@ namespace UserInterface.Task
         public AddTask()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public void InitializePage()
         {
-            InitializePageColor();
             if (VersionManager.CurrentVersion == null)
             {
                 ucNotFound1.Visible = true;
@@ -63,6 +64,11 @@ namespace UserInterface.Task
             addTaskButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             projectNameLabel.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             label1.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void AddTaskClick(object sender, EventArgs e)

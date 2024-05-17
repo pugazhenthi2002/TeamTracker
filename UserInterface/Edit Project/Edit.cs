@@ -29,6 +29,17 @@ namespace UserInterface.Edit_Project
         {
             tabPage1.BackColor = tabPage2.BackColor = tabPage3.BackColor = tabPage4.BackColor = editTaskButton.BackColor = editMilestoneButton.ForeColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             editTaskButton.ForeColor = editMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            if(tabControl1.SelectedIndex == 1 && tabControl2.SelectedIndex == 0)
+            {
+                editTaskButton.BackColor = editMilestoneButton.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                editTaskButton.ForeColor = editMilestoneButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+            else if(tabControl1.SelectedIndex == 1 && tabControl2.SelectedIndex == 1)
+            {
+                editTaskButton.BackColor = editMilestoneButton.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+                editTaskButton.ForeColor = editMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            }
         }
 
         public void InitializePage()

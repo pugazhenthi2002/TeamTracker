@@ -38,6 +38,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             panelTags.HorizontalScroll.Enabled = false;
             panelTags.HorizontalScroll.Visible = false;
 
@@ -48,6 +49,11 @@ namespace TeamTracker
             labelWarning.Hide();
             labelAttachment.Hide();
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

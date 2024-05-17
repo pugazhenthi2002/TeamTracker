@@ -34,7 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelBase = new System.Windows.Forms.Panel();
-            this.labelMilestonename = new System.Windows.Forms.Label();
+            this.labelMilestone = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panelBase.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +92,7 @@
             // panelBase
             // 
             this.panelBase.BackColor = System.Drawing.Color.Transparent;
-            this.panelBase.Controls.Add(this.labelMilestonename);
+            this.panelBase.Controls.Add(this.labelMilestone);
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBase.Location = new System.Drawing.Point(15, 15);
             this.panelBase.Name = "panelBase";
@@ -100,18 +100,16 @@
             this.panelBase.TabIndex = 12;
             this.panelBase.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaintBasePanel);
             // 
-            // labelMilestonename
+            // labelMilestone
             // 
-            this.labelMilestonename.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelMilestonename.AutoSize = true;
-            this.labelMilestonename.BackColor = System.Drawing.Color.Transparent;
-            this.labelMilestonename.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMilestonename.ForeColor = System.Drawing.Color.Silver;
-            this.labelMilestonename.Location = new System.Drawing.Point(204, 68);
-            this.labelMilestonename.Name = "labelMilestonename";
-            this.labelMilestonename.Size = new System.Drawing.Size(51, 20);
-            this.labelMilestonename.TabIndex = 0;
-            this.labelMilestonename.Text = "label2";
+            this.labelMilestone.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelMilestone.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMilestone.Location = new System.Drawing.Point(183, 67);
+            this.labelMilestone.Name = "labelMilestone";
+            this.labelMilestone.Size = new System.Drawing.Size(100, 23);
+            this.labelMilestone.TabIndex = 0;
+            this.labelMilestone.Text = "label2";
+            this.labelMilestone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CurrentMilestone
             // 
@@ -127,7 +125,6 @@
             this.Size = new System.Drawing.Size(488, 185);
             this.panel3.ResumeLayout(false);
             this.panelBase.ResumeLayout(false);
-            this.panelBase.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -140,6 +137,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelBase;
-        private System.Windows.Forms.Label labelMilestonename;
+        private System.Windows.Forms.Label labelMilestone;
     }
 }

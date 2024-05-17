@@ -53,6 +53,7 @@ namespace TeamTracker
                 completedTaskLabel.Text = result[1].ToString();
                 dueTaskLabel.Text = result[2].ToString();
                 incompleteTaskLabel.Text = result[3].ToString();
+                currentMilestone1.MilestoneName = MilestoneManager.CurrentMilestone.MileStoneName;
             }
         }
 

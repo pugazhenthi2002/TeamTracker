@@ -49,7 +49,11 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
-            InitializePageColor();
+            if (version != null)
+            {
+                InitializePageColor();
+                InitializeOverview();
+            }
         }
 
         public new void Dispose()
@@ -75,7 +79,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void InitializePageColor()
         {
-            ucNotFound1.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = panel8.BackColor = panel9.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            pieChart1.BackColor = ucNotFound1.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = panel8.BackColor = panel9.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label2.ForeColor = label3.ForeColor = label8.ForeColor = dueTaskTitleLabel.ForeColor = ThemeManager.GetTextColor(panel5.BackColor);
             taskCountLabel.ForeColor = dueTaskLabel.ForeColor = completedTaskLabel.ForeColor = incompleteTaskLabel.ForeColor = ThemeManager.GetTextColor(panel5.BackColor);
             label1.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
@@ -123,41 +127,44 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void InitializeOverview()
         {
-            List<int> result = TaskManager.FetchTaskCount(version.VersionID);
-
-            taskCountLabel.Text = result[0].ToString();
-            completedTaskLabel.Text = result[1].ToString();
-            dueTaskLabel.Text = result[2].ToString();
-            incompleteTaskLabel.Text = result[3].ToString();
-
-            milestoneView1.MilestoneCollection = MilestoneManager.FetchMilestones(version.VersionID);
-
-            flag = milestoneView1.ChangeMilestoneUI(true);
-
-            if (flag > 0) IsNextEnable = false;
-            else { IsNextEnable = IsBackEnable = true; }
-
-            var colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
-            int colorIndex = 0, total = 0;
-            Dictionary<TeamTracker.TaskStatus, int> result1 = TaskManager.FetchTaskCountByStatus(VersionManager.CurrentVersion.VersionID);
-
-            foreach (var Iter in result1)
+            if (version != null)
             {
-                total+=Iter.Value;
-            }
+                List<int> result = TaskManager.FetchTaskCount(version.VersionID);
 
-            if(total == 0)
-            {
-                pieChart1.Visible = false;
-            }
+                taskCountLabel.Text = result[0].ToString();
+                completedTaskLabel.Text = result[1].ToString();
+                dueTaskLabel.Text = result[2].ToString();
+                incompleteTaskLabel.Text = result[3].ToString();
 
-            SeriesCollection seriesCollection = new SeriesCollection();
-            foreach (var Iter in result1)
-            {
-                seriesCollection.Add(new PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                colorIndex = (colorIndex + 2) % colorList.Count;
+                milestoneView1.MilestoneCollection = MilestoneManager.FetchMilestones(version.VersionID);
+
+                flag = milestoneView1.ChangeMilestoneUI(true);
+                milestoneView1.InitializePageColor();
+                if (flag > 0) IsNextEnable = false;
+                else { IsNextEnable = IsBackEnable = true; }
+
+                var colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+                int colorIndex = 0, total = 0;
+                Dictionary<TeamTracker.TaskStatus, int> result1 = TaskManager.FetchTaskCountByStatus(VersionManager.CurrentVersion.VersionID);
+
+                foreach (var Iter in result1)
+                {
+                    total += Iter.Value;
+                }
+
+                if (total == 0)
+                {
+                    pieChart1.Visible = false;
+                }
+
+                SeriesCollection seriesCollection = new SeriesCollection();
+                foreach (var Iter in result1)
+                {
+                    seriesCollection.Add(new PieSeries { Title = Iter.Key.ToString(), Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
+                    colorIndex = (colorIndex + 2) % colorList.Count;
+                }
+                pieChart1.Series = seriesCollection;
             }
-            pieChart1.Series = seriesCollection;
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

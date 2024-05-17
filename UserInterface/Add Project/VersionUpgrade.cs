@@ -52,6 +52,7 @@ namespace TeamTracker
             clearButton.ForeColor = ThemeManager.GetTextColor(clearButton.BackColor);
             clientTextBox.BackColor = versionNameTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             versionNameTextBox.ForeColor = clientTextBox.ForeColor = descTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = ucNotFound2.BackColor = ThemeManager.CurrentTheme.SecondaryII;
         }
 
         public void InitializePage()

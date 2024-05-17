@@ -97,6 +97,11 @@ namespace UserInterface.Issues.My_Issue_Page
             labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
         }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
         public new void Dispose()
         {
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
@@ -169,6 +174,8 @@ namespace UserInterface.Issues.My_Issue_Page
             DoubleBuffered = true;
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.NonPublic, null, panel1, new object[] { true });
         }
 

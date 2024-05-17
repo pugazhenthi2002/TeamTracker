@@ -21,6 +21,7 @@ namespace UserInterface.Task
             InitializeRoundedEdge();
             InitializePageColor();
             this.Location = new Point(700, 300);
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public VersionSourceCode SelectedVersionSourceCode;
@@ -67,6 +68,11 @@ namespace UserInterface.Task
             clearButton.BackColor = submitCodeButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             clearButton.ForeColor = submitCodeButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
             label3.ForeColor = ThemeManager.GetTextColor(BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void OnClickClear(object sender, EventArgs e)

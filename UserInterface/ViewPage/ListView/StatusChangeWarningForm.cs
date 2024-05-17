@@ -27,6 +27,7 @@ namespace UserInterface.ViewPage.ListView
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -35,6 +36,11 @@ namespace UserInterface.ViewPage.ListView
             noButton.BackColor = yesButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             label1.ForeColor = noButton.ForeColor = yesButton.ForeColor = ThemeManager.GetTextColor(noButton.BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void OnYesClicked(object sender, EventArgs e)

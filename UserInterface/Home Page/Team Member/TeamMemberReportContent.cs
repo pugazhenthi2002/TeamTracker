@@ -66,6 +66,7 @@ namespace UserInterface.Home_Page.Team_Member
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+            SetReport();
         }
 
         private void InitializeRoundedEdge()
@@ -141,7 +142,6 @@ namespace UserInterface.Home_Page.Team_Member
 
         private void SetReport()
         {
-            InitializePage();
             if (isOpened)
             {
                 totalTaskCount.Text = TaskManager.FilterTaskCount(month, year, priority).ToString();

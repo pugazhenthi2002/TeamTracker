@@ -20,7 +20,13 @@ namespace UserInterface.Project_Manager_Main_Page
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()
@@ -81,5 +87,10 @@ namespace UserInterface.Project_Manager_Main_Page
         );
 
         private const int CSDropShadow = 0x00020000;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ThemeManager.OnThemeChanged();
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             InitializeBorder();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -30,10 +31,15 @@ namespace TeamTracker
             startDate.HeaderForecolor = startDate.BackColor = endDate.HeaderForecolor = endDate.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             tableLayoutPanel5.BackColor = panelAttachment.BackColor = panelSourceCode.BackColor = label3.BackColor = label8.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             labelTaskCount.ForeColor = labelSourceCode.ForeColor = labelAttachment.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
-            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(BackColor);
             labelTitle.ForeColor = profileAssignedTo.ProfileTextColor = ThemeManager.GetTextColor(panel1.BackColor);
             label3.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private bool backEnable = false, frontEnable = true;

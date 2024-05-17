@@ -51,6 +51,12 @@ namespace UserInterface.Task.CreateTask
             toolTip1.SetToolTip(pictureBoxAttachment, "Click to Add attachment");
             toolTip1.SetToolTip(buttonSetMilestone, "Milestone");
             tableLayoutPanelFileName.Hide();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializePageColor()

@@ -22,6 +22,7 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             InitializeRoundedEdge();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
 
@@ -75,6 +76,11 @@ namespace TeamTracker
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
             labelCommitName.ForeColor = labelEmpName.ForeColor = ThemeManager.GetTextColor(BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializeRoundedEdge()

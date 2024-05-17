@@ -23,6 +23,8 @@ namespace UserInterface.Task
         public MilestoneSwitch()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private string milestoneName;
@@ -31,7 +33,6 @@ namespace UserInterface.Task
 
         public void InitializePage()
         {
-            InitializePageColor();
             colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             colorIndex = 0;
             if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
@@ -69,10 +70,16 @@ namespace UserInterface.Task
 
         private void InitializePageColor()
         {
-            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            pieChart1.BackColor = ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             switchMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             switchMilestoneButton.ForeColor = ThemeManager.GetTextColor(switchMilestoneButton.BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            InitializePage();
         }
 
         private void OnMilestonePaint(object sender, PaintEventArgs e)

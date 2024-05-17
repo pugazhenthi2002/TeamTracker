@@ -17,6 +17,7 @@ namespace UserInterface.ViewPage
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public void InitializePage()
@@ -40,6 +41,22 @@ namespace UserInterface.ViewPage
             boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             listLabel.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
             boardLabel.ForeColor = ThemeManager.GetTextColor(boardPanel.BackColor);
+
+            if(tabControl1.SelectedIndex == 0)
+            {
+                boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            }
+            else
+            {
+                boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void OnBoardClick(object sender, EventArgs e)

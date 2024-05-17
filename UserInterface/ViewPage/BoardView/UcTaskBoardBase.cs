@@ -32,6 +32,7 @@ namespace TeamTracker
         public UcTaskBoardBase()
         {
             InitializeComponent();
+            InitializePageColor();
 
             ucTaskStatusBaseNotYetStarted.TaskBoardMouseDown += OnMouseDownTaskBoard;
             ucTaskStatusBaseNotYetStarted.TaskBoardMouseUp += OnMouseUpTaskBoard;
@@ -48,6 +49,8 @@ namespace TeamTracker
             ucTaskStatusBaseUnderReview.TaskBoardMouseDown += OnMouseDownTaskBoard;
             ucTaskStatusBaseUnderReview.TaskBoardMouseUp += OnMouseUpTaskBoard;
             ucTaskStatusBaseUnderReview.TaskBoardMouseMove += OnMouseMoveTaskBoard;
+
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public ProjectVersion CurrentProjVersion
@@ -56,7 +59,6 @@ namespace TeamTracker
             set
             {
                 this.SuspendLayout();
-                InitializePageColor();
                 if (value != null)
                 {
                     currentProjectVersion = value;
@@ -86,6 +88,11 @@ namespace TeamTracker
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void SetVersion()

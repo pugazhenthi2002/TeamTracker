@@ -26,6 +26,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             InitializeComponent();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -35,6 +36,10 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
 
         public Color BorderColor
         {

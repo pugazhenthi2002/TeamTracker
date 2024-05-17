@@ -47,12 +47,19 @@ namespace UserInterface.ViewPage.ListView
         {
             InitializeComponent();
             InitializeDoubleBuffer();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
         {
             profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
             dueDate.ForeColor = projectName.ForeColor = taskNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializeDoubleBuffer()
@@ -70,7 +77,6 @@ namespace UserInterface.ViewPage.ListView
 
         private void SetDoneTaskUI()
         {
-            InitializePageColor();
             if (ModeOfView == CardMode.TeamLead)
             {
                 profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy).EmpProfileLocation);

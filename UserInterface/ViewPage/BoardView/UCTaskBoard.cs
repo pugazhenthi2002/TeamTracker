@@ -41,6 +41,7 @@ namespace TeamTracker
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelProjectName, new object[] { true });
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, LabelTask, new object[] { true });
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelVersion, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
         
         public MouseEventHandler MouseDownTaskBoard;
@@ -92,6 +93,11 @@ namespace TeamTracker
                 ucDueDate1.DueLabelcolor = ucDueDate1.ForeColor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
                 ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryIII;
             }
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void InitializeRoundedEdge()

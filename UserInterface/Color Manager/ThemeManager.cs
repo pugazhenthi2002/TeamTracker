@@ -126,8 +126,7 @@ namespace TeamTracker
                 }
             });
 
-            CurrentTheme = themes[1];
-            CurrentThemeMode = ThemeMode.Heat;
+            CurrentTheme = themes[0];
         }
 
         static public Color GetHoverColor(Color color)
@@ -185,6 +184,7 @@ namespace TeamTracker
         static public void OnThemeChanged()
         {
             CurrentThemeMode = CurrentThemeMode == ThemeMode.Cold ? ThemeMode.Heat : ThemeMode.Cold;
+            CurrentTheme = CurrentThemeMode == ThemeMode.Cold ? themes[0] : themes[1];
             ThemeChange?.Invoke(new object(), EventArgs.Empty);
         }
 

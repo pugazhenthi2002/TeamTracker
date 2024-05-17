@@ -22,7 +22,9 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelTaskCount, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public EventHandler ClickBack;
@@ -33,7 +35,6 @@ namespace TeamTracker
             get { return Tstatus; }
             set
             {
-                InitializePageColor();
                 Tstatus = value;
             }
         }
@@ -64,15 +65,20 @@ namespace TeamTracker
             labelStatus.Text = Tstatus.ToString();
         }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
             labelTaskCount.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelTaskCount.Width, labelTaskCount.Height, 8, 8));
         }
+
         private void OnLoad(object sender, EventArgs e)
         {
             InitializeRoundedEdge();
-            InitializePageColor();
         }
 
         private void OnMouseEnterArrow(object sender, EventArgs e)

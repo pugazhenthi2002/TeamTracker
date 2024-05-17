@@ -21,6 +21,8 @@ namespace UserInterface.Task
         public ReviewTaskTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private TeamTracker.Task selectedTask;
@@ -45,9 +47,13 @@ namespace UserInterface.Task
             downloadSourceCodeButton.ForeColor = reassignButton.ForeColor = doneButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
         }
 
-        private void SetReviewUI()
+        private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+        }
+
+        private void SetReviewUI()
+        {
             projectName.Text = VersionManager.FetchProjectName(selectedTask.VersionID);
             taskNameLabel.Text = selectedTask.TaskName;
             dueDate.Text = selectedTask.EndDate.ToShortDateString();

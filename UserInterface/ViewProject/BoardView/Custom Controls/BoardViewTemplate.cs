@@ -28,6 +28,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             InitializeComponent();
             InitializeBorder();
             InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -36,7 +37,12 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
             milestoneStatusPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
         }
-               
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
         public ProjectVersion BoardVersion
         {
             get { return boardVersion; }

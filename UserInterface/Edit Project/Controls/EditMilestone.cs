@@ -39,6 +39,17 @@ namespace UserInterface.Edit_Project.Controls
             manualEdit.ForeColor = requiredEdit.BackColor = buttonUpdate.BackColor = pictureBox2.BackColor = pictureBox3.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = label2.ForeColor = label3.ForeColor = label4.ForeColor = versionNames.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneTextBox.ForeColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            if(tabControl1.SelectedIndex == 0)
+            {
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            }
+            else
+            {
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
         }
 
         public void InitializePage()
