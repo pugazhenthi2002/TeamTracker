@@ -87,7 +87,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             InitializePageColor();
         }
 
-
         public new void Dispose()
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();

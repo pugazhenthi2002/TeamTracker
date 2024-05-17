@@ -54,11 +54,13 @@ namespace TeamTracker
             {
                 for(int ctr=0; ctr<profilePanel.Controls.Count; ctr++)
                 {
+                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
                     (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
                     profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
                     ctr--;
                 }
             }
+            ThemeManager.ThemeChange -= OnThemeChanged;
             label1?.Dispose();
         }
 
@@ -66,7 +68,7 @@ namespace TeamTracker
         {
             for (int ctr = 0; ctr < profilePanel.Controls.Count; ctr++)
             {
-                //(profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
+                (profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
                 (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
                 profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
                 ctr--;

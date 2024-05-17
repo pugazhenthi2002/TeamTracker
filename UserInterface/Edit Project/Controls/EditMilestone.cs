@@ -32,6 +32,30 @@ namespace UserInterface.Edit_Project.Controls
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            BackBtn.Image?.Dispose(); NextBtn.Image?.Dispose();
+            dropDownPicBox.Image?.Dispose();    pictureBox2.Image?.Dispose(); pictureBox3.Image?.Dispose();
+
+            BoardBasePanelClear();
+            BoardBaseManualPanelClear();
+
+            ThemeManager.ThemeChange -= OnThemeChanged; BackBtn.Click -= OnBackBtnClicked;  buttonUpdate.Click -= OnUpdateMilestone;
+            dropDownPicBox.Image?.Dispose();    manualEdit.Click -= OnManualClick;  NextBtn.Click -= OnNextBtnClicked;
+            panel2.Paint -= OnLineSeperatePaint;    panel10.Paint -= OnLineSeperatePaint;   requiredEdit.Click -= OnRequiredClick;
+            pictureBox2.Click -= clearAllButton_Click; pictureBox3.Click -= addMilestoneButton_Click;
+            tableLayoutPanel2.Paint -= OnLineSeperatePaint; searchVersion1.ProjectNameChange -= OnProjectNameChanged;
+
+            milestoneTemplate1.CheckConstraints -= OnCheckContraints;   milestoneTemplate1.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate2.CheckConstraints -= OnCheckContraints;   milestoneTemplate2.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate3.CheckConstraints -= OnCheckContraints;   milestoneTemplate3.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate4.CheckConstraints -= OnCheckContraints;   milestoneTemplate4.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate5.CheckConstraints -= OnCheckContraints;   milestoneTemplate5.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate6.CheckConstraints -= OnCheckContraints;   milestoneTemplate6.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate7.CheckConstraints -= OnCheckContraints;   milestoneTemplate7.MilestoneOperate -= OnMilestoneOperation;
+            milestoneTemplate8.CheckConstraints -= OnCheckContraints;   milestoneTemplate8.MilestoneOperate -= OnMilestoneOperation;
+        }
+
         public void InitializePageColor()
         {
             panel7.BackColor = boardBaseManualPanel.BackColor = boardBasePanel.BackColor = ucNotFound1.BackColor = ucNotFound2.BackColor = ThemeManager.CurrentTheme.SecondaryII;
@@ -86,7 +110,7 @@ namespace UserInterface.Edit_Project.Controls
                 ucNotFound1.Visible = false; boardBasePanel.Visible = true;
             }
 
-            boardBasePanel.Controls.Clear();
+            BoardBasePanelClear();
 
             for (int ctr = 0; ctr <= endIdx; ctr++)
             {
@@ -102,6 +126,16 @@ namespace UserInterface.Edit_Project.Controls
             foreach (Control Iter in boardBasePanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void BoardBasePanelClear()
+        {
+            for(int ctr = 0; ctr < boardBasePanel.Controls.Count; ctr++)
+            {
+                (boardBasePanel.Controls[ctr] as BoardViewTemplate).VersionSelect -= OnVersionSelection;
+                (boardBasePanel.Controls[ctr] as BoardViewTemplate).Dispose();
+                ctr--;
             }
         }
 
@@ -363,7 +397,7 @@ namespace UserInterface.Edit_Project.Controls
             endIdx = filteredProjects.Count >= 5 ? 4 : filteredProjects.Count - 1;
             isNextEnable = filteredProjects.Count > 5 ? true : false;
 
-            boardBaseManualPanel.Controls.Clear();
+            BoardBaseManualPanelClear();
 
             for (int ctr = 0; ctr <= endIdx; ctr++)
             {
@@ -379,6 +413,16 @@ namespace UserInterface.Edit_Project.Controls
             foreach (Control Iter in boardBaseManualPanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void BoardBaseManualPanelClear()
+        {
+            for (int ctr = 0; ctr < boardBaseManualPanel.Controls.Count; ctr++)
+            {
+                (boardBaseManualPanel.Controls[ctr] as ProjectBoardTemplate).ProjectSelection -= OnProjectSelected;
+                (boardBaseManualPanel.Controls[ctr] as ProjectBoardTemplate).Dispose();
+                ctr--;
             }
         }
 

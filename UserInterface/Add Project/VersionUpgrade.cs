@@ -33,6 +33,8 @@ namespace TeamTracker
 
         public new void Dispose()
         {
+            UnsubscribeEvents();
+
             clearButton.Dispose();  clientTextBox.Dispose();    descTextBox.Dispose(); fileAttachment1.Dispose();
             endDateLabel.Dispose(); endDatePanel.Dispose(); endDateTimePicker.Dispose();    label1.Dispose();   label3.Dispose();   label5.Dispose();
             latestUpgradedVersion1.Dispose();   profilePicAndName1.Dispose();   upgradeButton.Dispose();    ucNotFound1.Dispose();  ucNotFound2.Dispose();  versionNameTextBox.Dispose();
@@ -40,6 +42,25 @@ namespace TeamTracker
             tableLayoutPanel1.Dispose(); tableLayoutPanel2.Dispose(); tableLayoutPanel3.Dispose();  tableLayoutPanel4.Dispose(); tableLayoutPanel5.Dispose(); tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose(); tableLayoutPanel8.Dispose();    tableLayoutPanel9.Dispose();
             panel1.Dispose();   panel2.Dispose(); panel3.Dispose(); panel4.Dispose(); panel5.Dispose();
             panel6.Dispose();   panel7.Dispose(); panel8.Dispose(); panel9.Dispose(); panel10.Dispose();
+        }
+
+        private void UnsubscribeEvents()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            versionNameTextBox.LostFocus -= AddVersionNamePlaceHolders;
+            versionNameTextBox.GotFocus -= RemoveVersionNamePlaceHolders;
+            descTextBox.GotFocus -= RemoveVersionDescPlaceHolders;
+            descTextBox.LostFocus -= AddVersionDescPlaceHolders;
+            clientTextBox.GotFocus -= RemoveClientPlaceHolders;
+            clientTextBox.LostFocus -= AddClientPlaceHolders;
+            chooseProjectLabel.Click -= OnChooseProject; chooseProjectLabel.MouseEnter -= OnChooseProjectLabelEnter;
+            chooseProjectLabel.MouseLeave -= OnChooseProjectLabelLeave; chooseProjectLabel.Paint -= BorderDrawPaint;
+            clearButton.Click -= ClearClick;    clearButton.MouseEnter -= OnButtonMouseEnter;   clearButton.MouseLeave -= OnButtonMouseLeave;   clearButton.Paint -= BorderDrawPaint;
+            upgradeButton.Click -= upgradeButton_Click; upgradeButton.MouseEnter -= OnButtonMouseEnter; upgradeButton.MouseLeave -= OnButtonMouseLeave; upgradeButton.Paint -= BorderDrawPaint;
+            endDatePanel.Paint -= BorderDrawPaint;  startDatePanel.Paint -= BorderDrawPaint;
+            endDateTimePicker.ValueChanged -= OnDateValueChanged;   startDateTimePicker.ValueChanged -= OnDateValueChanged;
+            panel10.Paint -= OnTextBoxBorderPaint;  panel2.Paint -= BorderDrawPaint;    panel3.Paint -= BorderDrawPaint;    panel4.Paint -= OnTextBoxBorderPaint; panel5.Paint -= BorderDrawPaint;
+            panel6.Paint -= BorderDrawPaint; panel7.Paint -= BorderDrawPaint;   panel8.Paint -= BorderDrawPaint;    panel9.Paint -= OnTextBoxBorderPaint;
         }
 
         private void InitializePageColor()

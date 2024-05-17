@@ -42,6 +42,10 @@ namespace UserInterface.Add_Project.Custom_Control
 
         public new void Dispose()
         {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            singleProjectSelectTemplate1.ProjectClick -= OnProjectSelected;
+            singleProjectSelectTemplate2.ProjectClick -= OnProjectSelected;
+
             singleProjectSelectTemplate1.Dispose();
             singleProjectSelectTemplate2.Dispose();
             tableLayoutPanel1.Dispose();

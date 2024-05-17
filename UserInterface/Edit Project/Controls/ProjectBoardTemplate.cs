@@ -33,6 +33,23 @@ namespace UserInterface.Edit_Project.Controls
             ThemeManager.ThemeChange += OnThemeChanged;
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            profilePictureBox1.Image?.Dispose();
+
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            projectNameLabel.Paint -= OnLineSeperatePaint;  panel1.Paint -= BorderDrawPaint;
+            panel1.MouseLeave -= OnMouseLeave; tableLayoutPanel1.MouseLeave -= OnMouseLeave; lastVersionLabel.MouseLeave -= OnMouseLeave;
+            totalVersionsLabel.MouseLeave -= OnMouseLeave; panel2.MouseLeave -= OnMouseLeave; label1.MouseLeave -= OnMouseLeave;
+            profilePictureBox1.MouseLeave -= OnMouseLeave; projectNameLabel.MouseLeave -= OnMouseLeave;
+            panel1.MouseEnter -= OnMouseEnter; tableLayoutPanel1.MouseEnter -= OnMouseEnter; lastVersionLabel.MouseEnter -= OnMouseEnter;
+            totalVersionsLabel.MouseEnter -= OnMouseEnter; panel2.MouseEnter -= OnMouseEnter; label1.MouseEnter -= OnMouseEnter;
+            profilePictureBox1.MouseEnter -= OnMouseEnter; projectNameLabel.MouseEnter -= OnMouseEnter;
+            panel1.Click -= OnProjectClicked; tableLayoutPanel1.Click -= OnProjectClicked; lastVersionLabel.Click -= OnProjectClicked;
+            totalVersionsLabel.Click -= OnProjectClicked; panel2.Click -= OnProjectClicked; label1.Click -= OnProjectClicked;
+            profilePictureBox1.Click -= OnProjectClicked; projectNameLabel.Click -= OnProjectClicked;
+        }
+
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
@@ -105,7 +122,6 @@ namespace UserInterface.Edit_Project.Controls
             Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
-
             border1.Dispose();
         }
 

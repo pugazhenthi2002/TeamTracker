@@ -21,7 +21,6 @@ namespace TeamTracker
         {
             this.MouseDown += RippleButton_MouseDown;
             this.Paint += RippleButton_Paint;
-            //this.ResizeRedraw = true;
         }
 
         public void RippleButton_MouseDown(object sender, MouseEventArgs e)
@@ -97,7 +96,14 @@ namespace TeamTracker
             }
         }
 
-        
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            this.MouseDown -= RippleButton_MouseDown;
+            this.Paint -= RippleButton_Paint;
+            t.Tick -= RippleTimer_Tick;
+            t.Dispose();
+        }
     }
 
     class Ripple

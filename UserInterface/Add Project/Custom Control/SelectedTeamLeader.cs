@@ -52,6 +52,10 @@ namespace TeamTracker
         {
             if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
 
+            button1.Click -= OnChangeTLClick;   button1.MouseEnter -= OnMouseEnter; button1.MouseLeave -= OnMouseLeave; button1.Paint -= OnPaint;
+            tableLayoutPanel1.Resize -= OnResize;
+            ThemeManager.ThemeChange -= OnThemeChanged;
+
             profilePictureBox1.Dispose();
             label1.Dispose();   label2.Dispose();   panel3.Dispose();
             tableLayoutPanel1.Dispose(); button1.Dispose();
@@ -59,7 +63,7 @@ namespace TeamTracker
 
         private void InitializePageColor()
         {
-            button1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label2.ForeColor = button1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             profilePictureBox1.ParentColor = ThemeManager.CurrentTheme.SecondaryII;
             button1.ForeColor = ThemeManager.GetTextColor(button1.BackColor);
             label1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);

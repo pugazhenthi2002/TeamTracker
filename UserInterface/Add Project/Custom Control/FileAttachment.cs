@@ -54,13 +54,27 @@ namespace TeamTracker
 
         public new void Dispose()
         {
-            ;
+            for (int ctr = 0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
+            {
+                (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).AttachmentRemove -= OnAttachmentRemoved;
+                (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
+                attachmentDisplayPanel.Controls.RemoveAt(ctr);
+                ctr--;
+            }
+
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            browseLabel.Click -= OnBrowseClick; browseLabel.MouseEnter -= OnBrowseMouseEnter;   browseLabel.MouseLeave -= OnBrowseMouseLeave;
+            tableLayoutPanel1.Paint -= OnTablePanelPaint;
+
+            pictureBox1.Image?.Dispose();
+            attachmentDisplayPanel.Dispose();   browseLabel.Dispose();  label1.Dispose();   pictureBox1.Dispose();  tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
         }
 
         private void ClearAttachments()
         {
             for (int ctr = 0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
             {
+                (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).AttachmentRemove -= OnAttachmentRemoved;
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
                 attachmentDisplayPanel.Controls.RemoveAt(ctr);
                 ctr--;
@@ -72,12 +86,6 @@ namespace TeamTracker
             browseLabel.BackColor = label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             browseLabel.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(browseLabel.BackColor);
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-        }
-
-        private void OnResize(object sender, EventArgs e)
-        {
-            int value = (tableLayoutPanel2.Width - 150) / 2;
-            browseLabel.Margin = new Padding(value, 0, value, 0);
         }
 
         private void OnBrowseClick(object sender, EventArgs e)
@@ -127,6 +135,7 @@ namespace TeamTracker
 
         private void OnAttachmentRemoved(object sender, EventArgs e)
         {
+            (sender as PDFAttachment).AttachmentRemove -= OnAttachmentRemoved;
             AttachmentCollection.Remove((sender as PDFAttachment).FileName);
             attachmentDisplayPanel.Controls.Remove(sender as PDFAttachment);
             (sender as PDFAttachment).Dispose();
@@ -153,6 +162,13 @@ namespace TeamTracker
             Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(Width - 349, 0), new Point(Width - 349, tableLayoutPanel1.Height));
             border.Dispose();
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            int value = (tableLayoutPanel2.Width - 150) / 2;
+            browseLabel.Margin = new Padding(value, 0, value, 0);
         }
 
         public Dictionary<string, VersionAttachment> attachmentCollection;

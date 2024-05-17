@@ -53,16 +53,15 @@ namespace UserInterface.Add_Project.Custom_Control
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
-            //ucNotFound1.InitializePageColor();
         }
 
         public new void Dispose()
         {
-            if(controlPanel.Controls != null)
+            if (controlPanel.Controls != null)
             {
-                for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
+                for (int ctr = 0; ctr < controlPanel.Controls.Count; ctr++)
                 {
-                    //(controlPanel.Controls[ctr] as SelectProjectTemplate).ProjectSelect -= OnProjectSelected;
+                    (controlPanel.Controls[ctr] as SelectProjectTemplate).ProjectSelect -= OnProjectSelected;
                     (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
                     controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
                     ctr--;
@@ -74,7 +73,14 @@ namespace UserInterface.Add_Project.Custom_Control
             downPicBox.Dispose();
             if (upPicBox.Image != null)
                 upPicBox.Image.Dispose();
-            
+
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            upPicBox.Click -= OnPaginateUpClick; upPicBox.MouseEnter -= OnPaginateMouseEnter; upPicBox.MouseLeave -= OnPaginateMouseLeave;
+            downPicBox.Click -= OnPaginateDownClick; upPicBox.MouseEnter -= OnPaginateMouseEnter; upPicBox.MouseLeave -= OnPaginateMouseLeave;
+            cancelButton.Click -= OnCancelClick; cancelButton.MouseEnter -= OnButtonMouseEnter; cancelButton.MouseLeave -= OnButtonMouseLeave; cancelButton.Paint -= OnPaint;
+            selectButton.Click -= OnSelectClick; selectButton.MouseEnter -= OnButtonMouseEnter; selectButton.MouseLeave -= OnButtonMouseLeave; selectButton.Paint -= OnPaint;
+            tableLayoutPanel1.Paint -= OnBorderPaint;
+
             upPicBox.Dispose();
             label1.Dispose();
             cancelButton.Dispose(); selectButton.Dispose();

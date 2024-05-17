@@ -71,6 +71,12 @@ namespace UserInterface.Add_Project.Custom_Control
             {
                 profilePictureBox1.Image.Dispose();
             }
+
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            profilePictureBox1.Click -= OnClicked;  versionLabel.Click -= OnClicked;    teamLeadLabel.Click -= OnClicked;   projectLabel.Click -= OnClicked;    tableLayoutPanel1.Click -= OnClicked;
+            profilePictureBox1.MouseEnter -= OnMouseEnter;  versionLabel.MouseEnter -= OnMouseEnter;    teamLeadLabel.MouseEnter -= OnMouseEnter;   projectLabel.MouseEnter -= OnMouseEnter;    tableLayoutPanel1.MouseEnter -= OnMouseEnter;
+            profilePictureBox1.MouseLeave -= OnMouseLeave;  versionLabel.MouseLeave -= OnMouseLeave;    teamLeadLabel.MouseLeave -= OnMouseLeave;   projectLabel.MouseLeave -= OnMouseLeave;    tableLayoutPanel1.MouseLeave -= OnMouseLeave;
+
             profilePictureBox1.Dispose();
             panel1.Dispose();
             tableLayoutPanel1.Dispose();

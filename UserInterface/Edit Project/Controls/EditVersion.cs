@@ -45,6 +45,20 @@ namespace UserInterface.Edit_Project.Controls
             DeleteButton.ForeColor = ThemeManager.GetTextColor(DeleteButton.BackColor);
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            BackBtn.Image?.Dispose();   NextBtn.Image?.Dispose();
+
+            BoardBasePanelClear();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            panel5.Paint -= OnLineSeperatePaint; endDateLabel.Paint -= OnLineSeperatePaint; startDateLabel.Paint -= OnLineSeperatePaint;
+            label2.Paint -= OnLineSeperatePaint; label5.Paint -= OnLineSeperatePaint; panel1.Paint -= OnLineSeperatePaint;
+            panel4.Paint -= BorderDrawPaint; endDatePanel.Paint -= BorderDrawPaint; startDatePanel.Paint -= BorderDrawPaint; updateButton.Paint -= BorderDrawPaint;
+            panel6.Paint -= BorderDrawPaint; panel8.Paint -= BorderDrawPaint; panel13.Paint -= BorderDrawPaint; DeleteButton.Paint -= BorderDrawPaint;
+            chooseVersionLabel.Click -= OnChooseVersionClicked; updateButton.Click -= OnUpdateClicked;  DeleteButton.Click -= OnDeleteClicked; NextBtn.Click -= OnNextBtnClicked;
+            searchVersion1.ProjectNameChange -= OnProjectNameChanged;   BackBtn.Click -= OnBackBtnClicked;
+        }
+
         public void InitializePage()
         {
             OnProjectNameChanged(this, "");
@@ -74,7 +88,7 @@ namespace UserInterface.Edit_Project.Controls
             endIdx = filteredProjectCollection.Count >= 5 ? 4 : filteredProjectCollection.Count - 1;
             isNextEnable = filteredProjectCollection.Count > 5 ? true : false;
 
-            boardBasePanel.Controls.Clear();
+            BoardBasePanelClear();
 
             for(int ctr=0; ctr <= endIdx; ctr++)
             {
@@ -90,6 +104,16 @@ namespace UserInterface.Edit_Project.Controls
             foreach(Control Iter in boardBasePanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void BoardBasePanelClear()
+        {
+            for(int ctr=0;ctr< boardBasePanel.Controls.Count; ctr++)
+            {
+                (boardBasePanel.Controls[ctr] as ProjectBoardTemplate).ProjectSelection -= OnProjectSelected;
+                (boardBasePanel.Controls[ctr] as ProjectBoardTemplate).Dispose();
+                ctr--;
             }
         }
 
@@ -118,7 +142,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnNextBtnClicked(object sender, EventArgs e)
         {
-            if(isNextEnable)
+            if (isNextEnable)
             {
                 startIdx++; endIdx++;
                 ResetControls();
@@ -204,6 +228,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnUpdateStatus(object sender, bool e)
         {
+            (sender as WarningForm).WarningStatus -= OnUpdateStatus;
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
@@ -273,6 +298,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnDeleteStatus(object sender, bool e)
         {
+            (sender as WarningForm).WarningStatus -= OnDeleteStatus;
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 

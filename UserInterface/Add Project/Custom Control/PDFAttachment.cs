@@ -40,6 +40,9 @@ namespace TeamTracker
 
         public new void Dispose()
         {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            closePicBox.Click -= OnCloseCLick;  closePicBox.MouseEnter -= OnCloseMouseEnter;    closePicBox.MouseLeave -= OnCloseMouseLeave;
+
             pictureBox1.Image.Dispose();
             closePicBox.Image.Dispose();
             closePicBox.Dispose();

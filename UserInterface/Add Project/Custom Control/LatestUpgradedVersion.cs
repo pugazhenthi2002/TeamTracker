@@ -45,6 +45,10 @@ namespace TeamTracker
 
         public new void Dispose()
         {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            label1.Paint -= OnPaint;    label2.Paint -= OnPaint;    label3.Paint -= OnPaint;    label7.Paint -= OnPaint;
+            panel2.Paint -= BorderPaint;    panel3.Paint -= BorderPaint;    panel4.Paint -= BorderPaint;    panel2.Paint -= BorderPaint;
+
             label1.Dispose();   label2.Dispose();   label3.Dispose();   label6.Dispose(); label7.Dispose();
             panel1.Dispose(); panel2.Dispose() ; panel3.Dispose(); panel4.Dispose();    panel7.Dispose();   panel8.Dispose();
             tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();

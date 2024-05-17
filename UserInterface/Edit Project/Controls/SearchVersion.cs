@@ -14,6 +14,7 @@ namespace UserInterface.Edit_Project.Controls
     public partial class SearchVersion : UserControl
     {
         public event EventHandler<string> ProjectNameChange;
+
         public SearchVersion()
         {
             InitializeComponent();
@@ -46,6 +47,14 @@ namespace UserInterface.Edit_Project.Controls
         {
             BackColor = versionSearchTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             versionSearchTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            versionSearchTextBox.TextChanged -= OnTextChanged;
+            versionSearchTextBox.GotFocus -= RemoveSearchPlaceHolders;
+            versionSearchTextBox.LostFocus -= AddSearchPlaceHolders;
         }
 
         private void OnTextChanged(object sender, EventArgs e)

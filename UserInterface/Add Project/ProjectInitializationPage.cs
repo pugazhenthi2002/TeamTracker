@@ -31,6 +31,22 @@ namespace TeamTracker
 
         public new void Dispose()
         {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            availableTeamLeaders1.TeamLeaderClick -= OnTeamLeaderClick;
+            clearButton.Click -= OnCLearClick;  clearButton.MouseEnter -= OnButtonMouseEnter;   clearButton.MouseLeave -= OnButtonMouseLeave;   clearButton.Paint -= BorderDrawPaint;
+            CreateProject.Click -= OnCreateClick; CreateProject.MouseEnter -= OnButtonMouseEnter; CreateProject.MouseLeave -= OnButtonMouseLeave; CreateProject.Paint -= BorderDrawPaint;
+            endDateTimePicker.ValueChanged -= OnDateValueChanged;   startDateTimePicker.ValueChanged -= OnDateValueChanged;
+            panel1.Paint -= BorderDrawPaint;    panel2.Paint -= BorderDrawPaint;    panel3.Paint -= BorderDrawPaint;    panel5.Paint -= BorderDrawPaint;    panel6.Paint -= BorderDrawPaint;
+            ProjectEntryTablePanel.Paint -= TextBorderPanelPaint;
+            selectedTeamLeader1.OnChangeTeamLeader -= SelectedTeamLeader_OnChangeTeamLeader;
+            tableLayoutPanel5.Paint -= CLientTextBorderPanelPaint;
+            projectDescTextBox.GotFocus -= RemoveDescPlaceHolders;
+            projectDescTextBox.LostFocus -= AddDescPlaceHolders;
+            projectTitleTextBox.GotFocus -= RemoveTitlePlaceHolders;
+            projectTitleTextBox.LostFocus -= AddTitlePlaceHolders;
+            clientTextBox.GotFocus -= RemoveClientPlaceHolders;
+            clientTextBox.LostFocus -= AddClientPlaceHolders;
+
             label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();
             panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
             tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose();

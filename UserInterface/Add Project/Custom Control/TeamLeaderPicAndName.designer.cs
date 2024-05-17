@@ -97,6 +97,7 @@
             this.profilePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox2.TabIndex = 3;
             this.profilePictureBox2.TabStop = false;
+            this.profilePictureBox2.Click += new System.EventHandler(this.OnProfileClicked);
             this.profilePictureBox2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.profilePictureBox2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 

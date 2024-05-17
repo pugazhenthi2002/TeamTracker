@@ -26,6 +26,9 @@ namespace TeamTracker
 
         public new void Dispose()
         {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            initializeButton.Click -= OnInitializeClick;    versionUpgradeButton.Click -= OnVersionUpgradeClick;
+
             initializeButton.Dispose(); versionUpgradeButton.Dispose();
             panel1.Dispose();  panel2.Dispose();    tableLayoutPanel1.Dispose();
             versionUpgrade1.Dispose();  projectInitializationPage1.Dispose();

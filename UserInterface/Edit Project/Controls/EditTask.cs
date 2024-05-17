@@ -55,6 +55,19 @@ namespace UserInterface.Edit_Project.Controls
             }
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            BtnAssignTo.Image?.Dispose();   pictureBox2.Image?.Dispose();   pictureBox3.Image?.Dispose();   BackBtn.Image?.Dispose();   NextBtn.Image?.Dispose();
+            pictureBoxAttachment.Image?.Dispose();  pictureBoxFlag.Image?.Dispose();
+
+            BoardBaseClearControl();    BoardBaseManualPanelControlClear();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            BackBtn.Click -= OnBackClick;   NextBtn.Click -= OnNextClick;   BtnAssignTo.Click -= OnClickAssignBtn;  buttonSetMilestone.Click -= OnClickSetMilestone;
+            labelSetPriority.Click -= OnClickSetPriority;   buttonDelete.Click -= OnTaskDelete; buttonUpdate.Click -= OnTaskUpdate; manualEdit.Click -= OnManualClick;
+            panel2.Paint -= OnLineSeperatePaint;    panel5.Paint -= OnLineSeperatePaint;    panel7.Paint -= OnLineSeperatePaint;    panel8.Paint -= OnLineSeperatePaint;
+            requiredEdit.Click -= OnRequiredClick; pictureBox2.Click -= OnClickCloseFile;   pictureBoxAttachment.Click -= OnClickAddAttachment; searchTask1.TaskNameChange -= OnTaskNameChanged;
+        }
+
         public void InitializePage()
         {
             SuspendLayout();
@@ -104,7 +117,7 @@ namespace UserInterface.Edit_Project.Controls
                 ucNotFound1.Visible = false;    boardBasePanel.Visible = true;
             }
 
-            boardBasePanel.Controls.Clear();
+            BoardBaseClearControl();
 
             for (int ctr = 0; ctr <= endIdx; ctr++)
             {
@@ -120,6 +133,16 @@ namespace UserInterface.Edit_Project.Controls
             foreach (Control Iter in boardBasePanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void BoardBaseClearControl()
+        {
+            for(int ctr = 0; ctr < boardBasePanel.Controls.Count; ctr++)
+            {
+                (boardBasePanel.Controls[ctr] as UCTaskBoard).TaskSelect -= OnTaskSelected;
+                (boardBasePanel.Controls[ctr] as UCTaskBoard).Dispose();
+                ctr--;
             }
         }
 
@@ -139,7 +162,7 @@ namespace UserInterface.Edit_Project.Controls
                 ucNotFound2.Visible = false; boardBaseManualPanel.Visible = true; panel1.Visible = true;
             }
 
-            boardBaseManualPanel.Controls.Clear();
+            BoardBaseManualPanelControlClear();
 
             for (int ctr = 0; ctr <= endIdx; ctr++)
             {
@@ -155,6 +178,16 @@ namespace UserInterface.Edit_Project.Controls
             foreach (Control Iter in boardBaseManualPanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void BoardBaseManualPanelControlClear()
+        {
+            for (int ctr = 0; ctr < boardBaseManualPanel.Controls.Count; ctr++)
+            {
+                (boardBaseManualPanel.Controls[ctr] as UCTaskBoard).TaskSelect -= OnTaskSelected;
+                (boardBaseManualPanel.Controls[ctr] as UCTaskBoard).Dispose();
+                ctr--;
             }
         }
 
@@ -372,6 +405,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnUpdateStatus(object sender, bool e)
         {
+            (sender as WarningForm).WarningStatus -= OnUpdateStatus;
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
@@ -408,6 +442,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnDeleteStatus(object sender, bool e)
         {
+            (sender as WarningForm).WarningStatus -= OnDeleteStatus;
             (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
