@@ -68,7 +68,7 @@ namespace TeamTracker
             pictureBox1.Image?.Dispose();
         }
 
-        private void ClearAttachments()
+        public void ClearAttachments()
         {
             for (int ctr = 0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
             {

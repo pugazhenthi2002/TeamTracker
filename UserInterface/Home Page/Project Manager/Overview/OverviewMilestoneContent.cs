@@ -270,13 +270,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         {
             if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
             {
-                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Light : UserInterface.Properties.Resources.Cold_Left_Medium;
-                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Light : UserInterface.Properties.Resources.Cold_Right_Medium;
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
             }
             else
             {
-                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Light : UserInterface.Properties.Resources.Heat_Left_Medium;
-                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Light : UserInterface.Properties.Resources.Heat_Right_Medium;
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
             }
         }
 
