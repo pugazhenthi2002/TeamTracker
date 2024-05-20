@@ -53,14 +53,11 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if(dropDownPicBox.Image != null) { dropDownPicBox.Image.Dispose(); }
 
-            label1.Dispose();   label2.Dispose();
-            dropDownPicBox.Dispose(); projectNameLabel.Dispose();
-            panel1.Dispose(); panel2.Dispose(); panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
-            overviewMilestoneContent1.Dispose();    ucNotFound1.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -71,6 +68,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             panel7.BackColor = ThemeManager.CurrentTheme.PrimaryII;
             projectNameLabel.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -116,7 +115,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (dropDownPicBox.Image != null)
                 dropDownPicBox.Image.Dispose();
 
-            dropDownPicBox.Image = Properties.Resources.Down_Dark_Blue;
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
             panel7.Invalidate();
         }
 
@@ -125,7 +124,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (dropDownPicBox.Image != null)
                 dropDownPicBox.Image.Dispose();
 
-            dropDownPicBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             panel7.Invalidate();
         }
 

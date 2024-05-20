@@ -26,6 +26,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void UnSubscribeEventsAndRemoveMemory()
         {
+            pictureBox1.Image?.Dispose();
             ThemeManager.ThemeChange -= OnThemeChanged;
             taskSearchTextBox.GotFocus -= RemoveSearchPlaceHolders;
             taskSearchTextBox.LostFocus -= AddSearchPlaceHolders;
@@ -55,6 +56,8 @@ namespace UserInterface.Edit_Project.Controls
         {
             BackColor = taskSearchTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             taskSearchTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Search : Properties.Resources.Heat_Search;
         }
 
         private void OnTextChanged(object sender, EventArgs e)

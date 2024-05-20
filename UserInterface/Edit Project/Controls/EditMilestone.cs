@@ -64,7 +64,19 @@ namespace UserInterface.Edit_Project.Controls
             label1.ForeColor = label2.ForeColor = label3.ForeColor = label4.ForeColor = versionNames.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneTextBox.ForeColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
 
-            if(tabControl1.SelectedIndex == 0)
+            BackBtn.Image?.Dispose();
+            NextBtn.Image?.Dispose();
+            dropDownPicBox.Image?.Dispose();
+            pictureBox3.Image?.Dispose();
+            pictureBox3.Image?.Dispose();
+
+            ResetButton();
+
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Plus_Dark: Properties.Resources.Heat_Plus_Dark;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Delete_Dark: Properties.Resources.Heat_Delete_Dark;
+
+            if (tabControl1.SelectedIndex == 0)
             {
                 requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
@@ -519,6 +531,7 @@ namespace UserInterface.Edit_Project.Controls
                 isBackEnable = startIdx == 0 ? false : true;
                 isNextEnable = endIdx == requiredVersion.Count - 1 ? false : true;
             }
+            ResetButton();
         }
 
         private void OnManualClick(object sender, EventArgs e)
@@ -554,6 +567,75 @@ namespace UserInterface.Edit_Project.Controls
         private ProjectVersion selectedVersion;
         private TransparentForm transparentForm;
         private Projects selectedProject;
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    BackBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    BackBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    NextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    NextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                }
+            }
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
         private List<ProjectVersion> requiredVersion;
         private List<ProjectVersion> selectedProjAllVersions;
         private List<Projects> filteredProjects;

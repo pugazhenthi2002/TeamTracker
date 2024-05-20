@@ -28,14 +28,13 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 version = value;
                 if (value != null)
                     InitializeOverview();
-                IsBackEnable = false;
-                IsNextEnable = true;
+                isBackEnable = false;
+                isNextEnable = true;
 
-                if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-                if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+                if (backBtn.Image != null) backBtn.Image.Dispose();
+                if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-                backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
-                nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
+                ResetButton();
             }
         }
         
@@ -56,25 +55,16 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             }
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
             if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
             if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
             if (pictureBox4.Image != null) pictureBox4.Image.Dispose();
-            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            completedTaskLabel.Dispose();   donePanel.Dispose();    currentPanel.Dispose(); delayPanel.Dispose();
-            dueTaskLabel.Dispose(); dueTaskTitleLabel.Dispose();    incompleteTaskLabel.Dispose();  milestonePanel.Dispose();   milestoneView1.Dispose();
-            notstartedPanel.Dispose();  pieChart1.Dispose();    taskCountLabel.Dispose();   pictureBox1.Dispose();  pictureBox2.Dispose();
-            pictureBox3.Dispose();  pictureBox4.Dispose();  backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();
-
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    
-            tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose();   label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose(); label5.Dispose(); label6.Dispose();
-            label7.Dispose();   label8.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
-            panel6.Dispose();   panel7.Dispose();   panel8.Dispose();   panel9.Dispose();   panel10.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -83,6 +73,17 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             label2.ForeColor = label3.ForeColor = label8.ForeColor = dueTaskTitleLabel.ForeColor = ThemeManager.GetTextColor(panel5.BackColor);
             taskCountLabel.ForeColor = dueTaskLabel.ForeColor = completedTaskLabel.ForeColor = incompleteTaskLabel.ForeColor = ThemeManager.GetTextColor(panel5.BackColor);
             label1.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+
+            pictureBox1.Image?.Dispose(); pictureBox2.Image?.Dispose(); pictureBox3.Image?.Dispose(); pictureBox4.Image?.Dispose();
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Total_Task : Properties.Resources.Heat_Dark_Total_Task;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Completed_Task : Properties.Resources.Heat_Completed_Task;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Delay_Task : Properties.Resources.Heat_Delay_Task;
+            pictureBox4.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Incomplete_Task : Properties.Resources.Heat_Incomplete_Task;
+
+            backBtn.Image?.Dispose();
+            nextBtn.Image?.Dispose();
+            ResetButton();
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -98,31 +99,29 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
-            if (IsBackEnable)
+            if (isBackEnable)
                 flag = milestoneView1.ChangeMilestoneUI(false);
 
-            if (flag < 0) IsBackEnable = false;
-            else { IsBackEnable = true; }
-            IsNextEnable = true;
+            if (flag < 0) isBackEnable = false;
+            else { isBackEnable = true; }
+            isNextEnable = true;
 
-            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
-            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
+            ResetButton();
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
         {
-            if (IsNextEnable)
+            if (isNextEnable)
                 flag = milestoneView1.ChangeMilestoneUI(true);
 
-            if (flag > 0) IsNextEnable = false;
-            else { IsNextEnable = true; }
-            IsBackEnable = true;
+            if (flag > 0) isNextEnable = false;
+            else { isNextEnable = true; }
+            isBackEnable = true;
 
-            backNavigatePicBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
-            nextNavPicBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
+            ResetButton();
         }
 
         private void InitializeOverview()
@@ -140,8 +139,8 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
                 flag = milestoneView1.ChangeMilestoneUI(true);
                 milestoneView1.InitializePageColor();
-                if (flag > 0) IsNextEnable = false;
-                else { IsNextEnable = IsBackEnable = true; }
+                if (flag > 0) isNextEnable = false;
+                else { isNextEnable = isBackEnable = true; }
 
                 var colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
                 int colorIndex = 0, total = 0;
@@ -169,33 +168,55 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
-            if (picBox.Name == "backNavigatePicBox")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = Properties.Resources.Left_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                picBox.Image = Properties.Resources.Right_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Default;
-            if (picBox.Name == "backNavigatePicBox")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = IsBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                picBox.Image = IsNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -245,6 +266,20 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
         }
 
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Light : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Light : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Light : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Light : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
           (
@@ -257,7 +292,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
           );
 
         private ProjectVersion version;
-        private bool IsBackEnable = false, IsNextEnable = true;
+        private bool isBackEnable = false, isNextEnable = true;
         private int flag;
     }
 }

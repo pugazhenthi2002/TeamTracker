@@ -65,7 +65,7 @@ namespace UserInterface.Add_Project.Custom_Control
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if(profilePictureBox1.Image != null)
             {
@@ -76,13 +76,6 @@ namespace UserInterface.Add_Project.Custom_Control
             profilePictureBox1.Click -= OnClicked;  versionLabel.Click -= OnClicked;    teamLeadLabel.Click -= OnClicked;   projectLabel.Click -= OnClicked;    tableLayoutPanel1.Click -= OnClicked;
             profilePictureBox1.MouseEnter -= OnMouseEnter;  versionLabel.MouseEnter -= OnMouseEnter;    teamLeadLabel.MouseEnter -= OnMouseEnter;   projectLabel.MouseEnter -= OnMouseEnter;    tableLayoutPanel1.MouseEnter -= OnMouseEnter;
             profilePictureBox1.MouseLeave -= OnMouseLeave;  versionLabel.MouseLeave -= OnMouseLeave;    teamLeadLabel.MouseLeave -= OnMouseLeave;   projectLabel.MouseLeave -= OnMouseLeave;    tableLayoutPanel1.MouseLeave -= OnMouseLeave;
-
-            profilePictureBox1.Dispose();
-            panel1.Dispose();
-            tableLayoutPanel1.Dispose();
-            projectLabel.Dispose();
-            teamLeadLabel.Dispose();
-            versionLabel.Dispose();
         }
 
         private void InitializePageColor()

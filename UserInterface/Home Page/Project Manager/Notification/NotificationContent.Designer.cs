@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -48,17 +49,19 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(20, 376);
+            this.panel1.Size = new System.Drawing.Size(30, 578);
             this.panel1.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(567, 0);
+            this.panel4.Location = new System.Drawing.Point(850, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(20, 376);
+            this.panel4.Size = new System.Drawing.Size(30, 578);
             this.panel4.TabIndex = 3;
             // 
             // panel2
@@ -69,20 +72,23 @@
             this.panel2.Controls.Add(this.backBtn);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(20, 0);
+            this.panel2.Location = new System.Drawing.Point(30, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(547, 20);
+            this.panel2.Size = new System.Drawing.Size(820, 31);
             this.panel2.TabIndex = 4;
             // 
             // clearAllButton
             // 
             this.clearAllButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.clearAllButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearAllButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.clearAllButton.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearAllButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.clearAllButton.Location = new System.Drawing.Point(451, 0);
+            this.clearAllButton.Location = new System.Drawing.Point(676, 0);
+            this.clearAllButton.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.clearAllButton.Name = "clearAllButton";
-            this.clearAllButton.Size = new System.Drawing.Size(96, 20);
+            this.clearAllButton.Size = new System.Drawing.Size(144, 31);
             this.clearAllButton.TabIndex = 4;
             this.clearAllButton.Text = "Clear All";
             this.clearAllButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,11 +100,13 @@
             // nextBtn
             // 
             this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
-            this.nextBtn.Location = new System.Drawing.Point(178, 0);
+            this.nextBtn.Location = new System.Drawing.Point(266, 0);
+            this.nextBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(23, 20);
+            this.nextBtn.Size = new System.Drawing.Size(34, 31);
             this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.nextBtn.TabIndex = 3;
             this.nextBtn.TabStop = false;
@@ -109,11 +117,13 @@
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
-            this.backBtn.Location = new System.Drawing.Point(155, 0);
+            this.backBtn.Location = new System.Drawing.Point(232, 0);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(23, 20);
+            this.backBtn.Size = new System.Drawing.Size(34, 31);
             this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.backBtn.TabIndex = 2;
             this.backBtn.TabStop = false;
@@ -128,8 +138,9 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 20);
+            this.label1.Size = new System.Drawing.Size(232, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Notification";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -138,18 +149,20 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(20, 356);
+            this.panel3.Location = new System.Drawing.Point(30, 547);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(547, 20);
+            this.panel3.Size = new System.Drawing.Size(820, 31);
             this.panel3.TabIndex = 5;
             // 
             // panelBase
             // 
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBase.Location = new System.Drawing.Point(20, 20);
+            this.panelBase.Location = new System.Drawing.Point(30, 31);
+            this.panelBase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelBase.Name = "panelBase";
-            this.panelBase.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.panelBase.Size = new System.Drawing.Size(547, 336);
+            this.panelBase.Padding = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.panelBase.Size = new System.Drawing.Size(820, 516);
             this.panelBase.TabIndex = 7;
             // 
             // ucNotFound1
@@ -158,15 +171,16 @@
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "Zero Notifications !!";
             this.ucNotFound1.HeadTextSize = 12;
-            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Location = new System.Drawing.Point(30, 31);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(547, 336);
+            this.ucNotFound1.Size = new System.Drawing.Size(820, 516);
             this.ucNotFound1.TabIndex = 6;
             // 
             // NotificationContent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelBase);
             this.Controls.Add(this.ucNotFound1);
@@ -174,8 +188,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "NotificationContent";
-            this.Size = new System.Drawing.Size(587, 376);
+            this.Size = new System.Drawing.Size(880, 578);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();

@@ -47,6 +47,9 @@ namespace UserInterface.Edit_Project.Controls
         {
             BackColor = versionSearchTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             versionSearchTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Search : Properties.Resources.Heat_Search;
         }
 
         private void UnSubscribeEventsAndRemoveMemory()
@@ -55,6 +58,8 @@ namespace UserInterface.Edit_Project.Controls
             versionSearchTextBox.TextChanged -= OnTextChanged;
             versionSearchTextBox.GotFocus -= RemoveSearchPlaceHolders;
             versionSearchTextBox.LostFocus -= AddSearchPlaceHolders;
+
+            pictureBox1.Image?.Dispose();
         }
 
         private void OnTextChanged(object sender, EventArgs e)

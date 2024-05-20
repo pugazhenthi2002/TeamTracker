@@ -55,7 +55,7 @@ namespace UserInterface.Add_Project.Custom_Control
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (controlPanel.Controls != null)
             {
@@ -63,14 +63,13 @@ namespace UserInterface.Add_Project.Custom_Control
                 {
                     (controlPanel.Controls[ctr] as SelectProjectTemplate).ProjectSelect -= OnProjectSelected;
                     (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
-                    controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
                     ctr--;
                 }
             }
+
             if (downPicBox.Image != null)
                 downPicBox.Image.Dispose();
 
-            downPicBox.Dispose();
             if (upPicBox.Image != null)
                 upPicBox.Image.Dispose();
 
@@ -80,16 +79,6 @@ namespace UserInterface.Add_Project.Custom_Control
             cancelButton.Click -= OnCancelClick; cancelButton.MouseEnter -= OnButtonMouseEnter; cancelButton.MouseLeave -= OnButtonMouseLeave; cancelButton.Paint -= OnPaint;
             selectButton.Click -= OnSelectClick; selectButton.MouseEnter -= OnButtonMouseEnter; selectButton.MouseLeave -= OnButtonMouseLeave; selectButton.Paint -= OnPaint;
             tableLayoutPanel1.Paint -= OnBorderPaint;
-
-            upPicBox.Dispose();
-            label1.Dispose();
-            cancelButton.Dispose(); selectButton.Dispose();
-            tableLayoutPanel1.Dispose();
-            tableLayoutPanel2.Dispose();
-            panel1.Dispose();
-            panel2.Dispose();
-            controlPanel.Dispose();
-            ucNotFound1.Dispose();
         }
 
         private void InitializePageColor()
@@ -98,6 +87,14 @@ namespace UserInterface.Add_Project.Custom_Control
             ucNotFound1.BackColor = BackColor = selectButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label1.ForeColor = cancelButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
             selectButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                upPicBox.Image = Properties.Resources.Cold_Up_Light;
+            else
+                downPicBox.Image = Properties.Resources.Heat_Down_Light;
         }
 
         private void OnPaginateUpClick(object sender, EventArgs e)
@@ -237,14 +234,27 @@ namespace UserInterface.Add_Project.Custom_Control
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
             if(picBox.Name == "upPicBox")
             {
-                picBox.Image = Properties.Resources.Up_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = Properties.Resources.Cold_Up_Light_Hover;
+                }
+                else
+                {
+                    upPicBox.Image = Properties.Resources.Heat_Up_Light_Hover;
+                }
             }
             else
             {
-                picBox.Image = Properties.Resources.Down_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = Properties.Resources.Cold_Down_Light_Hover;
+                }
+                else
+                {
+                    downPicBox.Image = Properties.Resources.Heat_Down_Light_Hover;
+                }
             }
         }
 
@@ -253,14 +263,27 @@ namespace UserInterface.Add_Project.Custom_Control
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Default;
             if (picBox.Name == "upPicBox")
             {
-                picBox.Image = isUpEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Light : Properties.Resources.Cold_Up_Medium;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Light : Properties.Resources.Heat_Up_Medium;
+                }
             }
             else
             {
-                picBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Light : Properties.Resources.Cold_Down_Medium;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Light : Properties.Resources.Heat_Down_Medium;
+                }
             }
         }
 
@@ -281,8 +304,16 @@ namespace UserInterface.Add_Project.Custom_Control
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? Properties.Resources.Up_Light_Blue_Hover : Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Light : Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Light : Properties.Resources.Cold_Down_Medium;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Light  : Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Light : Properties.Resources.Heat_Down_Medium;
+            }
         }
 
         protected override CreateParams CreateParams

@@ -60,6 +60,13 @@ namespace UserInterface.Edit_Project
             }
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            editMilestoneButton.Click -= EditMilestoneClick;
+            editTaskButton.Click -= EditTaskClick;
+        }
+
         private void EditTaskClick(object sender, EventArgs e)
         {
             editTaskButton.BackColor = editMilestoneButton.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;

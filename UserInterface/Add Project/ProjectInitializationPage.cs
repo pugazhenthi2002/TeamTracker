@@ -29,7 +29,7 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             ThemeManager.ThemeChange -= OnThemeChanged;
             availableTeamLeaders1.TeamLeaderClick -= OnTeamLeaderClick;
@@ -46,13 +46,6 @@ namespace TeamTracker
             projectTitleTextBox.LostFocus -= AddTitlePlaceHolders;
             clientTextBox.GotFocus -= RemoveClientPlaceHolders;
             clientTextBox.LostFocus -= AddClientPlaceHolders;
-
-            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose();
-            availableTeamLeaders1.ClearAllEmployees();    clearButton.Dispose();  clientTextBox.Dispose();    CreateProject.Dispose(); endDateTimePicker.Dispose();
-            fileAttachment1.Dispose(); projectDescTextBox.Dispose(); ProjectEntryTablePanel.Dispose(); projectTitleTextBox.Dispose();   selectedTeamLeader1.Dispose();
-            startDateTimePicker.Dispose(); ucNotFound1.Dispose();
         }
 
         private void InitializePageColor()

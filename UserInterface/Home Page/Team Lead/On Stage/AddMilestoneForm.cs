@@ -73,12 +73,15 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            for(int ctr=0; ctr < basePanel.Controls.Count; ctr++)
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            for (int ctr=0; ctr < basePanel.Controls.Count; ctr++)
             {
+                (basePanel.Controls[ctr] as MilestoneTemplate).FocusChanged -= OnFocusChanged;
+                (basePanel.Controls[ctr] as MilestoneTemplate).MilestoneOperate -= OnMilestoneOperation;
+                (basePanel.Controls[ctr] as MilestoneTemplate).CheckConstraints -= OnCheckContraints;
                 (basePanel.Controls[ctr] as MilestoneTemplate).Dispose();
-                basePanel.Controls.RemoveAt(ctr);
                 ctr--;
             }
 
@@ -87,12 +90,6 @@ namespace TeamTracker
             if (closeButton.Image != null) closeButton.Image.Dispose();
             if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
             if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
-
-            pictureBox2.Dispose();  pictureBox3.Dispose();  closeButton.Dispose();  downPicBox.Dispose();   upPicBox.Dispose();
-            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   startDateLabel.Dispose();   endDateLabel.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   basePanel.Dispose();
-            milestoneDateTime.Dispose();    milestoneTextBox.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    
         }
 
         private void InitializePageColor()
@@ -104,6 +101,14 @@ namespace TeamTracker
             tableLayoutPanel2.BackColor = tableLayoutPanel3.BackColor = pictureBox2.BackColor = pictureBox3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel3.BackColor);
             milestoneTextBox.BackColor = milestoneDateTime.SkinColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
+
+            pictureBox2.Image?.Dispose();   pictureBox3.Image?.Dispose();   upPicBox.Image?.Dispose();  downPicBox.Image?.Dispose();    closeButton.Image?.Dispose();
+
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Delete_Dark : UserInterface.Properties.Resources.Heat_Delete_Dark;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Plus_Dark : UserInterface.Properties.Resources.Heat_Plus_Dark;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+
+            ResetButton();
         }
 
         private void addMilestoneButton_Click(object sender, EventArgs e)
@@ -455,8 +460,7 @@ namespace TeamTracker
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Light_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            ResetButton();
         }
 
         private void SetMilestoneTemplates()
@@ -488,14 +492,14 @@ namespace TeamTracker
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = UserInterface.Properties.Resources.Close_30;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -503,14 +507,27 @@ namespace TeamTracker
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
             if (picBox.Name == "upPicBox")
             {
-                picBox.Image = UserInterface.Properties.Resources.Up_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = UserInterface.Properties.Resources.Cold_Up_Light_Hover;
+                }
+                else
+                {
+                    upPicBox.Image = UserInterface.Properties.Resources.Heat_Up_Light_Hover;
+                }
             }
             else
             {
-                picBox.Image = UserInterface.Properties.Resources.Down_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = UserInterface.Properties.Resources.Cold_Down_Light_Hover;
+                }
+                else
+                {
+                    downPicBox.Image = UserInterface.Properties.Resources.Heat_Down_Light_Hover;
+                }
             }
         }
 
@@ -532,14 +549,41 @@ namespace TeamTracker
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Default;
             if (picBox.Name == "upPicBox")
             {
-                picBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Light_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Light : UserInterface.Properties.Resources.Cold_Up_Medium;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Light : UserInterface.Properties.Resources.Heat_Up_Medium;
+                }
             }
             else
             {
-                picBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Light : UserInterface.Properties.Resources.Cold_Down_Medium;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Light : UserInterface.Properties.Resources.Heat_Down_Medium;
+                }
+            }
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Light : UserInterface.Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Light : UserInterface.Properties.Resources.Cold_Down_Medium;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Light : UserInterface.Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Light : UserInterface.Properties.Resources.Heat_Down_Medium;
             }
         }
 

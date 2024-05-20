@@ -61,25 +61,26 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if(panelBase.Controls.Count > 0)
             {
                 for(int ctr=0; ctr < panelBase.Controls.Count; ctr++)
                 {
+                    (panelBase.Controls[ctr] as UcNotification).CloseClick -= OnClickCloseNotification;
                     (panelBase.Controls[ctr] as UcNotification).Dispose();
-                    panelBase.Controls.RemoveAt(ctr);
                     ctr--;
                 }
             }
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void ClearNotify()
         {
             for (int ctr = 0; ctr < panelBase.Controls.Count; ctr++)
             {
+                (panelBase.Controls[ctr] as UcNotification).CloseClick -= OnClickCloseNotification;
                 (panelBase.Controls[ctr] as UcNotification).Dispose();
-                panelBase.Controls.RemoveAt(ctr);
                 ctr--;
             }
         }
@@ -89,6 +90,9 @@ namespace TeamTracker
             backBtn.BackColor = nextBtn.BackColor = label1.BackColor = clearAllButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             clearAllButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(backBtn.BackColor);
+            backBtn.Image?.Dispose();
+            nextBtn.Image?.Dispose();
+            ResetButton();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -158,9 +162,8 @@ namespace TeamTracker
                 nextBtn.Image.Dispose();
             }
 
-            backBtn.Image = (IsBackEnable) ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextBtn.Image = (IsNextEnable) ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
-
+            ResetButton();
+            
             if (endIndex == 0)
             {
                 nextBtn.Visible = backBtn.Visible = clearAllButton.Visible = false;
@@ -184,35 +187,55 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Hand;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = UserInterface.Properties.Resources.Left_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                picBox.Image = UserInterface.Properties.Resources.Right_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Default;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                picBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -280,6 +303,20 @@ namespace TeamTracker
                 currentIndex++;
                 endIndex++;
                 NotificationPagination();
+            }
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Cold_Left_Light : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Cold_Right_Light : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Heat_Left_Light : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Heat_Right_Light : UserInterface.Properties.Resources.Heat_Right_Medium;
             }
         }
 

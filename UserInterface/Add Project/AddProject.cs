@@ -24,15 +24,10 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             ThemeManager.ThemeChange -= OnThemeChanged;
             initializeButton.Click -= OnInitializeClick;    versionUpgradeButton.Click -= OnVersionUpgradeClick;
-
-            initializeButton.Dispose(); versionUpgradeButton.Dispose();
-            panel1.Dispose();  panel2.Dispose();    tableLayoutPanel1.Dispose();
-            versionUpgrade1.Dispose();  projectInitializationPage1.Dispose();
-            tabPage1.Dispose(); tabPage2.Dispose(); tabControl1.Dispose();
         }
 
         private void InitializePageColor()

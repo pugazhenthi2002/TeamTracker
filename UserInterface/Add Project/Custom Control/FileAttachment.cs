@@ -52,13 +52,12 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             for (int ctr = 0; ctr < attachmentDisplayPanel.Controls.Count; ctr++)
             {
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).AttachmentRemove -= OnAttachmentRemoved;
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
-                attachmentDisplayPanel.Controls.RemoveAt(ctr);
                 ctr--;
             }
 
@@ -67,7 +66,6 @@ namespace TeamTracker
             tableLayoutPanel1.Paint -= OnTablePanelPaint;
 
             pictureBox1.Image?.Dispose();
-            attachmentDisplayPanel.Dispose();   browseLabel.Dispose();  label1.Dispose();   pictureBox1.Dispose();  tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
         }
 
         private void ClearAttachments()
@@ -76,7 +74,6 @@ namespace TeamTracker
             {
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).AttachmentRemove -= OnAttachmentRemoved;
                 (attachmentDisplayPanel.Controls[ctr] as PDFAttachment).Dispose();
-                attachmentDisplayPanel.Controls.RemoveAt(ctr);
                 ctr--;
             }
         }
@@ -86,6 +83,17 @@ namespace TeamTracker
             browseLabel.BackColor = label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             browseLabel.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(browseLabel.BackColor);
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            pictureBox1.Image?.Dispose();
+
+            if(ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                pictureBox1.Image = UserInterface.Properties.Resources.Cold_Browse;
+            }
+            else
+            {
+                pictureBox1.Image = UserInterface.Properties.Resources.Heat_Browse;
+            }
         }
 
         private void OnBrowseClick(object sender, EventArgs e)

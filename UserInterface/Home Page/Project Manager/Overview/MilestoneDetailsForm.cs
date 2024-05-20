@@ -53,10 +53,9 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            pieChart1.Dispose();    label1.Dispose();   labelActualEndDate.Dispose();
-            panel1.Dispose();   ucNotFound1.Dispose(); 
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         protected override void OnClosing(CancelEventArgs e)

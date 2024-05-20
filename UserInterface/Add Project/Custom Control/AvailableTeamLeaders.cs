@@ -48,7 +48,7 @@ namespace TeamTracker
             label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (profilePanel.Controls != null)
             {
@@ -56,12 +56,10 @@ namespace TeamTracker
                 {
                     (profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
                     (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
-                    profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
                     ctr--;
                 }
             }
             ThemeManager.ThemeChange -= OnThemeChanged;
-            label1?.Dispose();
         }
 
         public void ClearAllEmployees()
@@ -70,7 +68,6 @@ namespace TeamTracker
             {
                 (profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
                 (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
-                profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
                 ctr--;
             }
         }

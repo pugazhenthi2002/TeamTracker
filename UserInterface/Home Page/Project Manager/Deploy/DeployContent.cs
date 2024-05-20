@@ -28,8 +28,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
                     if (nextBtn.Image != null) nextBtn.Image.Dispose();
                     if (backBtn.Image != null) backBtn.Image.Dispose();
 
-                    nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
-                    backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
+                    ResetButton();
 
                     ucDeploy1.Version = value[counter];
                 }
@@ -63,15 +62,14 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (nextBtn.Image != null) nextBtn.Image.Dispose();
             if (backBtn.Image != null) backBtn.Image.Dispose();
 
-            ucDeploy1.Dispose();    backBtn.Dispose();  nextBtn.Dispose();
-            label1.Dispose();   ucNotFound1.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose(); panel4.Dispose(); panel5.Dispose();
-            nextBtn.Dispose();  backBtn.Dispose();
+            nextBtn.MouseEnter -= OnMouseEnter;
+            backBtn.MouseEnter -= OnMouseLeave;
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -79,6 +77,9 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             ucDeploy1.BackColor = ucNotFound1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label1.BackColor = backBtn.BackColor = nextBtn.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+            backBtn.Image?.Dispose();
+            nextBtn.Image?.Dispose();
+            ResetButton();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -155,35 +156,55 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Hand;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = UserInterface.Properties.Resources.Left_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                picBox.Image = UserInterface.Properties.Resources.Right_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Default;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                picBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -197,8 +218,21 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             if (nextBtn.Image != null) nextBtn.Image.Dispose();
             if (backBtn.Image != null) backBtn.Image.Dispose();
 
-            nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
-            backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
+            ResetButton();
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Light : Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Light : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Light : Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Light : Properties.Resources.Heat_Right_Medium;
+            }
         }
 
         private int counter = 0;

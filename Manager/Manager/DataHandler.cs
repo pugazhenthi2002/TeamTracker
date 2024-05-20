@@ -3,6 +3,8 @@ using GoLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
@@ -1127,6 +1129,107 @@ namespace TeamTracker
         public static void DeleteEdit(Edit edit)
         {
             var x = manager.DeleteData("edit", $"EditID='{edit.EditID}'");
+        }
+
+        public static void SendEmail(string mailTo)
+        {
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            message.From = new MailAddress("pugazhenthiir2002@gmail.com");
+            message.To.Add(new MailAddress(mailTo));
+            message.Subject = "Test";
+            message.IsBodyHtml = true; //to make message body as html
+            message.Body = @"
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                            color: #333;
+                        }
+                        .container {
+                            width: 90%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            border: 1px solid #ddd;
+                            border-radius: 8px;
+                            background-color: #f9f9f9;
+                        }
+                        .header {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 0;
+                            text-align: center;
+                            border-radius: 8px 8px 0 0;
+                        }
+                        .content {
+                            padding: 20px;
+                        }
+                        .footer {
+                            margin-top: 20px;
+                            text-align: center;
+                            font-size: 12px;
+                            color: #777;
+                        }
+                        .btn {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            margin-top: 20px;
+                            font-size: 16px;
+                            color: white;
+                            background-color: #4CAF50;
+                            text-decoration: none;
+                            border-radius: 5px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <div class='header'>
+                            <h1>Project Delivery</h1>
+                        </div>
+                        <div class='content'>
+                            <p>Dear Client,</p>
+                            <p>We are pleased to deliver the project you requested. Attached you will find the project files. If you have any questions or need further assistance, please do not hesitate to contact us.</p>
+                            <p>Thank you for choosing our services.</p>
+                            <p>Sincerely,</p>
+                            <p>[Project Manager's Name]</p>
+                            <a href='mailto:[MailTo]' class='btn'>Contact Us</a>
+                        </div>
+                        <div class='footer'>
+                            <p>© [Year] Your Company. All rights reserved.</p>
+                        </div>
+                    </div>
+                </body>
+                </html>";
+            message.Body = message.Body
+                .Replace("[MailTo]", mailTo)
+                .Replace("[Project Name]", "Awesome Project")
+                .Replace("[Project Manager's Name]", EmployeeManager.CurrentEmployee.EmployeeFirstName + EmployeeManager.CurrentEmployee.EmployeeLastName)
+                .Replace("[Year]", DateTime.Now.Year.ToString());
+
+            string attachmentPath = @"C:\Users\pugaz\Downloads\IRJMETS60300120229-3.pdf";
+            
+            try
+            {
+                Attachment attachment = new Attachment(attachmentPath);
+                message.Attachments.Add(attachment);
+
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com"; //for gmail host
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("pugazhenthiir2002@gmail.com", "rewc jrha npss hrev");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

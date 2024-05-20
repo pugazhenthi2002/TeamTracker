@@ -53,15 +53,10 @@ namespace TeamTracker
                 InitializePage();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
-            buttonDeploy.Dispose(); pictureBox1.Dispose();  pieChart1.Dispose();    profilePictureBox1.Dispose();
-            labelProjNameandVersion.Dispose();  submissionDateLabel.Dispose(); teamLeaderName.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
-            label3.Dispose();   label4.Dispose();   label5.Dispose();   label7.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();
         }
 
         private void InitializePageColor()
@@ -71,6 +66,9 @@ namespace TeamTracker
             buttonDeploy.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
             buttonDeploy.ForeColor = ThemeManager.GetTextColor(buttonDeploy.BackColor);
             teamLeaderName.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label7.ForeColor = labelProjNameandVersion.ForeColor = submissionDateLabel.ForeColor = ThemeManager.GetTextColor(panel4.BackColor);
+            pictureBox1.Image?.Dispose();
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void InitializePage()
@@ -147,6 +145,7 @@ namespace TeamTracker
 
         private void OnDeployClick(object sender, EventArgs e)
         {
+            DataHandler.SendEmail(version.ClientEmail);
             VersionManager.VersionCompletion(version);
             Deployment?.Invoke(proj.ProjectName, version);
             MailAddress from = new MailAddress(EmployeeManager.CurrentEmployee.EmpEmail, EmployeeManager.CurrentEmployee.EmployeeFirstName + " " + EmployeeManager.CurrentEmployee.EmployeeLastName);
@@ -175,14 +174,14 @@ namespace TeamTracker
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
 
-            pictureBox1.Image = UserInterface.Properties.Resources.Download_Medium_Blue_Color;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void OnDownloadMouseLeave(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
 
-            pictureBox1.Image = UserInterface.Properties.Resources.Download_Light_Blue;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnViewClick(object sender, EventArgs e)

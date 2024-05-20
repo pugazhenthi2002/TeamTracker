@@ -31,20 +31,7 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
-        {
-            UnsubscribeEvents();
-
-            clearButton.Dispose();  clientTextBox.Dispose();    descTextBox.Dispose(); fileAttachment1.Dispose();
-            endDateLabel.Dispose(); endDatePanel.Dispose(); endDateTimePicker.Dispose();    label1.Dispose();   label3.Dispose();   label5.Dispose();
-            latestUpgradedVersion1.Dispose();   profilePicAndName1.Dispose();   upgradeButton.Dispose();    ucNotFound1.Dispose();  ucNotFound2.Dispose();  versionNameTextBox.Dispose();
-            startDateLabel.Dispose(); startDatePanel.Dispose(); startDateTimePicker.Dispose();
-            tableLayoutPanel1.Dispose(); tableLayoutPanel2.Dispose(); tableLayoutPanel3.Dispose();  tableLayoutPanel4.Dispose(); tableLayoutPanel5.Dispose(); tableLayoutPanel6.Dispose(); tableLayoutPanel7.Dispose(); tableLayoutPanel8.Dispose();    tableLayoutPanel9.Dispose();
-            panel1.Dispose();   panel2.Dispose(); panel3.Dispose(); panel4.Dispose(); panel5.Dispose();
-            panel6.Dispose();   panel7.Dispose(); panel8.Dispose(); panel9.Dispose(); panel10.Dispose();
-        }
-
-        private void UnsubscribeEvents()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             ThemeManager.ThemeChange -= OnThemeChanged;
             versionNameTextBox.LostFocus -= AddVersionNamePlaceHolders;

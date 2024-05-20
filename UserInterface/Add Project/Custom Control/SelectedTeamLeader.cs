@@ -48,17 +48,13 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
 
             button1.Click -= OnChangeTLClick;   button1.MouseEnter -= OnMouseEnter; button1.MouseLeave -= OnMouseLeave; button1.Paint -= OnPaint;
             tableLayoutPanel1.Resize -= OnResize;
             ThemeManager.ThemeChange -= OnThemeChanged;
-
-            profilePictureBox1.Dispose();
-            label1.Dispose();   label2.Dispose();   panel3.Dispose();
-            tableLayoutPanel1.Dispose(); button1.Dispose();
         }
 
         private void InitializePageColor()

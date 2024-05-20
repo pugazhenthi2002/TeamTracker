@@ -48,11 +48,9 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            tableLayoutPanel2.Dispose();
-            singleMilestone1.Dispose(); singleMilestone2.Dispose(); singleMilestone3.Dispose(); singleMilestone4.Dispose();
-            startPathAndDate1.Dispose(); startPathAndDate2.Dispose(); startPathAndDate3.Dispose(); startPathAndDate4.Dispose(); startPathAndDate5.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         public int ChangeMilestoneUI(bool flag)

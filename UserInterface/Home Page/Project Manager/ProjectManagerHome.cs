@@ -29,11 +29,9 @@ namespace UserInterface.Home_Page.Project_Manager
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();
-            notificationContent1.Dispose(); overview1.Dispose();    deployContent1.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializePageColor()

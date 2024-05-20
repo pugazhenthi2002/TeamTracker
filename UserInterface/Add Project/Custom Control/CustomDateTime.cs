@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamTracker;
 
 namespace UserInterface.Add_Project.Custom_Control
 {
@@ -39,9 +40,14 @@ namespace UserInterface.Add_Project.Custom_Control
 
         public void InitializePageColor()
         {
-            if (skinColor.GetBrightness() >= 0.6F)
-                calendarIcon = Properties.Resources.Calendar_30;
-            else calendarIcon = Properties.Resources.Calendar_30;
+            if(ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                calendarIcon = Properties.Resources.Cold_Calendar;
+            }
+            else
+            {
+                calendarIcon = Properties.Resources.Heat_Calendar;
+            }
         }
 
         public Color TextColor

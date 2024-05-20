@@ -43,6 +43,11 @@ namespace UserInterface.Edit_Project.Controls
             panel4.BackColor = DeleteButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             updateButton.ForeColor = ThemeManager.GetTextColor(updateButton.BackColor);
             DeleteButton.ForeColor = ThemeManager.GetTextColor(DeleteButton.BackColor);
+
+            BackBtn.Image?.Dispose();
+            NextBtn.Image?.Dispose();
+
+            ResetButton();
         }
 
         private void UnSubscribeEventsAndRemoveMemory()
@@ -167,6 +172,8 @@ namespace UserInterface.Edit_Project.Controls
 
             isBackEnable = startIdx == 0 ? false : true;
             isNextEnable = endIdx == filteredProjectCollection.Count - 1 ? false : true;
+
+            ResetButton();
         }
 
         private void OnChooseVersionClicked(object sender, EventArgs e)
@@ -345,6 +352,74 @@ namespace UserInterface.Edit_Project.Controls
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawLine(border, 0, (sender as Control).Height - 1, (sender as Control).Width, (sender as Control).Height - 1);
             border.Dispose();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    BackBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    BackBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    NextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    NextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                }
+            }
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+            }
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

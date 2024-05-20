@@ -54,21 +54,15 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             ThemeManager.ThemeChange -= OnThemeChanged;
             panel1.Paint -= OnRoundBorderPaint;
             teamLeaderName.Click -= OnProfileClicked;   teamLeaderName.MouseEnter -= OnMouseEnter;  teamLeaderName.MouseLeave -= OnMouseLeave;
             profilePictureBox2.Click -= OnProfileClicked; profilePictureBox2.MouseEnter -= OnMouseEnter; profilePictureBox2.MouseLeave -= OnMouseLeave;
 
-            teamLeaderName.Dispose();
-
             if (profilePictureBox2.Image != null)
                 profilePictureBox2.Image.Dispose();
-
-            profilePictureBox2.Dispose();
-            panel1.Dispose();
-            tableLayoutPanel1.Dispose();
         }
 
         private void InitializePageColor()

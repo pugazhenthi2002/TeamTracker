@@ -43,7 +43,21 @@ namespace UserInterface.Edit_Project.Controls
             buttonUpdate.ForeColor = ThemeManager.GetTextColor(buttonUpdate.BackColor);
             buttonDelete.ForeColor = ThemeManager.GetTextColor(buttonDelete.BackColor);
 
-            if(tabControl1.SelectedIndex == 0)
+            ResetButton();
+
+            BackBtn.Image?.Dispose();
+            NextBtn.Image?.Dispose();
+            BtnAssignTo.Image?.Dispose();
+            pictureBox3.Image?.Dispose();
+            pictureBox3.Image?.Dispose();
+            pictureBoxAttachment.Image?.Dispose();
+
+            BtnAssignTo.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Document : Properties.Resources.Heat_Dark_Document;
+            pictureBoxAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Pin : Properties.Resources.Heat_Pin;
+
+            if (tabControl1.SelectedIndex == 0)
             {
                 requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
@@ -488,10 +502,17 @@ namespace UserInterface.Edit_Project.Controls
                 {
                     (boardBasePanel.Controls[idx] as UCTaskBoard).TaskData = taskCollection[ctr];
                 }
-
-                isBackEnable = startIdx == 0 ? false : true;
-                isNextEnable = endIdx == taskCollection.Count - 1 ? false : true;
             }
+            else
+            {
+                for (int ctr = startIdx, idx = 0; ctr <= endIdx; ctr++, idx++)
+                {
+                    (boardBaseManualPanel.Controls[idx] as UCTaskBoard).TaskData = taskCollection[ctr];
+                }
+            }
+            isBackEnable = startIdx == 0 ? false : true;
+            isNextEnable = endIdx == taskCollection.Count - 1 ? false : true;
+            ResetButton();
         }
 
         private TransparentForm transparentForm;
@@ -530,6 +551,74 @@ namespace UserInterface.Edit_Project.Controls
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawLine(border, 0, (sender as Control).Height - 1, (sender as Control).Width, (sender as Control).Height - 1);
             border.Dispose();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    BackBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    BackBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    NextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    NextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                }
+            }
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+            }
         }
 
         private int startIdx, endIdx;

@@ -42,17 +42,11 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            labelDateTime.Dispose();
-            labelHeader.Dispose();
-            panelContent.Dispose();
-            tableLayoutPanel1.Dispose();
-            tableLayoutPanel2.Dispose();
+           ThemeManager.ThemeChange -= OnThemeChanged;
             if (pictureBoxClose.Image != null)
                 pictureBoxClose.Image.Dispose(); 
-            pictureBoxClose.Dispose();
-            textBoxContent.Dispose();
         }
 
         private void InitializePageColor()
@@ -61,24 +55,22 @@ namespace TeamTracker
             panelContent.BackColor = textBoxContent.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             labelHeader.ForeColor = labelDateTime.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel2.BackColor);
             textBoxContent.ForeColor = ThemeManager.GetTextColor(textBoxContent.BackColor);
+
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark :UserInterface.Properties.Resources.Heat_Close_Dark;
         }
        
-
-        private void InitializeRoundedEdge()
-        {
-            tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 20, 20));
- 
-        }
         private void OnMouseEnterClose(object sender, EventArgs e)
         {
             Cursor = Cursors.Arrow;
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_30;
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark_Hover : UserInterface.Properties.Resources.Heat_Close_Dark_Hover;
         }
 
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Dark_Blue;
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark : UserInterface.Properties.Resources.Heat_Close_Dark;
         }
 
         private void OnClickClose(object sender, EventArgs e)

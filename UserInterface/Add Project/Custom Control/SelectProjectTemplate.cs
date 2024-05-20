@@ -40,15 +40,11 @@ namespace UserInterface.Add_Project.Custom_Control
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             ThemeManager.ThemeChange -= OnThemeChanged;
             singleProjectSelectTemplate1.ProjectClick -= OnProjectSelected;
             singleProjectSelectTemplate2.ProjectClick -= OnProjectSelected;
-
-            singleProjectSelectTemplate1.Dispose();
-            singleProjectSelectTemplate2.Dispose();
-            tableLayoutPanel1.Dispose();
         }
 
         private void InitializePageColor()

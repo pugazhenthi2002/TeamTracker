@@ -21,10 +21,13 @@ namespace TeamTracker
             InitializeComponent();
         }
 
-        public new void Dispose()
+        public void UnSubscribeEventsAndRemoveMemory()
         {
              for(int ctr=0; ctr< Controls.Count; ctr++)
             {
+                (Controls[ctr] as Label).MouseEnter -= OnLabelMouseEnter;
+                (Controls[ctr] as Label).MouseLeave -= OnLabelMouseLeave;
+                (Controls[ctr] as Label).Click -= OnOverviewClick;
                 (Controls[ctr] as Label).Dispose();
                 ctr--;
             }
