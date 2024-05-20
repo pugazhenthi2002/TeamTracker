@@ -17,7 +17,7 @@ namespace TeamTracker
 
         public static BooleanMsg ConnectDatabase()
         {
-            manager = new MySqlHandler("localhost", "root", "Lucid123", "teamtracker");
+            manager = new MySqlHandler("localhost", "root", "", "teamtracker");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
