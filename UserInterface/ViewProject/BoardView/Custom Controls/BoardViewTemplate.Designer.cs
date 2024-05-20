@@ -214,6 +214,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(0, 0);
@@ -249,6 +250,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
@@ -282,7 +284,7 @@
             // milestoneStatusPicBox
             // 
             this.milestoneStatusPicBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.milestoneStatusPicBox.BackColor = System.Drawing.Color.Red;
+            this.milestoneStatusPicBox.BackColor = System.Drawing.Color.Transparent;
             this.milestoneStatusPicBox.Image = global::UserInterface.Properties.Resources.Version_Milestone_Status_Down_Down;
             this.milestoneStatusPicBox.Location = new System.Drawing.Point(164, 15);
             this.milestoneStatusPicBox.Margin = new System.Windows.Forms.Padding(0);
@@ -298,6 +300,7 @@
             // profilePictureBox1
             // 
             this.profilePictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.profilePictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.profilePictureBox1.Location = new System.Drawing.Point(233, 13);
             this.profilePictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.profilePictureBox1.Name = "profilePictureBox1";

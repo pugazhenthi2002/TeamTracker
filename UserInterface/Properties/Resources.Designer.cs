@@ -563,6 +563,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cold_Calendar_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Calendar_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cold_Calendar_Light {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Calendar_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cold_Close_Dark {
             get {
                 object obj = ResourceManager.GetObject("Cold_Close_Dark", resourceCulture);
@@ -1546,6 +1566,26 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Heat_Calendar {
             get {
                 object obj = ResourceManager.GetObject("Heat_Calendar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_Calendar_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Calendar_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_Calendar_Light {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Calendar_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

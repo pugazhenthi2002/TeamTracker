@@ -231,9 +231,9 @@ namespace TeamTracker
                 else
                 {
                     VersionManager.AddProject(projectTitleTextBox.Text, projectDescTextBox.Text, teamLeader.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, attachments);
-                    InitializePage();
                     DataHandler.AddNotification("New Project Assigned to Your Team", "Hello" + teamLeader.EmployeeFirstName +",\r\n\r\nI hope this message finds you well. I'm excited to inform you that a new project " + projectTitleTextBox.Text + "has been created and assigned to your team by " + EmployeeManager.CurrentEmployee.EmployeeFirstName, DateTime.Now, teamLeader.EmployeeID);
                     ProjectManagerMainForm.notify.AddNotification("Project Created", projectTitleTextBox.Text + "\n" + "Version Name: 1.0");
+                    InitializePage();
                 }
             }
         }

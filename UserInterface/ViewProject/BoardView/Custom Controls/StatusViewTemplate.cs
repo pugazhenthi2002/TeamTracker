@@ -34,6 +34,11 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             statusLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+
+            ResetButtons();
         }
 
         private void OnThemeChanged(object sender, EventArgs e)

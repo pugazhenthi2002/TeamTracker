@@ -177,8 +177,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             if(isHovered)
             {
                 pen.Dispose();
-                pen = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
-                e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(2, 2, (sender as TableLayoutPanel).Width - 5, (sender as TableLayoutPanel).Height - 5), 10));
+                pen = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+                e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(1, 1, (sender as TableLayoutPanel).Width - 3, (sender as TableLayoutPanel).Height - 3), 10));
             }
             pen.Dispose();
         }
@@ -187,8 +187,8 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             isHovered = true;
             Cursor = Cursors.Hand;
-            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
-            milestoneStatusPicBox.BackColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            milestoneStatusPicBox.BackColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             //tableLayoutPanel1.Invalidate();
         }
 

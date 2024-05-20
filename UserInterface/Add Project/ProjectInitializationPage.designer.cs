@@ -86,7 +86,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -115,7 +115,7 @@
             this.fileAttachment1.Location = new System.Drawing.Point(0, 0);
             this.fileAttachment1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fileAttachment1.Name = "fileAttachment1";
-            this.fileAttachment1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileAttachment1.Padding = new System.Windows.Forms.Padding(2);
             this.fileAttachment1.Size = new System.Drawing.Size(645, 244);
             this.fileAttachment1.TabIndex = 0;
             // 
@@ -145,7 +145,7 @@
             this.panel2.Location = new System.Drawing.Point(402, 6);
             this.panel2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Padding = new System.Windows.Forms.Padding(2);
             this.panel2.Size = new System.Drawing.Size(250, 354);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
@@ -169,7 +169,7 @@
             this.selectedTeamLeader1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedTeamLeader1.EmployeeProfile = null;
             this.selectedTeamLeader1.Location = new System.Drawing.Point(2, 2);
-            this.selectedTeamLeader1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.selectedTeamLeader1.Margin = new System.Windows.Forms.Padding(1);
             this.selectedTeamLeader1.Name = "selectedTeamLeader1";
             this.selectedTeamLeader1.Size = new System.Drawing.Size(246, 350);
             this.selectedTeamLeader1.TabIndex = 1;
@@ -180,7 +180,7 @@
             this.availableTeamLeaders1.BackColor = System.Drawing.Color.Transparent;
             this.availableTeamLeaders1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.availableTeamLeaders1.Location = new System.Drawing.Point(2, 2);
-            this.availableTeamLeaders1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.availableTeamLeaders1.Margin = new System.Windows.Forms.Padding(1);
             this.availableTeamLeaders1.Name = "availableTeamLeaders1";
             this.availableTeamLeaders1.Size = new System.Drawing.Size(246, 350);
             this.availableTeamLeaders1.TabIndex = 0;

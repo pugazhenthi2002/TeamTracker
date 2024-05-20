@@ -961,4 +961,16 @@
   <data name="Heat_View_Project_Medum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Icons\Heat View Project Medum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cold_Calendar_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Calendar Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Calendar_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Calendar Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Calendar_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Calendar Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Calendar_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Calendar Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

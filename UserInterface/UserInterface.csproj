@@ -1400,6 +1400,10 @@
     <None Include="Icons\Heat Upload.png" />
     <None Include="Icons\Heat View Project Light.png" />
     <None Include="Icons\Heat View Project Medum.png" />
+    <None Include="Icons\Cold Calendar Dark.png" />
+    <None Include="Icons\Cold Calendar Light.png" />
+    <None Include="Icons\Heat Calendar Dark.png" />
+    <None Include="Icons\Heat Calendar Light.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />
