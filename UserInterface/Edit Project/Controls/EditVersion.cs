@@ -43,7 +43,7 @@ namespace UserInterface.Edit_Project.Controls
             panel4.BackColor = DeleteButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             updateButton.ForeColor = ThemeManager.GetTextColor(updateButton.BackColor);
             DeleteButton.ForeColor = ThemeManager.GetTextColor(DeleteButton.BackColor);
-            searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
 
             BackBtn.Image?.Dispose();
             NextBtn.Image?.Dispose();
@@ -68,6 +68,13 @@ namespace UserInterface.Edit_Project.Controls
         public void InitializePage()
         {
             OnProjectNameChanged(this, "");
+            clientTextBox.Text = descTextBox.Text = "";
+            startDateTimePicker.Value = endDateTimePicker.Value = DateTime.Now.Date;
+            selectedProject = null;
+            selectedVersion = null;
+            fileAttachment1.Clear = true;
+            fileAttachment1.AttachmentCollection = null;
+            chooseVersionLabel.Text = "Choose Version";
         }
 
         private void OnProjectNameChanged(object sender, string e)
@@ -237,12 +244,12 @@ namespace UserInterface.Edit_Project.Controls
         private void OnUpdateStatus(object sender, bool e)
         {
             (sender as WarningForm).WarningStatus -= OnUpdateStatus;
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (e)
             {
                 VersionManager.UpdateVersion(selectedVersion.VersionID, selectedVersion.VersionName, descTextBox.Text, selectedVersion.StatusOfVersion, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, FetchAttachmentFiles());
+                InitializePage();
             }
         }
 
@@ -307,12 +314,12 @@ namespace UserInterface.Edit_Project.Controls
         private void OnDeleteStatus(object sender, bool e)
         {
             (sender as WarningForm).WarningStatus -= OnDeleteStatus;
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (e)
             {
                 VersionManager.DeleteVersion(selectedVersion);
+                InitializePage();
             }
         }
 

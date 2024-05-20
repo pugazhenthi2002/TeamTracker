@@ -148,42 +148,42 @@ namespace TeamTracker
             {
                 if (picBox.Image != null) { picBox.Image.Dispose(); }
 
-                if (picBox.Name == "homePictureBox" && !isHomeSelected)
+                if (picBox.Name == "homePictureBox")
                 {
                     homeLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? UserInterface.Properties.Resources.Cold_Home_Light : UserInterface.Properties.Resources.Heat_Home_Light;
                 }
-                else if (picBox.Name == "addProjectPictureBox" && !isAddProjSelected)
+                else if (picBox.Name == "addProjectPictureBox")
                 {
                     addProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Add_Project_Light : UserInterface.Properties.Resources.Heat_Add_Project_Light;
                 }
-                else if(picBox.Name == "viewProjectPictureBox" && !isViewProjSelected)
+                else if(picBox.Name == "viewProjectPictureBox")
                 {
                     viewProjectLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_View_Project_Light : UserInterface.Properties.Resources.Heat_View_Project_Light;
                 }
-                else if(picBox.Name == "addTaskPicBox" && !isAddTaskSelected)
+                else if(picBox.Name == "addTaskPicBox")
                 {
                     addTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Add_Task_Light : UserInterface.Properties.Resources.Heat_Add_Task_Light;
                 }
-                else if (picBox.Name == "myTaskPicBox" && !isMyTaskSelected)
+                else if (picBox.Name == "myTaskPicBox")
                 {
                     myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_My_Task_Light : UserInterface.Properties.Resources.Heat_My_Task_Light;
                 }
-                else if (picBox.Name == "myIssuePicBox" && !isMyIssueSelected)
+                else if (picBox.Name == "myIssuePicBox")
                 {
                     myIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_My_Issue_Light : UserInterface.Properties.Resources.Heat_My_Issue_Light;
                 }
-                else if (picBox.Name == "allIssuePicBox" && !isAllIssueSelected)
+                else if (picBox.Name == "allIssuePicBox")
                 {
                     allIssueLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_All_Issue_Light : UserInterface.Properties.Resources.Heat_All_Issue_Light;
                 }
-                else if (picBox.Name == "editPicBox" && !isEditSelected)
+                else if (picBox.Name == "editPicBox")
                 {
                     editLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                     picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Edit_Light : UserInterface.Properties.Resources.Heat_Edit_Light;
@@ -432,12 +432,12 @@ namespace TeamTracker
 
             if (isMyTaskSelected)
             {
-                myTaskPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_My_Issue_Light : UserInterface.Properties.Resources.Heat_Add_Task_Light;
+                myTaskPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_My_Task_Light : UserInterface.Properties.Resources.Heat_My_Task_Light;
                 myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
             else
             {
-                myTaskPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_My_Issue_Medium : UserInterface.Properties.Resources.Heat_My_Task_Medium;
+                myTaskPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_My_Task_Medium : UserInterface.Properties.Resources.Heat_My_Task_Medium;
                 myTaskLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryI;
             }
 
