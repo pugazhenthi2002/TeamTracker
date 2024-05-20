@@ -36,6 +36,7 @@ namespace TeamTracker
             set
             {
                 Tstatus = value;
+                InitializePageColor();
             }
         }
 
