@@ -27,6 +27,7 @@ namespace TeamTracker
             solutionTextBox.GotFocus += RemoveSolutionPlaceHolders;
             solutionTextBox.LostFocus += AddSolutionPlaceHolders;
             InitializeRoundedEdge();
+            toolTip1.SetToolTip(labelAttachment, "Click to remove attachment");
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -293,6 +294,14 @@ namespace TeamTracker
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+      
+            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, labelAttachment.Width - 1, labelAttachment.Height - 1), labelAttachment.Width / 2));
+            pen.Dispose();
+            
+        }
     }
 }
