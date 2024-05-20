@@ -1131,7 +1131,7 @@ namespace TeamTracker
             var x = manager.DeleteData("edit", $"EditID='{edit.EditID}'");
         }
 
-        public static void SendEmail(string mailTo)
+        public static void SendEmail(string mailTo, VersionSourceCode sourceCode)
         {
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
@@ -1200,18 +1200,18 @@ namespace TeamTracker
                             <a href='mailto:[MailTo]' class='btn'>Contact Us</a>
                         </div>
                         <div class='footer'>
-                            <p>© [Year] Your Company. All rights reserved.</p>
+                            <p>© [Year] Lucid Imaging. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
                 </html>";
             message.Body = message.Body
-                .Replace("[MailTo]", mailTo)
+                .Replace("[MailTo]", EmployeeManager.CurrentEmployee.EmpEmail)
                 .Replace("[Project Name]", "Awesome Project")
                 .Replace("[Project Manager's Name]", EmployeeManager.CurrentEmployee.EmployeeFirstName + EmployeeManager.CurrentEmployee.EmployeeLastName)
                 .Replace("[Year]", DateTime.Now.Year.ToString());
 
-            string attachmentPath = @"C:\Users\pugaz\Downloads\IRJMETS60300120229-3.pdf";
+            string attachmentPath = sourceCode.VersionLocation;
             
             try
             {

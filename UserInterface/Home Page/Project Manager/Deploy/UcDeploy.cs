@@ -145,12 +145,26 @@ namespace TeamTracker
 
         private void OnDeployClick(object sender, EventArgs e)
         {
-            DataHandler.SendEmail(version.ClientEmail);
+            Form loaderForm = new Form();
+            LogoAnimation logo = new LogoAnimation();
+            logo.Start = true;
+            logo.Size = new Size(300, 300);
+            logo.LogoColor = System.Drawing.Color.Red;
+            logo.Location = new Point(loaderForm.Width / 2, loaderForm.Height / 2);
+            loaderForm.Controls.Add(logo);
+            //logo.BringToFront();
+            loaderForm.Show();
+
+            var x = loaderForm.Controls;
+            DataHandler.SendEmail(version.ClientEmail, versionSourceCode);
             VersionManager.VersionCompletion(version);
             Deployment?.Invoke(proj.ProjectName, version);
             MailAddress from = new MailAddress(EmployeeManager.CurrentEmployee.EmpEmail, EmployeeManager.CurrentEmployee.EmployeeFirstName + " " + EmployeeManager.CurrentEmployee.EmployeeLastName);
             MailAddress to = new MailAddress(version.ClientEmail);
-            SendEmail("Want to test this damn thing", from, to);
+            //SendEmail("Want to test this damn thing", from, to);
+
+            loaderForm.Close();
+            logo.Dispose();
         }
 
         protected void SendEmail(string _subject, MailAddress _from, MailAddress _to)

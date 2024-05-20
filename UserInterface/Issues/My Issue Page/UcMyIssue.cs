@@ -264,7 +264,7 @@ namespace TeamTracker
 
         private void DataGridViewCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && e.RowIndex!=-1)
             {
                 MenuFormMyIssue menuForm = new MenuFormMyIssue();
                 menuForm.Location = Control.MousePosition;
