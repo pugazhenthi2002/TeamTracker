@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelTop = new System.Windows.Forms.Panel();
+            this.profilePostedBy = new TeamTracker.ProfilePicAndName();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.solutionTextBox = new System.Windows.Forms.TextBox();
@@ -55,17 +56,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.IssueTitleTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.IssueDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.BtnSetPriority = new System.Windows.Forms.Button();
             this.BtnSetType = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.IssueDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.profilePostedBy = new TeamTracker.ProfilePicAndName();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.panel3.SuspendLayout();
@@ -98,6 +98,25 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(939, 51);
             this.panelTop.TabIndex = 4;
+            // 
+            // profilePostedBy
+            // 
+            this.profilePostedBy.BackColor = System.Drawing.Color.Transparent;
+            this.profilePostedBy.BorderColor = System.Drawing.Color.Empty;
+            this.profilePostedBy.BorderRadius = 0;
+            this.profilePostedBy.EmployeeProfile = null;
+            this.profilePostedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.profilePostedBy.HoverColor = System.Drawing.Color.Empty;
+            this.profilePostedBy.IsBorderNeeded = false;
+            this.profilePostedBy.IsOperable = false;
+            this.profilePostedBy.Location = new System.Drawing.Point(10, 1);
+            this.profilePostedBy.Margin = new System.Windows.Forms.Padding(4);
+            this.profilePostedBy.Name = "profilePostedBy";
+            this.profilePostedBy.NormalColor = System.Drawing.Color.Empty;
+            this.profilePostedBy.Padding = new System.Windows.Forms.Padding(3);
+            this.profilePostedBy.ProfileTextColor = System.Drawing.Color.Empty;
+            this.profilePostedBy.Size = new System.Drawing.Size(221, 50);
+            this.profilePostedBy.TabIndex = 2;
             // 
             // pictureBoxClose
             // 
@@ -210,6 +229,7 @@
             this.labelAttachment.Text = "1";
             this.labelAttachment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelAttachment.Click += new System.EventHandler(this.OnClickAttachmentCount);
+            this.labelAttachment.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             // 
             // pictureBoxAttachments
             // 
@@ -449,6 +469,21 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(917, 58);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
+            // IssueDate
+            // 
+            this.IssueDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.IssueDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.IssueDate.BorderSize = 2;
+            this.IssueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IssueDate.Location = new System.Drawing.Point(497, 10);
+            this.IssueDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.IssueDate.MinimumSize = new System.Drawing.Size(4, 35);
+            this.IssueDate.Name = "IssueDate";
+            this.IssueDate.Size = new System.Drawing.Size(150, 35);
+            this.IssueDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.IssueDate.TabIndex = 6;
+            this.IssueDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            // 
             // BtnSetPriority
             // 
             this.BtnSetPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -520,6 +555,19 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.OnClickDownloadAttachment);
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Attachment";
+            this.ucNotFound1.HeadTextSize = 6;
+            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(210, 38);
+            this.ucNotFound1.TabIndex = 0;
+            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.Transparent;
@@ -549,53 +597,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // IssueDate
-            // 
-            this.IssueDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.IssueDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.IssueDate.BorderSize = 2;
-            this.IssueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IssueDate.Location = new System.Drawing.Point(497, 10);
-            this.IssueDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.IssueDate.MinimumSize = new System.Drawing.Size(4, 35);
-            this.IssueDate.Name = "IssueDate";
-            this.IssueDate.Size = new System.Drawing.Size(150, 35);
-            this.IssueDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.IssueDate.TabIndex = 6;
-            this.IssueDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Attachment";
-            this.ucNotFound1.HeadTextSize = 6;
-            this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(210, 38);
-            this.ucNotFound1.TabIndex = 0;
-            // 
-            // profilePostedBy
-            // 
-            this.profilePostedBy.BackColor = System.Drawing.Color.Transparent;
-            this.profilePostedBy.BorderColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.BorderRadius = 0;
-            this.profilePostedBy.EmployeeProfile = null;
-            this.profilePostedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
-            this.profilePostedBy.HoverColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.IsBorderNeeded = false;
-            this.profilePostedBy.IsOperable = false;
-            this.profilePostedBy.Location = new System.Drawing.Point(10, 1);
-            this.profilePostedBy.Margin = new System.Windows.Forms.Padding(4);
-            this.profilePostedBy.Name = "profilePostedBy";
-            this.profilePostedBy.NormalColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.Padding = new System.Windows.Forms.Padding(3);
-            this.profilePostedBy.ProfileTextColor = System.Drawing.Color.Empty;
-            this.profilePostedBy.Size = new System.Drawing.Size(221, 50);
-            this.profilePostedBy.TabIndex = 2;
             // 
             // IssueInfoForm
             // 

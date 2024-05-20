@@ -26,7 +26,26 @@ namespace TeamTracker
             ThemeManager.ThemeChange += OnThemeChanged;
             solutionTextBox.GotFocus += RemoveSolutionPlaceHolders;
             solutionTextBox.LostFocus += AddSolutionPlaceHolders;
+            InitializeRoundedEdge();
+            toolTip1.SetToolTip(labelAttachment, "Click to remove attachment");
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void InitializeRoundedEdge()
+        {
+            labelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, labelAttachment.Width, labelAttachment.Height, labelAttachment.Width, labelAttachment.Height));
+        }
+
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
@@ -275,15 +294,14 @@ namespace TeamTracker
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+      
+            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, labelAttachment.Width - 1, labelAttachment.Height - 1), labelAttachment.Width / 2));
+            pen.Dispose();
+            
+        }
     }
 }

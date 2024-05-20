@@ -13,6 +13,8 @@ using LiveCharts.Wpf;
 using System.Windows.Media;
 using UserInterface;
 using System.Net.Mail;
+using Color = System.Drawing.Color;
+using UserInterface1;
 
 namespace TeamTracker
 {
@@ -143,28 +145,41 @@ namespace TeamTracker
             }
         }
 
-        private void OnDeployClick(object sender, EventArgs e)
+        private async void OnDeployClick(object sender, EventArgs e)
         {
-            Form loaderForm = new Form();
+            LoaderForm loaderForm = new LoaderForm();
+            Size wndSize = Screen.PrimaryScreen.Bounds.Size; 
+
             LogoAnimation logo = new LogoAnimation();
             logo.Start = true;
-            logo.Size = new Size(300, 300);
-            logo.LogoColor = System.Drawing.Color.Red;
-            logo.Location = new Point(loaderForm.Width / 2, loaderForm.Height / 2);
-            loaderForm.Controls.Add(logo);
-            //logo.BringToFront();
-            loaderForm.Show();
+            logo.Size = new Size(400,400);
+            logo.LogoColor = Color.White;
+            logo.Location = new Point(wndSize.Width / 2 - 100, wndSize.Height / 2 - 200);
 
-            var x = loaderForm.Controls;
-            DataHandler.SendEmail(version.ClientEmail, versionSourceCode);
+            loaderForm.Controls.Add(logo);
+            loaderForm.Show();
+         
+            var task2 = System.Threading.Tasks.Task.Run(() =>
+            {
+                DataHandler.SendEmail(version.ClientEmail, versionSourceCode);
+                
+            });
+
+
+            await System.Threading.Tasks.Task.WhenAll(task2);
+
+            logo.Start = false;
+            
             VersionManager.VersionCompletion(version);
             Deployment?.Invoke(proj.ProjectName, version);
-            MailAddress from = new MailAddress(EmployeeManager.CurrentEmployee.EmpEmail, EmployeeManager.CurrentEmployee.EmployeeFirstName + " " + EmployeeManager.CurrentEmployee.EmployeeLastName);
-            MailAddress to = new MailAddress(version.ClientEmail);
-            //SendEmail("Want to test this damn thing", from, to);
+            //MailAddress from = new MailAddress(EmployeeManager.CurrentEmployee.EmpEmail, EmployeeManager.CurrentEmployee.EmployeeFirstName + " " + EmployeeManager.CurrentEmployee.EmployeeLastName);
+            //MailAddress to = new MailAddress(version.ClientEmail);
+            ////SendEmail("Want to test this damn thing", from, to);
 
             loaderForm.Close();
             logo.Dispose();
+            ProjectManagerMainForm.notify.AddNotification("Deployment Status","Project deployed successfully and the client was notified");
+
         }
 
         protected void SendEmail(string _subject, MailAddress _from, MailAddress _to)
