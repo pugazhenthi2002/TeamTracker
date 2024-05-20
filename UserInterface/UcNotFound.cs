@@ -31,6 +31,8 @@ namespace UserInterface
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             labelHead.ForeColor = labelMessage.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Empty : Properties.Resources.Heat_Empty;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -38,13 +40,10 @@ namespace UserInterface
             InitializePageColor();
         }
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            pictureBox1.Image.Dispose();
-            pictureBox1.Dispose();
-            labelHead.Dispose();
-            labelMessage.Dispose();
-            tableLayoutPanel1.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();
         }
 
         public string HeadText

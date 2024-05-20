@@ -47,7 +47,7 @@ namespace UserInterface.Task
             {
                 total += Iter.Value;
             }
-            
+
             if (total != 0)
             {
                 pieChart1.Visible = true;
@@ -74,6 +74,11 @@ namespace UserInterface.Task
             label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             switchMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             switchMilestoneButton.ForeColor = ThemeManager.GetTextColor(switchMilestoneButton.BackColor);
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -140,7 +145,6 @@ namespace UserInterface.Task
 
         private void OnWarningStatusSelected(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -158,7 +162,6 @@ namespace UserInterface.Task
 
         private void OnDeployWarningStatusSelected(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -177,7 +180,6 @@ namespace UserInterface.Task
 
         private void OnSourceCodeSubmission(object sender, VersionSourceCode e)
         {
-            (sender as DeployForm).Dispose();
             (sender as DeployForm).Close();
 
             if (ParentForm != null)

@@ -20,8 +20,8 @@ namespace UserInterface.Project_Manager_Main_Page
         {
             InitializeComponent();
             InitializePageColor();
+            toggleButton1.Checked = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? false : true;
             ThemeManager.ThemeChange += OnThemeChanged;
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -32,13 +32,18 @@ namespace UserInterface.Project_Manager_Main_Page
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
-            label1.ForeColor = ThemeManager.GetTextColor(BackColor);
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
         }
 
         protected override void OnLostFocus(EventArgs e)
@@ -88,7 +93,7 @@ namespace UserInterface.Project_Manager_Main_Page
 
         private const int CSDropShadow = 0x00020000;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ThemeToggleClick(object sender, EventArgs e)
         {
             ThemeManager.OnThemeChanged();
         }

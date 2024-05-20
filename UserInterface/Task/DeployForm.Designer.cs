@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -71,6 +72,8 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.OnCloseClick);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 

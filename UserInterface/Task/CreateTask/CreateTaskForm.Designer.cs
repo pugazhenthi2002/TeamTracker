@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -428,6 +429,8 @@
             this.BtnAssignTo.TabIndex = 0;
             this.BtnAssignTo.TabStop = false;
             this.BtnAssignTo.Click += new System.EventHandler(this.OnClickAssignBtn);
+            this.BtnAssignTo.MouseEnter += new System.EventHandler(this.OnAssignedToMouseEnter);
+            this.BtnAssignTo.MouseLeave += new System.EventHandler(this.OnAssignedToMouseLeave);
             // 
             // tableLayoutPanel4
             // 
@@ -538,7 +541,6 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(808, 66);
             this.tableLayoutPanel7.TabIndex = 7;
-            this.tableLayoutPanel7.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
             // 
             // textBoxTaskName
             // 
@@ -584,7 +586,6 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(808, 313);
             this.tableLayoutPanel8.TabIndex = 8;
-            this.tableLayoutPanel8.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
             // 
             // textBoxDesc
             // 

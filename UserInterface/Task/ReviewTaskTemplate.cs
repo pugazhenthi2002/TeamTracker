@@ -47,6 +47,11 @@ namespace UserInterface.Task
             downloadSourceCodeButton.ForeColor = reassignButton.ForeColor = doneButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
@@ -143,7 +148,6 @@ namespace UserInterface.Task
 
         private void OnReassignWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -164,7 +168,6 @@ namespace UserInterface.Task
 
         private void OnTaskFormClosed(object sender, EventArgs e)
         {
-            (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
 
             if (ParentForm != null)

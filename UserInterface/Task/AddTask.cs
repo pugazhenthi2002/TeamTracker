@@ -17,7 +17,7 @@ namespace UserInterface.Task
     {
         private TransparentForm transparentForm;
         private int startIdx, endIdx;
-        private bool IsBackEnable, IsNextEnable;
+        private bool isBackEnable, isNextEnable;
         private List<TeamTracker.Task> underReviewCollection;
         private ReviewTaskTemplate template;
         private List<ReviewTaskTemplate> boardCollection;
@@ -64,11 +64,22 @@ namespace UserInterface.Task
             addTaskButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             projectNameLabel.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             label1.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+
+            addTaskButton.Image?.Dispose(); nextBtn.Image?.Dispose();    backBtn.Image?.Dispose();
+
+            addTaskButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Plus_Light : Properties.Resources.Heat_Plus_Light;
+            ResetButton();
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            addTaskButton.Image?.Dispose(); nextBtn.Image?.Dispose(); backBtn.Image?.Dispose();
         }
 
         private void AddTaskClick(object sender, EventArgs e)
@@ -115,8 +126,8 @@ namespace UserInterface.Task
             {
                 startIdx = 0;
                 endIdx = underReviewCollection.Count > 5 ? 4 : underReviewCollection.Count - 1;
-                IsBackEnable = false;
-                IsNextEnable = endIdx > 5 ? true : false;
+                isBackEnable = false;
+                isNextEnable = endIdx > 5 ? true : false;
                 CreateReviewUI();
                 panelBase.Visible = true;
             }
@@ -146,19 +157,19 @@ namespace UserInterface.Task
                 Iter.BringToFront();
             }
 
-            IsBackEnable = startIdx == 0 ? false : true;
-            IsNextEnable = endIdx == underReviewCollection.Count - 1 ? false : true;
+            isBackEnable = startIdx == 0 ? false : true;
+            isNextEnable = endIdx == underReviewCollection.Count - 1 ? false : true;
 
-            if (backPicBox.Image != null) backPicBox.Image.Dispose();
-            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
         }
 
         private void BackClick(object sender, EventArgs e)
         {
-            if (IsBackEnable)
+            if (isBackEnable)
             {
                 startIdx--; endIdx--;
                 ResetReviewUI();
@@ -167,7 +178,7 @@ namespace UserInterface.Task
 
         private void NextClick(object sender, EventArgs e)
         {
-            if (IsNextEnable)
+            if (isNextEnable)
             {
                 startIdx++; endIdx++;
                 ResetReviewUI();
@@ -176,29 +187,55 @@ namespace UserInterface.Task
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "backPicBox")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                backPicBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                nextPicBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if((sender as PictureBox).Image != null)    (sender as PictureBox).Image.Dispose(); 
-
-            if((sender as Control).Name == "backPicBox")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -245,14 +282,13 @@ namespace UserInterface.Task
                 boardCollection[idx].SelectedTask = underReviewCollection[ctr];
             }
 
-            IsBackEnable = startIdx == 0 ? false : true;
-            IsNextEnable = endIdx == underReviewCollection.Count - 1 ? false : true;
+            isBackEnable = startIdx == 0 ? false : true;
+            isNextEnable = endIdx == underReviewCollection.Count - 1 ? false : true;
 
-            if (backPicBox.Image != null) backPicBox.Image.Dispose();
-            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backPicBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextPicBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            ResetButton();
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -289,6 +325,20 @@ namespace UserInterface.Task
         {
             base.OnResize(e);
             InitializeRoundedEdge();
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+            }
         }
     }
 }

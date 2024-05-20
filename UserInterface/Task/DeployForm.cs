@@ -21,7 +21,6 @@ namespace UserInterface.Task
             InitializeRoundedEdge();
             InitializePageColor();
             this.Location = new Point(700, 300);
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public VersionSourceCode SelectedVersionSourceCode;
@@ -39,16 +38,10 @@ namespace UserInterface.Task
             int nHeightEllipse // width of ellipse
         );
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (pictureBoxUpload.Image != null) pictureBoxUpload.Image.Dispose();
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-
-            pictureBoxUpload.Dispose(); pictureBox1.Dispose();
-            clearButton.Dispose();  submitCodeButton.Dispose();
-            label1.Dispose();   label3.Dispose();
-            panel1.Dispose(); panel4.Dispose(); panel5.Dispose();
-            tableLayoutPanel2.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -68,6 +61,9 @@ namespace UserInterface.Task
             clearButton.BackColor = submitCodeButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             clearButton.ForeColor = submitCodeButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
             label3.ForeColor = ThemeManager.GetTextColor(BackColor);
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
+            pictureBoxUpload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Upload : Properties.Resources.Heat_Upload;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -130,6 +126,16 @@ namespace UserInterface.Task
             }
             
             return true;
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light_Hover : Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
         }
     }
 }

@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectManagerMainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.editLabel = new System.Windows.Forms.Label();
+            this.editPicBox = new System.Windows.Forms.PictureBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.allIssueLabel = new System.Windows.Forms.Label();
             this.allIssuePicBox = new System.Windows.Forms.PictureBox();
@@ -80,10 +83,9 @@
             this.ucViewAllIssue1 = new TeamTracker.UCViewAllIssue();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.edit1 = new UserInterface.Edit_Project.Edit();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.editLabel = new System.Windows.Forms.Label();
-            this.editPicBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editPicBox)).BeginInit();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allIssuePicBox)).BeginInit();
             this.panel9.SuspendLayout();
@@ -115,8 +117,6 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
-            this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.editPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -137,6 +137,51 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 645);
             this.panel1.TabIndex = 0;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.editLabel);
+            this.panel11.Controls.Add(this.editPicBox);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 400);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(250, 50);
+            this.panel11.TabIndex = 10;
+            // 
+            // editLabel
+            // 
+            this.editLabel.BackColor = System.Drawing.Color.Transparent;
+            this.editLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.editLabel.Location = new System.Drawing.Point(67, 0);
+            this.editLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.editLabel.Name = "editLabel";
+            this.editLabel.Size = new System.Drawing.Size(183, 50);
+            this.editLabel.TabIndex = 2;
+            this.editLabel.Text = "Edit";
+            this.editLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.editLabel.Click += new System.EventHandler(this.OnEditPageClicked);
+            this.editLabel.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.editLabel.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
+            // 
+            // editPicBox
+            // 
+            this.editPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.editPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editPicBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.editPicBox.Image = global::UserInterface.Properties.Resources.All_Issue_Normal;
+            this.editPicBox.Location = new System.Drawing.Point(0, 0);
+            this.editPicBox.Name = "editPicBox";
+            this.editPicBox.Size = new System.Drawing.Size(67, 50);
+            this.editPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.editPicBox.TabIndex = 1;
+            this.editPicBox.TabStop = false;
+            this.editPicBox.Click += new System.EventHandler(this.OnEditPageClicked);
+            this.editPicBox.MouseEnter += new System.EventHandler(this.OnNavMouseEnter);
+            this.editPicBox.MouseLeave += new System.EventHandler(this.OnNavMouseLeave);
             // 
             // panel10
             // 
@@ -766,52 +811,12 @@
             // 
             // edit1
             // 
+            this.edit1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
             this.edit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edit1.Location = new System.Drawing.Point(0, 0);
             this.edit1.Name = "edit1";
             this.edit1.Size = new System.Drawing.Size(1015, 585);
             this.edit1.TabIndex = 0;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.editLabel);
-            this.panel11.Controls.Add(this.editPicBox);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Location = new System.Drawing.Point(0, 400);
-            this.panel11.Margin = new System.Windows.Forms.Padding(0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(250, 50);
-            this.panel11.TabIndex = 10;
-            // 
-            // editLabel
-            // 
-            this.editLabel.BackColor = System.Drawing.Color.Transparent;
-            this.editLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.editLabel.Location = new System.Drawing.Point(67, 0);
-            this.editLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.editLabel.Name = "editLabel";
-            this.editLabel.Size = new System.Drawing.Size(183, 50);
-            this.editLabel.TabIndex = 2;
-            this.editLabel.Text = "Edit";
-            this.editLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.editLabel.Click += new System.EventHandler(this.OnEditPageClicked);
-            // 
-            // editPicBox
-            // 
-            this.editPicBox.BackColor = System.Drawing.Color.Transparent;
-            this.editPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editPicBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.editPicBox.Image = global::UserInterface.Properties.Resources.All_Issue_Normal;
-            this.editPicBox.Location = new System.Drawing.Point(0, 0);
-            this.editPicBox.Name = "editPicBox";
-            this.editPicBox.Size = new System.Drawing.Size(67, 50);
-            this.editPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.editPicBox.TabIndex = 1;
-            this.editPicBox.TabStop = false;
-            this.editPicBox.Click += new System.EventHandler(this.OnEditPageClicked);
             // 
             // ProjectManagerMainForm
             // 
@@ -824,6 +829,8 @@
             this.Name = "ProjectManagerMainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.editPicBox)).EndInit();
             this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.allIssuePicBox)).EndInit();
             this.panel9.ResumeLayout(false);
@@ -855,8 +862,6 @@
             this.tabPage8.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.editPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }

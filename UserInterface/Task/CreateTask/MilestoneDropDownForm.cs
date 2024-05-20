@@ -82,13 +82,17 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             for(int ctr=0; ctr < Controls.Count; ctr++)
             {
-                Controls[ctr].Dispose();
+                (Controls[ctr] as Label).Click -= OnClickMilestoneBtn;
+                (Controls[ctr] as Label).MouseEnter -= OnMouseEnter;
+                (Controls[ctr] as Label).MouseLeave -= OnMouseLeave;
+                (Controls[ctr] as Label).Dispose();
                 ctr--;
             }
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializeRoundedEdge()

@@ -91,6 +91,11 @@ namespace TeamTracker
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         private void SliderPanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -155,7 +160,7 @@ namespace TeamTracker
             if (e.Button == MouseButtons.Right)
             {
                 TaskOperationForm form = new TaskOperationForm();
-                form.Location = PointToScreen(new Point(Width, 0));
+                form.Location = GetLocation();
                 form.Operate += OnTaskOperation;
                 form.Show();
             }
@@ -198,7 +203,6 @@ namespace TeamTracker
 
         private void OnInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as TaskInfoForm).Dispose();
             (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)
@@ -207,7 +211,6 @@ namespace TeamTracker
 
         private void OnTaskFormClose(object sender, EventArgs e)
         {
-            (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
 
             if (ParentForm != null)
@@ -413,6 +416,20 @@ namespace TeamTracker
             }
 
             this.ResumeLayout();
+        }
+
+        private Point GetLocation()
+        {
+            Point Pt = PointToScreen(new Point(Width, 0));
+            if(Location.X + Width + 157 >= Parent.Width)
+            {
+                Pt = PointToScreen(new Point(-157, 0));
+                if(Location.Y + Height + 105 >= Parent.Width)
+                {
+                    Pt.Y = -106;
+                }
+            }
+            return Pt;
         }
 
         private Point offSet;

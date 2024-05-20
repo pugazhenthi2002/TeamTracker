@@ -19,27 +19,11 @@ namespace UserInterface.Task.CreateTask
         public event EventHandler TaskCreate;
         public event EventHandler TaskFormClose;
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
-            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
-            if (pictureBoxFlag.Image != null) pictureBoxFlag.Image.Dispose();
-            if (BtnAssignTo.Image != null) BtnAssignTo.Image.Dispose();
-
-            pictureBox1.Dispose();  pictureBox2.Dispose();  pictureBox3.Dispose();
-
-            animatedLabelFilename.Dispose();
-            buttonCreate.Dispose(); buttonSetMilestone.Dispose();   employeeName.Dispose(); labelSetPriority.Dispose(); labelTitle.Dispose();
-            label1.Dispose(); label2.Dispose(); label3.Dispose(); label4.Dispose(); label5.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();
-            tableLayoutPanel5.Dispose();    tableLayoutPanel6.Dispose();    tableLayoutPanel7.Dispose();    tableLayoutPanel8.Dispose();
-            tableLayoutPanelFileName.Dispose();
-            textBoxDesc.Dispose();  textBoxTaskName.Dispose();
-            startDate.Dispose();    endDate.Dispose();
-            toolTip1.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();   pictureBox2.Image?.Dispose();   pictureBox3.Image?.Dispose();   pictureBoxAttachment.Image?.Dispose();   pictureBoxFlag.Image?.Dispose();
+            BtnAssignTo.Image?.Dispose();
         }
 
         public CreateTaskForm()
@@ -62,7 +46,6 @@ namespace UserInterface.Task.CreateTask
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
-            panel3.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
             label2.ForeColor = ThemeManager.GetTextColor(panel3.BackColor);
             buttonCreate.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             buttonCreate.ForeColor = labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
@@ -71,6 +54,13 @@ namespace UserInterface.Task.CreateTask
             startDate.SkinColor = endDate.SkinColor = tableLayoutPanel5.BackColor = tableLayoutPanelFileName.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             labelSetPriority.ForeColor = textBoxDesc.ForeColor = textBoxTaskName.ForeColor = buttonSetMilestone.ForeColor = employeeName.ForeColor = label1.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             label2.ForeColor = startDate.TextColor = endDate.TextColor = startDate.BorderColor = endDate.BorderColor = animatedLabelFilename.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel3.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Document : Properties.Resources.Heat_Dark_Document;
+            pictureBoxAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Pin : Properties.Resources.Heat_Pin;
+            BtnAssignTo.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
         }
 
         private void InitializePlaceHolders()
@@ -253,7 +243,7 @@ namespace UserInterface.Task.CreateTask
             selectedTeamMember = e;
             Button clickedBtn = (sender as Button);
             employeeName.Text = e.EmployeeFirstName;
-            TeamMembersDropForm.Dispose();
+            //TeamMembersDropForm.Close();
         }
 
         private void OnClickCloseFile(object sender, EventArgs e)
@@ -389,39 +379,30 @@ namespace UserInterface.Task.CreateTask
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
+
             if ((sender as Control).Name == "pictureBox2")
             {
-                if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-
-                pictureBox2.Image = Properties.Resources.Close_Light_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark_Hover : Properties.Resources.Heat_Close_Dark_Hover;
             }
             else
             {
-                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-
-                pictureBox1.Image = Properties.Resources.Close_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light_Hover : Properties.Resources.Heat_Close_Light_Hover;
             }
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
+
             if ((sender as Control).Name == "pictureBox2")
             {
-                if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-
-                pictureBox2.Image = Properties.Resources.Close_Dark_Blue;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
             }
             else
             {
-                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-
-                pictureBox1.Image = Properties.Resources.Close_30;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
             }
-        }
-
-        private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private const int CSDropShadow = 0x00020000;
@@ -443,6 +424,18 @@ namespace UserInterface.Task.CreateTask
         private void OnCreateMouseLeave(object sender, EventArgs e)
         {
             buttonCreate.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnAssignedToMouseEnter(object sender, EventArgs e)
+        {
+            BtnAssignTo.Image?.Dispose();
+            BtnAssignTo.Image = (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
+        }
+
+        private void OnAssignedToMouseLeave(object sender, EventArgs e)
+        {
+            BtnAssignTo.Image?.Dispose();
+            BtnAssignTo.Image = (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
         }
     }
 }

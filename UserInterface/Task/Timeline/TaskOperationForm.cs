@@ -40,6 +40,11 @@ namespace UserInterface.Task.Timeline
             label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         private void OnUpdateClick(object sender, EventArgs e)
         {
             Operate?.Invoke(this, OperateType.Update);

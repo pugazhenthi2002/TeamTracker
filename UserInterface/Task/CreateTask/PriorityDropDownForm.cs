@@ -30,6 +30,11 @@ namespace TeamTracker
             BtnCritical.ForeColor = label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
