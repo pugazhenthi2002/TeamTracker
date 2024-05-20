@@ -74,6 +74,7 @@ namespace TeamTracker
             startDateTimePicker.Value = endDateTimePicker.Value = DateTime.Today;
             latestUpgradedVersion1.LatestVersion = null;
             fileAttachment1.AttachmentCollection = null;
+            fileAttachment1.ClearAttachments();
             profilePicAndName1.EmployeeProfile = null;
         }
 
@@ -159,7 +160,6 @@ namespace TeamTracker
 
         private void OnProjectSelected(object sender, Projects e)
         {
-            (sender as ChooseProjectForm).Dispose();
             (sender as ChooseProjectForm).Close();
 
             if (ParentForm != null)

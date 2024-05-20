@@ -41,6 +41,13 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         public Color BorderColor
         {
             get { return borderColor; }
@@ -84,8 +91,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 {
                     isDownEnable = false;
                 }
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                ResetButtons();
             }
         }
 
@@ -105,11 +111,11 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             if((sender as PictureBox).Name == "upPicBox")
             {
-                (sender as PictureBox).Image = Properties.Resources.Up_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                (sender as PictureBox).Image = Properties.Resources.Down_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
@@ -117,11 +123,25 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             if ((sender as PictureBox).Name == "upPicBox")
             {
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                }
             }
             else
             {
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+                }
             }
         }
 
@@ -164,8 +184,21 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            ResetButtons();
+        }
+
+        private void ResetButtons()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+            }
         }
     }
 }

@@ -63,6 +63,7 @@ namespace UserInterface.Edit_Project.Controls
             manualEdit.ForeColor = requiredEdit.BackColor = buttonUpdate.BackColor = pictureBox2.BackColor = pictureBox3.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = label2.ForeColor = label3.ForeColor = label4.ForeColor = versionNames.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneTextBox.ForeColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            tabPage1.BackColor = tabPage2.BackColor = searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             BackBtn.Image?.Dispose();
             NextBtn.Image?.Dispose();
@@ -226,6 +227,11 @@ namespace UserInterface.Edit_Project.Controls
                     return "Milestone Date is not in Proper Order";
                 }
                 prevDate = milestoneCollection[ctr].EndDate;
+            }
+
+            if (milestoneCollection.Count < 5 || milestoneCollection.Count > 8)
+            {
+                return "Milestone Count Should be within 5 to 8";
             }
 
             return true;

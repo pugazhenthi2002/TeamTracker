@@ -43,6 +43,7 @@ namespace UserInterface.Edit_Project.Controls
             panel4.BackColor = DeleteButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             updateButton.ForeColor = ThemeManager.GetTextColor(updateButton.BackColor);
             DeleteButton.ForeColor = ThemeManager.GetTextColor(DeleteButton.BackColor);
+            searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             BackBtn.Image?.Dispose();
             NextBtn.Image?.Dispose();

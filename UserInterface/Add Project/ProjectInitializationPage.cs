@@ -69,7 +69,7 @@ namespace TeamTracker
             startDateTimePicker.Value = DateTime.Now;
             endDateTimePicker.Value = DateTime.Now;
             fileAttachment1.AttachmentCollection = null;
-            fileAttachment1.Dispose();
+            fileAttachment1.ClearAttachments();
             ucNotFound1.Visible = true;
             availableTeamLeaders1.Visible = false;
             selectedTeamLeader1.Visible = false;

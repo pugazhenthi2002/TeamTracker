@@ -42,8 +42,7 @@ namespace UserInterface.Edit_Project.Controls
             ucNotFound1.BackColor = ucNotFound2.BackColor = buttonDelete.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             buttonUpdate.ForeColor = ThemeManager.GetTextColor(buttonUpdate.BackColor);
             buttonDelete.ForeColor = ThemeManager.GetTextColor(buttonDelete.BackColor);
-
-            ResetButton();
+            tabPage1.BackColor = tabPage2.BackColor = searchTask1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             BackBtn.Image?.Dispose();
             NextBtn.Image?.Dispose();
@@ -51,6 +50,9 @@ namespace UserInterface.Edit_Project.Controls
             pictureBox3.Image?.Dispose();
             pictureBox3.Image?.Dispose();
             pictureBoxAttachment.Image?.Dispose();
+
+            ResetButton();
+
 
             BtnAssignTo.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
             pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
@@ -118,8 +120,8 @@ namespace UserInterface.Edit_Project.Controls
             taskCollection = requiredTaskCollection;
 
             startIdx = 0; isBackEnable = false;
-            endIdx = taskCollection.Count >= 5 ? 4 : taskCollection.Count - 1;
-            isNextEnable = taskCollection.Count > 5 ? true : false;
+            endIdx = taskCollection.Count >= 4 ? 3 : taskCollection.Count - 1;
+            isNextEnable = taskCollection.Count > 4 ? true : false;
 
             if (taskCollection.Count == 0)
             {
@@ -163,8 +165,8 @@ namespace UserInterface.Edit_Project.Controls
         private void InitializeManualControl()
         {
             startIdx = 0; isBackEnable = false;
-            endIdx = taskCollection.Count >= 5 ? 4 : taskCollection.Count - 1;
-            isNextEnable = taskCollection.Count > 5 ? true : false;
+            endIdx = taskCollection.Count >= 4 ? 3 : taskCollection.Count - 1;
+            isNextEnable = taskCollection.Count > 4 ? true : false;
 
             if (taskCollection.Count == 0)
             {
