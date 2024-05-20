@@ -194,7 +194,6 @@ namespace TeamTracker
         private void OnMilestoneExtraction(object sender, List<Milestone> e)
         {
             MilestoneCollection = e;
-            (sender as AddMilestoneForm).Dispose();
             (sender as AddMilestoneForm).Close();
             ParentForm.Show();
         }

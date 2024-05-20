@@ -543,6 +543,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cold_Board_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Board_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cold_Board_Light {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Board_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cold_Browse {
             get {
                 object obj = ResourceManager.GetObject("Cold_Browse", resourceCulture);
@@ -943,6 +963,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cold_List_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Cold_List_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cold_List_Light {
+            get {
+                object obj = ResourceManager.GetObject("Cold_List_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cold_Milestone_Count {
             get {
                 object obj = ResourceManager.GetObject("Cold_Milestone_Count", resourceCulture);
@@ -1146,6 +1186,26 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Cold_Teammates_Count {
             get {
                 object obj = ResourceManager.GetObject("Cold_Teammates_Count", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cold_Timeline_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Timeline_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cold_Timeline_Light {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Timeline_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1553,6 +1613,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Heat_Board_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Board_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_Board_Light {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Board_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Heat_Browse {
             get {
                 object obj = ResourceManager.GetObject("Heat_Browse", resourceCulture);
@@ -1953,6 +2033,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Heat_List_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Heat_List_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_List_Light {
+            get {
+                object obj = ResourceManager.GetObject("Heat_List_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Heat_Milestone_Count {
             get {
                 object obj = ResourceManager.GetObject("Heat_Milestone_Count", resourceCulture);
@@ -2156,6 +2256,26 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Heat_Teammates_Count {
             get {
                 object obj = ResourceManager.GetObject("Heat_Teammates_Count", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_Timeline_Dark {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Timeline_Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_Timeline_Light {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Timeline_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

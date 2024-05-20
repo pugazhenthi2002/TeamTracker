@@ -35,6 +35,13 @@ namespace TeamTracker
             label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(BackColor);
             labelTitle.ForeColor = profileAssignedTo.ProfileTextColor = ThemeManager.GetTextColor(panel1.BackColor);
             label3.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
+
+            pictureBoxAttachment.Image?.Dispose();  pictureBoxClose.Image?.Dispose();   pictureBoxSoureCode.Image?.Dispose();   backBtn.Image?.Dispose();   nextBtn.Image?.Dispose();
+
+            pictureBoxSoureCode.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download: UserInterface.Properties.Resources.Heat_Download;
+            pictureBoxAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download: UserInterface.Properties.Resources.Heat_Download;
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light: UserInterface.Properties.Resources.Heat_Close_Light;
+            ResetButton();
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -42,7 +49,18 @@ namespace TeamTracker
             InitializePageColor();
         }
 
-        private bool backEnable = false, frontEnable = true;
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
+            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
+            if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
+            if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
+        }
+
+        private bool isBackEnable = false, isNextEnable = true;
         private int flag;
         private ProjectVersion selectedVersion;
         public ProjectVersion SelectedVersion
@@ -52,23 +70,6 @@ namespace TeamTracker
                 selectedVersion = value;
                 InitializeForm();
             }
-        }
-
-        public new void Dispose()
-        {
-            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
-            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
-            if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
-            if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
-
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
-            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   label6.Dispose();   label7.Dispose();
-            backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();    pictureBoxClose.Dispose();  pictureBoxSoureCode.Dispose();  pictureBoxAttachment.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel7.Dispose();
-            ucTaskDescription1.Dispose();   milestoneView1.Dispose();   startDate.Dispose();    endDate.Dispose();
-            donePanel.Dispose();    notstartedPanel.Dispose();  delayPanel.Dispose();   currentPanel.Dispose();
-            labelTaskCount.Dispose();   profileAssignedTo.Dispose();    labelTitle.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -133,24 +134,22 @@ namespace TeamTracker
             milestoneView1.MilestoneCollection = MilestoneManager.FetchMilestones(selectedVersion.VersionID);
             flag = milestoneView1.ChangeMilestoneUI(true);
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
+            ResetButton();
         }
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
-            if (backEnable)
+            if (isBackEnable)
                 flag = milestoneView1.ChangeMilestoneUI(false);
 
-            if (flag < 0) backEnable = false;
-            else { backEnable = true; }
-            frontEnable = true;
+            if (flag < 0) isBackEnable = false;
+            else { isBackEnable = true; }
+            isNextEnable = true;
 
-            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
+            ResetButton();
         }
 
         private void OnClose(object sender, EventArgs e)
@@ -237,18 +236,16 @@ namespace TeamTracker
 
         private void OnDownloadMouseEnter(object sender, EventArgs e)
         {
-            if (pictureBoxAttachment.Image != null)
-                pictureBoxAttachment.Image.Dispose();
+            (sender as PictureBox).Image?.Dispose();
 
-            pictureBoxAttachment.Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
+            (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void OnDownloadMouseLeave(object sender, EventArgs e)
         {
-            if (pictureBoxAttachment.Image != null)
-                pictureBoxAttachment.Image.Dispose();
+            (sender as PictureBox).Image?.Dispose();
 
-            pictureBoxAttachment.Image = UserInterface.Properties.Resources.Download_Dark_Blue;
+            (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnDownloadEdgePaint(object sender, PaintEventArgs e)
@@ -261,34 +258,97 @@ namespace TeamTracker
 
         private void OnMilestoneNavMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as PictureBox).Name == "nextNavPicBox") nextNavPicBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
-            else if ((sender as PictureBox).Name == "backNavigatePicBox") backNavigatePicBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
         }
 
         private void OnMilestoneNavMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as PictureBox).Name == "nextNavPicBox") nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
-            else if ((sender as PictureBox).Name == "backNavigatePicBox") backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
+            }
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
         {
-            if (frontEnable)
+            if (isNextEnable)
                 flag = milestoneView1.ChangeMilestoneUI(true);
 
-            if (flag > 0) frontEnable = false;
-            else { frontEnable = true; }
-            backEnable = true;
+            if (flag > 0) isNextEnable = false;
+            else { isNextEnable = true; }
+            isBackEnable = true;
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Light_Blue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Light_Blue;
+            ResetButton();
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
         }
 
         private const int CSDropShadow = 0x00020000;
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+        }
+
         protected override CreateParams CreateParams
         {
             get

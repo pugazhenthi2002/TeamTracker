@@ -38,6 +38,11 @@ namespace UserInterface.ViewProject.BoardView
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         public List<ProjectVersion> VersionCollection
         {
             set

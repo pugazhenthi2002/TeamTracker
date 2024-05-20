@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -54,16 +55,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.nextPictureBox = new System.Windows.Forms.PictureBox();
+            this.nextBtn = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.backPictureBox = new System.Windows.Forms.PictureBox();
+            this.backBtn = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nextPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // ucNotFound1
@@ -489,54 +490,54 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.nextPictureBox);
+            this.panel3.Controls.Add(this.nextBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(915, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(30, 342);
             this.panel3.TabIndex = 5;
             // 
-            // nextPictureBox
+            // nextBtn
             // 
-            this.nextPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.nextPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nextPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nextPictureBox.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
-            this.nextPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.nextPictureBox.Name = "nextPictureBox";
-            this.nextPictureBox.Size = new System.Drawing.Size(30, 342);
-            this.nextPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.nextPictureBox.TabIndex = 1;
-            this.nextPictureBox.TabStop = false;
-            this.nextPictureBox.Click += new System.EventHandler(this.OnNextDayClick);
-            this.nextPictureBox.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
-            this.nextPictureBox.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
+            this.nextBtn.BackColor = System.Drawing.Color.Transparent;
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
+            this.nextBtn.Location = new System.Drawing.Point(0, 0);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(30, 342);
+            this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.nextBtn.TabIndex = 1;
+            this.nextBtn.TabStop = false;
+            this.nextBtn.Click += new System.EventHandler(this.OnNextDayClick);
+            this.nextBtn.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
+            this.nextBtn.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.backPictureBox);
+            this.panel2.Controls.Add(this.backBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(30, 342);
             this.panel2.TabIndex = 4;
             // 
-            // backPictureBox
+            // backBtn
             // 
-            this.backPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.backPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.backPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.backPictureBox.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
-            this.backPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.backPictureBox.Name = "backPictureBox";
-            this.backPictureBox.Size = new System.Drawing.Size(30, 342);
-            this.backPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.backPictureBox.TabIndex = 0;
-            this.backPictureBox.TabStop = false;
-            this.backPictureBox.Click += new System.EventHandler(this.OnPrevDayClick);
-            this.backPictureBox.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
-            this.backPictureBox.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
+            this.backBtn.BackColor = System.Drawing.Color.Transparent;
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
+            this.backBtn.Location = new System.Drawing.Point(0, 0);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(30, 342);
+            this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.backBtn.TabIndex = 0;
+            this.backBtn.TabStop = false;
+            this.backBtn.Click += new System.EventHandler(this.OnPrevDayClick);
+            this.backBtn.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
+            this.backBtn.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
             // 
             // TimelinePaginate
             // 
@@ -551,9 +552,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nextPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -563,9 +564,9 @@
         private UserInterface.UcNotFound ucNotFound1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox backPictureBox;
+        private System.Windows.Forms.PictureBox backBtn;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox nextPictureBox;
+        private System.Windows.Forms.PictureBox nextBtn;
         private System.Windows.Forms.Panel datePanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label20;

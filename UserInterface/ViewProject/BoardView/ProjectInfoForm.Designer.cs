@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -66,8 +67,8 @@
             this.notstartedPanel = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.backNavigatePicBox = new System.Windows.Forms.PictureBox();
-            this.nextNavPicBox = new System.Windows.Forms.PictureBox();
+            this.backBtn = new System.Windows.Forms.PictureBox();
+            this.nextBtn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1.SuspendLayout();
@@ -87,8 +88,8 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.backNavigatePicBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nextNavPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -174,6 +175,8 @@
             this.pictureBoxClose.TabIndex = 0;
             this.pictureBoxClose.TabStop = false;
             this.pictureBoxClose.Click += new System.EventHandler(this.OnClose);
+            this.pictureBoxClose.MouseEnter += new System.EventHandler(this.OnCloseMouseEnter);
+            this.pictureBoxClose.MouseLeave += new System.EventHandler(this.OnCloseMouseLeave);
             // 
             // tableLayoutPanel3
             // 
@@ -332,6 +335,8 @@
             this.pictureBoxAttachment.TabIndex = 9;
             this.pictureBoxAttachment.TabStop = false;
             this.pictureBoxAttachment.Click += new System.EventHandler(this.AttachmentDownload);
+            this.pictureBoxAttachment.MouseEnter += new System.EventHandler(this.OnDownloadMouseEnter);
+            this.pictureBoxAttachment.MouseLeave += new System.EventHandler(this.OnDownloadMouseLeave);
             // 
             // label8
             // 
@@ -368,7 +373,7 @@
             this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
             this.ucTaskDescription1.CenterLabelText = "Task Description...";
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTaskDescription1.EnableEdit = false;
+            this.ucTaskDescription1.EnableEdit = true;
             this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ucTaskDescription1.Location = new System.Drawing.Point(3, 10);
             this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
@@ -611,8 +616,8 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.backNavigatePicBox);
-            this.panel7.Controls.Add(this.nextNavPicBox);
+            this.panel7.Controls.Add(this.backBtn);
+            this.panel7.Controls.Add(this.nextBtn);
             this.panel7.Controls.Add(this.label1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
@@ -621,35 +626,35 @@
             this.panel7.Size = new System.Drawing.Size(1081, 34);
             this.panel7.TabIndex = 3;
             // 
-            // backNavigatePicBox
+            // backBtn
             // 
-            this.backNavigatePicBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.backNavigatePicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.backNavigatePicBox.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
-            this.backNavigatePicBox.Location = new System.Drawing.Point(983, 0);
-            this.backNavigatePicBox.Name = "backNavigatePicBox";
-            this.backNavigatePicBox.Size = new System.Drawing.Size(47, 34);
-            this.backNavigatePicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.backNavigatePicBox.TabIndex = 2;
-            this.backNavigatePicBox.TabStop = false;
-            this.backNavigatePicBox.Click += new System.EventHandler(this.BackMilestoneClick);
-            this.backNavigatePicBox.MouseEnter += new System.EventHandler(this.OnMilestoneNavMouseEnter);
-            this.backNavigatePicBox.MouseLeave += new System.EventHandler(this.OnMilestoneNavMouseLeave);
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
+            this.backBtn.Location = new System.Drawing.Point(983, 0);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(47, 34);
+            this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.backBtn.TabIndex = 2;
+            this.backBtn.TabStop = false;
+            this.backBtn.Click += new System.EventHandler(this.BackMilestoneClick);
+            this.backBtn.MouseEnter += new System.EventHandler(this.OnMilestoneNavMouseEnter);
+            this.backBtn.MouseLeave += new System.EventHandler(this.OnMilestoneNavMouseLeave);
             // 
-            // nextNavPicBox
+            // nextBtn
             // 
-            this.nextNavPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nextNavPicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.nextNavPicBox.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
-            this.nextNavPicBox.Location = new System.Drawing.Point(1030, 0);
-            this.nextNavPicBox.Name = "nextNavPicBox";
-            this.nextNavPicBox.Size = new System.Drawing.Size(51, 34);
-            this.nextNavPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.nextNavPicBox.TabIndex = 1;
-            this.nextNavPicBox.TabStop = false;
-            this.nextNavPicBox.Click += new System.EventHandler(this.NextMilestoneClick);
-            this.nextNavPicBox.MouseEnter += new System.EventHandler(this.OnMilestoneNavMouseEnter);
-            this.nextNavPicBox.MouseLeave += new System.EventHandler(this.OnMilestoneNavMouseLeave);
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
+            this.nextBtn.Location = new System.Drawing.Point(1030, 0);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(51, 34);
+            this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.nextBtn.TabIndex = 1;
+            this.nextBtn.TabStop = false;
+            this.nextBtn.Click += new System.EventHandler(this.NextMilestoneClick);
+            this.nextBtn.MouseEnter += new System.EventHandler(this.OnMilestoneNavMouseEnter);
+            this.nextBtn.MouseLeave += new System.EventHandler(this.OnMilestoneNavMouseLeave);
             // 
             // label1
             // 
@@ -706,8 +711,8 @@
             this.tableLayoutPanel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.backNavigatePicBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nextNavPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -741,8 +746,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.PictureBox backNavigatePicBox;
-        private System.Windows.Forms.PictureBox nextNavPicBox;
+        private System.Windows.Forms.PictureBox backBtn;
+        private System.Windows.Forms.PictureBox nextBtn;
         private System.Windows.Forms.Label label1;
         private UserInterface.UcNotFound ucNotFound1;
         private UcTaskDescription ucTaskDescription1;
