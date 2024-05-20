@@ -43,7 +43,15 @@ namespace TeamTracker
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
-            backPictureBox.BackColor = nextPictureBox.BackColor =  BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            backBtn.BackColor = nextBtn.BackColor =  BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            backBtn.Image?.Dispose(); nextBtn.Image?.Dispose();
+
+            ResetButton();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -156,11 +164,10 @@ namespace TeamTracker
 
             isNextEnable = iterDate > version.EndDate ? false : true;
 
-            if (backPictureBox.Image != null) { backPictureBox.Image.Dispose(); }
-            if (nextPictureBox.Image != null) { nextPictureBox.Image.Dispose(); }
+            if (backBtn.Image != null) { backBtn.Image.Dispose(); }
+            if (nextBtn.Image != null) { nextBtn.Image.Dispose(); }
 
-            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            ResetButton();
         }
 
         private void InitializeLabels()
@@ -176,8 +183,7 @@ namespace TeamTracker
 
         private void SetViewTaskCollection()
         {
-            if(timelineControlPanel.Controls != null)
-                timelineControlPanel.Controls.Clear();
+            TimelineControlClear();
 
             viewTaskCollection = new List<Task>();
             viewColorCollections = new List<Color>();
@@ -241,29 +247,57 @@ namespace TeamTracker
 
         private void OnPaginateMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = ThemeManager.GetHoverColor(BackColor);
-            if ((sender as Control).Name == "nextPictureBox")
+            (sender as PictureBox).BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                nextPictureBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                backPictureBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnPaginateMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = BackColor;
-            if ((sender as Control).Name == "nextPictureBox")
+            (sender as PictureBox).BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -311,6 +345,29 @@ namespace TeamTracker
             }
 
             return ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
+        private void TimelineControlClear()
+        {
+            for(int ctr=0; ctr < timelineControlPanel.Controls.Count; ctr++)
+            {
+                (timelineControlPanel.Controls[ctr] as TaskTimelineTemplate).Dispose();
+                ctr--;
+            }
         }
     }
 }

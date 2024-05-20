@@ -36,6 +36,11 @@ namespace UserInterface.ViewProject.TimelineView.Controls
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         public event EventHandler<Projects> ProjectSelected;
 
 

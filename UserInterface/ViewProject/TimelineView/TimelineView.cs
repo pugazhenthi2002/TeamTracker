@@ -15,7 +15,7 @@ namespace UserInterface.ViewProject.TimelineView
 {
     public partial class TimelineView : UserControl
     {
-        private bool upEnable, downEnable;
+        private bool isUpEnable, isDownEnable;
         private int startIdx, endIdx = 0, selectedIdx = 0;
         private VerticalLabel prevControl;
         private Projects currentProject;
@@ -40,6 +40,22 @@ namespace UserInterface.ViewProject.TimelineView
             label1.ForeColor = ThemeManager.GetTextColor(BackColor);
             panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             versionNames.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+
+            dropDownPicBox.Image?.Dispose();    upPicBox.Image?.Dispose();  downPicBox.Image?.Dispose();
+
+            ResetButtons();
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark: Properties.Resources.Heat_Down_Dark;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            for(int ctr=0; ctr< projectDisplayPanel.Controls.Count; ctr++)
+            {
+                (projectDisplayPanel.Controls[ctr] as VerticalLabel).ProjectSelected -= OnProjectSelected;
+                (projectDisplayPanel.Controls[ctr] as VerticalLabel).Dispose();
+                ctr--;
+            }
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -73,16 +89,15 @@ namespace UserInterface.ViewProject.TimelineView
 
                     projectCollection = value;
                     projectViewCount = value.Count >= 5 ? 5 : value.Count;
-                    upEnable = false;
-                    downEnable = value.Count > 5 ? true : false;
+                    isUpEnable = false;
+                    isDownEnable = value.Count > 5 ? true : false;
                     startIdx = 0;
                     endIdx = projectViewCount - 1;
 
-                    if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
-                    if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
+                    if (upPicBox.Image != null) upPicBox.Image.Dispose();
+                    if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-                    projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-                    projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                    ResetButtons();
 
                     InitializeProjectsForTimeline();
                 }
@@ -149,7 +164,7 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void projectDownClick(object sender, EventArgs e)
         {
-            if(downEnable)
+            if(isDownEnable)
             {
                 selectedIdx--;
                 startIdx++;
@@ -185,7 +200,7 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void projectUpClick(object sender, EventArgs e)
         {
-            if (upEnable)
+            if (isUpEnable)
             {
                 selectedIdx++;
                 startIdx--;
@@ -230,41 +245,55 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnVersionMouseEnter(object sender, EventArgs e)
         {
-            panel7.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            dropDownPicBox.Image?.Dispose();
+
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             panel4.Invalidate();
         }
 
         private void OnVersionMouseLeave(object sender, EventArgs e)
         {
-            panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            dropDownPicBox.Image?.Dispose();
+
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
             panel4.Invalidate();
         }
 
         private void OnProjectPaginateMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as PictureBox).Name == "projectUpBox")
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                projectUpBox.Image = UserInterface.Properties.Resources.Up_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                projectDownBox.Image = UserInterface.Properties.Resources.Down_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
         private void OnProjectPaginateMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "projectUpBox")
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Medium;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Medium;
+                }
             }
             else
             {
-                projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Medium;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Medium;
+                }
             }
         }
 
@@ -283,14 +312,13 @@ namespace UserInterface.ViewProject.TimelineView
                 projectViewControlCollection[idx].Project = projectCollection[ctr];
             }
 
-            upEnable = startIdx == 0 ? false : true;
-            downEnable = endIdx == projectCollection.Count - 1 ? false : true;
+            isUpEnable = startIdx == 0 ? false : true;
+            isDownEnable = endIdx == projectCollection.Count - 1 ? false : true;
 
-            if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
-            if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
+            if (upPicBox.Image != null) upPicBox.Image.Dispose();
+            if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-            projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            ResetButtons();
         }
 
         private void InitializeMilestoneLegendCollection()
@@ -311,6 +339,20 @@ namespace UserInterface.ViewProject.TimelineView
             foreach(TimelineMilestoneLabel Iter in milestoneLabelPanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void ResetButtons()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Medium;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Medium;
             }
         }
     }

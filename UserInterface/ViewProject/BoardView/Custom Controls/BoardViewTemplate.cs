@@ -36,11 +36,23 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
             milestoneStatusPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            pictureBox1.Image?.Dispose();   pictureBox4.Image?.Dispose();   pictureBox5.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Calendar_Dark : Properties.Resources.Heat_Calendar_Dark;
+            pictureBox4.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Total_Task : Properties.Resources.Heat_Dark_Total_Task;
+            pictureBox5.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Milestone : Properties.Resources.Heat_Dark_Milestone;
+
+            if (milestoneStatusPicBox.Visible) SetMilestoneStatus();
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         public ProjectVersion BoardVersion
@@ -117,6 +129,9 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void SetMilestoneStatus()
         {
+            if (boardVersion == null)
+                return;
+
             milestone = MilestoneManager.FetchCurrentVersion(boardVersion);
 
             if(milestone != null)
@@ -127,18 +142,41 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 if(milestone.StartDate > DateTime.Today)
                 {
                     toolTipMessage = "Beyond the Milestone Deadline";
-                    milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Up;
+                    if (!isHovered)
+                    {
+                        milestoneStatusPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Project_Equal_Light : Properties.Resources.Heat_Project_Equal_Light;
+                    }
+                    else
+                    {
+                        milestoneStatusPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Project_Equal_Dark : Properties.Resources.Heat_Project_Equal_Dark;
+                    }
                 }
                 else if(milestone.EndDate < DateTime.Today)
                 {
                     toolTipMessage = "Behind the Milestone Deadline";
-                    milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Down;
+                    if (!isHovered)
+                    {
+                        milestoneStatusPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Project_Delay_Light : Properties.Resources.Heat_Project_Delay_Light;
+                    }
+                    else
+                    {
+                        milestoneStatusPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Project_Delay_Dark : Properties.Resources.Heat_Project_Delay_Dark;
+                    }
                 }
                 else
                 {
                     toolTipMessage = "Steady State";
-                    milestoneStatusPicBox.Image = UserInterface.Properties.Resources.Version_Milestone_Status_Equal;
+                    if (!isHovered)
+                    {
+                        milestoneStatusPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Project_Equal_Light : Properties.Resources.Heat_Project_Equal_Light;
+                    }
+                    else
+                    {
+                        milestoneStatusPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Project_Equal_Dark : Properties.Resources.Heat_Project_Equal_Dark;
+                    }
                 }
+
+                milestoneStatusPicBox.BackColor = isHovered ? ThemeManager.CurrentTheme.SecondaryII : ThemeManager.CurrentTheme.PrimaryI;
             }
         }
 
@@ -162,7 +200,6 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as ProjectInfoForm).Dispose();
             (sender as ProjectInfoForm).Close();
 
             if (ParentForm != null)
@@ -188,7 +225,15 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             isHovered = true;
             Cursor = Cursors.Hand;
             profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            milestoneStatusPicBox.BackColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            milestoneCountLabel.ForeColor = taskCountLabel.ForeColor = milestoneStatusPicBox.BackColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            pictureBox1.Image?.Dispose(); pictureBox4.Image?.Dispose(); pictureBox5.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Calendar_Light : Properties.Resources.Heat_Calendar_Light;
+            pictureBox4.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Light_Total_Task : Properties.Resources.Heat_Light_Total_Task;
+            pictureBox5.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Light_Milestone : Properties.Resources.Heat_Light_Milestone;
+            if(milestoneStatusPicBox.Visible)
+            {
+                SetMilestoneStatus();
+            }
             //tableLayoutPanel1.Invalidate();
         }
 
@@ -197,8 +242,17 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             isHovered = false;
             Cursor = Cursors.Default;
             profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
-            versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+            milestoneCountLabel.ForeColor = taskCountLabel.ForeColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneStatusPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            pictureBox1.Image?.Dispose(); pictureBox4.Image?.Dispose(); pictureBox5.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Calendar_Dark : Properties.Resources.Heat_Calendar_Dark;
+            pictureBox4.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Total_Task : Properties.Resources.Heat_Dark_Total_Task;
+            pictureBox5.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Milestone : Properties.Resources.Heat_Dark_Milestone;
+            if (milestoneStatusPicBox.Visible)
+            {
+                SetMilestoneStatus();
+            }
             //tableLayoutPanel1.Invalidate();
         }
     }

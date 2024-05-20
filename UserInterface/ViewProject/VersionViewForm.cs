@@ -26,6 +26,16 @@ namespace UserInterface.ViewProject
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            for(int ctr = 0; ctr < Controls.Count; ctr++)
+            {
+                (Controls[ctr] as Label).MouseEnter -= OnLabelMouseEnter;
+                (Controls[ctr] as Label).MouseLeave -= OnLabelMouseLeave;
+                (Controls[ctr] as Label).Click -= OnVersionClick;
+            }
+        }
+
         public event EventHandler<ProjectVersion> VersionSelected;
 
 

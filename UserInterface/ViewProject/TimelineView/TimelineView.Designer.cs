@@ -19,6 +19,7 @@ namespace UserInterface.ViewProject.TimelineView
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -43,8 +44,8 @@ namespace UserInterface.ViewProject.TimelineView
             this.dropDownPicBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.projectDisplayPanel = new System.Windows.Forms.Panel();
-            this.projectDownBox = new System.Windows.Forms.PictureBox();
-            this.projectUpBox = new System.Windows.Forms.PictureBox();
+            this.downPicBox = new System.Windows.Forms.PictureBox();
+            this.upPicBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -52,8 +53,8 @@ namespace UserInterface.ViewProject.TimelineView
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dropDownPicBox)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDownBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectUpBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ucNotFound1
@@ -188,13 +189,15 @@ namespace UserInterface.ViewProject.TimelineView
             this.dropDownPicBox.TabIndex = 0;
             this.dropDownPicBox.TabStop = false;
             this.dropDownPicBox.Click += new System.EventHandler(this.VersionNamesClick);
+            this.dropDownPicBox.MouseEnter += new System.EventHandler(this.OnVersionMouseEnter);
+            this.dropDownPicBox.MouseLeave += new System.EventHandler(this.OnVersionMouseLeave);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.projectDisplayPanel);
-            this.panel2.Controls.Add(this.projectDownBox);
-            this.panel2.Controls.Add(this.projectUpBox);
+            this.panel2.Controls.Add(this.downPicBox);
+            this.panel2.Controls.Add(this.upPicBox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -211,37 +214,37 @@ namespace UserInterface.ViewProject.TimelineView
             this.projectDisplayPanel.Size = new System.Drawing.Size(52, 392);
             this.projectDisplayPanel.TabIndex = 2;
             // 
-            // projectDownBox
+            // downPicBox
             // 
-            this.projectDownBox.BackColor = System.Drawing.Color.Transparent;
-            this.projectDownBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.projectDownBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.projectDownBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
-            this.projectDownBox.Location = new System.Drawing.Point(0, 455);
-            this.projectDownBox.Name = "projectDownBox";
-            this.projectDownBox.Size = new System.Drawing.Size(52, 20);
-            this.projectDownBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.projectDownBox.TabIndex = 1;
-            this.projectDownBox.TabStop = false;
-            this.projectDownBox.Click += new System.EventHandler(this.projectDownClick);
-            this.projectDownBox.MouseEnter += new System.EventHandler(this.OnProjectPaginateMouseEnter);
-            this.projectDownBox.MouseLeave += new System.EventHandler(this.OnProjectPaginateMouseLeave);
+            this.downPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.downPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.downPicBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.downPicBox.Image = global::UserInterface.Properties.Resources.Down_Medium_Blue;
+            this.downPicBox.Location = new System.Drawing.Point(0, 455);
+            this.downPicBox.Name = "downPicBox";
+            this.downPicBox.Size = new System.Drawing.Size(52, 20);
+            this.downPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.downPicBox.TabIndex = 1;
+            this.downPicBox.TabStop = false;
+            this.downPicBox.Click += new System.EventHandler(this.projectDownClick);
+            this.downPicBox.MouseEnter += new System.EventHandler(this.OnProjectPaginateMouseEnter);
+            this.downPicBox.MouseLeave += new System.EventHandler(this.OnProjectPaginateMouseLeave);
             // 
-            // projectUpBox
+            // upPicBox
             // 
-            this.projectUpBox.BackColor = System.Drawing.Color.Transparent;
-            this.projectUpBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.projectUpBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.projectUpBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
-            this.projectUpBox.Location = new System.Drawing.Point(0, 43);
-            this.projectUpBox.Name = "projectUpBox";
-            this.projectUpBox.Size = new System.Drawing.Size(52, 20);
-            this.projectUpBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.projectUpBox.TabIndex = 0;
-            this.projectUpBox.TabStop = false;
-            this.projectUpBox.Click += new System.EventHandler(this.projectUpClick);
-            this.projectUpBox.MouseEnter += new System.EventHandler(this.OnProjectPaginateMouseEnter);
-            this.projectUpBox.MouseLeave += new System.EventHandler(this.OnProjectPaginateMouseLeave);
+            this.upPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.upPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.upPicBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.upPicBox.Image = global::UserInterface.Properties.Resources.Up_Medium_Blue;
+            this.upPicBox.Location = new System.Drawing.Point(0, 43);
+            this.upPicBox.Name = "upPicBox";
+            this.upPicBox.Size = new System.Drawing.Size(52, 20);
+            this.upPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.upPicBox.TabIndex = 0;
+            this.upPicBox.TabStop = false;
+            this.upPicBox.Click += new System.EventHandler(this.projectUpClick);
+            this.upPicBox.MouseEnter += new System.EventHandler(this.OnProjectPaginateMouseEnter);
+            this.upPicBox.MouseLeave += new System.EventHandler(this.OnProjectPaginateMouseLeave);
             // 
             // TimelineView
             // 
@@ -259,8 +262,8 @@ namespace UserInterface.ViewProject.TimelineView
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dropDownPicBox)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.projectDownBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectUpBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,8 +274,8 @@ namespace UserInterface.ViewProject.TimelineView
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel projectDisplayPanel;
-        private System.Windows.Forms.PictureBox projectDownBox;
-        private System.Windows.Forms.PictureBox projectUpBox;
+        private System.Windows.Forms.PictureBox downPicBox;
+        private System.Windows.Forms.PictureBox upPicBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
