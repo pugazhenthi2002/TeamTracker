@@ -46,13 +46,7 @@ namespace UserInterface.Home_Page.Team_Lead.Report
         {
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
             textBox1.GotFocus += OnTextBoxGotFocus;
-        }
-
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
         }
 
         private void OnTextBoxGotFocus(object sender, EventArgs e)
@@ -70,13 +64,10 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             }
         }
         
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (monthDropDownPicBox.Image != null) monthDropDownPicBox.Image.Dispose();
             if (priorityDropDownPicBox.Image != null) priorityDropDownPicBox.Image.Dispose();
-
-            label1.Dispose();   label2.Dispose();
-            textBox1.Dispose(); monthDropDownPicBox.Dispose();  priorityDropDownPicBox.Dispose();   setLabel.Dispose();
         }
 
         private void InitializePageColor()
@@ -87,6 +78,11 @@ namespace UserInterface.Home_Page.Team_Lead.Report
             setLabel.BackColor = ThemeManager.CurrentTheme.PrimaryII;
             setLabel.ForeColor = ThemeManager.GetTextColor(setLabel.BackColor);
             label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
+
+            monthDropDownPicBox.Image?.Dispose();   priorityDropDownPicBox.Image?.Dispose();
+
+            monthDropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Left_Light : Properties.Resources.Heat_Left_Light;
+            priorityDropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Left_Light : Properties.Resources.Heat_Left_Light;
         }
 
         private void OnMonthDropDownClick(object sender, EventArgs e)

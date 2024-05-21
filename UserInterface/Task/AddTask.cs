@@ -162,8 +162,7 @@ namespace UserInterface.Task
             if (backBtn.Image != null) backBtn.Image.Dispose();
             if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            ResetButton();
         }
 
         private void BackClick(object sender, EventArgs e)

@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="addTaskButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAItJREFUSEvtlMEJgDAUQzuKoziSI7inFk/agxZHUCMRLz1UJfTgfxD4BOkDD3FG
-        DkNYKz/GFsHNWk8X5tpPcUNws9ZjYtZ6TMxaj4lZvwPTh0dy0o9Lc4lxp75JJTmv5/byMVkOB3U3xcTF
-        fvUT8Mglxs1aj4lZ6zExaz0mZq0H03du+5HPM/gTnNsB/JZ5p6xsaRIAAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

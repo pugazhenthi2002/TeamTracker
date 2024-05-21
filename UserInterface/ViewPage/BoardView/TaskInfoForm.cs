@@ -122,14 +122,25 @@ namespace TeamTracker
 
             Dictionary<DateTime, List<SourceCode>> dateWiseDict = sourceCodeList.GroupBy(s => s.SubmittedDate).ToDictionary(g => g.Key, g => g.ToList());
             Panel panel;
+            int count = 0;
             foreach (var entry in dateWiseDict)
             {
+                
+
                 int commitCount = dateWiseDict[entry.Key].Count;
                 UcTaskCommitsHead head = new UcTaskCommitsHead();
                 head.CommitCount = commitCount;
                 head.CommitDate = entry.Key;
                 head.Dock = DockStyle.Top;
                 head.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                if (count == 0)
+                {
+                    head.CommitImage = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Initial_Commit : UserInterface.Properties.Resources.Heat_Initial_Commit;
+                }
+                else
+                {
+                    head.CommitImage = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Mid_Commit : UserInterface.Properties.Resources.Heat_Mid_Commit;
+                }
                 panelCommits.Controls.Add(head);
 
                 panel = new Panel()
@@ -149,6 +160,7 @@ namespace TeamTracker
                 }
                 panel.Height = dateWiseDict[entry.Key].Count * 50;
                 panelCommits.Controls.Add(panel);
+                count++;
             }
 
             foreach (Control ctr in panelCommits.Controls)

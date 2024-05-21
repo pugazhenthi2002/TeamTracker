@@ -63,7 +63,7 @@ namespace UserInterface.Edit_Project.Controls
             manualEdit.ForeColor = requiredEdit.BackColor = buttonUpdate.BackColor = pictureBox2.BackColor = pictureBox3.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = label2.ForeColor = label3.ForeColor = label4.ForeColor = versionNames.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneTextBox.ForeColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
-            tabPage1.BackColor = tabPage2.BackColor = searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            ucNotFound3.BackColor = tabPage1.BackColor = tabPage2.BackColor = searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             panel5.BackColor = panel9.BackColor = ThemeManager.CurrentTheme.SecondaryII;
 
             BackBtn.Image?.Dispose();
@@ -137,7 +137,8 @@ namespace UserInterface.Edit_Project.Controls
                 versionTemplate = new BoardViewTemplate()
                 {
                     Dock = DockStyle.Left,
-                    BoardVersion = requiredVersion[ctr]
+                    BoardVersion = requiredVersion[ctr],
+                    IsEditable = true
                 };
                 versionTemplate.VersionSelect += OnVersionSelection;
                 boardBasePanel.Controls.Add(versionTemplate);

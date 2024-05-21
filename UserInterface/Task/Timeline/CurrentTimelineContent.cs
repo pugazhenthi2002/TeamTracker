@@ -62,7 +62,7 @@ namespace UserInterface.Task.Timeline
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
                 (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             }
-            backBtn.BackColor = nextBtn.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            timelineControlPanel.BackColor = backBtn.BackColor = nextBtn.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             backBtn.Image?.Dispose();   nextBtn.Image?.Dispose();
 
             ResetButton();

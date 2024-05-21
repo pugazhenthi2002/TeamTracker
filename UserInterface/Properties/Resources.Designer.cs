@@ -873,6 +873,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cold_Initial_Commit {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Initial_Commit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cold_Left_Dark {
             get {
                 object obj = ResourceManager.GetObject("Cold_Left_Dark", resourceCulture);
@@ -976,6 +986,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Cold_List_Light {
             get {
                 object obj = ResourceManager.GetObject("Cold_List_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cold_Mid_Commit {
+            get {
+                object obj = ResourceManager.GetObject("Cold_Mid_Commit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1943,6 +1963,16 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Heat_Initial_Commit {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Initial_Commit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Heat_Left_Dark {
             get {
                 object obj = ResourceManager.GetObject("Heat_Left_Dark", resourceCulture);
@@ -2046,6 +2076,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap Heat_List_Light {
             get {
                 object obj = ResourceManager.GetObject("Heat_List_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Heat_Mid_Commit {
+            get {
+                object obj = ResourceManager.GetObject("Heat_Mid_Commit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -42,6 +42,15 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             pictureBox4.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Total_Task : Properties.Resources.Heat_Dark_Total_Task;
             pictureBox5.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Milestone : Properties.Resources.Heat_Dark_Milestone;
 
+            if (IsEditable)
+            {
+                profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            }
+            else
+            {
+                profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            }
+
             if (milestoneStatusPicBox.Visible) SetMilestoneStatus();
         }
 
@@ -215,9 +224,13 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnUserControlPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            Pen pen;
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0,0, (sender as TableLayoutPanel).Width - 1, (sender as TableLayoutPanel).Height - 1), 10));
+            if (IsEditable)
+                pen = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            else
+                pen = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as TableLayoutPanel).Width - 1, (sender as TableLayoutPanel).Height - 1), 10));
             if(isHovered)
             {
                 pen.Dispose();
@@ -248,7 +261,14 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         {
             isHovered = false;
             Cursor = Cursors.Default;
-            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            if (IsEditable)
+            {
+                profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            }
+            else
+            {
+                profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            }
             milestoneCountLabel.ForeColor = taskCountLabel.ForeColor = versionDateLabel.ForeColor = versionNameLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneStatusPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
 

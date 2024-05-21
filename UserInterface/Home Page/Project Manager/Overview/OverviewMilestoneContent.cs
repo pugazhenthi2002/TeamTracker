@@ -169,7 +169,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnMouseEnter(object sender, EventArgs e)
         {
             (sender as PictureBox).Image?.Dispose();
-            if ((sender as Control).Name == "BackBtn")
+            if ((sender as Control).Name == "backBtn")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
@@ -196,7 +196,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
         private void OnMouseLeave(object sender, EventArgs e)
         {
             (sender as PictureBox).Image?.Dispose();
-            if ((sender as Control).Name == "BackBtn")
+            if ((sender as Control).Name == "backBtn")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {

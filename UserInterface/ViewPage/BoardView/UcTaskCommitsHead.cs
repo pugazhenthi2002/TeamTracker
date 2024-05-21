@@ -12,12 +12,24 @@ namespace TeamTracker
 {
     public partial class UcTaskCommitsHead : UserControl
     {
+        public Image CommitImage
+        {
+            set
+            {
+                if(value != null)
+                {
+                    pictureBox1.Image?.Dispose();
+                    pictureBox1.Image = value;
+                }
+            }
+        }
         private DateTime commitDate = DateTime.Today;
         private int commitCount = 4;
 
         public UcTaskCommitsHead()
         {
             InitializeComponent();
+            labelText.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         private void UnSubscribeEventsAndRemoveMemory()

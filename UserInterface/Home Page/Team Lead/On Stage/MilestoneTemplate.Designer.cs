@@ -115,7 +115,7 @@
             // 
             this.milestoneDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.milestoneDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.milestoneDate.BorderSize = 0;
+            this.milestoneDate.BorderSize = 2;
             this.milestoneDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.milestoneDate.Location = new System.Drawing.Point(304, 6);
             this.milestoneDate.MinimumSize = new System.Drawing.Size(4, 35);

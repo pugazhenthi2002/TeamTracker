@@ -87,6 +87,8 @@ namespace TeamTracker
                 addProjectLabel.Visible = addProjectPictureBox.Visible = addTaskLabel.Visible = addTaskPicBox.Visible = false;
                 tabControl1.SelectedIndex = 4;
             }
+
+            IsEligibleToSwitchTab();
         }
 
         private void InitializePageColor()

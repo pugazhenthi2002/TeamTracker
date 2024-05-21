@@ -19,7 +19,7 @@ namespace TeamTracker
         public LoginForm()
         {
             InitializeComponent();
-            ThemeManager.CurrentThemeMode = ThemeMode.Cold;
+            ThemeManager.CurrentThemeMode = ThemeMode.Heat;
             InitializePageColor();
             ThemeManager.ThemeChange += OnThemeChanged;
 

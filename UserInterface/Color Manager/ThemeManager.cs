@@ -126,7 +126,7 @@ namespace TeamTracker
                 }
             });
 
-            CurrentTheme = themes[0];
+            CurrentTheme = themes[1];
         }
 
         static public Color GetHoverColor(Color color)

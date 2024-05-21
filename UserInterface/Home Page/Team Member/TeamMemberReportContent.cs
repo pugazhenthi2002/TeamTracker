@@ -130,7 +130,6 @@ namespace UserInterface.Home_Page.Team_Member
 
         private void OnFilterFormClosed(object sender, EventArgs e)
         {
-            (sender as FilterForm).Dispose();
             (sender as FilterForm).Close();
             ParentForm.Show();
         }

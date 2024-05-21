@@ -69,7 +69,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             panel7.BackColor = ThemeManager.CurrentTheme.PrimaryII;
             projectNameLabel.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
 
-            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Light : Properties.Resources.Heat_Down_Light;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -115,7 +115,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (dropDownPicBox.Image != null)
                 dropDownPicBox.Image.Dispose();
 
-            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Light : Properties.Resources.Heat_Down_Light;
             panel7.Invalidate();
         }
 
@@ -124,7 +124,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             if (dropDownPicBox.Image != null)
                 dropDownPicBox.Image.Dispose();
 
-            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Light_Hover : Properties.Resources.Heat_Down_Light_Hover;
             panel7.Invalidate();
         }
 

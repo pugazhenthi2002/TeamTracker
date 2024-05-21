@@ -275,11 +275,18 @@ namespace UserInterface.Edit_Project.Controls
 
             MilestoneDropForm = new MilestoneDropDownForm();
             MilestoneDropForm.IsEditModeOn = true;
+            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
+            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
+            MilestoneDropForm.Show();
+            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
+            MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
             MilestoneDropForm.StartPosition = FormStartPosition.CenterScreen;
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
             MilestoneDropForm.Show();
             MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(selectedTask.VersionID);
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
+
+           
         }
 
         private void OnClickMilestoneBtn(object sender, Milestone e)

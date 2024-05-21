@@ -132,6 +132,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnProjectSelected(object sender, Projects e)
         {
+            InitializePage();
             selectedVersionCollection = VersionManager.FetchAllVersionFromProject(e.ProjectID);
             selectedProject = e;
             selectedVersion = selectedVersionCollection[0];
@@ -145,12 +146,16 @@ namespace UserInterface.Edit_Project.Controls
 
             var result = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
 
-            foreach(var Iter in result)
+            if(result != null)
             {
-                attachments.Add(Iter.DisplayName, Iter);
-            }
+                foreach (var Iter in result)
+                {
+                    attachments.Add(Iter.DisplayName, Iter);
+                }
 
-            fileAttachment1.AttachmentCollection = attachments;
+                fileAttachment1.AttachmentCollection = attachments;
+            }
+            
         }
 
         private void OnNextBtnClicked(object sender, EventArgs e)
@@ -202,6 +207,8 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnVersionSelected(object sender, ProjectVersion e)
         {
+            InitializePage();
+            selectedProject = VersionManager.FetchProjectFromID(e.ProjectID);
             selectedVersion = e;
             fileAttachment1.Clear = true;
             chooseVersionLabel.Text = selectedVersion.VersionName;
@@ -212,13 +219,16 @@ namespace UserInterface.Edit_Project.Controls
             Dictionary<string, VersionAttachment> attachments = new Dictionary<string, VersionAttachment>();
 
             var result = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
-
-            foreach (var Iter in result)
+            if (result != null)
             {
-                attachments.Add(Iter.DisplayName, Iter);
+                foreach (var Iter in result)
+                {
+                    attachments.Add(Iter.DisplayName, Iter);
+                }
+                fileAttachment1.AttachmentCollection = attachments;
             }
 
-            fileAttachment1.AttachmentCollection = attachments;
+            
         }
 
         private void OnUpdateClicked(object sender, EventArgs e)

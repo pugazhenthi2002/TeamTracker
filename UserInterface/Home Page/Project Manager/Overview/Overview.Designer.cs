@@ -153,6 +153,7 @@
             // dropDownPicBox
             // 
             this.dropDownPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.dropDownPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dropDownPicBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.dropDownPicBox.Image = global::UserInterface.Properties.Resources.Down_Light_Blue;
             this.dropDownPicBox.Location = new System.Drawing.Point(200, 2);

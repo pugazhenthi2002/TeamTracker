@@ -350,8 +350,6 @@
             this.filterPicBox.TabIndex = 0;
             this.filterPicBox.TabStop = false;
             this.filterPicBox.Click += new System.EventHandler(this.OnFilterClick);
-            this.filterPicBox.MouseEnter += new System.EventHandler(this.OnFilterMouseEnter);
-            this.filterPicBox.MouseLeave += new System.EventHandler(this.OnFilterMouseLeave);
             // 
             // tableLayoutPanel6
             // 
@@ -442,6 +440,7 @@
             // 
             // notificationContent1
             // 
+            this.notificationContent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(252)))));
             this.notificationContent1.BorderColor = System.Drawing.Color.Blue;
             this.notificationContent1.Location = new System.Drawing.Point(422, 130);
             this.notificationContent1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

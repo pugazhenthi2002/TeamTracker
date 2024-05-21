@@ -28,7 +28,7 @@ namespace UserInterface.Edit_Project
         public void InitializePageColor()
         {
             tabPage1.BackColor = tabPage2.BackColor = tabPage3.BackColor = tabPage4.BackColor = editTaskButton.BackColor = editMilestoneButton.ForeColor = editMilestoneButton.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
-            editVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            editTask1.BackColor = editVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             editTaskButton.ForeColor = editMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
              
             if(tabControl1.SelectedIndex == 1 && tabControl2.SelectedIndex == 0)

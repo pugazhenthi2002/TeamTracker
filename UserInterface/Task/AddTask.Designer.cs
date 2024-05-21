@@ -29,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTask));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.currentTimelineContent1 = new UserInterface.Task.Timeline.CurrentTimelineContent();
@@ -274,7 +273,6 @@
             // addTaskButton
             // 
             this.addTaskButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.addTaskButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("addTaskButton.BackgroundImage")));
             this.addTaskButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.addTaskButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addTaskButton.Dock = System.Windows.Forms.DockStyle.Right;
