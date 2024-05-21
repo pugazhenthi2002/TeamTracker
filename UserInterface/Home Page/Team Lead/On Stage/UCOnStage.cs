@@ -120,22 +120,22 @@ namespace TeamTracker
 
         private void OnMouseEnterDownload(object sender, EventArgs e)
         {
-            panelDownloadAttachement.BackColor = ThemeManager.GetHoverColor(panelDownloadAttachement.BackColor);
-            labelDownload.BackColor = ThemeManager.GetTextColor(panelDownloadAttachement.BackColor);
+            panelDownloadAttachement.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+            labelDownload.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             if (pictureBoxDownload.Image != null) pictureBoxDownload.Image.Dispose();
 
-            pictureBoxDownload.Image = UserInterface.Properties.Resources.Download_Medium_Blue_Color;
+            pictureBoxDownload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void OnMouseLeaveDownload(object sender, EventArgs e)
         {
             panelDownloadAttachement.BackColor = ThemeManager.CurrentTheme.SecondaryI;
-            labelDownload.BackColor = ThemeManager.GetTextColor(panelDownloadAttachement.BackColor);
+            labelDownload.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
 
             if (pictureBoxDownload.Image != null) pictureBoxDownload.Image.Dispose();
 
-            pictureBoxDownload.Image = UserInterface.Properties.Resources.Download_Light_Blue;
+            pictureBoxDownload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnClickDiscard(object sender, EventArgs e)
@@ -165,6 +165,16 @@ namespace TeamTracker
             clientLabel.Text = selectedVersion.ClientEmail;
             startDate.Text = selectedVersion.StartDate.ToShortDateString(); endDate.Text = selectedVersion.EndDate.ToShortDateString();
             descTextBox.Text = selectedVersion.VersionDescription;
+
+            var attachment = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
+            if(attachment == null)
+            {
+                //panelDownloadAttachement.Visible = false;
+            }
+            else
+            {
+                //panelDownloadAttachement.Visible = true;
+            }
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

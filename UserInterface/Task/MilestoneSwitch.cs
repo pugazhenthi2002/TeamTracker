@@ -33,6 +33,11 @@ namespace UserInterface.Task
 
         public void InitializePage()
         {
+
+            if(MilestoneManager.CurrentMilestone==null)
+            {
+                return;
+            }
             colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             colorIndex = 0;
             if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
