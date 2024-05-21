@@ -235,6 +235,8 @@ namespace UserInterface.Edit_Project.Controls
         {
             var result = isEligibleForVersionUpgrade();
 
+            
+
             if (result)
             {
                 WarningForm form = new WarningForm();
@@ -271,6 +273,12 @@ namespace UserInterface.Edit_Project.Controls
         private BooleanMsg isEligibleForVersionUpgrade()
         {
             if (selectedVersion == null) return "No Version Selected for Version Edition";
+
+            if (selectedVersion.StatusOfVersion == ProjectStatus.Completed && endDateTimePicker.Value.Date >= DateTime.Now.Date) return "Completed Project Version should be behind today's Date";
+
+            if (selectedVersion.StatusOfVersion == ProjectStatus.UpComing && startDateTimePicker.Value.Date <= DateTime.Now.Date) return "Upcoming Project Version should be beyond today's Date";
+
+            if ((selectedVersion.StatusOfVersion == ProjectStatus.OnStage || (selectedVersion.StatusOfVersion == ProjectStatus.OnProcess) || (selectedVersion.StatusOfVersion == ProjectStatus.Deployment)) && (startDateTimePicker.Value.Date <= DateTime.Now.Date && DateTime.Now.Date <= endDateTimePicker.Value.Date)) return "OnProcess Project Version should not be beyond today's Date Or behind Todays date";
 
             if (startDateTimePicker.Value.Date == endDateTimePicker.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
 
@@ -334,7 +342,6 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnDeleteStatus(object sender, bool e)
         {
-            (sender as WarningForm).WarningStatus -= OnDeleteStatus;
             (sender as WarningForm).Close();
 
             if (e)

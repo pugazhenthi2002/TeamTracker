@@ -24,11 +24,13 @@ namespace TeamTracker
             InitializePage();
             InitializePageColor();
             ThemeManager.ThemeChange += OnThemeChanged;
+            Icon = UserInterface.Properties.Resources.T;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+
         }
 
         private void InitializePage()
@@ -101,6 +103,7 @@ namespace TeamTracker
             profilePicAndName1.HoverColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
             profilePicAndName1.ProfileTextColor = ThemeManager.CurrentTheme.PrimaryI;
             logo1.LogoColor = profilePicAndName1.BorderColor = profilePicAndName1.NormalColor = ThemeManager.CurrentTheme.SecondaryIII;
+            profilePicAndName1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             closePicBox.Image?.Dispose();
             closePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark : UserInterface.Properties.Resources.Heat_Close_Dark;

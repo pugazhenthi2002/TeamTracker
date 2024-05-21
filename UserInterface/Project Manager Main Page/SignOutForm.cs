@@ -33,6 +33,7 @@ namespace UserInterface.Project_Manager_Main_Page
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
         }
 
         private void UnSubscribeEventsAndRemoveMemory()

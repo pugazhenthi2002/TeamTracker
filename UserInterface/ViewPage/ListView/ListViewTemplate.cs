@@ -332,22 +332,22 @@ namespace TeamTracker
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
-                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
                 }
                 else
                 {
-                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Light;
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
                 }
             }
             else
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
-                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
                 }
                 else
                 {
-                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Light;
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
                 }
             }
         }
@@ -371,22 +371,22 @@ namespace TeamTracker
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
-                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Cold_Up_Light;
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Cold_Up_Medium;
                 }
                 else
                 {
-                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Light;
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Medium;
                 }
             }
             else
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
-                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Cold_Down_Light;
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Cold_Down_Medium;
                 }
                 else
                 {
-                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Light;
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Medium;
                 }
             }
         }
@@ -506,13 +506,13 @@ namespace TeamTracker
         {
             if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
             {
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Cold_Up_Light;
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Cold_Down_Light;
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Cold_Down_Medium;
             }
             else
             {
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Light;
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Light;
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Medium;
             }
         }
 
