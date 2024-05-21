@@ -215,7 +215,6 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)

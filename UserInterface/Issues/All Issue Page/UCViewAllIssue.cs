@@ -35,8 +35,6 @@ namespace TeamTracker
         public void InitializePage()
         {
             filterPeople1.InitializeFilter();
-            InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -80,6 +78,8 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeIssueManager();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             dataGridView1.AllowUserToAddRows = false;
             SetData();
         }

@@ -35,12 +35,7 @@ namespace UserInterface.Issues.All_Issue_Page
         {
             ThemeManager.ThemeChange -= OnThemeChanged;
 
-            for (int ctr = 0; ctr < basePanel.Controls.Count; ctr++)
-            {
-                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).EmployeeSelect -= OnEmployeeSelected;
-                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).Dispose();
-                ctr--;
-            }
+            BasePanelControlClear();
         }
 
         private void InitializePageColor()
@@ -84,7 +79,7 @@ namespace UserInterface.Issues.All_Issue_Page
 
         private void InitializeFilterUI()
         {
-            Dispose();
+            BasePanelControlClear();
             profileControlCollection = new List<EmployeeProfilePicAndName>();
             startIdx = 0;   endIdx = filteredEmployeeCollection.Count >= 5 ? 4 : filteredEmployeeCollection.Count - 1;
             isUpEnable = false;   isDownEnable = filteredEmployeeCollection.Count > 5 ? true : false;
@@ -240,6 +235,16 @@ namespace UserInterface.Issues.All_Issue_Page
             {
                 upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
                 downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+            }
+        }
+
+        private void BasePanelControlClear()
+        {
+            for(int ctr = 0; ctr < basePanel.Controls.Count; ctr++)
+            {
+                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).EmployeeSelect -= OnEmployeeSelected;
+                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).Dispose();
+                ctr--;
             }
         }
 

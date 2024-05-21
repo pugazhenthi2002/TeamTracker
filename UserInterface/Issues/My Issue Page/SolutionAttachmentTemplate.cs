@@ -61,7 +61,7 @@ namespace UserInterface.Issues.My_Issue_Page
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "All files(*.*)| *.* ";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)

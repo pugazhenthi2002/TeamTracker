@@ -74,7 +74,14 @@ namespace TeamTracker
         {
             ProjectManagerMainForm managerForm = new ProjectManagerMainForm();
             managerForm.ManagerClose += OnManagerFormClosed;
+            managerForm.SignOut += OnSignOut;
             managerForm.Show();
+        }
+
+        private void OnSignOut(object sender, EventArgs e)
+        {
+            (sender as ProjectManagerMainForm).Close();
+            Show();
         }
 
         private void OnCloseEnter(object sender, EventArgs e)
@@ -100,7 +107,6 @@ namespace TeamTracker
         {
             (sender as ProjectManagerMainForm).Close();
             this.Close();
-            Show();
         }
 
         private void OnLoad(object sender, EventArgs e)

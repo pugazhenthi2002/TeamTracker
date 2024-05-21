@@ -16,6 +16,8 @@ namespace TeamTracker
 {
     public partial class ProjectManagerMainForm : Form
     {
+        public event EventHandler SignOut;
+
         public ProjectManagerMainForm()
         {
             InitializeComponent();
@@ -320,7 +322,7 @@ namespace TeamTracker
 
         private void OnFormSignOut(object sender, EventArgs e)
         {
-            this.Close();
+            SignOut?.Invoke(this, EventArgs.Empty);
         }
 
         private void HighlightSelected(object sender, EventArgs e)

@@ -46,13 +46,10 @@ namespace UserInterface.ViewProject
             set { label1.ForeColor = value; }
         }
 
-        public new void Dispose()
+        public void UnSubscribeEventsAndRemoveMemory()
         {
             if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
             profilePictureBox1.Dispose();
-
-            label1.Dispose();
-            tableLayoutPanel1.Dispose();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

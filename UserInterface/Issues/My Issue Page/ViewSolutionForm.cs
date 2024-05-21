@@ -146,7 +146,7 @@ namespace UserInterface.Issues.My_Issue_Page
         private void OnMouseEnter(object sender, EventArgs e)
         {
             (sender as PictureBox).Image?.Dispose();
-            if ((sender as Control).Name == "backBtn")
+            if ((sender as PictureBox).Name == "backPicBox")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
@@ -157,7 +157,7 @@ namespace UserInterface.Issues.My_Issue_Page
                     backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
                 }
             }
-            else if((sender as Control).Name == "nextBtn")
+            else if((sender as Control).Name == "nextPicBox")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
@@ -177,7 +177,7 @@ namespace UserInterface.Issues.My_Issue_Page
         private void OnMouseLeave(object sender, EventArgs e)
         {
             (sender as PictureBox).Image?.Dispose();
-            if ((sender as Control).Name == "backBtn")
+            if ((sender as Control).Name == "backPicBox")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
@@ -188,7 +188,7 @@ namespace UserInterface.Issues.My_Issue_Page
                     backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Light;
                 }
             }
-            else if ((sender as Control).Name == "nextBtn")
+            else if ((sender as Control).Name == "nextPicBox")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
@@ -256,13 +256,13 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
             {
-                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
-                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
             }
             else
             {
-                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
-                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Light;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Light;
             }
         }
 

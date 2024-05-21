@@ -95,7 +95,8 @@ namespace TeamTracker
             labelAttachment.Visible = Attachement == null ? false : true;
 
             TagList = issueData.Tags;
-            foreach(string tag in issueData.Tags)
+            panelTags.Controls.Clear();
+            foreach (string tag in issueData.Tags)
             {
                 UCTags tagUc = new UCTags();
                 tagUc.Size = new Size(panelTags.Width - 50, panelTags.Height / 4 - 5);
@@ -276,7 +277,7 @@ namespace TeamTracker
 
             openFileDialog.Title = "Open File";
             openFileDialog.InitialDirectory = @"C:\";
-            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {

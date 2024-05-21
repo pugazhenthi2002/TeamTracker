@@ -301,7 +301,6 @@ namespace TeamTracker
 
         private void OnSolutionFormClosed(object sender, EventArgs e)
         {
-            (sender as ViewSolutionForm).Dispose();
             (sender as ViewSolutionForm).Close();
         }
 
@@ -320,12 +319,12 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = ThemeManager.GetHoverColor(BackColor);
+
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            (sender as Control).BackColor = BackColor;
+
         }
 
 

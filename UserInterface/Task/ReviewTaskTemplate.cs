@@ -122,7 +122,6 @@ namespace UserInterface.Task
 
         private void OnDoneWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
