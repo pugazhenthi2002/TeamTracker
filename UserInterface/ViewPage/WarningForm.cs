@@ -18,7 +18,6 @@ namespace UserInterface.ViewPage
         {
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public string Content
@@ -31,25 +30,12 @@ namespace UserInterface.ViewPage
 
         public event EventHandler<bool> WarningStatus;
 
-        public new void Dispose()
-        {
-            label1.Dispose(); label2.Dispose();
-            yesButton.Dispose(); noButton.Dispose();
-            panel1.Dispose(); panel2.Dispose(); panel3.Dispose(); panel4.Dispose();
-            tableLayoutPanel1.Dispose();
-        }
-
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
             noButton.BackColor = yesButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             label1.ForeColor = noButton.ForeColor = yesButton.ForeColor = ThemeManager.GetTextColor(noButton.BackColor);
-        }
-
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
         }
 
         private void OnYesClicked(object sender, EventArgs e)

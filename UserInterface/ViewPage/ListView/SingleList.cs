@@ -58,6 +58,11 @@ namespace TeamTracker
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         private void OnStatusClicked(object sender, EventArgs e)
         {
             Point pt = new Point(-(200 - statusLabel.Width) / 2, statusLabel.Height);
@@ -108,7 +113,6 @@ namespace TeamTracker
 
         private void OnSourceCodeSubmission(object sender, SourceCode e)
         {
-            (sender as SourceCodeSubmitionForm).Dispose();
             (sender as SourceCodeSubmitionForm).Close();
 
             if (ParentForm != null)
@@ -126,9 +130,7 @@ namespace TeamTracker
 
         private void OnWarningStatusClicked(object sender, string e, bool result)
         {
-            (sender as StatusChangeWarningForm).Dispose();
             (sender as StatusChangeWarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -159,7 +161,6 @@ namespace TeamTracker
 
         private void OnTaskInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as TaskInfoForm).Dispose();
             (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)

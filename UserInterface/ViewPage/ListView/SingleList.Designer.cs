@@ -19,6 +19,7 @@ namespace TeamTracker
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 

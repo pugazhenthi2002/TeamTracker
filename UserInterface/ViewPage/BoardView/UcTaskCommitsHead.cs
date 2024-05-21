@@ -20,6 +20,11 @@ namespace TeamTracker
             InitializeComponent();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            pictureBox1.Image?.Dispose();
+        }
+
         public int CommitCount
         {
             get { return commitCount; }

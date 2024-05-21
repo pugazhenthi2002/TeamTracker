@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -36,16 +37,16 @@
             this.solutionTemplate1 = new UserInterface.Issues.My_Issue_Page.SolutionTemplate();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.nextPicBox = new System.Windows.Forms.PictureBox();
-            this.backPicBox = new System.Windows.Forms.PictureBox();
+            this.nextBtn = new System.Windows.Forms.PictureBox();
+            this.backBtn = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.totalSolutionCOuntLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nextPicBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.backPicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,8 +132,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.nextPicBox);
-            this.panel3.Controls.Add(this.backPicBox);
+            this.panel3.Controls.Add(this.nextBtn);
+            this.panel3.Controls.Add(this.backBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 84);
             this.panel3.Name = "panel3";
@@ -150,35 +151,35 @@
             // 
             // nextPicBox
             // 
-            this.nextPicBox.BackColor = System.Drawing.Color.Transparent;
-            this.nextPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nextPicBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.nextPicBox.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
-            this.nextPicBox.Location = new System.Drawing.Point(830, 0);
-            this.nextPicBox.Name = "nextPicBox";
-            this.nextPicBox.Size = new System.Drawing.Size(30, 36);
-            this.nextPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.nextPicBox.TabIndex = 1;
-            this.nextPicBox.TabStop = false;
-            this.nextPicBox.Click += new System.EventHandler(this.OnNextClicked);
-            this.nextPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.nextPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.nextBtn.BackColor = System.Drawing.Color.Transparent;
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
+            this.nextBtn.Location = new System.Drawing.Point(830, 0);
+            this.nextBtn.Name = "nextPicBox";
+            this.nextBtn.Size = new System.Drawing.Size(30, 36);
+            this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.nextBtn.TabIndex = 1;
+            this.nextBtn.TabStop = false;
+            this.nextBtn.Click += new System.EventHandler(this.OnNextClicked);
+            this.nextBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.nextBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // backPicBox
             // 
-            this.backPicBox.BackColor = System.Drawing.Color.Transparent;
-            this.backPicBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.backPicBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.backPicBox.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
-            this.backPicBox.Location = new System.Drawing.Point(0, 0);
-            this.backPicBox.Name = "backPicBox";
-            this.backPicBox.Size = new System.Drawing.Size(30, 36);
-            this.backPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.backPicBox.TabIndex = 0;
-            this.backPicBox.TabStop = false;
-            this.backPicBox.Click += new System.EventHandler(this.OnBackClick);
-            this.backPicBox.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.backPicBox.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.backBtn.BackColor = System.Drawing.Color.Transparent;
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
+            this.backBtn.Location = new System.Drawing.Point(0, 0);
+            this.backBtn.Name = "backPicBox";
+            this.backBtn.Size = new System.Drawing.Size(30, 36);
+            this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.backBtn.TabIndex = 0;
+            this.backBtn.TabStop = false;
+            this.backBtn.Click += new System.EventHandler(this.OnBackClick);
+            this.backBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.backBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // panel2
             // 
@@ -226,8 +227,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nextPicBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.backPicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -243,8 +244,8 @@
         private SolutionTemplate solutionTemplate1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox nextPicBox;
-        private System.Windows.Forms.PictureBox backPicBox;
+        private System.Windows.Forms.PictureBox nextBtn;
+        private System.Windows.Forms.PictureBox backBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label totalSolutionCOuntLabel;
     }

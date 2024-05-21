@@ -33,18 +33,18 @@ namespace TeamTracker
         {
             base.OnLoad(e);
             InitializeRoundedEdge();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
-        }
 
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryI;
             LabelTag.ForeColor = ThemeManager.GetTextColor(BackColor);
+
+            pictureBox1.Image?.Dispose();   ClosePicBox.Image?.Dispose();
+
+            ClosePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Tags : UserInterface.Properties.Resources.Heat_Tags;
         }
 
         private void InitializeRoundedEdge()
@@ -62,7 +62,6 @@ namespace TeamTracker
 
         private void OnClickCloseTag(object sender, EventArgs e)
         {
-
             this.Dispose();
         }
 
@@ -88,12 +87,14 @@ namespace TeamTracker
 
         private void OnMouseEnterClose(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Red;
+            ClosePicBox.Image?.Dispose();
+            ClosePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
         }
 
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Close_Black;
+            ClosePicBox.Image?.Dispose();
+            ClosePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         protected override void OnResize(EventArgs e)

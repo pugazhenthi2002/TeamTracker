@@ -35,24 +35,24 @@ namespace TeamTracker
         {
             set
             {
-                doneTaskPanel.Controls.Clear();
+                DoneCardControlsClear();
                 doneCollection = value;
                 if (value != null && value.Count > 0)
                 {
                     panel6.Parent.Parent.Visible = true;
                     panel6.Visible = true;
-                    doneTaskPanel.Visible = doneTaskPageBack.Visible = doneTaskPageNext.Visible = true;
+                    doneTaskPanel.Visible = backBtn.Visible = nextBtn.Visible = true;
                     ucNotFound1.Visible = false;
                     doneCardCollection = new List<DoneCardTemplate>();
-                    startDoneIdx = 0; isDoneBackEnabled = false;
+                    startDoneIdx = 0; isBackEnable = false;
                     endDoneIdx = value.Count > 5 ? 4 : value.Count-1;
-                    isDoneNextEnabled = value.Count > 5 ? true : false;
+                    isNextEnable = value.Count > 5 ? true : false;
                     SetDoneAllignment();
                 }
                 else
                 {
                     ucNotFound1.Visible = true;
-                    doneTaskPanel.Visible = doneTaskPageBack.Visible = doneTaskPageNext.Visible = false;
+                    doneTaskPanel.Visible = backBtn.Visible = nextBtn.Visible = false;
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace TeamTracker
         {
             set
             {
-                singleListControlPanel.Controls.Clear();
+                SingleListControlPanelControlsClear();
                 if (value != null && value.Count > 0)
                 {
                     panel6.Parent.Parent.Visible = true;
@@ -69,9 +69,9 @@ namespace TeamTracker
                     singleListCollection = new List<SingleList>();
                     taskCollection = value;
                     startRemainingIdx = 0;
-                    isRemainingBackEnabled = false;
+                    isUpEnable = false;
                     endRemainingIdx = value.Count > 10 ? 9 : value.Count - 1;
-                    isRemainingNextEnables = value.Count > 10 ? true : false;
+                    isDownEnable = value.Count > 10 ? true : false;
                     SetRemainingTaskAllignment();
                 }
                 else
@@ -81,7 +81,7 @@ namespace TeamTracker
             }
         }
 
-        private bool isRemainingBackEnabled, isRemainingNextEnables, isDoneBackEnabled, isDoneNextEnabled;
+        private bool isUpEnable, isDownEnable, isBackEnable, isNextEnable;
         private int startRemainingIdx, endRemainingIdx, startDoneIdx, endDoneIdx;
         private DoneCardTemplate doneCards;
         private SingleList listTemplate;
@@ -165,11 +165,27 @@ namespace TeamTracker
                 (taskTableLayoutPanel.GetControlFromPosition(ctr, 0) as Control).BackColor = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[ctr];
                 (taskTableLayoutPanel.GetControlFromPosition(ctr, 0) as Control).ForeColor = ThemeManager.GetTextColor((taskTableLayoutPanel.GetControlFromPosition(ctr, 0) as Control).BackColor);
             }
+
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+            backBtn.Image?.Dispose(); nextBtn.Image?.Dispose();
+
+            ResetDoneButton();
+
+            ResetRemainingButtons();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+
+            DoneCardControlsClear();
+            SingleListControlPanelControlsClear();
         }
 
         private void OnPaginateDown(object sender, EventArgs e)
         {
-            if (isRemainingNextEnables)
+            if (isDownEnable)
             {
                 startRemainingIdx++;
                 endRemainingIdx++;
@@ -179,7 +195,7 @@ namespace TeamTracker
 
         private void OnDonePaginateBack(object sender, EventArgs e)
         {
-            if (isDoneBackEnabled)
+            if (isBackEnable)
             {
                 startDoneIdx--;
                 endDoneIdx--;
@@ -189,7 +205,7 @@ namespace TeamTracker
 
         private void OnDonePaginateNext(object sender, EventArgs e)
         {
-            if (isDoneNextEnabled)
+            if (isNextEnable)
             {
                 startDoneIdx++;
                 endDoneIdx++;
@@ -217,7 +233,7 @@ namespace TeamTracker
 
         private void OnPaginateUp(object sender, EventArgs e)
         {
-            if (isRemainingBackEnabled)
+            if (isUpEnable)
             {
                 startRemainingIdx--;
                 endRemainingIdx--;
@@ -245,11 +261,10 @@ namespace TeamTracker
                 Iter.BringToFront();
             }
 
-            if (remainingTaskpaginateUp.Image != null) remainingTaskpaginateUp.Image.Dispose();
-            if (remainingTaskpaginateDown.Image != null) remainingTaskpaginateDown.Image.Dispose();
+            if (upPicBox.Image != null) upPicBox.Image.Dispose();
+            if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
-            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            ResetRemainingButtons();
         }
 
         private void OnReset(object sender, EventArgs e)
@@ -280,57 +295,94 @@ namespace TeamTracker
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "doneTaskPageNext")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                doneTaskPageNext.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                doneTaskPageBack.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "doneTaskPageNext")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Light;
+                }
             }
             else
             {
-                doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Light;
+                }
             }
         }
 
         private void OnListPaginateMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                remainingTaskpaginateUp.Image = UserInterface.Properties.Resources.Up_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Up_Dark_Hover : UserInterface.Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                remainingTaskpaginateDown.Image = UserInterface.Properties.Resources.Down_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Down_Dark_Hover : UserInterface.Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
         private void OnListPaginateMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Cold_Up_Light;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Light;
+                }
             }
             else
             {
-                remainingTaskpaginateDown.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Cold_Down_Light;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Light;
+                }
             }
         }
 
@@ -341,14 +393,13 @@ namespace TeamTracker
                 singleListCollection[idx].ListTask = taskCollection[ctr];
             }
 
-            if (remainingTaskpaginateUp.Image != null) remainingTaskpaginateUp.Image.Dispose();
-            if (remainingTaskpaginateDown.Image != null) remainingTaskpaginateDown.Image.Dispose();
+            if (upPicBox.Image != null) upPicBox.Image.Dispose();
+            if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            isRemainingNextEnables = endRemainingIdx == taskCollection.Count - 1 ? false : true;
-            isRemainingBackEnabled = startRemainingIdx == 0 ? false : true;
+            isDownEnable = endRemainingIdx == taskCollection.Count - 1 ? false : true;
+            isUpEnable = startRemainingIdx == 0 ? false : true;
 
-            remainingTaskpaginateDown.Image = isRemainingNextEnables ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
-            remainingTaskpaginateUp.Image = isRemainingBackEnabled ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+            ResetRemainingButtons();
         }
 
         private void ReorderDoneTask()
@@ -358,14 +409,13 @@ namespace TeamTracker
                 doneCardCollection[idx].SelectedTask = doneCollection[ctr];
             }
 
-            isDoneBackEnabled = startDoneIdx == 0 ? false : true;
-            isDoneNextEnabled = endDoneIdx == doneCollection.Count - 1 ? false : true;
+            isBackEnable = startDoneIdx == 0 ? false : true;
+            isNextEnable = endDoneIdx == doneCollection.Count - 1 ? false : true;
 
-            if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
-            if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
-            doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            ResetDoneButton();
         }
 
         private void SetDoneAllignment()
@@ -387,14 +437,13 @@ namespace TeamTracker
                 Iter.BringToFront();
             }
 
-            isDoneBackEnabled = startDoneIdx == 0 ? false : true;
-            isDoneNextEnabled = endDoneIdx == doneCollection.Count - 1 ? false : true;
+            isBackEnable = startDoneIdx == 0 ? false : true;
+            isNextEnable = endDoneIdx == doneCollection.Count - 1 ? false : true;
 
-            if (doneTaskPageBack.Image != null) doneTaskPageBack.Image.Dispose();
-            if (doneTaskPageNext.Image != null) doneTaskPageNext.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            doneTaskPageNext.Image = isDoneNextEnabled ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
-            doneTaskPageBack.Image = isDoneBackEnabled ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+            ResetDoneButton();
         }
 
         private Dictionary<Color, int> FetchTaskCountsByStatus()
@@ -446,6 +495,53 @@ namespace TeamTracker
         {
             base.OnResize(e);
             InitializeRoundedEdge();
+        }
+
+        private void ResetRemainingButtons()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Cold_Up_Light;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Cold_Down_Light;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Light;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Light;
+            }
+        }
+
+        private void ResetDoneButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
+        private void SingleListControlPanelControlsClear()
+        {
+            for (int ctr = 0; ctr < singleListControlPanel.Controls.Count; ctr++)
+            {
+                (singleListControlPanel.Controls[ctr] as SingleList).Reset -= OnReset;
+                (singleListControlPanel.Controls[ctr] as SingleList).Dispose();
+                ctr--;
+            }
+        }
+
+        private void DoneCardControlsClear()
+        {
+            for (int ctr = 0; ctr < doneTaskPanel.Controls.Count; ctr++)
+            {
+                (doneTaskPanel.Controls[ctr] as DoneCardTemplate).Dispose();
+                ctr--;
+            }
         }
     }
 }

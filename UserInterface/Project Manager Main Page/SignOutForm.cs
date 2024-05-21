@@ -60,13 +60,13 @@ namespace UserInterface.Project_Manager_Main_Page
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            BackColor = ThemeManager.GetHoverColor(BackColor);
+            panel1.BackColor = ThemeManager.GetHoverColor(BackColor);
             label1.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label1.ForeColor = ThemeManager.GetTextColor(BackColor);
         }
 

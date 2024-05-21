@@ -16,18 +16,10 @@ namespace UserInterface.ViewPage.ListView
         public delegate void WarningHandler(object sender, string status, bool value);
         public event WarningHandler WarningStatus;
 
-        public new void Dispose()
-        {
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
-            noButton.Dispose(); yesButton.Dispose();
-            label1.Dispose();   label2.Dispose();   tableLayoutPanel1.Dispose();
-        }
-
         public StatusChangeWarningForm()
         {
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -36,11 +28,6 @@ namespace UserInterface.ViewPage.ListView
             noButton.BackColor = yesButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             label1.ForeColor = noButton.ForeColor = yesButton.ForeColor = ThemeManager.GetTextColor(noButton.BackColor);
-        }
-
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
         }
 
         private void OnYesClicked(object sender, EventArgs e)

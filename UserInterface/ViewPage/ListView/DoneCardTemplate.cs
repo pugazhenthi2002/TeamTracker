@@ -62,6 +62,12 @@ namespace UserInterface.ViewPage.ListView
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();
+        }
+
         private void InitializeDoubleBuffer()
         {
             DoubleBuffered = true;
@@ -157,7 +163,6 @@ namespace UserInterface.ViewPage.ListView
 
         private void OnFormClosed(object sender, EventArgs e)
         {
-            (sender as TaskInfoForm).Dispose();
             (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)

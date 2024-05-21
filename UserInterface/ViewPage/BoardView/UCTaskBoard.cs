@@ -100,6 +100,13 @@ namespace TeamTracker
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBoxInfo.Image?.Dispose();
+            pictureBoxFlag.Image?.Dispose();
+        }
+
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));

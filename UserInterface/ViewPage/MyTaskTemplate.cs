@@ -30,6 +30,20 @@ namespace UserInterface.ViewPage
             else
             {
                 panel1.Visible = true;
+                if (tabControl1.SelectedIndex == 0)
+                {
+                    boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                    listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                    boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Light : Properties.Resources.Heat_Board_Light;
+                    listPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_List_Dark : Properties.Resources.Heat_List_Dark;
+                }
+                else
+                {
+                    boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                    listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                    boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Dark : Properties.Resources.Heat_Board_Dark;
+                    listPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_List_Light : Properties.Resources.Heat_List_Light;
+                }
             }
             OnBoardClick(boardPicBox, EventArgs.Empty);
         }
@@ -42,21 +56,30 @@ namespace UserInterface.ViewPage
             listLabel.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
             boardLabel.ForeColor = ThemeManager.GetTextColor(boardPanel.BackColor);
 
-            if(tabControl1.SelectedIndex == 0)
+            if (tabControl1.SelectedIndex == 0)
             {
                 boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Light : Properties.Resources.Heat_Board_Light;
+                listPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_List_Dark : Properties.Resources.Heat_List_Dark;
             }
             else
             {
                 boardLabel.ForeColor = listLabel.BackColor = listPicBox.BackColor = ThemeManager.CurrentTheme.PrimaryI;
                 listLabel.ForeColor = boardLabel.BackColor = boardPicBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Dark : Properties.Resources.Heat_Board_Dark;
+                listPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_List_Light : Properties.Resources.Heat_List_Light;
             }
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void OnBoardClick(object sender, EventArgs e)

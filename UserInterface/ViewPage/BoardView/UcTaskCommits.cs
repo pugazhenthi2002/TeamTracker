@@ -22,7 +22,6 @@ namespace TeamTracker
             InitializeComponent();
             InitializePageColor();
             InitializeRoundedEdge();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
 
@@ -76,11 +75,20 @@ namespace TeamTracker
         {
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
             labelCommitName.ForeColor = labelEmpName.ForeColor = ThemeManager.GetTextColor(BackColor);
+
+            pictureBoxDownload.Image?.Dispose();
+
+            pictureBoxDownload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            pictureBoxDownload.Image?.Dispose();
         }
 
         private void InitializeRoundedEdge()
@@ -106,13 +114,14 @@ namespace TeamTracker
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBoxDownload.Image?.Dispose();
+            pictureBoxDownload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.Zoom;
-
+            pictureBoxDownload.Image?.Dispose();
+            pictureBoxDownload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void OnClickDownloadSourceCode(object sender, MouseEventArgs e)

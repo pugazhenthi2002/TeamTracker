@@ -102,7 +102,13 @@ namespace TeamTracker
             ucTaskStatusBaseStuck.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.Stuck);
             ucTaskStatusBaseUnderReview.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.UnderReview);
         }
-        
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+
 
         private void OnMouseDownTaskBoard(UCTaskBoard sender, MouseEventArgs e)
         {

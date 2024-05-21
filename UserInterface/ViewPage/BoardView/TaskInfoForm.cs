@@ -22,7 +22,6 @@ namespace TeamTracker
             this.Location = new Point(700, 300);
             toolTip1.SetToolTip(pictureBoxFlag, "Priority");
             toolTip1.SetToolTip(animatedLabelMilestone, "Milestone");
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public TeamTracker.Task selectedTask;
@@ -54,18 +53,11 @@ namespace TeamTracker
 
         private List<SourceCode> sourceCodeList;
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
             if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
             if (pictureBoxFlag.Image != null) pictureBoxFlag.Image.Dispose();
-
-            pictureBox1.Dispose(); pictureBoxDownloadAttachment.Dispose(); pictureBoxFlag.Dispose();
-            label1.Dispose();   animatedLabelMilestone.Dispose();   animatedLabelStatus.Dispose();  labelTitle.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
-            startDate.Dispose();    endDate.Dispose();  ucTaskDescription1.Dispose();
-            profileAssignedBy.Dispose();    ucNotFound1.Dispose();
         }
 
         private void InitializePageColor()
@@ -77,11 +69,10 @@ namespace TeamTracker
             labelTitle.ForeColor = profileAssignedBy.ForeColor = startDate.SkinColor = endDate.SkinColor = label1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             animatedLabelStatus.LabelCornerColor = animatedLabelMilestone.LabelCornerColor = BackColor;
             animatedLabelMilestone.ParentColor = animatedLabelStatus.ParentColor = ThemeManager.CurrentTheme.PrimaryI;
-        }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
+            pictureBox1.Image?.Dispose();   pictureBoxFlag?.Dispose();  pictureBoxDownloadAttachment.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+            pictureBoxDownloadAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         protected override void OnResize(EventArgs e)
@@ -210,14 +201,14 @@ namespace TeamTracker
         {
             if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
 
-            pictureBoxDownloadAttachment.Image = UserInterface.Properties.Resources.Download_Dark_Blue;
+            pictureBoxDownloadAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
         {
             if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
 
-            pictureBoxDownloadAttachment.Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
+            pictureBoxDownloadAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void InitializePage()
@@ -269,6 +260,16 @@ namespace TeamTracker
             {
                 ProjectManagerMainForm.notify.AddNotification("Download Failed", savePath);
             }
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
     }
 }

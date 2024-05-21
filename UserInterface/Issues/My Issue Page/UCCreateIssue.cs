@@ -38,7 +38,6 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
             panelTags.HorizontalScroll.Enabled = false;
             panelTags.HorizontalScroll.Visible = false;
 
@@ -51,11 +50,6 @@ namespace TeamTracker
             profilePicAndName1.EmployeeProfile = EmployeeManager.CurrentEmployee;
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
-        }
-
         private void InitializePageColor()
         {
             BtnAddTag.ForeColor = BtnSetPriority.ForeColor = BtnSetType.ForeColor = buttonPost.ForeColor = panelTop.BackColor = ThemeManager.CurrentTheme.PrimaryI;
@@ -64,6 +58,9 @@ namespace TeamTracker
             profilePicAndName1.ForeColor = textBoxTags.BackColor = IssueDescTextBox.BackColor = IssueDescTextBox.BackColor = BtnAddTag.BackColor = BtnSetPriority.BackColor = BtnSetType.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             IssueTitleTextBox.BackColor = buttonPost.BackColor = labelAttachment.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+            pictureBoxAttachments.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Pin : UserInterface.Properties.Resources.Heat_Pin;
         }
 
         public EventHandler DiscardClick;
@@ -359,6 +356,18 @@ namespace TeamTracker
             Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 15));
             border.Dispose();
+        }
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

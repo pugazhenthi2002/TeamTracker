@@ -34,18 +34,12 @@ namespace UserInterface.Issues.My_Issue_Page
             DoubleBuffered = true;
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
-        }
-
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
         }
 
         private void InitializePageColor()
         {
             solutionAttachmentTemplate1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            solvedByLabel.BackColor = richTextBox1.BackColor = employeeProfilePicAndName1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            solvedByLabel.BackColor = richTextBox1.BackColor = employeeProfilePicAndName1.BackColor = employeeProfilePicAndName1.NormalColor = employeeProfilePicAndName1.HoverColor = ThemeManager.CurrentTheme.SecondaryIII;
             solvedByLabel.ForeColor = richTextBox1.ForeColor = employeeProfilePicAndName1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             BackColor = ThemeManager.CurrentTheme.SecondaryII;
         }
@@ -58,18 +52,6 @@ namespace UserInterface.Issues.My_Issue_Page
             this.Invalidate();
         }
 
-        public new void Dispose()
-        {
-            for (int ctr = 0; ctr < Controls.Count; ctr++)
-            {
-                if (Controls[ctr] is PictureBox)
-                {
-                    if ((Controls[ctr] as PictureBox).Image != null) (Controls[ctr] as PictureBox).Image.Dispose();
-                }
-                (Controls[ctr] as Control).Dispose();
-                ctr--;
-            }
-        }
 
         private void InitializePage()
         {

@@ -81,11 +81,10 @@ namespace UserInterface.Issues.My_Issue_Page
             isBackEnable = startIdx == 0 ? false : true;
             isNextEnable = endIdx == issueSolutionCollection.Count - 1 ? false : true;
 
-            if (backPicBox.Image != null) backPicBox.Image.Dispose();
-            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
-            nextPicBox.Image = isBackEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
+            ResetButton();
         }
 
         private void InitializePageColor()
@@ -95,22 +94,20 @@ namespace UserInterface.Issues.My_Issue_Page
             panel2.BackColor = ThemeManager.CurrentTheme.SecondaryI;
             totalSolutionCOuntLabel.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
             labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+
+            pictureBox1.Image?.Dispose();
+            backBtn.Image?.Dispose();
+            nextBtn.Image?.Dispose();
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+            ResetButton();
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            InitializePageColor();
-        }
-
-        public new void Dispose()
-        {
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            if (backPicBox.Image != null) backPicBox.Image.Dispose();
-            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
-            pictureBox1.Dispose();  backPicBox.Dispose();  nextPicBox.Dispose();
-            totalSolutionCOuntLabel.Dispose();   labelTitle.Dispose();
-            solutionTemplate1.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
         }
 
         private void OnBackClick(object sender, EventArgs e)
@@ -148,20 +145,64 @@ namespace UserInterface.Issues.My_Issue_Page
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "nextPicBox") nextPicBox.Image = UserInterface.Properties.Resources.Right_Dark_Blue_Hover;
-            else if ((sender as Control).Name == "backPicBox") backPicBox.Image = UserInterface.Properties.Resources.Left_Dark_Blue_Hover;
-            else pictureBox1.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else if((sender as Control).Name == "nextBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
+            else
+            {
+                pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+            }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "nextPicBox") nextPicBox.Image = isBackEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
-            else if ((sender as Control).Name == "backPicBox") backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
-            else pictureBox1.Image = UserInterface.Properties.Resources.Close_30;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Light;
+                }
+            }
+            else if ((sender as Control).Name == "nextBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Light;
+                }
+            }
+            else
+            {
+                pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+            }
         }
 
         private void OnCloseClick(object sender, EventArgs e)
@@ -174,8 +215,6 @@ namespace UserInterface.Issues.My_Issue_Page
             DoubleBuffered = true;
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
-
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.NonPublic, null, panel1, new object[] { true });
         }
 
@@ -195,11 +234,10 @@ namespace UserInterface.Issues.My_Issue_Page
             isBackEnable = startIdx == 0 ? false : true;
             isNextEnable = endIdx == issueSolutionCollection.Count - 1 ? false : true;
 
-            if (backPicBox.Image != null) backPicBox.Image.Dispose();
-            if (nextPicBox.Image != null) nextPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backPicBox.Image = isBackEnable ? Properties.Resources.Left_Dark_Blue : Properties.Resources.Left_Light_Blue;
-            nextPicBox.Image = isNextEnable ? Properties.Resources.Right_Dark_Blue : Properties.Resources.Right_Light_Blue;
+            ResetButton();
         }
 
         protected override void OnResize(EventArgs e)
@@ -212,6 +250,20 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             base.OnLoad(e);
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
         }
 
         private const int CSDropShadow = 0x00020000;

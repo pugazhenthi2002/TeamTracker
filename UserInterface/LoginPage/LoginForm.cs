@@ -36,6 +36,10 @@ namespace TeamTracker
             letsTeamUpButton.ForeColor = username.BackColor = username.TextBoxColor = password.BackColor = password.TextBoxColor = ThemeManager.CurrentTheme.SecondaryIII;
             username.ForeColor = username.TextForeColor = username.PlaceholderLabelAtCenterColor = username.PlaceholderLabelAtTopColor = ThemeManager.CurrentTheme.PrimaryI;
             password.ForeColor = password.TextForeColor = password.PlaceholderLabelAtCenterColor = password.PlaceholderLabelAtTopColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            closePictureBox.Image?.Dispose();
+
+            closePictureBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark : UserInterface.Properties.Resources.Heat_Close_Dark;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
@@ -61,6 +65,7 @@ namespace TeamTracker
                 username.TextBoxtext = "";
                 password.TextBoxtext = "";
                 username.Focus();
+                Hide();
                 SelectPageBasedOnRole();
             }
         }
@@ -76,14 +81,14 @@ namespace TeamTracker
         {
             if(closePictureBox.Image!=null) closePictureBox.Image.Dispose();
 
-            closePictureBox.Image = UserInterface.Properties.Resources.close_Hover;
+            closePictureBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark_Hover : UserInterface.Properties.Resources.Heat_Close_Dark_Hover;
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
             if (closePictureBox.Image != null) closePictureBox.Image.Dispose();
 
-            closePictureBox.Image = UserInterface.Properties.Resources.Close;
+            closePictureBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Dark : UserInterface.Properties.Resources.Heat_Close_Dark;
         }
 
         private void OnCloseClick(object sender, EventArgs e)
@@ -95,6 +100,7 @@ namespace TeamTracker
         {
             (sender as ProjectManagerMainForm).Close();
             this.Close();
+            Show();
         }
 
         private void OnLoad(object sender, EventArgs e)

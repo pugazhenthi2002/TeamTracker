@@ -37,18 +37,16 @@ namespace TeamTracker
             DoubleBuffered = true;
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
-        }
-
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
         }
 
         private void InitializePageColor()
         {
             panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            pictureBox1.Image?.Dispose();
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         public event EventHandler NotificationClosed;
@@ -357,6 +355,18 @@ namespace TeamTracker
             Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 3);
             e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 2, Height - 2), borderRadius/2));
             border.Dispose();
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         private void InitializeBorder()
