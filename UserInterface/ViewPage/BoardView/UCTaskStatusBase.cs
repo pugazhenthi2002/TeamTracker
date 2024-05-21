@@ -100,6 +100,11 @@ namespace TeamTracker
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         public void RemoveTaskBoard(UCTaskBoard tBoard)
         {
             this.SuspendLayout();

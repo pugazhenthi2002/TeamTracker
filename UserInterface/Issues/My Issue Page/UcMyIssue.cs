@@ -44,6 +44,7 @@ namespace TeamTracker
             dataGridView1.BackgroundColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             checkBoxBug.ForeColor = checkBoxFeatureRequest.ForeColor = checkBoxHigh.ForeColor = checkBoxLogicalNeed.ForeColor = checkBoxLow.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             checkBoxMedium.ForeColor = checkBoxOptimization.ForeColor = checkBoxOther.ForeColor = checkBoxSecurity.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            buttonCreateIssue.BackColor = buttonDelete.BackColor = ThemeManager.CurrentTheme.PrimaryI;
 
             dataGridView1.RowTemplate.Height = 40;
             dataGridView1.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle()
@@ -62,6 +63,16 @@ namespace TeamTracker
                 SelectionForeColor = ThemeManager.CurrentTheme.PrimaryI,
                 Alignment = DataGridViewContentAlignment.MiddleCenter
             };
+
+            buttonCreateIssue.Image?.Dispose(); buttonDelete.Image?.Dispose();
+            buttonCreateIssue.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Plus_Light : UserInterface.Properties.Resources.Heat_Plus_Light;
+            buttonDelete.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Delete_Light : UserInterface.Properties.Resources.Heat_Delete_Light;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            buttonCreateIssue.Image?.Dispose(); buttonDelete.Image?.Dispose();
         }
 
         protected override void OnResize(EventArgs e)

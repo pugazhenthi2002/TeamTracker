@@ -19,7 +19,6 @@ namespace TeamTracker
             InitializeRoundedEdge();
             InitializePageColor();
             this.Location = new Point(700, 300);
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public Task SourceCodeTask;
@@ -38,17 +37,10 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            if(pictureBox1.Image != null)   pictureBox1.Image.Dispose();
-            if(pictureBoxUpload.Image != null) pictureBoxUpload.Image.Dispose();
-
-            pictureBox1.Dispose();  pictureBoxUpload.Dispose();
-            label1.Dispose();   label2.Dispose();   label3.Dispose();
-            button1.Dispose();  button2.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();
-            commitTextBox.Dispose();
+            pictureBox1.Image?.Dispose();
+            pictureBoxUpload.Image?.Dispose();
         }
 
         private void InitializePageColor()
@@ -58,11 +50,12 @@ namespace TeamTracker
             button1.ForeColor = button2.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
             commitTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(BackColor);
-        }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
+            pictureBox1.Image?.Dispose();
+            pictureBoxUpload.Image?.Dispose();
+
+            pictureBoxUpload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Upload : UserInterface.Properties.Resources.Heat_Upload;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         protected override void OnResize(EventArgs e)
@@ -150,13 +143,13 @@ namespace TeamTracker
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            pictureBox1.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            pictureBox1.Image = UserInterface.Properties.Resources.Close_30;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
     }
 }

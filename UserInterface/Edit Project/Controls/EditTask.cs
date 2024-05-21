@@ -39,7 +39,7 @@ namespace UserInterface.Edit_Project.Controls
             label4.ForeColor = label5.ForeColor = animatedLabelFilename.ForeColor = textBoxDesc.ForeColor = textBoxTaskName.ForeColor = manualEdit.ForeColor = buttonSetMilestone.ForeColor = labelSetPriority.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = label3.ForeColor = employeeName.ForeColor = startDate.TextColor = startDate.BorderColor = endDate.TextColor = endDate.BorderColor = requiredEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label2.ForeColor = buttonUpdate.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            ucNotFound1.BackColor = ucNotFound2.BackColor = buttonDelete.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            panel4.BackColor = ucNotFound1.BackColor = ucNotFound2.BackColor = buttonDelete.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             buttonUpdate.ForeColor = ThemeManager.GetTextColor(buttonUpdate.BackColor);
             buttonDelete.ForeColor = ThemeManager.GetTextColor(buttonDelete.BackColor);
             tabPage1.BackColor = tabPage2.BackColor = searchTask1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
@@ -61,13 +61,13 @@ namespace UserInterface.Edit_Project.Controls
 
             if (tabControl1.SelectedIndex == 0)
             {
-                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryII;
                 requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             }
             else
             {
                 requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
             }
         }
 
@@ -87,13 +87,19 @@ namespace UserInterface.Edit_Project.Controls
         public void InitializePage()
         {
             SuspendLayout();
+            tableLayoutPanelFileName.Visible = false;
+            selectedTask = null;
             if (tabControl1.SelectedIndex == 0)
             {
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
                 requiredTaskCollection = TaskManager.FetchEditTask();
                 InitializeRequiredControl();
             }
             else
             {
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 taskCollection = TaskCollection;
                 InitializeManualControl();
             }
@@ -317,6 +323,12 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnClickAddAttachment(object sender, EventArgs e)
         {
+            if (selectedTask == null)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", "Select a Task to Add an Attachment");
+                return;
+            }
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Title = "Open File";
@@ -347,6 +359,11 @@ namespace UserInterface.Edit_Project.Controls
 
         private BooleanMsg CheckConstraints()
         {
+            if(selectedTask == null)
+            {
+                return "Select a Task to Edit";
+            }
+
             if (textBoxTaskName.Text == "" || textBoxTaskName.Text == "Task Name")
             {
                 return "Task Name has not been Entered";
@@ -422,7 +439,6 @@ namespace UserInterface.Edit_Project.Controls
         private void OnUpdateStatus(object sender, bool e)
         {
             (sender as WarningForm).WarningStatus -= OnUpdateStatus;
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (e)
@@ -447,6 +463,12 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnTaskDelete(object sender, EventArgs e)
         {
+            if (selectedTask == null)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", "Select a Task to Edit");
+                return;
+            }
+
             WarningForm form = new WarningForm();
             form.Content = "Are you sure, you want to update the Task?";
             form.WarningStatus += OnDeleteStatus;
@@ -459,7 +481,6 @@ namespace UserInterface.Edit_Project.Controls
         private void OnDeleteStatus(object sender, bool e)
         {
             (sender as WarningForm).WarningStatus -= OnDeleteStatus;
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (e)
@@ -534,14 +555,14 @@ namespace UserInterface.Edit_Project.Controls
         private void OnManualClick(object sender, EventArgs e)
         {
             requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
             tabControl1.SelectedIndex = 1;
             InitializePage();
         }
 
         private void OnRequiredClick(object sender, EventArgs e)
         {
-            requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             tabControl1.SelectedIndex = 0;
             InitializePage();

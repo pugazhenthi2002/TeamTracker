@@ -20,7 +20,6 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private void InitializePageColor()
@@ -32,10 +31,6 @@ namespace TeamTracker
             label4.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.NotYetStarted);
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
-        }
 
         public event EventHandler<string> StatusChanged;
 

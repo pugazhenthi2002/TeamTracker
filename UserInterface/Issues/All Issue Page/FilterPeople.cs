@@ -31,23 +31,29 @@ namespace UserInterface.Issues.All_Issue_Page
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+
+            for (int ctr = 0; ctr < basePanel.Controls.Count; ctr++)
+            {
+                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).EmployeeSelect -= OnEmployeeSelected;
+                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).Dispose();
+                ctr--;
+            }
+        }
+
         private void InitializePageColor()
         {
             richTextBox1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             label3.ForeColor = richTextBox1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             deleteFilterPicBox.BackColor = profilePicAndName1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
             profilePicAndName1.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
-        }
 
-        public new void Dispose()
-        {
-            for(int ctr=0; ctr < basePanel.Controls.Count; ctr++)
-            {
-                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).EmployeeSelect -= OnEmployeeSelected;
-                (basePanel.Controls[ctr] as EmployeeProfilePicAndName).Dispose();
-                basePanel.Controls.RemoveAt(ctr);
-                ctr--;
-            }
+            upPicBox.Image?.Dispose();  downPicBox.Image?.Dispose();    deleteFilterPicBox?.Image?.Dispose();
+            
+            deleteFilterPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Close_Dark:Properties.Resources.Heat_Close_Dark;
+            ResetButtons();
         }
 
         public void InitializeFilter()
@@ -81,13 +87,12 @@ namespace UserInterface.Issues.All_Issue_Page
             Dispose();
             profileControlCollection = new List<EmployeeProfilePicAndName>();
             startIdx = 0;   endIdx = filteredEmployeeCollection.Count >= 5 ? 4 : filteredEmployeeCollection.Count - 1;
-            isBackEnable = false;   isNextEnabled = filteredEmployeeCollection.Count > 5 ? true : false;
+            isUpEnable = false;   isDownEnable = filteredEmployeeCollection.Count > 5 ? true : false;
 
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isBackEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isNextEnabled ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Medium_Blue;
+            ResetButtons();
 
             for(int ctr = 0; ctr <= endIdx; ctr++)
             {
@@ -123,11 +128,11 @@ namespace UserInterface.Issues.All_Issue_Page
             EmployeeSelect?.Invoke(this, null);
         }
 
-        private bool isBackEnable = false, isNextEnabled = false;
+        private bool isUpEnable = false, isDownEnable = false;
 
         private void OnUpClicked(object sender, EventArgs e)
         {
-            if (isBackEnable)
+            if (isUpEnable)
             {
                 startIdx--; endIdx--;
                 ReorderFilterUI();
@@ -136,7 +141,7 @@ namespace UserInterface.Issues.All_Issue_Page
 
         private void OnDownClicked(object sender, EventArgs e)
         {
-            if (isNextEnabled)
+            if (isDownEnable)
             {
                 startIdx++; endIdx++;
                 ReorderFilterUI();
@@ -150,49 +155,60 @@ namespace UserInterface.Issues.All_Issue_Page
                 profileControlCollection[idx].Profile = filteredEmployeeCollection[ctr];
             }
 
-            isBackEnable = startIdx == 0 ? false : true;
-            isNextEnabled = endIdx == filteredEmployeeCollection.Count - 1 ? false : true;
+            isUpEnable = startIdx == 0 ? false : true;
+            isDownEnable = endIdx == filteredEmployeeCollection.Count - 1 ? false : true;
 
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isBackEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isNextEnabled ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Medium_Blue;
+            ResetButtons();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if((sender as PictureBox).Name == "upPicBox")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                upPicBox.Image = Properties.Resources.Up_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else if ((sender as PictureBox).Name == "downPicBox")
             {
-                downPicBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
             else
             {
-                deleteFilterPicBox.Image = Properties.Resources.Close_Light_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark_Hover : Properties.Resources.Heat_Close_Dark_Hover;
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
+            (sender as PictureBox).Image?.Dispose();
             if ((sender as PictureBox).Name == "upPicBox")
             {
-                upPicBox.Image = isBackEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                }
             }
             else if((sender as PictureBox).Name == "downPicBox")
             {
-                downPicBox.Image = isNextEnabled ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+                }
             }
             else
             {
-                deleteFilterPicBox.Image = Properties.Resources.Close_Dark_Blue;
+                deleteFilterPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
             }
         }
 
@@ -211,6 +227,20 @@ namespace UserInterface.Issues.All_Issue_Page
             Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0,(sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
+        }
+
+        private void ResetButtons()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+            }
         }
 
         private int startIdx = 0, endIdx = 0;

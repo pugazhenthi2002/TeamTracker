@@ -346,6 +346,7 @@ namespace TeamTracker
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
+            pictureBoxClose.Image?.Dispose();
             pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 

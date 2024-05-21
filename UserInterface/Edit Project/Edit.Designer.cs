@@ -182,10 +182,13 @@
             // editMilestoneButton
             // 
             this.editMilestoneButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editMilestoneButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editMilestoneButton.Location = new System.Drawing.Point(3, 3);
+            this.editMilestoneButton.FlatAppearance.BorderSize = 0;
+            this.editMilestoneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editMilestoneButton.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editMilestoneButton.Location = new System.Drawing.Point(0, 0);
+            this.editMilestoneButton.Margin = new System.Windows.Forms.Padding(0);
             this.editMilestoneButton.Name = "editMilestoneButton";
-            this.editMilestoneButton.Size = new System.Drawing.Size(459, 38);
+            this.editMilestoneButton.Size = new System.Drawing.Size(465, 44);
             this.editMilestoneButton.TabIndex = 0;
             this.editMilestoneButton.Text = "Edit Milestone";
             this.editMilestoneButton.UseVisualStyleBackColor = true;
@@ -194,10 +197,13 @@
             // editTaskButton
             // 
             this.editTaskButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editTaskButton.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editTaskButton.Location = new System.Drawing.Point(468, 3);
+            this.editTaskButton.FlatAppearance.BorderSize = 0;
+            this.editTaskButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editTaskButton.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editTaskButton.Location = new System.Drawing.Point(465, 0);
+            this.editTaskButton.Margin = new System.Windows.Forms.Padding(0);
             this.editTaskButton.Name = "editTaskButton";
-            this.editTaskButton.Size = new System.Drawing.Size(459, 38);
+            this.editTaskButton.Size = new System.Drawing.Size(465, 44);
             this.editTaskButton.TabIndex = 1;
             this.editTaskButton.Text = "Edit Task";
             this.editTaskButton.UseVisualStyleBackColor = true;

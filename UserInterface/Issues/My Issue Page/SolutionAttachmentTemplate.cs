@@ -41,18 +41,19 @@ namespace UserInterface.Issues.My_Issue_Page
         {
             InitializeComponent();
             InitializePageColor();
-            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            InitializePageColor();
-        }
 
         private void InitializePageColor()
         {
             BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            pictureBox1.Image?.Dispose();
+            pictureBox2.Image?.Dispose();
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Light_Document : Properties.Resources.Heat_Light_Document;
+            pictureBox2.Image = Properties.Resources.Download_Light_Blue;
         }
 
         private void OnDownloadClick(object sender, EventArgs e)

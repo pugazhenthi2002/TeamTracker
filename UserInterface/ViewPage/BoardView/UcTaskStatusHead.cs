@@ -64,11 +64,20 @@ namespace TeamTracker
             labelTaskCount.ForeColor = ThemeManager.GetTextColor(labelTaskCount.BackColor);
             panel1.BackColor = ThemeManager.GetTaskStatusColor(Tstatus);
             labelStatus.Text = Tstatus.ToString();
+
+            pictureBoxUp.Image?.Dispose();  pictureBoxDown.Image?.Dispose();
+            pictureBoxDown.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Dark;
+            pictureBoxUp.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Dark;
         }
 
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializeRoundedEdge()
@@ -87,11 +96,11 @@ namespace TeamTracker
             PictureBox curPicBox = (sender as PictureBox);
             if (curPicBox == pictureBoxUp)
             {
-                curPicBox.Image = UserInterface.Properties.Resources.sort_up_hover;
+                pictureBoxUp.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Up_Dark_Hover : UserInterface.Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                curPicBox.Image = UserInterface.Properties.Resources.sort_down_hover;
+                pictureBoxDown.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Down_Dark_Hover : UserInterface.Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
@@ -100,11 +109,11 @@ namespace TeamTracker
             PictureBox curPicBox = (sender as PictureBox);
             if (curPicBox == pictureBoxUp)
             {
-                curPicBox.Image = UserInterface.Properties.Resources.sort_up;
+                pictureBoxUp.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Up_Dark : UserInterface.Properties.Resources.Heat_Up_Dark;
             }
             else
             {
-                curPicBox.Image = UserInterface.Properties.Resources.sort_down;
+                pictureBoxDown.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Down_Dark : UserInterface.Properties.Resources.Heat_Down_Dark;
             }
         }
 

@@ -114,6 +114,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnNavMouseEnter(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
             if((sender as PictureBox).Name == "upPicBox")
             {
                 (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
@@ -126,6 +127,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnNavMouseLeave(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
             if ((sender as PictureBox).Name == "upPicBox")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)

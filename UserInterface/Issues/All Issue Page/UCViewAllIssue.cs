@@ -44,6 +44,11 @@ namespace TeamTracker
             InitializePageColor();
         }
 
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
         private void InitializePageColor()
         {
             filterPeople1.BackColor = tableLayoutPanel1.BackColor = tableLayoutPanel2.BackColor = ThemeManager.CurrentTheme.SecondaryII;

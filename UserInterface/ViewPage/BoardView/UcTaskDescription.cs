@@ -82,12 +82,6 @@ namespace TeamTracker
             }
         }
 
-        public new void Dispose()
-        {
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
-            labelCenter.Dispose();  labelTop.Dispose();
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

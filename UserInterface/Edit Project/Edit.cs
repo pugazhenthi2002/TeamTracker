@@ -28,6 +28,7 @@ namespace UserInterface.Edit_Project
         public void InitializePageColor()
         {
             tabPage1.BackColor = tabPage2.BackColor = tabPage3.BackColor = tabPage4.BackColor = editTaskButton.BackColor = editMilestoneButton.ForeColor = editMilestoneButton.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            editVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             editTaskButton.ForeColor = editMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
              
             if(tabControl1.SelectedIndex == 1 && tabControl2.SelectedIndex == 0)
@@ -46,6 +47,8 @@ namespace UserInterface.Edit_Project
         {
             if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
+                editTaskButton.BackColor = editMilestoneButton.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                editTaskButton.ForeColor = editMilestoneButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 editMilestone1.InitializePage();
                 editMilestone1.ProjectCollection = VersionManager.FetchAllProjectsForTeamLeader();
                 tabControl2.SelectedIndex = 0;

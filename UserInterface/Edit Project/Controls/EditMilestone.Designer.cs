@@ -35,12 +35,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.boardBasePanel = new System.Windows.Forms.Panel();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.boardBaseManualPanel = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.searchVersion1 = new UserInterface.Edit_Project.Controls.SearchVersion();
-            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel10 = new System.Windows.Forms.Panel();
             this.NextBtn = new System.Windows.Forms.PictureBox();
             this.BackBtn = new System.Windows.Forms.PictureBox();
@@ -62,10 +59,15 @@
             this.milestoneTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
-            this.milestoneDateTime = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonUpdate = new System.Windows.Forms.Button();
+            this.milestoneDateTime = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
+            this.searchVersion1 = new UserInterface.Edit_Project.Controls.SearchVersion();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.ucNotFound3 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.milestoneTemplate8 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
             this.milestoneTemplate2 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
@@ -96,6 +98,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,7 +109,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.panel2.Padding = new System.Windows.Forms.Padding(10);
             this.panel2.Size = new System.Drawing.Size(1109, 270);
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnLineSeperatePaint);
@@ -141,7 +144,7 @@
             this.tabPage1.Controls.Add(this.ucNotFound1);
             this.tabPage1.Location = new System.Drawing.Point(4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1081, 201);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
@@ -152,22 +155,9 @@
             this.boardBasePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardBasePanel.Location = new System.Drawing.Point(3, 3);
             this.boardBasePanel.Name = "boardBasePanel";
-            this.boardBasePanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.boardBasePanel.Padding = new System.Windows.Forms.Padding(5);
             this.boardBasePanel.Size = new System.Drawing.Size(1075, 195);
             this.boardBasePanel.TabIndex = 5;
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Required Task To Edit";
-            this.ucNotFound1.HeadTextSize = 12;
-            this.ucNotFound1.Location = new System.Drawing.Point(3, 3);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(1075, 195);
-            this.ucNotFound1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -176,7 +166,7 @@
             this.tabPage2.Controls.Add(this.ucNotFound2);
             this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1081, 201);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
@@ -187,7 +177,7 @@
             this.boardBaseManualPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.boardBaseManualPanel.Location = new System.Drawing.Point(3, 57);
             this.boardBaseManualPanel.Name = "boardBaseManualPanel";
-            this.boardBaseManualPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.boardBaseManualPanel.Padding = new System.Windows.Forms.Padding(5);
             this.boardBaseManualPanel.Size = new System.Drawing.Size(1075, 141);
             this.boardBaseManualPanel.TabIndex = 7;
             // 
@@ -200,30 +190,6 @@
             this.panel9.Padding = new System.Windows.Forms.Padding(5, 5, 0, 5);
             this.panel9.Size = new System.Drawing.Size(1075, 54);
             this.panel9.TabIndex = 6;
-            // 
-            // searchVersion1
-            // 
-            this.searchVersion1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(228)))), ((int)(((byte)(190)))));
-            this.searchVersion1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.searchVersion1.Location = new System.Drawing.Point(5, 5);
-            this.searchVersion1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.searchVersion1.Name = "searchVersion1";
-            this.searchVersion1.Size = new System.Drawing.Size(316, 44);
-            this.searchVersion1.TabIndex = 0;
-            this.searchVersion1.ProjectNameChange += new System.EventHandler<string>(this.OnProjectNameChanged);
-            // 
-            // ucNotFound2
-            // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound2.HeadText = "No Manual Task To Edit";
-            this.ucNotFound2.HeadTextSize = 12;
-            this.ucNotFound2.Location = new System.Drawing.Point(3, 3);
-            this.ucNotFound2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ucNotFound2.Message = null;
-            this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(1075, 195);
-            this.ucNotFound2.TabIndex = 0;
             // 
             // panel10
             // 
@@ -311,7 +277,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(743, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Padding = new System.Windows.Forms.Padding(2);
             this.panel6.Size = new System.Drawing.Size(366, 40);
             this.panel6.TabIndex = 3;
             // 
@@ -335,7 +301,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(140, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Padding = new System.Windows.Forms.Padding(2);
             this.panel7.Size = new System.Drawing.Size(224, 36);
             this.panel7.TabIndex = 3;
             // 
@@ -393,7 +359,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 1, 0);
@@ -430,7 +396,7 @@
             this.tableLayoutPanel3.Controls.Add(this.panel8, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -446,7 +412,7 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(1, 1);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.label1.Margin = new System.Windows.Forms.Padding(1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(496, 39);
             this.label1.TabIndex = 0;
@@ -460,7 +426,7 @@
             this.panel8.Location = new System.Drawing.Point(92, 44);
             this.panel8.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Padding = new System.Windows.Forms.Padding(4);
             this.panel8.Size = new System.Drawing.Size(313, 35);
             this.panel8.TabIndex = 1;
             // 
@@ -487,7 +453,7 @@
             this.tableLayoutPanel4.Controls.Add(this.milestoneDateTime, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(504, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -502,26 +468,12 @@
             this.label4.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label4.Location = new System.Drawing.Point(1, 1);
-            this.label4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.label4.Margin = new System.Windows.Forms.Padding(1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(496, 39);
             this.label4.TabIndex = 1;
             this.label4.Text = "Date";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // milestoneDateTime
-            // 
-            this.milestoneDateTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.milestoneDateTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.milestoneDateTime.BorderSize = 2;
-            this.milestoneDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.milestoneDateTime.Location = new System.Drawing.Point(129, 44);
-            this.milestoneDateTime.MinimumSize = new System.Drawing.Size(4, 35);
-            this.milestoneDateTime.Name = "milestoneDateTime";
-            this.milestoneDateTime.Size = new System.Drawing.Size(239, 35);
-            this.milestoneDateTime.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.milestoneDateTime.TabIndex = 2;
-            this.milestoneDateTime.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             // 
             // pictureBox2
             // 
@@ -543,7 +495,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 715);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel4.Padding = new System.Windows.Forms.Padding(5);
             this.panel4.Size = new System.Drawing.Size(1109, 53);
             this.panel4.TabIndex = 6;
             // 
@@ -557,13 +509,86 @@
             this.buttonUpdate.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.buttonUpdate.Location = new System.Drawing.Point(848, 5);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(256, 43);
             this.buttonUpdate.TabIndex = 3;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = false;
             this.buttonUpdate.Click += new System.EventHandler(this.OnUpdateMilestone);
+            // 
+            // milestoneDateTime
+            // 
+            this.milestoneDateTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.milestoneDateTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.milestoneDateTime.BorderSize = 2;
+            this.milestoneDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.milestoneDateTime.Location = new System.Drawing.Point(129, 44);
+            this.milestoneDateTime.MinimumSize = new System.Drawing.Size(4, 35);
+            this.milestoneDateTime.Name = "milestoneDateTime";
+            this.milestoneDateTime.Size = new System.Drawing.Size(239, 35);
+            this.milestoneDateTime.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.milestoneDateTime.TabIndex = 2;
+            this.milestoneDateTime.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Required Task To Edit";
+            this.ucNotFound1.HeadTextSize = 12;
+            this.ucNotFound1.Location = new System.Drawing.Point(3, 3);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(1075, 195);
+            this.ucNotFound1.TabIndex = 0;
+            // 
+            // searchVersion1
+            // 
+            this.searchVersion1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(228)))), ((int)(((byte)(190)))));
+            this.searchVersion1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.searchVersion1.Location = new System.Drawing.Point(5, 5);
+            this.searchVersion1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchVersion1.Name = "searchVersion1";
+            this.searchVersion1.Size = new System.Drawing.Size(316, 44);
+            this.searchVersion1.TabIndex = 0;
+            this.searchVersion1.ProjectNameChange += new System.EventHandler<string>(this.OnProjectNameChanged);
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Manual Task To Edit";
+            this.ucNotFound2.HeadTextSize = 12;
+            this.ucNotFound2.Location = new System.Drawing.Point(3, 3);
+            this.ucNotFound2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ucNotFound2.Message = null;
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(1075, 195);
+            this.ucNotFound2.TabIndex = 0;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.tableLayoutPanel1);
+            this.panel11.Controls.Add(this.ucNotFound3);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 399);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1109, 316);
+            this.panel11.TabIndex = 7;
+            // 
+            // ucNotFound3
+            // 
+            this.ucNotFound3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
+            this.ucNotFound3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound3.HeadText = "No Version Selected";
+            this.ucNotFound3.HeadTextSize = 14;
+            this.ucNotFound3.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound3.Message = null;
+            this.ucNotFound3.Name = "ucNotFound3";
+            this.ucNotFound3.Size = new System.Drawing.Size(1109, 316);
+            this.ucNotFound3.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -578,7 +603,7 @@
             this.tableLayoutPanel1.Controls.Add(this.milestoneTemplate6, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.milestoneTemplate7, 0, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 399);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -591,7 +616,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1109, 316);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // milestoneTemplate8
             // 
@@ -607,8 +632,6 @@
             this.milestoneTemplate8.SelectedMilestone = null;
             this.milestoneTemplate8.Size = new System.Drawing.Size(709, 37);
             this.milestoneTemplate8.TabIndex = 8;
-            this.milestoneTemplate8.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate8.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate2
             // 
@@ -624,8 +647,6 @@
             this.milestoneTemplate2.SelectedMilestone = null;
             this.milestoneTemplate2.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate2.TabIndex = 1;
-            this.milestoneTemplate2.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate2.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate1
             // 
@@ -641,8 +662,6 @@
             this.milestoneTemplate1.SelectedMilestone = null;
             this.milestoneTemplate1.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate1.TabIndex = 2;
-            this.milestoneTemplate1.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate1.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate3
             // 
@@ -658,8 +677,6 @@
             this.milestoneTemplate3.SelectedMilestone = null;
             this.milestoneTemplate3.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate3.TabIndex = 3;
-            this.milestoneTemplate3.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate3.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate4
             // 
@@ -675,8 +692,6 @@
             this.milestoneTemplate4.SelectedMilestone = null;
             this.milestoneTemplate4.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate4.TabIndex = 4;
-            this.milestoneTemplate4.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate4.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate5
             // 
@@ -692,8 +707,6 @@
             this.milestoneTemplate5.SelectedMilestone = null;
             this.milestoneTemplate5.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate5.TabIndex = 5;
-            this.milestoneTemplate5.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate5.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate6
             // 
@@ -709,8 +722,6 @@
             this.milestoneTemplate6.SelectedMilestone = null;
             this.milestoneTemplate6.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate6.TabIndex = 6;
-            this.milestoneTemplate6.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate6.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate7
             // 
@@ -726,14 +737,12 @@
             this.milestoneTemplate7.SelectedMilestone = null;
             this.milestoneTemplate7.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate7.TabIndex = 7;
-            this.milestoneTemplate7.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
-            this.milestoneTemplate7.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // EditMilestone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -762,6 +771,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -794,7 +804,6 @@
         private System.Windows.Forms.Label requiredEdit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -806,6 +815,9 @@
         private System.Windows.Forms.Label label4;
         private Add_Project.Custom_Control.CustomDateTime milestoneDateTime;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel11;
+        private UcNotFound ucNotFound3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Home_Page.Team_Lead.On_Stage.MilestoneTemplate milestoneTemplate8;
         private Home_Page.Team_Lead.On_Stage.MilestoneTemplate milestoneTemplate2;
         private Home_Page.Team_Lead.On_Stage.MilestoneTemplate milestoneTemplate1;

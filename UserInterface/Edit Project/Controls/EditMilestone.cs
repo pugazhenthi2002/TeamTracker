@@ -64,6 +64,7 @@ namespace UserInterface.Edit_Project.Controls
             label1.ForeColor = label2.ForeColor = label3.ForeColor = label4.ForeColor = versionNames.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             milestoneTextBox.ForeColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
             tabPage1.BackColor = tabPage2.BackColor = searchVersion1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            panel5.BackColor = panel9.BackColor = ThemeManager.CurrentTheme.SecondaryII;
 
             BackBtn.Image?.Dispose();
             NextBtn.Image?.Dispose();
@@ -73,34 +74,40 @@ namespace UserInterface.Edit_Project.Controls
 
             ResetButton();
 
-            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
-            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Plus_Dark: Properties.Resources.Heat_Plus_Dark;
-            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Delete_Dark: Properties.Resources.Heat_Delete_Dark;
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Light : Properties.Resources.Heat_Down_Light;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Plus_Light: Properties.Resources.Heat_Plus_Light;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold? Properties.Resources.Cold_Delete_Light: Properties.Resources.Heat_Delete_Light;
 
             if (tabControl1.SelectedIndex == 0)
             {
-                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryII;
                 requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             }
             else
             {
                 requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
             }
         }
 
         public void InitializePage()
         {
             SuspendLayout();
+            ucNotFound3.Visible = true; tableLayoutPanel1.Visible = false;  panel6.Visible = false;
+            selectedVersion = null;
             if (tabControl1.SelectedIndex == 0)
             {
                 panel3.Visible = false;
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
                 requiredVersion = VersionManager.FetchEditVersions();
                 InitializeRequiredControl();
             }
             else
             {
                 panel3.Visible = true;
+                requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
                 filteredProjects = ProjectCollection;
                 InitializeProjectBoardControl();
             }
@@ -155,6 +162,7 @@ namespace UserInterface.Edit_Project.Controls
         private void OnVersionSelection(object sender, ProjectVersion e)
         {
             selectedVersion = e;
+            ucNotFound3.Visible = false; tableLayoutPanel1.Visible = true;
             milestoneCollection = MilestoneManager.FetchMilestones(e.VersionID);
             InitializeControl();
         }
@@ -186,6 +194,12 @@ namespace UserInterface.Edit_Project.Controls
 
         private void clearAllButton_Click(object sender, EventArgs e)
         {
+            if(selectedVersion == null)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Invalid Input", "Select a Version to Update the Milestone");
+                return;
+            }
+
             foreach(var Iter in tableLayoutPanel1.Controls)
             {
                 (Iter as MilestoneTemplate).Visible = false;
@@ -218,6 +232,11 @@ namespace UserInterface.Edit_Project.Controls
 
         private BooleanMsg isEligibleContraints()
         {
+            if (selectedVersion == null)
+            {
+                return "Select a Version to Update the Milestone";
+            }
+
             DateTime prevDate = startDate;
 
             for (int ctr = 0; ctr < milestoneCollection.Count; ctr++)
@@ -297,6 +316,11 @@ namespace UserInterface.Edit_Project.Controls
 
         private BooleanMsg IsEligibleToAdd()
         {
+            if(selectedVersion == null)
+            {
+                return "Select a Version to Update the Milestone";
+            }
+
             if(milestoneCollection.Count == 8)
             {
                 return "Milestone Count should be less than 8";
@@ -370,7 +394,6 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnUpdateStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (e)
@@ -447,8 +470,10 @@ namespace UserInterface.Edit_Project.Controls
         private void OnProjectSelected(object sender, Projects e)
         {
             selectedProject = e;
+            panel6.Visible = true;
             selectedProjAllVersions = VersionManager.FetchAllVersionFromProject(e.ProjectID);
             selectedVersion = selectedProjAllVersions[0];
+            ucNotFound3.Visible = false; tableLayoutPanel1.Visible = true;
             versionNames.Text = selectedVersion.VersionName;
             milestoneCollection = MilestoneManager.FetchMilestones(selectedVersion.VersionID);
             InitializeControl();
@@ -471,6 +496,7 @@ namespace UserInterface.Edit_Project.Controls
         {
             selectedVersion = e;
             versionNames.Text = selectedVersion.VersionName;
+            ucNotFound3.Visible = false; tableLayoutPanel1.Visible = true;
             milestoneCollection = MilestoneManager.FetchMilestones(selectedVersion.VersionID);
             InitializeControl();
         }
@@ -543,7 +569,7 @@ namespace UserInterface.Edit_Project.Controls
         private void OnManualClick(object sender, EventArgs e)
         {
             requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.SecondaryII;
             filteredProjects = ProjectCollection;
             tabControl1.SelectedIndex = 1;
             InitializePage();
@@ -551,7 +577,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnRequiredClick(object sender, EventArgs e)
         {
-            requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            requiredEdit.ForeColor = manualEdit.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             requiredEdit.BackColor = manualEdit.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
             tabControl1.SelectedIndex = 0;
             InitializePage();
@@ -608,22 +634,22 @@ namespace UserInterface.Edit_Project.Controls
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
-                    BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Light;
                 }
                 else
                 {
-                    BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                    BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Light;
                 }
             }
             else
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
-                    NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Light;
                 }
                 else
                 {
-                    NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                    NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Light;
                 }
             }
         }
@@ -632,13 +658,13 @@ namespace UserInterface.Edit_Project.Controls
         {
             if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
             {
-                BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
-                NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                BackBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Light;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Light;
             }
             else
             {
-                BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
-                NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                BackBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Light;
+                NextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Light;
             }
         }
 
