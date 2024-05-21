@@ -135,7 +135,7 @@ namespace TeamTracker
             {
                 if(Iter.VersionID == versionID)
                 {
-                    result.Add(Iter);
+                    result.Add(Iter.ShallowCopy());
                 }
             }
 

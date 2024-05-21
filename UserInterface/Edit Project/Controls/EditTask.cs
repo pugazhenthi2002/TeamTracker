@@ -275,18 +275,12 @@ namespace UserInterface.Edit_Project.Controls
 
             MilestoneDropForm = new MilestoneDropDownForm();
             MilestoneDropForm.IsEditModeOn = true;
+            MilestoneDropForm.DropDownCount = 2;
             MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
             MilestoneDropForm.Show();
             MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
-            MilestoneDropForm.StartPosition = FormStartPosition.CenterScreen;
-            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
-            MilestoneDropForm.Show();
-            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(selectedTask.VersionID);
-            MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
-
-           
         }
 
         private void OnClickMilestoneBtn(object sender, Milestone e)
@@ -304,8 +298,8 @@ namespace UserInterface.Edit_Project.Controls
             Point formPoint = labelSetPriority.PointToScreen(new Point(labelSetPriority.Location.X, labelSetPriority.Location.Y));
 
             PriortyDropForm = new PriorityDropDownForm();
-            PriortyDropForm.StartPosition = FormStartPosition.CenterScreen;
-            PriortyDropForm.Size = new Size(tableLayoutPanel5.Width + 20, PriortyDropForm.Height);
+            PriortyDropForm.Location = tableLayoutPanel5.PointToScreen(new Point(-10, tableLayoutPanel5.Height + 2));
+            PriortyDropForm.Size = new Size(tableLayoutPanel5.Width + 20, 100);
             PriortyDropForm.Show();
             PriortyDropForm.PrioritySelect += OnClickPriorityBtn;
         }
@@ -330,11 +324,13 @@ namespace UserInterface.Edit_Project.Controls
 
             Point formPoint = label2.PointToScreen(new Point(0, label2.Height));
             TeamMembersDropForm = new TeamMembersListForm();
-            TeamMembersDropForm.StartPosition = FormStartPosition.CenterScreen;
+            TeamMembersDropForm.Location = panel3.PointToScreen(new Point(-10, panel3.Height + 2));
             TeamMembersDropForm.Size = new Size(panel3.Width + 20, TeamMembersDropForm.Height);
+            TeamMembersDropForm.DropDownCount = 2;
             TeamMembersDropForm.Show();
             TeamMembersDropForm.TeamList = taskAssigneeList;
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
+
         }
 
         private void OnClickTeamMember(object sender, Employee e)

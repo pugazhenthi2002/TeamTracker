@@ -93,17 +93,6 @@ namespace TeamTracker
             this.Close();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
-            for (int i = 50; i < 200; i += 50)
-            {
-                e.Graphics.DrawLine(border, 3, i, Width - 3, i);
-            }
-            border.Dispose();
-        }
-
         private void OnMouseEnter(object sender, EventArgs e)
         {
             (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryIII;

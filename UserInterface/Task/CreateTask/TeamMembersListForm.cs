@@ -27,6 +27,13 @@ namespace TeamTracker
 
         public event EventHandler<Employee> EmployeeSelect;
 
+        private int dropDownCount = 4;
+        public int DropDownCount
+        {
+            get { return dropDownCount; }
+            set { dropDownCount = value; }
+        }
+
         public List<Employee> TeamList
         {
             set
@@ -75,13 +82,13 @@ namespace TeamTracker
 
         private void InitializeTeamMembers()
         {
-            if (teamList.Count <= 4)
+            if (teamList.Count <= dropDownCount)
             {
                 this.Size = new Size(this.Width, 50 * (teamList.Count()));
             }
             else
             {
-                this.Size = new Size(this.Width, 50 * 4);
+                this.Size = new Size(this.Width, 50 * dropDownCount);
             }
             EmployeeProfilePicAndName control;
             int ctr = 0;

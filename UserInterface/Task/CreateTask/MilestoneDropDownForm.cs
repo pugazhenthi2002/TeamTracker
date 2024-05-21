@@ -42,6 +42,13 @@ namespace TeamTracker
 
         public EventHandler<Milestone> MilestoneClick;
 
+        private int dropDownCount=4;
+        public int DropDownCount
+        {
+            get { return dropDownCount; }
+            set { dropDownCount = value; }
+        }
+
         public List<Milestone> MilestoneList
         {
             
@@ -102,13 +109,13 @@ namespace TeamTracker
 
         private void InitializeMilestones()
         {
-            if (milestoneList.Count <= 4)
+            if (milestoneList.Count <= dropDownCount)
             {
                 this.Size = new Size(this.Width, 50 * (milestoneList.Count()));
             }
             else
             {
-                this.Size = new Size(this.Width, 50 * 4);
+                this.Size = new Size(this.Width, 50 * dropDownCount);
             }
 
             foreach (Milestone milestone in milestoneList)
@@ -204,17 +211,6 @@ namespace TeamTracker
             }
 
             return false;
-        }
-
-        private void MilestoneDropDownForm_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
-            for(int i = 50; i < 200; i+=50)
-            {
-                e.Graphics.DrawLine(border, 3, i, Width - 3, i);
-            }
-            border.Dispose();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)

@@ -400,6 +400,7 @@ namespace UserInterface.Edit_Project.Controls
             if (e)
             {
                 MilestoneManager.DeleteAllMilestoneFromVersion(selectedVersion.VersionID);
+                SetMilestones();
                 MilestoneManager.AddMilestones(selectedVersion.VersionID, milestoneCollection);
                 DataHandler.RemoveEdit(selectedVersion.VersionID, EditMode.Version);
                 foreach(TeamTracker.Task Iter in TaskManager.TaskCollection)

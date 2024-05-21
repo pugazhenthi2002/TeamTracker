@@ -42,7 +42,6 @@
             this.Name = "MilestoneDropDownForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MilestoneDropDownForm";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MilestoneDropDownForm_Paint);
             this.ResumeLayout(false);
 
         }
