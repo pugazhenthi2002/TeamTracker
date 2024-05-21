@@ -103,8 +103,12 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         private void InitializePageColor()
         {
             tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
-            milestoneName.BackColor = milestoneDate.SkinColor = ThemeManager.CurrentTheme.PrimaryI;
-            milestoneName.ForeColor = milestoneDate.BorderColor = milestoneDate.TextColor = ThemeManager.CurrentTheme.SecondaryIII;
+            milestoneName.BackColor = milestoneDate.SkinColor = ThemeManager.CurrentTheme.SecondaryIII;
+            milestoneName.ForeColor = milestoneDate.BorderColor = milestoneDate.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            upButton.Image?.Dispose();  downButton.Image?.Dispose();    closeButton.Image?.Dispose();
+
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
+            ResetButton();
         }
 
         private void SubscribeEvents()
@@ -143,8 +147,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Light_Blue;
-            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Light_Blue;
+            ResetButton();
         }
 
         private void OnValueChanged(object sender, EventArgs e)
@@ -233,6 +236,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
                     Movement = MilestoneOperation.Steady
                 });
                 placeHolderText = milestoneName.Text;
+                Focus();
             }
         }
 
@@ -275,14 +279,13 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
             if (picBox.Name == "upButton")
             {
-                picBox.Image = Properties.Resources.Up_Light_Blue_Hover;
+                picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                picBox.Image = Properties.Resources.Down_Light_Blue_Hover;
+                picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
@@ -291,14 +294,27 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Default;
             if (picBox.Name == "upButton")
             {
-                picBox.Image = IsUpSwapEnable ? Properties.Resources.Up_Dark_Blue : Properties.Resources.Up_Light_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upButton.Image = IsUpSwapEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                }
+                else
+                {
+                    upButton.Image = IsUpSwapEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                }
             }
             else
             {
-                picBox.Image = IsDownSwapEnable ? Properties.Resources.Down_Dark_Blue : Properties.Resources.Down_Light_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downButton.Image = IsDownSwapEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+                }
+                else
+                {
+                    downButton.Image = IsDownSwapEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+                }
             }
         }
 
@@ -306,14 +322,28 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = Properties.Resources.Close_Light_Blue_Hover;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark_Hover : Properties.Resources.Heat_Close_Dark_Hover;
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = Properties.Resources.Close_Dark_Blue;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upButton.Image = IsUpSwapEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                downButton.Image = IsDownSwapEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+            }
+            else
+            {
+                upButton.Image = IsUpSwapEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                downButton.Image = IsDownSwapEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+            }
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

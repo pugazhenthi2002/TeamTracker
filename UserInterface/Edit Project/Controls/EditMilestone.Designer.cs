@@ -35,9 +35,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.boardBasePanel = new System.Windows.Forms.Panel();
+            this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.boardBaseManualPanel = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.searchVersion1 = new UserInterface.Edit_Project.Controls.SearchVersion();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel10 = new System.Windows.Forms.Panel();
             this.NextBtn = new System.Windows.Forms.PictureBox();
             this.BackBtn = new System.Windows.Forms.PictureBox();
@@ -59,15 +62,11 @@
             this.milestoneTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.milestoneDateTime = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.milestoneDateTime = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
-            this.ucNotFound1 = new UserInterface.UcNotFound();
-            this.searchVersion1 = new UserInterface.Edit_Project.Controls.SearchVersion();
-            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.ucNotFound3 = new UserInterface.UcNotFound();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.milestoneTemplate8 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
             this.milestoneTemplate2 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
@@ -77,6 +76,7 @@
             this.milestoneTemplate5 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
             this.milestoneTemplate6 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
             this.milestoneTemplate7 = new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate();
+            this.ucNotFound3 = new UserInterface.UcNotFound();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -159,6 +159,19 @@
             this.boardBasePanel.Size = new System.Drawing.Size(1075, 195);
             this.boardBasePanel.TabIndex = 5;
             // 
+            // ucNotFound1
+            // 
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound1.HeadText = "No Required Task To Edit";
+            this.ucNotFound1.HeadTextSize = 12;
+            this.ucNotFound1.Location = new System.Drawing.Point(3, 3);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ucNotFound1.Message = null;
+            this.ucNotFound1.Name = "ucNotFound1";
+            this.ucNotFound1.Size = new System.Drawing.Size(1075, 195);
+            this.ucNotFound1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.boardBaseManualPanel);
@@ -190,6 +203,30 @@
             this.panel9.Padding = new System.Windows.Forms.Padding(5, 5, 0, 5);
             this.panel9.Size = new System.Drawing.Size(1075, 54);
             this.panel9.TabIndex = 6;
+            // 
+            // searchVersion1
+            // 
+            this.searchVersion1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(228)))), ((int)(((byte)(190)))));
+            this.searchVersion1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.searchVersion1.Location = new System.Drawing.Point(5, 5);
+            this.searchVersion1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchVersion1.Name = "searchVersion1";
+            this.searchVersion1.Size = new System.Drawing.Size(316, 44);
+            this.searchVersion1.TabIndex = 0;
+            this.searchVersion1.ProjectNameChange += new System.EventHandler<string>(this.OnProjectNameChanged);
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Manual Task To Edit";
+            this.ucNotFound2.HeadTextSize = 12;
+            this.ucNotFound2.Location = new System.Drawing.Point(3, 3);
+            this.ucNotFound2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ucNotFound2.Message = null;
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(1075, 195);
+            this.ucNotFound2.TabIndex = 0;
             // 
             // panel10
             // 
@@ -475,6 +512,20 @@
             this.label4.Text = "Date";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // milestoneDateTime
+            // 
+            this.milestoneDateTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.milestoneDateTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.milestoneDateTime.BorderSize = 2;
+            this.milestoneDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.milestoneDateTime.Location = new System.Drawing.Point(129, 44);
+            this.milestoneDateTime.MinimumSize = new System.Drawing.Size(4, 35);
+            this.milestoneDateTime.Name = "milestoneDateTime";
+            this.milestoneDateTime.Size = new System.Drawing.Size(239, 35);
+            this.milestoneDateTime.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.milestoneDateTime.TabIndex = 2;
+            this.milestoneDateTime.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -517,57 +568,6 @@
             this.buttonUpdate.UseVisualStyleBackColor = false;
             this.buttonUpdate.Click += new System.EventHandler(this.OnUpdateMilestone);
             // 
-            // milestoneDateTime
-            // 
-            this.milestoneDateTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.milestoneDateTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.milestoneDateTime.BorderSize = 2;
-            this.milestoneDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.milestoneDateTime.Location = new System.Drawing.Point(129, 44);
-            this.milestoneDateTime.MinimumSize = new System.Drawing.Size(4, 35);
-            this.milestoneDateTime.Name = "milestoneDateTime";
-            this.milestoneDateTime.Size = new System.Drawing.Size(239, 35);
-            this.milestoneDateTime.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.milestoneDateTime.TabIndex = 2;
-            this.milestoneDateTime.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            // 
-            // ucNotFound1
-            // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound1.HeadText = "No Required Task To Edit";
-            this.ucNotFound1.HeadTextSize = 12;
-            this.ucNotFound1.Location = new System.Drawing.Point(3, 3);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ucNotFound1.Message = null;
-            this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(1075, 195);
-            this.ucNotFound1.TabIndex = 0;
-            // 
-            // searchVersion1
-            // 
-            this.searchVersion1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(228)))), ((int)(((byte)(190)))));
-            this.searchVersion1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.searchVersion1.Location = new System.Drawing.Point(5, 5);
-            this.searchVersion1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.searchVersion1.Name = "searchVersion1";
-            this.searchVersion1.Size = new System.Drawing.Size(316, 44);
-            this.searchVersion1.TabIndex = 0;
-            this.searchVersion1.ProjectNameChange += new System.EventHandler<string>(this.OnProjectNameChanged);
-            // 
-            // ucNotFound2
-            // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound2.HeadText = "No Manual Task To Edit";
-            this.ucNotFound2.HeadTextSize = 12;
-            this.ucNotFound2.Location = new System.Drawing.Point(3, 3);
-            this.ucNotFound2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ucNotFound2.Message = null;
-            this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(1075, 195);
-            this.ucNotFound2.TabIndex = 0;
-            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.tableLayoutPanel1);
@@ -577,18 +577,6 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(1109, 316);
             this.panel11.TabIndex = 7;
-            // 
-            // ucNotFound3
-            // 
-            this.ucNotFound3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
-            this.ucNotFound3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound3.HeadText = "No Version Selected";
-            this.ucNotFound3.HeadTextSize = 14;
-            this.ucNotFound3.Location = new System.Drawing.Point(0, 0);
-            this.ucNotFound3.Message = null;
-            this.ucNotFound3.Name = "ucNotFound3";
-            this.ucNotFound3.Size = new System.Drawing.Size(1109, 316);
-            this.ucNotFound3.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -632,6 +620,8 @@
             this.milestoneTemplate8.SelectedMilestone = null;
             this.milestoneTemplate8.Size = new System.Drawing.Size(709, 37);
             this.milestoneTemplate8.TabIndex = 8;
+            this.milestoneTemplate8.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate8.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate2
             // 
@@ -647,6 +637,8 @@
             this.milestoneTemplate2.SelectedMilestone = null;
             this.milestoneTemplate2.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate2.TabIndex = 1;
+            this.milestoneTemplate2.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate2.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate1
             // 
@@ -662,6 +654,8 @@
             this.milestoneTemplate1.SelectedMilestone = null;
             this.milestoneTemplate1.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate1.TabIndex = 2;
+            this.milestoneTemplate1.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate1.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate3
             // 
@@ -677,6 +671,8 @@
             this.milestoneTemplate3.SelectedMilestone = null;
             this.milestoneTemplate3.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate3.TabIndex = 3;
+            this.milestoneTemplate3.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate3.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate4
             // 
@@ -692,6 +688,8 @@
             this.milestoneTemplate4.SelectedMilestone = null;
             this.milestoneTemplate4.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate4.TabIndex = 4;
+            this.milestoneTemplate4.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate4.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate5
             // 
@@ -707,6 +705,8 @@
             this.milestoneTemplate5.SelectedMilestone = null;
             this.milestoneTemplate5.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate5.TabIndex = 5;
+            this.milestoneTemplate5.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate5.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate6
             // 
@@ -722,6 +722,8 @@
             this.milestoneTemplate6.SelectedMilestone = null;
             this.milestoneTemplate6.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate6.TabIndex = 6;
+            this.milestoneTemplate6.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate6.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
             // 
             // milestoneTemplate7
             // 
@@ -737,6 +739,20 @@
             this.milestoneTemplate7.SelectedMilestone = null;
             this.milestoneTemplate7.Size = new System.Drawing.Size(709, 33);
             this.milestoneTemplate7.TabIndex = 7;
+            this.milestoneTemplate7.MilestoneOperate += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.MilestoneHandler(this.OnMilestoneOperation);
+            this.milestoneTemplate7.CheckConstraints += new UserInterface.Home_Page.Team_Lead.On_Stage.MilestoneTemplate.ContraintsHandler(this.OnCheckContraints);
+            // 
+            // ucNotFound3
+            // 
+            this.ucNotFound3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
+            this.ucNotFound3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound3.HeadText = "No Version Selected";
+            this.ucNotFound3.HeadTextSize = 14;
+            this.ucNotFound3.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound3.Message = null;
+            this.ucNotFound3.Name = "ucNotFound3";
+            this.ucNotFound3.Size = new System.Drawing.Size(1109, 316);
+            this.ucNotFound3.TabIndex = 0;
             // 
             // EditMilestone
             // 

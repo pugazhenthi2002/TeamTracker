@@ -229,17 +229,7 @@ namespace TeamTracker
                     Iter.IsDelayed = false;
                     DataHandler.UpdateVersion(Iter);
                     DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
-                    foreach (var ctr in MilestoneManager.MilestoneCollection)
-                    {
-                        if (ctr.VersionID == Iter.VersionID)
-                        {
-                            DataHandler.AddEdit(new Edit()
-                            {
-                                EditModeID = ctr.MileStoneID,
-                                ModeOfEdit = EditMode.Version
-                            });
-                        }
-                    }
+                    
                     return;
                 }
             }

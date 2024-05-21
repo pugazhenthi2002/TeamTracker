@@ -272,7 +272,7 @@ namespace UserInterface.Task.CreateTask
                 {
                     TaskManager.AddTask(textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
                     ProjectManagerMainForm.notify.AddNotification("Task Created", "Task Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
-                    DataHandler.AddNotification("New Task Assigned: Action Required!", "Hello " + selectedTeamMember.EmployeeFirstName + ",\r\n\r\nWe hope this message finds you well. We're writing to inform you that a new task has been assigned to you. As a valued member of the team, your contribution to this task is essential for the project's success.", DateTime.Now, selectedTeamMember.EmployeeID);
+                    DataHandler.AddNotification("New Task Assigned: Action Required!", "Hello " + selectedTeamMember.EmployeeFirstName + ",\r\n\r\nWe hope this message finds you well. We are writing to inform you that a new task has been assigned to you. As a valued member of the team, your contribution to this task is essential for the projects success.", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
                 else
                 {
@@ -282,7 +282,7 @@ namespace UserInterface.Task.CreateTask
                         TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
 
                     ProjectManagerMainForm.notify.AddNotification("Project Updated", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
-                    DataHandler.AddNotification("Task Updation: Action Required!", "Hello " + selectedTeamMember.EmployeeFirstName + ",\r\n\r\nWe hope this message finds you well. We're writing to inform you that a new task has been assigned to you. As a valued member of the team, your contribution to this task is essential for the project's success.", DateTime.Now, selectedTeamMember.EmployeeID);
+                    DataHandler.AddNotification("Task Updation: Action Required!", "Hello " + selectedTeamMember.EmployeeFirstName + ",\r\n\r\nWe hope this message finds you well. We are writing to inform you that a new task has been assigned to you. As a valued member of the team, your contribution to this task is essential for the projects success.", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
                 TaskCreate?.Invoke(this, EventArgs.Empty);
                 TaskFormClose?.Invoke(this, EventArgs.Empty);

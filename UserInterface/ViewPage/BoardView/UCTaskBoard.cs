@@ -142,11 +142,17 @@ namespace TeamTracker
             if (IsMovable)
             {
                 (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
                 tableLayoutPanel1.Invalidate();
             }
-            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryI;
+            else
+            {
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            }
+            ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryI;
             profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
             labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+
             this.Cursor = Cursors.Default;
         }
 

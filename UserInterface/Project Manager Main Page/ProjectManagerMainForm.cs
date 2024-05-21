@@ -327,6 +327,8 @@ namespace TeamTracker
 
         private void HighlightSelected(object sender, EventArgs e)
         {
+            IsEligibleToSwitchTab();
+
             isHomeSelected = isAddTaskSelected = isAddProjSelected = isViewProjSelected = isMyTaskSelected = isAllIssueSelected = isMyIssueSelected = isEditSelected = false;
             string text = (sender as Control).Name;
 
@@ -342,11 +344,11 @@ namespace TeamTracker
             {
                 isViewProjSelected = true;
             }
-            else if(text == "addTaskLabel" || text == "addTaskPicBox")
+            else if((text == "addTaskLabel" || text == "addTaskPicBox") && isEligibleToSwitch)
             {
                 isAddTaskSelected = true;
             }
-            else if(text == "myTaskPicBox" || text == "myTaskLabel")
+            else if((text == "myTaskPicBox" || text == "myTaskLabel") &&  isEligibleToSwitch)
             {
                 isMyTaskSelected = true;
             }
@@ -367,14 +369,28 @@ namespace TeamTracker
 
         private void OnMyTaskClick(object sender, EventArgs e)
         {
-            myTaskTemplate1.InitializePage();
-            tabControl1.SelectedIndex = 6;
+            if (isEligibleToSwitch)
+            {
+                myTaskTemplate1.InitializePage();
+                tabControl1.SelectedIndex = 6;
+            }
+            else
+            {
+                notify.AddNotification("Warning", "Your Project Manager has been modified the Project Version.\nSo Kindly edit the Milestones and All the tasks related to it");
+            }
         }
 
         private void OnAddTaskClick(object sender, EventArgs e)
         {
-            addTask1.InitializePage();
-            tabControl1.SelectedIndex = 5;
+            if (isEligibleToSwitch)
+            {
+                addTask1.InitializePage();
+                tabControl1.SelectedIndex = 5;
+            }
+            else
+            {
+                notify.AddNotification("Warning", "Your Project Manager has been modified the Project Version.\nSo Kindly edit the Milestones and All the tasks related to it");
+            }
         }
 
         private void OnEditPageClicked(object sender, EventArgs e)
@@ -477,8 +493,34 @@ namespace TeamTracker
             }
         }
 
+        private void IsEligibleToSwitchTab()
+        {
+            List<ProjectVersion> result1 = VersionManager.FetchEditVersions();
+            foreach(var Iter in result1)
+            {
+                if(Iter.VersionID == VersionManager.CurrentVersion.VersionID)
+                {
+                    isEligibleToSwitch = false;
+                    return;
+                }
+            }
+
+            var result2 = TaskManager.FetchEditTask();
+            foreach (var Iter in result2)
+            {
+                if (Iter.VersionID == VersionManager.CurrentVersion.VersionID)
+                {
+                    isEligibleToSwitch = false;
+                    return;
+                }
+            }
+
+            isEligibleToSwitch = true;
+        }
+
         static public NotificationManager notify;
         private Timer deadlineChecker;
         private bool isHomeSelected = false, isAddProjSelected = false, isViewProjSelected = false, isAddTaskSelected = false, isMyTaskSelected = false, isMyIssueSelected = false, isAllIssueSelected = false, isEditSelected = false;
+        private bool isEligibleToSwitch = false;
     }
 }

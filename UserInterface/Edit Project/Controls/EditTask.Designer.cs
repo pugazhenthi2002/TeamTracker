@@ -38,9 +38,9 @@
             this.ucNotFound1 = new UserInterface.UcNotFound();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.boardBaseManualPanel = new System.Windows.Forms.Panel();
+            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchTask1 = new UserInterface.Edit_Project.Controls.SearchTask();
-            this.ucNotFound2 = new UserInterface.UcNotFound();
             this.panel5 = new System.Windows.Forms.Panel();
             this.NextBtn = new System.Windows.Forms.PictureBox();
             this.BackBtn = new System.Windows.Forms.PictureBox();
@@ -181,8 +181,8 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.boardBaseManualPanel);
-            this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.ucNotFound2);
+            this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -198,7 +198,19 @@
             this.boardBaseManualPanel.Name = "boardBaseManualPanel";
             this.boardBaseManualPanel.Padding = new System.Windows.Forms.Padding(5);
             this.boardBaseManualPanel.Size = new System.Drawing.Size(1023, 194);
-            this.boardBaseManualPanel.TabIndex = 7;
+            this.boardBaseManualPanel.TabIndex = 10;
+            // 
+            // ucNotFound2
+            // 
+            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
+            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucNotFound2.HeadText = "No Manual Task To Edit!!";
+            this.ucNotFound2.HeadTextSize = 10;
+            this.ucNotFound2.Location = new System.Drawing.Point(3, 57);
+            this.ucNotFound2.Message = null;
+            this.ucNotFound2.Name = "ucNotFound2";
+            this.ucNotFound2.Size = new System.Drawing.Size(1023, 194);
+            this.ucNotFound2.TabIndex = 9;
             // 
             // panel1
             // 
@@ -208,7 +220,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 5);
             this.panel1.Size = new System.Drawing.Size(1023, 54);
-            this.panel1.TabIndex = 6;
+            this.panel1.TabIndex = 8;
             // 
             // searchTask1
             // 
@@ -220,19 +232,6 @@
             this.searchTask1.Size = new System.Drawing.Size(243, 44);
             this.searchTask1.TabIndex = 0;
             this.searchTask1.TaskNameChange += new System.EventHandler<string>(this.OnTaskNameChanged);
-            // 
-            // ucNotFound2
-            // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucNotFound2.HeadText = "No Manual Task To Edit";
-            this.ucNotFound2.HeadTextSize = 12;
-            this.ucNotFound2.Location = new System.Drawing.Point(3, 3);
-            this.ucNotFound2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ucNotFound2.Message = null;
-            this.ucNotFound2.Name = "ucNotFound2";
-            this.ucNotFound2.Size = new System.Drawing.Size(1023, 248);
-            this.ucNotFound2.TabIndex = 0;
             // 
             // panel5
             // 
@@ -894,13 +893,13 @@
         private System.Windows.Forms.Button buttonDelete;
         private UcNotFound ucNotFound1;
         private System.Windows.Forms.Panel boardBasePanel;
-        private UcNotFound ucNotFound2;
-        private System.Windows.Forms.Panel boardBaseManualPanel;
-        private System.Windows.Forms.Panel panel1;
-        private SearchTask searchTask1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox textBoxTaskName;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox textBoxDesc;
+        private System.Windows.Forms.Panel boardBaseManualPanel;
+        private UcNotFound ucNotFound2;
+        private System.Windows.Forms.Panel panel1;
+        private SearchTask searchTask1;
     }
 }

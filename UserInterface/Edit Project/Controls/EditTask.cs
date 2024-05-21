@@ -86,6 +86,7 @@ namespace UserInterface.Edit_Project.Controls
 
         public void InitializePage()
         {
+            InitializeTask();
             SuspendLayout();
             tableLayoutPanelFileName.Visible = false;
             selectedTask = null;
@@ -104,6 +105,15 @@ namespace UserInterface.Edit_Project.Controls
                 InitializeManualControl();
             }
             ResumeLayout();
+        }
+
+        private void InitializeTask()
+        {
+            textBoxDesc.Text = "";
+            textBoxTaskName.Text = "";
+            buttonSetMilestone.Text = "Set Milestone";
+            selectedMilestone = null;
+            selectedAttachment = null;
         }
 
         private void OnTaskNameChanged(object sender, string e)
@@ -173,18 +183,18 @@ namespace UserInterface.Edit_Project.Controls
             startIdx = 0; isBackEnable = false;
             endIdx = taskCollection.Count >= 4 ? 3 : taskCollection.Count - 1;
             isNextEnable = taskCollection.Count > 4 ? true : false;
-
+            BoardBaseManualPanelControlClear();
             if (taskCollection.Count == 0)
             {
-                ucNotFound2.Visible = true; boardBaseManualPanel.Visible = false; panel1.Visible = false;
+                ucNotFound2.Visible = true; boardBaseManualPanel.Visible = false;
                 return;
             }
             else
             {
-                ucNotFound2.Visible = false; boardBaseManualPanel.Visible = true; panel1.Visible = true;
+                ucNotFound2.Visible = false; boardBaseManualPanel.Visible = true;
             }
 
-            BoardBaseManualPanelControlClear();
+            
 
             for (int ctr = 0; ctr <= endIdx; ctr++)
             {
@@ -215,6 +225,7 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnTaskSelected(object sender, TeamTracker.Task e)
         {
+            InitializeTask();
             selectedTask = e;
             textBoxTaskName.Text = selectedTask.TaskName;
             textBoxDesc.Text = selectedTask.TaskDesc;
@@ -286,9 +297,9 @@ namespace UserInterface.Edit_Project.Controls
             Point formPoint = labelSetPriority.PointToScreen(new Point(labelSetPriority.Location.X, labelSetPriority.Location.Y));
 
             PriortyDropForm = new PriorityDropDownForm();
-            PriortyDropForm.Show();
             PriortyDropForm.StartPosition = FormStartPosition.CenterScreen;
             PriortyDropForm.Size = new Size(tableLayoutPanel5.Width + 20, PriortyDropForm.Height);
+            PriortyDropForm.Show();
             PriortyDropForm.PrioritySelect += OnClickPriorityBtn;
         }
 
@@ -301,13 +312,19 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnClickAssignBtn(object sender, EventArgs e)
         {
+            if (selectedTask == null)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", "Select a Task to Edit");
+                return;
+            }
+
             List<Employee> taskAssigneeList = EmployeeManager.FetchTeamMembersForTeamLeaders();
             taskAssigneeList.Add(EmployeeManager.CurrentEmployee);
 
             Point formPoint = label2.PointToScreen(new Point(0, label2.Height));
             TeamMembersDropForm = new TeamMembersListForm();
             TeamMembersDropForm.StartPosition = FormStartPosition.CenterScreen;
-            TeamMembersDropForm.Size = new Size(panel2.Width + 20, TeamMembersDropForm.Height);
+            TeamMembersDropForm.Size = new Size(panel3.Width + 20, TeamMembersDropForm.Height);
             TeamMembersDropForm.Show();
             TeamMembersDropForm.TeamList = taskAssigneeList;
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
@@ -438,7 +455,6 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnUpdateStatus(object sender, bool e)
         {
-            (sender as WarningForm).WarningStatus -= OnUpdateStatus;
             (sender as WarningForm).Close();
 
             if (e)
@@ -486,7 +502,7 @@ namespace UserInterface.Edit_Project.Controls
             if (e)
             {
                 TaskManager.DeleteTask(selectedTask.TaskID);
-                DataHandler.RemoveEdit(selectedTask.MilestoneID, EditMode.Task);
+                DataHandler.RemoveEdit(selectedTask.TaskID, EditMode.Task);
                 foreach (var Iter in TaskCollection)
                 {
                     if (Iter.TaskID == selectedTask.TaskID)

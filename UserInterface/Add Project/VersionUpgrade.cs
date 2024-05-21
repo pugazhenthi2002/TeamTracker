@@ -202,7 +202,7 @@ namespace TeamTracker
                 {
                     VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, attachments);
                     ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
-                    DataHandler.AddNotification("New Upgrade Alert: Enhanced Notification System for Team Leaders!", "Dear Team Leader,\r\n\r\nWe're excited to announce the latest upgrade to our " + project.ProjectName + " application! As a team leader, staying informed and in control is essential, which is why we've revamped our notification system to better cater to your needs." + "\n" + "Version Name: " + versionNameTextBox.Text, DateTime.Now, project.TeamLeadID);
+                    DataHandler.AddNotification("New Upgrade Alert: Enhanced Notification System for Team Leaders!", "Dear Team Leader,\r\n\r\nWe are excited to announce the latest upgrade to our " + project.ProjectName + " application! As a team leader, staying informed and in control is essential, which is why we have revamped our notification system to better cater to your needs." + "\n" + "Version Name: " + versionNameTextBox.Text, DateTime.Now, project.TeamLeadID);
                     InitializePage();
                 }
 
@@ -225,7 +225,7 @@ namespace TeamTracker
                 VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, null);
                 InitializePage();
                 ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
-                DataHandler.AddNotification("New Upgrade Alert: Enhanced Notification System for Team Leaders!", "Dear Team Leader,\r\n\r\nWe're excited to announce the latest upgrade to our " + project.ProjectName + " application! As a team leader, staying informed and in control is essential, which is why we've revamped our notification system to better cater to your needs." + "\n" + "Version Name: " + versionNameTextBox.Text, DateTime.Now, project.TeamLeadID);
+                DataHandler.AddNotification("New Upgrade Alert: Enhanced Notification System for Team Leaders!", "Dear Team Leader,\r\n\r\nWe are excited to announce the latest upgrade to our " + project.ProjectName + " application! As a team leader, staying informed and in control is essential, which is why we have revamped our notification system to better cater to your needs." + "\n" + "Version Name: " + versionNameTextBox.Text, DateTime.Now, project.TeamLeadID);
             }
         }
 

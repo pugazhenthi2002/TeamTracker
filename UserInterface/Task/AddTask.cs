@@ -95,7 +95,6 @@ namespace UserInterface.Task
 
         private void OnTaskFormClosed(object sender, EventArgs e)
         {
-            (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
 
             if (ParentForm != null)

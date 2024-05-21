@@ -32,17 +32,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.downButton = new System.Windows.Forms.PictureBox();
-            this.counterLabel = new System.Windows.Forms.Label();
             this.milestoneDate = new UserInterface.Add_Project.Custom_Control.CustomDateTime();
+            this.upButton = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.milestoneName = new System.Windows.Forms.TextBox();
-            this.upButton = new System.Windows.Forms.PictureBox();
+            this.counterLabel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upButton)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,10 +68,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.Controls.Add(this.closeButton, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.downButton, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.counterLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.milestoneDate, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.upButton, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.counterLabel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -111,18 +111,6 @@
             this.downButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.downButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
-            // counterLabel
-            // 
-            this.counterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.counterLabel.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.counterLabel.Location = new System.Drawing.Point(3, 0);
-            this.counterLabel.Name = "counterLabel";
-            this.counterLabel.Size = new System.Drawing.Size(29, 48);
-            this.counterLabel.TabIndex = 0;
-            this.counterLabel.Text = "1";
-            this.counterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.counterLabel.Click += new System.EventHandler(this.OnClicked);
-            // 
             // milestoneDate
             // 
             this.milestoneDate.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -136,6 +124,21 @@
             this.milestoneDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.milestoneDate.TabIndex = 2;
             this.milestoneDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            // 
+            // upButton
+            // 
+            this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upButton.Image = global::UserInterface.Properties.Resources.Up_Light_Blue;
+            this.upButton.Location = new System.Drawing.Point(445, 1);
+            this.upButton.Margin = new System.Windows.Forms.Padding(1);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(33, 46);
+            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.upButton.TabIndex = 3;
+            this.upButton.TabStop = false;
+            this.upButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.upButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // panel2
             // 
@@ -163,20 +166,19 @@
             this.milestoneName.TabIndex = 2;
             this.milestoneName.Text = "Hello";
             // 
-            // upButton
+            // counterLabel
             // 
-            this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.upButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upButton.Image = global::UserInterface.Properties.Resources.Up_Light_Blue;
-            this.upButton.Location = new System.Drawing.Point(445, 1);
-            this.upButton.Margin = new System.Windows.Forms.Padding(1);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(33, 46);
-            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.upButton.TabIndex = 3;
-            this.upButton.TabStop = false;
-            this.upButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.upButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.counterLabel.BackColor = System.Drawing.Color.Transparent;
+            this.counterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.counterLabel.FlatAppearance.BorderSize = 0;
+            this.counterLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.counterLabel.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.counterLabel.Location = new System.Drawing.Point(3, 3);
+            this.counterLabel.Name = "counterLabel";
+            this.counterLabel.Size = new System.Drawing.Size(29, 42);
+            this.counterLabel.TabIndex = 7;
+            this.counterLabel.Text = "1";
+            this.counterLabel.UseVisualStyleBackColor = false;
             // 
             // MilestoneTemplate
             // 
@@ -190,9 +192,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,12 +203,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label counterLabel;
         private System.Windows.Forms.PictureBox closeButton;
         private System.Windows.Forms.PictureBox downButton;
         private Add_Project.Custom_Control.CustomDateTime milestoneDate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox milestoneName;
         private System.Windows.Forms.PictureBox upButton;
+        private System.Windows.Forms.Button counterLabel;
     }
 }

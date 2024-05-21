@@ -249,6 +249,11 @@ namespace UserInterface.Edit_Project.Controls
             if (e)
             {
                 VersionManager.UpdateVersion(selectedVersion.VersionID, selectedVersion.VersionName, descTextBox.Text, selectedVersion.StatusOfVersion, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, FetchAttachmentFiles());
+                DataHandler.AddEdit(new TeamTracker.Edit()
+                {
+                    EditModeID = selectedVersion.VersionID,
+                    ModeOfEdit = EditMode.Version
+                });
                 InitializePage();
             }
         }
@@ -293,6 +298,12 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnDeleteClicked(object sender, EventArgs e)
         {
+            if (selectedVersion == null)
+            {
+                ProjectManagerMainForm.notify.AddNotification("Warning", "No Version Selected for Version Edition") ;
+                return;
+            }
+
             WarningForm form = new WarningForm();
 
             if(selectedVersion.StatusOfVersion == ProjectStatus.OnProcess || selectedVersion.StatusOfVersion == ProjectStatus.OnStage || selectedVersion.StatusOfVersion == ProjectStatus.Deployment)
