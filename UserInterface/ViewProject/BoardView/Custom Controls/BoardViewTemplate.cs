@@ -71,7 +71,14 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 versionNameLabel.Text = VersionManager.FetchProjectName(value.VersionID)+"\n"+value.VersionName;
                 versionDateLabel.Text = value.StartDate.ToShortDateString() + " - " + value.EndDate.ToShortDateString();
                 int id = VersionManager.FetchTeamLeadIDFromProjectID(value.ProjectID);
-                profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(id).EmpProfileLocation);
+                try
+                {
+                    profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(id).EmpProfileLocation);
+                }
+                catch
+                {
+
+                }
                 milestoneCountLabel.Text = MilestoneManager.FetchMilestones(value.VersionID).Count.ToString();
                 taskCountLabel.Text = TaskManager.FetchTaskCount(value.VersionID)[0].ToString();
             }

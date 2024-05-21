@@ -45,8 +45,8 @@ namespace TeamTracker
                     ucNotFound1.Visible = false;
                     doneCardCollection = new List<DoneCardTemplate>();
                     startDoneIdx = 0; isBackEnable = false;
-                    endDoneIdx = value.Count > 5 ? 4 : value.Count-1;
-                    isNextEnable = value.Count > 5 ? true : false;
+                    endDoneIdx = value.Count > 8 ? 7 : value.Count-1;
+                    isNextEnable = value.Count > 8 ? true : false;
                     SetDoneAllignment();
                 }
                 else
@@ -92,7 +92,7 @@ namespace TeamTracker
 
         public void InitializePage()
         {
-            SuspendLayout();
+            singleListControlPanel.SuspendLayout();
             projectDateLabel.Text = VersionManager.CurrentVersion.StartDate.ToShortDateString() + "  -  " + VersionManager.CurrentVersion.EndDate.ToShortDateString();
             projectNameLabel.Text = VersionManager.FetchProjectName(VersionManager.CurrentVersion.VersionID) + " " + VersionManager.CurrentVersion.VersionName;
             
@@ -150,7 +150,7 @@ namespace TeamTracker
             {
                 pieChart1.Visible = pieChart2.Visible = false;
             }
-            ResumeLayout();
+            singleListControlPanel.ResumeLayout();
         }
 
         private void InitializePageColor()
@@ -243,6 +243,8 @@ namespace TeamTracker
 
         private void SetRemainingTaskAllignment()
         {
+            SuspendLayout();
+            singleListControlPanel.SuspendLayout();
             for (int ctr = 0; ctr <= endRemainingIdx; ctr++)
             {
                 listTemplate = new SingleList()
@@ -265,6 +267,9 @@ namespace TeamTracker
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
             ResetRemainingButtons();
+            singleListControlPanel.ResumeLayout();
+            ResumeLayout();
+        
         }
 
         private void OnReset(object sender, EventArgs e)

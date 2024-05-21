@@ -85,11 +85,19 @@ namespace UserInterface.ViewPage.ListView
         {
             if (ModeOfView == CardMode.TeamLead)
             {
-                profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy).EmpProfileLocation);
+                try
+                {
+                    profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy).EmpProfileLocation);
+                }
+                catch { }
             }
             else
             {
-                profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo).EmpProfileLocation);
+                try
+                {
+                    profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo).EmpProfileLocation);
+                }
+                catch { }
             }
             projectName.Text = VersionManager.FetchProjectName(selectedTask.VersionID);
             taskNameLabel.Text = selectedTask.TaskName;

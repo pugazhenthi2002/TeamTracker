@@ -69,6 +69,7 @@ namespace TeamTracker
             label1.ForeColor = ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
             panel5.BackColor = panel8.BackColor = panel9.BackColor = panel11.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label2.ForeColor = label3.ForeColor = label8.ForeColor = dueTaskTitleLabel.ForeColor = taskCountLabel.ForeColor = incompleteTaskLabel.ForeColor = dueTaskLabel.ForeColor = completedTaskLabel.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
+            currentMilestone1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         private void InitializeRoundedEdge()

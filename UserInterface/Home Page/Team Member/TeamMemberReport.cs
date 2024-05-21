@@ -66,6 +66,7 @@ namespace UserInterface.Home_Page.Team_Member
             label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
             label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
             BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            teamMemberReportContent1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
     }
 }
