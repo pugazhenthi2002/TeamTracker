@@ -17,7 +17,7 @@ namespace TeamTracker
 
         public static BooleanMsg ConnectDatabase()
         {
-            manager = new MySqlHandler("localhost", "root", "Lucid123", "teamtracker");
+            manager = new MySqlHandler("localhost", "root", "", "teamtracker");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -475,6 +475,11 @@ namespace TeamTracker
             List<VersionAttachment> result = new List<VersionAttachment>();
 
             var attachments = manager.FetchData("versionattachment", $"VersionID={versionID}").Value;
+
+            if(attachments.Count == 0)
+            {
+                return null;
+            }
 
             for (int ctr = 0; attachments.Count > 0 && ctr < attachments["VersionAttachmentID"].Count; ctr++)
             {
