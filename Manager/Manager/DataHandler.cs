@@ -287,6 +287,11 @@ namespace TeamTracker
             });
         }
 
+        public static void DeleteProject(int projectID)
+        {
+            var x = manager.DeleteData("project", $"ProjectID ='{projectID}'");
+        }
+
         public static void RemoveEdit(int editModeID, EditMode mode)
         {
             var x = manager.DeleteData("edit", $"EditModeID='{editModeID}' && ModeOfEdit='{mode.ToString()}'");

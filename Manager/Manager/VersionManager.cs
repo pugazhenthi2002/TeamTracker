@@ -319,6 +319,12 @@ namespace TeamTracker
                     MilestoneManager.DeleteAllMilestoneFromVersion(Iter.VersionID);
                     TaskManager.DeleteAllVersionTask(Iter.VersionID);
                     VersionCollection.Remove(Iter);
+
+                    if (FetchAllVersionFromProjectID(Iter.ProjectID).Count == 0)
+                    {
+                        DataHandler.DeleteProject(Iter.ProjectID);
+                        ProjectCollection.Remove(FetchProjectFromID(Iter.ProjectID));
+                    }
                     break;
                 }
             }

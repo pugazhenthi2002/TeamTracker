@@ -70,6 +70,12 @@ namespace TeamTracker
             panel5.BackColor = panel8.BackColor = panel9.BackColor = panel11.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label2.ForeColor = label3.ForeColor = label8.ForeColor = dueTaskTitleLabel.ForeColor = taskCountLabel.ForeColor = incompleteTaskLabel.ForeColor = dueTaskLabel.ForeColor = completedTaskLabel.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
             currentMilestone1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            pictureBox1.Image?.Dispose();   pictureBox2.Image?.Dispose();   pictureBox3.Image?.Dispose();   pictureBox4.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Dark_Total_Task : UserInterface.Properties.Resources.Heat_Dark_Total_Task;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Completed_Task : UserInterface.Properties.Resources.Heat_Completed_Task;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Delay_Task : UserInterface.Properties.Resources.Heat_Delay_Task;
+            pictureBox4.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Incomplete_Task : UserInterface.Properties.Resources.Heat_Incomplete_Task;
         }
 
         private void InitializeRoundedEdge()

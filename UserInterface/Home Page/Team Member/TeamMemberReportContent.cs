@@ -83,6 +83,12 @@ namespace UserInterface.Home_Page.Team_Member
             label1.ForeColor = label2.ForeColor = label3.ForeColor = commitCount.ForeColor = totalmilestoneCount.ForeColor = totalTaskCount.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
             label5.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
             colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+
+            pictureBox1.Image?.Dispose(); pictureBox2.Image?.Dispose(); pictureBox3.Image?.Dispose(); filterPicBox.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Dark_Total_Task : UserInterface.Properties.Resources.Heat_Dark_Total_Task;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Dark_Milestone : UserInterface.Properties.Resources.Heat_Dark_Milestone;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Commits : UserInterface.Properties.Resources.Heat_Commits;
+            filterPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Filter : UserInterface.Properties.Resources.Heat_Filter;
         }
 
         protected override void OnLoad(EventArgs e)
