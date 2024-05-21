@@ -101,7 +101,7 @@ namespace TeamTracker
                 {
                     if (e == "Stuck") task.StatusOfTask = TaskStatus.Stuck;
                     if (e == "Working On It") task.StatusOfTask = TaskStatus.OnProcess;
-                    if (e == "Not Yet Started") task.StatusOfTask = TaskStatus.NotYetStarted;
+                    if (e == "Not Started") task.StatusOfTask = TaskStatus.NotYetStarted;
 
                     TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, task.StatusOfTask, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
                     SetTaskUI();

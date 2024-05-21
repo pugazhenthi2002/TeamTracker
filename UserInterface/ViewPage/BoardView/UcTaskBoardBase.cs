@@ -296,7 +296,6 @@ namespace TeamTracker
 
         private void OnClickDoneSubmitionForm(object sender, SourceCode e)
         {
-            (sender as SourceCodeSubmitionForm).Dispose();
             (sender as SourceCodeSubmitionForm).Close();
 
             if (ParentForm != null)

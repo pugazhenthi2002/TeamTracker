@@ -42,7 +42,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(5, 5);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(323, 57);
+            this.panelTop.Size = new System.Drawing.Size(323, 65);
             this.panelTop.TabIndex = 1;
             // 
             // ucTaskStatusHead1
@@ -53,7 +53,7 @@
             this.ucTaskStatusHead1.Location = new System.Drawing.Point(0, 0);
             this.ucTaskStatusHead1.Name = "ucTaskStatusHead1";
             this.ucTaskStatusHead1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.ucTaskStatusHead1.Size = new System.Drawing.Size(323, 57);
+            this.ucTaskStatusHead1.Size = new System.Drawing.Size(323, 65);
             this.ucTaskStatusHead1.Status = TeamTracker.TaskStatus.Done;
             this.ucTaskStatusHead1.TabIndex = 0;
             // 
@@ -61,16 +61,16 @@
             // 
             this.panelBase.BackColor = System.Drawing.Color.Transparent;
             this.panelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBase.Location = new System.Drawing.Point(5, 109);
+            this.panelBase.Location = new System.Drawing.Point(5, 117);
             this.panelBase.Name = "panelBase";
-            this.panelBase.Size = new System.Drawing.Size(323, 386);
+            this.panelBase.Size = new System.Drawing.Size(323, 378);
             this.panelBase.TabIndex = 2;
             // 
             // panelSpacePanel
             // 
             this.panelSpacePanel.BackColor = System.Drawing.Color.Transparent;
             this.panelSpacePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSpacePanel.Location = new System.Drawing.Point(5, 62);
+            this.panelSpacePanel.Location = new System.Drawing.Point(5, 70);
             this.panelSpacePanel.Name = "panelSpacePanel";
             this.panelSpacePanel.Size = new System.Drawing.Size(323, 47);
             this.panelSpacePanel.TabIndex = 3;
