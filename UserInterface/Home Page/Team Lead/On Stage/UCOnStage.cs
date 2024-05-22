@@ -169,11 +169,11 @@ namespace TeamTracker
             var attachment = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
             if(attachment == null)
             {
-                //panelDownloadAttachement.Visible = false;
+                panelDownloadAttachement.Visible = false;
             }
             else
             {
-                //panelDownloadAttachement.Visible = true;
+                panelDownloadAttachement.Visible = true;
             }
         }
 

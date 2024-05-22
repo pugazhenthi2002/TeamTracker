@@ -181,7 +181,7 @@ namespace TeamTracker
         private void InitializeBoardData()
         {
             labelProjectName.Text = VersionManager.FetchProjectName(TaskData.VersionID);
-            labelVersion.Text = VersionManager.CurrentVersion.VersionName;
+            labelVersion.Text = VersionManager.FetchVersionFromVersionID(TaskData.VersionID).VersionName;
             LabelTask.Text = TaskData.TaskName;
             ucDueDate1.DueDate = TaskData.EndDate;
             profilePictureBoxAssignedBy.ImageLocation = (EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy)).EmpProfileLocation;

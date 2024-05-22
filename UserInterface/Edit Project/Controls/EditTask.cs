@@ -229,7 +229,7 @@ namespace UserInterface.Edit_Project.Controls
             selectedTask = e;
             textBoxTaskName.Text = selectedTask.TaskName;
             textBoxDesc.Text = selectedTask.TaskDesc;
-            var milestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
+            var milestoneList = MilestoneManager.FetchMilestones(selectedTask.VersionID);
             foreach (var Iter in milestoneList)
             {
                 if (Iter.MileStoneID == selectedTask.MilestoneID)
@@ -279,7 +279,7 @@ namespace UserInterface.Edit_Project.Controls
             MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
             MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
             MilestoneDropForm.Show();
-            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
+            MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(selectedTask.VersionID);
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
         }
 
@@ -499,12 +499,10 @@ namespace UserInterface.Edit_Project.Controls
 
         private void OnDeleteStatus(object sender, bool e)
         {
-            (sender as WarningForm).WarningStatus -= OnDeleteStatus;
             (sender as WarningForm).Close();
 
             if (e)
             {
-                TaskManager.DeleteTask(selectedTask.TaskID);
                 DataHandler.RemoveEdit(selectedTask.TaskID, EditMode.Task);
                 foreach (var Iter in TaskCollection)
                 {
@@ -514,6 +512,7 @@ namespace UserInterface.Edit_Project.Controls
                         return;
                     }
                 }
+                TaskManager.DeleteTask(selectedTask.TaskID);
                 InitializePage();
             }
         }

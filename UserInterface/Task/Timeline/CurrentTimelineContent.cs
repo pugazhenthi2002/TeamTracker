@@ -48,6 +48,7 @@ namespace UserInterface.Task.Timeline
                     endViewDate = startViewDate.AddDays(20);
                     taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
                     InitializeTimeline();
+                    InitializeLabels();
                     SetViewTaskCollection();
                 }
             }

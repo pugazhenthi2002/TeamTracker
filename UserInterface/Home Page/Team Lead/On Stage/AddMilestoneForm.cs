@@ -410,7 +410,7 @@ namespace TeamTracker
                             break;
                         }
                     }
-                    TemplateCollection.RemoveAt(endIdx - 1);
+                    TemplateCollection.RemoveAt(TemplateCollection.Count - 1);
                     endIdx--;
                     focusIdx = endIdx - 1;
                 }
