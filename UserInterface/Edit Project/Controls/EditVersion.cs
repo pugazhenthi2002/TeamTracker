@@ -278,7 +278,7 @@ namespace UserInterface.Edit_Project.Controls
 
             if (selectedVersion.StatusOfVersion == ProjectStatus.UpComing && startDateTimePicker.Value.Date <= DateTime.Now.Date) return "Upcoming Project Version should be beyond today's Date";
 
-            if ((selectedVersion.StatusOfVersion == ProjectStatus.OnStage || (selectedVersion.StatusOfVersion == ProjectStatus.OnProcess) || (selectedVersion.StatusOfVersion == ProjectStatus.Deployment)) && (startDateTimePicker.Value.Date <= DateTime.Now.Date && DateTime.Now.Date <= endDateTimePicker.Value.Date)) return "OnProcess Project Version should not be beyond today's Date Or behind Todays date";
+            if ((selectedVersion.StatusOfVersion == ProjectStatus.OnStage || (selectedVersion.StatusOfVersion == ProjectStatus.OnProcess) || (selectedVersion.StatusOfVersion == ProjectStatus.Deployment)) && !(startDateTimePicker.Value.Date <= DateTime.Now.Date && DateTime.Now.Date <= endDateTimePicker.Value.Date)) return "OnProcess Project Version should not be beyond today's Date Or behind Todays date";
 
             if (startDateTimePicker.Value.Date == endDateTimePicker.Value.Date) return "Project Cannot be Started on Mentioned Date\nPlease Choose Another Date";
 

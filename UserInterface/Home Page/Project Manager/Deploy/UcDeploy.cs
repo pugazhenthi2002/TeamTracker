@@ -226,7 +226,6 @@ namespace TeamTracker
 
         private void OnInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as ProjectInfoForm).Dispose();
             (sender as ProjectInfoForm).Close();
             ParentForm.Show();
         }

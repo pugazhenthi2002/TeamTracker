@@ -500,6 +500,12 @@ namespace TeamTracker
 
         private void IsEligibleToSwitchTab()
         {
+            if(VersionManager.CurrentVersion == null)
+            {
+                isEligibleToSwitch = true;
+                return;
+            }
+
             List<ProjectVersion> result1 = VersionManager.FetchEditVersions();
             foreach(var Iter in result1)
             {

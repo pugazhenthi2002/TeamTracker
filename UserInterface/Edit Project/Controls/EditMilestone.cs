@@ -313,6 +313,15 @@ namespace UserInterface.Edit_Project.Controls
                 milestoneCollection[m.Position - 1].EndDate = m.MilestoneDate;
                 InitializeControl();
             }
+
+            prevEndDate = DateTime.MinValue;
+            foreach(var Iter in milestoneCollection)
+            {
+                if(Iter.EndDate > prevEndDate)
+                {
+                    prevEndDate = Iter.EndDate;
+                }
+            }
         }
 
         private BooleanMsg IsEligibleToAdd()
@@ -478,6 +487,7 @@ namespace UserInterface.Edit_Project.Controls
             ucNotFound3.Visible = false; tableLayoutPanel1.Visible = true;
             versionNames.Text = selectedVersion.VersionName;
             milestoneCollection = MilestoneManager.FetchMilestones(selectedVersion.VersionID);
+            ProjectManagerMainForm.notify.AddNotification("Project Start Date And End Date", "Start Date: " + selectedVersion.StartDate.ToShortDateString() + "\n" + "End Date: " + selectedVersion.EndDate.ToShortDateString());
             InitializeControl();
         }
 
@@ -510,10 +520,10 @@ namespace UserInterface.Edit_Project.Controls
                 if (ctr < milestoneCollection.Count)
                 {
                     (tableLayoutPanel1.GetControlFromPosition(0, ctr) as MilestoneTemplate).Visible = true;
-                    (tableLayoutPanel1.GetControlFromPosition(0, ctr) as MilestoneTemplate).SelectedMilestone = milestoneCollection[ctr];
                     (tableLayoutPanel1.GetControlFromPosition(0, ctr) as MilestoneTemplate).IsUpSwapEnable = ctr == 0 ? false : true;
                     (tableLayoutPanel1.GetControlFromPosition(0, ctr) as MilestoneTemplate).IsDownSwapEnable = ctr == milestoneCollection.Count - 1 ? false : true;
                     (tableLayoutPanel1.GetControlFromPosition(0, ctr) as MilestoneTemplate).Counter = ctr + 1;
+                    (tableLayoutPanel1.GetControlFromPosition(0, ctr) as MilestoneTemplate).SelectedMilestone = milestoneCollection[ctr];
                     prevEndDate = milestoneCollection[ctr].EndDate;
                 }
                 else

@@ -201,6 +201,7 @@ namespace UserInterface.Task
                 VersionManager.CurrentVersion = null;
                 DataHandler.AddVersionSourceCode(e);
                 Visible = false;
+                ResetForm?.Invoke(this, EventArgs.Empty);
             }
             //InitializePage();
         }

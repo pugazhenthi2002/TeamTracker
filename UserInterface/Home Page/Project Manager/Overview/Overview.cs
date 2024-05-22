@@ -68,6 +68,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             label2.ForeColor = ThemeManager.GetTextColor(BackColor);
             panel7.BackColor = ThemeManager.CurrentTheme.PrimaryII;
             projectNameLabel.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+            ucNotFound1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
             dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Light : Properties.Resources.Heat_Down_Light;
         }

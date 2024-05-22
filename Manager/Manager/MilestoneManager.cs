@@ -34,6 +34,9 @@ namespace TeamTracker
             {
                 if (Iter.MileStoneID == milestone.MileStoneID)
                 {
+                    Iter.StartDate = milestone.StartDate;
+                    Iter.MileStoneID = milestone.MileStoneID;
+                    Iter.EndDate = milestone.EndDate;
                     Iter.Status = milestone.Status = status;
                     DataHandler.UpdateMilestone(milestone);
                     return;
@@ -196,12 +199,13 @@ namespace TeamTracker
             {
                 if(milestoneList[ctr].Status == MilestoneStatus.OnProcess)
                 {
-                    milestoneList[ctr].EndDate = DateTime.Now.Date;
-                    ModifyTaskDateBasedOnMilestone(milestoneList[ctr].MileStoneID);
+                    if (milestoneList[ctr].EndDate >= DateTime.Now.Date)
+                        milestoneList[ctr].EndDate = DateTime.Now.Date;
                     UpdateMilestone(milestoneList[ctr], MilestoneStatus.Completed);
+                    ModifyTaskDateBasedOnMilestone(milestoneList[ctr].MileStoneID);
                     if (ctr < milestoneList.Count - 1)
                     {
-                        milestoneList[ctr + 1].StartDate = DateTime.Now.Date;
+                        milestoneList[ctr + 1].StartDate = milestoneList[ctr].EndDate;
                         UpdateMilestone(milestoneList[ctr + 1], MilestoneStatus.OnProcess);
                         CurrentMilestone = milestoneList[ctr + 1];
                     }
