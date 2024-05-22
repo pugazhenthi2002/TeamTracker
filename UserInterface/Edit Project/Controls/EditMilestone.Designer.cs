@@ -480,6 +480,7 @@
             this.milestoneTextBox.Name = "milestoneTextBox";
             this.milestoneTextBox.Size = new System.Drawing.Size(305, 27);
             this.milestoneTextBox.TabIndex = 2;
+            this.milestoneTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownMilestoneTxtBx);
             // 
             // tableLayoutPanel4
             // 

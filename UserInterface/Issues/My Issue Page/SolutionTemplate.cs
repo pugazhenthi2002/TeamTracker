@@ -67,6 +67,7 @@ namespace UserInterface.Issues.My_Issue_Page
             }
             else
             {
+                solutionAttachmentTemplate1.Visible = true;
                 solutionAttachmentTemplate1.SelectedAttachment = attachment;
             }
 

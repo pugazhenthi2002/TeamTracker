@@ -438,6 +438,7 @@
             this.buttonPost.TabIndex = 2;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = false;
+            this.buttonPost.ClientSizeChanged += new System.EventHandler(this.buttonPost_ClientSizeChanged);
             this.buttonPost.Click += new System.EventHandler(this.OnClickPostIssue);
             // 
             // panelTop

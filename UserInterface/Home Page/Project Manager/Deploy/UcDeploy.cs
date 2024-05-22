@@ -122,7 +122,7 @@ namespace TeamTracker
         
         private void OnDownloaded(object sender, EventArgs e)
         {
-            Projects proj = VersionManager.FetchProjectFromID(version.VersionID);
+            Projects proj = VersionManager.FetchProjectFromID(version.ProjectID);
             VersionSourceCode sourceCode = DataHandler.FetchVersionSourceCodeByVersionID(version.VersionID);
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();

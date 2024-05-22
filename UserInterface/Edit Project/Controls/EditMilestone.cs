@@ -680,6 +680,14 @@ namespace UserInterface.Edit_Project.Controls
             }
         }
 
+        private void OnKeyDownMilestoneTxtBx(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private List<ProjectVersion> requiredVersion;
         private List<ProjectVersion> selectedProjAllVersions;
         private List<Projects> filteredProjects;

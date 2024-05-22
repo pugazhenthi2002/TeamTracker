@@ -151,5 +151,13 @@ namespace TeamTracker
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
             pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

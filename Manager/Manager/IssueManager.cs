@@ -79,7 +79,7 @@ namespace TeamTracker
                     DataHandler.UpdateIssue(issue);
                 }
             }
-            if (attachment != null) DataHandler.UpdateIssueAttachment(issue.IssueID, attachment);
+            DataHandler.UpdateIssueAttachment(issue.IssueID, attachment);
             OnIssueUpdated(EventArgs.Empty);
         }
 

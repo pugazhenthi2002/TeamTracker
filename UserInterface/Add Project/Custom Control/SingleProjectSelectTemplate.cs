@@ -128,6 +128,7 @@ namespace UserInterface.Add_Project.Custom_Control
             if (!isClicked)
             {
                 profilePictureBox1.ParentColor = ThemeManager.CurrentTheme.SecondaryIII;
+                BackColor = ThemeManager.CurrentTheme.SecondaryII;
             }
             Invalidate();
         }

@@ -49,7 +49,7 @@ namespace UserInterface.Add_Project.Custom_Control
 
         private void InitializePageColor()
         {
-            singleProjectSelectTemplate1.BackColor = singleProjectSelectTemplate2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            singleProjectSelectTemplate1.BackColor = singleProjectSelectTemplate2.BackColor = ThemeManager.CurrentTheme.SecondaryII;
         }
 
         private void OnProjectSelected(object sender, Projects project)

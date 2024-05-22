@@ -17,7 +17,7 @@ namespace TeamTracker
 
         public static BooleanMsg ConnectDatabase()
         {
-            manager = new MySqlHandler("localhost", "root", "Lucid123", "teamtracker");
+            manager = new MySqlHandler("localhost", "root", "", "teamtracker");
             BooleanMsg result = manager.Connect();
 
             return result.Result;
@@ -1069,11 +1069,19 @@ namespace TeamTracker
 
         public static void UpdateIssueAttachment(int issueId, IssueAttachment attachment)
         {
-            if(attachment.IssueAttachmentLocation.Contains("SPARE-2709DFQ") && System.IO.File.Exists(attachment.IssueAttachmentLocation))
+            if (attachment == null)
+            {
+                manager.DeleteData("issueattachment", $"IssueID='{issueId}'");
+                return;
+            }
+
+            if (attachment.IssueAttachmentLocation.Contains("SPARE-2709DFQ") && System.IO.File.Exists(attachment.IssueAttachmentLocation))
             {
                 return;
             }
+
             manager.DeleteData("issueattachment", $"IssueID='{issueId}'");
+
             string savePath = @"\\\\SPARE-2709DFQ\\Project Management Tool\\Issue\\Issue Attachment\\"; // Change this to your desired save path
             try
             {

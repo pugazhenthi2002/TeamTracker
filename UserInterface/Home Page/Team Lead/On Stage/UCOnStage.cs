@@ -97,23 +97,29 @@ namespace TeamTracker
                 zipFilePath = saveFileDialog.FileName;
             }
 
-            using (var zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
+            try
             {
-                foreach (var fileToZip in attachments)
+                using (var zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
                 {
-                    fileNetworkPath = fileToZip.AttachmentLocation;
-                    if (File.Exists(fileNetworkPath))
+                    foreach (var fileToZip in attachments)
                     {
-                        zipArchive.CreateEntryFromFile(fileNetworkPath, Path.GetFileName(fileToZip.DisplayName));
-                    }
-                    else
-                    {
-                        ProjectManagerMainForm.notify.AddNotification("File not found", fileNetworkPath);
+                        fileNetworkPath = fileToZip.AttachmentLocation;
+                        if (File.Exists(fileNetworkPath))
+                        {
+                            zipArchive.CreateEntryFromFile(fileNetworkPath, Path.GetFileName(fileToZip.DisplayName));
+                        }
+                        else
+                        {
+                            ProjectManagerMainForm.notify.AddNotification("File not found", fileNetworkPath);
+                        }
                     }
                 }
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", Path.GetFileName(zipFilePath));
             }
-
-            ProjectManagerMainForm.notify.AddNotification("Download Completed", Path.GetFileName(zipFilePath));
+            catch
+            {
+                ProjectManagerMainForm.notify.AddNotification("Download failed", "Version attachment download Failed");
+            }
         }
 
 

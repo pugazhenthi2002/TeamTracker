@@ -262,6 +262,7 @@
             this.commitTextBox.Name = "commitTextBox";
             this.commitTextBox.Size = new System.Drawing.Size(377, 30);
             this.commitTextBox.TabIndex = 2;
+            this.commitTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // SourceCodeSubmitionForm
             // 

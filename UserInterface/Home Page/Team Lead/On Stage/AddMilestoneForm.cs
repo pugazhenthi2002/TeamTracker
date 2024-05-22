@@ -636,6 +636,15 @@ namespace TeamTracker
         private const int CSDropShadow = 0x00020000;
         private MilestoneTemplate Template;
         private List<MilestoneTemplate> TemplateCollection;
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
         public List<Milestone> milestoneCollection;
         private DateTime prevEndDate, startDate, endDate;
         private ProjectVersion selectedVersion;

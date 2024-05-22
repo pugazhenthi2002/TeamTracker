@@ -235,7 +235,7 @@ namespace TeamTracker
                 IssueName = IssueTitleTextBox.Text,
                 IssueDesc = IssueDescTextBox.Text,
                 PostedBy = EmployeeManager.CurrentEmployee.EmployeeID,
-                Type = (BtnSetType.Text == "Bug") ? Issue.IssueType.Bug : ((BtnSetType.Text == "Feature Request") ? Issue.IssueType.FeatureRequest : ((BtnSetType.Text == "Optimization") ? Issue.IssueType.Optimization : ((BtnSetType.Text == "Security") ? Issue.IssueType.Security : ((BtnSetType.Text == "Logical Need") ? Issue.IssueType.LogicalNeed : Issue.IssueType.Other)))),
+                Type = (BtnSetType.Text == "Bug") ? Issue.IssueType.Bug : ((BtnSetType.Text == "FeatureRequest") ? Issue.IssueType.FeatureRequest : ((BtnSetType.Text == "Optimization") ? Issue.IssueType.Optimization : ((BtnSetType.Text == "Security") ? Issue.IssueType.Security : ((BtnSetType.Text == "LogicalNeed") ? Issue.IssueType.LogicalNeed : Issue.IssueType.Other)))),
                 Priority = (BtnSetPriority.Text == "High") ? Issue.IssuePriority.High : ((BtnSetPriority.Text == "Medium") ? Issue.IssuePriority.Medium : Issue.IssuePriority.Low),
                 PostedDate = DateTime.Today.Date,
                 Tags = TagList
@@ -388,6 +388,11 @@ namespace TeamTracker
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void buttonPost_ClientSizeChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

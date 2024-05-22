@@ -130,6 +130,7 @@
             this.descTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(75)))), ((int)(((byte)(97)))));
             this.descTextBox.Location = new System.Drawing.Point(1, 1);
             this.descTextBox.Name = "descTextBox";
+            this.descTextBox.ReadOnly = true;
             this.descTextBox.Size = new System.Drawing.Size(514, 181);
             this.descTextBox.TabIndex = 0;
             this.descTextBox.Text = "";

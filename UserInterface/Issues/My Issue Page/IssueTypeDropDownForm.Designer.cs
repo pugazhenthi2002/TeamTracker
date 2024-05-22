@@ -112,7 +112,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(227, 40);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Feature Request";
+            this.label2.Text = "FeatureRequest";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.OnClickBtn);
             this.label2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
@@ -166,7 +166,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(227, 40);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Logical Need";
+            this.label5.Text = "LogicalNeed";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label5.Click += new System.EventHandler(this.OnClickBtn);
             this.label5.MouseEnter += new System.EventHandler(this.OnMouseEnter);

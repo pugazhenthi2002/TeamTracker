@@ -290,7 +290,7 @@ namespace TeamTracker
 
         private void OnChooseProjectLabelLeave(object sender, EventArgs e)
         {
-            chooseProjectLabel.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            chooseProjectLabel.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(chooseProjectLabel.BackColor);
         }
 
