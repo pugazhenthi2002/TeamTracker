@@ -48,5 +48,13 @@ namespace UserInterface
                 MessageBox.Show(exp.ToString());
             }
         }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

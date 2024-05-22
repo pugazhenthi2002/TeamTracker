@@ -67,5 +67,13 @@ namespace UserInterface.Edit_Project.Controls
             else
                 TaskNameChange?.Invoke(this, taskSearchTextBox.Text);
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

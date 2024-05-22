@@ -556,6 +556,7 @@
             this.textBoxTaskName.Size = new System.Drawing.Size(794, 28);
             this.textBoxTaskName.TabIndex = 4;
             this.textBoxTaskName.Text = "Enter Task Title..";
+            this.textBoxTaskName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label4
             // 

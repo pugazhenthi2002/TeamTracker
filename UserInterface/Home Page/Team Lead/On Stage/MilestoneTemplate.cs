@@ -237,6 +237,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
                 });
                 placeHolderText = milestoneName.Text;
                 Focus();
+                e.SuppressKeyPress = true;
             }
         }
 

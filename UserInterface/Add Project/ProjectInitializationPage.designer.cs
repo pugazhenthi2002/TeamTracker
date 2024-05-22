@@ -276,6 +276,7 @@
             this.projectTitleTextBox.Size = new System.Drawing.Size(367, 20);
             this.projectTitleTextBox.TabIndex = 2;
             this.projectTitleTextBox.Text = "Project Name";
+            this.projectTitleTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // tableLayoutPanel3
             // 
@@ -447,6 +448,7 @@
             this.clientTextBox.Size = new System.Drawing.Size(306, 24);
             this.clientTextBox.TabIndex = 3;
             this.clientTextBox.Text = "Client Email";
+            this.clientTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label4
             // 

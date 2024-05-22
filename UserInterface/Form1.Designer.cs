@@ -28,23 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toggleButton1 = new UserInterface.Project_Manager_Main_Page.ToggleButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // toggleButton1
+            // richTextBox1
             // 
-            this.toggleButton1.BackColor = System.Drawing.Color.Transparent;
-            this.toggleButton1.BorderColorForOff1 = System.Drawing.Color.DarkRed;
-            this.toggleButton1.BorderColorForOn1 = System.Drawing.Color.DarkGreen;
-            this.toggleButton1.BorderRadius1 = 3;
-            this.toggleButton1.Checked = false;
-            this.toggleButton1.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton1.Location = new System.Drawing.Point(156, 261);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Size = new System.Drawing.Size(253, 69);
-            this.toggleButton1.SkinColorForOff1 = System.Drawing.Color.IndianRed;
-            this.toggleButton1.SkinColorForOn1 = System.Drawing.Color.MediumSeaGreen;
-            this.toggleButton1.TabIndex = 3;
+            this.richTextBox1.Location = new System.Drawing.Point(350, 140);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(175, 128);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // Form1
             // 
@@ -52,7 +46,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
             this.ClientSize = new System.Drawing.Size(888, 678);
-            this.Controls.Add(this.toggleButton1);
+            this.Controls.Add(this.richTextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "e";
@@ -65,7 +59,7 @@
 
         private TeamTracker.RippleButton rippleButton1;
         private ViewPage.ListView.DoneCardTemplate doneCardTemplate1;
-        private Project_Manager_Main_Page.ToggleButton toggleButton1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

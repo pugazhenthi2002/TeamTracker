@@ -751,6 +751,7 @@
             this.textBoxTaskName.Name = "textBoxTaskName";
             this.textBoxTaskName.Size = new System.Drawing.Size(1047, 27);
             this.textBoxTaskName.TabIndex = 5;
+            this.textBoxTaskName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // tableLayoutPanel8
             // 

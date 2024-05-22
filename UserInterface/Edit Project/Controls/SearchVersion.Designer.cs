@@ -68,6 +68,7 @@
             this.versionSearchTextBox.TabIndex = 1;
             this.versionSearchTextBox.Text = "Search Project Name..";
             this.versionSearchTextBox.TextChanged += new System.EventHandler(this.OnTextChanged);
+            this.versionSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // SearchVersion
             // 

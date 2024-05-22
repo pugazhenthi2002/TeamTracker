@@ -662,6 +662,14 @@ namespace UserInterface.Edit_Project.Controls
             }
         }
 
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private int startIdx, endIdx;
     }
 }

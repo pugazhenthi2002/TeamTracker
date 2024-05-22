@@ -248,6 +248,14 @@ namespace UserInterface.Issues.All_Issue_Page
             }
         }
 
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private int startIdx = 0, endIdx = 0;
     }
 }

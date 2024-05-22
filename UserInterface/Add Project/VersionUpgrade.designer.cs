@@ -335,6 +335,7 @@
             this.versionNameTextBox.Size = new System.Drawing.Size(375, 28);
             this.versionNameTextBox.TabIndex = 3;
             this.versionNameTextBox.Text = "Enter Version";
+            this.versionNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label3
             // 
@@ -430,6 +431,7 @@
             this.clientTextBox.Size = new System.Drawing.Size(510, 28);
             this.clientTextBox.TabIndex = 3;
             this.clientTextBox.Text = "Enter Client Email";
+            this.clientTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label1
             // 

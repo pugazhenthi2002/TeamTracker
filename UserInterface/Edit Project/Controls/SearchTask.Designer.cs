@@ -58,6 +58,7 @@
             this.taskSearchTextBox.TabIndex = 1;
             this.taskSearchTextBox.Text = "Search Task Name..";
             this.taskSearchTextBox.TextChanged += new System.EventHandler(this.OnTextChanged);
+            this.taskSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // pictureBox1
             // 

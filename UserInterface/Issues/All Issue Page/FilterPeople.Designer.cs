@@ -132,6 +132,7 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.OnEmployeeFilterTextChanged);
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // panel2
             // 

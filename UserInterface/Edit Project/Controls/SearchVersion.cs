@@ -69,5 +69,13 @@ namespace UserInterface.Edit_Project.Controls
             else
                 ProjectNameChange?.Invoke(this, versionSearchTextBox.Text);
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

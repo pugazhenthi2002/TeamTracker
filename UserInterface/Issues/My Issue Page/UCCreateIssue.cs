@@ -381,5 +381,13 @@ namespace TeamTracker
           int nWidthEllipse, // height of ellipse
           int nHeightEllipse // width of ellipse
       );
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

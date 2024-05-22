@@ -437,5 +437,13 @@ namespace UserInterface.Task.CreateTask
             BtnAssignTo.Image?.Dispose();
             BtnAssignTo.Image = (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
