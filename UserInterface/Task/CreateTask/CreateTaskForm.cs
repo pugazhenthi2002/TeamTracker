@@ -19,37 +19,48 @@ namespace UserInterface.Task.CreateTask
         public event EventHandler TaskCreate;
         public event EventHandler TaskFormClose;
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
-            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-            if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-            if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
-            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
-            if (pictureBoxFlag.Image != null) pictureBoxFlag.Image.Dispose();
-            if (BtnAssignTo.Image != null) BtnAssignTo.Image.Dispose();
-
-            pictureBox1.Dispose();  pictureBox2.Dispose();  pictureBox3.Dispose();
-
-            animatedLabelFilename.Dispose();
-            buttonCreate.Dispose(); buttonSetMilestone.Dispose();   employeeName.Dispose(); labelSetPriority.Dispose(); labelTitle.Dispose();
-            label1.Dispose(); label2.Dispose(); label3.Dispose(); label4.Dispose(); label5.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();
-            tableLayoutPanel5.Dispose();    tableLayoutPanel6.Dispose();    tableLayoutPanel7.Dispose();    tableLayoutPanel8.Dispose();
-            tableLayoutPanelFileName.Dispose();
-            textBoxDesc.Dispose();  textBoxTaskName.Dispose();
-            startDate.Dispose();    endDate.Dispose();
-            toolTip1.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();   pictureBox2.Image?.Dispose();   pictureBox3.Image?.Dispose();   pictureBoxAttachment.Image?.Dispose();   pictureBoxFlag.Image?.Dispose();
+            BtnAssignTo.Image?.Dispose();
         }
 
         public CreateTaskForm()
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             InitializePlaceHolders();
             toolTip1.SetToolTip(pictureBoxAttachment, "Click to Add attachment");
             toolTip1.SetToolTip(buttonSetMilestone, "Milestone");
             tableLayoutPanelFileName.Hide();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label2.ForeColor = ThemeManager.GetTextColor(panel3.BackColor);
+            buttonCreate.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            buttonCreate.ForeColor = labelTitle.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            label4.ForeColor = label5.ForeColor = ThemeManager.GetTextColor(BackColor);
+            labelSetPriority.BackColor = textBoxDesc.BackColor = textBoxTaskName.BackColor = buttonSetMilestone.BackColor = employeeName.BackColor = label1.BackColor = label3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            startDate.SkinColor = endDate.SkinColor = tableLayoutPanel5.BackColor = tableLayoutPanelFileName.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelSetPriority.ForeColor = textBoxDesc.ForeColor = textBoxTaskName.ForeColor = buttonSetMilestone.ForeColor = employeeName.ForeColor = label1.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label2.ForeColor = startDate.TextColor = endDate.TextColor = startDate.BorderColor = endDate.BorderColor = animatedLabelFilename.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel3.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Dark_Document : Properties.Resources.Heat_Dark_Document;
+            pictureBoxAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Pin : Properties.Resources.Heat_Pin;
+            BtnAssignTo.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
         }
 
         private void InitializePlaceHolders()
@@ -121,7 +132,7 @@ namespace UserInterface.Task.CreateTask
             tableLayoutPanelFileName.Visible = true;
             if (selectedAttachment != null)
             {
-                animatedLabelFilename.Text = selectedAttachment.DisplayName;
+                animatedLabelFilename.Text = selectedAttachment.TaskAttachmentName;
             }
             else
             {
@@ -155,8 +166,6 @@ namespace UserInterface.Task.CreateTask
             int nHeightEllipse // width of ellipse
         );
 
-
-
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
@@ -174,18 +183,18 @@ namespace UserInterface.Task.CreateTask
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Title = "Open File";
-            openFileDialog.InitialDirectory = @"C:\";
-            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            openFileDialog.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedFilePath = openFileDialog.FileName;
                 string safeFile = openFileDialog.SafeFileName;
+                string extension = Path.GetExtension(openFileDialog.SafeFileName);
 
                 selectedAttachment = new TaskAttachment()
                 {
                     DisplayName = safeFile,
-                    TaskAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    TaskAttachmentName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + extension,
                     TaskAttachmentLocation = selectedFilePath
                 };
                 tableLayoutPanelFileName.Show();
@@ -198,10 +207,10 @@ namespace UserInterface.Task.CreateTask
             Point formPoint = buttonSetMilestone.PointToScreen(new Point(buttonSetMilestone.Location.X, buttonSetMilestone.Location.Y));
 
             MilestoneDropForm = new MilestoneDropDownForm();
+            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(0, buttonSetMilestone.Height + 2));
+            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width, MilestoneDropForm.Height);
             MilestoneDropForm.Show();
             MilestoneDropForm.MilestoneList = MilestoneManager.FetchMilestones(VersionManager.CurrentVersion.VersionID);
-            MilestoneDropForm.Location = buttonSetMilestone.PointToScreen(new Point(-10, buttonSetMilestone.Height + 2));
-            MilestoneDropForm.Size = new Size(buttonSetMilestone.Width+20, MilestoneDropForm.Height);
             MilestoneDropForm.MilestoneClick += OnClickMilestoneBtn;
         }
 
@@ -211,6 +220,7 @@ namespace UserInterface.Task.CreateTask
             {
                 selectedMilestone = e;
                 buttonSetMilestone.Text = e.MileStoneName;
+                ProjectManagerMainForm.notify.AddNotification("Milestone Date", "For the selected Milestone - " + e.MileStoneName + "\nThe Milestone Start Date is Between " + e.StartDate.ToShortDateString() + " and " + e.EndDate.ToShortDateString());
             }
         }
 
@@ -221,10 +231,10 @@ namespace UserInterface.Task.CreateTask
 
             Point formPoint = label2.PointToScreen(new Point(0,label2.Height));
             TeamMembersDropForm = new TeamMembersListForm();
-            TeamMembersDropForm.TeamList = taskAssigneeList;
-            TeamMembersDropForm.Show();
             TeamMembersDropForm.Location = panel2.PointToScreen(new Point(-10, panel2.Height + 2));
-            TeamMembersDropForm.Size = new Size(panel2.Width+20, TeamMembersDropForm.Height);
+            TeamMembersDropForm.Size = new Size(panel2.Width + 20, TeamMembersDropForm.Height);
+            TeamMembersDropForm.Show();
+            TeamMembersDropForm.TeamList = taskAssigneeList;
             TeamMembersDropForm.TeamMemberClick += OnClickTeamMember;
         }
 
@@ -233,7 +243,7 @@ namespace UserInterface.Task.CreateTask
             selectedTeamMember = e;
             Button clickedBtn = (sender as Button);
             employeeName.Text = e.EmployeeFirstName;
-            TeamMembersDropForm.Dispose();
+            //TeamMembersDropForm.Close();
         }
 
         private void OnClickCloseFile(object sender, EventArgs e)
@@ -261,8 +271,8 @@ namespace UserInterface.Task.CreateTask
                 if(buttonCreate.Text == "Create")
                 {
                     TaskManager.AddTask(textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
-                    ProjectManagerMainForm.notify.AddNotification("Project Created", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
-                    DataHandler.AddNotification("Project Created", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
+                    ProjectManagerMainForm.notify.AddNotification("Task Created", "Task Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
+                    DataHandler.AddNotification("New Task Assigned: Action Required!", "Hello " + selectedTeamMember.EmployeeFirstName + ",\r\n\r\nWe hope this message finds you well. We are writing to inform you that a new task has been assigned to you. As a valued member of the team, your contribution to this task is essential for the projects success.", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
                 else
                 {
@@ -272,7 +282,7 @@ namespace UserInterface.Task.CreateTask
                         TaskManager.UpdateTask(selectedTask.TaskID, textBoxTaskName.Text, textBoxDesc.Text, startDate.Value.Date, endDate.Value.Date, selectedTask.StatusOfTask, selectedMilestone.MileStoneID, selectedPriority, selectedTeamMember.EmployeeID, selectedAttachment);
 
                     ProjectManagerMainForm.notify.AddNotification("Project Updated", "Project Has Been Assigned To " + selectedTeamMember.EmployeeFirstName);
-                    DataHandler.AddNotification("Project Updated", "Project Has Been Assigned To You", DateTime.Now, selectedTeamMember.EmployeeID);
+                    DataHandler.AddNotification("Task Updation: Action Required!", "Hello " + selectedTeamMember.EmployeeFirstName + ",\r\n\r\nWe hope this message finds you well. We are writing to inform you that a new task has been assigned to you. As a valued member of the team, your contribution to this task is essential for the projects success.", DateTime.Now, selectedTeamMember.EmployeeID);
                 }
                 TaskCreate?.Invoke(this, EventArgs.Empty);
                 TaskFormClose?.Invoke(this, EventArgs.Empty);
@@ -315,7 +325,7 @@ namespace UserInterface.Task.CreateTask
                 return "Priority Has Not been Selected";
             }
 
-            if (startDate.Value > endDate.Value)
+            if (startDate.Value.Date > endDate.Value.Date)
             {
                 return "Task Due Date is is Beyond Today's Date";
             }
@@ -361,7 +371,7 @@ namespace UserInterface.Task.CreateTask
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1);
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawRectangle(border, rec);
             e.Graphics.DrawLine(border, 245, 0, 245, 285);
             border.Dispose();
@@ -369,39 +379,71 @@ namespace UserInterface.Task.CreateTask
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
+
             if ((sender as Control).Name == "pictureBox2")
             {
-                if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-
-                pictureBox2.Image = Properties.Resources.Close_Light_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark_Hover : Properties.Resources.Heat_Close_Dark_Hover;
             }
             else
             {
-                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-
-                pictureBox1.Image = Properties.Resources.Close_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light_Hover : Properties.Resources.Heat_Close_Light_Hover;
             }
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
+
             if ((sender as Control).Name == "pictureBox2")
             {
-                if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
-
-                pictureBox2.Image = Properties.Resources.Close_Dark_Blue;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
             }
             else
             {
-                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-
-                pictureBox1.Image = Properties.Resources.Close_30;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
             }
         }
 
-        private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
+        private const int CSDropShadow = 0x00020000;
+        protected override CreateParams CreateParams
         {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
 
+        private void OnCreateMouseEnter(object sender, EventArgs e)
+        {
+            buttonCreate.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+        }
+
+        private void OnCreateMouseLeave(object sender, EventArgs e)
+        {
+            buttonCreate.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnAssignedToMouseEnter(object sender, EventArgs e)
+        {
+            BtnAssignTo.Image?.Dispose();
+            BtnAssignTo.Image = (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
+        }
+
+        private void OnAssignedToMouseLeave(object sender, EventArgs e)
+        {
+            BtnAssignTo.Image?.Dispose();
+            BtnAssignTo.Image = (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

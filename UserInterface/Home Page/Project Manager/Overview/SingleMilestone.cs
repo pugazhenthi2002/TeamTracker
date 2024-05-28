@@ -11,18 +11,6 @@ namespace TeamTracker
 {
     public class SingleMilestone: Panel
     {
-
-        private string name;
-        private MilestoneDetailsForm form;
-        private Milestone milestone;
-        private Color milestoneColor;
-
-        public SingleMilestone()
-        {
-            DoubleBuffered = true;
-            Width = Height;
-        }
-
         public Milestone MilestoneContent
         {
             get
@@ -51,6 +39,11 @@ namespace TeamTracker
             }
         }
 
+        public SingleMilestone()
+        {
+            DoubleBuffered = true;
+            Width = Height;
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -59,7 +52,7 @@ namespace TeamTracker
             Rectangle rec = new Rectangle(4, 4, Width - 9, Width - 9);
             Pen border = new Pen(MilestoneColor, 2);
             Brush brush = new SolidBrush(milestoneColor);
-            Brush textBrush = new SolidBrush(Color.White);
+            Brush textBrush = new SolidBrush(ThemeManager.GetTextColor(milestoneColor));
             StringFormat SFormat = new StringFormat
             {
                 Alignment = StringAlignment.Center,
@@ -71,6 +64,7 @@ namespace TeamTracker
             e.Graphics.FillEllipse(brush, rec);
             e.Graphics.DrawString(name, headerFont, textBrush, rec, SFormat);
             border.Dispose();
+            brush.Dispose();
         }
 
         protected override void OnResize(EventArgs eventargs)
@@ -92,9 +86,13 @@ namespace TeamTracker
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
+            form.Dispose();
             form.Close();
         }
 
-        
+        private string name;
+        private MilestoneDetailsForm form;
+        private Milestone milestone;
+        private Color milestoneColor;
     }
 }

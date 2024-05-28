@@ -71,6 +71,7 @@
     <Compile Include="Manager\ColorManager.cs" />
     <Compile Include="Manager\DataHandler.cs" />
     <Compile Include="Manager\EmployeeManager.cs" />
+    <Compile Include="Manager\IssueManager.cs" />
     <Compile Include="Manager\MilestoneManager.cs" />
     <Compile Include="Manager\TaskManager.cs" />
     <Compile Include="Manager\VersionManager.cs" />
@@ -104,9 +105,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data Structure\Data Structure.csproj">
-      <Project>{015ae303-5687-43df-a04b-1096ff57f937}</Project>
-      <Name>Data Structure</Name>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{eca6a2de-b061-4a22-85aa-fd0e5bdb14e8}</Project>
+      <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

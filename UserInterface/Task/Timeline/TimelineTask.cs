@@ -74,9 +74,26 @@ namespace TeamTracker
         public TimelineTask()
         {
             InitializeComponent();
+            InitializePageColor();
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, label1, new object[] { true });
             DoubleBuffered = true;
             Height = 30;
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void SliderPanelPaint(object sender, PaintEventArgs e)
@@ -143,7 +160,7 @@ namespace TeamTracker
             if (e.Button == MouseButtons.Right)
             {
                 TaskOperationForm form = new TaskOperationForm();
-                form.Location = PointToScreen(new Point(Width, 0));
+                form.Location = GetLocation();
                 form.Operate += OnTaskOperation;
                 form.Show();
             }
@@ -162,7 +179,7 @@ namespace TeamTracker
                 transparentForm.Show();
                 transparentForm.ShowForm(form1);
             }
-            else
+            else if(e == OperateType.Delete)
             {
                 WarningForm form2 = new WarningForm();
                 form2.Content = "Are you sure, you want delete the task?";
@@ -172,13 +189,29 @@ namespace TeamTracker
                 transparentForm.Show();
                 transparentForm.ShowForm(form2);
             }
+            else
+            {
+                TaskInfoForm form3 = new TaskInfoForm();
+                form3.SelectedTask = selectedTask;
+                form3.InfoFormClose += OnInfoFormClosed;
+
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(form3);
+            }
+        }
+
+        private void OnInfoFormClosed(object sender, EventArgs e)
+        {
+            (sender as TaskInfoForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
         }
 
         private void OnTaskFormClose(object sender, EventArgs e)
         {
-            (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -191,6 +224,11 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
+            (sender as CreateTaskForm).Close();
+
+            if (ParentForm != null)
+                ParentForm.Show();
+
             if (e)
             {
                 TaskManager.DeleteTask(selectedTask.TaskID);
@@ -377,6 +415,20 @@ namespace TeamTracker
             }
 
             this.ResumeLayout();
+        }
+
+        private Point GetLocation()
+        {
+            Point Pt = PointToScreen(new Point(Width, 0));
+            if(Location.X + Width + 157 >= Parent.Width)
+            {
+                Pt = PointToScreen(new Point(-157, 0));
+                if(Location.Y + Height + 105 >= Parent.Width)
+                {
+                    Pt.Y = -106;
+                }
+            }
+            return Pt;
         }
 
         private Point offSet;

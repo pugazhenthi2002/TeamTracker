@@ -19,7 +19,22 @@ namespace TeamTracker
         public StatusDropDown()
         {
             InitializeComponent();
+            InitializePageColor();
         }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            label1.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.UnderReview);
+            label2.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.OnProcess);
+            label3.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.Stuck);
+            label4.BackColor = ThemeManager.GetTaskStatusColor(TaskStatus.NotYetStarted);
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+            label2.ForeColor = ThemeManager.GetTextColor(label2.BackColor);
+            label3.ForeColor = ThemeManager.GetTextColor(label3.BackColor);
+            label4.ForeColor = ThemeManager.GetTextColor(label4.BackColor);
+        }
+
 
         public event EventHandler<string> StatusChanged;
 
@@ -36,8 +51,8 @@ namespace TeamTracker
         private void StatusDropDownPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            Brush b = new SolidBrush(Color.FromArgb(245, 232, 221));
-            Rectangle rectangle = new Rectangle(1, 1, this.Width - 2, this.Height - 2);
+            Brush b = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
+            Rectangle rectangle = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
             FillRoundRectangle(e.Graphics, rectangle, b, 5);
             b.Dispose();
         }
@@ -65,10 +80,6 @@ namespace TeamTracker
         {
             rectangle = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
             g.FillPath(b, GetRoundRectangle(rectangle, r));
-            Pen p = new Pen(Color.Black, 3);
-            p.DashStyle = DashStyle.Solid;
-            //g.DrawPath(p, GetRoundRectangle(rectangle, r));
-            p.Dispose();
         }
 
         private void label1_Click(object sender, EventArgs e)

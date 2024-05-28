@@ -28,6 +28,7 @@ namespace UserInterface.ViewProject
             set
             {
                 profile = value;
+                if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
                 try
                 {
                     profilePictureBox1.Image = Image.FromFile(value.EmpProfileLocation);
@@ -39,21 +40,37 @@ namespace UserInterface.ViewProject
         public Color NormalColor { get; set; }
         public Color HoverColor { get; set; }
 
-        
+        public override Color ForeColor
+        {
+            get { return label1.ForeColor; }
+            set { label1.ForeColor = value; }
+        }
+
+        public void UnSubscribeEventsAndRemoveMemory()
+        {
+            if (profilePictureBox1.Image != null) profilePictureBox1.Image.Dispose();
+            profilePictureBox1.Dispose();
+        }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            BackColor = HoverColor;
+            profilePictureBox1.ParentColor = BackColor = HoverColor;
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            BackColor = NormalColor;
+            profilePictureBox1.ParentColor = BackColor = NormalColor;
         }
 
         private void OnClicked(object sender, EventArgs e)
         {
             EmployeeSelect?.Invoke(this, profile);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            profilePictureBox1.ParentColor = BackColor;
         }
     }
 }

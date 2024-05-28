@@ -22,10 +22,54 @@ namespace TeamTracker
             else return true;
         }
 
+        public static List<Projects> FetchAllProjects()
+        {
+            List<Projects> result = new List<Projects>();
+            foreach(var Iter in ProjectCollection)
+            {
+                if(Iter.ManagerID == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<Projects> FetchAllProjectsForTeamLeader()
+        {
+            List<Projects> result = new List<Projects>();
+            foreach (var Iter in ProjectCollection)
+            {
+                if (Iter.TeamLeadID == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(Iter);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<ProjectVersion> FetchEditVersions()
+        {
+            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Version);
+            List<ProjectVersion> result = new List<ProjectVersion>();
+            int id = 0;
+            foreach (var Iter in edits)
+            {
+                id = FetchProjectFromID(FetchVersionFromVersionID(Iter.EditModeID).ProjectID).TeamLeadID;
+                if (id == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchVersionFromVersionID(Iter.EditModeID));
+                }
+            }
+            return result;
+        }
+
         public static BooleanMsg StoreVersionCollection()
         {
             VersionCollection = DataHandler.StoreProjectVersionDetails();
-
+            bool flag = false;
             if (VersionCollection == null) return "Couldn't Able to connect Employee Table";
             else
             {
@@ -33,10 +77,13 @@ namespace TeamTracker
                 {
                     if(Iter.StatusOfVersion == ProjectStatus.OnProcess && ((FetchTeamLeadIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID) || (IsCurrentEmployeeInvolvedInVersion(FetchTeamLeadIDFromProjectID(Iter.ProjectID))) || (FetchManagerIDFromProjectID(Iter.ProjectID) == EmployeeManager.CurrentEmployee.EmployeeID)))
                     {
+                        flag = true;
                         CurrentVersion = Iter;
                         break;
                     }
                 }
+
+                if (!flag) CurrentVersion = null;
                 return true;
             }
         }
@@ -96,7 +143,7 @@ namespace TeamTracker
             return null;
         }
 
-        public static ProjectVersion FetchVersionFromTaskID(int id)
+        public static ProjectVersion FetchVersionFromVersionID(int id)
         {
             foreach(var Iter in VersionCollection)
             {
@@ -127,7 +174,8 @@ namespace TeamTracker
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = newProject.ProjectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing,
+                IsDelayed = false
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
@@ -149,7 +197,8 @@ namespace TeamTracker
                 StartDate = startDate,
                 EndDate = endDate,
                 ProjectID = projectID,
-                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing
+                StatusOfVersion = (DateTime.Today.Day == startDate.Day && DateTime.Today.Month == startDate.Month && DateTime.Today.Year == startDate.Year) ? ProjectStatus.OnStage : ProjectStatus.UpComing,
+                IsDelayed = false
             };
 
             newVersion = DataHandler.AddVersion(newVersion);
@@ -177,9 +226,10 @@ namespace TeamTracker
                     Iter.EndDate = endDate;
                     Iter.StatusOfVersion = status;
                     Iter.ClientEmail = clientEmail;
+                    Iter.IsDelayed = false;
                     DataHandler.UpdateVersion(Iter);
-                    if (versionAttachments != null)
-                        DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    DataHandler.UpdateVersionAttachments(Iter.VersionID, versionAttachments);
+                    
                     return;
                 }
             }
@@ -200,12 +250,7 @@ namespace TeamTracker
 
         public static void VersionCompletion(ProjectVersion version)
         {
-            UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, DateTime.Today.Date, version.ClientEmail, null);
-        }
-
-        public static void SelectedEmployeeInvolvedVersions(Employee emp)
-        {
-
+            UpdateVersion(version.VersionID, version.VersionName, version.VersionDescription, ProjectStatus.Completed, version.StartDate, version.EndDate, version.ClientEmail, null);
         }
 
         public static int FetchTeamLeadFromVersionID(int versionID)
@@ -260,6 +305,29 @@ namespace TeamTracker
             }
 
             return result;
+        }
+
+        public static void DeleteVersion(ProjectVersion selectedVersion)
+        {
+            foreach(var Iter in VersionCollection)
+            {
+                if(Iter.VersionID == selectedVersion.VersionID)
+                {
+                    DataHandler.DeleteVersionAttachment(Iter);
+                    DataHandler.DeleteVersion(Iter);
+                    DataHandler.DeleteVersionSourceCode(Iter);
+                    MilestoneManager.DeleteAllMilestoneFromVersion(Iter.VersionID);
+                    TaskManager.DeleteAllVersionTask(Iter.VersionID);
+                    VersionCollection.Remove(Iter);
+
+                    if (FetchAllVersionFromProjectID(Iter.ProjectID).Count == 0)
+                    {
+                        DataHandler.DeleteProject(Iter.ProjectID);
+                        ProjectCollection.Remove(FetchProjectFromID(Iter.ProjectID));
+                    }
+                    break;
+                }
+            }
         }
 
         public static void ChangeToCompleteVersionStatus(ProjectVersion version)
@@ -320,11 +388,12 @@ namespace TeamTracker
         //Checks and Sets Project Version's Deadline on everyTick
         public static void CheckVersionDeadline()
         {
-            foreach(var Iter in VersionCollection)
+
+            foreach (var Iter in VersionCollection)
             {
-                if(Iter.StatusOfVersion == ProjectStatus.OnProcess && Iter.EndDate > DateTime.Today)
+                if (Iter.StatusOfVersion != ProjectStatus.Completed && Iter.IsDelayed == false && Iter.EndDate <= DateTime.Now.Date)
                 {
-                    DataHandler.AddNotify("Task Deadline", GetProjectName(Iter.ProjectID) + Iter.VersionName + Iter.EndDate.ToShortDateString(), GetManagerIDFromProjectID(Iter.ProjectID));
+                    DataHandler.AddNotify("Project Version Deadline", GetProjectName(Iter.ProjectID) + Iter.EndDate.ToShortDateString(), FetchProjectFromID(Iter.ProjectID).ManagerID);
                 }
             }
         }

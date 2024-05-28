@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -63,6 +64,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 3);
@@ -91,7 +93,7 @@
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(5, 287);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(797, 276);
             this.panel2.TabIndex = 6;
@@ -103,7 +105,7 @@
             this.panelCommits.BackColor = System.Drawing.Color.Transparent;
             this.panelCommits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCommits.Location = new System.Drawing.Point(20, 20);
-            this.panelCommits.Margin = new System.Windows.Forms.Padding(20);
+            this.panelCommits.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.panelCommits.Name = "panelCommits";
             this.panelCommits.Size = new System.Drawing.Size(757, 236);
             this.panelCommits.TabIndex = 7;
@@ -115,6 +117,7 @@
             this.ucNotFound1.HeadText = "No Commits Found !!";
             this.ucNotFound1.HeadTextSize = 14;
             this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(757, 236);
@@ -199,16 +202,18 @@
             this.profileAssignedBy.IsBorderNeeded = false;
             this.profileAssignedBy.IsOperable = false;
             this.profileAssignedBy.Location = new System.Drawing.Point(430, 0);
-            this.profileAssignedBy.Margin = new System.Windows.Forms.Padding(2);
+            this.profileAssignedBy.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.profileAssignedBy.Name = "profileAssignedBy";
             this.profileAssignedBy.NormalColor = System.Drawing.Color.Empty;
-            this.profileAssignedBy.Padding = new System.Windows.Forms.Padding(3);
+            this.profileAssignedBy.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.profileAssignedBy.ProfileTextColor = System.Drawing.Color.Empty;
             this.profileAssignedBy.Size = new System.Drawing.Size(318, 53);
             this.profileAssignedBy.TabIndex = 3;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
             this.pictureBox1.Location = new System.Drawing.Point(748, 0);
@@ -218,9 +223,12 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClickClose);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // labelTitle
             // 
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTitle.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
@@ -234,10 +242,11 @@
             // 
             // ucTaskDescription1
             // 
-            this.ucTaskDescription1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucTaskDescription1.BackColor = System.Drawing.Color.White;
             this.ucTaskDescription1.BorderColor = System.Drawing.Color.Black;
             this.ucTaskDescription1.CenterLabelText = "Task Description...";
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucTaskDescription1.EnableEdit = true;
             this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ucTaskDescription1.Location = new System.Drawing.Point(20, 66);
             this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
@@ -245,6 +254,7 @@
             this.ucTaskDescription1.Size = new System.Drawing.Size(767, 150);
             this.ucTaskDescription1.TabIndex = 2;
             this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.ucTaskDescription1.TopLabelForeColor = System.Drawing.Color.White;
             this.ucTaskDescription1.TopLabelText = "Task Name";
             // 
             // tableLayoutPanel3
@@ -279,7 +289,7 @@
             this.animatedLabelStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.animatedLabelStatus.LabelCornerColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
             this.animatedLabelStatus.Location = new System.Drawing.Point(568, 10);
-            this.animatedLabelStatus.Margin = new System.Windows.Forms.Padding(5);
+            this.animatedLabelStatus.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.animatedLabelStatus.Name = "animatedLabelStatus";
             this.animatedLabelStatus.ParentColor = System.Drawing.Color.Empty;
             this.animatedLabelStatus.Size = new System.Drawing.Size(151, 35);
@@ -295,7 +305,7 @@
             this.animatedLabelMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.animatedLabelMilestone.LabelCornerColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
             this.animatedLabelMilestone.Location = new System.Drawing.Point(5, 10);
-            this.animatedLabelMilestone.Margin = new System.Windows.Forms.Padding(5);
+            this.animatedLabelMilestone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.animatedLabelMilestone.Name = "animatedLabelMilestone";
             this.animatedLabelMilestone.ParentColor = System.Drawing.Color.Empty;
             this.animatedLabelMilestone.Size = new System.Drawing.Size(151, 35);
@@ -316,8 +326,9 @@
             // 
             // pictureBoxDownloadAttachment
             // 
+            this.pictureBoxDownloadAttachment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxDownloadAttachment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxDownloadAttachment.Image = global::UserInterface.Properties.Resources.download_Icon;
+            this.pictureBoxDownloadAttachment.Image = global::UserInterface.Properties.Resources.Download_Dark_Blue;
             this.pictureBoxDownloadAttachment.Location = new System.Drawing.Point(727, 3);
             this.pictureBoxDownloadAttachment.Name = "pictureBoxDownloadAttachment";
             this.pictureBoxDownloadAttachment.Size = new System.Drawing.Size(77, 50);
@@ -331,8 +342,8 @@
             // startDate
             // 
             this.startDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.startDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.startDate.BorderSize = 0;
+            this.startDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.startDate.BorderSize = 2;
             this.startDate.Enabled = false;
             this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDate.Location = new System.Drawing.Point(164, 10);
@@ -346,8 +357,8 @@
             // endDate
             // 
             this.endDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.endDate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.endDate.BorderSize = 0;
+            this.endDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(55)))), ((int)(((byte)(80)))));
+            this.endDate.BorderSize = 2;
             this.endDate.Enabled = false;
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDate.Location = new System.Drawing.Point(325, 10);
@@ -367,6 +378,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TaskInfoForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskInfoForm";
             this.tableLayoutPanel1.ResumeLayout(false);

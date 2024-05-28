@@ -17,12 +17,6 @@ namespace TeamTracker
     }
     public class StartPathAndDate: Panel
     {
-
-
-        private PathStyle style;
-        private Color milestoneColor;
-        private DateTime milestoneDate;
-
         public DateTime MilestoneDate
         {
             get { return milestoneDate; }
@@ -57,8 +51,7 @@ namespace TeamTracker
                 this.Invalidate();
             }
         }
-
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -66,7 +59,7 @@ namespace TeamTracker
 
             Rectangle rec = new Rectangle(0, 0, Width, Height * 45 / 100);
             Brush brush = new SolidBrush(MilestoneColor);
-            Brush textBrush = new SolidBrush(Color.Black);
+            Brush textBrush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
             GraphicsPath path = new GraphicsPath();
             StringFormat SFormat = new StringFormat
             {
@@ -96,5 +89,8 @@ namespace TeamTracker
             e.Graphics.DrawString(milestoneDate.ToShortDateString(), headerFont, textBrush, rec, SFormat);
         }
 
+        private PathStyle style;
+        private Color milestoneColor;
+        private DateTime milestoneDate;
     }
 }

@@ -21,6 +21,8 @@ namespace UserInterface.Task
         public ReviewTaskTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private TeamTracker.Task selectedTask;
@@ -35,6 +37,24 @@ namespace UserInterface.Task
                 selectedTask = value;
                 SetReviewUI();
             }
+        }
+
+        private void InitializePageColor()
+        {
+            profilePictureBox1.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            taskNameLabel.ForeColor = projectName.ForeColor = dueDate.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryI);
+            downloadSourceCodeButton.BackColor = reassignButton.BackColor = doneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            downloadSourceCodeButton.ForeColor = reassignButton.ForeColor = doneButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void SetReviewUI()
@@ -69,8 +89,7 @@ namespace UserInterface.Task
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders(.ZIP)| *.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -81,15 +100,12 @@ namespace UserInterface.Task
             string fileNetworkPath = sourceCode.SourceCodeLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, sourceCode.CommitName+".pdf");
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.CommitName);
+                System.IO.File.Copy(fileNetworkPath, savePath, true);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", savePath);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", sourceCode.CommitName);
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", savePath);
             }
         }
 
@@ -106,7 +122,6 @@ namespace UserInterface.Task
 
         private void OnDoneWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -132,9 +147,7 @@ namespace UserInterface.Task
 
         private void OnReassignWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -154,9 +167,7 @@ namespace UserInterface.Task
 
         private void OnTaskFormClosed(object sender, EventArgs e)
         {
-            (sender as CreateTaskForm).Dispose();
             (sender as CreateTaskForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -193,7 +204,7 @@ namespace UserInterface.Task
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(201, 210, 217), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             border1.Dispose();

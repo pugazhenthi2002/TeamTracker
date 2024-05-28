@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Timeline Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Timeline Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sort-down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,6 +133,9 @@
   <data name="No Result" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\No Result.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="strikethrough-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\strikethrough-gray1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Zip Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zip Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,14 +145,26 @@
   <data name="Next1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Timeline Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Timeline Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Italic gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Italic gray1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Download Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="List Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\List Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Download Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Critical" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Critical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bullets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bullets1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Download Static" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Download Static.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,11 +181,17 @@
   <data name="Attachment-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Attachment-gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bold-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bold-gray1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Next LightBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Next LightBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sort-down-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sort-down-hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tag black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tag black1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="close Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,8 +208,8 @@
   <data name="Pdf Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Pdf Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="List Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\List Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Download Medium Blue Color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Medium Blue Color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,11 +232,17 @@
   <data name="Board Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Board Click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="italic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\italic1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Right Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Right Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add Task 30 Normal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Add Task 30 Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Download Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\Download Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Close 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -247,6 +277,9 @@
   <data name="Back Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Back Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tag gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tag gray1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Timeline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Timeline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -265,11 +298,17 @@
   <data name="Close Alice Blue 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Close Alice Blue 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="underline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\underline1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="calendar light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="info-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tag silver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tag silver1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Paginate Down Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Paginate Down Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,6 +343,9 @@
   <data name="Timeline Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Timeline Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bold1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Calendar 30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Calendar 30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -337,8 +379,14 @@
   <data name="download Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\download Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="underline-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\underline-gray1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Close Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pugazh Images\Close Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bullet-list-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bullet-list-gray1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -430,6 +478,9 @@
   <data name="Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="strikethrough" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\strikethrough1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-upload-to-cloud-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-upload-to-cloud-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -454,16 +505,523 @@
   <data name="CloudBlack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\CloudBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Download Dark Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Download Dark Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="All Issue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\All Issue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Download Light Blue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Download Light Blue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="All Issue Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\All Issue Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Download Light Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Download Light Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="My Issue Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\My Issue Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Download Medium Blue Color" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pugazh Images\Download Medium Blue Color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="My Issue Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pugazh Images\My Issue Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Add_Project_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Add Project Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Add_Project_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Add Project Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Add_Task_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Add Task Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Add_Task_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Add Task Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_All_Issue_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold All Issue Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_All_Issue_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold All Issue Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Browse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Browse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Close_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Close Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Close_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Close Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Close_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Close Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Close_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Close Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Commits" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Commits.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Completed_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Completed Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Dark_Document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Dark Document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Dark_Milestone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Dark Milestone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Dark_Total_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Dark Total Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Delay_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Delay Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Delete_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Delete Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Delete_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Delete Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Download" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Download_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Download Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Down_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Down Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Down_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Down Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Down_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Down Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Down_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Down Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Down_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Down Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Down_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Down Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Edit_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Edit Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Edit_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Edit Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Home_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Home Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Home_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Home Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Incomplete_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Incomplete Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Left_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Left Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Left_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Left Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Left_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Left Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Left_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Left Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Left_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Left Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Left_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Left Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Light_Document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Light Document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Light_Milestone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Light Milestone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Light_Total_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Light Total Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Milestone_Count" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Milestone Count.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_My_Issue_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold My Issue Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_My_Issue_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold My Issue Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_My_Task_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold My Task Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_My_Task_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold My Task Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Pin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Plus_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Plus Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Plus_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Plus Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Project_Delay_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Project Delay Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Project_Delay_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Project Delay Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Project_Equal_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Project Equal Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Project_Equal_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Project Equal Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Right_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Right Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Right_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Right Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Right_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Right Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Right_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Right Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Right_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Right Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Right_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Right Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Tags" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Tags.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Teammates_Count" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Teammates Count.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Upload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Up_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Up Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Up_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Up Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Up_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Up Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Up_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Up Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Up_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Up Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Up_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Up Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_View_Project_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold View Project Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_View_Project_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold View Project Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Add_Project_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Add Project Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Add_Project_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Add Project Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Add_Task_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Add Task Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Add_Task_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Add Task Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_All_Issue_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat All Issue Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_All_Issue_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat All Issue Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Browse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Browse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Close_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Close Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Close_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Close Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Close_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Close Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Close_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Close Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Commits" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Commits.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Completed_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Completed Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Dark_Document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Dark Document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Dark_Milestone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Dark Milestone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Dark_Total_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Dark Total Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Delay_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Delay Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Delete_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Delete Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Delete_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Delete Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Download" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Download_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Download Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Down_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Down Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Down_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Down Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Down_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Down Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Down_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Down Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Down_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Down Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Down_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Down Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Edit_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Edit Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Edit_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Edit Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Filter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Home_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Home Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Home_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Home Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Incomplete_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Incomplete Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Left_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Left Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Left_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Left Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Left_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Left Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Left_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Left Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Left_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Left Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Left_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Left Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Light_Document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Light Document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Light_Milestone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Light Milestone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Light_Total_Task" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Light Total Task.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Milestone_Count" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Milestone Count.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_My_Issue_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat My Issue Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_My_Issue_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat My Issue Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_My_Task_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat My Task Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_My_Task_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat My Task Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Pin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Plus_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Plus Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Plus_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Plus Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Project_Delay_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Project Delay Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Project_Delay_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Project Delay Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Project_Equal_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Project Equal Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Project_Equal_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Project Equal Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Right_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Right Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Right_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Right Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Right_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Right Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Right_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Right Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Right_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Right Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Right_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Right Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Tags" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Tags.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Teammates_Count" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Teammates Count.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Upload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Up_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Up Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Up_Dark_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Up Dark Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Up_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Up Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Up_Light_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Up Light Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Up_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Up Medium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Up_Medium_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Up Medium Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_View_Project_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat View Project Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_View_Project_Medum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat View Project Medum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Calendar_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Calendar Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Calendar_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Calendar Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Calendar_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Calendar Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Calendar_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Calendar Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Board_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Board Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Board_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Board Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_List_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold List Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_List_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold List Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Timeline_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Timeline Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Timeline_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Timeline Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Board_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Board Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Board_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Board Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_List_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat List Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_List_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat List Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Timeline_Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Timeline Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Timeline_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Timeline Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Initial_Commit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Initial Commit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cold_Mid_Commit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Cold Mid Commit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Initial_Commit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Initial Commit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heat_Mid_Commit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\Heat Mid Commit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="T" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\T.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

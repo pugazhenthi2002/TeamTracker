@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -66,7 +67,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.upgradeButton = new TeamTracker.RippleButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -92,6 +93,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel7, 0, 2);
@@ -133,6 +135,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -175,11 +178,10 @@
             this.endDatePanel.Size = new System.Drawing.Size(389, 77);
             this.endDatePanel.TabIndex = 1;
             this.endDatePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
-            this.endDatePanel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.endDatePanel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // tableLayoutPanel7
             // 
+            this.tableLayoutPanel7.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.endDateTimePicker, 0, 1);
@@ -192,8 +194,6 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(389, 77);
             this.tableLayoutPanel7.TabIndex = 0;
-            this.tableLayoutPanel7.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.tableLayoutPanel7.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // endDateTimePicker
             // 
@@ -210,11 +210,10 @@
             this.endDateTimePicker.TabIndex = 5;
             this.endDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.endDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
-            this.endDateTimePicker.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.endDateTimePicker.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // endDateLabel
             // 
+            this.endDateLabel.BackColor = System.Drawing.Color.Transparent;
             this.endDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.endDateLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -224,8 +223,6 @@
             this.endDateLabel.TabIndex = 4;
             this.endDateLabel.Text = "End Date";
             this.endDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.endDateLabel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.endDateLabel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // startDatePanel
             // 
@@ -238,11 +235,10 @@
             this.startDatePanel.Size = new System.Drawing.Size(389, 76);
             this.startDatePanel.TabIndex = 0;
             this.startDatePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
-            this.startDatePanel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.startDatePanel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // tableLayoutPanel6
             // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.startDateLabel, 0, 0);
@@ -255,11 +251,10 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(389, 76);
             this.tableLayoutPanel6.TabIndex = 0;
-            this.tableLayoutPanel6.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.tableLayoutPanel6.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // startDateLabel
             // 
+            this.startDateLabel.BackColor = System.Drawing.Color.Transparent;
             this.startDateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.startDateLabel.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -269,8 +264,6 @@
             this.startDateLabel.TabIndex = 3;
             this.startDateLabel.Text = "Start Date";
             this.startDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.startDateLabel.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.startDateLabel.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // startDateTimePicker
             // 
@@ -287,8 +280,6 @@
             this.startDateTimePicker.TabIndex = 4;
             this.startDateTimePicker.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.startDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateValueChanged);
-            this.startDateTimePicker.MouseEnter += new System.EventHandler(this.DateMouseEnter);
-            this.startDateTimePicker.MouseLeave += new System.EventHandler(this.DateMouseLeave);
             // 
             // tableLayoutPanel4
             // 
@@ -317,14 +308,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(389, 77);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // panel9
             // 
+            this.panel9.BackColor = System.Drawing.Color.Transparent;
             this.panel9.Controls.Add(this.versionNameTextBox);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 35);
             this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(5, 5, 5, 7);
+            this.panel9.Padding = new System.Windows.Forms.Padding(7);
             this.panel9.Size = new System.Drawing.Size(389, 42);
             this.panel9.TabIndex = 2;
             this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
@@ -336,15 +329,17 @@
             this.versionNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.versionNameTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.versionNameTextBox.Location = new System.Drawing.Point(5, 5);
+            this.versionNameTextBox.Location = new System.Drawing.Point(7, 7);
             this.versionNameTextBox.Multiline = true;
             this.versionNameTextBox.Name = "versionNameTextBox";
-            this.versionNameTextBox.Size = new System.Drawing.Size(379, 30);
+            this.versionNameTextBox.Size = new System.Drawing.Size(375, 28);
             this.versionNameTextBox.TabIndex = 3;
             this.versionNameTextBox.Text = "Enter Version";
+            this.versionNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -357,7 +352,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.chooseProjectLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(5, 5);
@@ -365,7 +360,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(389, 76);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             // 
             // chooseProjectLabel
             // 
@@ -380,6 +374,7 @@
             this.chooseProjectLabel.Text = "Choose Project Name";
             this.chooseProjectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chooseProjectLabel.Click += new System.EventHandler(this.OnChooseProject);
+            this.chooseProjectLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
             this.chooseProjectLabel.MouseEnter += new System.EventHandler(this.OnChooseProjectLabelEnter);
             this.chooseProjectLabel.MouseLeave += new System.EventHandler(this.OnChooseProjectLabelLeave);
             // 
@@ -413,11 +408,12 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.clientTextBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 35);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(5, 5, 5, 7);
+            this.panel4.Padding = new System.Windows.Forms.Padding(7);
             this.panel4.Size = new System.Drawing.Size(524, 42);
             this.panel4.TabIndex = 2;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
@@ -429,15 +425,17 @@
             this.clientTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clientTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.clientTextBox.Location = new System.Drawing.Point(5, 5);
+            this.clientTextBox.Location = new System.Drawing.Point(7, 7);
             this.clientTextBox.Multiline = true;
             this.clientTextBox.Name = "clientTextBox";
-            this.clientTextBox.Size = new System.Drawing.Size(514, 30);
+            this.clientTextBox.Size = new System.Drawing.Size(510, 28);
             this.clientTextBox.TabIndex = 3;
             this.clientTextBox.Text = "Enter Client Email";
+            this.clientTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -463,7 +461,7 @@
             // 
             // ucNotFound1
             // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound1.BackColor = System.Drawing.Color.Transparent;
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "Team Leader Not Available";
             this.ucNotFound1.HeadTextSize = 7;
@@ -521,7 +519,7 @@
             // 
             // ucNotFound2
             // 
-            this.ucNotFound2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
+            this.ucNotFound2.BackColor = System.Drawing.Color.Transparent;
             this.ucNotFound2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound2.HeadText = "No Latest Upgrade!!!";
             this.ucNotFound2.HeadTextSize = 13;
@@ -553,11 +551,12 @@
             // 
             // panel10
             // 
+            this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.Controls.Add(this.descTextBox);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 35);
             this.panel10.Name = "panel10";
-            this.panel10.Padding = new System.Windows.Forms.Padding(5, 5, 5, 7);
+            this.panel10.Padding = new System.Windows.Forms.Padding(7);
             this.panel10.Size = new System.Drawing.Size(804, 323);
             this.panel10.TabIndex = 3;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTextBoxBorderPaint);
@@ -569,15 +568,16 @@
             this.descTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descTextBox.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.descTextBox.Location = new System.Drawing.Point(5, 5);
+            this.descTextBox.Location = new System.Drawing.Point(7, 7);
             this.descTextBox.Multiline = true;
             this.descTextBox.Name = "descTextBox";
-            this.descTextBox.Size = new System.Drawing.Size(794, 311);
+            this.descTextBox.Size = new System.Drawing.Size(790, 309);
             this.descTextBox.TabIndex = 3;
             this.descTextBox.Text = "Enter Version Description";
             // 
             // label5
             // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -594,7 +594,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.upgradeButton, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.clearButton, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(1003, 881);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -620,24 +620,28 @@
             this.upgradeButton.UseVisualStyleBackColor = false;
             this.upgradeButton.Click += new System.EventHandler(this.upgradeButton_Click);
             this.upgradeButton.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            this.upgradeButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.upgradeButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
             // 
-            // button1
+            // clearButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 35);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.ClearClick);
-            this.button1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            this.clearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.clearButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clearButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearButton.FlatAppearance.BorderSize = 0;
+            this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearButton.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.clearButton.Location = new System.Drawing.Point(3, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(169, 35);
+            this.clearButton.TabIndex = 6;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.ClearClick);
+            this.clearButton.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            this.clearButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.clearButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
             // 
             // VersionUpgrade
             // 
@@ -704,7 +708,7 @@
         private FileAttachment fileAttachment1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private RippleButton upgradeButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button clearButton;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime startDateTimePicker;
         private UserInterface.Add_Project.Custom_Control.CustomDateTime endDateTimePicker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;

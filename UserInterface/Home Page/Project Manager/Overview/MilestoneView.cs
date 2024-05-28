@@ -12,22 +12,9 @@ namespace TeamTracker
 {
     public partial class MilestoneView : UserControl
     {
-
-        private List<Milestone> milestoneCollection { get; set; }
-        private List<StartPathAndDate> pathAndDateCollection { get; set; }
-        private List<SingleMilestone> singleMilestoneCollection { get; set; }
-        private int startCount, endCount;
-
-        public MilestoneView()
-        {
-            InitializeComponent();
-            pathAndDateCollection = new List<StartPathAndDate>() { startPathAndDate1, startPathAndDate2, startPathAndDate3, startPathAndDate4, startPathAndDate5 };
-            singleMilestoneCollection = new List<SingleMilestone>() { singleMilestone1, singleMilestone2, singleMilestone3, singleMilestone4 };
-        }
-
         public List<Milestone> MilestoneCollection
         {
-            get { return milestoneCollection;}
+            get { return milestoneCollection; }
             set
             {
                 milestoneCollection = value;
@@ -35,7 +22,36 @@ namespace TeamTracker
                 endCount = 2;
             }
         }
-        
+        public MilestoneView()
+        {
+            InitializeComponent();
+            ThemeManager.ThemeChange += OnThemeChanged;
+            pathAndDateCollection = new List<StartPathAndDate>() { startPathAndDate1, startPathAndDate2, startPathAndDate3, startPathAndDate4, startPathAndDate5 };
+            singleMilestoneCollection = new List<SingleMilestone>() { singleMilestone1, singleMilestone2, singleMilestone3, singleMilestone4 };
+        }
+
+        public void InitializePageColor()
+        {
+            if (milestoneCollection != null)
+            {
+                for (int ctr = 0, iter = startCount; ctr < 4 && iter <= endCount; ctr++, iter++)
+                {
+                    pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneCollection[iter].Status];
+                }
+                int size = pathAndDateCollection.Count;
+                pathAndDateCollection[size - 1].MilestoneColor = singleMilestoneCollection[size - 2].MilestoneColor;
+            }
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
 
         public int ChangeMilestoneUI(bool flag)
         {
@@ -58,7 +74,7 @@ namespace TeamTracker
             for(int ctr=0, iter = startCount; ctr<4 && iter<=endCount; ctr++, iter++)
             {
                 singleMilestoneCollection[ctr].MilestoneContent = MilestoneCollection[iter];
-                pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = SetColor(MilestoneCollection[iter].Status);
+                pathAndDateCollection[ctr].MilestoneColor = singleMilestoneCollection[ctr].MilestoneColor = ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneCollection[iter].Status];
                 pathAndDateCollection[ctr + 1].MilestoneDate = MilestoneCollection[iter].EndDate;
             }
             int size = pathAndDateCollection.Count;
@@ -79,29 +95,9 @@ namespace TeamTracker
             //ResumeLayout();
         }
 
-        private void OnMilestoneViewResize(object sender, EventArgs e)
-        {
-
-        }
-
-        private Color SetColor(MilestoneStatus status)
-        {
-            if (status == MilestoneStatus.Upcoming)
-            {
-                return Color.FromArgb(72, 202, 228);
-            }
-            else if(status == MilestoneStatus.OnProcess)
-            {
-                return Color.FromArgb(0, 180, 216);
-            }
-            else if(status == MilestoneStatus.Delay)
-            {
-                return Color.FromArgb(0, 119, 182);
-            }
-            else
-            {
-                return Color.FromArgb(3, 4, 94);
-            }
-        }
+        private List<Milestone> milestoneCollection { get; set; }
+        private List<StartPathAndDate> pathAndDateCollection { get; set; }
+        private List<SingleMilestone> singleMilestoneCollection { get; set; }
+        private int startCount, endCount;
     }
 }

@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Windows.Forms.DataVisualization.Charting;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
@@ -19,20 +18,6 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
 {
     public partial class MilestoneDetailsForm : Form
     {
-
-        private const int CSDropShadow = 0x00020000;
-        private Dictionary<string, int> taskCounts;
-        private int colorIndex=0;
-        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>();
-
-        public MilestoneDetailsForm()
-        {
-            InitializeComponent();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            colorList = ColorManager.ColorFadingOut;
-        }
-
-
         public DateTime EndDate
         {
             set
@@ -40,9 +25,7 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 labelActualEndDate.Text = "Last Task End Date: " + value.ToShortDateString();
             }
         }
-
-
-        public Dictionary<string,int> TaskCounts
+        public Dictionary<string, int> TaskCounts
         {
             set
             {
@@ -50,34 +33,35 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
                 InitializeForm();
             }
         }
+        public MilestoneDetailsForm()
+        {
+            InitializeComponent();
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            ucNotFound1.BackColor = panel1.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryII);
+            label1.ForeColor = labelActualEndDate.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
 
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            pieChart1.Dispose();
         }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
-            }
-        }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-       (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // height of ellipse
-           int nHeightEllipse // width of ellipse
-       );
-
         
         private void InitializeForm()
         {
@@ -118,5 +102,30 @@ namespace UserInterface.Home_Page.Project_Manager.Overview
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
+
+        private const int CSDropShadow = 0x00020000;
+        private Dictionary<string, int> taskCounts;
+        private int colorIndex = 0;
+        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>();
     }
 }

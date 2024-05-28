@@ -12,15 +12,19 @@ using LiveCharts.Wpf;
 using LiveCharts;
 using System.Windows.Media;
 using UserInterface.ViewPage;
+using System.Runtime.ConstrainedExecution;
 
 namespace UserInterface.Task
 {
     public partial class MilestoneSwitch : UserControl
     {
+        public event EventHandler ResetForm;
         private TransparentForm transparentForm;
         public MilestoneSwitch()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         private string milestoneName;
@@ -29,8 +33,13 @@ namespace UserInterface.Task
 
         public void InitializePage()
         {
-            colorList = ColorManager.ColorFadingOut;
-            colorIndex = 2;
+
+            if(MilestoneManager.CurrentMilestone==null)
+            {
+                return;
+            }
+            colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+            colorIndex = 0;
             if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
                 switchMilestoneButton.Text = "Deploy";
 
@@ -43,15 +52,17 @@ namespace UserInterface.Task
             {
                 total += Iter.Value;
             }
-            
+
             if (total != 0)
             {
                 pieChart1.Visible = true;
                 SeriesCollection seriesCollection = new SeriesCollection();
+                System.Windows.Media.Brush brush;
                 foreach (var Iter in result1)
                 {
-                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)) });
-                    colorIndex = (colorIndex + 2) % colorList.Count;
+                    brush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B));
+                    seriesCollection.Add(new PieSeries { Title = Iter.Key, Values = new ChartValues<double> { Iter.Value }, Fill = brush });
+                    colorIndex = (colorIndex + 1) % colorList.Count;
                 }
                 pieChart1.Series = seriesCollection;
             }
@@ -62,6 +73,25 @@ namespace UserInterface.Task
             panelBase.Invalidate();
         }
 
+        private void InitializePageColor()
+        {
+            pieChart1.BackColor = ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(BackColor);
+            switchMilestoneButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            switchMilestoneButton.ForeColor = ThemeManager.GetTextColor(switchMilestoneButton.BackColor);
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            InitializePage();
+        }
+
         private void OnMilestonePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -69,17 +99,18 @@ namespace UserInterface.Task
             Point[] points =
             {
                 new Point(20, 20),
-                new Point( 50,panelBase.Height/2),
+                new Point(50, panelBase.Height/2),
                 new Point(20,panelBase.Height-20),
                 new Point(panelBase.Width-50, panelBase.Height-20),
                 new Point(panelBase.Width-10, panelBase.Height/2),
                 new Point(panelBase.Width-50, 20)
             };
 
-            e.Graphics.FillPolygon(new SolidBrush(System.Drawing.Color.FromArgb(39, 55, 77)), points);
+            System.Drawing.Brush brush = new SolidBrush(ThemeManager.CurrentTheme.PrimaryI);
+            e.Graphics.FillPolygon(brush, points);  brush.Dispose();
             StringFormat SFormat = new StringFormat();
             SFormat.Alignment = SFormat.LineAlignment = StringAlignment.Center;
-            System.Drawing.Brush brush = new SolidBrush(System.Drawing.Color.FromArgb(221, 230, 237));
+            brush = new SolidBrush(ThemeManager.CurrentTheme.SecondaryIII);
             Font f = new Font(new System.Drawing.FontFamily("Ebrima"), 12, FontStyle.Bold);
             e.Graphics.DrawString(milestoneName, f, brush, panelBase.ClientRectangle, SFormat);
             brush.Dispose();
@@ -119,7 +150,6 @@ namespace UserInterface.Task
 
         private void OnWarningStatusSelected(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -130,15 +160,14 @@ namespace UserInterface.Task
                 MilestoneManager.SwitchToNextMilestone();
                 if (MilestoneManager.IsCurrentMilestoneIsLastMilestone())
                     switchMilestoneButton.Text = "Deploy";
-                InitializePage();
+
+                ResetForm?.Invoke(this, EventArgs.Empty);
             }
         }
 
         private void OnDeployWarningStatusSelected(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -156,20 +185,23 @@ namespace UserInterface.Task
 
         private void OnSourceCodeSubmission(object sender, VersionSourceCode e)
         {
-            (sender as DeployForm).Dispose();
             (sender as DeployForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
 
             if (e != null)
             {
+                MilestoneManager.ModifyTaskDateBasedOnMilestone(MilestoneManager.CurrentMilestone.MileStoneID);
+                MilestoneManager.CurrentMilestone.EndDate = DateTime.Now.Date;
                 MilestoneManager.UpdateMilestone(MilestoneManager.CurrentMilestone, MilestoneStatus.Completed);
                 MilestoneManager.CurrentMilestone = null;
+                VersionManager.CurrentVersion.EndDate = DateTime.Now.Date;
                 VersionManager.UpdateVersion(VersionManager.CurrentVersion, ProjectStatus.Deployment);
+                VersionManager.CurrentVersion = null;
                 DataHandler.AddVersionSourceCode(e);
                 Visible = false;
+                ResetForm?.Invoke(this, EventArgs.Empty);
             }
             //InitializePage();
         }

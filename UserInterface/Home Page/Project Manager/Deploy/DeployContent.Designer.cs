@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -51,17 +52,17 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 506);
+            this.panel1.Size = new System.Drawing.Size(30, 516);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(30, 475);
+            this.panel2.Location = new System.Drawing.Point(30, 485);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(748, 31);
+            this.panel2.Size = new System.Drawing.Size(775, 31);
             this.panel2.TabIndex = 1;
             this.panel2.Tag = "";
             // 
@@ -75,13 +76,14 @@
             this.panel3.Location = new System.Drawing.Point(30, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(748, 31);
+            this.panel3.Size = new System.Drawing.Size(775, 31);
             this.panel3.TabIndex = 2;
             this.panel3.Tag = "";
             // 
             // nextBtn
             // 
             this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
             this.nextBtn.Location = new System.Drawing.Point(148, 0);
@@ -98,6 +100,7 @@
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
             this.backBtn.Location = new System.Drawing.Point(114, 0);
@@ -129,10 +132,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(778, 0);
+            this.panel4.Location = new System.Drawing.Point(805, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(30, 506);
+            this.panel4.Size = new System.Drawing.Size(30, 516);
             this.panel4.TabIndex = 3;
             // 
             // panel5
@@ -144,23 +147,23 @@
             this.panel5.Location = new System.Drawing.Point(30, 31);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(748, 444);
+            this.panel5.Size = new System.Drawing.Size(775, 454);
             this.panel5.TabIndex = 4;
             // 
             // ucDeploy1
             // 
-            this.ucDeploy1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucDeploy1.BackColor = System.Drawing.Color.Transparent;
             this.ucDeploy1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDeploy1.Location = new System.Drawing.Point(0, 0);
             this.ucDeploy1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.ucDeploy1.Name = "ucDeploy1";
-            this.ucDeploy1.Size = new System.Drawing.Size(748, 444);
+            this.ucDeploy1.Size = new System.Drawing.Size(775, 454);
             this.ucDeploy1.TabIndex = 1;
             this.ucDeploy1.Deployment += new TeamTracker.UcDeploy.DeployHandler(this.OnDeployment);
             // 
             // ucNotFound1
             // 
-            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.ucNotFound1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(219)))), ((int)(((byte)(228)))));
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "Zero Deployment Project !!";
             this.ucNotFound1.HeadTextSize = 12;
@@ -168,7 +171,7 @@
             this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(748, 444);
+            this.ucNotFound1.Size = new System.Drawing.Size(775, 454);
             this.ucNotFound1.TabIndex = 0;
             // 
             // DeployContent
@@ -182,7 +185,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DeployContent";
-            this.Size = new System.Drawing.Size(808, 506);
+            this.Size = new System.Drawing.Size(835, 516);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();

@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Compression;
+using System.IO;
 
 namespace TeamTracker
 {
@@ -17,10 +19,48 @@ namespace TeamTracker
         public ProjectInfoForm()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeBorder();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
-        private bool backEnable = false, frontEnable = true;
+        private void InitializePageColor()
+        {
+            startDate.BorderColor = startDate.DueLabelcolor = startDate.ForeColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            endDate.BorderColor = endDate.DueLabelcolor = endDate.ForeColor = ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+            startDate.HeaderForecolor = startDate.BackColor = endDate.HeaderForecolor = endDate.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            tableLayoutPanel5.BackColor = panelAttachment.BackColor = panelSourceCode.BackColor = label3.BackColor = label8.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelTaskCount.ForeColor = labelSourceCode.ForeColor = labelAttachment.ForeColor = label2.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(BackColor);
+            labelTitle.ForeColor = profileAssignedTo.ProfileTextColor = ThemeManager.GetTextColor(panel1.BackColor);
+            label3.ForeColor = label8.ForeColor = ThemeManager.GetTextColor(label8.BackColor);
+
+            pictureBoxAttachment.Image?.Dispose();  pictureBoxClose.Image?.Dispose();   pictureBoxSoureCode.Image?.Dispose();   backBtn.Image?.Dispose();   nextBtn.Image?.Dispose();
+
+            pictureBoxSoureCode.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download: UserInterface.Properties.Resources.Heat_Download;
+            pictureBoxAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download: UserInterface.Properties.Resources.Heat_Download;
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light: UserInterface.Properties.Resources.Heat_Close_Light;
+            ResetButton();
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
+            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
+            if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
+            if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
+        }
+
+        private bool isBackEnable = false, isNextEnable = true;
         private int flag;
         private ProjectVersion selectedVersion;
         public ProjectVersion SelectedVersion
@@ -30,23 +70,6 @@ namespace TeamTracker
                 selectedVersion = value;
                 InitializeForm();
             }
-        }
-
-        public new void Dispose()
-        {
-            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
-            if (pictureBoxAttachment.Image != null) pictureBoxAttachment.Image.Dispose();
-            if (pictureBoxSoureCode.Image != null) pictureBoxSoureCode.Image.Dispose();
-            if (pictureBoxClose.Image != null) pictureBoxClose.Image.Dispose();
-
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();   panel7.Dispose();
-            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   label6.Dispose();   label7.Dispose();
-            backNavigatePicBox.Dispose();   nextNavPicBox.Dispose();    pictureBoxClose.Dispose();  pictureBoxSoureCode.Dispose();  pictureBoxAttachment.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    tableLayoutPanel5.Dispose();    tableLayoutPanel7.Dispose();
-            ucTaskDescription1.Dispose();   milestoneView1.Dispose();   startDate.Dispose();    endDate.Dispose();
-            donePanel.Dispose();    notstartedPanel.Dispose();  delayPanel.Dispose();   currentPanel.Dispose();
-            labelTaskCount.Dispose();   profileAssignedTo.Dispose();    labelTitle.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -77,47 +100,10 @@ namespace TeamTracker
             panelAttachment.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelAttachment.Width, panelAttachment.Height, 20, 20));
         }
 
-
-
-        private void OnMouseClickClose(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void OnMouseEnterClose(object sender, EventArgs e)
-        {
-
-        }
-
         private void OnMouseLeaveClose(object sender, EventArgs e)
         {
             (sender as PictureBox).Image = UserInterface.Properties.Resources.Close;
 
-        }
-
-        private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
-        {
-            //(sender as Control).BackColor
-        }
-
-        private void OnClickDownloadPicBox(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void OnPaintMilestoneBasePanel(object sender, PaintEventArgs e)
-        {
-            Point pt1 = new Point(4, 4);
-            Point pt2 = new Point((sender as Panel).Width - 6, 4);
-            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
-            Point pt4 = new Point(4, (sender as Panel).Height - 6);
-            Pen border = new Pen(Color.Black, 2);
-            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
         private void InitializeForm()
@@ -127,8 +113,14 @@ namespace TeamTracker
             ucTaskDescription1.CenterLabelText = selectedVersion.VersionDescription;
             startDate.DueDate = selectedVersion.StartDate; endDate.DueDate = selectedVersion.EndDate;
             labelTaskCount.Text = TaskManager.FetchTaskCount(selectedVersion.VersionID)[0].ToString();
+            var attachments = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
 
-            if (!(selectedVersion.StatusOfVersion == ProjectStatus.Completed))
+            if(attachments == null || attachments.Count == 0)
+            {
+                labelAttachment.Visible = pictureBoxAttachment.Visible = false;
+            }
+
+            if (!(selectedVersion.StatusOfVersion == ProjectStatus.Completed || selectedVersion.StatusOfVersion == ProjectStatus.Deployment))
             {
                 labelSourceCode.Visible = pictureBoxSoureCode.Visible = false;
             }
@@ -141,22 +133,23 @@ namespace TeamTracker
 
             milestoneView1.MilestoneCollection = MilestoneManager.FetchMilestones(selectedVersion.VersionID);
             flag = milestoneView1.ChangeMilestoneUI(true);
+
+            ResetButton();
         }
 
         private void BackMilestoneClick(object sender, EventArgs e)
         {
-            if (backEnable)
+            if (isBackEnable)
                 flag = milestoneView1.ChangeMilestoneUI(false);
 
-            if (flag < 0) backEnable = false;
-            else { backEnable = true; }
-            frontEnable = true;
+            if (flag < 0) isBackEnable = false;
+            else { isBackEnable = true; }
+            isNextEnable = true;
 
-            if (backNavigatePicBox.Image != null) backNavigatePicBox.Image.Dispose();
-            if (nextNavPicBox.Image != null) nextNavPicBox.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_LightBlue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_LightBlue;
+            ResetButton();
         }
 
         private void OnClose(object sender, EventArgs e)
@@ -170,8 +163,7 @@ namespace TeamTracker
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders(.ZIP)| *.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -179,12 +171,10 @@ namespace TeamTracker
                 savePath = saveFileDialog.FileName;
             }
 
-            string fileNetworkPath = sourceCode.VersionLocation + "\\" + sourceCode.SourceCodeName;
+            string fileNetworkPath = sourceCode.VersionLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.Combine(savePath, savePath);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
+                System.IO.File.Copy(fileNetworkPath, savePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", sourceCode.DisplayName);
             }
             catch
@@ -196,98 +186,178 @@ namespace TeamTracker
         private void AttachmentDownload(object sender, EventArgs e)
         {
             List<VersionAttachment> attachments = DataHandler.FetchAttachmentsByVersionID(selectedVersion.VersionID);
-
-            string savePath = "";
+            string zipFilePath = "", fileNetworkPath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders(.ZIP)| *.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                savePath = saveFileDialog.FileName;
+                zipFilePath = saveFileDialog.FileName;
             }
-
-            for (int ctr = 0; ctr < attachments.Count; ctr++)
+            try
             {
-                string fileNetworkPath = attachments[ctr].AttachmentLocation;
-                try
+                using (var zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
                 {
-                    string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                    string filePath = System.IO.Path.GetDirectoryName(savePath);
-                    filePath = System.IO.Path.Combine(filePath, attachments[ctr].DisplayName);
-                    System.IO.File.Copy(fileNetworkPath, filePath, true);
-                    ProjectManagerMainForm.notify.AddNotification("Download Completed", attachments[ctr].DisplayName);
+                    foreach (var fileToZip in attachments)
+                    {
+                        fileNetworkPath = fileToZip.AttachmentLocation;
+                        if (File.Exists(fileNetworkPath))
+                        {
+                            zipArchive.CreateEntryFromFile(fileNetworkPath, Path.GetFileName(fileToZip.DisplayName));
+                        }
+                        else
+                        {
+                            ProjectManagerMainForm.notify.AddNotification("File not found", fileNetworkPath);
+                        }
+                    }
                 }
-                catch
-                {
-                    ProjectManagerMainForm.notify.AddNotification("Download Failed", attachments[ctr].DisplayName);
-                }
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", Path.GetFileName(zipFilePath));
             }
+            catch
+            {
+                ProjectManagerMainForm.notify.AddNotification("File Already in Use for Application", Path.GetFileName(zipFilePath));
+            }
+            
         }
 
         private void OnLegendPaint(object sender, PaintEventArgs e)
         {
-            Brush brush;
-
-            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(Color.FromArgb(3, 4, 94));
-            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(Color.FromArgb(0, 119, 182));
-            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(Color.FromArgb(0, 180, 216));
-            else brush = new SolidBrush(Color.FromArgb(144, 224, 239));
+            System.Drawing.Brush brush;
+            if ((sender as Panel).Name == "donePanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Completed]);
+            else if ((sender as Panel).Name == "delayPanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Delay]);
+            else if ((sender as Panel).Name == "currentPanel") brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.OnProcess]);
+            else brush = new SolidBrush(ThemeManager.CurrentTheme.MilestoneStatusColorCollection[MilestoneStatus.Upcoming]);
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width, (sender as Panel).Height));
+            e.Graphics.FillEllipse(brush, new Rectangle(0, 0, (sender as Panel).Width - 2, (sender as Panel).Height - 2));
             brush.Dispose();
         }
 
         private void OnDownloadMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null)
-                (sender as PictureBox).Dispose();
+            (sender as PictureBox).Image?.Dispose();
 
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Light_Blue_Hover;
+            (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void OnDownloadMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null)
-                (sender as PictureBox).Dispose();
+            (sender as PictureBox).Image?.Dispose();
 
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.Download_Dark_Blue;
+            (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnDownloadEdgePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(40, 50, 80));
-            e.Graphics.DrawRectangle(border, 0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            e.Graphics.DrawLine(border, 128, 0, 128, (sender as Control).Height);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 10));
             border.Dispose();
         }
 
         private void OnMilestoneNavMouseEnter(object sender, EventArgs e)
         {
-
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
         }
 
         private void OnMilestoneNavMouseLeave(object sender, EventArgs e)
         {
-
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
+            }
         }
 
         private void NextMilestoneClick(object sender, EventArgs e)
         {
-            if (frontEnable)
+            if (isNextEnable)
                 flag = milestoneView1.ChangeMilestoneUI(true);
 
-            if (flag > 0) frontEnable = false;
-            else { frontEnable = true; }
-            backEnable = true;
+            if (flag > 0) isNextEnable = false;
+            else { isNextEnable = true; }
+            isBackEnable = true;
 
-            backNavigatePicBox.Image = backEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_LightBlue;
-            nextNavPicBox.Image = frontEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_LightBlue;
+            ResetButton();
         }
 
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Light;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Light;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
+        }
 
+        private const int CSDropShadow = 0x00020000;
+
+        private void OnCloseMouseEnter(object sender, EventArgs e)
+        {
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnCloseMouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxClose.Image?.Dispose();
+            pictureBoxClose.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
     }
 }

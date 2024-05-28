@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using TeamTracker;
 
 namespace UserInterface
 {
@@ -22,15 +23,27 @@ namespace UserInterface
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
-        public new void Dispose()
+        public void InitializePageColor()
         {
-            pictureBox1.Image.Dispose();
-            pictureBox1.Dispose();
-            labelHead.Dispose();
-            labelMessage.Dispose();
-            tableLayoutPanel1.Dispose();
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelHead.ForeColor = labelMessage.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Empty : Properties.Resources.Heat_Empty;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();
         }
 
         public string HeadText

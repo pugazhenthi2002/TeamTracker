@@ -19,6 +19,7 @@ namespace UserInterface.Task
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             this.Location = new Point(700, 300);
         }
 
@@ -37,16 +38,10 @@ namespace UserInterface.Task
             int nHeightEllipse // width of ellipse
         );
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (pictureBoxUpload.Image != null) pictureBoxUpload.Image.Dispose();
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-
-            pictureBoxUpload.Dispose(); pictureBox1.Dispose();
-            clearButton.Dispose();  submitCodeButton.Dispose();
-            label1.Dispose();   label3.Dispose();
-            panel1.Dispose(); panel4.Dispose(); panel5.Dispose();
-            tableLayoutPanel2.Dispose();
         }
 
         protected override void OnResize(EventArgs e)
@@ -58,6 +53,22 @@ namespace UserInterface.Task
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            clearButton.BackColor = submitCodeButton.BackColor = panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            clearButton.ForeColor = submitCodeButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            label3.ForeColor = ThemeManager.GetTextColor(BackColor);
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
+            pictureBoxUpload.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Upload : Properties.Resources.Heat_Upload;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         private void OnClickClear(object sender, EventArgs e)
@@ -89,8 +100,8 @@ namespace UserInterface.Task
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.Title = "Source Code Name";
-            openFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf";
+            openFileDialog1.Title = "Version Source Code Name";
+            openFileDialog1.Filter = "ZIP Folders (.ZIP)|*.zip";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -99,7 +110,7 @@ namespace UserInterface.Task
                 SelectedVersionSourceCode = new VersionSourceCode()
                 {
                     VersionID = VersionManager.CurrentVersion.VersionID,
-                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".pdf",
+                    SourceCodeName = "" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".zip",
                     VersionLocation = selectedFilePath,
                     DisplayName = safeFile
                 };
@@ -115,6 +126,16 @@ namespace UserInterface.Task
             }
             
             return true;
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light_Hover : Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Light : Properties.Resources.Heat_Close_Light;
         }
     }
 }

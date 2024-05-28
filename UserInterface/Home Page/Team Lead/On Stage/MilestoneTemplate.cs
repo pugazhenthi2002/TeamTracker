@@ -14,17 +14,12 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 {
     public partial class MilestoneTemplate : UserControl
     {
-
         public delegate void MilestoneHandler(object sender, MilestoneEventArgs m);
         public delegate bool ContraintsHandler(object sender, MilestoneEventArgs m);
         public event MilestoneHandler MilestoneOperate;
         public event EventHandler FocusChanged;
         public event ContraintsHandler CheckConstraints;
 
-        public string placeHolderText;
-
-        private bool? isEligibleContraints;
-        private bool isFocused;
         public bool IsFocused
         {
             get
@@ -35,14 +30,13 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             set
             {
                 isFocused = value;
-                Invalidate();
+                tableLayoutPanel1.BackColor = value ? ThemeManager.CurrentTheme.SecondaryI : ThemeManager.CurrentTheme.SecondaryII;
             }
         }
 
         public bool IsDownSwapEnable { get; set; }
         public bool IsUpSwapEnable { get; set; }
 
-        public int counter;
         public int Counter
         {
             get
@@ -56,7 +50,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             }
         }
 
-        public Milestone milestone;
         public Milestone SelectedMilestone
         {
             get
@@ -66,9 +59,12 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
 
             set
             {
-                milestone = value;
-                placeHolderText = value.MileStoneName;
-                InitializeControl();
+                if (value != null)
+                {
+                    milestone = value;
+                    placeHolderText = value.MileStoneName;
+                    InitializeControl();
+                }
             }
         }
 
@@ -77,22 +73,18 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             tableLayoutPanel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel1.Width, tableLayoutPanel1.Height, 10, 10));
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
         public MilestoneTemplate()
         {
             InitializeComponent();
             InitializeRoundedEdge();
             SubscribeEvents();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public new void Dispose()
@@ -101,11 +93,22 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            closeButton.Dispose();  upButton.Dispose(); downButton.Dispose();
-            panel1.Dispose();   panel2.Dispose();   counterLabel.Dispose();
+            closeButton.Dispose(); upButton.Dispose(); downButton.Dispose();
+            panel1.Dispose(); panel2.Dispose(); counterLabel.Dispose();
             tableLayoutPanel1.Dispose();
             milestoneDate.Dispose();
             milestoneName.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            milestoneName.BackColor = milestoneDate.SkinColor = ThemeManager.CurrentTheme.SecondaryIII;
+            milestoneName.ForeColor = milestoneDate.BorderColor = milestoneDate.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            upButton.Image?.Dispose();  downButton.Image?.Dispose();    closeButton.Image?.Dispose();
+
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
+            ResetButton();
         }
 
         private void SubscribeEvents()
@@ -144,13 +147,12 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             if (upButton.Image != null) upButton.Image.Dispose();
             if (downButton.Image != null) downButton.Image.Dispose();
 
-            upButton.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Dark_Blue;
-            downButton.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Dark_Blue;
+            ResetButton();
         }
 
         private void OnValueChanged(object sender, EventArgs e)
         {
-            if (isEligibleContraints!=null && isEligibleContraints==true)
+            if (isEligibleContraints != null && isEligibleContraints == true)
             {
                 MilestoneOperate?.Invoke(this, new MilestoneEventArgs()
                 {
@@ -234,14 +236,16 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
                     Movement = MilestoneOperation.Steady
                 });
                 placeHolderText = milestoneName.Text;
+                Focus();
+                e.SuppressKeyPress = true;
             }
         }
 
         private void CheckDuplication(object sender, KeyEventArgs e)
         {
-            if(e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter)
             {
-                isEligibleContraints =  CheckConstraints?.Invoke(this, new MilestoneEventArgs()
+                isEligibleContraints = CheckConstraints?.Invoke(this, new MilestoneEventArgs()
                 {
                     MilestoneDate = milestoneDate.Value.Date,
                     MilestoneName = milestoneName.Text,
@@ -249,18 +253,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
                     Position = Convert.ToInt32(counterLabel.Text)
                 });
 
-            }
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            if (isFocused)
-            {
-                Pen border = new Pen(Color.Red, 2);
-                e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, Width - 1, Height - 1), 5));
-                border.Dispose();
             }
         }
 
@@ -278,9 +270,9 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawRectangle(border, new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1));
-            border.Dispose(); 
+            border.Dispose();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -288,14 +280,13 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
             if (picBox.Name == "upButton")
             {
-                picBox.Image = Properties.Resources.Up_Dark_Blue_Hover;
+                picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                picBox.Image = Properties.Resources.Down_Dark_Blue_Hover;
+                picBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
@@ -304,29 +295,73 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Default;
             if (picBox.Name == "upButton")
             {
-                picBox.Image = IsUpSwapEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Dark_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upButton.Image = IsUpSwapEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                }
+                else
+                {
+                    upButton.Image = IsUpSwapEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                }
             }
             else
             {
-                picBox.Image = IsDownSwapEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Dark_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downButton.Image = IsDownSwapEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+                }
+                else
+                {
+                    downButton.Image = IsDownSwapEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+                }
             }
         }
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
         {
-            if(closeButton.Image != null)   closeButton.Image.Dispose();
+            if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = Properties.Resources.Close_Light_Blue_Hover;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark_Hover : Properties.Resources.Heat_Close_Dark_Hover;
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = Properties.Resources.Close_30;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Close_Dark : Properties.Resources.Heat_Close_Dark;
         }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upButton.Image = IsUpSwapEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                downButton.Image = IsDownSwapEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+            }
+            else
+            {
+                upButton.Image = IsUpSwapEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                downButton.Image = IsDownSwapEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+            }
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        public Milestone milestone;
+        public string placeHolderText;
+        public int counter;
+        private bool? isEligibleContraints;
+        private bool isFocused;
     }
 }

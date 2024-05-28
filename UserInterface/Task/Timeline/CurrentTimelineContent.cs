@@ -29,7 +29,9 @@ namespace UserInterface.Task.Timeline
         {
             InitializeComponent();
             InitializeLabels();
+            InitializePageColor();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, timelineControlPanel, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public ProjectVersion Version
@@ -46,6 +48,7 @@ namespace UserInterface.Task.Timeline
                     endViewDate = startViewDate.AddDays(20);
                     taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
                     InitializeTimeline();
+                    InitializeLabels();
                     SetViewTaskCollection();
                 }
             }
@@ -53,11 +56,39 @@ namespace UserInterface.Task.Timeline
 
         public List<Milestone> MilestoneCollection { get; internal set; }
 
+        private void InitializePageColor()
+        {
+            for (int ctr = 0; ctr < 20; ctr++)
+            {
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+            timelineControlPanel.BackColor = backBtn.BackColor = nextBtn.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            backBtn.Image?.Dispose();   nextBtn.Image?.Dispose();
+
+            ResetButton();
+
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            if(version != null)
+            {
+                SetViewTaskCollection();
+            }
+        }
+
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
             int width, x, y, stepWidth;
             width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryI, 2);
             border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             while (x < width)
             {
@@ -96,17 +127,17 @@ namespace UserInterface.Task.Timeline
             for (int ctr = 0; ctr < labelCollections.Count; ctr++)
             {
                 labelCollections[ctr].BackColor = GetColorForLabel(iterDate);
+                labelCollections[ctr].ForeColor = ThemeManager.GetTextColor(labelCollections[ctr].BackColor);
                 labelCollections[ctr].Text = monthCollections[iterDate.Month - 1] + "\n" + iterDate.Day;
                 iterDate = iterDate.AddDays(1);
             }
 
             isNextEnable = iterDate > version.EndDate ? false : true;
 
-            if (backPictureBox.Image != null) { backPictureBox.Image.Dispose(); }
-            if (nextPictureBox.Image != null) { nextPictureBox.Image.Dispose(); }
+            if (backBtn.Image != null) { backBtn.Image.Dispose(); }
+            if (nextBtn.Image != null) { nextBtn.Image.Dispose(); }
 
-            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+            ResetButton();
         }
 
         private Color GetColorForLabel(DateTime iterDate)
@@ -116,12 +147,13 @@ namespace UserInterface.Task.Timeline
             {
                 if(Iter.StartDate<=iterDate && iterDate <= Iter.EndDate)
                 {
-                    return ColorManager.MilestoneColorFadingOut[ctr];
+                    return ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[ctr];
+                    //return ColorManager.MilestoneColorFadingOut[ctr];
                 }
                 ctr++;
             }
 
-            return ColorManager.MilestoneColorFadingOut[0];
+            return ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[0];
         }
 
         private void InitializeLabels()
@@ -144,7 +176,11 @@ namespace UserInterface.Task.Timeline
                 {
                     if ((edgedTask != null && (timelineControlPanel.Controls[idx] as TimelineTask).SelectedTask.TaskID != edgedTask.TaskID) || edgedTask == null)
                     {
-                        timelineControlPanel.Controls.Remove(timelineControlPanel.Controls[idx] as TimelineTask);
+                        (timelineControlPanel.Controls[idx] as TimelineTask).TimeLineMovement -= OnTimeLineMovement;
+                        (timelineControlPanel.Controls[idx] as TimelineTask).TaskTimelineCheck -= OnTimelineDateChecked;
+                        (timelineControlPanel.Controls[idx] as TimelineTask).TaskDateChange -= OnTaskDateChanged;
+                        (timelineControlPanel.Controls[idx] as TimelineTask).Reset -= OnReset;
+                        (timelineControlPanel.Controls[idx] as TimelineTask).Dispose();
                         idx--;
                     }
                 }
@@ -203,7 +239,7 @@ namespace UserInterface.Task.Timeline
                         Height = height,
                         Width = controlWidth,
                         SelectedTask = Iter,
-                        StatusColor = ColorManager.FetchTaskStatusColor(Iter.StatusOfTask),
+                        StatusColor = ThemeManager.GetTaskStatusColor(Iter.StatusOfTask),
                         StepWidth = tableLayoutPanel1.Width / 20,
                         DisplayMode = SetDisplayMode(Iter.StartDate, Iter.EndDate)
                     };
@@ -273,29 +309,57 @@ namespace UserInterface.Task.Timeline
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = Color.FromArgb(201, 210, 217);
-            if((sender as Control).Name == "nextPictureBox")
+            (sender as PictureBox).BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                nextPictureBox.Image = Properties.Resources.Right_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                backPictureBox.Image = Properties.Resources.Left_Dark_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-            (sender as PictureBox).BackColor = Color.FromArgb(221, 230, 237);
-            if ((sender as Control).Name == "nextPictureBox")
+            (sender as PictureBox).BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Dark_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Dark_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -445,6 +509,33 @@ namespace UserInterface.Task.Timeline
         {
             base.OnLoad(e);
             //SetViewTaskCollection();
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
+        private void TimelineControlClear()
+        {
+            for (int ctr = 0; ctr < timelineControlPanel.Controls.Count; ctr++)
+            {
+                (timelineControlPanel.Controls[ctr] as TimelineTask).TimeLineMovement -= OnTimeLineMovement;
+                (timelineControlPanel.Controls[ctr] as TimelineTask).TaskTimelineCheck -= OnTimelineDateChecked;
+                (timelineControlPanel.Controls[ctr] as TimelineTask).TaskDateChange -= OnTaskDateChanged;
+                (timelineControlPanel.Controls[ctr] as TimelineTask).Reset -= OnReset;
+                (timelineControlPanel.Controls[ctr] as TimelineTask).Dispose();
+                ctr--;
+            }
         }
 
         int cnt = 0;

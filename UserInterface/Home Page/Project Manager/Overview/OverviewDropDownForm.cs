@@ -13,34 +13,31 @@ namespace TeamTracker
 {
     public partial class OverviewDropDownForm : Form
     {
-        private const int CSDropShadow = 0x00020000;
-        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
+        public delegate void OverviewHandler(string name, ProjectVersion version);
+        public event OverviewHandler OverviewSelected;
 
         public OverviewDropDownForm()
         {
             InitializeComponent();
         }
 
-
-        public delegate void OverviewHandler(string name, ProjectVersion version);
-        public event OverviewHandler OverviewSelected;
-
-
-        protected override CreateParams CreateParams
+        public void UnSubscribeEventsAndRemoveMemory()
         {
-            get
+             for(int ctr=0; ctr< Controls.Count; ctr++)
             {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
+                (Controls[ctr] as Label).MouseEnter -= OnLabelMouseEnter;
+                (Controls[ctr] as Label).MouseLeave -= OnLabelMouseLeave;
+                (Controls[ctr] as Label).Click -= OnOverviewClick;
+                (Controls[ctr] as Label).Dispose();
+                ctr--;
             }
         }
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             int drawHeight = 50;
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
 
             while (drawHeight < Height)
             {
@@ -53,6 +50,7 @@ namespace TeamTracker
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
+            Dispose();
             this.Close();
         }
 
@@ -63,16 +61,7 @@ namespace TeamTracker
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-       (
-           int nLeftRect,     // x-coordinate of upper-left corner
-           int nTopRect,      // y-coordinate of upper-left corner
-           int nRightRect,    // x-coordinate of lower-right corner
-           int nBottomRect,   // y-coordinate of lower-right corner
-           int nWidthEllipse, // height of ellipse
-           int nHeightEllipse // width of ellipse
-       );
+        
 
         private void InitializeDropDownForm()
         {
@@ -98,7 +87,7 @@ namespace TeamTracker
                     Name = Iter.Key,
                     Text = Iter.Key + "\n" + Iter.Value.VersionName,
                     Font = new Font(new FontFamily("Ebrima"), 10, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(39, 55, 77),
+                    ForeColor = ThemeManager.CurrentTheme.SecondaryIII,
                     BackColor = Color.Transparent
                 };
                 label.MouseEnter += OnLabelMouseEnter;
@@ -110,13 +99,13 @@ namespace TeamTracker
 
         private void OnLabelMouseLeave(object sender, EventArgs e)
         {
-            (sender as Label).ForeColor = Color.FromArgb(39, 55, 77);
+            (sender as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
             this.Invalidate();
         }
 
         private void OnLabelMouseEnter(object sender, EventArgs e)
         {
-            (sender as Label).ForeColor = Color.FromArgb(82, 109, 130);
+            (sender as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryII;
             this.Invalidate();
         }
 
@@ -133,6 +122,28 @@ namespace TeamTracker
             }
         }
 
-        
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // height of ellipse
+           int nHeightEllipse // width of ellipse
+       );
+
+        private const int CSDropShadow = 0x00020000;
+        public Dictionary<string, ProjectVersion> CurrentVersionCollection;
     }
 }

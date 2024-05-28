@@ -26,14 +26,38 @@ namespace TeamTracker
         private DateTime startViewDate, endViewDate, iterDate;
         private ProjectVersion version;
         private TaskTimelineTemplate taskTimeline;
-
+        private Employee filteredEmployee;
 
         public TimelinePaginate()
         {
             InitializeComponent();
             InitializeLabels();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
+        private void InitializePageColor()
+        {
+            for (int ctr = 0; ctr < 20; ctr++)
+            {
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                (tableLayoutPanel1.GetControlFromPosition(ctr, 0) as Label).ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+            ucNotFound1.BackColor = backBtn.BackColor = nextBtn.BackColor =  BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            backBtn.Image?.Dispose(); nextBtn.Image?.Dispose();
+
+            ResetButton();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
 
         public List<Color> Colors
         {
@@ -48,35 +72,55 @@ namespace TeamTracker
             set
             {
                 version = value;
-                iterDate = startViewDate = value.StartDate;
-                dateDifference = value.EndDate - value.StartDate;
-                isBackEnable = false;
-                isNextEnable = true;
-                endViewDate = startViewDate.AddDays(20);
-                taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
-                if(taskCollection!=null && taskCollection.Count > 0)
+                if (version != null)
                 {
-                    ucNotFound1.Visible = false;
-                    panel1.Visible = true;
-                    milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
-                    InitializeTimeline();
-                    SetViewTaskCollection();
-                }
-                else
-                {
-                    panel1.Visible = false;
-                    ucNotFound1.Visible = true;
+                    iterDate = startViewDate = value.StartDate;
+                    dateDifference = value.EndDate - value.StartDate;
+                    isBackEnable = false;
+                    isNextEnable = true;
+                    endViewDate = startViewDate.AddDays(20);
+                    if (filteredEmployee == null) taskCollection = TaskManager.FetchTasksByVersionID(version.VersionID);
+                    else
+                    {
+                        taskCollection = TaskManager.FetchTaskByEmployee(filteredEmployee, version.VersionID);
+                    }
+                    if (taskCollection != null && taskCollection.Count > 0)
+                    {
+                        ucNotFound1.Visible = false;
+                        panel1.Visible = true;
+                        milestoneCollection = MilestoneManager.FetchMilestones(value.VersionID);
+                        InitializeTimeline();
+                        SetViewTaskCollection();
+                    }
+                    else
+                    {
+                        panel1.Visible = false;
+                        ucNotFound1.Visible = true;
+                    }
                 }
             }
         }
 
-        
+
+        public Employee FilteredEmployee
+        {
+            get
+            {
+                return filteredEmployee;
+            }
+            set
+            {
+                filteredEmployee = value;
+
+            }
+        }
+
 
         private void TimelineControlPaint(object sender, PaintEventArgs e)
         {
             int width, x, y, stepWidth;
             width = tableLayoutPanel1.Width; x = 0; stepWidth = tableLayoutPanel1.Width / 20; y = timelineControlPanel.Height;
-            Pen border = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryI, 2);
             border.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             while (x < width)
             {
@@ -120,11 +164,10 @@ namespace TeamTracker
 
             isNextEnable = iterDate > version.EndDate ? false : true;
 
-            if (backPictureBox.Image != null) { backPictureBox.Image.Dispose(); }
-            if (nextPictureBox.Image != null) { nextPictureBox.Image.Dispose(); }
+            if (backBtn.Image != null) { backBtn.Image.Dispose(); }
+            if (nextBtn.Image != null) { nextBtn.Image.Dispose(); }
 
-            backPictureBox.Image = isBackEnable ? UserInterface.Properties.Resources.Back : UserInterface.Properties.Resources.Back_Hover;
-            nextPictureBox.Image = isNextEnable ? UserInterface.Properties.Resources.Next : UserInterface.Properties.Resources.Next_Hover;
+            ResetButton();
         }
 
         private void InitializeLabels()
@@ -140,8 +183,7 @@ namespace TeamTracker
 
         private void SetViewTaskCollection()
         {
-            if(timelineControlPanel.Controls != null)
-                timelineControlPanel.Controls.Clear();
+            TimelineControlClear();
 
             viewTaskCollection = new List<Task>();
             viewColorCollections = new List<Color>();
@@ -203,6 +245,62 @@ namespace TeamTracker
             }
         }
 
+        private void OnPaginateMouseEnter(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
+            }
+        }
+
+        private void OnPaginateMouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
+            }
+            else
+            {
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
+            }
+        }
+
         private int GetTimelinePosition(DateTime date, int width)
         {
             dateDifference = date - startViewDate;
@@ -246,7 +344,30 @@ namespace TeamTracker
                 ctr++;
             }
 
-            return Color.White;
+            return ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
+        private void TimelineControlClear()
+        {
+            for(int ctr=0; ctr < timelineControlPanel.Controls.Count; ctr++)
+            {
+                (timelineControlPanel.Controls[ctr] as TaskTimelineTemplate).Dispose();
+                ctr--;
+            }
         }
     }
 }

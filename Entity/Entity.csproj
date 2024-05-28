@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ECA6A2DE-B061-4A22-85AA-FD0E5BDB14E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Entity</RootNamespace>
+    <AssemblyName>Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data Structure\Edit.cs" />
+    <Compile Include="Data Structure\Employee.cs" />
+    <Compile Include="Data Structure\Issue.cs" />
+    <Compile Include="Data Structure\IssueAttachment.cs" />
+    <Compile Include="Data Structure\IssueSolution.cs" />
+    <Compile Include="Data Structure\IssueSolutionAttachment.cs" />
+    <Compile Include="Data Structure\ManagingEmployee.cs" />
+    <Compile Include="Data Structure\Milestone.cs" />
+    <Compile Include="Data Structure\Notification.cs" />
+    <Compile Include="Data Structure\Projects.cs" />
+    <Compile Include="Data Structure\ProjectVersion.cs" />
+    <Compile Include="Data Structure\SourceCode.cs" />
+    <Compile Include="Data Structure\Task.cs" />
+    <Compile Include="Data Structure\TaskAttachment.cs" />
+    <Compile Include="Data Structure\VersionAttachment.cs" />
+    <Compile Include="Data Structure\VersionSourceCode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database DLL\DatabaseLibrary.dll" />
+    <Content Include="Database DLL\GoLibrary.dll" />
+    <Content Include="Database DLL\MySql.Data.dll" />
+    <Content Include="Database DLL\MySqlBackup.dll" />
+    <Content Include="Database DLL\MySQLDatabase.dll" />
+    <Content Include="Database DLL\System.Data.SQLite.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

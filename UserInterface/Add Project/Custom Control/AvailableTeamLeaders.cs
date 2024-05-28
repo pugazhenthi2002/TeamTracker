@@ -12,28 +12,8 @@ namespace TeamTracker
 {
     public partial class AvailableTeamLeaders : UserControl, IDisposable
     {
-
         public delegate void EmployeeHandler(Employee employee);
         public event EmployeeHandler TeamLeaderClick;
-        private List<Employee> teamLeaders;
-
-        public AvailableTeamLeaders()
-        {
-            InitializeComponent();
-        }
-
-        public new void Dispose()
-        {
-            if (profilePanel.Controls != null)
-            {
-                for(int ctr=0; ctr<profilePanel.Controls.Count; ctr++)
-                {
-                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
-                    profilePanel.Controls.Remove(profilePanel.Controls[ctr]);
-                    ctr--;
-                }
-            }
-        }
 
         public List<Employee> TeamLeaders
         {
@@ -49,6 +29,46 @@ namespace TeamTracker
                 {
                     InitializeProfiles();
                 }
+            }
+        }
+        public AvailableTeamLeaders()
+        {
+            InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        public void InitializePageColor()
+        {
+            label1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            if (profilePanel.Controls != null)
+            {
+                for(int ctr=0; ctr<profilePanel.Controls.Count; ctr++)
+                {
+                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
+                    (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
+                    ctr--;
+                }
+            }
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        public void ClearAllEmployees()
+        {
+            for (int ctr = 0; ctr < profilePanel.Controls.Count; ctr++)
+            {
+                (profilePanel.Controls[ctr] as TeamLeaderPicAndName).TeamLeaderClick -= OnTeamLeaderClicked;
+                (profilePanel.Controls[ctr] as TeamLeaderPicAndName).Dispose();
+                ctr--;
             }
         }
 
@@ -75,9 +95,11 @@ namespace TeamTracker
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0,label1.Height), new Point(Width, label1.Height));
             border.Dispose();
         }
+
+        private List<Employee> teamLeaders;
     }
 }

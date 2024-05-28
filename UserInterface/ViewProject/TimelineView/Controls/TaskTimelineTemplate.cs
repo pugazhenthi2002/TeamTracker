@@ -49,6 +49,7 @@ namespace TeamTracker
 
             set
             {
+                BackColor = ThemeManager.CurrentTheme.SecondaryIII;
                 timelineTask = value;
                 taskLabel.Text = value.TaskName;
             }
@@ -67,7 +68,6 @@ namespace TeamTracker
 
         private void OnInforFormClosed(object sender, EventArgs e)
         {
-            (sender as TaskInfoForm).Dispose();
             (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)

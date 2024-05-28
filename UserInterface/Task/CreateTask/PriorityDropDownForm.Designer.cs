@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -56,7 +57,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(172, 200);
             this.tableLayoutPanel1.TabIndex = 2;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // label3
             // 
@@ -73,6 +73,8 @@
             this.label3.Text = "Easy";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.label3.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label3.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label2
             // 
@@ -89,6 +91,8 @@
             this.label2.Text = "Medium";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.label2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // label1
             // 
@@ -105,6 +109,8 @@
             this.label1.Text = "Hard";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.label1.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // BtnCritical
             // 
@@ -121,11 +127,14 @@
             this.BtnCritical.Text = "Critical";
             this.BtnCritical.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BtnCritical.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnClickPriorityBtn);
+            this.BtnCritical.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.BtnCritical.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // PriorityDropDownForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(220)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(172, 200);
             this.Controls.Add(this.tableLayoutPanel1);

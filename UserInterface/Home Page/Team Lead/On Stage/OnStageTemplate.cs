@@ -14,11 +14,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
     public partial class OnStageTemplate : UserControl
     {
         public event EventHandler ResetHomePage;
-        public OnStageTemplate()
-        {
-            InitializeComponent();
-        }
-
         public ProjectVersion SelectedVersion
         {
             set
@@ -37,7 +32,6 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
             }
         }
 
-        private Color borderColor = Color.Blue;
         public Color BorderColor
         {
             get { return borderColor; }
@@ -46,6 +40,31 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
                 borderColor = value;
                 this.Invalidate();
             }
+        }
+        public OnStageTemplate()
+        {
+            InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+
+        public new void Dispose()
+        {
+            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();
+            label1.Dispose();   ucNotFound1.Dispose();  ucOnStage1.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            label1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+            ucNotFound1.BackColor = ucOnStage1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -64,5 +83,7 @@ namespace UserInterface.Home_Page.Team_Lead.On_Stage
         {
             ResetHomePage?.Invoke(this, EventArgs.Empty);
         }
+
+        private Color borderColor = Color.Blue;
     }
 }

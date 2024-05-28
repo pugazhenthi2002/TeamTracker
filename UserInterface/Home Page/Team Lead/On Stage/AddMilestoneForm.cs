@@ -16,16 +16,7 @@ namespace TeamTracker
 {
     public partial class AddMilestoneForm : Form
     {
-        private bool isUpEnable, isDownEnable;
-        private int startIdx, endIdx, focusIdx=0;
-
-        private MilestoneTemplate Template;
-        private List<MilestoneTemplate> TemplateCollection;
-        public List<Milestone> milestoneCollection;
-        private DateTime prevEndDate, startDate, endDate;
         public event EventHandler<List<Milestone>> MilestoneExtract;
-
-        private ProjectVersion selectedVersion;
         public ProjectVersion SelectedVersion
         {
             set
@@ -71,16 +62,26 @@ namespace TeamTracker
         public AddMilestoneForm()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
             TemplateCollection = new List<MilestoneTemplate>();
             milestoneCollection = new List<Milestone>();
         }
 
-        public new void Dispose()
+        private void OnThemeChanged(object sender, EventArgs e)
         {
-            for(int ctr=0; ctr < basePanel.Controls.Count; ctr++)
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            for (int ctr=0; ctr < basePanel.Controls.Count; ctr++)
             {
+                (basePanel.Controls[ctr] as MilestoneTemplate).FocusChanged -= OnFocusChanged;
+                (basePanel.Controls[ctr] as MilestoneTemplate).MilestoneOperate -= OnMilestoneOperation;
+                (basePanel.Controls[ctr] as MilestoneTemplate).CheckConstraints -= OnCheckContraints;
                 (basePanel.Controls[ctr] as MilestoneTemplate).Dispose();
-                basePanel.Controls.RemoveAt(ctr);
                 ctr--;
             }
 
@@ -89,12 +90,25 @@ namespace TeamTracker
             if (closeButton.Image != null) closeButton.Image.Dispose();
             if (pictureBox2.Image != null) pictureBox2.Image.Dispose();
             if (pictureBox3.Image != null) pictureBox3.Image.Dispose();
+        }
 
-            pictureBox2.Dispose();  pictureBox3.Dispose();  closeButton.Dispose();  downPicBox.Dispose();   upPicBox.Dispose();
-            label1.Dispose();   label2.Dispose();   label3.Dispose();   label4.Dispose();   label5.Dispose();   startDateLabel.Dispose();   endDateLabel.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   basePanel.Dispose();
-            milestoneDateTime.Dispose();    milestoneTextBox.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel2.Dispose();    tableLayoutPanel3.Dispose();    tableLayoutPanel4.Dispose();    
+        private void InitializePageColor()
+        {
+            milestoneTextBox.ForeColor = panel2.BackColor = milestoneDateTime.BorderColor = milestoneDateTime.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(panel2.BackColor);
+            BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label4.ForeColor = label5.ForeColor = startDateLabel.ForeColor = endDateLabel.ForeColor = ThemeManager.GetTextColor(BackColor);
+            tableLayoutPanel2.BackColor = tableLayoutPanel3.BackColor = pictureBox2.BackColor = pictureBox3.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label2.ForeColor = label3.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel3.BackColor);
+            milestoneTextBox.BackColor = milestoneDateTime.SkinColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
+
+            pictureBox2.Image?.Dispose();   pictureBox3.Image?.Dispose();   upPicBox.Image?.Dispose();  downPicBox.Image?.Dispose();    closeButton.Image?.Dispose();
+
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Delete_Dark : UserInterface.Properties.Resources.Heat_Delete_Dark;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Plus_Dark : UserInterface.Properties.Resources.Heat_Plus_Dark;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+
+            ResetButton();
         }
 
         private void addMilestoneButton_Click(object sender, EventArgs e)
@@ -111,6 +125,7 @@ namespace TeamTracker
                     EndDate = milestoneDateTime.Value.Date,
                     Status = MilestoneStatus.Upcoming,
                     VersionID = selectedVersion.VersionID,
+                    IsDelayed = false
                 });
                 prevEndDate = milestoneDateTime.Value;
                 milestoneTextBox.Text = "";
@@ -188,22 +203,6 @@ namespace TeamTracker
                 startIdx--;
                 endIdx--;
                 InitializeControl();
-            }
-        }
-
-        private MilestoneStatus SetMilestoneStatus(DateTime startDate, DateTime endDate)
-        {
-            if(endDate < DateTime.Now)
-            {
-                return MilestoneStatus.Completed;
-            }
-            else if(startDate <= DateTime.Now && DateTime.Now <= endDate)
-            {
-                return MilestoneStatus.OnProcess;
-            }
-            else
-            {
-                return MilestoneStatus.Upcoming;
             }
         }
 
@@ -295,7 +294,7 @@ namespace TeamTracker
 
             for(int ctr=0; ctr< milestoneCollection.Count; ctr++)
             {
-                if(prevDate >= milestoneCollection[ctr].EndDate)
+                if(prevDate >= milestoneCollection[ctr].EndDate || !(startDate <= milestoneCollection[ctr].EndDate && milestoneCollection[ctr].EndDate <= endDate))
                 {
                     return "Milestone Date is not in Proper Order";
                 }
@@ -308,7 +307,7 @@ namespace TeamTracker
         private void OnLineSeperatePaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             //e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height/2), new Point((sender as Control).Width, (sender as Control).Height/2));
             e.Graphics.DrawLine(border, new Point((sender as Control).Width / 2, 0), new Point((sender as Control).Width / 2, (sender as Control).Height));
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 2), new Point((sender as Control).Width, (sender as Control).Height - 2));
@@ -411,7 +410,7 @@ namespace TeamTracker
                             break;
                         }
                     }
-                    TemplateCollection.RemoveAt(endIdx - 1);
+                    TemplateCollection.RemoveAt(TemplateCollection.Count - 1);
                     endIdx--;
                     focusIdx = endIdx - 1;
                 }
@@ -461,8 +460,7 @@ namespace TeamTracker
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Light_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            ResetButton();
         }
 
         private void SetMilestoneTemplates()
@@ -494,14 +492,14 @@ namespace TeamTracker
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
         }
 
         private void OnCloseMouseLeave(object sender, EventArgs e)
         {
             if (closeButton.Image != null) closeButton.Image.Dispose();
 
-            closeButton.Image = UserInterface.Properties.Resources.Close_30;
+            closeButton.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
@@ -509,21 +507,34 @@ namespace TeamTracker
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
             if (picBox.Name == "upPicBox")
             {
-                picBox.Image = UserInterface.Properties.Resources.Up_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = UserInterface.Properties.Resources.Cold_Up_Light_Hover;
+                }
+                else
+                {
+                    upPicBox.Image = UserInterface.Properties.Resources.Heat_Up_Light_Hover;
+                }
             }
             else
             {
-                picBox.Image = UserInterface.Properties.Resources.Down_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = UserInterface.Properties.Resources.Cold_Down_Light_Hover;
+                }
+                else
+                {
+                    downPicBox.Image = UserInterface.Properties.Resources.Heat_Down_Light_Hover;
+                }
             }
         }
 
         private void OnCurveBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(157, 178, 191), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (sender is PictureBox)
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
@@ -538,26 +549,67 @@ namespace TeamTracker
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Default;
             if (picBox.Name == "upPicBox")
             {
-                picBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Light_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Light : UserInterface.Properties.Resources.Cold_Up_Medium;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Light : UserInterface.Properties.Resources.Heat_Up_Medium;
+                }
             }
             else
             {
-                picBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Light_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Light : UserInterface.Properties.Resources.Cold_Down_Medium;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Light : UserInterface.Properties.Resources.Heat_Down_Medium;
+                }
+            }
+        }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Cold_Up_Light : UserInterface.Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Cold_Down_Light : UserInterface.Properties.Resources.Cold_Down_Medium;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Heat_Up_Light : UserInterface.Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Heat_Down_Light : UserInterface.Properties.Resources.Heat_Down_Medium;
             }
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(40, 50, 80), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 2), new Point((sender as Control).Width, (sender as Control).Height - 2));
             border.Dispose();
         }
 
-        private const int CSDropShadow = 0x00020000;
+        private void InitializeRoundEdges()
+        {
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
+            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 30, 30));
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 30, 30));
+            pictureBox2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox2.Width, pictureBox2.Height, 10, 10));
+            pictureBox3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox3.Width, pictureBox3.Height, 10, 10));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            InitializeRoundEdges();
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -579,19 +631,22 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        private void InitializeRoundEdges()
+        private bool isUpEnable, isDownEnable;
+        private int startIdx, endIdx, focusIdx = 0;
+        private const int CSDropShadow = 0x00020000;
+        private MilestoneTemplate Template;
+        private List<MilestoneTemplate> TemplateCollection;
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30));
-            tableLayoutPanel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel2.Width, tableLayoutPanel2.Height, 30, 30));
-            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 30, 30));
-            pictureBox2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox2.Width, pictureBox2.Height, 10, 10));
-            pictureBox3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pictureBox3.Width, pictureBox3.Height, 10, 10));
+            if(e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
         }
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            InitializeRoundEdges();
-        }
+        public List<Milestone> milestoneCollection;
+        private DateTime prevEndDate, startDate, endDate;
+        private ProjectVersion selectedVersion;
     }
 }

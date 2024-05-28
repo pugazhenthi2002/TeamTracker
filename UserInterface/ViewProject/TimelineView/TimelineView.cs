@@ -15,7 +15,7 @@ namespace UserInterface.ViewProject.TimelineView
 {
     public partial class TimelineView : UserControl
     {
-        private bool upEnable, downEnable;
+        private bool isUpEnable, isDownEnable;
         private int startIdx, endIdx = 0, selectedIdx = 0;
         private VerticalLabel prevControl;
         private Projects currentProject;
@@ -25,10 +25,51 @@ namespace UserInterface.ViewProject.TimelineView
         private List<Milestone> milestoneCollection;
         private List<Color> colorCollection;
         private int projectViewCount = 0;
+        private Employee filteredEmployee;
 
         public TimelineView()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void InitializePageColor()
+        {
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = ThemeManager.GetTextColor(BackColor);
+            panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            versionNames.ForeColor = ThemeManager.GetTextColor(panel7.BackColor);
+
+            dropDownPicBox.Image?.Dispose();    upPicBox.Image?.Dispose();  downPicBox.Image?.Dispose();
+
+            ResetButtons();
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark: Properties.Resources.Heat_Down_Dark;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            for(int ctr=0; ctr< projectDisplayPanel.Controls.Count; ctr++)
+            {
+                (projectDisplayPanel.Controls[ctr] as VerticalLabel).ProjectSelected -= OnProjectSelected;
+                (projectDisplayPanel.Controls[ctr] as VerticalLabel).Dispose();
+                ctr--;
+            }
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            if (projectCollection != null && projectCollection.Count > 0)
+            {
+                if (projectDisplayPanel.Controls != null)
+                    projectDisplayPanel.Controls.Clear();
+
+                if (milestoneLabelPanel.Controls != null)
+                    milestoneLabelPanel.Controls.Clear();
+                InitializeProjectsForTimeline();
+            }
         }
 
         public List<Projects> ProjectCollection
@@ -48,16 +89,15 @@ namespace UserInterface.ViewProject.TimelineView
 
                     projectCollection = value;
                     projectViewCount = value.Count >= 5 ? 5 : value.Count;
-                    upEnable = false;
-                    downEnable = value.Count > 5 ? true : false;
+                    isUpEnable = false;
+                    isDownEnable = value.Count > 5 ? true : false;
                     startIdx = 0;
                     endIdx = projectViewCount - 1;
 
-                    if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
-                    if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
+                    if (upPicBox.Image != null) upPicBox.Image.Dispose();
+                    if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-                    projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-                    projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                    ResetButtons();
 
                     InitializeProjectsForTimeline();
                 }
@@ -69,7 +109,19 @@ namespace UserInterface.ViewProject.TimelineView
             }
         }
 
-        
+        public Employee FilteredEmployee
+        {
+            get
+            {
+                return filteredEmployee;
+            }
+            set
+            {
+                filteredEmployee = value;
+
+            }
+        }
+
 
         private void InitializeProjectsForTimeline()
         {
@@ -82,7 +134,7 @@ namespace UserInterface.ViewProject.TimelineView
                     Dock = DockStyle.Top,
                     Height = 175,
                     Project = projectCollection[ctr],
-                    TextColor = ColorManager.ColorFadingOut[idx % 20]
+                    TextColor = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection[ctr]
                 };
                 idx = idx + 4;
                 control.IsClicked = false;
@@ -91,9 +143,10 @@ namespace UserInterface.ViewProject.TimelineView
                     currentProject = projectCollection[ctr];
                     currentVersion = VersionManager.FetchProjectLatestVersion(projectCollection[ctr].ProjectID);
                     milestoneCollection = MilestoneManager.FetchMilestones(currentVersion.VersionID);
-                    StoreColor();
+                    colorCollection = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
                     InitializeMilestoneLegendCollection();
                     timelinePaginate1.Colors = colorCollection;
+                    timelinePaginate1.FilteredEmployee = filteredEmployee;
                     timelinePaginate1.Version = currentVersion;
                     versionNames.Text = currentVersion.VersionName;
                     prevControl = control;
@@ -111,7 +164,7 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void projectDownClick(object sender, EventArgs e)
         {
-            if(downEnable)
+            if(isDownEnable)
             {
                 selectedIdx--;
                 startIdx++;
@@ -124,6 +177,7 @@ namespace UserInterface.ViewProject.TimelineView
         {
             VersionViewForm form = new VersionViewForm();
             form.Location = versionNames.PointToScreen(new Point(0, versionNames.Height));
+            form.Width = panel7.Width;
             form.VersionCollection = VersionManager.FetchInvolvedVersion(currentProject, EmployeeManager.CurrentEmployee);
             form.VersionSelected += OnVersionSelected;
             form.Show();
@@ -138,7 +192,7 @@ namespace UserInterface.ViewProject.TimelineView
                 milestoneLabelPanel.Controls.Clear();
 
             milestoneCollection = MilestoneManager.FetchMilestones(currentVersion.VersionID);
-            StoreColor();
+            colorCollection = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             InitializeMilestoneLegendCollection();
             timelinePaginate1.Colors = colorCollection;
             timelinePaginate1.Version = currentVersion;
@@ -146,7 +200,7 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void projectUpClick(object sender, EventArgs e)
         {
-            if (upEnable)
+            if (isUpEnable)
             {
                 selectedIdx++;
                 startIdx--;
@@ -169,7 +223,7 @@ namespace UserInterface.ViewProject.TimelineView
                 milestoneLabelPanel.Controls.Clear();
 
             milestoneCollection = MilestoneManager.FetchMilestones(currentVersion.VersionID);
-            StoreColor();
+            colorCollection = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             InitializeMilestoneLegendCollection();
             timelinePaginate1.Colors = colorCollection;
             timelinePaginate1.Version = currentVersion;
@@ -182,50 +236,64 @@ namespace UserInterface.ViewProject.TimelineView
 
         private void OnVersionSwitchPanelPaint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen pen = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, panel7.Width - 1, panel7.Height - 1));
-            e.Graphics.DrawLine(pen, new Point(panel7.Width - 33, 0), new Point(panel7.Width - 33, panel7.Height - 1));
+            e.Graphics.DrawLine(pen, new Point(dropDownPicBox.Location.X, 0), new Point(dropDownPicBox.Location.X, panel7.Height - 1));
             pen.Dispose();
         }
 
         private void OnVersionMouseEnter(object sender, EventArgs e)
         {
-            versionNames.BackColor = Color.FromArgb(221, 230, 237);
+            dropDownPicBox.Image?.Dispose();
+
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             panel4.Invalidate();
         }
 
         private void OnVersionMouseLeave(object sender, EventArgs e)
         {
-            versionNames.BackColor = Color.FromArgb(231, 240, 250);
+            dropDownPicBox.Image?.Dispose();
+
+            dropDownPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Heat_Down_Dark;
             panel4.Invalidate();
         }
 
         private void OnProjectPaginateMouseEnter(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                projectUpBox.Image = UserInterface.Properties.Resources.Up_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                projectDownBox.Image = UserInterface.Properties.Resources.Down_Dark_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
         private void OnProjectPaginateMouseLeave(object sender, EventArgs e)
         {
-            if ((sender as PictureBox).Image != null) (sender as PictureBox).Image.Dispose();
-
-            if ((sender as Control).Name == "remainingTaskpaginateUp")
+            if ((sender as PictureBox).Name == "upPicBox")
             {
-                projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Medium;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Medium;
+                }
             }
             else
             {
-                projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Medium;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Medium;
+                }
             }
         }
 
@@ -244,25 +312,13 @@ namespace UserInterface.ViewProject.TimelineView
                 projectViewControlCollection[idx].Project = projectCollection[ctr];
             }
 
-            upEnable = startIdx == 0 ? false : true;
-            downEnable = endIdx == projectCollection.Count - 1 ? false : true;
+            isUpEnable = startIdx == 0 ? false : true;
+            isDownEnable = endIdx == projectCollection.Count - 1 ? false : true;
 
-            if (projectUpBox.Image != null) projectUpBox.Image.Dispose();
-            if (projectDownBox.Image != null) projectDownBox.Image.Dispose();
+            if (upPicBox.Image != null) upPicBox.Image.Dispose();
+            if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            projectUpBox.Image = upEnable ? UserInterface.Properties.Resources.sort_up : UserInterface.Properties.Resources.sort_up_hover;
-            projectDownBox.Image = downEnable ? UserInterface.Properties.Resources.sort_down : UserInterface.Properties.Resources.sort_down_hover;
-        }
-
-        private void StoreColor()
-        {
-            colorCollection = new List<Color>();
-            int ctr = 0;
-            foreach (var Iter in milestoneCollection)
-            {
-                colorCollection.Add(ColorManager.MilestoneColorFadingOut[ctr%20]);
-                ctr++;
-            }
+            ResetButtons();
         }
 
         private void InitializeMilestoneLegendCollection()
@@ -283,6 +339,20 @@ namespace UserInterface.ViewProject.TimelineView
             foreach(TimelineMilestoneLabel Iter in milestoneLabelPanel.Controls)
             {
                 Iter.BringToFront();
+            }
+        }
+
+        private void ResetButtons()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Medium;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Medium;
             }
         }
     }

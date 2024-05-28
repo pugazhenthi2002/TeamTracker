@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -76,7 +77,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
@@ -275,9 +276,11 @@
             this.projectTitleTextBox.Size = new System.Drawing.Size(367, 20);
             this.projectTitleTextBox.TabIndex = 2;
             this.projectTitleTextBox.Text = "Project Name";
+            this.projectTitleTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -327,7 +330,7 @@
             this.endDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.endDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDateTimePicker.Location = new System.Drawing.Point(10, 25);
-            this.endDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 1);
+            this.endDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 3);
             this.endDateTimePicker.MinimumSize = new System.Drawing.Size(4, 35);
             this.endDateTimePicker.Name = "endDateTimePicker";
             this.endDateTimePicker.Size = new System.Drawing.Size(138, 35);
@@ -382,7 +385,7 @@
             this.startDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.startDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDateTimePicker.Location = new System.Drawing.Point(10, 25);
-            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(10, 1, 10, 3);
             this.startDateTimePicker.MinimumSize = new System.Drawing.Size(4, 35);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(137, 35);
@@ -445,6 +448,7 @@
             this.clientTextBox.Size = new System.Drawing.Size(306, 24);
             this.clientTextBox.TabIndex = 3;
             this.clientTextBox.Text = "Client Email";
+            this.clientTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // label4
             // 
@@ -491,6 +495,8 @@
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.OnCLearClick);
             this.clearButton.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            this.clearButton.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.clearButton.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
             // 
             // CreateProject
             // 
@@ -509,6 +515,8 @@
             this.CreateProject.UseVisualStyleBackColor = false;
             this.CreateProject.Click += new System.EventHandler(this.OnCreateClick);
             this.CreateProject.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderDrawPaint);
+            this.CreateProject.MouseEnter += new System.EventHandler(this.OnButtonMouseEnter);
+            this.CreateProject.MouseLeave += new System.EventHandler(this.OnButtonMouseLeave);
             // 
             // ProjectInitializationPage
             // 

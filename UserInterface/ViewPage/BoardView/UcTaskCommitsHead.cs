@@ -12,12 +12,29 @@ namespace TeamTracker
 {
     public partial class UcTaskCommitsHead : UserControl
     {
+        public Image CommitImage
+        {
+            set
+            {
+                if(value != null)
+                {
+                    pictureBox1.Image?.Dispose();
+                    pictureBox1.Image = value;
+                }
+            }
+        }
         private DateTime commitDate = DateTime.Today;
         private int commitCount = 4;
 
         public UcTaskCommitsHead()
         {
             InitializeComponent();
+            labelText.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            pictureBox1.Image?.Dispose();
         }
 
         public int CommitCount
@@ -26,7 +43,7 @@ namespace TeamTracker
             set
             {
                 commitCount = value;
-                SetText();
+                labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
             }
         }
 
@@ -36,14 +53,8 @@ namespace TeamTracker
             set
             {
                 commitDate = value;
-                SetText();
+                labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
             }
-        }
-
-
-        private void SetText()
-        {
-            labelText.Text = commitCount + " commits on " + commitDate.ToString("dd/MM/yyyy");
         }
     }
 }

@@ -13,22 +13,12 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 {
     public partial class DeployContent : UserControl
     {
-        private bool isSourceCodeDownloaded = false;
-        private int counter = 0;
-        private bool isBackEnable = false, isNextEnable = false;
-        private List<ProjectVersion> deployVersions;
-        private Color borderColor = Color.Blue;
-
-        public DeployContent()
-        {
-            InitializeComponent();
-        }
-
         public List<ProjectVersion> DeployVersions
         {
             set
             {
                 ucDeploy1.SuspendLayout();
+                InitializePageColor();
                 if (value != null && value.Count > 0)
                 {
                     counter = 0;
@@ -38,8 +28,7 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
                     if (nextBtn.Image != null) nextBtn.Image.Dispose();
                     if (backBtn.Image != null) backBtn.Image.Dispose();
 
-                    nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
-                    backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
+                    ResetButton();
 
                     ucDeploy1.Version = value[counter];
                 }
@@ -61,7 +50,37 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             }
         }
 
-        
+        public DeployContent()
+        {
+            InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            if (nextBtn.Image != null) nextBtn.Image.Dispose();
+            if (backBtn.Image != null) backBtn.Image.Dispose();
+
+            nextBtn.MouseEnter -= OnMouseEnter;
+            backBtn.MouseEnter -= OnMouseLeave;
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void InitializePageColor()
+        {
+            ucDeploy1.BackColor = ucNotFound1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.BackColor = backBtn.BackColor = nextBtn.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(label1.BackColor);
+            backBtn.Image?.Dispose();
+            nextBtn.Image?.Dispose();
+            ResetButton();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -128,7 +147,6 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
                 string filePath = System.IO.Path.Combine(savePath, sourceCode.DisplayName);
                 System.IO.File.Copy(sourceCode.VersionLocation, filePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + deployVersions[counter].VersionName);
-                isSourceCodeDownloaded = true;
             }
             catch
             {
@@ -138,35 +156,55 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Hand;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = UserInterface.Properties.Resources.Left_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                picBox.Image = UserInterface.Properties.Resources.Right_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Default;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "BackBtn")
             {
-                picBox.Image = isBackEnable ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Dark : Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Dark : Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                picBox.Image = isNextEnable ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Dark : Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Dark : Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -180,8 +218,26 @@ namespace UserInterface.Home_Page.Project_Manager.Deploy
             if (nextBtn.Image != null) nextBtn.Image.Dispose();
             if (backBtn.Image != null) backBtn.Image.Dispose();
 
-            nextBtn.Image = isNextEnable ? Properties.Resources.Right_Light_Blue : Properties.Resources.Right_Medium_Blue;
-            backBtn.Image = isBackEnable ? Properties.Resources.Left_Light_Blue : Properties.Resources.Left_Medium_Blue;
+            ResetButton();
         }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Cold_Left_Light : Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Cold_Right_Light : Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = isBackEnable ? Properties.Resources.Heat_Left_Light : Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = isNextEnable ? Properties.Resources.Heat_Right_Light : Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
+        private int counter = 0;
+        private bool isBackEnable = false, isNextEnable = false;
+        private List<ProjectVersion> deployVersions;
+        private Color borderColor = Color.Blue;
     }
 }

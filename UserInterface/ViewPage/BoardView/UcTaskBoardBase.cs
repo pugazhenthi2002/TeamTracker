@@ -32,6 +32,7 @@ namespace TeamTracker
         public UcTaskBoardBase()
         {
             InitializeComponent();
+            InitializePageColor();
 
             ucTaskStatusBaseNotYetStarted.TaskBoardMouseDown += OnMouseDownTaskBoard;
             ucTaskStatusBaseNotYetStarted.TaskBoardMouseUp += OnMouseUpTaskBoard;
@@ -48,6 +49,8 @@ namespace TeamTracker
             ucTaskStatusBaseUnderReview.TaskBoardMouseDown += OnMouseDownTaskBoard;
             ucTaskStatusBaseUnderReview.TaskBoardMouseUp += OnMouseUpTaskBoard;
             ucTaskStatusBaseUnderReview.TaskBoardMouseMove += OnMouseMoveTaskBoard;
+
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public ProjectVersion CurrentProjVersion
@@ -82,6 +85,16 @@ namespace TeamTracker
             DragForm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, DragForm.Width, DragForm.Height, 20, 20));
         }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
         private void SetVersion()
         {
             ucTaskStatusBaseNotYetStarted.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.NotYetStarted);
@@ -89,7 +102,13 @@ namespace TeamTracker
             ucTaskStatusBaseStuck.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.Stuck);
             ucTaskStatusBaseUnderReview.TaskList = TaskManager.FetchTasks(currentProjectVersion.VersionID, TaskStatus.UnderReview);
         }
-        
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+
 
         private void OnMouseDownTaskBoard(UCTaskBoard sender, MouseEventArgs e)
         {
@@ -214,7 +233,6 @@ namespace TeamTracker
 
         private void OnWarningStatusClicked(object sender, string e, bool result)
         {
-            (sender as StatusChangeWarningForm).Dispose();
             (sender as StatusChangeWarningForm).Close();
 
             if (ParentForm != null)
@@ -277,7 +295,6 @@ namespace TeamTracker
 
         private void OnClickDoneSubmitionForm(object sender, SourceCode e)
         {
-            (sender as SourceCodeSubmitionForm).Dispose();
             (sender as SourceCodeSubmitionForm).Close();
 
             if (ParentForm != null)

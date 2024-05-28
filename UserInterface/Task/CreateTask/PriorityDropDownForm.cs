@@ -19,8 +19,25 @@ namespace TeamTracker
         public PriorityDropDownForm()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeRoundedEdge();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
 
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            BtnCritical.ForeColor = label1.ForeColor = label2.ForeColor = label3.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         protected override CreateParams CreateParams
@@ -76,15 +93,14 @@ namespace TeamTracker
             this.Close();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void OnMouseEnter(object sender, EventArgs e)
         {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            for (int i = 50; i < 200; i += 50)
-            {
-                e.Graphics.DrawLine(border, 3, i, Width - 3, i);
-            }
-            border.Dispose();
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryIII;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
     }
 }

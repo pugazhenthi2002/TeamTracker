@@ -12,16 +12,7 @@ namespace TeamTracker
 {
     public partial class PDFAttachment : UserControl
     {
-        
-
         public event EventHandler AttachmentRemove;
-
-        public PDFAttachment()
-        {
-            InitializeComponent();
-        }
-
-
         public string FileName
         {
             get
@@ -35,15 +26,45 @@ namespace TeamTracker
             }
         }
 
-        public new void Dispose()
+        public PDFAttachment()
         {
-            pictureBox1.Image.Dispose();
-            closePicBox.Image.Dispose();
-            closePicBox.Dispose();
-            pictureBox1.Dispose();
-            label1.Dispose();
-            tableLayoutPanel1.Dispose();
-            panel1.Dispose();
+            InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            closePicBox.Click -= OnCloseCLick;  closePicBox.MouseEnter -= OnCloseMouseEnter;    closePicBox.MouseLeave -= OnCloseMouseLeave;
+
+            pictureBox1.Image?.Dispose();
+            closePicBox.Image?.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            panel1.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+
+            pictureBox1.Image?.Dispose();
+            closePicBox.Image?.Dispose();
+
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                pictureBox1.Image = UserInterface.Properties.Resources.Cold_Light_Document;
+                closePicBox.Image = UserInterface.Properties.Resources.Cold_Close_Light;
+            }
+            else
+            {
+                pictureBox1.Image = UserInterface.Properties.Resources.Heat_Light_Document;
+                closePicBox.Image = UserInterface.Properties.Resources.Heat_Close_Light;
+            }
         }
 
         private void OnCloseCLick(object sender, EventArgs e)
@@ -57,7 +78,14 @@ namespace TeamTracker
             if (closePicBox.Image != null)
                 closePicBox.Image.Dispose();
 
-            closePicBox.Image = UserInterface.Properties.Resources.Close_Alice_Blue_30;
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                closePicBox.Image = UserInterface.Properties.Resources.Cold_Close_Light_Hover;
+            }
+            else
+            {
+                closePicBox.Image = UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+            }
         }
 
         private void OnCloseMouseEnter(object sender, EventArgs e)
@@ -66,7 +94,14 @@ namespace TeamTracker
             if (closePicBox.Image != null)
                 closePicBox.Image.Dispose();
 
-            closePicBox.Image = UserInterface.Properties.Resources.Close_Dark_Blue_Hover;
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                closePicBox.Image = UserInterface.Properties.Resources.Cold_Close_Light;
+            }
+            else
+            {
+                closePicBox.Image = UserInterface.Properties.Resources.Heat_Close_Light;
+            }
         }
     }
 }

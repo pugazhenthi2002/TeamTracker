@@ -16,6 +16,9 @@ namespace TeamTracker
 {
     public partial class UCTaskBoard : UserControl
     {
+        public event EventHandler<Task> TaskSelect;
+
+        public bool IsMovable { get; set; }
         private TransparentForm transparentForm;
         private Task TaskBoardData;
         private bool isDragging = false;
@@ -24,6 +27,7 @@ namespace TeamTracker
         public UCTaskBoard()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeRoundedEdge();
             DoubleBuffered = true;
             typeof(TableLayoutPanel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, tableLayoutPanel1, new object[] { true });
@@ -37,6 +41,7 @@ namespace TeamTracker
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelProjectName, new object[] { true });
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, LabelTask, new object[] { true });
             typeof(Label).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, labelVersion, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
         
         public MouseEventHandler MouseDownTaskBoard;
@@ -49,6 +54,7 @@ namespace TeamTracker
             set
             {
                 this.SuspendLayout();
+                InitializePageColor();
                 if (value != null)
                 {
                     TaskBoardData = value;
@@ -70,6 +76,37 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
+        private void InitializePageColor()
+        {
+            if (!IsMovable)
+            {
+                labelProjectName.ForeColor = LabelTask.ForeColor = labelVersion.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                ucDueDate1.DueLabelcolor = ucDueDate1.ForeColor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+                ucDueDate1.HeaderForecolor = tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+                profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
+            }
+            else
+            {
+                ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                labelVersion.ForeColor = LabelTask.ForeColor = labelProjectName.ForeColor = ThemeManager.GetTextColor(tableLayoutPanel1.BackColor);
+                ucDueDate1.DueLabelcolor = ucDueDate1.ForeColor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+                ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryIII;
+            }
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBoxInfo.Image?.Dispose();
+            pictureBoxFlag.Image?.Dispose();
+        }
+
         private void InitializeRoundedEdge()
         {
             this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 20, 20));
@@ -86,15 +123,36 @@ namespace TeamTracker
 
         private void OnMouseEnterInfo(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.info_hover;
-            this.BackColor = Color.FromArgb(39, 55, 77);
+            isEntered = true;
+            if (IsMovable)
+            {
+                (sender as PictureBox).Image = UserInterface.Properties.Resources.info_hover;
+                tableLayoutPanel1.Invalidate();
+            }
+            tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.PrimaryI;
+            profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.SecondaryIII;
             this.Cursor = Cursors.Hand;
+
         }
 
         private void OnMouseLeaveInfo(object sender, EventArgs e)
         {
-            (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
-            this.BackColor = Color.Transparent;
+            isEntered = false;
+            if (IsMovable)
+            {
+                (sender as PictureBox).Image = UserInterface.Properties.Resources.info_black;
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                tableLayoutPanel1.Invalidate();
+            }
+            else
+            {
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+            }
+            ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.SecondaryI;
+            profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
+            labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+
             this.Cursor = Cursors.Default;
         }
 
@@ -123,7 +181,7 @@ namespace TeamTracker
         private void InitializeBoardData()
         {
             labelProjectName.Text = VersionManager.FetchProjectName(TaskData.VersionID);
-            labelVersion.Text = VersionManager.CurrentVersion.VersionName;
+            labelVersion.Text = VersionManager.FetchVersionFromVersionID(TaskData.VersionID).VersionName;
             LabelTask.Text = TaskData.TaskName;
             ucDueDate1.DueDate = TaskData.EndDate;
             profilePictureBoxAssignedBy.ImageLocation = (EmployeeManager.FetchEmployeeFromID(TaskData.AssignedBy)).EmpProfileLocation;
@@ -131,18 +189,20 @@ namespace TeamTracker
 
         private void OnClickInfo(object sender, EventArgs e)
         {
-            taskInfoForm = new TaskInfoForm();
-            taskInfoForm.SelectedTask = TaskBoardData;
-            taskInfoForm.InfoFormClose += OnFormClosed;
+            if (IsMovable)
+            {
+                taskInfoForm = new TaskInfoForm();
+                taskInfoForm.SelectedTask = TaskBoardData;
+                taskInfoForm.InfoFormClose += OnFormClosed;
 
-            transparentForm = new TransparentForm();
-            transparentForm.Show();
-            transparentForm.ShowForm(taskInfoForm);
+                transparentForm = new TransparentForm();
+                transparentForm.Show();
+                transparentForm.ShowForm(taskInfoForm);
+            }
         }
 
         private void OnFormClosed(object sender, EventArgs e)
         {
-            (sender as TaskInfoForm).Dispose();
             (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)
@@ -156,43 +216,119 @@ namespace TeamTracker
 
         private void OnMouseEnterTaskBoard(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(39, 55, 77);
-            this.Cursor = Cursors.Hand;
+            if (!IsMovable)
+            {
+                isEntered = true;
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ucDueDate1.HeaderForecolor = ThemeManager.CurrentTheme.PrimaryI;
+                labelProjectName.ForeColor = labelVersion.ForeColor = LabelTask.ForeColor = ucDueDate1.ForeColor = ucDueDate1.DueLabelcolor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.SecondaryIII;
+                this.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                isSemiEntered = true;
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+                this.Cursor = Cursors.SizeAll;
+            }
+            tableLayoutPanel1.Invalidate();
+            profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
         }
 
         private void OnMouseLeaveTaskBoard(object sender, EventArgs e)
         {
-            this.BackColor = Color.Transparent;
+            if (!IsMovable)
+            {
+                isEntered = false;
+                labelProjectName.ForeColor = LabelTask.ForeColor = labelVersion.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                ucDueDate1.DueLabelcolor = ucDueDate1.ForeColor = ucDueDate1.BorderColor = ThemeManager.CurrentTheme.PrimaryI;
+                ucDueDate1.HeaderForecolor = tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryI;
+                profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
+            }
+            else
+            {
+                isSemiEntered = false;
+                tableLayoutPanel1.BackColor = ucDueDate1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            }
+            profilePictureBoxAssignedBy.ParentColor = tableLayoutPanel1.BackColor;
             this.Cursor = Cursors.Default;
+
         }
 
 
         private void OnMouseDownTaskBoard(object sender, MouseEventArgs e)
         {
-            Point pt = (sender as Control).PointToScreen(e.Location);
-            pt = this.PointToClient(pt);
-            MouseDownTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
-            isDragging = true;
+            if (IsMovable)
+            {
+                Point pt = (sender as Control).PointToScreen(e.Location);
+                pt = this.PointToClient(pt);
+                MouseDownTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                isDragging = true;
+            }
         }
 
         private void OnMouseUpTaskBoard(object sender, MouseEventArgs e)
         {
-            Point pt = (sender as Control).PointToScreen(e.Location);
-            pt = this.PointToClient(pt);
-            MouseUpTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
-            isDragging = false;
+            if (IsMovable)
+            {
+                Point pt = (sender as Control).PointToScreen(e.Location);
+                pt = this.PointToClient(pt);
+                MouseUpTaskBoard?.Invoke(this, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                isDragging = false;
+            }
         }
 
         private void OnMouseMoveTaskBoard(object sender, MouseEventArgs e)
         {
-            if (isDragging)
+            if (IsMovable)
             {
-                Point pt = (sender as Control).PointToScreen(e.Location);
-                pt = this.PointToClient(pt);
-                MouseMoveTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                if (isDragging)
+                {
+                    Point pt = (sender as Control).PointToScreen(e.Location);
+                    pt = this.PointToClient(pt);
+                    MouseMoveTaskBoard?.Invoke(sender, new MouseEventArgs(MouseButtons.Left, 1, pt.X, pt.Y, 0));
+                }
             }
         }
 
-        
+        private void OnBorderPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            Pen border;
+            if (isEntered)
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            else
+                border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
+            border.Dispose();
+        }
+
+        private void OnBorderRadiusPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            Pen border;
+            if (isEntered)
+                border = IsMovable ? new Pen(ThemeManager.CurrentTheme.SecondaryIII) : new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            else if (isSemiEntered)
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryI, 2);
+            else
+                border = new Pen(ThemeManager.CurrentTheme.SecondaryII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0,0,tableLayoutPanel1.Width-1, tableLayoutPanel1.Height-1), 10));
+            border.Dispose();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            InitializePageColor();
+        }
+
+        private bool isEntered, isSemiEntered;
+
+        private void OnBoardClicked(object sender, EventArgs e)
+        {
+            if (!IsMovable)
+            {
+                TaskSelect?.Invoke(this, TaskBoardData);
+            }
+        }
     }
 }

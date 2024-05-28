@@ -18,6 +18,7 @@ namespace TeamTracker
         {
             InitializeComponent();
             InitializeRoundedEdge();
+            InitializePageColor();
             this.Location = new Point(700, 300);
             toolTip1.SetToolTip(pictureBoxFlag, "Priority");
             toolTip1.SetToolTip(animatedLabelMilestone, "Milestone");
@@ -52,18 +53,26 @@ namespace TeamTracker
 
         private List<SourceCode> sourceCodeList;
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
             if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
             if (pictureBoxFlag.Image != null) pictureBoxFlag.Image.Dispose();
+        }
 
-            pictureBox1.Dispose(); pictureBoxDownloadAttachment.Dispose(); pictureBoxFlag.Dispose();
-            label1.Dispose();   animatedLabelMilestone.Dispose();   animatedLabelStatus.Dispose();  labelTitle.Dispose();
-            tableLayoutPanel1.Dispose();    tableLayoutPanel3.Dispose();
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();   panel5.Dispose();   panel6.Dispose();
-            startDate.Dispose();    endDate.Dispose();  ucTaskDescription1.Dispose();
-            profileAssignedBy.Dispose();    ucNotFound1.Dispose();
+        private void InitializePageColor()
+        {
+            ucTaskDescription1.TopLabelColor = ucTaskDescription1.BorderColor = panel1.BackColor = animatedLabelStatus.ForeColor = animatedLabelMilestone.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            label1.ForeColor =  startDate.BorderColor = endDate.BorderColor = startDate.TextColor = endDate.TextColor = animatedLabelStatus.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            animatedLabelMilestone.BackColor = animatedLabelStatus.BackColor = ucTaskDescription1.TopLabelForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            labelTitle.ForeColor = profileAssignedBy.ForeColor = startDate.SkinColor = endDate.SkinColor = label1.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            animatedLabelStatus.LabelCornerColor = animatedLabelMilestone.LabelCornerColor = BackColor;
+            animatedLabelMilestone.ParentColor = animatedLabelStatus.ParentColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            pictureBox1.Image?.Dispose();   pictureBoxFlag?.Dispose();  pictureBoxDownloadAttachment.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
+            pictureBoxDownloadAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         protected override void OnResize(EventArgs e)
@@ -112,26 +121,46 @@ namespace TeamTracker
             }
 
             Dictionary<DateTime, List<SourceCode>> dateWiseDict = sourceCodeList.GroupBy(s => s.SubmittedDate).ToDictionary(g => g.Key, g => g.ToList());
-
+            Panel panel;
+            int count = 0;
             foreach (var entry in dateWiseDict)
             {
+                
+
                 int commitCount = dateWiseDict[entry.Key].Count;
                 UcTaskCommitsHead head = new UcTaskCommitsHead();
                 head.CommitCount = commitCount;
                 head.CommitDate = entry.Key;
                 head.Dock = DockStyle.Top;
-                head.BackColor = Color.FromArgb(211, 220, 227);
+                head.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                if (count == 0)
+                {
+                    head.CommitImage = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Initial_Commit : UserInterface.Properties.Resources.Heat_Initial_Commit;
+                }
+                else
+                {
+                    head.CommitImage = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Mid_Commit : UserInterface.Properties.Resources.Heat_Mid_Commit;
+                }
                 panelCommits.Controls.Add(head);
 
+                panel = new Panel()
+                {
+                    Dock = DockStyle.Top
+                };
+                panel.Paint += OnDatewiseSourceCodePaint;
                 foreach (SourceCode srcCode in dateWiseDict[entry.Key])
                 {
                     UcTaskCommits commit = new UcTaskCommits();
                     commit.CommitName = srcCode.CommitName;
                     commit.CommitOwner = EmployeeManager.FetchEmployeeFromID(srcCode.CommitedBy);
-                    
+                    commit.SourceCodeId = srcCode.SourceCodeID;
+                    commit.BackColor = Color.Transparent;
                     commit.Dock = DockStyle.Top;
-                    panelCommits.Controls.Add(commit);
+                    panel.Controls.Add(commit);
                 }
+                panel.Height = dateWiseDict[entry.Key].Count * 50;
+                panelCommits.Controls.Add(panel);
+                count++;
             }
 
             foreach (Control ctr in panelCommits.Controls)
@@ -140,6 +169,14 @@ namespace TeamTracker
             }
 
 
+        }
+
+        private void OnDatewiseSourceCodePaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Panel).Width - 1, (sender as Panel).Height - 1), 10));
+            border.Dispose();
         }
 
         private void InitializeRoundedEdge()
@@ -168,24 +205,28 @@ namespace TeamTracker
             Point pt2 = new Point(panel2.Width - 6, 4);
             Point pt3 = new Point(panel2.Width - 6, panel2.Height - 6);
             Point pt4 = new Point(4, panel2.Height - 6);
-            Pen border = new Pen(Color.Black, 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
 
         private void OnMouseLeaveDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.CenterImage;
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+
+            pictureBoxDownloadAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnMouseEnterDownloadPicBox(object sender, EventArgs e)
         {
-            (sender as PictureBox).SizeMode = PictureBoxSizeMode.Zoom;
+            if (pictureBoxDownloadAttachment.Image != null) pictureBoxDownloadAttachment.Image.Dispose();
+
+            pictureBoxDownloadAttachment.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void InitializePage()
         {
-            labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromTaskID(selectedTask.VersionID).VersionName;
-            profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedBy);
+            labelTitle.Text = VersionManager.FetchProjectName(selectedTask.VersionID) + "\n" + VersionManager.FetchVersionFromVersionID(selectedTask.VersionID).VersionName;
+            profileAssignedBy.EmployeeProfile = EmployeeManager.FetchEmployeeFromID(selectedTask.AssignedTo);
             ucTaskDescription1.TopLabelText = selectedTask.TaskName;
             ucTaskDescription1.CenterLabelText = selectedTask.TaskDesc;
             animatedLabelMilestone.Text = MilestoneManager.FetchMilestoneFromID(selectedTask.MilestoneID).MileStoneName;
@@ -200,7 +241,6 @@ namespace TeamTracker
                 default: pictureBoxFlag.Image = UserInterface.Properties.Resources.Easy; break;
             }
             animatedLabelStatus.Text = selectedTask.StatusOfTask.ToString();
-            animatedLabelStatus.BackColor = ColorManager.FetchTaskStatusColor(selectedTask.StatusOfTask);
         }
 
         private void AttachmentDownloadClick(object sender, EventArgs e)
@@ -214,8 +254,7 @@ namespace TeamTracker
 
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "All files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -225,16 +264,24 @@ namespace TeamTracker
             string fileNetworkPath = attachment.TaskAttachmentLocation;
             try
             {
-                string fileName = System.IO.Path.GetFileName(fileNetworkPath);
-                string filePath = System.IO.Path.GetDirectoryName(savePath);
-                filePath = System.IO.Path.Combine(filePath, attachment.DisplayName);
-                System.IO.File.Copy(fileNetworkPath, filePath, true);
-                ProjectManagerMainForm.notify.AddNotification("Download Completed", attachment.DisplayName);
+                string extension = System.IO.Path.GetExtension(fileNetworkPath);
+                System.IO.File.Copy(fileNetworkPath, savePath+extension, true);
+                ProjectManagerMainForm.notify.AddNotification("Download Completed", System.IO.Path.GetFileName(savePath)+extension);
             }
             catch
             {
-                ProjectManagerMainForm.notify.AddNotification("Download Failed", attachment.DisplayName);
+                ProjectManagerMainForm.notify.AddNotification("Download Failed", savePath);
             }
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light_Hover : UserInterface.Properties.Resources.Heat_Close_Light_Hover;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Close_Light : UserInterface.Properties.Resources.Heat_Close_Light;
         }
     }
 }

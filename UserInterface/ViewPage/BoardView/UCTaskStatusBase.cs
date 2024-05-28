@@ -37,11 +37,13 @@ namespace TeamTracker
         public UCTaskStatusBase()
         {
             InitializeComponent();
+            InitializePageColor();
             ucTaskStatusHead1.Status = Tstatus;
             ucTaskStatusHead1.ClickBack += OnClickBackPage;
             ucTaskStatusHead1.ClickNext += OnClickNextPage;
             InitializeBoard();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.NonPublic | BindingFlags.Instance, null, panelBase, new object[] { true });
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public delegate void TaskBoardMouseEventHandler(UCTaskBoard sender, MouseEventArgs e);
@@ -52,6 +54,7 @@ namespace TeamTracker
             get { return Tstatus; }
             set
             {
+                InitializePageColor();
                 ucTaskStatusHead1.Status = value;
                 Tstatus = value;
             }
@@ -86,9 +89,21 @@ namespace TeamTracker
         //    }
         //}
 
+        private void InitializePageColor()
+        {
+            ucTaskStatusHead1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucTaskStatusHead1.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
 
-
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
 
         public void RemoveTaskBoard(UCTaskBoard tBoard)
         {
@@ -98,6 +113,7 @@ namespace TeamTracker
             if (taskList.Count > MaxUserControls)
             {
                 UCTaskBoard taskBoard = new UCTaskBoard();
+                taskBoard.IsMovable = true;
                 taskBoard.Dock = DockStyle.Top;
 
                 taskBoard.MouseDownTaskBoard += OnMouseDownTaskBoard;
@@ -166,6 +182,7 @@ namespace TeamTracker
                     if (i < taskList.Count)
                     {
                         UCTaskBoard tBoard = new UCTaskBoard();
+                        tBoard.IsMovable = true;
                         tBoard.TaskData = taskList[i];
                         tBoard.Dock = DockStyle.Top;
 

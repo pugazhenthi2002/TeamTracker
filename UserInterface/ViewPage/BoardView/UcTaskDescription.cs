@@ -17,10 +17,23 @@ namespace TeamTracker
         private string centerLabelText;
         private Color borderColor = Color.Black;
         private Color topLabelColor = Color.White;
+        private Color topLabelForeColor = Color.White;
 
         public UcTaskDescription()
         {
             InitializeComponent();
+        }
+
+        public bool EnableEdit
+        {
+            get
+            {
+                return labelCenter.ReadOnly;
+            }
+            set
+            {
+                labelCenter.ReadOnly = value;
+            }
         }
 
         public Color BorderColor
@@ -35,37 +48,38 @@ namespace TeamTracker
 
         public Color TopLabelColor
         {
-            get { return topLabelColor; }
+            get { return labelTop.BackColor; }
             set
             {
-                topLabelColor = value;
-                SetTopText();
+                labelCenter.ForeColor = labelTop.BackColor = value;
             }
         }
+
+        public Color TopLabelForeColor
+        {
+            get { return labelTop.ForeColor; }
+            set
+            {
+                BackColor = labelCenter.BackColor = labelTop.ForeColor = value;
+            }
+        }
+
         public string TopLabelText
         {
             get { return topLabelText; }
             set
             {
-                topLabelText = value;
-                SetTopText();
+                labelTop.Text = value;
             }
         }
 
         public string CenterLabelText
         {
-            get { return centerLabelText; }
+            get { return labelCenter.Text; }
             set
             {
-                centerLabelText = value;
-                SetCenterText();
+                labelCenter.Text = value;
             }
-        }
-
-        public new void Dispose()
-        {
-            panel1.Dispose();   panel2.Dispose();   panel3.Dispose();   panel4.Dispose();
-            labelCenter.Dispose();  labelTop.Dispose();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -79,19 +93,5 @@ namespace TeamTracker
             Pen border = new Pen(borderColor, 2);
             e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
         }
-
-
-        private void SetTopText()
-        {
-            labelTop.BackColor = TopLabelColor;
-            labelTop.Text = topLabelText;
-
-        }
-        private void SetCenterText()
-        {
-            labelCenter.Text = centerLabelText;
-        }
-
-        
     }
 }

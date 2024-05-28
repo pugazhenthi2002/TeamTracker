@@ -29,6 +29,7 @@ namespace TeamTracker
         public SingleList()
         {
             InitializeComponent();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
         public void SetTaskUI()
@@ -38,8 +39,28 @@ namespace TeamTracker
             statusLabel.Text = task.StatusOfTask.ToString();
             priorityLabel.Text = task.TaskPriority.ToString();
             dueDateLabel.Text = task.EndDate.ToShortDateString();
-            statusLabel.BackColor = ColorManager.FetchTaskStatusColor(task.StatusOfTask);
-            priorityLabel.BackColor = ColorManager.FetchTaskPriorityColor(task.TaskPriority);
+            InitializePageColor();
+        }
+
+        public void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            statusLabel.BackColor = ThemeManager.GetTaskStatusColor(task.StatusOfTask);
+            statusLabel.LabelCornerColor = priorityLabel.LabelCornerColor = BackColor;
+            priorityLabel.BackColor = ThemeManager.GetTaskPriorityColor(task.TaskPriority);
+            statusLabel.ForeColor = ThemeManager.GetTextColor(statusLabel.BackColor);
+            priorityLabel.ForeColor = ThemeManager.GetTextColor(priorityLabel.BackColor);
+            priorityLabel.ParentColor = statusLabel.ParentColor = assignedBy.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void OnStatusClicked(object sender, EventArgs e)
@@ -80,7 +101,7 @@ namespace TeamTracker
                 {
                     if (e == "Stuck") task.StatusOfTask = TaskStatus.Stuck;
                     if (e == "Working On It") task.StatusOfTask = TaskStatus.OnProcess;
-                    if (e == "Not Yet Started") task.StatusOfTask = TaskStatus.NotYetStarted;
+                    if (e == "Not Started") task.StatusOfTask = TaskStatus.NotYetStarted;
 
                     TaskManager.UpdateTask(task.TaskID, task.TaskName, task.TaskDesc, task.StartDate, task.EndDate, task.StatusOfTask, task.MilestoneID, task.TaskPriority, task.AssignedTo, null);
                     SetTaskUI();
@@ -92,9 +113,7 @@ namespace TeamTracker
 
         private void OnSourceCodeSubmission(object sender, SourceCode e)
         {
-            (sender as SourceCodeSubmitionForm).Dispose();
             (sender as SourceCodeSubmitionForm).Close();
-            //transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -111,9 +130,7 @@ namespace TeamTracker
 
         private void OnWarningStatusClicked(object sender, string e, bool result)
         {
-            (sender as StatusChangeWarningForm).Dispose();
             (sender as StatusChangeWarningForm).Close();
-            transparentForm.Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
@@ -131,19 +148,6 @@ namespace TeamTracker
             }
         }
 
-        private void OnPaint(object sender, PaintEventArgs e)
-        {
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            Rectangle rec = new Rectangle(0, 0, (Width / 6)-1, Height - 1);
-            
-            for(int ctr=0; ctr < 6; ctr++)
-            {
-                e.Graphics.DrawRectangle(border, rec);
-                rec.X = rec.X + (Width / 6);
-            }
-            border.Dispose();
-        }
-
         private void ViewTaskClick(object sender, EventArgs e)
         {
             TaskInfoForm form = new TaskInfoForm();
@@ -157,11 +161,18 @@ namespace TeamTracker
 
         private void OnTaskInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as TaskInfoForm).Dispose();
             (sender as TaskInfoForm).Close();
 
             if (ParentForm != null)
                 ParentForm.Show();
+        }
+
+        private void EdgePaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.DrawRectangle(border, new Rectangle(0, 0,(sender as Control).Width-1, (sender as Control).Height-1));
+            border.Dispose();
         }
     }
 }

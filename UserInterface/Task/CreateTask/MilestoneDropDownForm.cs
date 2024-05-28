@@ -16,6 +16,7 @@ namespace TeamTracker
 {
     public partial class MilestoneDropDownForm : Form
     {
+        public bool IsEditModeOn { get; set; }
         private TransparentForm transparentForm;
         private List<Milestone> milestoneList = new List<Milestone>();
         private const int CSDropShadow = 0x00020000;
@@ -24,10 +25,29 @@ namespace TeamTracker
         public MilestoneDropDownForm()
         {
             InitializeComponent();
+            InitializePageColor();
             InitializeRoundedEdge();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
         }
 
         public EventHandler<Milestone> MilestoneClick;
+
+        private int dropDownCount=4;
+        public int DropDownCount
+        {
+            get { return dropDownCount; }
+            set { dropDownCount = value; }
+        }
 
         public List<Milestone> MilestoneList
         {
@@ -69,13 +89,17 @@ namespace TeamTracker
             int nHeightEllipse // width of ellipse
         );
 
-        public new void Dispose()
+        private void UnSubscribeEventsAndRemoveMemory()
         {
             for(int ctr=0; ctr < Controls.Count; ctr++)
             {
-                Controls[ctr].Dispose();
+                (Controls[ctr] as Label).Click -= OnClickMilestoneBtn;
+                (Controls[ctr] as Label).MouseEnter -= OnMouseEnter;
+                (Controls[ctr] as Label).MouseLeave -= OnMouseLeave;
+                (Controls[ctr] as Label).Dispose();
                 ctr--;
             }
+            ThemeManager.ThemeChange -= OnThemeChanged;
         }
 
         private void InitializeRoundedEdge()
@@ -85,13 +109,13 @@ namespace TeamTracker
 
         private void InitializeMilestones()
         {
-            if (milestoneList.Count <= 4)
+            if (milestoneList.Count <= dropDownCount)
             {
                 this.Size = new Size(this.Width, 50 * (milestoneList.Count()));
             }
             else
             {
-                this.Size = new Size(this.Width, 50 * 4);
+                this.Size = new Size(this.Width, 50 * dropDownCount);
             }
 
             foreach (Milestone milestone in milestoneList)
@@ -100,15 +124,15 @@ namespace TeamTracker
                 mileStoneBtn.AutoSize = false;
                 mileStoneBtn.TextAlign = ContentAlignment.MiddleCenter;
                 mileStoneBtn.FlatStyle = FlatStyle.Flat;
-                mileStoneBtn.ForeColor = Color.FromArgb(39, 55, 77);
+                mileStoneBtn.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
                 mileStoneBtn.BackColor = Color.Transparent;
                 mileStoneBtn.Font = new Font(new FontFamily("Ebrima"), 12, FontStyle.Bold);
                 mileStoneBtn.Text = milestone.MileStoneName;
                 mileStoneBtn.Size = new Size(this.Width, 50);
                 mileStoneBtn.Dock = DockStyle.Top;
                 mileStoneBtn.Click += OnClickMilestoneBtn;
-                mileStoneBtn.MouseEnter += OnMilestoneMouseEntered;
-                mileStoneBtn.MouseLeave += OnMilestoneMouseLeft;
+                mileStoneBtn.MouseEnter += OnMouseEnter;
+                mileStoneBtn.MouseLeave += OnMouseLeave;
                 this.Controls.Add(mileStoneBtn);
             }
 
@@ -117,37 +141,36 @@ namespace TeamTracker
                 Iter.BringToFront();
             }
             this.Invalidate();
+            var x = Focused;
             Focus();
-        }
-
-        private void OnMilestoneMouseLeft(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void OnMilestoneMouseEntered(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Hand;
         }
 
         private void OnClickMilestoneBtn(object sender, EventArgs e)
         {
             var x = Controls.GetChildIndex(sender as Control);
             selectedMilestone = milestoneList[milestoneList.Count - Controls.GetChildIndex(sender as Control) - 1];
-            if(IsMilestoneAlreadyCompleted((sender as Label).Text))
+            if (!IsEditModeOn)
             {
-                WarningForm form = new WarningForm();
-                form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
-                form.WarningStatus += OnWarningStatus;
+                if (IsMilestoneAlreadyCompleted((sender as Label).Text))
+                {
+                    WarningForm form = new WarningForm();
+                    form.Content = "Are you sure, you want to Add a Task to Already Completed Milestone. A Warning will be sent to your Project Manager.";
+                    form.WarningStatus += OnWarningStatus;
 
-                transparentForm = new TransparentForm();
-                transparentForm.Show(ParentForm);
-                transparentForm.ShowForm(form);
+                    transparentForm = new TransparentForm();
+                    transparentForm.Show(ParentForm);
+                    transparentForm.ShowForm(form);
+                }
+                else
+                {
+                    MilestoneClick?.Invoke(this, selectedMilestone);
+                    Dispose();
+                    this.Close();
+                }
             }
             else
             {
                 MilestoneClick?.Invoke(this, selectedMilestone);
-                var res = IsDisposed;
                 Dispose();
                 this.Close();
             }
@@ -155,7 +178,6 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -191,15 +213,16 @@ namespace TeamTracker
             return false;
         }
 
-        private void MilestoneDropDownForm_Paint(object sender, PaintEventArgs e)
+        private void OnMouseEnter(object sender, EventArgs e)
         {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
-            for(int i = 50; i < 200; i+=50)
-            {
-                e.Graphics.DrawLine(border, 3, i, Width - 3, i);
-            }
-            border.Dispose();
+            Cursor = Cursors.Hand;
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryIII;
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+            (sender as Control).ForeColor = ThemeManager.CurrentTheme.PrimaryI; 
         }
     }
 }

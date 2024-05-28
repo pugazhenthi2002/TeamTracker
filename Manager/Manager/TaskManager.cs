@@ -12,12 +12,40 @@ namespace TeamTracker
 
         public static List<Task> TaskCollection;
 
-
         public static BooleanMsg StoreTaskCollection()
         {
             TaskCollection =  DataHandler.StoreTaskDetails();
             if (TaskCollection == null) return "Couldn't able to Connect Task Collection";
             else return true;
+        }
+
+        public static List<Task> FetchEditTask()
+        {
+            List<Edit> edits = DataHandler.FetchEditByMode(EditMode.Task);
+            List<Task> result = new List<Task>();
+            int id = 0;
+            foreach(var Iter in edits)
+            {
+                id = FetchTaskFromTaskID(Iter.EditModeID).AssignedBy;
+                if(id == EmployeeManager.CurrentEmployee.EmployeeID)
+                {
+                    result.Add(FetchTaskFromTaskID(Iter.EditModeID));
+                }
+            }
+            return result;
+        }
+
+        private static List<Task> FetchTaskFromMilestoneID(int editModeID)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if(Iter.MilestoneID == editModeID)
+                {
+                    result.Add(Iter);
+                }
+            }
+            return result;
         }
 
         public static bool IsEmployeeInvolvedInVersions(int versionID, int empID)
@@ -30,14 +58,6 @@ namespace TeamTracker
                 }
             }
             return false;
-        }
-
-        //Submit Task
-        public static void SubmitTask(Task task, List<SourceCode> sourceCodeCollection)
-        {
-            task.StatusOfTask = TaskStatus.UnderReview;
-
-            DataHandler.AddSourceCode(sourceCodeCollection);
         }
 
         public static Dictionary<string, int> FilterTeamMemberTaskCountByMilestone(int id)
@@ -63,17 +83,18 @@ namespace TeamTracker
             return result;
         }
 
-        public static Dictionary<string, int> FilterTeamMemberTaskCountByVersionID(int versionId)
+        public static Dictionary<string, int> FilterTeamMemberTaskCountByVersionID(ProjectVersion version)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
             int count = 0;
 
-            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders();
+            List<Employee> employeeCollection = EmployeeManager.FetchTeamMembersForTeamLeaders(VersionManager.FetchTeamLeadFromVersionID(version.VersionID));
+            employeeCollection.Add(EmployeeManager.FetchEmployeeFromEmpID(VersionManager.FetchTeamLeadFromVersionID(version.VersionID)));
             foreach (var Iter in employeeCollection)
             {
                 foreach (var TaskIter in TaskCollection)
                 {
-                    if (TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.VersionID == versionId)
+                    if (TaskIter.AssignedTo == Iter.EmployeeID && TaskIter.VersionID == version.VersionID)
                     {
                         count++;   
                     }
@@ -84,12 +105,6 @@ namespace TeamTracker
 
             return result;
 
-        }
-
-        //Move to Done Status
-        public static void MoveToDone(Task task)
-        {
-            task.StatusOfTask = TaskStatus.Done;
         }
 
         //Created a new Task
@@ -107,6 +122,7 @@ namespace TeamTracker
                 MilestoneID = milestoneID,
                 AssignedBy = EmployeeManager.CurrentEmployee.EmployeeID,
                 AssignedTo = assignedTo,
+                IsDelayed = false
             };
 
             task = DataHandler.AddTask(task);
@@ -128,11 +144,44 @@ namespace TeamTracker
                     Iter.TaskPriority = priority;   Iter.AssignedTo = assignedTo;
                     Iter.StatusOfTask = status;
                     Iter.MilestoneID = milestoneID;
+                    Iter.IsDelayed = false;
                     DataHandler.UpdateTask(Iter);
                 }
             }
 
-            if(taskAttachment!=null) DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
+            DataHandler.UpdateTaskAttachment(taskID, taskAttachment);
+        }
+
+        public static List<Task> FetchTaskByEmployee(Employee emp, int versionId)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.VersionID == versionId && Iter.AssignedTo == emp.EmployeeID)
+                {
+                    result.Add(Iter.ShallowCopy());
+                }
+            }
+
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
+        }
+
+        public static List<Task> FetchTaskByEmployee(Employee emp)
+        {
+            List<Task> result = new List<Task>();
+            foreach (var Iter in TaskCollection)
+            {
+                if (Iter.AssignedBy == emp.EmployeeID)
+                {
+                    result.Add(Iter.ShallowCopy());
+                }
+            }
+
+            result.Sort((r1, r2) => r1.EndDate.CompareTo(r2.EndDate));
+
+            return result;
         }
 
         public static List<Task> FetchUnderReviewTask()
@@ -244,6 +293,8 @@ namespace TeamTracker
                 if(Iter.TaskID == taskID)
                 {
                     DataHandler.DeleteTask(taskID);
+                    DataHandler.DeleteTaskAttachment(taskID);
+                    DataHandler.DeleteAllSourceCode(taskID);
                     TaskCollection.Remove(Iter);
                     break;
                 }
@@ -269,6 +320,21 @@ namespace TeamTracker
             }
 
             return count;
+        }
+
+        public static void DeleteAllVersionTask(int versionID)
+        {
+            for(int ctr=0; ctr < TaskCollection.Count; ctr++)
+            {
+                if(TaskCollection[ctr].VersionID == versionID)
+                {
+                    DataHandler.DeleteTask(TaskCollection[ctr].TaskID);
+                    DataHandler.DeleteTaskAttachment(TaskCollection[ctr].TaskID);
+                    DataHandler.DeleteAllSourceCode(TaskCollection[ctr].TaskID);
+                    TaskCollection.RemoveAt(ctr);
+                    ctr--;
+                }
+            }
         }
 
         public static Task FetchTaskByTaskID(int taskID)
@@ -352,10 +418,9 @@ namespace TeamTracker
         //Checks and Notify Every Active Version's Task Deadline
         public static void CheckTaskDeadline()
         {
-            List<int> activeVersion = VersionManager.ActiveVersionID();
             foreach(var Iter in TaskCollection)
             {
-                if(activeVersion.Contains(Iter.VersionID) && Iter.EndDate > DateTime.Today)
+                if (Iter.StatusOfTask != TaskStatus.Done && Iter.IsDelayed == false && Iter.EndDate <= DateTime.Now.Date)
                 {
                     DataHandler.AddNotify("Task Deadline", Iter.TaskName + Iter.EndDate.ToShortDateString(), Iter.AssignedBy);
                 }

@@ -14,46 +14,7 @@ namespace UserInterface.Add_Project.Custom_Control
 {
     public partial class ChooseProjectForm : Form
     {
-
         public event EventHandler<Projects> ProjectSelect;
-        private bool isUpEnable = false, isDownEnable = false, isEntered;
-        private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
-        private List<Projects> availableProjects;
-        private List<Projects> duoProjects;
-        private SingleProjectSelectTemplate prevControl;
-        private List<SelectProjectTemplate> controlCollection = new List<SelectProjectTemplate>();
-        private const int CSDropShadow = 0x00020000;
-
-        public ChooseProjectForm()
-        {
-            InitializeComponent();
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
-            selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
-        }
-
-        public new void Dispose()
-        {
-            if(controlPanel.Controls != null)
-            {
-                for(int ctr=0; ctr < controlPanel.Controls.Count; ctr++)
-                {
-                    (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
-                    controlPanel.Controls.Remove((controlPanel.Controls[ctr] as SelectProjectTemplate));
-                    ctr--;
-                }
-            }
-            downPicBox.Image.Dispose(); downPicBox.Dispose();
-            upPicBox.Image.Dispose();   upPicBox.Dispose();
-            label1.Dispose();
-            cancelButton.Dispose(); selectButton.Dispose();
-            tableLayoutPanel1.Dispose();
-            tableLayoutPanel2.Dispose();
-            panel1.Dispose();
-            panel2.Dispose();
-            controlPanel.Dispose();
-            ucNotFound1.Dispose();
-        }
 
         public List<Projects> AvailableProjects
         {
@@ -74,22 +35,68 @@ namespace UserInterface.Add_Project.Custom_Control
                 {
                     ucNotFound1.Visible = true;
                     controlPanel.Visible = upPicBox.Visible = downPicBox.Visible = false;
-                    selectButton.BackColor = selectButton.ForeColor = Color.FromArgb(157, 178, 191);
+                    selectButton.BackColor = selectButton.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
                 }
             }
         }
 
-
-        protected override CreateParams CreateParams
+        public ChooseProjectForm()
         {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CSDropShadow;
-                return cp;
-            }
+            InitializeComponent();
+            InitializePageColor();
+            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            cancelButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, cancelButton.Width, cancelButton.Height, 10, 10));
+            selectButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, selectButton.Width, selectButton.Height, 10, 10));
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            if (controlPanel.Controls != null)
+            {
+                for (int ctr = 0; ctr < controlPanel.Controls.Count; ctr++)
+                {
+                    (controlPanel.Controls[ctr] as SelectProjectTemplate).ProjectSelect -= OnProjectSelected;
+                    (controlPanel.Controls[ctr] as SelectProjectTemplate).Dispose();
+                    ctr--;
+                }
+            }
+
+            if (downPicBox.Image != null)
+                downPicBox.Image.Dispose();
+
+            if (upPicBox.Image != null)
+                upPicBox.Image.Dispose();
+
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            upPicBox.Click -= OnPaginateUpClick; upPicBox.MouseEnter -= OnPaginateMouseEnter; upPicBox.MouseLeave -= OnPaginateMouseLeave;
+            downPicBox.Click -= OnPaginateDownClick; upPicBox.MouseEnter -= OnPaginateMouseEnter; upPicBox.MouseLeave -= OnPaginateMouseLeave;
+            cancelButton.Click -= OnCancelClick; cancelButton.MouseEnter -= OnButtonMouseEnter; cancelButton.MouseLeave -= OnButtonMouseLeave; cancelButton.Paint -= OnPaint;
+            selectButton.Click -= OnSelectClick; selectButton.MouseEnter -= OnButtonMouseEnter; selectButton.MouseLeave -= OnButtonMouseLeave; selectButton.Paint -= OnPaint;
+            tableLayoutPanel1.Paint -= OnBorderPaint;
+        }
+
+        private void InitializePageColor()
+        {
+            panel2.BackColor = cancelButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            selectButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = cancelButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
+            selectButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                upPicBox.Image = Properties.Resources.Cold_Up_Light;
+            else
+                downPicBox.Image = Properties.Resources.Heat_Down_Light;
+        }
 
         private void OnPaginateUpClick(object sender, EventArgs e)
         {
@@ -174,64 +181,53 @@ namespace UserInterface.Add_Project.Custom_Control
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0,0), new Point(Width, 0));
             border.Dispose();
         }
 
         private void OnButtonMouseEnter(object sender, EventArgs e)
         {
+            if (ucNotFound1.Visible && (sender as Label).Name == "selectButton")
+            {
+                return;
+            }
+
             Cursor = Cursors.Hand;
             isEntered = true;
-            if ((sender as Button).Name == "selectButton")
+            if ((sender as Label).Name == "selectButton")
             {
-                if (!ucNotFound1.Visible)
-                {
-                    (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
-                    (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
-                }
+                (sender as Label).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.SecondaryIII);
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             else
             {
-                (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
-                (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
-            (sender as Button).Invalidate();
+            (sender as Label).Invalidate();
         }
 
         private void OnButtonMouseLeave(object sender, EventArgs e)
         {
+            if (ucNotFound1.Visible && (sender as Label).Name == "selectButton")
+            {
+                return;
+            }
+
             Cursor = Cursors.Default;
             isEntered = false;
-            if ((sender as Button).Name == "selectButton")
+            if ((sender as Label).Name == "selectButton")
             {
-                if (!ucNotFound1.Visible)
-                {
-                    (sender as Button).ForeColor = Color.FromArgb(40, 50, 80);
-                    (sender as Button).BackColor = Color.FromArgb(221, 230, 237);
-                }
+                (sender as Label).BackColor = ThemeManager.CurrentTheme.SecondaryII;
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             else
             {
-                (sender as Button).BackColor = Color.FromArgb(40, 50, 80);
-                (sender as Button).ForeColor = Color.FromArgb(221, 230, 237);
+                (sender as Label).BackColor = ThemeManager.CurrentTheme.PrimaryI;
+                (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
-            (sender as Button).Invalidate();
-        }
-
-
-        private void OnPaint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border;
-            Rectangle rec = new Rectangle(2,2,(sender as Button).Width -6, (sender as Button).Height-6);
-            border = isEntered ? new Pen((sender as Button).ForeColor, 2) : new Pen((sender as Button).BackColor, 2);
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 2));
-            border.Dispose();
-            rec = new Rectangle(0, 0, (sender as Button).Width - 2, (sender as Button).Height - 2);
-            border = new Pen(Color.FromArgb(157, 178, 191), 2);
-            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(rec, 5));
-            border.Dispose();
+            (sender as Label).Invalidate();
         }
 
         private void OnPaginateMouseEnter(object sender, EventArgs e)
@@ -239,14 +235,27 @@ namespace UserInterface.Add_Project.Custom_Control
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
             if(picBox.Name == "upPicBox")
             {
-                picBox.Image = Properties.Resources.Up_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = Properties.Resources.Cold_Up_Light_Hover;
+                }
+                else
+                {
+                    upPicBox.Image = Properties.Resources.Heat_Up_Light_Hover;
+                }
             }
             else
             {
-                picBox.Image = Properties.Resources.Down_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = Properties.Resources.Cold_Down_Light_Hover;
+                }
+                else
+                {
+                    downPicBox.Image = Properties.Resources.Heat_Down_Light_Hover;
+                }
             }
         }
 
@@ -255,14 +264,27 @@ namespace UserInterface.Add_Project.Custom_Control
             PictureBox picBox = (sender as PictureBox);
             if (picBox.Image != null)
                 picBox.Image.Dispose();
-            Cursor = Cursors.Default;
             if (picBox.Name == "upPicBox")
             {
-                picBox.Image = isUpEnable ? Properties.Resources.Up_Light_Blue : Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Light : Properties.Resources.Cold_Up_Medium;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Light : Properties.Resources.Heat_Up_Medium;
+                }
             }
             else
             {
-                picBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Light : Properties.Resources.Cold_Down_Medium;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Light : Properties.Resources.Heat_Down_Medium;
+                }
             }
         }
 
@@ -283,8 +305,26 @@ namespace UserInterface.Add_Project.Custom_Control
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? Properties.Resources.Up_Light_Blue_Hover : Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isDownEnable ? Properties.Resources.Down_Light_Blue : Properties.Resources.Down_Medium_Blue;
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Light : Properties.Resources.Cold_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Light : Properties.Resources.Cold_Down_Medium;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Light  : Properties.Resources.Heat_Up_Medium;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Light : Properties.Resources.Heat_Down_Medium;
+            }
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CSDropShadow;
+                return cp;
+            }
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -299,6 +339,21 @@ namespace UserInterface.Add_Project.Custom_Control
         );
 
 
-        
+        private bool isUpEnable = false, isDownEnable = false, isEntered;
+        private int viewCount = 0, totalCount = 0, startIdx = 0, endIdx = 0;
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Pen border = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
+            e.Graphics.DrawPath(border, BorderGraphicsPath.GetRoundRectangle(new Rectangle(0, 0, (sender as Control).Width - 1, (sender as Control).Height - 1), 5));
+                
+        }
+
+        private List<Projects> availableProjects;
+        private List<Projects> duoProjects;
+        private SingleProjectSelectTemplate prevControl;
+        private List<SelectProjectTemplate> controlCollection = new List<SelectProjectTemplate>();
+        private const int CSDropShadow = 0x00020000;
     }
 }

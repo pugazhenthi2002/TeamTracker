@@ -19,42 +19,6 @@ namespace UserInterface.Home_Page.Team_Member
 {
     public partial class TeamMemberReportContent : UserControl
     {
-        private TransparentForm transparentForm;
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
-        private void InitializeRoundedEdge()
-        {
-            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
-            tableLayoutPanel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel4.Width, tableLayoutPanel4.Height, 20, 20));
-            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
-        }
-
-        public TeamMemberReportContent()
-        {
-            InitializeComponent();
-            InitializeRoundedEdge();
-        }
-
-        public bool isOpened = false;
-        private int month, year, priority;
-        private List<System.Drawing.Color> colorList = new List<System.Drawing.Color>
-        {
-            System.Drawing.Color.FromArgb(3, 4, 94), System.Drawing.Color.FromArgb(2, 62, 138), System.Drawing.Color.FromArgb(0, 119, 182), System.Drawing.Color.FromArgb(0, 150, 199), System.Drawing.Color.FromArgb(0, 180, 216),System.Drawing.Color.FromArgb(72, 202, 228)
-        };
-        private int colorIndex = 0;
-        private FilterForm form;
-        private Random rnd = new Random();
-
-
         public int Month
         {
             get { return month; }
@@ -67,6 +31,7 @@ namespace UserInterface.Home_Page.Team_Member
                 }
             }
         }
+
         public int Year
         {
             get { return year; }
@@ -79,6 +44,7 @@ namespace UserInterface.Home_Page.Team_Member
                 }
             }
         }
+
         public int Priority
         {
             get { return priority; }
@@ -87,6 +53,42 @@ namespace UserInterface.Home_Page.Team_Member
                 priority = value;
                 SetReport();
             }
+        }
+
+        public TeamMemberReportContent()
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            SetReport();
+        }
+
+        private void InitializeRoundedEdge()
+        {
+            tableLayoutPanel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel3.Width, tableLayoutPanel3.Height, 20, 20));
+            tableLayoutPanel4.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel4.Width, tableLayoutPanel4.Height, 20, 20));
+            tableLayoutPanel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, tableLayoutPanel5.Width, tableLayoutPanel5.Height, 20, 20));
+        }
+
+        private void InitializePageColor()
+        {
+            tableLayoutPanel3.BackColor = tableLayoutPanel4.BackColor = tableLayoutPanel5.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            ucNotFound2.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            label1.ForeColor = label2.ForeColor = label3.ForeColor = commitCount.ForeColor = totalmilestoneCount.ForeColor = totalTaskCount.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryII);
+            label5.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
+            colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
+
+            pictureBox1.Image?.Dispose(); pictureBox2.Image?.Dispose(); pictureBox3.Image?.Dispose(); filterPicBox.Image?.Dispose();
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Dark_Total_Task : UserInterface.Properties.Resources.Heat_Dark_Total_Task;
+            pictureBox2.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Dark_Milestone : UserInterface.Properties.Resources.Heat_Dark_Milestone;
+            pictureBox3.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Commits : UserInterface.Properties.Resources.Heat_Commits;
+            filterPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Filter : UserInterface.Properties.Resources.Heat_Filter;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -103,9 +105,11 @@ namespace UserInterface.Home_Page.Team_Member
         private void TablePanelPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237));
-            e.Graphics.DrawLine(pen, new Point(tableLayoutPanel4.Width / 20, tableLayoutPanel4.Height / 2), new Point(tableLayoutPanel4.Width * 19 / 20, tableLayoutPanel4.Height / 2));
+            System.Drawing.Pen pen = new System.Drawing.Pen(ThemeManager.CurrentTheme.PrimaryI);
+            e.Graphics.DrawLine(pen, new Point(tableLayoutPanel4.Width / 20, (tableLayoutPanel4.Height / 2) - 1), new Point(tableLayoutPanel4.Width * 19 / 20, (tableLayoutPanel4.Height / 2)-1));
             System.Drawing.Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
+            pen.Dispose();
+            pen = new System.Drawing.Pen(ThemeManager.CurrentTheme.SecondaryIII);
             e.Graphics.DrawPath(pen, BorderGraphicsPath.GetRoundRectangle(rec, 10));
             pen.Dispose();
         }
@@ -132,7 +136,6 @@ namespace UserInterface.Home_Page.Team_Member
 
         private void OnFilterFormClosed(object sender, EventArgs e)
         {
-            (sender as FilterForm).Dispose();
             (sender as FilterForm).Close();
             ParentForm.Show();
         }
@@ -212,10 +215,9 @@ namespace UserInterface.Home_Page.Team_Member
                             Title = employeeData.Key,
                             Values = new ChartValues<int>(values),
                             Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(colorList[colorIndex].A, colorList[colorIndex].R, colorList[colorIndex].G, colorList[colorIndex].B)),
-                            //Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 157, 178, 191)),
 
                         };
-                        colorIndex += 4;
+                        colorIndex = (colorIndex + 1) % colorList.Count;
                         cartesianChart1.Series.Add(lineSeries);
                     }
                 }
@@ -223,9 +225,25 @@ namespace UserInterface.Home_Page.Team_Member
                 {
                     cartesianChart1.Visible = false;
                 }
-
             }
         }
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private TransparentForm transparentForm;
+        public bool isOpened = false;
+        private int month, year, priority;
+        private List<System.Drawing.Color> colorList;
+        private int colorIndex = 0;
+        private FilterForm form;
     }
 }

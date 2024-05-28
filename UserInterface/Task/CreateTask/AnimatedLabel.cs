@@ -52,7 +52,8 @@ namespace TeamTracker
             R = BackColor.R - 50 >= 0 ? BackColor.R - 50 : 0;
             G = BackColor.G - 50 >= 0 ? BackColor.G - 50 : 0;
             B = BackColor.B - 50 >= 0 ? BackColor.B - 50 : 0;
-            Brush brush2 = new SolidBrush(Color.FromArgb(R, G, B));
+            //Brush brush2 = new SolidBrush(Color.FromArgb(R, G, B));
+            Brush brush2 = new SolidBrush(ParentColor);
             e.Graphics.FillPolygon(brush1, new Point[] { leftPt, rightPt, new Point(Width, 0) });
             e.Graphics.FillPolygon(brush2, new Point[] { leftPt, rightPt, new Point(leftPt.X, rightPt.Y) });
             brush1.Dispose();

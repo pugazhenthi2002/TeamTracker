@@ -38,7 +38,7 @@ namespace TeamTracker
             get { return borderColor; }
             set
             {
-                borderColor = value;
+                labelDate.ForeColor = borderColor = value;
                 this.Invalidate();
             }
         }
@@ -52,6 +52,18 @@ namespace TeamTracker
             {
                 DueColor = value;
                 SetDueLabelColor();
+            }
+        }
+
+        public Color HeaderForecolor
+        {
+            get
+            {
+                return labelDue.ForeColor;
+            }
+            set
+            {
+                labelDue.ForeColor = value;
             }
         }
 

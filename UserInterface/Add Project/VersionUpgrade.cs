@@ -17,23 +17,55 @@ namespace TeamTracker
 {
     public partial class VersionUpgrade : UserControl
     {
-        private TransparentForm transparentForm;
-        private Projects project;
-
         public VersionUpgrade()
         {
             InitializeComponent();
             InitializeBorder();
-            versionNameTextBox.LostFocus += AddVersionNamePlaceHolders;
-            versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
-            descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
-            descTextBox.LostFocus += AddVersionDescPlaceHolders;
-            clientTextBox.GotFocus += RemoveClientPlaceHolders;
-            clientTextBox.LostFocus += AddClientPlaceHolders;
+            InitializePlaceHolders();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            versionNameTextBox.LostFocus -= AddVersionNamePlaceHolders;
+            versionNameTextBox.GotFocus -= RemoveVersionNamePlaceHolders;
+            descTextBox.GotFocus -= RemoveVersionDescPlaceHolders;
+            descTextBox.LostFocus -= AddVersionDescPlaceHolders;
+            clientTextBox.GotFocus -= RemoveClientPlaceHolders;
+            clientTextBox.LostFocus -= AddClientPlaceHolders;
+            chooseProjectLabel.Click -= OnChooseProject; chooseProjectLabel.MouseEnter -= OnChooseProjectLabelEnter;
+            chooseProjectLabel.MouseLeave -= OnChooseProjectLabelLeave; chooseProjectLabel.Paint -= BorderDrawPaint;
+            clearButton.Click -= ClearClick;    clearButton.MouseEnter -= OnButtonMouseEnter;   clearButton.MouseLeave -= OnButtonMouseLeave;   clearButton.Paint -= BorderDrawPaint;
+            upgradeButton.Click -= upgradeButton_Click; upgradeButton.MouseEnter -= OnButtonMouseEnter; upgradeButton.MouseLeave -= OnButtonMouseLeave; upgradeButton.Paint -= BorderDrawPaint;
+            endDatePanel.Paint -= BorderDrawPaint;  startDatePanel.Paint -= BorderDrawPaint;
+            endDateTimePicker.ValueChanged -= OnDateValueChanged;   startDateTimePicker.ValueChanged -= OnDateValueChanged;
+            panel10.Paint -= OnTextBoxBorderPaint;  panel2.Paint -= BorderDrawPaint;    panel3.Paint -= BorderDrawPaint;    panel4.Paint -= OnTextBoxBorderPaint; panel5.Paint -= BorderDrawPaint;
+            panel6.Paint -= BorderDrawPaint; panel7.Paint -= BorderDrawPaint;   panel8.Paint -= BorderDrawPaint;    panel9.Paint -= OnTextBoxBorderPaint;
+        }
+
+        private void InitializePageColor()
+        {
+            clearButton.BackColor = chooseProjectLabel.BackColor = panel2.BackColor = panel3.BackColor = panel5.BackColor = startDatePanel.BackColor = endDatePanel.BackColor = panel6.BackColor = panel8.BackColor = fileAttachment1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            label1.ForeColor = label3.ForeColor = label5.ForeColor = endDateLabel.ForeColor = startDateLabel.ForeColor = chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(panel1.BackColor);
+            upgradeButton.BackColor = startDateTimePicker.BorderColor = startDateTimePicker.TextColor = endDateTimePicker.BorderColor = endDateTimePicker.TextColor = ThemeManager.CurrentTheme.PrimaryI;
+            BackColor = descTextBox.BackColor = startDateTimePicker.SkinColor = endDateTimePicker.SkinColor = ThemeManager.CurrentTheme.SecondaryIII;
+            upgradeButton.ForeColor = ThemeManager.GetTextColor(upgradeButton.BackColor);
+            clearButton.ForeColor = ThemeManager.GetTextColor(clearButton.BackColor);
+            clientTextBox.BackColor = versionNameTextBox.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            versionNameTextBox.ForeColor = clientTextBox.ForeColor = descTextBox.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = ucNotFound2.BackColor = ThemeManager.CurrentTheme.SecondaryII;
         }
 
         public void InitializePage()
         {
+            InitializePageColor();
             chooseProjectLabel.Text = "Choose Project";
             versionNameTextBox.Text = "Enter Version";
             descTextBox.Text = "Enter Version Description";
@@ -42,7 +74,18 @@ namespace TeamTracker
             startDateTimePicker.Value = endDateTimePicker.Value = DateTime.Today;
             latestUpgradedVersion1.LatestVersion = null;
             fileAttachment1.AttachmentCollection = null;
+            fileAttachment1.ClearAttachments();
             profilePicAndName1.EmployeeProfile = null;
+        }
+
+        private void InitializePlaceHolders()
+        {
+            versionNameTextBox.LostFocus += AddVersionNamePlaceHolders;
+            versionNameTextBox.GotFocus += RemoveVersionNamePlaceHolders;
+            descTextBox.GotFocus += RemoveVersionDescPlaceHolders;
+            descTextBox.LostFocus += AddVersionDescPlaceHolders;
+            clientTextBox.GotFocus += RemoveClientPlaceHolders;
+            clientTextBox.LostFocus += AddClientPlaceHolders;
         }
 
         private void AddVersionNamePlaceHolders(object sender, EventArgs e)
@@ -87,16 +130,7 @@ namespace TeamTracker
                 clientTextBox.Text = "Enter Client Email";
         }
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
+        
 
         private void InitializeBorder()
         {
@@ -110,7 +144,7 @@ namespace TeamTracker
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
             upgradeButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, upgradeButton.Width, upgradeButton.Height, 10, 10));
-            button1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
+            clearButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, clearButton.Width, clearButton.Height, 10, 10));
         }
 
         private void OnChooseProject(object sender, EventArgs e)
@@ -126,7 +160,6 @@ namespace TeamTracker
 
         private void OnProjectSelected(object sender, Projects e)
         {
-            (sender as ChooseProjectForm).Dispose();
             (sender as ChooseProjectForm).Close();
 
             if (ParentForm != null)
@@ -168,10 +201,11 @@ namespace TeamTracker
                 else
                 {
                     VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, attachments);
-                    InitializePage();
                     ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
+                    DataHandler.AddNotification("New Upgrade Alert: Enhanced Notification System for Team Leaders!", "Dear Team Leader,\r\n\r\nWe are excited to announce the latest upgrade to our " + project.ProjectName + " application! As a team leader, staying informed and in control is essential, which is why we have revamped our notification system to better cater to your needs." + "\n" + "Version Name: " + versionNameTextBox.Text, DateTime.Now, project.TeamLeadID);
+                    InitializePage();
                 }
-                
+
             }
             else
             {
@@ -181,7 +215,6 @@ namespace TeamTracker
 
         private void OnWarningStatus(object sender, bool e)
         {
-            (sender as WarningForm).Dispose();
             (sender as WarningForm).Close();
 
             if (ParentForm != null)
@@ -192,6 +225,7 @@ namespace TeamTracker
                 VersionManager.AddVersion(versionNameTextBox.Text, descTextBox.Text, profilePicAndName1.EmployeeProfile.EmployeeID, startDateTimePicker.Value.Date, endDateTimePicker.Value.Date, clientTextBox.Text, project.ProjectID, null);
                 InitializePage();
                 ProjectManagerMainForm.notify.AddNotification("Version Created", project.ProjectName + "\n" + "Version Name: " + versionNameTextBox.Text);
+                DataHandler.AddNotification("New Upgrade Alert: Enhanced Notification System for Team Leaders!", "Dear Team Leader,\r\n\r\nWe are excited to announce the latest upgrade to our " + project.ProjectName + " application! As a team leader, staying informed and in control is essential, which is why we have revamped our notification system to better cater to your needs." + "\n" + "Version Name: " + versionNameTextBox.Text, DateTime.Now, project.TeamLeadID);
             }
         }
 
@@ -250,44 +284,14 @@ namespace TeamTracker
 
         private void OnChooseProjectLabelEnter(object sender, EventArgs e)
         {
-            chooseProjectLabel.BackColor = Color.FromArgb(157, 178, 191);
-            chooseProjectLabel.ForeColor = Color.Black;
+            chooseProjectLabel.BackColor = ThemeManager.GetHoverColor(chooseProjectLabel.BackColor);
+            chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(chooseProjectLabel.BackColor);
         }
 
         private void OnChooseProjectLabelLeave(object sender, EventArgs e)
         {
-            chooseProjectLabel.BackColor = Color.FromArgb(201, 210, 217);
-            chooseProjectLabel.ForeColor = Color.FromArgb(39, 55, 77);
-        }
-
-        private void DateMouseEnter(object sender, EventArgs e)
-        {
-            string name = (sender as Control).Name;
-            if (name == "startDateTimePicker" || name == "startDateLabel" || name == "tableLayoutPanel6")
-            {
-                startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(157, 178, 191);
-                startDateLabel.ForeColor = Color.Black;
-            }
-            else
-            {
-                endDatePanel.BackColor = endDateLabel.BackColor = Color.FromArgb(157, 178, 191);
-                endDateLabel.ForeColor = Color.Black;
-            }
-        }
-
-        private void DateMouseLeave(object sender, EventArgs e)
-        {
-            string name = (sender as Control).Name;
-            if (name == "startDateTimePicker" || name == "startDateLabel" || name == "tableLayoutPanel6")
-            {
-                startDatePanel.BackColor = startDateLabel.BackColor = Color.FromArgb(201, 210, 217);
-                startDateLabel.ForeColor = Color.FromArgb(39, 55, 77);
-            }
-            else
-            {
-                endDatePanel.BackColor = endDateLabel.BackColor = Color.FromArgb(201, 210, 217);
-                endDateLabel.ForeColor = Color.FromArgb(39, 55, 77);
-            }
+            chooseProjectLabel.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            chooseProjectLabel.ForeColor = ThemeManager.GetTextColor(chooseProjectLabel.BackColor);
         }
 
         private void ClearClick(object sender, EventArgs e)
@@ -321,7 +325,7 @@ namespace TeamTracker
         private void OnTextBoxBorderPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Pen border = new Pen(Color.FromArgb(39, 55, 77), 2);
+            Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(5, (sender as Control).Height - 7), new Point((sender as Control).Width - 5, (sender as Control).Height - 7));
             border.Dispose();
         }
@@ -329,7 +333,7 @@ namespace TeamTracker
         private void BorderDrawPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            Pen border1 = new Pen(Color.FromArgb(221, 230, 237), 2);
+            Pen border1 = new Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (sender is Button)
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 5));
@@ -337,6 +341,48 @@ namespace TeamTracker
                 e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
 
             border1.Dispose();
+        }
+
+        private void OnButtonMouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name == "clearButton")
+                clearButton.BackColor = ThemeManager.GetHoverColor(clearButton.BackColor);
+            else
+                upgradeButton.BackColor = ThemeManager.GetHoverColor(upgradeButton.BackColor);
+
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
+        }
+
+        private void OnButtonMouseLeave(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name == "clearButton")
+                clearButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            else
+                upgradeButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private TransparentForm transparentForm;
+        private Projects project;
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

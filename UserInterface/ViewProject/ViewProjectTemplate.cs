@@ -19,6 +19,46 @@ namespace UserInterface.ViewProject
         public ViewProjectTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void InitializePageColor()
+        {
+            filterLabel.ForeColor = boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            boardViewContent1.BackColor = timelineView1.BackColor = filterPanel.BackColor = timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII; 
+            BackColor = tabPage1.BackColor = tabPage2.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            timelinePicBox.Image?.Dispose(); boardPicBox.Image?.Dispose(); filterPicBox.Image?.Dispose();
+
+            if(tabControl1.SelectedIndex == 0)
+            {
+                boardPanel.BackColor = timelineLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                boardLabel.ForeColor = timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Light : Properties.Resources.Heat_Board_Light;
+                timelinePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Timeline_Dark : Properties.Resources.Heat_Timeline_Dark;
+            }
+            else
+            {
+                timelinePanel.BackColor = boardLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+                boardPanel.BackColor = timelineLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+                boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Dark : Properties.Resources.Heat_Board_Dark;
+                timelinePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Timeline_Light : Properties.Resources.Heat_Timeline_Light;
+            }
+
+            filterPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Filter : Properties.Resources.Heat_Filter;
+
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            timelinePicBox.Image?.Dispose(); boardPicBox.Image?.Dispose(); filterPicBox.Image?.Dispose();
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
         }
 
         public void InitializeViewProject()
@@ -32,10 +72,10 @@ namespace UserInterface.ViewProject
             PrevSelectedEmployee = null;
             tabControl1.SelectedIndex = 0;
             boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
-            boardPanel.BackColor = Color.FromArgb(39, 55, 77);
-            timelinePanel.BackColor = Color.FromArgb(221, 230, 237);
-            boardLabel.ForeColor = Color.FromArgb(221, 230, 237);
-            timelineLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            boardPanel.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            boardLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
+            timelineLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
         }
 
         private void OnBoardClicked(object sender, EventArgs e)
@@ -43,13 +83,11 @@ namespace UserInterface.ViewProject
             if(timelinePicBox.Image != null) { timelinePicBox.Image.Dispose(); }
             if(boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
 
-            boardPanel.BackColor = Color.FromArgb(39, 55, 77);
-            timelinePanel.BackColor = Color.FromArgb(221, 230, 237);
-            boardLabel.ForeColor = Color.FromArgb(221, 230, 237);
-            timelineLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            boardPanel.BackColor = timelineLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            boardLabel.ForeColor = timelinePanel.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
 
-            boardPicBox.Image = UserInterface.Properties.Resources.Board_Click;
-            timelinePicBox.Image = UserInterface.Properties.Resources.Timeline_Normal;
+            boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Light : Properties.Resources.Heat_Board_Light;
+            timelinePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Timeline_Dark : Properties.Resources.Heat_Timeline_Dark;
 
             boardViewContent1.VersionCollection = VersionManager.CurrentEmployeeInvolvedVersions(SelectedEmployee);
             tabControl1.SelectedIndex = 0;
@@ -60,13 +98,11 @@ namespace UserInterface.ViewProject
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
             if (boardPicBox.Image != null) { boardPicBox.Image.Dispose(); }
 
-            timelinePanel.BackColor = Color.FromArgb(39, 55, 77);
-            boardPanel.BackColor = Color.FromArgb(221, 230, 237);
-            timelineLabel.ForeColor = Color.FromArgb(221, 230, 237);
-            boardLabel.ForeColor = Color.FromArgb(39, 55, 77);
+            timelinePanel.BackColor = boardLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            boardPanel.BackColor = timelineLabel.ForeColor = ThemeManager.CurrentTheme.SecondaryIII;
 
-            boardPicBox.Image = UserInterface.Properties.Resources.Board_Normal;
-            timelinePicBox.Image = UserInterface.Properties.Resources.Timeline_Click;
+            boardPicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Board_Dark : Properties.Resources.Heat_Board_Dark;
+            timelinePicBox.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Timeline_Light : Properties.Resources.Heat_Timeline_Light;
 
             timelineView1.ProjectCollection = VersionManager.CurrentEmployeeInvolvedProjects(SelectedEmployee);
             tabControl1.SelectedIndex = 1;
@@ -77,33 +113,29 @@ namespace UserInterface.ViewProject
             TeamMembersListForm form = new TeamMembersListForm();
             form.Location = filterPanel.PointToScreen(new Point(0, filterPanel.Height + 1));
             form.Width = filterPanel.Width;
+            form.Show();
             form.TeamMemberClick += OnTeamMemberSelected;
             if(EmployeeManager.CurrentEmployee.EmpRoleName == "Project Manager")
             {
                 form.TeamList = EmployeeManager.FetchTeamLeadersFromManagerID();
-                form.Show();
             }
             else if(EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead")
             {
                 form.TeamList = EmployeeManager.FetchTeamMembersForTeamLeaders();
-                form.Show();
             }
-            
         }
 
         private void OnTeamMemberSelected(object sender, Employee e)
         {
-            if (filteredUser.Image != null)
-                filteredUser.Image.Dispose();
-
             SelectedEmployee = e;
             filteredUser.Image = Image.FromFile(e.EmpProfileLocation);
             filteredUser.Visible = true;
-
+            if (EmployeeManager.CurrentEmployee.EmpRoleName == "Team Lead") timelineView1.FilteredEmployee = e;
             if (PrevSelectedEmployee != null)
             {
                 if (PrevSelectedEmployee.EmployeeID == e.EmployeeID)
                 {
+                    timelineView1.FilteredEmployee = null;
                     SelectedEmployee = EmployeeManager.CurrentEmployee;
                     filteredUser.Visible = false;
                 }

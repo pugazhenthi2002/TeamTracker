@@ -96,7 +96,7 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.panel1.Size = new System.Drawing.Size(261, 264);
             this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // descTextBox
             // 
@@ -148,7 +148,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(265, 264);
             this.tableLayoutPanel3.TabIndex = 0;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderPaint);
+            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.OnBorderPaint);
             // 
             // panelDownloadAttachement
             // 
@@ -227,7 +227,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.endDate);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -266,7 +266,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.startDate);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -315,7 +315,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Controls.Add(this.clientLabel);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -400,6 +400,8 @@
             this.setMilestoneButton.Text = "Set Milestone";
             this.setMilestoneButton.UseVisualStyleBackColor = false;
             this.setMilestoneButton.Click += new System.EventHandler(this.OnSetMilestoneFormClicked);
+            this.setMilestoneButton.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.setMilestoneButton.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // buttonOnStage
             // 
@@ -418,6 +420,8 @@
             this.buttonOnStage.Text = "Stage Project";
             this.buttonOnStage.UseVisualStyleBackColor = false;
             this.buttonOnStage.Click += new System.EventHandler(this.OnClickStageProject);
+            this.buttonOnStage.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.buttonOnStage.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // UcOnStage
             // 

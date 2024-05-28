@@ -12,25 +12,14 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
 using UserInterface;
+using System.Net.Mail;
+using Color = System.Drawing.Color;
+using UserInterface1;
 
 namespace TeamTracker
 {
     public partial class UcDeploy : UserControl
     {
-        private TransparentForm transparentForm;
-        private ProjectVersion version;
-        private Projects proj;
-        private VersionSourceCode versionSourceCode;
-
-
-        public UcDeploy()
-        {
-            InitializeComponent();
-            InitializeRoundedEdge();
-        }
-
-        
-
         public delegate void DeployHandler(string name, ProjectVersion project);
         public event DeployHandler Deployment;
 
@@ -38,7 +27,6 @@ namespace TeamTracker
         {
             set
             {
-                //SuspendLayout();
                 if (value != null)
                 {
                     version = value;
@@ -49,8 +37,40 @@ namespace TeamTracker
                     }
                     InitializePage();
                 }
-                //ResumeLayout();
             }
+        }
+
+        public UcDeploy()
+        {
+            InitializeComponent();
+            InitializeRoundedEdge();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+            if (version != null)
+                InitializePage();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            ThemeManager.ThemeChange -= OnThemeChanged;
+            pictureBox1.Image?.Dispose();
+        }
+
+        private void InitializePageColor()
+        {
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            pieChart1.BackColor = profilePictureBox1.ParentColor = panel3.BackColor = panel4.BackColor = panel5.BackColor = panel6.BackColor = panel7.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            buttonDeploy.BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+            buttonDeploy.ForeColor = ThemeManager.GetTextColor(buttonDeploy.BackColor);
+            teamLeaderName.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label7.ForeColor = labelProjNameandVersion.ForeColor = submissionDateLabel.ForeColor = ThemeManager.GetTextColor(panel4.BackColor);
+            pictureBox1.Image?.Dispose();
+
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void InitializePage()
@@ -58,13 +78,13 @@ namespace TeamTracker
             profilePictureBox1.Image = Image.FromFile(EmployeeManager.FetchEmployeeFromProjectID(proj.ProjectID).EmpProfileLocation);
             teamLeaderName.Text = EmployeeManager.FetchEmployeeFromProjectID(proj.ProjectID).EmployeeFirstName;
             versionSourceCode = DataHandler.FetchVersionSourceCodeByVersionID(version.VersionID);
-            submissionDateLabel.Text = versionSourceCode.SubmissionDate.ToShortDateString();
-            Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCountByVersionID(version.VersionID);
+            submissionDateLabel.Text = version.EndDate.ToShortDateString();
+            Dictionary<string, int> result1 = TaskManager.FilterTeamMemberTaskCountByVersionID(version);
 
             int total = 0;
             foreach (var Iter in result1) total += Iter.Value;
 
-            var colorList = ColorManager.ColorFadingOut;
+            var colorList = ThemeManager.CurrentTheme.MilestoneFadingOutColorCollection;
             int colorIndex = 0;
 
             if (total > 0)
@@ -90,7 +110,6 @@ namespace TeamTracker
             InitializeRoundedEdge();
         }
 
-
         private void InitializeRoundedEdge()
         {
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
@@ -98,27 +117,16 @@ namespace TeamTracker
             panel5.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 20, 20));
             panel6.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel6.Width, panel6.Height, 20, 20));
             panel7.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel7.Width, panel7.Height, 20, 20));
+            buttonDeploy.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonDeploy.Width, buttonDeploy.Height, 20, 20));
         }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-
+        
         private void OnDownloaded(object sender, EventArgs e)
         {
-            Projects proj = VersionManager.FetchProjectFromID(version.VersionID);
+            Projects proj = VersionManager.FetchProjectFromID(version.ProjectID);
             VersionSourceCode sourceCode = DataHandler.FetchVersionSourceCodeByVersionID(version.VersionID);
             string savePath = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = @"C:\";
-            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            saveFileDialog.Filter = "ZIP Folders (.ZIP)|*.zip";
             saveFileDialog.FilterIndex = 1;
             DialogResult result = saveFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -128,8 +136,7 @@ namespace TeamTracker
 
             try
             {
-                string filePath = System.IO.Path.Combine(savePath, sourceCode.DisplayName);
-                System.IO.File.Copy(sourceCode.VersionLocation, filePath, true);
+                System.IO.File.Copy(sourceCode.VersionLocation, savePath, true);
                 ProjectManagerMainForm.notify.AddNotification("Download Completed", proj.ProjectName + "\n" + version.VersionName);
             }
             catch
@@ -138,35 +145,72 @@ namespace TeamTracker
             }
         }
 
-        private void OnDeployClick(object sender, EventArgs e)
+        private async void OnDeployClick(object sender, EventArgs e)
         {
+            LoaderForm loaderForm = new LoaderForm();
+            Size wndSize = Screen.PrimaryScreen.Bounds.Size; 
+
+            LogoAnimation logo = new LogoAnimation();
+            logo.Start = true;
+            logo.Size = new Size(400,400);
+            logo.LogoColor = Color.White;
+            logo.Location = new Point(wndSize.Width / 2 - 100, wndSize.Height / 2 - 200);
+
+            loaderForm.Controls.Add(logo);
+            loaderForm.Show();
+         
+            var task2 = System.Threading.Tasks.Task.Run(() =>
+            {
+                DataHandler.SendEmail(version.ClientEmail, versionSourceCode);
+                
+            });
+
+
+            await System.Threading.Tasks.Task.WhenAll(task2);
+
+            logo.Start = false;
+            
             VersionManager.VersionCompletion(version);
             Deployment?.Invoke(proj.ProjectName, version);
+            //MailAddress from = new MailAddress(EmployeeManager.CurrentEmployee.EmpEmail, EmployeeManager.CurrentEmployee.EmployeeFirstName + " " + EmployeeManager.CurrentEmployee.EmployeeLastName);
+            //MailAddress to = new MailAddress(version.ClientEmail);
+            ////SendEmail("Want to test this damn thing", from, to);
+
+            loaderForm.Close();
+            logo.Dispose();
+            ProjectManagerMainForm.notify.AddNotification("Deployment Status","Project deployed successfully and the client was notified");
+
         }
 
-        private void OnPaintTlBase(object sender, PaintEventArgs e)
+        protected void SendEmail(string _subject, MailAddress _from, MailAddress _to)
         {
-            Point pt1 = new Point(4, 4);
-            Point pt2 = new Point((sender as Panel).Width - 6, 4);
-            Point pt3 = new Point((sender as Panel).Width - 6, (sender as Panel).Height - 6);
-            Point pt4 = new Point(4, (sender as Panel).Height - 6);
-            System.Drawing.Pen border = new System.Drawing.Pen(System.Drawing.Color.Black, 2);
-            e.Graphics.DrawPolygon(border, new Point[] { pt1, pt2, pt3, pt4 });
-        }
+            string Text = "";
+            SmtpClient mailClient = new SmtpClient("Mailhost");
+            MailMessage msgMail;
+            Text = "Stuff";
+            msgMail = new MailMessage();
+            msgMail.From = _from;
+            msgMail.To.Add(_to);
 
+            msgMail.Subject = _subject;
+            msgMail.Body = Text;
+            msgMail.IsBodyHtml = true;
+            mailClient.Send(msgMail);
+            msgMail.Dispose();
+        }
 
         private void OnDownloadMouseEnter(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
 
-            pictureBox1.Image = UserInterface.Properties.Resources.Download_Medium_Blue_Color;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download_Hover : UserInterface.Properties.Resources.Heat_Download_Hover;
         }
 
         private void OnDownloadMouseLeave(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
 
-            pictureBox1.Image = UserInterface.Properties.Resources.Download_Light_Blue;
+            pictureBox1.Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? UserInterface.Properties.Resources.Cold_Download : UserInterface.Properties.Resources.Heat_Download;
         }
 
         private void OnViewClick(object sender, EventArgs e)
@@ -182,29 +226,59 @@ namespace TeamTracker
 
         private void OnInfoFormClosed(object sender, EventArgs e)
         {
-            (sender as ProjectInfoForm).Dispose();
             (sender as ProjectInfoForm).Close();
             ParentForm.Show();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            (sender as Control).ForeColor = System.Drawing.Color.FromArgb(241, 250, 255);
+            (sender as Control).BackColor = ThemeManager.GetHoverColor((sender as Control).BackColor);
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            (sender as Control).ForeColor = System.Drawing.Color.FromArgb(211, 220, 227);
+            if ((sender as Control).Name == "label5")
+                (sender as Control).BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            else
+                (sender as Control).BackColor = ThemeManager.CurrentTheme.PrimaryIII;
+
+            (sender as Control).ForeColor = ThemeManager.GetTextColor((sender as Control).BackColor);
         }
 
         private void OnBorderPaint(object sender, PaintEventArgs e)
         {
             Rectangle rec = new Rectangle(0, 0, (sender as Control).Width - 2, (sender as Control).Height - 2);
-            System.Drawing.Pen border1 = new System.Drawing.Pen(System.Drawing.Color.FromArgb(221, 230, 237), 2);
+            System.Drawing.Pen border1 = new System.Drawing.Pen(ThemeManager.CurrentTheme.SecondaryIII, 2);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.DrawPath(border1, BorderGraphicsPath.GetRoundRectangle(rec, 10));
-
             border1.Dispose();
         }
+
+        private void OnLinePaint(object sender, PaintEventArgs e)
+        {
+            System.Drawing.Pen border1 = new System.Drawing.Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.DrawLine(border1, 0, (sender as Control).Height - 1, (sender as Control).Width - 2, (sender as Control).Height - 1);
+            border1.Dispose();
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private TransparentForm transparentForm;
+        private ProjectVersion version;
+        private Projects proj;
+        private VersionSourceCode versionSourceCode;
+
+        
     }
 }

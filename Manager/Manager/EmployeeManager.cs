@@ -184,6 +184,19 @@ namespace TeamTracker
             return result;
         }
 
+        public static Employee FetchManagerFromTeamLeadID(int id)
+        {
+            foreach(var Iter in ManagingEmployeeCollection)
+            {
+                if(Iter.TeamLeadID == id)
+                {
+                    return FetchEmployeeFromEmpID(Iter.ManagerID);
+                }
+            }
+
+            return null;
+        }
+
         public static Employee FetchManagerFromTeamLeadID()
         {
             foreach(var Iter in ManagingEmployeeCollection)
@@ -230,7 +243,6 @@ namespace TeamTracker
             if (!(message = VersionManager.StoreVersionCollection()).Result) return message;
             if (!(message = TaskManager.StoreTaskCollection()).Result) return message;
             if (!(message = MilestoneManager.StoreMilestoneCollection()).Result) return message;
-
             return true;
         }
 

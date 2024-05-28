@@ -13,6 +13,21 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +52,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>T.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GoLibrary, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,6 +73,11 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -77,23 +100,11 @@
     <Compile Include="Add Project\AddProject.designer.cs">
       <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Add Project\Custom Control\AttachmentWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\AttachmentWarningForm.Designer.cs">
-      <DependentUpon>AttachmentWarningForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Add Project\Custom Control\AvailableTeamLeaders.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Add Project\Custom Control\AvailableTeamLeaders.designer.cs">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\ChooseProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\ChooseProject.designer.cs">
-      <DependentUpon>ChooseProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Add Project\Custom Control\ChooseProjectForm.cs">
       <SubType>Form</SubType>
@@ -115,12 +126,6 @@
     </Compile>
     <Compile Include="Add Project\Custom Control\LatestUpgradedVersion.designer.cs">
       <DependentUpon>LatestUpgradedVersion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\NoResultFound.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\NoResultFound.designer.cs">
-      <DependentUpon>NoResultFound.cs</DependentUpon>
     </Compile>
     <Compile Include="Add Project\Custom Control\PDFAttachment.cs">
       <SubType>UserControl</SubType>
@@ -158,12 +163,6 @@
     <Compile Include="Add Project\Custom Control\TeamLeaderPicAndName.designer.cs">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Add Project\Custom Control\TeamLeaderPicAndNameVertical.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Add Project\Custom Control\TeamLeaderPicAndNameVertical.designer.cs">
-      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
-    </Compile>
     <Compile Include="Add Project\ProjectInitializationPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +174,62 @@
     </Compile>
     <Compile Include="Add Project\VersionUpgrade.designer.cs">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Color Manager\ColorPalattes.cs" />
+    <Compile Include="Color Manager\ThemeManager.cs" />
+    <Compile Include="Edit Project\Controls\EditMilestone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditMilestone.Designer.cs">
+      <DependentUpon>EditMilestone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditTask.Designer.cs">
+      <DependentUpon>EditTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditVersion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\EditVersion.Designer.cs">
+      <DependentUpon>EditVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\ProjectBoardTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\ProjectBoardTemplate.Designer.cs">
+      <DependentUpon>ProjectBoardTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchTask.Designer.cs">
+      <DependentUpon>SearchTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchVersion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Controls\SearchVersion.Designer.cs">
+      <DependentUpon>SearchVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Project\Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Edit Project\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\FilterPeople.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\FilterPeople.Designer.cs">
+      <DependentUpon>FilterPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\UCViewAllIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\All Issue Page\UCViewAllIssue.Designer.cs">
+      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
     </Compile>
     <Compile Include="BorderGraphicsPath.cs" />
     <Compile Include="Form1.cs">
@@ -188,15 +243,6 @@
     </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\DeployContent.Designer.cs">
       <DependentUpon>DeployContent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\DownloadBtn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.Designer.cs">
-      <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Deploy\UcDeploy.cs">
       <SubType>UserControl</SubType>
@@ -216,23 +262,11 @@
     <Compile Include="Home Page\Project Manager\Notification\UcNotification.Designer.cs">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.Designer.cs">
-      <DependentUpon>MilestoneAndDateTemplate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneDetailsForm.Designer.cs">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneLabel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\MilestoneLabel.Designer.cs">
-      <DependentUpon>MilestoneLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\MilestoneView.cs">
       <SubType>UserControl</SubType>
@@ -245,12 +279,6 @@
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\Overview.Designer.cs">
       <DependentUpon>Overview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\OverviewContent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\OverviewContent.Designer.cs">
-      <DependentUpon>OverviewContent.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Project Manager\Overview\OverviewDropDownForm.cs">
       <SubType>Form</SubType>
@@ -270,12 +298,6 @@
     <Compile Include="Home Page\Project Manager\Overview\StartPathAndDate.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.Designer.cs">
-      <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home Page\Project Manager\ProjectManagerHome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -287,9 +309,6 @@
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\AddMilestoneForm.Designer.cs">
       <DependentUpon>AddMilestoneForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\CustomDatetimePicker.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\MilestoneHandler.cs" />
     <Compile Include="Home Page\Team Lead\On Stage\MilestoneTemplate.cs">
@@ -309,12 +328,6 @@
     </Compile>
     <Compile Include="Home Page\Team Lead\On Stage\UCOnStage.Designer.cs">
       <DependentUpon>UCOnStage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\UcMilestone.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home Page\Team Lead\On Stage\UcMilestone.Designer.cs">
-      <DependentUpon>UcMilestone.cs</DependentUpon>
     </Compile>
     <Compile Include="Home Page\Team Lead\Report\FilterForm.cs">
       <SubType>Form</SubType>
@@ -382,6 +395,54 @@
     <Compile Include="Home Page\Team Member\TeamMemberReportContent.Designer.cs">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\CustomCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\CustomCheckBox.Designer.cs">
+      <DependentUpon>CustomCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\IssueInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\IssueInfoForm.Designer.cs">
+      <DependentUpon>IssueInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\MenuFormMyIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\MenuFormMyIssue.Designer.cs">
+      <DependentUpon>MenuFormMyIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionAttachmentTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionAttachmentTemplate.Designer.cs">
+      <DependentUpon>SolutionAttachmentTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionButton.Designer.cs">
+      <DependentUpon>SolutionButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\SolutionTemplate.Designer.cs">
+      <DependentUpon>SolutionTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\ViewSolutionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\ViewSolutionForm.Designer.cs">
+      <DependentUpon>ViewSolutionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoaderForm.Designer.cs">
+      <DependentUpon>LoaderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +467,36 @@
     <Compile Include="LoginPage\TextBox.designer.cs">
       <DependentUpon>TextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Issues\My Issue Page\IssuePriorityDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssuePriorityDropDownForm.Designer.cs">
+      <DependentUpon>IssuePriorityDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssueTypeDropDownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\IssueTypeDropDownForm.Designer.cs">
+      <DependentUpon>IssueTypeDropDownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCCreateIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCCreateIssue.Designer.cs">
+      <DependentUpon>UCCreateIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UcMyIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UcMyIssue.Designer.cs">
+      <DependentUpon>UcMyIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCTags.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Issues\My Issue Page\UCTags.Designer.cs">
+      <DependentUpon>UCTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notification Manager\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -425,12 +516,6 @@
       <DependentUpon>NotificationTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Project Manager Main Page\PageButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Project Manager Main Page\PageButton.Designer.cs">
-      <DependentUpon>PageButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="Project Manager Main Page\ProfilePicAndName.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -448,6 +533,15 @@
     </Compile>
     <Compile Include="Project Manager Main Page\SignOutForm.Designer.cs">
       <DependentUpon>SignOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Manager Main Page\ThemeToggle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Project Manager Main Page\ThemeToggle.Designer.cs">
+      <DependentUpon>ThemeToggle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project Manager Main Page\ToggleButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task\AddTask.cs">
@@ -471,12 +565,6 @@
     <Compile Include="Task\CreateTask\MilestoneDropDownForm.Designer.cs">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\CreateTask\MilestoneWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Task\CreateTask\MilestoneWarningForm.Designer.cs">
-      <DependentUpon>MilestoneWarningForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task\CreateTask\PriorityDropDownForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,23 +577,11 @@
     <Compile Include="Task\CreateTask\TeamMembersListForm.Designer.cs">
       <DependentUpon>TeamMembersListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task\CreateTask\UcCreateTask.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Task\CreateTask\UcCreateTask.Designer.cs">
-      <DependentUpon>UcCreateTask.cs</DependentUpon>
-    </Compile>
     <Compile Include="Task\DeployForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Task\DeployForm.Designer.cs">
       <DependentUpon>DeployForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Task\DeployWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Task\DeployWarningForm.Designer.cs">
-      <DependentUpon>DeployWarningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Task\MilestoneSwitch.cs">
       <SubType>UserControl</SubType>
@@ -518,12 +594,6 @@
     </Compile>
     <Compile Include="Task\ReviewTaskTemplate.Designer.cs">
       <DependentUpon>ReviewTaskTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Task\SwitchMilestoneWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Task\SwitchMilestoneWarningForm.Designer.cs">
-      <DependentUpon>SwitchMilestoneWarningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Task\Timeline\CurrentTimelineContent.cs">
       <SubType>UserControl</SubType>
@@ -554,18 +624,6 @@
     </Compile>
     <Compile Include="UcNotFound.Designer.cs">
       <DependentUpon>UcNotFound.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\CircleDownloadBtn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\CircleDownloadBtn.Designer.cs">
-      <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\ProjectBoard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ViewPage\BoardView\ProjectBoard.designer.cs">
-      <DependentUpon>ProjectBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\BoardView\SourceCodeSubmitionForm.cs">
       <SubType>Form</SubType>
@@ -626,9 +684,6 @@
     </Compile>
     <Compile Include="ViewPage\BoardView\UcTaskStatusHead.Designer.cs">
       <DependentUpon>UcTaskStatusHead.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewPage\ListView\CustomDonutChart.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ViewPage\ListView\DoneCardTemplate.cs">
       <SubType>UserControl</SubType>
@@ -747,14 +802,8 @@
     <EmbeddedResource Include="Add Project\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\AttachmentWarningForm.resx">
-      <DependentUpon>AttachmentWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\AvailableTeamLeaders.resx">
       <DependentUpon>AvailableTeamLeaders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\ChooseProject.resx">
-      <DependentUpon>ChooseProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\ChooseProjectForm.resx">
       <DependentUpon>ChooseProjectForm.cs</DependentUpon>
@@ -764,9 +813,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\LatestUpgradedVersion.resx">
       <DependentUpon>LatestUpgradedVersion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\NoResultFound.resx">
-      <DependentUpon>NoResultFound.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\Custom Control\PDFAttachment.resx">
       <DependentUpon>PDFAttachment.cs</DependentUpon>
@@ -783,26 +829,44 @@
     <EmbeddedResource Include="Add Project\Custom Control\TeamLeaderPicAndName.resx">
       <DependentUpon>TeamLeaderPicAndName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Add Project\Custom Control\TeamLeaderPicAndNameVertical.resx">
-      <DependentUpon>TeamLeaderPicAndNameVertical.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Add Project\ProjectInitializationPage.resx">
       <DependentUpon>ProjectInitializationPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add Project\VersionUpgrade.resx">
       <DependentUpon>VersionUpgrade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\EditMilestone.resx">
+      <DependentUpon>EditMilestone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\EditTask.resx">
+      <DependentUpon>EditTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\EditVersion.resx">
+      <DependentUpon>EditVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\ProjectBoardTemplate.resx">
+      <DependentUpon>ProjectBoardTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\SearchTask.resx">
+      <DependentUpon>SearchTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Controls\SearchVersion.resx">
+      <DependentUpon>SearchVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Project\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\All Issue Page\FilterPeople.resx">
+      <DependentUpon>FilterPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\All Issue Page\UCViewAllIssue.resx">
+      <DependentUpon>UCViewAllIssue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\DeployContent.resx">
       <DependentUpon>DeployContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\DownloadBtn.resx">
-      <DependentUpon>DownloadBtn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Deploy\ProfilePicAndNameSquare.resx">
-      <DependentUpon>ProfilePicAndNameSquare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Deploy\UcDeploy.resx">
       <DependentUpon>UcDeploy.cs</DependentUpon>
@@ -814,14 +878,8 @@
     <EmbeddedResource Include="Home Page\Project Manager\Notification\UcNotification.resx">
       <DependentUpon>UcNotification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneAndDateTemplate.resx">
-      <DependentUpon>MilestoneAndDateTemplate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneDetailsForm.resx">
       <DependentUpon>MilestoneDetailsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneLabel.resx">
-      <DependentUpon>MilestoneLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\MilestoneView.resx">
       <DependentUpon>MilestoneView.cs</DependentUpon>
@@ -829,17 +887,11 @@
     <EmbeddedResource Include="Home Page\Project Manager\Overview\Overview.resx">
       <DependentUpon>Overview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewContent.resx">
-      <DependentUpon>OverviewContent.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewDropDownForm.resx">
       <DependentUpon>OverviewDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\Overview\OverviewMilestoneContent.resx">
       <DependentUpon>OverviewMilestoneContent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Project Manager\Overview\TaskCompletionProgressBar.resx">
-      <DependentUpon>TaskCompletionProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Project Manager\ProjectManagerHome.resx">
       <DependentUpon>ProjectManagerHome.cs</DependentUpon>
@@ -856,9 +908,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\On Stage\UCOnStage.resx">
       <DependentUpon>UCOnStage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home Page\Team Lead\On Stage\UcMilestone.resx">
-      <DependentUpon>UcMilestone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home Page\Team Lead\Report\FilterForm.resx">
       <DependentUpon>FilterForm.cs</DependentUpon>
@@ -893,6 +942,30 @@
     <EmbeddedResource Include="Home Page\Team Member\TeamMemberReportContent.resx">
       <DependentUpon>TeamMemberReportContent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Issues\CustomCheckBox.resx">
+      <DependentUpon>CustomCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\IssueInfoForm.resx">
+      <DependentUpon>IssueInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\MenuFormMyIssue.resx">
+      <DependentUpon>MenuFormMyIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\SolutionAttachmentTemplate.resx">
+      <DependentUpon>SolutionAttachmentTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\SolutionButton.resx">
+      <DependentUpon>SolutionButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\SolutionTemplate.resx">
+      <DependentUpon>SolutionTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\ViewSolutionForm.resx">
+      <DependentUpon>ViewSolutionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoaderForm.resx">
+      <DependentUpon>LoaderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -905,6 +978,21 @@
     <EmbeddedResource Include="LoginPage\TextBox.resx">
       <DependentUpon>TextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\IssuePriorityDropDownForm.resx">
+      <DependentUpon>IssuePriorityDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\IssueTypeDropDownForm.resx">
+      <DependentUpon>IssueTypeDropDownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\UCCreateIssue.resx">
+      <DependentUpon>UCCreateIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\UcMyIssue.resx">
+      <DependentUpon>UcMyIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issues\My Issue Page\UCTags.resx">
+      <DependentUpon>UCTags.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Notification Manager\CloseButton.resx">
       <DependentUpon>CloseButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -913,9 +1001,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Notification Manager\NotificationTemplate.resx">
       <DependentUpon>NotificationTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Project Manager Main Page\PageButton.resx">
-      <DependentUpon>PageButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project Manager Main Page\ProfilePicAndName.resx">
       <DependentUpon>ProfilePicAndName.cs</DependentUpon>
@@ -926,6 +1011,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Project Manager Main Page\SignOutForm.resx">
       <DependentUpon>SignOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project Manager Main Page\ThemeToggle.resx">
+      <DependentUpon>ThemeToggle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -946,32 +1034,20 @@
     <EmbeddedResource Include="Task\CreateTask\MilestoneDropDownForm.resx">
       <DependentUpon>MilestoneDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\CreateTask\MilestoneWarningForm.resx">
-      <DependentUpon>MilestoneWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\PriorityDropDownForm.resx">
       <DependentUpon>PriorityDropDownForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\CreateTask\TeamMembersListForm.resx">
       <DependentUpon>TeamMembersListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task\CreateTask\UcCreateTask.resx">
-      <DependentUpon>UcCreateTask.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Task\DeployForm.resx">
       <DependentUpon>DeployForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Task\DeployWarningForm.resx">
-      <DependentUpon>DeployWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\MilestoneSwitch.resx">
       <DependentUpon>MilestoneSwitch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\ReviewTaskTemplate.resx">
       <DependentUpon>ReviewTaskTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Task\SwitchMilestoneWarningForm.resx">
-      <DependentUpon>SwitchMilestoneWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Task\Timeline\CurrentTimelineContent.resx">
       <DependentUpon>CurrentTimelineContent.cs</DependentUpon>
@@ -987,12 +1063,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UcNotFound.resx">
       <DependentUpon>UcNotFound.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\CircleDownloadBtn.resx">
-      <DependentUpon>CircleDownloadBtn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewPage\BoardView\ProjectBoard.resx">
-      <DependentUpon>ProjectBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPage\BoardView\SourceCodeSubmitionForm.resx">
       <DependentUpon>SourceCodeSubmitionForm.cs</DependentUpon>
@@ -1102,9 +1172,9 @@
     <None Include="Images\Search File.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data Structure\Data Structure.csproj">
-      <Project>{015ae303-5687-43df-a04b-1096ff57f937}</Project>
-      <Name>Data Structure</Name>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{eca6a2de-b061-4a22-85aa-fd0e5bdb14e8}</Project>
+      <Name>Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Manager\Manager.csproj">
       <Project>{852f176d-8e38-4852-b2f9-7bed686da285}</Project>
@@ -1154,6 +1224,8 @@
     <None Include="Images\Zip.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Icons\T.ico" />
+    <Content Include="T.ico" />
     <None Include="Images\Filter.png" />
     <None Include="Images\Board.png" />
     <None Include="Images\Timeline.png" />
@@ -1208,12 +1280,192 @@
     <None Include="Pugazh Images\Download Light Blue Hover.png" />
     <None Include="Pugazh Images\Download Light Blue.png" />
     <None Include="Pugazh Images\Download Medium Blue Color.png" />
+    <None Include="Pugazh Images\All Issue Hover.png" />
+    <None Include="Pugazh Images\All Issue Normal.png" />
+    <None Include="Pugazh Images\My Issue Hover.png" />
+    <None Include="Pugazh Images\My Issue Normal.png" />
+    <None Include="Icons\Cold Add Project Light.png" />
+    <None Include="Icons\Cold Add Project Medium.png" />
+    <None Include="Icons\Cold Add Task Light.png" />
+    <None Include="Icons\Cold Add Task Medium.png" />
+    <None Include="Icons\Cold All Issue Light.png" />
+    <None Include="Icons\Cold All Issue Medium.png" />
+    <None Include="Icons\Cold Browse.png" />
+    <None Include="Icons\Cold Calendar.png" />
+    <None Include="Icons\Cold Close Dark Hover.png" />
+    <None Include="Icons\Cold Close Dark.png" />
+    <None Include="Icons\Cold Close Light Hover.png" />
+    <None Include="Icons\Cold Close Light.png" />
+    <None Include="Icons\Cold Commits.png" />
+    <None Include="Icons\Cold Completed Task.png" />
+    <None Include="Icons\Cold Dark Document.png" />
+    <None Include="Icons\Cold Dark Milestone.png" />
+    <None Include="Icons\Cold Dark Total Task.png" />
+    <None Include="Icons\Cold Delay Task.png" />
+    <None Include="Icons\Cold Delete Dark.png" />
+    <None Include="Icons\Cold Delete Light.png" />
+    <None Include="Icons\Cold Down Dark Hover.png" />
+    <None Include="Icons\Cold Down Dark.png" />
+    <None Include="Icons\Cold Down Light Hover.png" />
+    <None Include="Icons\Cold Down Light.png" />
+    <None Include="Icons\Cold Down Medium Hover.png" />
+    <None Include="Icons\Cold Down Medium.png" />
+    <None Include="Icons\Cold Download Hover.png" />
+    <None Include="Icons\Cold Download.png" />
+    <None Include="Icons\Cold Edit Light.png" />
+    <None Include="Icons\Cold Edit Medium.png" />
+    <None Include="Icons\Cold Empty.png" />
+    <None Include="Icons\Cold Filter.png" />
+    <None Include="Icons\Cold Home Light.png" />
+    <None Include="Icons\Cold Home Medium.png" />
+    <None Include="Icons\Cold Incomplete Task.png" />
+    <None Include="Icons\Cold Left Dark Hover.png" />
+    <None Include="Icons\Cold Left Dark.png" />
+    <None Include="Icons\Cold Left Light Hover.png" />
+    <None Include="Icons\Cold Left Light.png" />
+    <None Include="Icons\Cold Left Medium Hover.png" />
+    <None Include="Icons\Cold Left Medium.png" />
+    <None Include="Icons\Cold Light Document.png" />
+    <None Include="Icons\Cold Light Milestone.png" />
+    <None Include="Icons\Cold Light Total Task.png" />
+    <None Include="Icons\Cold Milestone Count.png" />
+    <None Include="Icons\Cold My Issue Light.png" />
+    <None Include="Icons\Cold My Issue Medium.png" />
+    <None Include="Icons\Cold My Task Light.png" />
+    <None Include="Icons\Cold My Task Medium.png" />
+    <None Include="Icons\Cold Pin.png" />
+    <None Include="Icons\Cold Plus Dark.png" />
+    <None Include="Icons\Cold Plus Light.png" />
+    <None Include="Icons\Cold Project Delay Dark.png" />
+    <None Include="Icons\Cold Project Delay Light.png" />
+    <None Include="Icons\Cold Project Equal Dark.png" />
+    <None Include="Icons\Cold Project Equal Light.png" />
+    <None Include="Icons\Cold Right Dark Hover.png" />
+    <None Include="Icons\Cold Right Dark.png" />
+    <None Include="Icons\Cold Right Light Hover.png" />
+    <None Include="Icons\Cold Right Light.png" />
+    <None Include="Icons\Cold Right Medium Hover.png" />
+    <None Include="Icons\Cold Right Medium.png" />
+    <None Include="Icons\Cold Search.png" />
+    <None Include="Icons\Cold Tags.png" />
+    <None Include="Icons\Cold Teammates Count.png" />
+    <None Include="Icons\Cold Up Dark Hover.png" />
+    <None Include="Icons\Cold Up Dark.png" />
+    <None Include="Icons\Cold Up Light Hover.png" />
+    <None Include="Icons\Cold Up Light.png" />
+    <None Include="Icons\Cold Up Medium Hover.png" />
+    <None Include="Icons\Cold Up Medium.png" />
+    <None Include="Icons\Cold Upload.png" />
+    <None Include="Icons\Cold View Project Light.png" />
+    <None Include="Icons\Cold View Project Medium.png" />
+    <None Include="Icons\Heat Add Project Light.png" />
+    <None Include="Icons\Heat Add Project Medium.png" />
+    <None Include="Icons\Heat Add Task Light.png" />
+    <None Include="Icons\Heat Add Task Medium.png" />
+    <None Include="Icons\Heat All Issue Light.png" />
+    <None Include="Icons\Heat All Issue Medium.png" />
+    <None Include="Icons\Heat Browse.png" />
+    <None Include="Icons\Heat Calendar.png" />
+    <None Include="Icons\Heat Close Dark Hover.png" />
+    <None Include="Icons\Heat Close Dark.png" />
+    <None Include="Icons\Heat Close Light Hover.png" />
+    <None Include="Icons\Heat Close Light.png" />
+    <None Include="Icons\Heat Commits.png" />
+    <None Include="Icons\Heat Completed Task.png" />
+    <None Include="Icons\Heat Dark Document.png" />
+    <None Include="Icons\Heat Dark Milestone.png" />
+    <None Include="Icons\Heat Dark Total Task.png" />
+    <None Include="Icons\Heat Delay Task.png" />
+    <None Include="Icons\Heat Delete Dark.png" />
+    <None Include="Icons\Heat Delete Light.png" />
+    <None Include="Icons\Heat Down Dark Hover.png" />
+    <None Include="Icons\Heat Down Dark.png" />
+    <None Include="Icons\Heat Down Light Hover.png" />
+    <None Include="Icons\Heat Down Light.png" />
+    <None Include="Icons\Heat Down Medium Hover.png" />
+    <None Include="Icons\Heat Down Medium.png" />
+    <None Include="Icons\Heat Download Hover.png" />
+    <None Include="Icons\Heat Download.png" />
+    <None Include="Icons\Heat Edit Light.png" />
+    <None Include="Icons\Heat Edit Medium.png" />
+    <None Include="Icons\Heat Empty.png" />
+    <None Include="Icons\Heat Filter.png" />
+    <None Include="Icons\Heat Home Light.png" />
+    <None Include="Icons\Heat Home Medium.png" />
+    <None Include="Icons\Heat Incomplete Task.png" />
+    <None Include="Icons\Heat Left Dark Hover.png" />
+    <None Include="Icons\Heat Left Dark.png" />
+    <None Include="Icons\Heat Left Light Hover.png" />
+    <None Include="Icons\Heat Left Light.png" />
+    <None Include="Icons\Heat Left Medium Hover.png" />
+    <None Include="Icons\Heat Left Medium.png" />
+    <None Include="Icons\Heat Light Document.png" />
+    <None Include="Icons\Heat Light Milestone.png" />
+    <None Include="Icons\Heat Light Total Task.png" />
+    <None Include="Icons\Heat Milestone Count.png" />
+    <None Include="Icons\Heat My Issue Light.png" />
+    <None Include="Icons\Heat My Issue Medium.png" />
+    <None Include="Icons\Heat My Task Light.png" />
+    <None Include="Icons\Heat My Task Medium.png" />
+    <None Include="Icons\Heat Pin.png" />
+    <None Include="Icons\Heat Plus Dark.png" />
+    <None Include="Icons\Heat Plus Light.png" />
+    <None Include="Icons\Heat Project Delay Dark.png" />
+    <None Include="Icons\Heat Project Delay Light.png" />
+    <None Include="Icons\Heat Project Equal Dark.png" />
+    <None Include="Icons\Heat Project Equal Light.png" />
+    <None Include="Icons\Heat Right Dark Hover.png" />
+    <None Include="Icons\Heat Right Dark.png" />
+    <None Include="Icons\Heat Right Light Hover.png" />
+    <None Include="Icons\Heat Right Light.png" />
+    <None Include="Icons\Heat Right Medium Hover.png" />
+    <None Include="Icons\Heat Right Medium.png" />
+    <None Include="Icons\Heat Search.png" />
+    <None Include="Icons\Heat Tags.png" />
+    <None Include="Icons\Heat Teammates Count.png" />
+    <None Include="Icons\Heat Up Dark Hover.png" />
+    <None Include="Icons\Heat Up Dark.png" />
+    <None Include="Icons\Heat Up Light Hover.png" />
+    <None Include="Icons\Heat Up Light.png" />
+    <None Include="Icons\Heat Up Medium Hover.png" />
+    <None Include="Icons\Heat Up Medium.png" />
+    <None Include="Icons\Heat Upload.png" />
+    <None Include="Icons\Heat View Project Light.png" />
+    <None Include="Icons\Heat View Project Medum.png" />
+    <None Include="Icons\Cold Calendar Dark.png" />
+    <None Include="Icons\Cold Calendar Light.png" />
+    <None Include="Icons\Heat Calendar Dark.png" />
+    <None Include="Icons\Heat Calendar Light.png" />
+    <None Include="Icons\Cold Board Dark.png" />
+    <None Include="Icons\Cold Board Light.png" />
+    <None Include="Icons\Cold List Dark.png" />
+    <None Include="Icons\Cold List Light.png" />
+    <None Include="Icons\Cold Timeline Dark.png" />
+    <None Include="Icons\Cold Timeline Light.png" />
+    <None Include="Icons\Heat Board Dark.png" />
+    <None Include="Icons\Heat Board Light.png" />
+    <None Include="Icons\Heat List Dark.png" />
+    <None Include="Icons\Heat List Light.png" />
+    <None Include="Icons\Heat Timeline Dark.png" />
+    <None Include="Icons\Heat Timeline Light.png" />
+    <None Include="Icons\Cold Initial Commit.png" />
+    <None Include="Icons\Cold Mid Commit.png" />
+    <None Include="Icons\Heat Initial Commit.png" />
+    <None Include="Icons\Heat Mid Commit.png" />
     <Content Include="Resources\Attachment-black.png" />
     <Content Include="Resources\Attachment-gray.png" />
     <None Include="Resources\calendar black.png" />
     <None Include="Resources\calendar light.png" />
     <None Include="Resources\calendar 24x24.png" />
     <None Include="Resources\calendar1.png" />
+    <None Include="Resources\Bold.png" />
+    <None Include="Resources\bullets.png" />
+    <None Include="Resources\bold-gray.png" />
+    <None Include="Resources\bullet-list-gray.png" />
+    <None Include="Resources\Bold1.png" />
+    <None Include="Resources\bold-gray1.png" />
+    <None Include="Resources\bullet-list-gray1.png" />
+    <None Include="Resources\bullets1.png" />
     <Content Include="Resources\Close Black.png" />
     <Content Include="Resources\close Hover.png" />
     <Content Include="Resources\Close Red.png" />
@@ -1238,17 +1490,47 @@
     <None Include="Resources\Line.png" />
     <None Include="Resources\Not found.png" />
     <None Include="Resources\Medium.png" />
+    <None Include="Resources\italic.png" />
+    <None Include="Resources\Italic gray.png" />
+    <None Include="Resources\Italic gray1.png" />
+    <None Include="Resources\italic1.png" />
     <Content Include="Resources\sort-down-hover.png" />
     <Content Include="Resources\sort-down.png" />
     <Content Include="Resources\sort-up-hover.png" />
     <Content Include="Resources\sort-up.png" />
     <None Include="Resources\Upload Cloud.gif" />
     <None Include="Resources\vertical line.png" />
+    <None Include="Resources\strikethrough.png" />
+    <None Include="Resources\underline.png" />
+    <None Include="Resources\strikethrough-gray.png" />
+    <None Include="Resources\underline-gray.png" />
+    <None Include="Resources\tag gray.png" />
+    <None Include="Resources\tag silver.png" />
+    <None Include="Resources\tag black.png" />
+    <None Include="Resources\strikethrough1.png" />
+    <None Include="Resources\strikethrough-gray1.png" />
+    <None Include="Resources\tag black1.png" />
+    <None Include="Resources\tag gray1.png" />
+    <None Include="Resources\tag silver1.png" />
+    <None Include="Resources\underline1.png" />
+    <None Include="Resources\underline-gray1.png" />
     <Content Include="Resources\Zip Black.png" />
     <Content Include="Resources\Zip red.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Home Page\Custom Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

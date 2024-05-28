@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -30,10 +31,7 @@
         {
             this.ucNotFound1 = new UserInterface.UcNotFound();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.backPictureBox = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.nextPictureBox = new System.Windows.Forms.PictureBox();
+            this.timelineControlPanel = new System.Windows.Forms.Panel();
             this.datePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label20 = new System.Windows.Forms.Label();
@@ -56,14 +54,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.timelineControlPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.nextBtn = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.backBtn = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nextPictureBox)).BeginInit();
             this.datePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // ucNotFound1
@@ -73,6 +74,7 @@
             this.ucNotFound1.HeadText = "No Tasks Found !!";
             this.ucNotFound1.HeadTextSize = 10;
             this.ucNotFound1.Location = new System.Drawing.Point(0, 0);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
             this.ucNotFound1.Size = new System.Drawing.Size(945, 342);
@@ -80,7 +82,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.timelineControlPanel);
             this.panel1.Controls.Add(this.datePanel);
             this.panel1.Controls.Add(this.panel3);
@@ -91,47 +93,18 @@
             this.panel1.Size = new System.Drawing.Size(945, 342);
             this.panel1.TabIndex = 1;
             // 
-            // panel2
+            // timelineControlPanel
             // 
-            this.panel2.Controls.Add(this.backPictureBox);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(30, 342);
-            this.panel2.TabIndex = 4;
-            // 
-            // backPictureBox
-            // 
-            this.backPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.backPictureBox.Image = global::UserInterface.Properties.Resources.Back_Hover;
-            this.backPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.backPictureBox.Name = "backPictureBox";
-            this.backPictureBox.Size = new System.Drawing.Size(30, 342);
-            this.backPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.backPictureBox.TabIndex = 0;
-            this.backPictureBox.TabStop = false;
-            this.backPictureBox.Click += new System.EventHandler(this.OnPrevDayClick);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.nextPictureBox);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(915, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(30, 342);
-            this.panel3.TabIndex = 5;
-            // 
-            // nextPictureBox
-            // 
-            this.nextPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nextPictureBox.Image = global::UserInterface.Properties.Resources.Next;
-            this.nextPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.nextPictureBox.Name = "nextPictureBox";
-            this.nextPictureBox.Size = new System.Drawing.Size(30, 342);
-            this.nextPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.nextPictureBox.TabIndex = 1;
-            this.nextPictureBox.TabStop = false;
-            this.nextPictureBox.Click += new System.EventHandler(this.OnNextDayClick);
+            this.timelineControlPanel.AutoScroll = true;
+            this.timelineControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.timelineControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.timelineControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timelineControlPanel.Location = new System.Drawing.Point(30, 46);
+            this.timelineControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.timelineControlPanel.Name = "timelineControlPanel";
+            this.timelineControlPanel.Size = new System.Drawing.Size(885, 296);
+            this.timelineControlPanel.TabIndex = 7;
+            this.timelineControlPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TimelineControlPaint);
             // 
             // datePanel
             // 
@@ -514,17 +487,57 @@
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timelineControlPanel
+            // panel3
             // 
-            this.timelineControlPanel.AutoScroll = true;
-            this.timelineControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.timelineControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timelineControlPanel.Location = new System.Drawing.Point(30, 46);
-            this.timelineControlPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.timelineControlPanel.Name = "timelineControlPanel";
-            this.timelineControlPanel.Size = new System.Drawing.Size(885, 296);
-            this.timelineControlPanel.TabIndex = 7;
-            this.timelineControlPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TimelineControlPaint);
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.nextBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(915, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(30, 342);
+            this.panel3.TabIndex = 5;
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.BackColor = System.Drawing.Color.Transparent;
+            this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Medium_Blue;
+            this.nextBtn.Location = new System.Drawing.Point(0, 0);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(30, 342);
+            this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.nextBtn.TabIndex = 1;
+            this.nextBtn.TabStop = false;
+            this.nextBtn.Click += new System.EventHandler(this.OnNextDayClick);
+            this.nextBtn.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
+            this.nextBtn.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.backBtn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(30, 342);
+            this.panel2.TabIndex = 4;
+            // 
+            // backBtn
+            // 
+            this.backBtn.BackColor = System.Drawing.Color.Transparent;
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Medium_Blue;
+            this.backBtn.Location = new System.Drawing.Point(0, 0);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(30, 342);
+            this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.backBtn.TabIndex = 0;
+            this.backBtn.TabStop = false;
+            this.backBtn.Click += new System.EventHandler(this.OnPrevDayClick);
+            this.backBtn.MouseEnter += new System.EventHandler(this.OnPaginateMouseEnter);
+            this.backBtn.MouseLeave += new System.EventHandler(this.OnPaginateMouseLeave);
             // 
             // TimelinePaginate
             // 
@@ -535,13 +548,13 @@
             this.Name = "TimelinePaginate";
             this.Size = new System.Drawing.Size(945, 342);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.backPictureBox)).EndInit();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nextPictureBox)).EndInit();
             this.datePanel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nextBtn)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.backBtn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -551,9 +564,9 @@
         private UserInterface.UcNotFound ucNotFound1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox backPictureBox;
+        private System.Windows.Forms.PictureBox backBtn;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox nextPictureBox;
+        private System.Windows.Forms.PictureBox nextBtn;
         private System.Windows.Forms.Panel datePanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label20;

@@ -12,41 +12,17 @@ namespace TeamTracker
 {
     public partial class NotificationContent : UserControl
     {
-
-        private bool IsBackEnable = false, IsNextEnable = true, IsClearAllEntered = false;
-        private int currentIndex = 0, endIndex, notifyCount;
-        private int MaxUserControls = 4;//alter this value for required usercontrols
-        private List<Notification> notifyList = new List<Notification>();
-        private List<UcNotification> UcNotiList = new List<UcNotification>();
-        private Color borderColor = Color.Blue;
-
-
-        public NotificationContent()
-        {
-            InitializeComponent();
-        }
-
-        public new void Dispose()
-        {
-            if(panelBase.Controls.Count > 0)
-            {
-                for(int ctr=0; ctr < panelBase.Controls.Count; ctr++)
-                {
-                    (panelBase.Controls[ctr] as UcNotification).Dispose();
-                    panelBase.Controls.RemoveAt(ctr);
-                    ctr--;
-                }
-            }
-        }
-
         public List<Notification> NotifyList
         {
             set
             {
                 SuspendLayout();
+                
                 if (value != null && value.Count > 0)
                 {
-                    Dispose();
+                    ClearNotify();
+                    ucNotFound1.Visible = false;
+                    nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = true;
                     notifyList = value;
                     notifyList.Reverse();
                     currentIndex = 0;
@@ -57,6 +33,7 @@ namespace TeamTracker
                 }
                 else
                 {
+                    ucNotFound1.Visible = true;
                     nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
                 }
                 ResumeLayout();
@@ -72,7 +49,51 @@ namespace TeamTracker
                 this.Invalidate();
             }
         }
+        public NotificationContent()
+        {
+            InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
+        }
 
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            if(panelBase.Controls.Count > 0)
+            {
+                for(int ctr=0; ctr < panelBase.Controls.Count; ctr++)
+                {
+                    (panelBase.Controls[ctr] as UcNotification).CloseClick -= OnClickCloseNotification;
+                    (panelBase.Controls[ctr] as UcNotification).Dispose();
+                    ctr--;
+                }
+            }
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
+
+        private void ClearNotify()
+        {
+            for (int ctr = 0; ctr < panelBase.Controls.Count; ctr++)
+            {
+                (panelBase.Controls[ctr] as UcNotification).CloseClick -= OnClickCloseNotification;
+                (panelBase.Controls[ctr] as UcNotification).Dispose();
+                ctr--;
+            }
+        }
+
+        private void InitializePageColor()
+        {
+            backBtn.BackColor = nextBtn.BackColor = label1.BackColor = clearAllButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            clearAllButton.ForeColor = label1.ForeColor = ThemeManager.GetTextColor(backBtn.BackColor);
+            backBtn.Image?.Dispose();
+            nextBtn.Image?.Dispose();
+            ResetButton();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -141,12 +162,17 @@ namespace TeamTracker
                 nextBtn.Image.Dispose();
             }
 
-            backBtn.Image = (IsBackEnable) ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
-            nextBtn.Image = (IsNextEnable) ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
-
+            ResetButton();
+            
             if (endIndex == 0)
             {
                 nextBtn.Visible = backBtn.Visible = clearAllButton.Visible = false;
+            }
+
+            if (UcNotiList.Count == 0)
+            {
+                ucNotFound1.Visible = true;
+                nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
             }
         }
 
@@ -155,39 +181,61 @@ namespace TeamTracker
             panelBase.Controls.Clear();
             UcNotiList.Clear();
             DataHandler.DeleteAllNotification();
+            ucNotFound1.Visible = true;
+            nextBtn.Visible = backBtn.Visible = panelBase.Visible = clearAllButton.Visible = false;
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Hand;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Hand;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                picBox.Image = UserInterface.Properties.Resources.Left_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Cold_Left_Dark_Hover;
+                }
+                else
+                {
+                    backBtn.Image = UserInterface.Properties.Resources.Heat_Left_Dark_Hover;
+                }
             }
             else
             {
-                picBox.Image = UserInterface.Properties.Resources.Right_Light_Blue_Hover;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Cold_Right_Dark_Hover;
+                }
+                else
+                {
+                    nextBtn.Image = UserInterface.Properties.Resources.Heat_Right_Dark_Hover;
+                }
             }
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
-            PictureBox picBox = (sender as PictureBox);
-            if (picBox.Image != null)
-                picBox.Image.Dispose();
-            Cursor = Cursors.Default;
-            if (picBox.Name == "backBtn")
+            (sender as PictureBox).Image?.Dispose();
+            if ((sender as Control).Name == "backBtn")
             {
-                picBox.Image = IsBackEnable ? UserInterface.Properties.Resources.Left_Light_Blue : UserInterface.Properties.Resources.Left_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Cold_Left_Dark : UserInterface.Properties.Resources.Cold_Left_Medium;
+                }
+                else
+                {
+                    backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Heat_Left_Dark : UserInterface.Properties.Resources.Heat_Left_Medium;
+                }
             }
             else
             {
-                picBox.Image = IsNextEnable ? UserInterface.Properties.Resources.Right_Light_Blue : UserInterface.Properties.Resources.Right_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Cold_Right_Dark : UserInterface.Properties.Resources.Cold_Right_Medium;
+                }
+                else
+                {
+                    nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Heat_Right_Dark : UserInterface.Properties.Resources.Heat_Right_Medium;
+                }
             }
         }
 
@@ -195,8 +243,8 @@ namespace TeamTracker
         {
             Cursor = Cursors.Hand;
             IsClearAllEntered = true;
-            clearAllButton.BackColor = Color.FromArgb(221, 230, 237);
-            clearAllButton.ForeColor = Color.FromArgb(39, 55, 77);
+            clearAllButton.BackColor = ThemeManager.GetHoverColor(clearAllButton.BackColor);
+            clearAllButton.ForeColor = ThemeManager.GetTextColor(clearAllButton.BackColor);
             (sender as Control).Invalidate();
         }
 
@@ -214,8 +262,8 @@ namespace TeamTracker
         private void OnClearAllMouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-            clearAllButton.ForeColor = Color.FromArgb(221, 230, 237);
-            clearAllButton.BackColor = Color.FromArgb(39, 55, 77);
+            clearAllButton.BackColor = ThemeManager.GetHoverColor(ThemeManager.CurrentTheme.PrimaryI);
+            clearAllButton.ForeColor = ThemeManager.GetTextColor(clearAllButton.BackColor);
             IsClearAllEntered = false;
             (sender as Control).Invalidate();
         }
@@ -257,5 +305,26 @@ namespace TeamTracker
                 NotificationPagination();
             }
         }
+
+        private void ResetButton()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Cold_Left_Light : UserInterface.Properties.Resources.Cold_Left_Medium;
+                nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Cold_Right_Light : UserInterface.Properties.Resources.Cold_Right_Medium;
+            }
+            else
+            {
+                backBtn.Image = IsBackEnable ? UserInterface.Properties.Resources.Heat_Left_Light : UserInterface.Properties.Resources.Heat_Left_Medium;
+                nextBtn.Image = IsNextEnable ? UserInterface.Properties.Resources.Heat_Right_Light : UserInterface.Properties.Resources.Heat_Right_Medium;
+            }
+        }
+
+        private bool IsBackEnable = false, IsNextEnable = true, IsClearAllEntered = false;
+        private int currentIndex = 0, endIndex, notifyCount;
+        private int MaxUserControls = 4;//alter this value for required usercontrols
+        private List<Notification> notifyList = new List<Notification>();
+        private List<UcNotification> UcNotiList = new List<UcNotification>();
+        private Color borderColor = Color.Blue;
     }
 }

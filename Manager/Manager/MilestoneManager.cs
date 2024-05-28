@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,9 @@ namespace TeamTracker
             {
                 if (Iter.MileStoneID == milestone.MileStoneID)
                 {
+                    Iter.StartDate = milestone.StartDate;
+                    Iter.MileStoneID = milestone.MileStoneID;
+                    Iter.EndDate = milestone.EndDate;
                     Iter.Status = milestone.Status = status;
                     DataHandler.UpdateMilestone(milestone);
                     return;
@@ -116,6 +120,17 @@ namespace TeamTracker
             return -1;
         }
 
+        public static void CheckMilestoneDeadline()
+        {
+            foreach (var Iter in MilestoneCollection)
+            {
+                if (Iter.Status != MilestoneStatus.Completed && Iter.IsDelayed == false && Iter.EndDate <= DateTime.Now.Date)
+                {
+                    DataHandler.AddNotify("Milestone Deadline", Iter.MileStoneName + Iter.EndDate.ToShortDateString(), EmployeeManager.FetchManagerFromTeamLeadID(VersionManager.FetchTeamLeadFromVersionID(Iter.VersionID)).EmployeeID);
+                }
+            }
+        }
+
         public static List<Milestone> FetchMilestones(int versionID)
         {
             List<Milestone> result = new List<Milestone>();
@@ -123,7 +138,7 @@ namespace TeamTracker
             {
                 if(Iter.VersionID == versionID)
                 {
-                    result.Add(Iter);
+                    result.Add(Iter.ShallowCopy());
                 }
             }
 
@@ -184,13 +199,31 @@ namespace TeamTracker
             {
                 if(milestoneList[ctr].Status == MilestoneStatus.OnProcess)
                 {
+                    if (milestoneList[ctr].EndDate >= DateTime.Now.Date)
+                        milestoneList[ctr].EndDate = DateTime.Now.Date;
                     UpdateMilestone(milestoneList[ctr], MilestoneStatus.Completed);
+                    ModifyTaskDateBasedOnMilestone(milestoneList[ctr].MileStoneID);
                     if (ctr < milestoneList.Count - 1)
                     {
+                        milestoneList[ctr + 1].StartDate = milestoneList[ctr].EndDate;
                         UpdateMilestone(milestoneList[ctr + 1], MilestoneStatus.OnProcess);
                         CurrentMilestone = milestoneList[ctr + 1];
                     }
                     break;
+                }
+            }
+        }
+
+        public static void ModifyTaskDateBasedOnMilestone(int milestoneID)
+        {
+            foreach (var Iter in TaskManager.TaskCollection)
+            {
+                if (Iter.MilestoneID == milestoneID)
+                {
+                    if (Iter.StartDate >= DateTime.Now.Date) Iter.StartDate = DateTime.Now.Date;
+                    if (Iter.EndDate >= DateTime.Now.Date) Iter.EndDate = DateTime.Now.Date;
+
+                    DataHandler.UpdateTask(Iter);
                 }
             }
         }
@@ -215,6 +248,19 @@ namespace TeamTracker
             }
 
             return true;
+        }
+
+        public static void DeleteAllMilestoneFromVersion(int versionID)
+        {
+            for(int ctr=0; ctr < MilestoneCollection.Count; ctr++)
+            {
+                if(MilestoneCollection[ctr].VersionID == versionID)
+                {
+                    DataHandler.DeleteMilestone(MilestoneCollection[ctr].MileStoneID);
+                    MilestoneCollection.RemoveAt(ctr);
+                    ctr--;
+                }
+            }
         }
     }
 }

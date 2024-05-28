@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            UnSubscribeEventsAndRemoveMemory();
             base.Dispose(disposing);
         }
 
@@ -65,9 +66,11 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
             this.panel1.Size = new System.Drawing.Size(323, 56);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnRoundBorderPaint);
             // 
             // teamLeaderName
             // 
+            this.teamLeaderName.BackColor = System.Drawing.Color.Transparent;
             this.teamLeaderName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.teamLeaderName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.teamLeaderName.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -84,6 +87,7 @@
             // 
             // profilePictureBox2
             // 
+            this.profilePictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.profilePictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profilePictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.profilePictureBox2.Location = new System.Drawing.Point(2, 2);
@@ -94,6 +98,7 @@
             this.profilePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePictureBox2.TabIndex = 3;
             this.profilePictureBox2.TabStop = false;
+            this.profilePictureBox2.Click += new System.EventHandler(this.OnProfileClicked);
             this.profilePictureBox2.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.profilePictureBox2.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 

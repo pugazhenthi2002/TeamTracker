@@ -25,8 +25,33 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
         public StatusViewTemplate()
         {
             InitializeComponent();
+            InitializePageColor();
+            ThemeManager.ThemeChange += OnThemeChanged;
         }
 
+        private void InitializePageColor()
+        {
+            statusLabel.ForeColor = ThemeManager.CurrentTheme.PrimaryI;
+            panel1.BackColor = ThemeManager.CurrentTheme.SecondaryII;
+            BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+
+            ResetButtons();
+        }
+
+        private void OnThemeChanged(object sender, EventArgs e)
+        {
+            InitializePageColor();
+        }
+
+        private void UnSubscribeEventsAndRemoveMemory()
+        {
+            upPicBox.Image?.Dispose();
+            downPicBox.Image?.Dispose();
+            ThemeManager.ThemeChange -= OnThemeChanged;
+        }
 
         public Color BorderColor
         {
@@ -71,8 +96,7 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
                 {
                     isDownEnable = false;
                 }
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                ResetButtons();
             }
         }
 
@@ -90,25 +114,41 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
 
         private void OnNavMouseEnter(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
             if((sender as PictureBox).Name == "upPicBox")
             {
-                (sender as PictureBox).Image = Properties.Resources.Up_Light_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Up_Dark_Hover : Properties.Resources.Heat_Up_Dark_Hover;
             }
             else
             {
-                (sender as PictureBox).Image = Properties.Resources.Down_Light_Blue_Hover;
+                (sender as PictureBox).Image = ThemeManager.CurrentThemeMode == ThemeMode.Cold ? Properties.Resources.Cold_Down_Dark_Hover : Properties.Resources.Heat_Down_Dark_Hover;
             }
         }
 
         private void OnNavMouseLeave(object sender, EventArgs e)
         {
+            (sender as PictureBox).Image?.Dispose();
             if ((sender as PictureBox).Name == "upPicBox")
             {
-                upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                }
+                else
+                {
+                    upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                }
             }
             else
             {
-                downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+                if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+                }
+                else
+                {
+                    downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+                }
             }
         }
 
@@ -151,8 +191,21 @@ namespace UserInterface.ViewProject.BoardView.Custom_Controls
             if (upPicBox.Image != null) upPicBox.Image.Dispose();
             if (downPicBox.Image != null) downPicBox.Image.Dispose();
 
-            upPicBox.Image = isUpEnable ? UserInterface.Properties.Resources.Up_Dark_Blue : UserInterface.Properties.Resources.Up_Medium_Blue;
-            downPicBox.Image = isDownEnable ? UserInterface.Properties.Resources.Down_Dark_Blue : UserInterface.Properties.Resources.Down_Medium_Blue;
+            ResetButtons();
+        }
+
+        private void ResetButtons()
+        {
+            if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Cold_Up_Dark : Properties.Resources.Cold_Up_Light;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Cold_Down_Dark : Properties.Resources.Cold_Down_Light;
+            }
+            else
+            {
+                upPicBox.Image = isUpEnable ? Properties.Resources.Heat_Up_Dark : Properties.Resources.Heat_Up_Light;
+                downPicBox.Image = isDownEnable ? Properties.Resources.Heat_Down_Dark : Properties.Resources.Heat_Down_Light;
+            }
         }
     }
 }
