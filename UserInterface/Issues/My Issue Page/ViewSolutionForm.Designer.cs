@@ -149,14 +149,14 @@
             this.panel4.Size = new System.Drawing.Size(800, 36);
             this.panel4.TabIndex = 2;
             // 
-            // nextPicBox
+            // nextBtn
             // 
             this.nextBtn.BackColor = System.Drawing.Color.Transparent;
             this.nextBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextBtn.Dock = System.Windows.Forms.DockStyle.Right;
             this.nextBtn.Image = global::UserInterface.Properties.Resources.Right_Light_Blue;
             this.nextBtn.Location = new System.Drawing.Point(830, 0);
-            this.nextBtn.Name = "nextPicBox";
+            this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(30, 36);
             this.nextBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.nextBtn.TabIndex = 1;
@@ -165,14 +165,14 @@
             this.nextBtn.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.nextBtn.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
-            // backPicBox
+            // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.Color.Transparent;
             this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.backBtn.Image = global::UserInterface.Properties.Resources.Left_Light_Blue;
             this.backBtn.Location = new System.Drawing.Point(0, 0);
-            this.backBtn.Name = "backPicBox";
+            this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(30, 36);
             this.backBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.backBtn.TabIndex = 0;
@@ -221,6 +221,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewSolutionForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewSolutionForm";
             this.panel1.ResumeLayout(false);

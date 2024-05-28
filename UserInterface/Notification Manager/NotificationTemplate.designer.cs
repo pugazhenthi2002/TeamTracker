@@ -42,11 +42,10 @@
             // 
             this.timePanel.BackColor = System.Drawing.Color.Transparent;
             this.timePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.timePanel.Location = new System.Drawing.Point(0, 232);
-            this.timePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.timePanel.Location = new System.Drawing.Point(0, 151);
             this.timePanel.Name = "timePanel";
-            this.timePanel.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.timePanel.Size = new System.Drawing.Size(600, 37);
+            this.timePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.timePanel.Size = new System.Drawing.Size(400, 24);
             this.timePanel.TabIndex = 3;
             this.timePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnTimePanelPaint);
             // 
@@ -54,11 +53,10 @@
             // 
             this.contentPanel.BackColor = System.Drawing.Color.Transparent;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(0, 52);
-            this.contentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.contentPanel.Location = new System.Drawing.Point(0, 34);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.contentPanel.Size = new System.Drawing.Size(600, 160);
+            this.contentPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.contentPanel.Size = new System.Drawing.Size(400, 104);
             this.contentPanel.TabIndex = 4;
             this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnContentPanelPaint);
             // 
@@ -66,10 +64,9 @@
             // 
             this.seeMorePanel.BackColor = System.Drawing.Color.Transparent;
             this.seeMorePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.seeMorePanel.Location = new System.Drawing.Point(0, 212);
-            this.seeMorePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.seeMorePanel.Location = new System.Drawing.Point(0, 138);
             this.seeMorePanel.Name = "seeMorePanel";
-            this.seeMorePanel.Size = new System.Drawing.Size(600, 20);
+            this.seeMorePanel.Size = new System.Drawing.Size(400, 13);
             this.seeMorePanel.TabIndex = 5;
             this.seeMorePanel.Click += new System.EventHandler(this.OnFullContentViewed);
             this.seeMorePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SeeMorePanel_Paint);
@@ -86,7 +83,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(600, 52);
+            this.panel1.Size = new System.Drawing.Size(400, 34);
             this.panel1.TabIndex = 6;
             // 
             // headerPanel
@@ -94,10 +91,9 @@
             this.headerPanel.BackColor = System.Drawing.Color.Transparent;
             this.headerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.headerPanel.Location = new System.Drawing.Point(0, 0);
-            this.headerPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.headerPanel.Size = new System.Drawing.Size(542, 52);
+            this.headerPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.headerPanel.Size = new System.Drawing.Size(361, 34);
             this.headerPanel.TabIndex = 3;
             this.headerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnHeaderPanelPaint);
             // 
@@ -107,10 +103,9 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
-            this.pictureBox1.Location = new System.Drawing.Point(542, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(361, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 52);
+            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -120,17 +115,17 @@
             // 
             // NotificationTemplate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(600, 269);
+            this.ClientSize = new System.Drawing.Size(400, 175);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.seeMorePanel);
             this.Controls.Add(this.timePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "NotificationTemplate";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "NotificationTemplate";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmFadeClose_FormClosing);

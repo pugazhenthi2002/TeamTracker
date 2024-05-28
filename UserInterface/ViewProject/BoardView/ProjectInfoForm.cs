@@ -120,7 +120,7 @@ namespace TeamTracker
                 labelAttachment.Visible = pictureBoxAttachment.Visible = false;
             }
 
-            if (!(selectedVersion.StatusOfVersion == ProjectStatus.Completed))
+            if (!(selectedVersion.StatusOfVersion == ProjectStatus.Completed || selectedVersion.StatusOfVersion == ProjectStatus.Deployment))
             {
                 labelSourceCode.Visible = pictureBoxSoureCode.Visible = false;
             }

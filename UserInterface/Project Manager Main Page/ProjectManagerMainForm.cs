@@ -30,7 +30,6 @@ namespace TeamTracker
         private void OnThemeChanged(object sender, EventArgs e)
         {
             InitializePageColor();
-
         }
 
         private void InitializePage()
@@ -527,6 +526,18 @@ namespace TeamTracker
             }
 
             isEligibleToSwitch = true;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            SuspendLayout();
+            base.OnLoad(e);
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+            ResumeLayout();
         }
 
         static public NotificationManager notify;

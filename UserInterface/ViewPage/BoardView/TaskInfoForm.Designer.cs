@@ -73,15 +73,14 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1210, 874);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(807, 568);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -93,10 +92,10 @@
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(8, 444);
-            this.panel2.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panel2.Location = new System.Drawing.Point(5, 287);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1194, 422);
+            this.panel2.Size = new System.Drawing.Size(797, 276);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaintTotalCommitsPanel);
             // 
@@ -105,10 +104,10 @@
             this.panelCommits.AutoScroll = true;
             this.panelCommits.BackColor = System.Drawing.Color.Transparent;
             this.panelCommits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCommits.Location = new System.Drawing.Point(30, 31);
-            this.panelCommits.Margin = new System.Windows.Forms.Padding(30, 31, 30, 31);
+            this.panelCommits.Location = new System.Drawing.Point(20, 20);
+            this.panelCommits.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.panelCommits.Name = "panelCommits";
-            this.panelCommits.Size = new System.Drawing.Size(1134, 360);
+            this.panelCommits.Size = new System.Drawing.Size(757, 236);
             this.panelCommits.TabIndex = 7;
             // 
             // ucNotFound1
@@ -117,11 +116,11 @@
             this.ucNotFound1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucNotFound1.HeadText = "No Commits Found !!";
             this.ucNotFound1.HeadTextSize = 14;
-            this.ucNotFound1.Location = new System.Drawing.Point(30, 31);
-            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.ucNotFound1.Location = new System.Drawing.Point(20, 20);
+            this.ucNotFound1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ucNotFound1.Message = null;
             this.ucNotFound1.Name = "ucNotFound1";
-            this.ucNotFound1.Size = new System.Drawing.Size(1134, 360);
+            this.ucNotFound1.Size = new System.Drawing.Size(757, 236);
             this.ucNotFound1.TabIndex = 4;
             // 
             // panel3
@@ -129,10 +128,9 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(30, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(20, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1134, 31);
+            this.panel3.Size = new System.Drawing.Size(757, 20);
             this.panel3.TabIndex = 0;
             // 
             // label1
@@ -142,10 +140,10 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label1.Size = new System.Drawing.Size(201, 31);
+            this.label1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Size = new System.Drawing.Size(134, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Commits";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -155,29 +153,26 @@
             this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(30, 391);
+            this.panel6.Size = new System.Drawing.Size(20, 256);
             this.panel6.TabIndex = 3;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(1164, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel5.Location = new System.Drawing.Point(777, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(30, 391);
+            this.panel5.Size = new System.Drawing.Size(20, 256);
             this.panel5.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 391);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(0, 256);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1194, 31);
+            this.panel4.Size = new System.Drawing.Size(797, 20);
             this.panel4.TabIndex = 1;
             // 
             // panel1
@@ -191,8 +186,8 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.panel1.Size = new System.Drawing.Size(1210, 87);
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panel1.Size = new System.Drawing.Size(807, 56);
             this.panel1.TabIndex = 1;
             // 
             // profileAssignedBy
@@ -206,12 +201,13 @@
             this.profileAssignedBy.HoverColor = System.Drawing.Color.Empty;
             this.profileAssignedBy.IsBorderNeeded = false;
             this.profileAssignedBy.IsOperable = false;
-            this.profileAssignedBy.Location = new System.Drawing.Point(645, 0);
+            this.profileAssignedBy.Location = new System.Drawing.Point(430, 0);
+            this.profileAssignedBy.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.profileAssignedBy.Name = "profileAssignedBy";
             this.profileAssignedBy.NormalColor = System.Drawing.Color.Empty;
-            this.profileAssignedBy.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.profileAssignedBy.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.profileAssignedBy.ProfileTextColor = System.Drawing.Color.Empty;
-            this.profileAssignedBy.Size = new System.Drawing.Size(477, 82);
+            this.profileAssignedBy.Size = new System.Drawing.Size(318, 53);
             this.profileAssignedBy.TabIndex = 3;
             // 
             // pictureBox1
@@ -220,10 +216,9 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::UserInterface.Properties.Resources.Close_30;
-            this.pictureBox1.Location = new System.Drawing.Point(1122, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(748, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 82);
+            this.pictureBox1.Size = new System.Drawing.Size(59, 53);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -238,9 +233,9 @@
             this.labelTitle.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(561, 82);
+            this.labelTitle.Size = new System.Drawing.Size(374, 53);
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "ProjName/version";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,10 +248,10 @@
             this.ucTaskDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucTaskDescription1.EnableEdit = true;
             this.ucTaskDescription1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ucTaskDescription1.Location = new System.Drawing.Point(30, 102);
-            this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(30, 15, 30, 15);
+            this.ucTaskDescription1.Location = new System.Drawing.Point(20, 66);
+            this.ucTaskDescription1.Margin = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.ucTaskDescription1.Name = "ucTaskDescription1";
-            this.ucTaskDescription1.Size = new System.Drawing.Size(1150, 232);
+            this.ucTaskDescription1.Size = new System.Drawing.Size(767, 150);
             this.ucTaskDescription1.TabIndex = 2;
             this.ucTaskDescription1.TopLabelColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.ucTaskDescription1.TopLabelForeColor = System.Drawing.Color.White;
@@ -278,12 +273,12 @@
             this.tableLayoutPanel3.Controls.Add(this.startDate, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.endDate, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 349);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 226);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1210, 87);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(807, 56);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // animatedLabelStatus
@@ -293,11 +288,11 @@
             this.animatedLabelStatus.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animatedLabelStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.animatedLabelStatus.LabelCornerColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
-            this.animatedLabelStatus.Location = new System.Drawing.Point(855, 16);
-            this.animatedLabelStatus.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.animatedLabelStatus.Location = new System.Drawing.Point(568, 10);
+            this.animatedLabelStatus.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.animatedLabelStatus.Name = "animatedLabelStatus";
             this.animatedLabelStatus.ParentColor = System.Drawing.Color.Empty;
-            this.animatedLabelStatus.Size = new System.Drawing.Size(226, 54);
+            this.animatedLabelStatus.Size = new System.Drawing.Size(151, 35);
             this.animatedLabelStatus.TabIndex = 4;
             this.animatedLabelStatus.Text = "Status";
             this.animatedLabelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -309,11 +304,11 @@
             this.animatedLabelMilestone.Font = new System.Drawing.Font("Ebrima", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animatedLabelMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             this.animatedLabelMilestone.LabelCornerColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(170)))), ((int)(((byte)(190)))));
-            this.animatedLabelMilestone.Location = new System.Drawing.Point(8, 16);
-            this.animatedLabelMilestone.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.animatedLabelMilestone.Location = new System.Drawing.Point(5, 10);
+            this.animatedLabelMilestone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.animatedLabelMilestone.Name = "animatedLabelMilestone";
             this.animatedLabelMilestone.ParentColor = System.Drawing.Color.Empty;
-            this.animatedLabelMilestone.Size = new System.Drawing.Size(226, 54);
+            this.animatedLabelMilestone.Size = new System.Drawing.Size(151, 35);
             this.animatedLabelMilestone.TabIndex = 0;
             this.animatedLabelMilestone.Text = "Milestone";
             this.animatedLabelMilestone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -322,10 +317,9 @@
             // 
             this.pictureBoxFlag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxFlag.Image = global::UserInterface.Properties.Resources.Critical;
-            this.pictureBoxFlag.Location = new System.Drawing.Point(730, 5);
-            this.pictureBoxFlag.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBoxFlag.Location = new System.Drawing.Point(486, 3);
             this.pictureBoxFlag.Name = "pictureBoxFlag";
-            this.pictureBoxFlag.Size = new System.Drawing.Size(113, 77);
+            this.pictureBoxFlag.Size = new System.Drawing.Size(74, 50);
             this.pictureBoxFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxFlag.TabIndex = 3;
             this.pictureBoxFlag.TabStop = false;
@@ -335,10 +329,9 @@
             this.pictureBoxDownloadAttachment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxDownloadAttachment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxDownloadAttachment.Image = global::UserInterface.Properties.Resources.Download_Dark_Blue;
-            this.pictureBoxDownloadAttachment.Location = new System.Drawing.Point(1093, 5);
-            this.pictureBoxDownloadAttachment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBoxDownloadAttachment.Location = new System.Drawing.Point(727, 3);
             this.pictureBoxDownloadAttachment.Name = "pictureBoxDownloadAttachment";
-            this.pictureBoxDownloadAttachment.Size = new System.Drawing.Size(113, 77);
+            this.pictureBoxDownloadAttachment.Size = new System.Drawing.Size(77, 50);
             this.pictureBoxDownloadAttachment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxDownloadAttachment.TabIndex = 5;
             this.pictureBoxDownloadAttachment.TabStop = false;
@@ -353,11 +346,10 @@
             this.startDate.BorderSize = 2;
             this.startDate.Enabled = false;
             this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDate.Location = new System.Drawing.Point(248, 26);
-            this.startDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.startDate.Location = new System.Drawing.Point(164, 10);
             this.startDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(230, 35);
+            this.startDate.Size = new System.Drawing.Size(155, 35);
             this.startDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.startDate.TabIndex = 0;
             this.startDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
@@ -369,25 +361,24 @@
             this.endDate.BorderSize = 2;
             this.endDate.Enabled = false;
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDate.Location = new System.Drawing.Point(490, 26);
-            this.endDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.endDate.Location = new System.Drawing.Point(325, 10);
             this.endDate.MinimumSize = new System.Drawing.Size(4, 35);
             this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(230, 35);
+            this.endDate.Size = new System.Drawing.Size(155, 35);
             this.endDate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.endDate.TabIndex = 6;
             this.endDate.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
             // 
             // TaskInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
-            this.ClientSize = new System.Drawing.Size(1210, 874);
+            this.ClientSize = new System.Drawing.Size(807, 568);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TaskInfoForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskInfoForm";
             this.tableLayoutPanel1.ResumeLayout(false);

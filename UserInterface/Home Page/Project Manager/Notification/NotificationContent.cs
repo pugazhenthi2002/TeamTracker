@@ -188,7 +188,7 @@ namespace TeamTracker
         private void OnMouseEnter(object sender, EventArgs e)
         {
             (sender as PictureBox).Image?.Dispose();
-            if ((sender as Control).Name == "BackBtn")
+            if ((sender as Control).Name == "backBtn")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {
@@ -215,7 +215,7 @@ namespace TeamTracker
         private void OnMouseLeave(object sender, EventArgs e)
         {
             (sender as PictureBox).Image?.Dispose();
-            if ((sender as Control).Name == "BackBtn")
+            if ((sender as Control).Name == "backBtn")
             {
                 if (ThemeManager.CurrentThemeMode == ThemeMode.Cold)
                 {

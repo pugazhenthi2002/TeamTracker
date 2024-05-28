@@ -209,6 +209,7 @@ namespace TeamTracker
             CreateIssueForm = new Form();
             CreateIssueForm.StartPosition = FormStartPosition.CenterScreen;
             CreateIssueForm.FormBorderStyle = FormBorderStyle.None;
+            CreateIssueForm.ShowInTaskbar = false;
             CreateIssueForm.Size = new Size(650, 450);
             CreateIssueForm.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, CreateIssueForm.Width, CreateIssueForm.Height, 20, 20));
 
@@ -315,16 +316,6 @@ namespace TeamTracker
             Pen border = new Pen(ThemeManager.CurrentTheme.PrimaryI, 2);
             e.Graphics.DrawLine(border, new Point(0, (sender as Control).Height - 1), new Point((sender as Control).Width, (sender as Control).Height - 1));
             border.Dispose();
-        }
-
-        private void OnMouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnMouseLeave(object sender, EventArgs e)
-        {
-
         }
 
 

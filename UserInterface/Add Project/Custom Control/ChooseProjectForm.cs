@@ -84,7 +84,8 @@ namespace UserInterface.Add_Project.Custom_Control
         private void InitializePageColor()
         {
             panel2.BackColor = cancelButton.BackColor = ThemeManager.CurrentTheme.PrimaryI;
-            ucNotFound1.BackColor = BackColor = selectButton.BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            ucNotFound1.BackColor = BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+            selectButton.BackColor = ThemeManager.CurrentTheme.SecondaryII;
             label1.ForeColor = cancelButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.PrimaryI);
             selectButton.ForeColor = ThemeManager.GetTextColor(ThemeManager.CurrentTheme.SecondaryIII);
 
@@ -218,7 +219,7 @@ namespace UserInterface.Add_Project.Custom_Control
             isEntered = false;
             if ((sender as Label).Name == "selectButton")
             {
-                (sender as Label).BackColor = ThemeManager.CurrentTheme.SecondaryIII;
+                (sender as Label).BackColor = ThemeManager.CurrentTheme.SecondaryII;
                 (sender as Label).ForeColor = ThemeManager.GetTextColor((sender as Label).BackColor);
             }
             else

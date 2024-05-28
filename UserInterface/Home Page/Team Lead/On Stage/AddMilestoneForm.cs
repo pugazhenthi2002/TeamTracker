@@ -294,7 +294,7 @@ namespace TeamTracker
 
             for(int ctr=0; ctr< milestoneCollection.Count; ctr++)
             {
-                if(prevDate >= milestoneCollection[ctr].EndDate)
+                if(prevDate >= milestoneCollection[ctr].EndDate || !(startDate <= milestoneCollection[ctr].EndDate && milestoneCollection[ctr].EndDate <= endDate))
                 {
                     return "Milestone Date is not in Proper Order";
                 }

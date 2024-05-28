@@ -43,6 +43,7 @@ namespace TeamTracker
         public ProfilePicAndName()
         {
             InitializeComponent();
+            profilePictureBox1.ParentColor = BackColor;
         }
 
         public Employee EmployeeProfile
