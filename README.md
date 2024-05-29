@@ -48,10 +48,10 @@ the number of tasks completed, pending tasks, and task statuses through graphica
 <tr>
 
 <td align="center">
-<a href="https://github.com/ILAMUGUNTHAN">
-<img src="https://avatars.githubusercontent.com/u/86196624?v=4" width="100px;" alt="Ilamugunthan N Profile Picture"/><br>
+<a href="https://github.com/pugazhenthi2002">
+<img src="https://avatars.githubusercontent.com/u/105981927?v=4" width="100px;" alt="Pugazhenthi I R Profile Picture"/><br>
 <sub>
-<b>Ilamugunthan N</b>
+<b>Pugazhenthi I R</b>
 </sub>
 </a>
 </td>
